@@ -40,4 +40,27 @@ tile.boron_ore.name= Boron Ore
 tile.platinum_ore.name= Platinum Ore
 tile.mystery_ore.name= Mystery Ore
 
+
 item.cooked_egg.name=Cooked Egg
+
+item.aluminium_ingot.name=Aluminium Ingot
+item.copper_ingot.name=Copper Ingot
+item.tin_ingot.name=Tin Ingot
+item.bismuth_ingot.name=Bismuth Ingot
+item.zinc_ingot.name=Zinc Ingot
+item.nickel_ingot.name=Nickel Ingot
+item.cobalt_ingot.name=Cobalt Ingot
+item.tungsten_ingot.name=Tungsten Ingot
+item.magnet_ingot.name=Magnet Ingot
+item.silver_ingot.name=Silver Ingot
+item.lead_ingot.name=Lead Ingot
+item.silicon_ingot.name=Silicon Ingot
+item.chrome_ingot.name=Chrome Ingot
+item.titanium_ingot.name=Titanium Ingot
+item.uranium_ingot.name=Uranium Ingot
+item.platinum_ingot.name=Platinum Ingot
+item.boron_ingot.name=Boron Ingot
+item.brass_ingot.name=Brass Ingot
+item.bronze_ingot.name=Bronze Ingot
+item.steel_ingot.name=Steel Ingot
+item.osmium_ingot.name=Osmium Ingot

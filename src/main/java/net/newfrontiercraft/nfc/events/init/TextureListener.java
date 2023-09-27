@@ -8,6 +8,7 @@ import net.modificationstation.stationapi.api.registry.Identifier;
 import net.modificationstation.stationapi.api.registry.ModID;
 import net.modificationstation.stationapi.api.util.Null;
 import net.newfrontiercraft.nfc.blocks.LazyOreTemplate;
+import net.newfrontiercraft.nfc.items.LazyItemTemplate;
 
 public class TextureListener {
 
@@ -17,8 +18,10 @@ public class TextureListener {
     @EventListener
     public void registerTextures(TextureRegisterEvent event) {
         String decorativeBlocks = "block/decorative_blocks/";
-        String foodItems = "item/food/";
         String oreBlocks = "block/ores/";
+
+        String foodItems = "item/food/";
+        String ingotItems = "item/ingots/";
 
         BlockListener.platedStone.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, decorativeBlocks + "plated_stone")).index);
         BlockListener.platedStoneVerticalCut.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, decorativeBlocks + "plated_stone_vertical_cut")).index);
@@ -62,6 +65,29 @@ public class TextureListener {
         BlockListener.platinumOre.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, oreBlocks + "platinum_ore")).index);
         BlockListener.mysteryOre.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, oreBlocks + "mystery_ore")).index);
 
+
         ItemListener.cookedEgg.setTexture(Identifier.of(MOD_ID, foodItems + "cooked_egg"));
+
+        ItemListener.aluminiumIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "aluminium_ingot"));
+        ItemListener.copperIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "copper_ingot"));
+        ItemListener.tinIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "tin_ingot"));
+        ItemListener.bismuthIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "bismuth_ingot"));
+        ItemListener.zincIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "zinc_ingot"));
+        ItemListener.nickelIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "nickel_ingot"));
+        ItemListener.cobaltIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "cobalt_ingot"));
+        ItemListener.tungstenIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "tungsten_ingot"));
+        ItemListener.magnetIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "magnet_ingot"));
+        ItemListener.silverIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "silver_ingot"));
+        ItemListener.leadIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "lead_ingot"));
+        ItemListener.siliconIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "silicon_ingot"));
+        ItemListener.chromeIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "chrome_ingot"));
+        ItemListener.titaniumIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "titanium_ingot"));
+        ItemListener.uraniumIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "uranium_ingot"));
+        ItemListener.platinumIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "platinum_ingot"));
+        ItemListener.boronIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "boron_ingot"));
+        ItemListener.brassIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "brass_ingot"));
+        ItemListener.bronzeIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "bronze_ingot"));
+        ItemListener.steelIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "steel_ingot"));
+        ItemListener.osmiumIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "osmium_ingot"));
     }
 }
