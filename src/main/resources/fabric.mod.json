@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "id": "examplemod",
+  "id": "nfc",
   "version": "${version}",
 
   "name": "New Frontier Craft",

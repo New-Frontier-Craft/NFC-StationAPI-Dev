@@ -1,0 +1,17 @@
+{
+  "values": [
+    "nfc:plated_stone",
+    "nfc:plated_stone_vertical_cut",
+    "nfc:plated_stone_horizontal_cut",
+    "nfc:plated_stone_cross_cut",
+    "nfc:worked_stone",
+    "nfc:worked_stone_vertical_cut",
+    "nfc:worked_stone_horizontal_cut",
+    "nfc:worked_stone_cross_cut",
+    "nfc:stone_bricks",
+    "nfc:stone_bricks_large",
+    "nfc:stone_checkers",
+    "nfc:stone_tiling",
+    "nfc:stone_tiling_large"
+  ]
+}

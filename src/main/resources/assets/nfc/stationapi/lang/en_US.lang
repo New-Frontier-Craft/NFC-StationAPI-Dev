@@ -1,15 +1,13 @@
-achievement.boned=You've been boned!
-achievement.boned.desc=Pick up a bone.
-achievement.apple=AppleStuff
-achievement.apple.desc=Pick up an apple.
-
-achievement.page.nfc=Example
-
-item.coolitem.name=Cool Item
-
-tile.test.name=Example Block
-tile.test2.name=Example Block With Model
-
-key.test=Give Boned Achievement
-key.test2=Give Apple Achievement
-key.hurtme=Hurt Self
+tile.plated_stone.name=Plated Stone
+tile.plated_stone_horizontal_cut.name=Horizontally Cut Plated Stone
+tile.plated_stone_vertical_cut.name=Vertically Cut Plated Stone
+tile.plated_stone_cross_cut.name=Cross Cut Plated Stone
+tile.worked_stone.name=Worked Stone
+tile.worked_stone_horizontal_cut.name=Horizontally Cut Worked Stone
+tile.worked_stone_vertical_cut.name=Vertically Cut Worked Stone
+tile.worked_stone_cross_cut.name=Cross Cut Worked Stone
+tile.stone_bricks.name=Stone Bricks
+tile.stone_bricks_large.name=Large Stone Bricks
+tile.stone_checkers.name=Checkered Stone
+tile.stone_tiling.name=Stone Tiling
+tile.stone_tiling_large.name=Large Stone Tiling
