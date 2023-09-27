@@ -1,4 +1,4 @@
-package net.glasslauncher.example.events.init;
+package net.newfrontiercraft.nfc.events.init;
 
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.modificationstation.stationapi.api.event.mod.InitEvent;
