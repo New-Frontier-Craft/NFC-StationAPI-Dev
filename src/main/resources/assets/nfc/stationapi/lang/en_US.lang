@@ -11,3 +11,5 @@ tile.stone_bricks_large.name=Large Stone Bricks
 tile.stone_checkers.name=Checkered Stone
 tile.stone_tiling.name=Stone Tiling
 tile.stone_tiling_large.name=Large Stone Tiling
+
+item.cooked_egg.name=Cooked Egg

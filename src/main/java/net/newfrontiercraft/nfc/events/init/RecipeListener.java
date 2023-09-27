@@ -18,6 +18,7 @@ public class RecipeListener {
         if (type == RecipeRegisterEvent.Vanilla.CRAFTING_SHAPED.type()) {
         }
         if (type == RecipeRegisterEvent.Vanilla.SMELTING.type()) {
+            SmeltingRegistry.addSmeltingRecipe(ItemBase.egg.id, new ItemInstance(ItemListener.cookedEgg));
         }
         if (type == RecipeRegisterEvent.Vanilla.CRAFTING_SHAPELESS.type()) {
         }
