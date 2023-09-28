@@ -23,7 +23,8 @@
       "net.newfrontiercraft.nfc.events.init.BlockListener",
       "net.newfrontiercraft.nfc.events.init.ItemListener",
       "net.newfrontiercraft.nfc.events.init.PlayerHandlerListener",
-      "net.newfrontiercraft.nfc.events.init.RecipeListener"
+      "net.newfrontiercraft.nfc.events.init.RecipeListener",
+      "net.newfrontiercraft.nfc.events.init.ChunkListener"
     ],
     "stationapi:event_bus_client": [
       "net.newfrontiercraft.nfc.events.init.KeyBindingListener",
