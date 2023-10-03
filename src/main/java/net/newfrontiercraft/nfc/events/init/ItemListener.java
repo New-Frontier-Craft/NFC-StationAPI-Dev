@@ -3,14 +3,18 @@ package net.newfrontiercraft.nfc.events.init;
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.minecraft.entity.Item;
 import net.minecraft.item.ItemBase;
+import net.minecraft.item.tool.ToolMaterial;
 import net.modificationstation.stationapi.api.event.registry.ItemRegistryEvent;
+import net.modificationstation.stationapi.api.item.tool.ToolMaterialFactory;
 import net.modificationstation.stationapi.api.mod.entrypoint.Entrypoint;
 import net.modificationstation.stationapi.api.registry.Identifier;
 import net.modificationstation.stationapi.api.registry.ModID;
 import net.modificationstation.stationapi.api.template.item.TemplateItemBase;
+import net.modificationstation.stationapi.api.template.item.tool.TemplatePickaxe;
 import net.modificationstation.stationapi.api.util.Null;
 import net.newfrontiercraft.nfc.items.LazyFoodTemplate;
 import net.newfrontiercraft.nfc.items.LazyItemTemplate;
+import net.newfrontiercraft.nfc.items.LazyPickaxeTemplate;
 
 public class ItemListener {
 
@@ -38,7 +42,17 @@ public class ItemListener {
             brassIngot,
             bronzeIngot,
             steelIngot,
-            osmiumIngot;
+            osmiumIngot,
+
+            anthracite,
+            netherAsh,
+            onyx,
+            sapphire,
+            ruby,
+            emerald;
+
+    public static TemplatePickaxe
+            bronzePickaxe;
             
     
     @Entrypoint.ModID
@@ -46,6 +60,13 @@ public class ItemListener {
 
     @EventListener
     public void registerItems(ItemRegistryEvent event) {
+        ToolMaterialFactory.create("bronze", 1, 420, 4.0F, 1);
+        ToolMaterial.valueOf("bronze").inheritsFrom(ToolMaterial.field_1689);
+        ToolMaterial.valueOf("bronze").requiredBlockTag(Identifier.of("needs_bronze_tool"));
+        ToolMaterial.field_1690.inheritsFrom(ToolMaterial.valueOf("bronze"));
+
+        bronzePickaxe = new LazyPickaxeTemplate(Identifier.of(MOD_ID, "bronze_pickaxe"), ToolMaterial.valueOf("bronze"));
+
         cookedEgg = new LazyFoodTemplate(Identifier.of(MOD_ID, "cooked_egg"), 4, false);
 
         aluminiumIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "aluminium_ingot"));
@@ -69,5 +90,19 @@ public class ItemListener {
         bronzeIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "bronze_ingot"));
         steelIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "steel_ingot"));
         osmiumIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "osmium_ingot"));
+
+        anthracite = new LazyItemTemplate(Identifier.of(MOD_ID, "anthracite"));
+        netherAsh = new LazyItemTemplate(Identifier.of(MOD_ID, "nether_ash"));
+        onyx = new LazyItemTemplate(Identifier.of(MOD_ID, "onyx"));
+        sapphire = new LazyItemTemplate(Identifier.of(MOD_ID, "sapphire"));
+        ruby = new LazyItemTemplate(Identifier.of(MOD_ID, "ruby"));
+        emerald = new LazyItemTemplate(Identifier.of(MOD_ID, "emerald"));
+
+        BlockListener.anthraciteOre.specifyCustomDrop(anthracite.id);
+        BlockListener.netherAshOre.specifyCustomDrop(netherAsh.id);
+        BlockListener.netherOnyxOre.specifyCustomDrop(onyx.id);
+        BlockListener.sapphireOre.specifyCustomDrop(sapphire.id);
+        BlockListener.rubyOre.specifyCustomDrop(ruby.id);
+        BlockListener.emeraldOre.specifyCustomDrop(emerald.id);
     }
 }

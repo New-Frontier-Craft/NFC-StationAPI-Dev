@@ -8,6 +8,7 @@ import net.modificationstation.stationapi.api.mod.entrypoint.Entrypoint;
 import net.modificationstation.stationapi.api.registry.Identifier;
 import net.modificationstation.stationapi.api.registry.ModID;
 import net.modificationstation.stationapi.api.util.Null;
+import net.newfrontiercraft.nfc.blocks.BrickOven;
 import net.newfrontiercraft.nfc.blocks.LazyBlockTemplate;
 import net.newfrontiercraft.nfc.blocks.LazyOreTemplate;
 
@@ -26,7 +27,9 @@ public class BlockListener {
             stoneBricksLarge,
             stoneCheckers,
             stoneTiling,
-            stoneTilingLarge;
+            stoneTilingLarge,
+            firedBricks,
+            osmiumBricks;
 
     public static LazyOreTemplate
             netherAshOre,
@@ -57,6 +60,10 @@ public class BlockListener {
             platinumOre,
             mysteryOre;
 
+    public static BrickOven
+            brickOven,
+            brickOvenActive;
+
     @Entrypoint.ModID
     public static final ModID MOD_ID = Null.get();
 
@@ -75,6 +82,8 @@ public class BlockListener {
         stoneCheckers = new LazyBlockTemplate(Identifier.of(MOD_ID, "stone_checkers"), Material.STONE, 1.5F, BlockBase.STONE_SOUNDS);
         stoneTiling = new LazyBlockTemplate(Identifier.of(MOD_ID, "stone_tiling"), Material.STONE, 1.5F, BlockBase.STONE_SOUNDS);
         stoneTilingLarge = new LazyBlockTemplate(Identifier.of(MOD_ID, "stone_tiling_large"), Material.STONE, 1.5F, BlockBase.STONE_SOUNDS);
+        firedBricks = new LazyBlockTemplate(Identifier.of(MOD_ID, "fired_bricks"), Material.STONE, 1.5F, BlockBase.STONE_SOUNDS);
+        osmiumBricks = new LazyBlockTemplate(Identifier.of(MOD_ID, "osmium_bricks"), Material.STONE, 1.5F, BlockBase.STONE_SOUNDS);
 
         netherAshOre = new LazyOreTemplate(Identifier.of(MOD_ID, "nether_ash_ore"), 3F);
         netherUraniniteOre = new LazyOreTemplate(Identifier.of(MOD_ID, "nether_uraninite_ore"), 3F);
@@ -103,5 +112,8 @@ public class BlockListener {
         boronOre = new LazyOreTemplate(Identifier.of(MOD_ID, "boron_ore"), 3.5F);
         platinumOre = new LazyOreTemplate(Identifier.of(MOD_ID, "platinum_ore"), 3.5F);
         mysteryOre = new LazyOreTemplate(Identifier.of(MOD_ID, "mystery_ore"), 2F);
+
+        brickOven = new BrickOven(Identifier.of(MOD_ID, "brick_oven"), Material.STONE, false, 0F);
+        brickOvenActive = new BrickOven(Identifier.of(MOD_ID, "brick_oven_active"), Material.STONE, true, 0.875F);
     }
 }

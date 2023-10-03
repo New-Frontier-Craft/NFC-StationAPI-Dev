@@ -1,9 +1,11 @@
 package net.newfrontiercraft.nfc.events.init;
 
 import net.mine_diver.unsafeevents.listener.EventListener;
+import net.minecraft.block.BlockBase;
 import net.minecraft.item.ItemBase;
 import net.minecraft.item.ItemInstance;
 import net.modificationstation.stationapi.api.event.recipe.RecipeRegisterEvent;
+import net.modificationstation.stationapi.api.recipe.CraftingRegistry;
 import net.modificationstation.stationapi.api.recipe.SmeltingRegistry;
 import net.modificationstation.stationapi.api.registry.Identifier;
 
@@ -14,9 +16,14 @@ public class RecipeListener {
 
         Identifier type = event.recipeId;
         if (type == RecipeRegisterEvent.Vanilla.CRAFTING_SHAPED.type()) {
+            CraftingRegistry.addShapedRecipe(new ItemInstance(BlockListener.brickOven), "XXX", "X X", "XXX", 'X', new ItemInstance(BlockListener.firedBricks));
+
+            CraftingRegistry.addShapedRecipe(new ItemInstance(ItemListener.bronzePickaxe), "XXX", " Y ", " Y ", 'X', new ItemInstance(ItemListener.bronzeIngot), 'Y', new ItemInstance(ItemBase.stick));
         }
         if (type == RecipeRegisterEvent.Vanilla.SMELTING.type()) {
             SmeltingRegistry.addSmeltingRecipe(ItemBase.egg.id, new ItemInstance(ItemListener.cookedEgg));
+
+            SmeltingRegistry.addSmeltingRecipe(BlockBase.BRICKS.id, new ItemInstance(BlockListener.firedBricks));
 
             SmeltingRegistry.addSmeltingRecipe(BlockListener.aluminiumOre.id, new ItemInstance(ItemListener.aluminiumIngot));
             SmeltingRegistry.addSmeltingRecipe(BlockListener.copperOre.id, new ItemInstance(ItemListener.copperIngot));
