@@ -45,6 +45,33 @@ tile.mystery_ore.name=Mystery Ore
 tile.brick_oven.name=Brick Oven
 tile.brick_oven_active.name=Lit Brick Oven
 
+tile.coal_block.name=Coal Block
+tile.onyx_block.name=Onyx Block
+tile.aluminium_block.name=Aluminium Block
+tile.copper_block.name=Copper Block
+tile.tin_block.name=Tin Block
+tile.bismuth_block.name=Bismuth Block
+tile.zinc_block.name=Zinc Block
+tile.nickel_block.name=Nickel Block
+tile.cobalt_block.name=Cobalt Block
+tile.tungsten_block.name=Tungsten Block
+tile.magnetite_block.name=Magnetite Block
+tile.silver_block.name=Silver Block
+tile.lead_block.name=Lead Block
+tile.silicon_block.name=Silicon Block
+tile.chrome_block.name=Chrome Block
+tile.titanium_block.name=Titanium Block
+tile.sapphire_block.name=Sapphire Block
+tile.ruby_block.name=Ruby Block
+tile.emerald_block.name=Emerald Block
+tile.uranium_block.name=Uranium Block
+tile.platinum_block.name=Platinum Block
+tile.boron_block.name=Boron Block
+tile.brass_block.name=Brass Block
+tile.bronze_block.name=Bronze Block
+tile.steel_block.name=Steel Block
+tile.osmium_block.name=Osmium Block
+
 
 item.cooked_egg.name=Cooked Egg
 

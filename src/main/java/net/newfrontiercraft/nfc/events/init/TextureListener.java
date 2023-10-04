@@ -1,12 +1,15 @@
 package net.newfrontiercraft.nfc.events.init;
 
 import net.mine_diver.unsafeevents.listener.EventListener;
+import net.minecraft.block.BlockBase;
+import net.minecraft.block.material.Material;
 import net.modificationstation.stationapi.api.client.event.texture.TextureRegisterEvent;
 import net.modificationstation.stationapi.api.client.texture.atlas.Atlases;
 import net.modificationstation.stationapi.api.mod.entrypoint.Entrypoint;
 import net.modificationstation.stationapi.api.registry.Identifier;
 import net.modificationstation.stationapi.api.registry.ModID;
 import net.modificationstation.stationapi.api.util.Null;
+import net.newfrontiercraft.nfc.blocks.LazyBlockTemplate;
 import net.newfrontiercraft.nfc.blocks.LazyOreTemplate;
 import net.newfrontiercraft.nfc.items.LazyItemTemplate;
 
@@ -19,6 +22,7 @@ public class TextureListener {
     public void registerTextures(TextureRegisterEvent event) {
         String decorativeBlocks = "block/decorative_blocks/";
         String oreBlocks = "block/ores/";
+        String oreStorage = "block/ore_storage/";
         String machines = "block/machines/";
 
         String foodItems = "item/food/";
@@ -72,6 +76,33 @@ public class TextureListener {
 
         BlockListener.brickOven.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, machines + "brick_oven_front")).index, Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, machines + "brick_oven_front_active")).index, Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, machines + "brick_oven_side")).index);
         BlockListener.brickOvenActive.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, machines + "brick_oven_front")).index, Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, machines + "brick_oven_front_active")).index, Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, machines + "brick_oven_side")).index);
+
+        BlockListener.coalBlock.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, oreStorage + "coal_block")).index);
+        BlockListener.onyxBlock.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, oreStorage + "onyx_block")).index);
+        BlockListener.cobaltBlock.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, oreStorage + "cobalt_block")).index);
+        BlockListener.aluminiumBlock.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, oreStorage + "aluminium_block")).index);
+        BlockListener.copperBlock.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, oreStorage + "copper_block")).index);
+        BlockListener.tinBlock.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, oreStorage + "tin_block")).index);
+        BlockListener.zincBlock.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, oreStorage + "zinc_block")).index);
+        BlockListener.nickelBlock.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, oreStorage + "nickel_block")).index);
+        BlockListener.bismuthBlock.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, oreStorage + "bismuth_block")).index);
+        BlockListener.osmiumBlock.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, oreStorage + "osmium_block")).index);
+        BlockListener.tungstenBlock.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, oreStorage + "tungsten_block")).index);
+        BlockListener.magnetiteBlock.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, oreStorage + "magnetite_block")).index);
+        BlockListener.silverBlock.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, oreStorage + "silver_block")).index);
+        BlockListener.leadBlock.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, oreStorage + "lead_block")).index);
+        BlockListener.siliconBlock.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, oreStorage + "silicon_block")).index);
+        BlockListener.chromeBlock.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, oreStorage + "chrome_block")).index);
+        BlockListener.titaniumBlock.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, oreStorage + "titanium_block")).index);
+        BlockListener.uraniumBlock.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, oreStorage + "uranium_block")).index);
+        BlockListener.rubyBlock.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, oreStorage + "ruby_block")).index);
+        BlockListener.sapphireBlock.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, oreStorage + "sapphire_block")).index);
+        BlockListener.emeraldBlock.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, oreStorage + "emerald_block")).index);
+        BlockListener.boronBlock.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, oreStorage + "boron_block")).index);
+        BlockListener.platinumBlock.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, oreStorage + "platinum_block")).index);
+        BlockListener.bronzeBlock.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, oreStorage + "bronze_block")).index);
+        BlockListener.brassBlock.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, oreStorage + "brass_block")).index);
+        BlockListener.steelBlock.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, oreStorage + "steel_block")).index);
 
 
         ItemListener.bronzePickaxe.setTexture(Identifier.of(MOD_ID, pickaxes + "bronze_pickaxe"));
