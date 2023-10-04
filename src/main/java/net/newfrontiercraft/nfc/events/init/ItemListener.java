@@ -1,15 +1,12 @@
 package net.newfrontiercraft.nfc.events.init;
 
 import net.mine_diver.unsafeevents.listener.EventListener;
-import net.minecraft.entity.Item;
-import net.minecraft.item.ItemBase;
 import net.minecraft.item.tool.ToolMaterial;
 import net.modificationstation.stationapi.api.event.registry.ItemRegistryEvent;
 import net.modificationstation.stationapi.api.item.tool.ToolMaterialFactory;
 import net.modificationstation.stationapi.api.mod.entrypoint.Entrypoint;
 import net.modificationstation.stationapi.api.registry.Identifier;
 import net.modificationstation.stationapi.api.registry.ModID;
-import net.modificationstation.stationapi.api.template.item.TemplateItemBase;
 import net.modificationstation.stationapi.api.template.item.tool.TemplatePickaxe;
 import net.modificationstation.stationapi.api.util.Null;
 import net.newfrontiercraft.nfc.items.LazyFoodTemplate;
@@ -30,7 +27,7 @@ public class ItemListener {
             nickelIngot,
             cobaltIngot,
             tungstenIngot,
-            magnetIngot,
+            magnetiteIngot,
             silverIngot,
             leadIngot,
             siliconIngot,
@@ -77,7 +74,7 @@ public class ItemListener {
         nickelIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "nickel_ingot"));
         cobaltIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "cobalt_ingot"));
         tungstenIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "tungsten_ingot"));
-        magnetIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "magnet_ingot"));
+        magnetiteIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "magnet_ingot"));
         silverIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "silver_ingot"));
         leadIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "lead_ingot"));
         siliconIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "silicon_ingot"));

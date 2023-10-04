@@ -1,17 +1,12 @@
 package net.newfrontiercraft.nfc.events.init;
 
 import net.mine_diver.unsafeevents.listener.EventListener;
-import net.minecraft.block.BlockBase;
-import net.minecraft.block.material.Material;
 import net.modificationstation.stationapi.api.client.event.texture.TextureRegisterEvent;
 import net.modificationstation.stationapi.api.client.texture.atlas.Atlases;
 import net.modificationstation.stationapi.api.mod.entrypoint.Entrypoint;
 import net.modificationstation.stationapi.api.registry.Identifier;
 import net.modificationstation.stationapi.api.registry.ModID;
 import net.modificationstation.stationapi.api.util.Null;
-import net.newfrontiercraft.nfc.blocks.LazyBlockTemplate;
-import net.newfrontiercraft.nfc.blocks.LazyOreTemplate;
-import net.newfrontiercraft.nfc.items.LazyItemTemplate;
 
 public class TextureListener {
 
@@ -117,7 +112,7 @@ public class TextureListener {
         ItemListener.nickelIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "nickel_ingot"));
         ItemListener.cobaltIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "cobalt_ingot"));
         ItemListener.tungstenIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "tungsten_ingot"));
-        ItemListener.magnetIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "magnet_ingot"));
+        ItemListener.magnetiteIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "magnetite_ingot"));
         ItemListener.silverIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "silver_ingot"));
         ItemListener.leadIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "lead_ingot"));
         ItemListener.siliconIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "silicon_ingot"));
