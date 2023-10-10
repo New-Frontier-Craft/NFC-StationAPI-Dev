@@ -100,6 +100,20 @@ public class ChunkListener {
             (new Ore(BlockListener.tungstenOre.id, 1)).generate( event.level, event.random, k4, l7, i11);
         }
 
+        for (int k2 = 0; k2 < 2; k2++) {
+            int k4 = event.x + event.random.nextInt(16);
+            int l7 = event.random.nextInt(128);
+            int i11 = event.z + event.random.nextInt(16);
+            (new OreCloud(BlockListener.pebble.id, 10, 2, 80)).generate(event.level, event.random, k4, l7, i11);
+        }
+
+        {
+            int i6 = event.x + event.random.nextInt(16);
+            int j9 = event.random.nextInt(128);
+            int i12 = event.z + event.random.nextInt(16);
+            (new Ore(BlockListener.pebble.id, 32)).generate(event.level, event.random, i6, j9, i12);
+        }
+
         /*
         {
             int i3 = event.x + event.random.nextInt(16);

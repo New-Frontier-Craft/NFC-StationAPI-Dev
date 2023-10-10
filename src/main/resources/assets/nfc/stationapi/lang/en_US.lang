@@ -72,6 +72,11 @@ tile.bronze_block.name=Bronze Block
 tile.steel_block.name=Steel Block
 tile.osmium_block.name=Osmium Block
 
+tile.pebble.name=Pebble
+tile.pebble_small.name=Small Pebble
+tile.pebble_medium.name=Medium Pebble
+tile.pebble_large.name=Large Pebble
+
 
 item.cooked_egg.name=Cooked Egg
 

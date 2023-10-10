@@ -11,6 +11,7 @@ import net.modificationstation.stationapi.api.util.Null;
 import net.newfrontiercraft.nfc.blocks.BrickOven;
 import net.newfrontiercraft.nfc.blocks.LazyBlockTemplate;
 import net.newfrontiercraft.nfc.blocks.LazyOreTemplate;
+import net.newfrontiercraft.nfc.blocks.LazySandTemplate;
 
 public class BlockListener {
 
@@ -91,6 +92,12 @@ public class BlockListener {
             brickOven,
             brickOvenActive;
 
+    public static LazySandTemplate
+            pebble,
+            pebbleSmall,
+            pebbleMedium,
+            pebbleLarge;
+
     @Entrypoint.ModID
     public static final ModID MOD_ID = Null.get();
 
@@ -166,6 +173,11 @@ public class BlockListener {
         bronzeBlock = new LazyBlockTemplate(Identifier.of(MOD_ID, "bronze_block"), Material.METAL, 2.5F, BlockBase.METAL_SOUNDS);
         brassBlock = new LazyBlockTemplate(Identifier.of(MOD_ID, "brass_block"), Material.METAL, 2.5F, BlockBase.METAL_SOUNDS);
         steelBlock = new LazyBlockTemplate(Identifier.of(MOD_ID, "steel_block"), Material.METAL, 3.5F, BlockBase.METAL_SOUNDS);
+
+        pebble = new LazySandTemplate(Identifier.of(MOD_ID, "pebble"), 3F, BlockBase.GRAVEL_SOUNDS, 8);
+        pebbleSmall = new LazySandTemplate(Identifier.of(MOD_ID, "pebble_small"), 3F, BlockBase.GRAVEL_SOUNDS, 8);
+        pebbleMedium = new LazySandTemplate(Identifier.of(MOD_ID, "pebble_medium"), 3F, BlockBase.GRAVEL_SOUNDS, 8);
+        pebbleLarge = new LazySandTemplate(Identifier.of(MOD_ID, "pebble_large"), 3F, BlockBase.GRAVEL_SOUNDS, 8);
 
         brickOven = new BrickOven(Identifier.of(MOD_ID, "brick_oven"), Material.STONE, false, 0F);
         brickOvenActive = new BrickOven(Identifier.of(MOD_ID, "brick_oven_active"), Material.STONE, true, 0.875F);

@@ -19,6 +19,7 @@ public class TextureListener {
         String oreBlocks = "block/ores/";
         String oreStorage = "block/ore_storage/";
         String machines = "block/machines/";
+        String woldGeneration = "block/world_generation/";
 
         String foodItems = "item/food/";
         String ingotItems = "item/ingots/";
@@ -98,6 +99,11 @@ public class TextureListener {
         BlockListener.bronzeBlock.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, oreStorage + "bronze_block")).index);
         BlockListener.brassBlock.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, oreStorage + "brass_block")).index);
         BlockListener.steelBlock.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, oreStorage + "steel_block")).index);
+
+        BlockListener.pebble.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, woldGeneration + "pebble")).index);
+        BlockListener.pebbleSmall.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, woldGeneration + "pebble_small")).index);
+        BlockListener.pebbleMedium.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, woldGeneration + "pebble_medium")).index);
+        BlockListener.pebbleLarge.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, woldGeneration + "pebble_large")).index);
 
 
         ItemListener.bronzePickaxe.setTexture(Identifier.of(MOD_ID, pickaxes + "bronze_pickaxe"));
