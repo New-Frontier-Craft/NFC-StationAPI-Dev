@@ -21,19 +21,20 @@ import java.util.Random;
 
 public class BrickOven extends TemplateBlockWithEntity {
 
-    int frontTextureInternal;
-    int frontActiveTextureInternal;
-    int sideTextureInternal;
+    int frontTexture;
+    int frontTextureActive;
+    int sideTexture;
     private Random furnaceRand;
-    private final boolean isActive;
+    private final boolean ACTIVE;
     private static boolean keepFurnaceInventory = false;
     
-    public BrickOven(Identifier identifier, Material material, boolean isActive, float lightEmittance) {
+    public BrickOven(Identifier identifier, Material material, boolean active, float lightEmittance, float hardness) {
         super(identifier, material);
         setLightEmittance(lightEmittance);
         setTranslationKey(identifier.modID, identifier.id);
         furnaceRand = new Random();
-        this.isActive = isActive;
+        this.ACTIVE = active;
+        setHardness(hardness);
     }
 
     @Override
@@ -45,14 +46,17 @@ public class BrickOven extends TemplateBlockWithEntity {
     public boolean canUse(Level world, int x, int y, int z, PlayerBase player) {
         TileEntityBase tileEntity = world.getTileEntity(x, y, z);
         if (tileEntity instanceof TileEntityBrickOven tileEntityBrickOven)
-            GuiHelper.openGUI(player, Identifier.of(TileEntityListener.MOD_ID, "gui_brick_oven"), tileEntityBrickOven, new ContainerBrickOven(player.inventory, tileEntityBrickOven));
+            GuiHelper.openGUI(player, Identifier.of(TileEntityListener.MOD_ID, "gui_brick_oven"),
+                    tileEntityBrickOven, new ContainerBrickOven(player.inventory, tileEntityBrickOven));
         return true;
     }
 
     @Override
     public void onBlockPlaced(Level world, int i, int j, int k) {
         super.onBlockPlaced(world, i, j, k);
-        if (!world.isServerSide) setDefaultDirection(world, i, j, k);
+        if (!world.isServerSide) {
+            setDefaultDirection(world, i, j, k);
+        }
     }
 
     private void setDefaultDirection(Level world, int i, int j, int k) {
@@ -77,7 +81,7 @@ public class BrickOven extends TemplateBlockWithEntity {
     }
 
     public void randomDisplayTick(Level world, int i, int j, int k, Random random) {
-        if (!isActive) {
+        if (!ACTIVE) {
             return;
         }
         int l = world.getTileMeta(i, j, k);
@@ -103,17 +107,17 @@ public class BrickOven extends TemplateBlockWithEntity {
 
     public void specifyTextures(int frontTexture, int frontActiveTexture, int sideTexture)
     {
-        frontTextureInternal = frontTexture;
-        frontActiveTextureInternal = frontActiveTexture;
-        sideTextureInternal = sideTexture;
+        this.frontTexture = frontTexture;
+        frontTextureActive = frontActiveTexture;
+        this.sideTexture = sideTexture;
     }
     
     @Override
     public int getTextureForSide(int i, int j) {
         if (i == j) {
-            return isActive ? frontActiveTextureInternal : frontTextureInternal;
+            return ACTIVE ? frontTextureActive : frontTexture;
         } else {
-            return sideTextureInternal;
+            return sideTexture;
         }
     }
 
@@ -133,8 +137,7 @@ public class BrickOven extends TemplateBlockWithEntity {
     }
 
     @Override
-    public void afterPlaced(Level world, int i, int j, int k,
-                                Living entityliving) {
+    public void afterPlaced(Level world, int i, int j, int k, Living entityliving) {
         int l = MathHelper
                 .floor((double) ((entityliving.yaw * 4F) / 360F) + 0.5D) & 3;
         if (l == 0) {

@@ -26,8 +26,7 @@ public class LazySandTemplate extends TemplateSand {
         return (LazySandTemplate) super.setHardness(Hardness);
     }
 
-    public void specifyTextures(int texture)
-    {
+    public void specifyTextures(int texture) {
         textureInternal = texture;
     }
 

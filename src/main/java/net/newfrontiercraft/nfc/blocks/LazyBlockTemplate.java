@@ -29,8 +29,7 @@ public class LazyBlockTemplate extends TemplateBlockBase {
         return (LazyBlockTemplate) super.setHardness(Hardness);
     }
 
-    public void specifyTextures(int topTexture, int sideTexture, int bottomTexture, int frontTexture, int backTexture)
-    {
+    public void specifyTextures(int topTexture, int sideTexture, int bottomTexture, int frontTexture, int backTexture) {
         topTextureInternal = topTexture;
         sideTextureInternal = sideTexture;
         bottomTextureInternal = bottomTexture;
@@ -39,8 +38,7 @@ public class LazyBlockTemplate extends TemplateBlockBase {
         directional = true;
     }
 
-    public void specifyTextures(int topTexture, int sideTexture, int bottomTexture, int frontTexture)
-    {
+    public void specifyTextures(int topTexture, int sideTexture, int bottomTexture, int frontTexture) {
         topTextureInternal = topTexture;
         sideTextureInternal = sideTexture;
         bottomTextureInternal = bottomTexture;
@@ -49,8 +47,7 @@ public class LazyBlockTemplate extends TemplateBlockBase {
         directional = true;
     }
 
-    public void specifyTextures(int topTexture, int sideTexture, int bottomTexture)
-    {
+    public void specifyTextures(int topTexture, int sideTexture, int bottomTexture) {
         topTextureInternal = topTexture;
         sideTextureInternal = sideTexture;
         bottomTextureInternal = bottomTexture;
@@ -58,8 +55,7 @@ public class LazyBlockTemplate extends TemplateBlockBase {
         backTextureInternal = sideTexture;
     }
 
-    public void specifyTextures(int universalTexture)
-    {
+    public void specifyTextures(int universalTexture) {
         topTextureInternal = universalTexture;
         sideTextureInternal = universalTexture;
         bottomTextureInternal = universalTexture;

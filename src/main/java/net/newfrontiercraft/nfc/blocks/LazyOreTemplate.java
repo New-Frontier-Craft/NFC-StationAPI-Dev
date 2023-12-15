@@ -25,13 +25,11 @@ public class LazyOreTemplate extends TemplateOre {
         return dropID;
     }
 
-    public void specifyCustomDrop(int dropID)
-    {
+    public void specifyCustomDrop(int dropID) {
         this.dropID = dropID;
     }
 
-    public void specifyTextures(int texture)
-    {
+    public void specifyTextures(int texture) {
         textureInternal = texture;
     }
 

@@ -44,6 +44,7 @@ tile.mystery_ore.name=Mystery Ore
 
 tile.brick_oven.name=Brick Oven
 tile.brick_oven_active.name=Lit Brick Oven
+tile.carpentry_workstation.name=Carpentry Workstation
 
 tile.coal_block.name=Coal Block
 tile.onyx_block.name=Onyx Block

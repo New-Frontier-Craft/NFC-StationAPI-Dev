@@ -2,16 +2,14 @@ package net.newfrontiercraft.nfc.events.init;
 
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.minecraft.block.BlockBase;
+import net.minecraft.block.Cactus;
 import net.minecraft.block.material.Material;
 import net.modificationstation.stationapi.api.event.registry.BlockRegistryEvent;
 import net.modificationstation.stationapi.api.mod.entrypoint.Entrypoint;
 import net.modificationstation.stationapi.api.registry.Identifier;
 import net.modificationstation.stationapi.api.registry.ModID;
 import net.modificationstation.stationapi.api.util.Null;
-import net.newfrontiercraft.nfc.blocks.BrickOven;
-import net.newfrontiercraft.nfc.blocks.LazyBlockTemplate;
-import net.newfrontiercraft.nfc.blocks.LazyOreTemplate;
-import net.newfrontiercraft.nfc.blocks.LazySandTemplate;
+import net.newfrontiercraft.nfc.blocks.*;
 
 public class BlockListener {
 
@@ -98,6 +96,8 @@ public class BlockListener {
             pebbleMedium,
             pebbleLarge;
 
+    public static CarpentryWorkstation carpentryWorkstation;
+
     @Entrypoint.ModID
     public static final ModID MOD_ID = Null.get();
 
@@ -179,7 +179,9 @@ public class BlockListener {
         pebbleMedium = new LazySandTemplate(Identifier.of(MOD_ID, "pebble_medium"), 3F, BlockBase.GRAVEL_SOUNDS, 8);
         pebbleLarge = new LazySandTemplate(Identifier.of(MOD_ID, "pebble_large"), 3F, BlockBase.GRAVEL_SOUNDS, 8);
 
-        brickOven = new BrickOven(Identifier.of(MOD_ID, "brick_oven"), Material.STONE, false, 0F);
-        brickOvenActive = new BrickOven(Identifier.of(MOD_ID, "brick_oven_active"), Material.STONE, true, 0.875F);
+        brickOven = new BrickOven(Identifier.of(MOD_ID, "brick_oven"), Material.STONE, false, 0F, 1.5F);
+        brickOvenActive = new BrickOven(Identifier.of(MOD_ID, "brick_oven_active"), Material.STONE, true, 0.875F, 1.5F);
+
+        carpentryWorkstation = new CarpentryWorkstation(Identifier.of(MOD_ID, "carpentry_workstation"), Material.METAL, 1.0F);
     }
 }
