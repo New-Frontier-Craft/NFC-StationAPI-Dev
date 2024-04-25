@@ -2,21 +2,18 @@ package net.newfrontiercraft.nfc.containers;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.container.ContainerBase;
-import net.minecraft.container.ContainerListener;
-import net.minecraft.container.slot.CraftingResult;
-import net.minecraft.container.slot.FurnaceOutput;
-import net.minecraft.container.slot.Slot;
-import net.minecraft.entity.player.PlayerBase;
+import net.minecraft.class_633;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.item.ItemInstance;
-import net.newfrontiercraft.nfc.tileentities.TileEntityBrickOven;
+import net.minecraft.item.ItemStack;
+import net.minecraft.screen.ScreenHandler;
+import net.minecraft.screen.slot.FurnaceOutputSlot;
+import net.minecraft.screen.slot.Slot;
+import net.newfrontiercraft.nfc.blockentities.BrickOvenBlockEntity;
 
-import java.awt.*;
+public class BrickOvenScreenHandler extends ScreenHandler {
 
-public class ContainerBrickOven extends ContainerBase {
-
-    public ContainerBrickOven(PlayerInventory inventoryplayer, TileEntityBrickOven tileentityfurnace) {
+    public BrickOvenScreenHandler(PlayerInventory inventoryplayer, BrickOvenBlockEntity tileentityfurnace) {
         cookTime = 0;
         burnTime = 0;
         itemBurnTime = 0;
@@ -27,7 +24,7 @@ public class ContainerBrickOven extends ContainerBase {
             }
         }
         addSlot(new Slot(tileentityfurnace, 9, 56, 89));
-        addSlot(new FurnaceOutput(inventoryplayer.player, tileentityfurnace, 10, 116, 71));
+        addSlot(new FurnaceOutputSlot(inventoryplayer.player, tileentityfurnace, 10, 116, 71));
         for (int i = 0; i < 3; i++) {
             for (int k = 0; k < 9; k++) {
                 addSlot(new Slot(inventoryplayer, k + i * 9 + 9, 8 + k * 18,
@@ -41,21 +38,21 @@ public class ContainerBrickOven extends ContainerBase {
 
     }
 
-    public void tick() {
-        super.tick();
+    public void method_2075() {
+        super.method_2075();
         for (int i = 0; i < this.listeners.size(); i++) {
-            ContainerListener icrafting = (ContainerListener) this.listeners.get(i);
+            class_633 icrafting = (class_633) this.listeners.get(i);
             if (cookTime != furnace.furnaceCookTime) {
-                icrafting.updateProperty(this, 0, furnace.furnaceCookTime);
+                icrafting.method_2099(this, 0, furnace.furnaceCookTime);
             }
             if (burnTime != furnace.furnaceBurnTime) {
-                icrafting.updateProperty(this, 1, furnace.furnaceBurnTime);
+                icrafting.method_2099(this, 1, furnace.furnaceBurnTime);
             }
             if (itemBurnTime != furnace.currentItemBurnTime) {
-                icrafting.updateProperty(this, 2, furnace.currentItemBurnTime);
+                icrafting.method_2099(this, 2, furnace.currentItemBurnTime);
             }
             if (requiredTime != furnace.requiredTime) {
-                icrafting.updateProperty(this, 3, furnace.requiredTime);
+                icrafting.method_2099(this, 3, furnace.requiredTime);
             }
         }
 
@@ -67,7 +64,7 @@ public class ContainerBrickOven extends ContainerBase {
 
     @Override
     @Environment(EnvType.CLIENT)
-    public void setProperty(int i, int j) {
+    public void method_2077(int i, int j) {
         if (i == 0) {
             furnace.furnaceCookTime = j;
         }
@@ -83,25 +80,25 @@ public class ContainerBrickOven extends ContainerBase {
     }
 
     @Override
-    public boolean canUse(PlayerBase entityplayer) {
+    public boolean canUse(PlayerEntity entityplayer) {
         return furnace.canPlayerUse(entityplayer);
     }
 
     @Override
-    public ItemInstance transferSlot(int i) {
-        ItemInstance itemstack = null;
+    public ItemStack getStackInSlot(int i) {
+        ItemStack itemstack = null;
         Slot slot = (Slot) slots.get(i);
-        if (slot != null && slot.hasItem()) {
-            ItemInstance itemstack1 = slot.getItem();
+        if (slot != null && slot.hasStack()) {
+            ItemStack itemstack1 = slot.getStack();
             itemstack = itemstack1.copy();
             if (i == 10) {
-                insertItem(itemstack1, 11, 47, true);
+                method_2081(itemstack1, 11, 47, true);
             } else if (i >= 11 && i < 38) {
-                insertItem(itemstack1, 38, 39, false);
+                method_2081(itemstack1, 38, 39, false);
             } else if (i >= 38 && i < 47) {
-                insertItem(itemstack1, 11, 38, false);
+                method_2081(itemstack1, 11, 38, false);
             } else {
-                insertItem(itemstack1, 11, 47, false);
+                method_2081(itemstack1, 11, 47, false);
             }
             if (itemstack1.count == 0) {
                 slot.setStack(null);
@@ -117,7 +114,7 @@ public class ContainerBrickOven extends ContainerBase {
         return itemstack;
     }
 
-    private TileEntityBrickOven furnace;
+    private BrickOvenBlockEntity furnace;
     private int cookTime;
     private int burnTime;
     private int itemBurnTime;

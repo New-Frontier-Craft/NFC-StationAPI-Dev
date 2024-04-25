@@ -1,20 +1,20 @@
 package net.newfrontiercraft.nfc.registries;
 
-import net.minecraft.item.ItemInstance;
+import net.minecraft.item.ItemStack;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class OvenRecipes implements IRecipeOven {
+public class OvenRecipes implements OvenRecipe {
 
-    public OvenRecipes(ItemInstance itemstack, List list, int time) {
+    public OvenRecipes(ItemStack itemstack, List list, int time) {
         recipeOutput = itemstack;
         recipeItems = list;
         recipeTime = time;
     }
 
-    public ItemInstance getRecipeOutput() {
+    public ItemStack getRecipeOutput() {
         return recipeOutput;
     }
 
@@ -22,7 +22,7 @@ public class OvenRecipes implements IRecipeOven {
         return recipeTime;
     }
 
-    public boolean matches(ItemInstance[] itemstacks) {
+    public boolean matches(ItemStack[] itemstacks) {
         ArrayList arraylist = new ArrayList(recipeItems);
         int i = 0;
         do {
@@ -30,7 +30,7 @@ public class OvenRecipes implements IRecipeOven {
                 break;
             }
             for (int j = 0; j < 3; j++) {
-                ItemInstance itemstack = itemstacks[j + (i*3)];
+                ItemStack itemstack = itemstacks[j + (i*3)];
                 if (itemstack == null) {
                     continue;
                 }
@@ -40,7 +40,7 @@ public class OvenRecipes implements IRecipeOven {
                     if (!iterator.hasNext()) {
                         break;
                     }
-                    ItemInstance itemstack1 = (ItemInstance) iterator.next();
+                    ItemStack itemstack1 = (ItemStack) iterator.next();
                     if (itemstack.itemId != itemstack1.itemId
                             || itemstack1.getDamage() != -1
                             && (itemstack.getDamage() != itemstack1
@@ -61,7 +61,7 @@ public class OvenRecipes implements IRecipeOven {
         return arraylist.isEmpty();
     }
 
-    public ItemInstance getCraftingResult(ItemInstance[] itemstacks) {
+    public ItemStack getCraftingResult(ItemStack[] itemstacks) {
         return recipeOutput.copy();
     }
 
@@ -69,7 +69,7 @@ public class OvenRecipes implements IRecipeOven {
         return recipeItems.size();
     }
 
-    private final ItemInstance recipeOutput;
+    private final ItemStack recipeOutput;
     private final List recipeItems;
     private final int recipeTime;
 }

@@ -1,15 +1,13 @@
 package net.newfrontiercraft.nfc.registries;
 
-import net.minecraft.block.BlockBase;
-import net.minecraft.entity.Item;
-import net.minecraft.item.ItemBase;
-import net.minecraft.item.ItemInstance;
+import net.minecraft.block.Block;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.newfrontiercraft.nfc.events.init.BlockListener;
 import net.newfrontiercraft.nfc.events.init.ItemListener;
-import net.newfrontiercraft.nfc.tileentities.TileEntityBrickOven;
+import net.newfrontiercraft.nfc.blockentities.BrickOvenBlockEntity;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -19,66 +17,66 @@ public class OvenManager {
         recipes = new ArrayList();
 
         //Metal Alloys
-        addOvenRecipe(new ItemInstance(ItemListener.brassIngot, 6), new Object[] {
-                new ItemInstance(ItemListener.copperIngot, 1),
-                new ItemInstance(ItemListener.copperIngot, 1),
-                new ItemInstance(ItemListener.copperIngot, 1),
-                new	ItemInstance(ItemListener.zincIngot, 1),
-                new ItemInstance(ItemListener.zincIngot, 1),
-                new ItemInstance(ItemListener.zincIngot, 1)}, 1600);
+        addOvenRecipe(new ItemStack(ItemListener.brassIngot, 6), new Object[] {
+                new ItemStack(ItemListener.copperIngot, 1),
+                new ItemStack(ItemListener.copperIngot, 1),
+                new ItemStack(ItemListener.copperIngot, 1),
+                new	ItemStack(ItemListener.zincIngot, 1),
+                new ItemStack(ItemListener.zincIngot, 1),
+                new ItemStack(ItemListener.zincIngot, 1)}, 1600);
 
-        addOvenRecipe(new ItemInstance(ItemListener.bronzeIngot, 6), new Object[] {
-                new ItemInstance(ItemListener.copperIngot, 1),
-                new ItemInstance(ItemListener.copperIngot, 1),
-                new ItemInstance(ItemListener.copperIngot, 1),
-                new	ItemInstance(ItemListener.copperIngot, 1),
-                new ItemInstance(ItemListener.copperIngot, 1),
-                new ItemInstance(ItemListener.tinIngot, 1)}, 1600);
+        addOvenRecipe(new ItemStack(ItemListener.bronzeIngot, 6), new Object[] {
+                new ItemStack(ItemListener.copperIngot, 1),
+                new ItemStack(ItemListener.copperIngot, 1),
+                new ItemStack(ItemListener.copperIngot, 1),
+                new	ItemStack(ItemListener.copperIngot, 1),
+                new ItemStack(ItemListener.copperIngot, 1),
+                new ItemStack(ItemListener.tinIngot, 1)}, 1600);
 
-        addOvenRecipe(new ItemInstance(ItemListener.steelIngot, 8), new Object[] {
-                new ItemInstance(ItemListener.anthracite, 1),
-                new ItemInstance(ItemBase.ironIngot, 1),
-                new ItemInstance(ItemBase.ironIngot, 1),
-                new	ItemInstance(ItemBase.ironIngot, 1),
-                new ItemInstance(ItemBase.ironIngot, 1),
-                new ItemInstance(ItemBase.ironIngot, 1),
-                new ItemInstance(ItemBase.ironIngot, 1),
-                new ItemInstance(ItemBase.ironIngot, 1)}, 6400);
+        addOvenRecipe(new ItemStack(ItemListener.steelIngot, 8), new Object[] {
+                new ItemStack(ItemListener.anthracite, 1),
+                new ItemStack(Item.IRON_INGOT, 1),
+                new ItemStack(Item.IRON_INGOT, 1),
+                new	ItemStack(Item.IRON_INGOT, 1),
+                new ItemStack(Item.IRON_INGOT, 1),
+                new ItemStack(Item.IRON_INGOT, 1),
+                new ItemStack(Item.IRON_INGOT, 1),
+                new ItemStack(Item.IRON_INGOT, 1)}, 6400);
 
-        addOvenRecipe(new ItemInstance(ItemListener.steelIngot, 8), new Object[] {
-                new ItemInstance(ItemListener.anthracite, 1),
-                new ItemInstance(ItemListener.chromeIngot, 1),
-                new ItemInstance(ItemBase.ironIngot, 1),
-                new	ItemInstance(ItemBase.ironIngot, 1),
-                new ItemInstance(ItemBase.ironIngot, 1),
-                new ItemInstance(ItemBase.ironIngot, 1),
-                new ItemInstance(ItemBase.ironIngot, 1),
-                new ItemInstance(ItemBase.ironIngot, 1)}, 6400);
+        addOvenRecipe(new ItemStack(ItemListener.steelIngot, 8), new Object[] {
+                new ItemStack(ItemListener.anthracite, 1),
+                new ItemStack(ItemListener.chromeIngot, 1),
+                new ItemStack(Item.IRON_INGOT, 1),
+                new	ItemStack(Item.IRON_INGOT, 1),
+                new ItemStack(Item.IRON_INGOT, 1),
+                new ItemStack(Item.IRON_INGOT, 1),
+                new ItemStack(Item.IRON_INGOT, 1),
+                new ItemStack(Item.IRON_INGOT, 1)}, 6400);
 
-        addOvenRecipe(new ItemInstance(ItemListener.steelIngot, 8), new Object[] {
-                new ItemInstance(ItemListener.anthracite, 1),
-                new ItemInstance(ItemListener.nickelIngot, 1),
-                new ItemInstance(ItemBase.ironIngot, 1),
-                new	ItemInstance(ItemBase.ironIngot, 1),
-                new ItemInstance(ItemBase.ironIngot, 1),
-                new ItemInstance(ItemBase.ironIngot, 1),
-                new ItemInstance(ItemBase.ironIngot, 1),
-                new ItemInstance(ItemBase.ironIngot, 1)}, 6400);
+        addOvenRecipe(new ItemStack(ItemListener.steelIngot, 8), new Object[] {
+                new ItemStack(ItemListener.anthracite, 1),
+                new ItemStack(ItemListener.nickelIngot, 1),
+                new ItemStack(Item.IRON_INGOT, 1),
+                new	ItemStack(Item.IRON_INGOT, 1),
+                new ItemStack(Item.IRON_INGOT, 1),
+                new ItemStack(Item.IRON_INGOT, 1),
+                new ItemStack(Item.IRON_INGOT, 1),
+                new ItemStack(Item.IRON_INGOT, 1)}, 6400);
 
-        addOvenRecipe(new ItemInstance(ItemListener.steelIngot, 8), new Object[] {
-                new ItemInstance(ItemListener.anthracite, 1),
-                new ItemInstance(ItemListener.chromeIngot, 1),
-                new ItemInstance(ItemListener.nickelIngot, 1),
-                new	ItemInstance(ItemBase.ironIngot, 1),
-                new ItemInstance(ItemBase.ironIngot, 1),
-                new ItemInstance(ItemBase.ironIngot, 1),
-                new ItemInstance(ItemBase.ironIngot, 1),
-                new ItemInstance(ItemBase.ironIngot, 1)}, 6400);
+        addOvenRecipe(new ItemStack(ItemListener.steelIngot, 8), new Object[] {
+                new ItemStack(ItemListener.anthracite, 1),
+                new ItemStack(ItemListener.chromeIngot, 1),
+                new ItemStack(ItemListener.nickelIngot, 1),
+                new	ItemStack(Item.IRON_INGOT, 1),
+                new ItemStack(Item.IRON_INGOT, 1),
+                new ItemStack(Item.IRON_INGOT, 1),
+                new ItemStack(Item.IRON_INGOT, 1),
+                new ItemStack(Item.IRON_INGOT, 1)}, 6400);
 
         //Smelting
-        addOvenRecipe(new ItemInstance(ItemListener.tungstenIngot, 1), new Object[] {new ItemInstance(BlockListener.tungstenOre, 1)}, 200);
-        addOvenRecipe(new ItemInstance(ItemListener.titaniumIngot, 1), new Object[] {new ItemInstance(BlockListener.titaniumOre, 1)}, 200);
-        addOvenRecipe(new ItemInstance(ItemListener.osmiumIngot, 1), new Object[] {new ItemInstance(BlockListener.osmiumOre, 1)}, 200);
+        addOvenRecipe(new ItemStack(ItemListener.tungstenIngot, 1), new Object[] {new ItemStack(BlockListener.tungstenOre, 1)}, 200);
+        addOvenRecipe(new ItemStack(ItemListener.titaniumIngot, 1), new Object[] {new ItemStack(BlockListener.titaniumOre, 1)}, 200);
+        addOvenRecipe(new ItemStack(ItemListener.osmiumIngot, 1), new Object[] {new ItemStack(BlockListener.osmiumOre, 1)}, 200);
 
 //		Object[][] oreRecipes;
 //
@@ -92,134 +90,134 @@ public class OvenManager {
 //            Item output = (Item)oreRecipes[1][i];
 //
 //            //1
-//            addOvenRecipe(new ItemInstance(output, 1), new Object[] {
-//            		new ItemInstance(input, 1)}, 200);
+//            addOvenRecipe(new ItemStack(output, 1), new Object[] {
+//            		new ItemStack(input, 1)}, 200);
 //
 //            //2
-//            addOvenRecipe(new ItemInstance(output, 2), new Object[] {
-//            		new ItemInstance(input, 1),
-//            		new ItemInstance(input, 1)}, 400);
+//            addOvenRecipe(new ItemStack(output, 2), new Object[] {
+//            		new ItemStack(input, 1),
+//            		new ItemStack(input, 1)}, 400);
 //
 //            //3
-//            addOvenRecipe(new ItemInstance(output, 3), new Object[] {
-//            		new ItemInstance(input, 1),
-//            		new ItemInstance(input, 1),
-//            		new ItemInstance(input, 1)}, 600);
+//            addOvenRecipe(new ItemStack(output, 3), new Object[] {
+//            		new ItemStack(input, 1),
+//            		new ItemStack(input, 1),
+//            		new ItemStack(input, 1)}, 600);
 //
 //            //4
-//            addOvenRecipe(new ItemInstance(output, 4), new Object[] {
-//            		new ItemInstance(input, 1),
-//            		new ItemInstance(input, 1),
-//            		new ItemInstance(input, 1),
-//            		new ItemInstance(input, 1)}, 800);
+//            addOvenRecipe(new ItemStack(output, 4), new Object[] {
+//            		new ItemStack(input, 1),
+//            		new ItemStack(input, 1),
+//            		new ItemStack(input, 1),
+//            		new ItemStack(input, 1)}, 800);
 //
 //            //5
-//            addOvenRecipe(new ItemInstance(output, 5), new Object[] {
-//            		new ItemInstance(input, 1),
-//            		new ItemInstance(input, 1),
-//            		new ItemInstance(input, 1),
-//            		new ItemInstance(input, 1),
-//            		new ItemInstance(input, 1)}, 1000);
+//            addOvenRecipe(new ItemStack(output, 5), new Object[] {
+//            		new ItemStack(input, 1),
+//            		new ItemStack(input, 1),
+//            		new ItemStack(input, 1),
+//            		new ItemStack(input, 1),
+//            		new ItemStack(input, 1)}, 1000);
 //
 //            //6
-//            addOvenRecipe(new ItemInstance(output, 6), new Object[] {
-//            		new ItemInstance(input, 1),
-//            		new ItemInstance(input, 1),
-//            		new ItemInstance(input, 1),
-//            		new ItemInstance(input, 1),
-//            		new ItemInstance(input, 1),
-//            		new ItemInstance(input, 1)}, 1200);
+//            addOvenRecipe(new ItemStack(output, 6), new Object[] {
+//            		new ItemStack(input, 1),
+//            		new ItemStack(input, 1),
+//            		new ItemStack(input, 1),
+//            		new ItemStack(input, 1),
+//            		new ItemStack(input, 1),
+//            		new ItemStack(input, 1)}, 1200);
 //
 //            //7
-//            addOvenRecipe(new ItemInstance(output, 7), new Object[] {
-//            		new ItemInstance(input, 1),
-//            		new ItemInstance(input, 1),
-//            		new ItemInstance(input, 1),
-//            		new ItemInstance(input, 1),
-//            		new ItemInstance(input, 1),
-//            		new ItemInstance(input, 1),
-//            		new ItemInstance(input, 1)}, 1400);
+//            addOvenRecipe(new ItemStack(output, 7), new Object[] {
+//            		new ItemStack(input, 1),
+//            		new ItemStack(input, 1),
+//            		new ItemStack(input, 1),
+//            		new ItemStack(input, 1),
+//            		new ItemStack(input, 1),
+//            		new ItemStack(input, 1),
+//            		new ItemStack(input, 1)}, 1400);
 //
 //            //8
-//            addOvenRecipe(new ItemInstance(output, 8), new Object[] {
-//            		new ItemInstance(input, 1),
-//            		new ItemInstance(input, 1),
-//            		new ItemInstance(input, 1),
-//            		new ItemInstance(input, 1),
-//            		new ItemInstance(input, 1),
-//            		new ItemInstance(input, 1),
-//            		new ItemInstance(input, 1),
-//            		new ItemInstance(input, 1)}, 1600);
+//            addOvenRecipe(new ItemStack(output, 8), new Object[] {
+//            		new ItemStack(input, 1),
+//            		new ItemStack(input, 1),
+//            		new ItemStack(input, 1),
+//            		new ItemStack(input, 1),
+//            		new ItemStack(input, 1),
+//            		new ItemStack(input, 1),
+//            		new ItemStack(input, 1),
+//            		new ItemStack(input, 1)}, 1600);
 //
 //            //9
-//            addOvenRecipe(new ItemInstance(output, 9), new Object[] {
-//            		new ItemInstance(input, 1),
-//            		new ItemInstance(input, 1),
-//            		new ItemInstance(input, 1),
-//            		new ItemInstance(input, 1),
-//            		new ItemInstance(input, 1),
-//            		new ItemInstance(input, 1),
-//            		new ItemInstance(input, 1),
-//            		new ItemInstance(input, 1),
-//            		new ItemInstance(input, 1)}, 1800);
+//            addOvenRecipe(new ItemStack(output, 9), new Object[] {
+//            		new ItemStack(input, 1),
+//            		new ItemStack(input, 1),
+//            		new ItemStack(input, 1),
+//            		new ItemStack(input, 1),
+//            		new ItemStack(input, 1),
+//            		new ItemStack(input, 1),
+//            		new ItemStack(input, 1),
+//            		new ItemStack(input, 1),
+//            		new ItemStack(input, 1)}, 1800);
 //	    }
 
 
         //Chain Armor Melting
-        addOvenRecipe(new ItemInstance(ItemListener.steelIngot, 1), new Object[] {new ItemInstance(ItemBase.chainHelmet, 1, -1)}, 200);
-        addOvenRecipe(new ItemInstance(ItemListener.steelIngot, 1), new Object[] {new ItemInstance(ItemBase.chainChestplate, 1, -1)}, 200);
-        addOvenRecipe(new ItemInstance(ItemListener.steelIngot, 1), new Object[] {new ItemInstance(ItemBase.chainLeggings, 1, -1)}, 200);
-        addOvenRecipe(new ItemInstance(ItemListener.steelIngot, 1), new Object[] {new ItemInstance(ItemBase.chainBoots, 1, -1)}, 200);
+        addOvenRecipe(new ItemStack(ItemListener.steelIngot, 1), new Object[] {new ItemStack(Item.CHAIN_HELMET, 1, -1)}, 200);
+        addOvenRecipe(new ItemStack(ItemListener.steelIngot, 1), new Object[] {new ItemStack(Item.CHAIN_CHESTPLATE, 1, -1)}, 200);
+        addOvenRecipe(new ItemStack(ItemListener.steelIngot, 1), new Object[] {new ItemStack(Item.CHAIN_LEGGINGS, 1, -1)}, 200);
+        addOvenRecipe(new ItemStack(ItemListener.steelIngot, 1), new Object[] {new ItemStack(Item.CHAIN_BOOTS, 1, -1)}, 200);
 
         //Bricks
-        addOvenRecipe(new ItemInstance(BlockListener.osmiumBricks, 8), new Object[] {
-                new ItemInstance(ItemListener.osmiumIngot, 1),
-                new ItemInstance(BlockListener.firedBricks, 1),
-                new ItemInstance(BlockListener.firedBricks, 1),
-                new ItemInstance(BlockListener.firedBricks, 1),
-                new	ItemInstance(BlockListener.firedBricks, 1),
-                new ItemInstance(BlockListener.firedBricks, 1),
-                new ItemInstance(BlockListener.firedBricks, 1),
-                new ItemInstance(BlockListener.firedBricks, 1),
-                new ItemInstance(BlockListener.firedBricks, 1)}, 6400);
+        addOvenRecipe(new ItemStack(BlockListener.osmiumBricks, 8), new Object[] {
+                new ItemStack(ItemListener.osmiumIngot, 1),
+                new ItemStack(BlockListener.firedBricks, 1),
+                new ItemStack(BlockListener.firedBricks, 1),
+                new ItemStack(BlockListener.firedBricks, 1),
+                new	ItemStack(BlockListener.firedBricks, 1),
+                new ItemStack(BlockListener.firedBricks, 1),
+                new ItemStack(BlockListener.firedBricks, 1),
+                new ItemStack(BlockListener.firedBricks, 1),
+                new ItemStack(BlockListener.firedBricks, 1)}, 6400);
 
         //Stained Glass
         /*
         int o = 15;
         for (int i = 0; i < 16; i++) {
-            addOvenRecipe(new ItemInstance(Block.lockedChest, 8, i), new Object[] {
-                    new ItemInstance(Item.dyePowder, 1, o),
-                    new ItemInstance(Block.glass, 1, 0), new ItemInstance(Block.glass, 1, 0),
-                    new ItemInstance(Block.glass, 1, 0), new ItemInstance(Block.glass, 1, 0),
-                    new ItemInstance(Block.glass, 1, 0), new ItemInstance(Block.glass, 1, 0),
-                    new ItemInstance(Block.glass, 1, 0), new ItemInstance(Block.glass, 1, 0)
+            addOvenRecipe(new ItemStack(Block.lockedChest, 8, i), new Object[] {
+                    new ItemStack(Item.dyePowder, 1, o),
+                    new ItemStack(Block.glass, 1, 0), new ItemStack(Block.glass, 1, 0),
+                    new ItemStack(Block.glass, 1, 0), new ItemStack(Block.glass, 1, 0),
+                    new ItemStack(Block.glass, 1, 0), new ItemStack(Block.glass, 1, 0),
+                    new ItemStack(Block.glass, 1, 0), new ItemStack(Block.glass, 1, 0)
             }, 100);
             o--;
         }
 
         //Food
-        addShapedOvenRecipe(new ItemInstance(Item.cake, 1), new Object[] {
+        addShapedOvenRecipe(new ItemStack(Item.cake, 1), new Object[] {
                 "AAA", "BEB", "CCC",
                 Character.valueOf('A'), Item.bucketMilk,
                 Character.valueOf('B'), Item.sugar,
                 Character.valueOf('C'), Item.wheat,
                 Character.valueOf('E'), Item.egg}, 200);
 
-        addOvenRecipe(new ItemInstance(Item.cake), new Object[] {new ItemInstance(Item.cake, 1, 1)}, 200);
+        addOvenRecipe(new ItemStack(Item.cake), new Object[] {new ItemStack(Item.cake, 1, 1)}, 200);
 
-        addShapedOvenRecipe(new ItemInstance(ItemListener.pizza, 1), new Object[] {
+        addShapedOvenRecipe(new ItemStack(ItemListener.pizza, 1), new Object[] {
                 "CCC", "WWW",
                 Character.valueOf('C'), ItemListener.cheese,
                 Character.valueOf('W'), Item.wheat}, 200);
 
-        addOvenRecipe(new ItemInstance(ItemListener.pizza), new Object[] {new ItemInstance(ItemListener.pizza, 1, 1)}, 200);
+        addOvenRecipe(new ItemStack(ItemListener.pizza), new Object[] {new ItemStack(ItemListener.pizza, 1, 1)}, 200);
 
         Collections.sort(recipes, new RecipeSorterOven(this));
 
          */
     }
 
-    void addShapedOvenRecipe(ItemInstance ItemInstance, Object aobj[], int time)
+    void addShapedOvenRecipe(ItemStack itemStack, Object aobj[], int time)
     {
         String s = "";
         int i = 0;
@@ -250,69 +248,69 @@ public class OvenManager {
         for(; i < aobj.length; i += 2)
         {
             Character character = (Character)aobj[i];
-            ItemInstance ItemInstance1 = null;
+            ItemStack ItemStack1 = null;
             if(aobj[i + 1] instanceof Item)
             {
-                ItemInstance1 = new ItemInstance((ItemBase) aobj[i + 1]);
+                ItemStack1 = new ItemStack((Item) aobj[i + 1]);
             } else
-            if(aobj[i + 1] instanceof BlockBase)
+            if(aobj[i + 1] instanceof Block)
             {
-                ItemInstance1 = new ItemInstance((BlockBase) aobj[i + 1], 1, -1);
+                ItemStack1 = new ItemStack((Block) aobj[i + 1], 1, -1);
             } else
-            if(aobj[i + 1] instanceof ItemInstance)
+            if(aobj[i + 1] instanceof ItemStack)
             {
-                ItemInstance1 = (ItemInstance)aobj[i + 1];
+                ItemStack1 = (ItemStack)aobj[i + 1];
             }
-            hashmap.put(character, ItemInstance1);
+            hashmap.put(character, ItemStack1);
         }
 
-        ItemInstance aItemInstance[] = new ItemInstance[j * k];
+        ItemStack itemStacks[] = new ItemStack[j * k];
         for(int i1 = 0; i1 < j * k; i1++)
         {
             char c = s.charAt(i1);
             if(hashmap.containsKey(Character.valueOf(c)))
             {
-                aItemInstance[i1] = ((ItemInstance)hashmap.get(Character.valueOf(c))).copy();
+                itemStacks[i1] = ((ItemStack)hashmap.get(Character.valueOf(c))).copy();
             } else
             {
-                aItemInstance[i1] = null;
+                itemStacks[i1] = null;
             }
         }
-        recipes.add(new OvenRecipesShaped(j, k, aItemInstance, ItemInstance, time));
+        recipes.add(new OvenRecipesShaped(j, k, itemStacks, itemStack, time));
     }
 
-    void addOvenRecipe(ItemInstance ItemInstance, Object aobj[], int time) {
+    void addOvenRecipe(ItemStack itemStack, Object aobj[], int time) {
         ArrayList arraylist = new ArrayList();
         Object aobj1[] = aobj;
         int i = aobj1.length;
         for (int j = 0; j < i; j++) {
             Object obj = aobj1[j];
-            if (obj instanceof ItemInstance) {
-                arraylist.add(((ItemInstance) obj).copy());
+            if (obj instanceof ItemStack) {
+                arraylist.add(((ItemStack) obj).copy());
                 continue;
             }
             if (obj instanceof Item) {
-                arraylist.add(new ItemInstance((ItemBase) obj));
+                arraylist.add(new ItemStack((Item) obj));
                 continue;
             }
-            if (obj instanceof BlockBase) {
-                arraylist.add(new ItemInstance((BlockBase) obj));
+            if (obj instanceof Block) {
+                arraylist.add(new ItemStack((Block) obj));
             } else {
                 throw new RuntimeException("Invalid shapeless recipe!");
             }
         }
-        recipes.add(new OvenRecipes(ItemInstance, arraylist, time));
+        recipes.add(new OvenRecipes(itemStack, arraylist, time));
     }
 
-    public ItemInstance findMatchingRecipe(ItemInstance[] ItemInstances, TileEntityBrickOven joe) {
+    public ItemStack findMatchingRecipe(ItemStack[] ItemStacks, BrickOvenBlockEntity joe) {
         //removed a lot of extra stuff
         for (int i = 0; i < recipes.size(); i++)
         {
-            IRecipeOven var12 = (IRecipeOven) recipes.get(i);
-            if (var12.matches(ItemInstances))
+            OvenRecipe var12 = (OvenRecipe) recipes.get(i);
+            if (var12.matches(ItemStacks))
             {
                 joe.setTime(var12.getTime());
-                return var12.getCraftingResult(ItemInstances);
+                return var12.getCraftingResult(ItemStacks);
             }
         }
 

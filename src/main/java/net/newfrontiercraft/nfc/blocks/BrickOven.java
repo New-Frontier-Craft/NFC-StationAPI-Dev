@@ -1,21 +1,21 @@
 package net.newfrontiercraft.nfc.blocks;
 
-import net.minecraft.block.BlockBase;
-import net.minecraft.block.material.Material;
-import net.minecraft.entity.Item;
-import net.minecraft.entity.Living;
-import net.minecraft.entity.player.PlayerBase;
-import net.minecraft.item.ItemInstance;
-import net.minecraft.level.Level;
-import net.minecraft.tileentity.TileEntityBase;
-import net.minecraft.util.maths.MathHelper;
+import net.minecraft.block.Block;
+import net.minecraft.block.Material;
+import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.entity.ItemEntity;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.math.MathHelper;
+import net.minecraft.world.World;
 import net.modificationstation.stationapi.api.gui.screen.container.GuiHelper;
-import net.modificationstation.stationapi.api.registry.Identifier;
 import net.modificationstation.stationapi.api.template.block.TemplateBlockWithEntity;
-import net.newfrontiercraft.nfc.containers.ContainerBrickOven;
+import net.modificationstation.stationapi.api.util.Identifier;
+import net.newfrontiercraft.nfc.containers.BrickOvenScreenHandler;
 import net.newfrontiercraft.nfc.events.init.BlockListener;
-import net.newfrontiercraft.nfc.events.init.TileEntityListener;
-import net.newfrontiercraft.nfc.tileentities.TileEntityBrickOven;
+import net.newfrontiercraft.nfc.events.init.BlockEntityListener;
+import net.newfrontiercraft.nfc.blockentities.BrickOvenBlockEntity;
 
 import java.util.Random;
 
@@ -30,61 +30,62 @@ public class BrickOven extends TemplateBlockWithEntity {
     
     public BrickOven(Identifier identifier, Material material, boolean active, float lightEmittance, float hardness) {
         super(identifier, material);
-        setLightEmittance(lightEmittance);
-        setTranslationKey(identifier.modID, identifier.id);
+        setLuminance(lightEmittance);
+        setTranslationKey(identifier.namespace, identifier.path);
         furnaceRand = new Random();
         this.ACTIVE = active;
         setHardness(hardness);
     }
 
     @Override
-    public int getDropId(int i, Random random) {
+    public int getDroppedItemId(int i, Random random) {
         return BlockListener.brickOven.id;
     }
 
     @Override
-    public boolean canUse(Level world, int x, int y, int z, PlayerBase player) {
-        TileEntityBase tileEntity = world.getTileEntity(x, y, z);
-        if (tileEntity instanceof TileEntityBrickOven tileEntityBrickOven)
-            GuiHelper.openGUI(player, Identifier.of(TileEntityListener.MOD_ID, "gui_brick_oven"),
-                    tileEntityBrickOven, new ContainerBrickOven(player.inventory, tileEntityBrickOven));
+    public boolean onUse(World world, int x, int y, int z, PlayerEntity player) {
+        BlockEntity tileEntity = world.method_1777(x, y, z);
+        if (tileEntity instanceof BrickOvenBlockEntity brickOvenBlockEntity)
+            GuiHelper.openGUI(player, Identifier.of(BlockEntityListener.MOD_ID, "gui_brick_oven"),
+                    brickOvenBlockEntity, new BrickOvenScreenHandler(player.inventory, brickOvenBlockEntity));
         return true;
     }
 
     @Override
-    public void onBlockPlaced(Level world, int i, int j, int k) {
-        super.onBlockPlaced(world, i, j, k);
-        if (!world.isServerSide) {
+    public void onPlaced(World world, int i, int j, int k) {
+        super.onPlaced(world, i, j, k);
+        if (!world.isRemote) {
             setDefaultDirection(world, i, j, k);
         }
     }
 
-    private void setDefaultDirection(Level world, int i, int j, int k) {
-        int l = world.getTileId(i, j, k - 1);
-        int i1 = world.getTileId(i, j, k + 1);
-        int j1 = world.getTileId(i - 1, j, k);
-        int k1 = world.getTileId(i + 1, j, k);
+    private void setDefaultDirection(World world, int i, int j, int k) {
+        int l = world.getBlockId(i, j, k - 1);
+        int i1 = world.getBlockId(i, j, k + 1);
+        int j1 = world.getBlockId(i - 1, j, k);
+        int k1 = world.getBlockId(i + 1, j, k);
         byte byte0 = 3;
-        if (BlockBase.FULL_OPAQUE[l] && !BlockBase.FULL_OPAQUE[i1]) {
+        if (Block.BLOCKS_OPAQUE[l] && !Block.BLOCKS_OPAQUE[i1]) {
             byte0 = 3;
         }
-        if (BlockBase.FULL_OPAQUE[i1] && !BlockBase.FULL_OPAQUE[l]) {
+        if (Block.BLOCKS_OPAQUE[i1] && !Block.BLOCKS_OPAQUE[l]) {
             byte0 = 2;
         }
-        if (BlockBase.FULL_OPAQUE[j1] && !BlockBase.FULL_OPAQUE[k1]) {
+        if (Block.BLOCKS_OPAQUE[j1] && !Block.BLOCKS_OPAQUE[k1]) {
             byte0 = 5;
         }
-        if (BlockBase.FULL_OPAQUE[k1] && !BlockBase.FULL_OPAQUE[j1]) {
+        if (Block.BLOCKS_OPAQUE[k1] && !Block.BLOCKS_OPAQUE[j1]) {
             byte0 = 4;
         }
-        world.placeBlockWithMetaData(i, j, k, this.id, byte0);
+        world.method_154(i, j, k, this.id, byte0);
     }
 
-    public void randomDisplayTick(Level world, int i, int j, int k, Random random) {
+    @Override
+    public void randomDisplayTick(World world, int i, int j, int k, Random random) {
         if (!ACTIVE) {
             return;
         }
-        int l = world.getTileMeta(i, j, k);
+        int l = world.getBlockMeta(i, j, k);
         float f = (float) i + 0.5F;
         float f1 = (float) j + 0.25F + (random.nextFloat() * 6F) / 16F;
         float f2 = (float) k + 0.5F;
@@ -113,54 +114,54 @@ public class BrickOven extends TemplateBlockWithEntity {
     }
     
     @Override
-    public int getTextureForSide(int i, int j) {
-        if (i == j) {
+    public int getTexture(int side, int meta) {
+        if (side == meta) {
             return ACTIVE ? frontTextureActive : frontTexture;
         } else {
             return sideTexture;
         }
     }
 
-    public static void updateFurnaceBlockState(boolean flag, Level world, int i, int j, int k) {
-        int l = world.getTileMeta(i, j, k);
-        TileEntityBase tileentity = world.getTileEntity(i, j, k);
+    public static void updateFurnaceBlockState(boolean flag, World world, int i, int j, int k) {
+        int l = world.getBlockMeta(i, j, k);
+        BlockEntity tileentity = world.method_1777(i, j, k);
         keepFurnaceInventory = true;
         if (flag) {
-            world.setTile(i, j, k, BlockListener.brickOvenActive.id);
+            world.setBlock(i, j, k, BlockListener.brickOvenActive.id);
         } else {
-            world.setTile(i, j, k, BlockListener.brickOven.id);
+            world.setBlock(i, j, k, BlockListener.brickOven.id);
         }
         keepFurnaceInventory = false;
-        world.setTileMeta(i, j, k, l);
-        tileentity.validate();
-        world.setTileEntity(i, j, k, tileentity);
+        world.method_153(i, j, k, l);
+        //tileentity.validate();
+        world.method_203(i, j, k, tileentity);
     }
 
     @Override
-    public void afterPlaced(Level world, int i, int j, int k, Living entityliving) {
+    public void onPlaced(World world, int i, int j, int k, LivingEntity entityliving) {
         int l = MathHelper
                 .floor((double) ((entityliving.yaw * 4F) / 360F) + 0.5D) & 3;
         if (l == 0) {
-            world.setTileMeta(i, j, k, 2);
+            world.method_153(i, j, k, 2);
         }
         if (l == 1) {
-            world.setTileMeta(i, j, k, 5);
+            world.method_153(i, j, k, 5);
         }
         if (l == 2) {
-            world.setTileMeta(i, j, k, 3);
+            world.method_153(i, j, k, 3);
         }
         if (l == 3) {
-            world.setTileMeta(i, j, k, 4);
+            world.method_153(i, j, k, 4);
         }
     }
 
     @Override
-    public void onBlockRemoved(Level arg, int i, int j, int k) {
+    public void onBreak(World arg, int i, int j, int k) {
         if (!keepFurnaceInventory) {
-            TileEntityBrickOven brickOven = (TileEntityBrickOven)arg.getTileEntity(i, j, k);
+            BrickOvenBlockEntity brickOven = (BrickOvenBlockEntity)arg.method_1777(i, j, k);
 
-            for(int var6 = 0; var6 < brickOven.getInventorySize(); ++var6) {
-                ItemInstance var7 = brickOven.getInventoryItem(var6);
+            for(int var6 = 0; var6 < brickOven.size(); ++var6) {
+                ItemStack var7 = brickOven.getStack(var6);
                 if (var7 != null) {
                     float var8 = this.furnaceRand.nextFloat() * 0.8F + 0.1F;
                     float var9 = this.furnaceRand.nextFloat() * 0.8F + 0.1F;
@@ -173,22 +174,22 @@ public class BrickOven extends TemplateBlockWithEntity {
                         }
 
                         var7.count -= var11;
-                        Item var12 = new Item(arg, (double)((float)i + var8), (double)((float)j + var9), (double)((float)k + var10), new ItemInstance(var7.itemId, var11, var7.getDamage()));
+                        ItemEntity var12 = new ItemEntity(arg, (double)((float)i + var8), (double)((float)j + var9), (double)((float)k + var10), new ItemStack(var7.itemId, var11, var7.getDamage()));
                         float var13 = 0.05F;
                         var12.velocityX = (double)((float)this.furnaceRand.nextGaussian() * var13);
                         var12.velocityY = (double)((float)this.furnaceRand.nextGaussian() * var13 + 0.2F);
                         var12.velocityZ = (double)((float)this.furnaceRand.nextGaussian() * var13);
-                        arg.spawnEntity(var12);
+                        arg.method_287(var12);
                     }
                 }
             }
         }
 
-        super.onBlockRemoved(arg, i, j, k);
+        super.onBreak(arg, i, j, k);
     }
 
     @Override
-    protected TileEntityBase createTileEntity() {
-        return new TileEntityBrickOven();
+    protected BlockEntity createBlockEntity() {
+        return new BrickOvenBlockEntity();
     }
 }

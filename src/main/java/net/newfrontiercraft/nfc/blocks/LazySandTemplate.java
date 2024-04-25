@@ -1,23 +1,23 @@
 package net.newfrontiercraft.nfc.blocks;
 
-import net.minecraft.block.BlockSounds;
-import net.minecraft.entity.FallingBlock;
-import net.minecraft.level.Level;
-import net.modificationstation.stationapi.api.registry.Identifier;
-import net.modificationstation.stationapi.api.template.block.TemplateSand;
+import net.minecraft.entity.FallingBlockEntity;
+import net.minecraft.sound.BlockSoundGroup;
+import net.minecraft.world.World;
+import net.modificationstation.stationapi.api.template.block.TemplateSandBlock;
+import net.modificationstation.stationapi.api.util.Identifier;
 
 import java.util.Random;
 
-public class LazySandTemplate extends TemplateSand {
+public class LazySandTemplate extends TemplateSandBlock {
 
     int textureInternal;
     int fallingRarity;
 
-    public LazySandTemplate(Identifier identifier, float hardness, BlockSounds blockSounds, int fallingRarity) {
+    public LazySandTemplate(Identifier identifier, float hardness, BlockSoundGroup blockSounds, int fallingRarity) {
         super(identifier, 0);
-        setTranslationKey(identifier.modID, identifier.id);
+        setTranslationKey(identifier.namespace, identifier.path);
         setHardness(hardness);
-        setSounds(blockSounds);
+        setSoundGroup(blockSounds);
         this.fallingRarity = fallingRarity;
     }
 
@@ -31,30 +31,30 @@ public class LazySandTemplate extends TemplateSand {
     }
 
     @Override
-    public int getTextureForSide(int i) {
+    public int getTexture(int i) {
         return textureInternal;
     }
 
     @Override
-    public void onScheduledTick(Level arg, int i, int j, int k, Random random) {
+    public void onTick(World arg, int i, int j, int k, Random random) {
         if (random.nextInt(fallingRarity) == 0) attemptFall(arg, i, j, k);
     }
 
-    private void attemptFall(Level arg, int i, int j, int k) {
+    private void attemptFall(World arg, int i, int j, int k) {
         if (method_435(arg, i, j - 1, k) && j >= 0) {
             byte var8 = 32;
-            if (!fallInstantly && arg.method_155(i - var8, j - var8, k - var8, i + var8, j + var8, k + var8)) {
-                FallingBlock var9 = new FallingBlock(arg, (double)((float)i + 0.5F), (double)((float)j + 0.5F), (double)((float)k + 0.5F), this.id);
-                arg.spawnEntity(var9);
+            if (!field_375 && arg.method_155(i - var8, j - var8, k - var8, i + var8, j + var8, k + var8)) {
+                FallingBlockEntity var9 = new FallingBlockEntity(arg, (double)((float)i + 0.5F), (double)((float)j + 0.5F), (double)((float)k + 0.5F), this.id);
+                arg.method_287(var9);
             } else {
-                arg.setTile(i, j, k, 0);
+                arg.setBlock(i, j, k, 0);
 
                 while(method_435(arg, i, j - 1, k) && j > 0) {
                     --j;
                 }
 
                 if (j > 0) {
-                    arg.setTile(i, j, k, this.id);
+                    arg.setBlock(i, j, k, this.id);
                 }
             }
         }

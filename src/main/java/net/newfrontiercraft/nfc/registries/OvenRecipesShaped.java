@@ -1,21 +1,21 @@
 package net.newfrontiercraft.nfc.registries;
 
-import net.minecraft.item.ItemInstance;
+import net.minecraft.item.ItemStack;
 
-public class OvenRecipesShaped implements IRecipeOven
+public class OvenRecipesShaped implements OvenRecipe
 {
 
-    public OvenRecipesShaped(int i, int j, ItemInstance aitemInstance[], ItemInstance itemInstance, int time)
+    public OvenRecipesShaped(int i, int j, ItemStack itemStacks[], ItemStack itemInstance, int time)
     {
         recipeOutputItemID = itemInstance.itemId;
         recipeWidth = i;
         recipeHeight = j;
-        recipeItems = aitemInstance;
+        recipeItems = itemStacks;
         recipeOutput = itemInstance;
         recipeTime = time;
     }
 
-    public ItemInstance getRecipeOutput()
+    public ItemStack getRecipeOutput()
     {
         return recipeOutput;
     }
@@ -24,17 +24,17 @@ public class OvenRecipesShaped implements IRecipeOven
         return recipeTime;
     }
 
-    public boolean matches(ItemInstance[] itemInstances)
+    public boolean matches(ItemStack[] itemStacks)
     {
         for(int i = 0; i <= 3 - recipeWidth; i++)
         {
             for(int j = 0; j <= 3 - recipeHeight; j++)
             {
-                if(func_21137_a(itemInstances, i, j, true))
+                if(func_21137_a(itemStacks, i, j, true))
                 {
                     return true;
                 }
-                if(func_21137_a(itemInstances, i, j, false))
+                if(func_21137_a(itemStacks, i, j, false))
                 {
                     return true;
                 }
@@ -45,7 +45,7 @@ public class OvenRecipesShaped implements IRecipeOven
         return false;
     }
 
-    private boolean func_21137_a(ItemInstance[] itemInstances, int i, int j, boolean flag)
+    private boolean func_21137_a(ItemStack[] itemInstances, int i, int j, boolean flag)
     {
         for(int k = 0; k < 3; k++)
         {
@@ -53,7 +53,7 @@ public class OvenRecipesShaped implements IRecipeOven
             {
                 int i1 = k - i;
                 int j1 = l - j;
-                ItemInstance itemInstance = null;
+                ItemStack itemInstance = null;
                 if(i1 >= 0 && j1 >= 0 && i1 < recipeWidth && j1 < recipeHeight)
                 {
                     if(flag)
@@ -64,7 +64,7 @@ public class OvenRecipesShaped implements IRecipeOven
                         itemInstance = recipeItems[i1 + j1 * recipeWidth];
                     }
                 }
-                ItemInstance itemInstance1 = itemInstances[k + (l*3)];
+                ItemStack itemInstance1 = itemInstances[k + (l*3)];
                 if(itemInstance1 == null && itemInstance == null)
                 {
                     continue;
@@ -88,9 +88,9 @@ public class OvenRecipesShaped implements IRecipeOven
         return true;
     }
 
-    public ItemInstance getCraftingResult(ItemInstance[] itemInstances)
+    public ItemStack getCraftingResult(ItemStack[] itemInstances)
     {
-        return new ItemInstance(recipeOutput.itemId, recipeOutput.count, recipeOutput.getDamage());
+        return new ItemStack(recipeOutput.itemId, recipeOutput.count, recipeOutput.getDamage());
     }
 
     public int getRecipeSize()
@@ -100,8 +100,8 @@ public class OvenRecipesShaped implements IRecipeOven
 
     private int recipeWidth;
     private int recipeHeight;
-    private ItemInstance recipeItems[];
-    private ItemInstance recipeOutput;
+    private ItemStack recipeItems[];
+    private ItemStack recipeOutput;
     private int recipeTime;
     public final int recipeOutputItemID;
 }

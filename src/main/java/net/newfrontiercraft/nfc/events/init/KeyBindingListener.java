@@ -1,11 +1,10 @@
 package net.newfrontiercraft.nfc.events.init;
 
 import net.mine_diver.unsafeevents.listener.EventListener;
-import net.minecraft.client.options.KeyBinding;
+import net.minecraft.client.option.KeyBinding;
 import net.modificationstation.stationapi.api.client.event.option.KeyBindingRegisterEvent;
-import org.lwjgl.input.Keyboard;
 
-import java.util.*;
+import java.util.List;
 
 public class KeyBindingListener {
 

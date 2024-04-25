@@ -1,12 +1,12 @@
 package net.newfrontiercraft.nfc.items;
 
-import net.modificationstation.stationapi.api.registry.Identifier;
-import net.modificationstation.stationapi.api.template.item.TemplateItemBase;
+import net.modificationstation.stationapi.api.template.item.TemplateItem;
+import net.modificationstation.stationapi.api.util.Identifier;
 
-public class LazyItemTemplate extends TemplateItemBase {
+public class LazyItemTemplate extends TemplateItem {
 
     public LazyItemTemplate(Identifier identifier) {
         super(identifier);
-        setTranslationKey(identifier.modID, identifier.id);
+        setTranslationKey(identifier.namespace, identifier.path);
     }
 }

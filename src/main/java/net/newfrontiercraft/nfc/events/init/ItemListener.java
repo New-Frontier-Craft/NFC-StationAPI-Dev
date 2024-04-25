@@ -1,13 +1,14 @@
 package net.newfrontiercraft.nfc.events.init;
 
 import net.mine_diver.unsafeevents.listener.EventListener;
-import net.minecraft.item.tool.ToolMaterial;
+import net.minecraft.item.PickaxeItem;
+import net.minecraft.item.ToolMaterial;
 import net.modificationstation.stationapi.api.event.registry.ItemRegistryEvent;
 import net.modificationstation.stationapi.api.item.tool.ToolMaterialFactory;
 import net.modificationstation.stationapi.api.mod.entrypoint.Entrypoint;
-import net.modificationstation.stationapi.api.registry.Identifier;
-import net.modificationstation.stationapi.api.registry.ModID;
-import net.modificationstation.stationapi.api.template.item.tool.TemplatePickaxe;
+import net.modificationstation.stationapi.api.template.item.TemplatePickaxeItem;
+import net.modificationstation.stationapi.api.util.Identifier;
+import net.modificationstation.stationapi.api.util.Namespace;
 import net.modificationstation.stationapi.api.util.Null;
 import net.newfrontiercraft.nfc.items.LazyFoodTemplate;
 import net.newfrontiercraft.nfc.items.LazyItemTemplate;
@@ -48,19 +49,19 @@ public class ItemListener {
             ruby,
             emerald;
 
-    public static TemplatePickaxe
+    public static TemplatePickaxeItem
             bronzePickaxe;
-            
-    
-    @Entrypoint.ModID
-    public static final ModID MOD_ID = Null.get();
+
+
+    @Entrypoint.Namespace
+    public static final Namespace MOD_ID = Null.get();
 
     @EventListener
     public void registerItems(ItemRegistryEvent event) {
         ToolMaterialFactory.create("bronze", 1, 420, 4.0F, 1);
-        ToolMaterial.valueOf("bronze").inheritsFrom(ToolMaterial.field_1689);
+        ToolMaterial.valueOf("bronze").inheritsFrom(ToolMaterial.STONE);
         ToolMaterial.valueOf("bronze").requiredBlockTag(Identifier.of("needs_bronze_tool"));
-        ToolMaterial.field_1690.inheritsFrom(ToolMaterial.valueOf("bronze"));
+        ToolMaterial.IRON.inheritsFrom(ToolMaterial.valueOf("bronze"));
 
         bronzePickaxe = new LazyPickaxeTemplate(Identifier.of(MOD_ID, "bronze_pickaxe"), ToolMaterial.valueOf("bronze"));
 

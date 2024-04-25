@@ -1,27 +1,26 @@
 package net.newfrontiercraft.nfc.blocks;
 
-import net.minecraft.block.BlockBase;
-import net.minecraft.block.BlockSounds;
-import net.modificationstation.stationapi.api.registry.Identifier;
-import net.modificationstation.stationapi.api.template.block.TemplateOre;
+import net.minecraft.block.Block;
+import net.modificationstation.stationapi.api.template.block.TemplateOreBlock;
+import net.modificationstation.stationapi.api.util.Identifier;
 
 import java.util.Random;
 
-public class LazyOreTemplate extends TemplateOre {
+public class LazyOreTemplate extends TemplateOreBlock {
 
     int textureInternal;
     int dropID = this.id;
 
     public LazyOreTemplate(Identifier identifier, float hardness) {
         super(identifier, 0);
-        setTranslationKey(identifier.modID, identifier.id);
-        setBlastResistance(500F);
+        setTranslationKey(identifier.namespace, identifier.path);
+        setResistance(500F);
         setHardness(hardness);
-        setSounds(BlockBase.STONE_SOUNDS);
+        setSoundGroup(Block.STONE_SOUND_GROUP);
     }
 
     @Override
-    public int getDropId(int i, Random random) {
+    public int getDroppedItemId(int i, Random random) {
         return dropID;
     }
 
@@ -34,7 +33,7 @@ public class LazyOreTemplate extends TemplateOre {
     }
 
     @Override
-    public int getTextureForSide(int i, int j) {
+    public int getTexture(int side, int meta) {
         return textureInternal;
     }
 }

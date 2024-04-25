@@ -1,12 +1,12 @@
 package net.newfrontiercraft.nfc.items;
 
-import net.minecraft.item.tool.ToolMaterial;
-import net.modificationstation.stationapi.api.registry.Identifier;
-import net.modificationstation.stationapi.api.template.item.tool.TemplatePickaxe;
+import net.minecraft.item.ToolMaterial;
+import net.modificationstation.stationapi.api.template.item.TemplatePickaxeItem;
+import net.modificationstation.stationapi.api.util.Identifier;
 
-public class LazyPickaxeTemplate extends TemplatePickaxe {
+public class LazyPickaxeTemplate extends TemplatePickaxeItem {
     public LazyPickaxeTemplate(Identifier identifier, ToolMaterial material) {
         super(identifier, material);
-        setTranslationKey(identifier.modID, identifier.id);
+        setTranslationKey(identifier.namespace, identifier.path);
     }
 }

@@ -1,14 +1,14 @@
 package net.newfrontiercraft.nfc.blocks;
 
-import net.minecraft.block.BlockSounds;
-import net.minecraft.block.material.Material;
-import net.minecraft.entity.Living;
-import net.minecraft.level.Level;
-import net.minecraft.util.maths.MathHelper;
-import net.modificationstation.stationapi.api.registry.Identifier;
-import net.modificationstation.stationapi.api.template.block.TemplateBlockBase;
+import net.minecraft.block.Material;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.sound.BlockSoundGroup;
+import net.minecraft.util.math.MathHelper;
+import net.minecraft.world.World;
+import net.modificationstation.stationapi.api.template.block.TemplateBlock;
+import net.modificationstation.stationapi.api.util.Identifier;
 
-public class LazyBlockTemplate extends TemplateBlockBase {
+public class LazyBlockTemplate extends TemplateBlock {
 
     int topTextureInternal;
     int sideTextureInternal;
@@ -17,11 +17,11 @@ public class LazyBlockTemplate extends TemplateBlockBase {
     int backTextureInternal;
     boolean directional = false;
 
-    public LazyBlockTemplate(Identifier identifier, Material material, float hardness, BlockSounds blockSounds) {
+    public LazyBlockTemplate(Identifier identifier, Material material, float hardness, BlockSoundGroup blockSounds) {
         super(identifier, material);
-        setTranslationKey(identifier.modID, identifier.id);
+        setTranslationKey(identifier.namespace, identifier.path);
         setHardness(hardness);
-        setSounds(blockSounds);
+        setSoundGroup(blockSounds);
     }
 
     @Override
@@ -64,24 +64,24 @@ public class LazyBlockTemplate extends TemplateBlockBase {
     }
 
     @Override
-    public int getTextureForSide(int i, int j) {
-        if (i == 0) return bottomTextureInternal;
-        if (i == 1) return topTextureInternal;
-        if (i == 2 && j % 4 == 0) return frontTextureInternal;
-        if (i == 3 && j % 4 == 2) return frontTextureInternal;
-        if (i == 4 && j % 4 == 3) return frontTextureInternal;
-        if (i == 5 && j % 4 == 1) return frontTextureInternal;
-        if (i == 2 && j % 4 == 2) return backTextureInternal;
-        if (i == 3 && j % 4 == 0) return backTextureInternal;
-        if (i == 4 && j % 4 == 1) return backTextureInternal;
-        if (i == 5 && j % 4 == 3) return backTextureInternal;
+    public int getTexture(int side, int meta) {
+        if (side == 0) return bottomTextureInternal;
+        if (side == 1) return topTextureInternal;
+        if (side == 2 && meta % 4 == 0) return frontTextureInternal;
+        if (side == 3 && meta % 4 == 2) return frontTextureInternal;
+        if (side == 4 && meta % 4 == 3) return frontTextureInternal;
+        if (side == 5 && meta % 4 == 1) return frontTextureInternal;
+        if (side == 2 && meta % 4 == 2) return backTextureInternal;
+        if (side == 3 && meta % 4 == 0) return backTextureInternal;
+        if (side == 4 && meta % 4 == 1) return backTextureInternal;
+        if (side == 5 && meta % 4 == 3) return backTextureInternal;
         return sideTextureInternal;
     }
 
-    public void afterPlaced(Level level, int x, int y, int z, Living living) {
+    @Override
+    public void onPlaced(World level, int x, int y, int z, LivingEntity living) {
         if (!directional) return;
         int facing = MathHelper.floor((double)(living.yaw * 4.0F / 360.0F) + 0.5D) & 3;
-        level.setTileMeta(x, y, z, facing);
+        level.method_153(x, y, z, facing);
     }
-
 }
