@@ -1,8 +1,8 @@
 package net.newfrontiercraft.nfc.blockentities;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.Material;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.BucketItem;
@@ -122,7 +122,7 @@ public class BrickOvenBlockEntity extends BlockEntity implements Inventory {
     }
 
     @Override
-    public void method_1076() {
+    public void tick() {
         boolean flag = furnaceBurnTime > 0;
         boolean flag1 = false;
         if (furnaceBurnTime > 0) {
@@ -263,10 +263,10 @@ public class BrickOvenBlockEntity extends BlockEntity implements Inventory {
     }
 
     public boolean canPlayerUse(PlayerEntity entityplayer) {
-        if (world.method_1777(x, y, z) != this) {
+        if (world.getBlockEntity(x, y, z) != this) {
             return false;
         }
-        return entityplayer.method_1350((double) x + 0.5D,
+        return entityplayer.getSquaredDistance((double) x + 0.5D,
                 (double) y + 0.5D, (double) z + 0.5D) <= 64D;
     }
 

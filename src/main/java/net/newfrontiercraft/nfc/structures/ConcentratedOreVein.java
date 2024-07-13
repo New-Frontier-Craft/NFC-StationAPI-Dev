@@ -7,17 +7,17 @@ import net.minecraft.world.gen.feature.OreFeature;
 
 import java.util.Random;
 
-public class OreConcentrated extends Feature {
+public class ConcentratedOreVein extends Feature {
 
-    public OreConcentrated(int oreID, int radius, int veinAmount, int oreAmount, int generateIn) {
-        this.oreID = oreID;
+    public ConcentratedOreVein(int oreId, int radius, int veinAmount, int oreAmount, int generateIn) {
+        this.oreID = oreId;
         this.radius = radius;
         this.veinAmount = veinAmount;
         this.oreAmount = oreAmount;
         this.generateIn = generateIn;
     }
 
-    public OreConcentrated(int oreId, int radius, int veinAmount, int oreAmount) {
+    public ConcentratedOreVein(int oreId, int radius, int veinAmount, int oreAmount) {
         this.oreID = oreId;
         this.radius = radius;
         this.veinAmount = veinAmount;

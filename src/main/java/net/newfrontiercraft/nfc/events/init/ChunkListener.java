@@ -6,7 +6,7 @@ import net.minecraft.world.dimension.OverworldDimension;
 import net.minecraft.world.gen.feature.OreFeature;
 import net.modificationstation.stationapi.api.event.world.gen.WorldGenEvent;
 import net.newfrontiercraft.nfc.structures.OreCloud;
-import net.newfrontiercraft.nfc.structures.OreConcentrated;
+import net.newfrontiercraft.nfc.structures.ConcentratedOreVein;
 
 public class ChunkListener {
     @EventListener
@@ -54,7 +54,7 @@ public class ChunkListener {
             int k4 = event.x + event.random.nextInt(16);
             int l7 = event.random.nextInt(50);
             int i11 = event.z + event.random.nextInt(16);
-            (new OreConcentrated(BlockListener.silverOre.id, 12, 6, 8)).generate( event.world, event.random, k4, l7, i11);
+            (new ConcentratedOreVein(BlockListener.silverOre.id, 12, 6, 8)).generate( event.world, event.random, k4, l7, i11);
         }
 
         if (event.random.nextInt(20) == 1) {
@@ -162,14 +162,14 @@ public class ChunkListener {
             int k4 = event.x + event.random.nextInt(16);
             int l7 = event.random.nextInt(24) + 4;
             int i11 = event.z + event.random.nextInt(16);
-            (new OreConcentrated(BlockListener.anthraciteOre.id, 9, 3, 10)).generate(event.world, event.random, k4, l7, i11);
+            (new ConcentratedOreVein(BlockListener.anthraciteOre.id, 9, 3, 10)).generate(event.world, event.random, k4, l7, i11);
         }
 
         {
             int k4 = event.x + event.random.nextInt(16);
             int l7 = event.random.nextInt(82);
             int i11 = event.z + event.random.nextInt(16);
-            (new OreConcentrated(Block.COAL_ORE.id, 5, 2, 16)).generate(event.world, event.random, k4, l7, i11);
+            (new ConcentratedOreVein(Block.COAL_ORE.id, 5, 2, 16)).generate(event.world, event.random, k4, l7, i11);
         }
 
         for (int k2 = 0; k2 < (1 + event.random.nextInt(2)); k2++) {

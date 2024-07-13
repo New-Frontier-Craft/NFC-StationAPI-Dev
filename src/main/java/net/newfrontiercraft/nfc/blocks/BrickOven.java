@@ -1,8 +1,8 @@
 package net.newfrontiercraft.nfc.blocks;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.Material;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.material.Material;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -44,7 +44,7 @@ public class BrickOven extends TemplateBlockWithEntity {
 
     @Override
     public boolean onUse(World world, int x, int y, int z, PlayerEntity player) {
-        BlockEntity tileEntity = world.method_1777(x, y, z);
+        BlockEntity tileEntity = world.getBlockEntity(x, y, z);
         if (tileEntity instanceof BrickOvenBlockEntity brickOvenBlockEntity)
             GuiHelper.openGUI(player, Identifier.of(BlockEntityListener.MOD_ID, "gui_brick_oven"),
                     brickOvenBlockEntity, new BrickOvenScreenHandler(player.inventory, brickOvenBlockEntity));
@@ -77,7 +77,7 @@ public class BrickOven extends TemplateBlockWithEntity {
         if (Block.BLOCKS_OPAQUE[k1] && !Block.BLOCKS_OPAQUE[j1]) {
             byte0 = 4;
         }
-        world.method_154(i, j, k, this.id, byte0);
+        world.setBlock(i, j, k, this.id, byte0);
     }
 
     @Override
@@ -124,7 +124,7 @@ public class BrickOven extends TemplateBlockWithEntity {
 
     public static void updateFurnaceBlockState(boolean flag, World world, int i, int j, int k) {
         int l = world.getBlockMeta(i, j, k);
-        BlockEntity tileentity = world.method_1777(i, j, k);
+        BlockEntity tileentity = world.getBlockEntity(i, j, k);
         keepFurnaceInventory = true;
         if (flag) {
             world.setBlock(i, j, k, BlockListener.brickOvenActive.id);
@@ -132,9 +132,9 @@ public class BrickOven extends TemplateBlockWithEntity {
             world.setBlock(i, j, k, BlockListener.brickOven.id);
         }
         keepFurnaceInventory = false;
-        world.method_153(i, j, k, l);
-        //tileentity.validate();
-        world.method_203(i, j, k, tileentity);
+        world.setBlockMeta(i, j, k, l);
+        tileentity.cancelRemoval();
+        world.setBlockEntity(i, j, k, tileentity);
     }
 
     @Override
@@ -142,23 +142,23 @@ public class BrickOven extends TemplateBlockWithEntity {
         int l = MathHelper
                 .floor((double) ((entityliving.yaw * 4F) / 360F) + 0.5D) & 3;
         if (l == 0) {
-            world.method_153(i, j, k, 2);
+            world.setBlockMeta(i, j, k, 2);
         }
         if (l == 1) {
-            world.method_153(i, j, k, 5);
+            world.setBlockMeta(i, j, k, 5);
         }
         if (l == 2) {
-            world.method_153(i, j, k, 3);
+            world.setBlockMeta(i, j, k, 3);
         }
         if (l == 3) {
-            world.method_153(i, j, k, 4);
+            world.setBlockMeta(i, j, k, 4);
         }
     }
 
     @Override
     public void onBreak(World arg, int i, int j, int k) {
         if (!keepFurnaceInventory) {
-            BrickOvenBlockEntity brickOven = (BrickOvenBlockEntity)arg.method_1777(i, j, k);
+            BrickOvenBlockEntity brickOven = (BrickOvenBlockEntity)arg.getBlockEntity(i, j, k);
 
             for(int var6 = 0; var6 < brickOven.size(); ++var6) {
                 ItemStack var7 = brickOven.getStack(var6);
@@ -179,7 +179,7 @@ public class BrickOven extends TemplateBlockWithEntity {
                         var12.velocityX = (double)((float)this.furnaceRand.nextGaussian() * var13);
                         var12.velocityY = (double)((float)this.furnaceRand.nextGaussian() * var13 + 0.2F);
                         var12.velocityZ = (double)((float)this.furnaceRand.nextGaussian() * var13);
-                        arg.method_287(var12);
+                        arg.spawnEntity(var12);
                     }
                 }
             }
