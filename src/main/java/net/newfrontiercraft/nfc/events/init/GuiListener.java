@@ -10,8 +10,9 @@ import net.modificationstation.stationapi.api.registry.GuiHandlerRegistry;
 import net.modificationstation.stationapi.api.util.Identifier;
 import net.modificationstation.stationapi.api.util.Namespace;
 import net.modificationstation.stationapi.api.util.Null;
-import net.newfrontiercraft.nfc.guis.BrickOvenGui;
-import net.newfrontiercraft.nfc.blockentities.BrickOvenBlockEntity;
+import net.newfrontiercraft.nfc.gui.BrickOvenGui;
+import net.newfrontiercraft.nfc.block.entity.BrickOvenBlockEntity;
+import net.newfrontiercraft.nfc.gui.CarpentryWorkstationGui;
 import uk.co.benjiweber.expressions.tuple.BiTuple;
 
 public class GuiListener {
@@ -20,16 +21,18 @@ public class GuiListener {
     public static final Namespace MOD_ID = Null.get();
 
     @EventListener
-    public void registerGuiHandlers(GuiHandlerRegistryEvent event)
-    {
+    public void registerGuiHandlers(GuiHandlerRegistryEvent event) {
         GuiHandlerRegistry registry = event.registry;
 
         registry.registerValueNoMessage(Identifier.of(MOD_ID, "gui_brick_oven"), BiTuple.of(this::openBrickOven, BrickOvenBlockEntity::new));
+        registry.registerValueNoMessage(Identifier.of(MOD_ID, "gui_carpentry"), BiTuple.of(this::openCarpentry, () -> null));
     }
 
-    public Screen openBrickOven(PlayerEntity playerBase, Inventory inventoryBase)
-    {
+    public Screen openBrickOven(PlayerEntity playerBase, Inventory inventoryBase) {
         return new BrickOvenGui(playerBase.inventory, (BrickOvenBlockEntity) inventoryBase);
     }
 
+    public Screen openCarpentry(PlayerEntity playerBase, Inventory inventoryBase) {
+        return new CarpentryWorkstationGui(playerBase.inventory, playerBase.world, (int) playerBase.x, (int) playerBase.y, (int) playerBase.z);
+    }
 }

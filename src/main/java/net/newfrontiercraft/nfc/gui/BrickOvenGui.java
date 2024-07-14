@@ -1,9 +1,9 @@
-package net.newfrontiercraft.nfc.guis;
+package net.newfrontiercraft.nfc.gui;
 
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.entity.player.PlayerInventory;
-import net.newfrontiercraft.nfc.containers.BrickOvenScreenHandler;
-import net.newfrontiercraft.nfc.blockentities.BrickOvenBlockEntity;
+import net.newfrontiercraft.nfc.inventory.BrickOvenScreenHandler;
+import net.newfrontiercraft.nfc.block.entity.BrickOvenBlockEntity;
 import org.lwjgl.opengl.GL11;
 
 public class BrickOvenGui extends HandledScreen {

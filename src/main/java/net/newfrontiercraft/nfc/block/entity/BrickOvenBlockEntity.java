@@ -1,4 +1,4 @@
-package net.newfrontiercraft.nfc.blockentities;
+package net.newfrontiercraft.nfc.block.entity;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.entity.BlockEntity;
@@ -10,9 +10,9 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtList;
-import net.newfrontiercraft.nfc.blocks.BrickOven;
+import net.newfrontiercraft.nfc.block.BrickOvenBlock;
 import net.newfrontiercraft.nfc.events.init.ItemListener;
-import net.newfrontiercraft.nfc.registries.OvenManager;
+import net.newfrontiercraft.nfc.registry.OvenManager;
 
 public class BrickOvenBlockEntity extends BlockEntity implements Inventory {
 
@@ -156,7 +156,7 @@ public class BrickOvenBlockEntity extends BlockEntity implements Inventory {
             }
             if (flag != (furnaceBurnTime > 0)) {
                 flag1 = true;
-                BrickOven.updateFurnaceBlockState(furnaceBurnTime > 0,
+                BrickOvenBlock.updateFurnaceBlockState(furnaceBurnTime > 0,
                         world, x, y, z);
             }
         }

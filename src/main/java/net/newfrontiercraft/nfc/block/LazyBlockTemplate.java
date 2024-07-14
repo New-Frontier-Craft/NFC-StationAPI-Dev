@@ -1,4 +1,4 @@
-package net.newfrontiercraft.nfc.blocks;
+package net.newfrontiercraft.nfc.block;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.LivingEntity;

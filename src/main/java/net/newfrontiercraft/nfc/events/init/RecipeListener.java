@@ -8,6 +8,7 @@ import net.modificationstation.stationapi.api.event.recipe.RecipeRegisterEvent;
 import net.modificationstation.stationapi.api.recipe.CraftingRegistry;
 import net.modificationstation.stationapi.api.recipe.SmeltingRegistry;
 import net.modificationstation.stationapi.api.util.Identifier;
+import net.newfrontiercraft.nfc.registry.CarpentryRecipes;
 
 public class RecipeListener {
 
@@ -100,5 +101,13 @@ public class RecipeListener {
             CraftingRegistry.addShapelessRecipe(new ItemStack(ItemListener.brassIngot, 4), new ItemStack(BlockListener.brassBlock));
             CraftingRegistry.addShapelessRecipe(new ItemStack(ItemListener.steelIngot, 4), new ItemStack(BlockListener.steelBlock));
         }
+        CarpentryRecipes.carpentry().addCarpentry(Block.STONE.id, 0, 15,
+                new ItemStack[] {
+                        new ItemStack(BlockListener.workedStone),
+                        new ItemStack(BlockListener.workedStoneCrossCut),
+                        new ItemStack(BlockListener.workedStoneHorizontalCut),
+                        new ItemStack(BlockListener.workedStoneVerticalCut),
+                        new ItemStack(BlockListener.stoneBricks),
+                        new ItemStack(BlockListener.stoneBricksLarge)});
     }
 }

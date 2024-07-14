@@ -1,4 +1,4 @@
-package net.newfrontiercraft.nfc.registries;
+package net.newfrontiercraft.nfc.registry;
 
 import net.minecraft.item.ItemStack;
 

@@ -8,7 +8,7 @@ import net.modificationstation.stationapi.api.mod.entrypoint.Entrypoint;
 import net.modificationstation.stationapi.api.util.Identifier;
 import net.modificationstation.stationapi.api.util.Namespace;
 import net.modificationstation.stationapi.api.util.Null;
-import net.newfrontiercraft.nfc.blocks.*;
+import net.newfrontiercraft.nfc.block.*;
 
 public class BlockListener {
 
@@ -85,7 +85,7 @@ public class BlockListener {
             platinumOre,
             mysteryOre;
 
-    public static BrickOven
+    public static BrickOvenBlock
             brickOven,
             brickOvenActive;
 
@@ -95,7 +95,7 @@ public class BlockListener {
             pebbleMedium,
             pebbleLarge;
 
-    public static CarpentryWorkstation carpentryWorkstation;
+    public static CarpentryWorkstationBlock carpentryWorkstation;
 
     @Entrypoint.Namespace
     public static final Namespace MOD_ID = Null.get();
@@ -178,10 +178,10 @@ public class BlockListener {
         pebbleMedium = new LazySandTemplate(Identifier.of(MOD_ID, "pebble_medium"), 3F, Block.GRAVEL_SOUND_GROUP, 8);
         pebbleLarge = new LazySandTemplate(Identifier.of(MOD_ID, "pebble_large"), 3F, Block.GRAVEL_SOUND_GROUP, 8);
 
-        brickOven = new BrickOven(Identifier.of(MOD_ID, "brick_oven"), Material.STONE, false, 0F, 1.5F);
-        brickOvenActive = new BrickOven(Identifier.of(MOD_ID, "brick_oven_active"), Material.STONE, true, 0.875F, 1.5F);
+        brickOven = new BrickOvenBlock(Identifier.of(MOD_ID, "brick_oven"), Material.STONE, false, 0F, 1.5F);
+        brickOvenActive = new BrickOvenBlock(Identifier.of(MOD_ID, "brick_oven_active"), Material.STONE, true, 0.875F, 1.5F);
 
-        carpentryWorkstation = new CarpentryWorkstation(Identifier.of(MOD_ID, "carpentry_workstation"), Material.METAL, 1.0F);
+        carpentryWorkstation = new CarpentryWorkstationBlock(Identifier.of(MOD_ID, "carpentry_workstation"), Material.METAL, 1.0F);
 
         // Changes to vanilla blast resistance
         Block.COAL_ORE.setResistance(500F);

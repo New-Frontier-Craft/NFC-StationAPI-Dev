@@ -1,9 +1,8 @@
-package net.newfrontiercraft.nfc.structures;
+package net.newfrontiercraft.nfc.feature;
 
 import net.minecraft.block.Block;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.Feature;
-import net.minecraft.world.gen.feature.OreFeature;
 
 import java.util.Random;
 

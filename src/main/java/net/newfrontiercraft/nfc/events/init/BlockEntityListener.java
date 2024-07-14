@@ -6,7 +6,7 @@ import net.modificationstation.stationapi.api.mod.entrypoint.Entrypoint;
 import net.modificationstation.stationapi.api.util.Identifier;
 import net.modificationstation.stationapi.api.util.Namespace;
 import net.modificationstation.stationapi.api.util.Null;
-import net.newfrontiercraft.nfc.blockentities.BrickOvenBlockEntity;
+import net.newfrontiercraft.nfc.block.entity.BrickOvenBlockEntity;
 
 public class BlockEntityListener {
 

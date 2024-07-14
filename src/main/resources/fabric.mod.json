@@ -25,12 +25,12 @@
       "net.newfrontiercraft.nfc.events.init.PlayerHandlerListener",
       "net.newfrontiercraft.nfc.events.init.RecipeListener",
       "net.newfrontiercraft.nfc.events.init.ChunkListener",
-      "net.newfrontiercraft.nfc.events.init.BlockEntityListener",
-      "net.newfrontiercraft.nfc.events.init.GuiListener"
+      "net.newfrontiercraft.nfc.events.init.BlockEntityListener"
     ],
     "stationapi:event_bus_client": [
       "net.newfrontiercraft.nfc.events.init.KeyBindingListener",
-      "net.newfrontiercraft.nfc.events.init.TextureListener"
+      "net.newfrontiercraft.nfc.events.init.TextureListener",
+      "net.newfrontiercraft.nfc.events.init.GuiListener"
     ],
     "stationapi:event_bus_server": [
       "net.newfrontiercraft.nfc.events.init.ServerInitListener"

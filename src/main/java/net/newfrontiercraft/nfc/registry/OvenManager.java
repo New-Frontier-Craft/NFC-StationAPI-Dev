@@ -1,11 +1,11 @@
-package net.newfrontiercraft.nfc.registries;
+package net.newfrontiercraft.nfc.registry;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.newfrontiercraft.nfc.events.init.BlockListener;
 import net.newfrontiercraft.nfc.events.init.ItemListener;
-import net.newfrontiercraft.nfc.blockentities.BrickOvenBlockEntity;
+import net.newfrontiercraft.nfc.block.entity.BrickOvenBlockEntity;
 
 import java.util.ArrayList;
 import java.util.HashMap;

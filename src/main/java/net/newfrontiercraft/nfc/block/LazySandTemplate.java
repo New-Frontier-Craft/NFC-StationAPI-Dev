@@ -1,4 +1,4 @@
-package net.newfrontiercraft.nfc.blocks;
+package net.newfrontiercraft.nfc.block;
 
 import net.minecraft.entity.FallingBlockEntity;
 import net.minecraft.sound.BlockSoundGroup;

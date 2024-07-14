@@ -5,10 +5,10 @@ import net.minecraft.block.Block;
 import net.minecraft.world.dimension.OverworldDimension;
 import net.minecraft.world.gen.feature.OreFeature;
 import net.modificationstation.stationapi.api.event.world.gen.WorldGenEvent;
-import net.newfrontiercraft.nfc.structures.OreCloud;
-import net.newfrontiercraft.nfc.structures.ConcentratedOreVein;
-import net.newfrontiercraft.nfc.structures.ScatteredOrePieces;
-import net.newfrontiercraft.nfc.structures.UnrestrictedOreFeature;
+import net.newfrontiercraft.nfc.feature.OreCloud;
+import net.newfrontiercraft.nfc.feature.ConcentratedOreVein;
+import net.newfrontiercraft.nfc.feature.ScatteredOrePieces;
+import net.newfrontiercraft.nfc.feature.UnrestrictedOreFeature;
 
 public class ChunkListener {
     @EventListener

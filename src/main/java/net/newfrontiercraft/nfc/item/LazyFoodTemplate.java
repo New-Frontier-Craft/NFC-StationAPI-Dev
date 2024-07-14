@@ -1,4 +1,4 @@
-package net.newfrontiercraft.nfc.items;
+package net.newfrontiercraft.nfc.item;
 
 import net.modificationstation.stationapi.api.template.item.TemplateFoodItem;
 import net.modificationstation.stationapi.api.util.Identifier;

@@ -1,7 +1,6 @@
 package net.newfrontiercraft.nfc.events.init;
 
 import net.mine_diver.unsafeevents.listener.EventListener;
-import net.minecraft.item.PickaxeItem;
 import net.minecraft.item.ToolMaterial;
 import net.modificationstation.stationapi.api.event.registry.ItemRegistryEvent;
 import net.modificationstation.stationapi.api.item.tool.ToolMaterialFactory;
@@ -10,9 +9,9 @@ import net.modificationstation.stationapi.api.template.item.TemplatePickaxeItem;
 import net.modificationstation.stationapi.api.util.Identifier;
 import net.modificationstation.stationapi.api.util.Namespace;
 import net.modificationstation.stationapi.api.util.Null;
-import net.newfrontiercraft.nfc.items.LazyFoodTemplate;
-import net.newfrontiercraft.nfc.items.LazyItemTemplate;
-import net.newfrontiercraft.nfc.items.LazyPickaxeTemplate;
+import net.newfrontiercraft.nfc.item.LazyFoodTemplate;
+import net.newfrontiercraft.nfc.item.LazyItemTemplate;
+import net.newfrontiercraft.nfc.item.LazyPickaxeTemplate;
 
 public class ItemListener {
 

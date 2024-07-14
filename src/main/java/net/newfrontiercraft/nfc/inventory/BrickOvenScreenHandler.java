@@ -1,4 +1,4 @@
-package net.newfrontiercraft.nfc.containers;
+package net.newfrontiercraft.nfc.inventory;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -9,7 +9,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.slot.FurnaceOutputSlot;
 import net.minecraft.screen.slot.Slot;
-import net.newfrontiercraft.nfc.blockentities.BrickOvenBlockEntity;
+import net.newfrontiercraft.nfc.block.entity.BrickOvenBlockEntity;
 
 public class BrickOvenScreenHandler extends ScreenHandler {
 

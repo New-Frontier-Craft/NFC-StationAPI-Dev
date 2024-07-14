@@ -1,4 +1,4 @@
-package net.newfrontiercraft.nfc.structures;
+package net.newfrontiercraft.nfc.feature;
 
 import net.minecraft.block.Block;
 import net.minecraft.util.math.MathHelper;

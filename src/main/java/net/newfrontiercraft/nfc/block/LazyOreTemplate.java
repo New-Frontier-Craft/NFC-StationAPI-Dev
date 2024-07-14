@@ -1,4 +1,4 @@
-package net.newfrontiercraft.nfc.blocks;
+package net.newfrontiercraft.nfc.block;
 
 import net.minecraft.block.Block;
 import net.modificationstation.stationapi.api.template.block.TemplateOreBlock;
