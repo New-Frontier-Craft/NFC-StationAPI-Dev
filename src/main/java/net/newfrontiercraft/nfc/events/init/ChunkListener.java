@@ -7,6 +7,8 @@ import net.minecraft.world.gen.feature.OreFeature;
 import net.modificationstation.stationapi.api.event.world.gen.WorldGenEvent;
 import net.newfrontiercraft.nfc.structures.OreCloud;
 import net.newfrontiercraft.nfc.structures.ConcentratedOreVein;
+import net.newfrontiercraft.nfc.structures.ScatteredOrePieces;
+import net.newfrontiercraft.nfc.structures.UnrestrictedOreFeature;
 
 public class ChunkListener {
     @EventListener
@@ -36,7 +38,7 @@ public class ChunkListener {
             (new OreFeature(BlockListener.zincOre.id, 10)).generate( event.world, event.random, k4, l7, i11);
         }
 
-        if (event.random.nextInt(64) == 1) {
+        if (event.random.nextInt(32) == 1) {
             int k4 = event.x + event.random.nextInt(16);
             int l7 = event.random.nextInt(60);
             int i11 = event.z + event.random.nextInt(16);
@@ -70,7 +72,6 @@ public class ChunkListener {
             int i11 = event.z + event.random.nextInt(16);
             (new OreCloud(Block.IRON_ORE.id, 16, 2, 200)).generate( event.world, event.random, k4, l7, i11);
         }
-        
 
         if (event.random.nextInt(16) == 1) {
             int k4 = event.x + event.random.nextInt(16);
@@ -141,21 +142,42 @@ public class ChunkListener {
             int k4 = event.x + event.random.nextInt(16);
             int l7 = event.random.nextInt(16);
             int i11 = event.z + event.random.nextInt(16);
-            (new OreFeature(BlockListener.rubyOre.id, 1)).generate( event.world, event.random, k4, l7, i11);
+            (new ScatteredOrePieces(BlockListener.rubyOre.id, 0, 1)).generate( event.world, event.random, k4, l7, i11);
         }
 
         if (event.random.nextInt(7) == 1) {
             int k4 = event.x + event.random.nextInt(16);
             int l7 = event.random.nextInt(16);
             int i11 = event.z + event.random.nextInt(16);
-            (new OreFeature(BlockListener.emeraldOre.id, 1)).generate( event.world, event.random, k4, l7, i11);
+            (new ScatteredOrePieces(BlockListener.emeraldOre.id, 0, 1)).generate( event.world, event.random, k4, l7, i11);
         }
 
         if (event.random.nextInt(7) == 1) {
             int k4 = event.x + event.random.nextInt(16);
             int l7 = event.random.nextInt(16);
             int i11 = event.z + event.random.nextInt(16);
-            (new OreFeature(BlockListener.sapphireOre.id, 1)).generate( event.world, event.random, k4, l7, i11);
+            (new ScatteredOrePieces(BlockListener.sapphireOre.id, 0, 1)).generate( event.world, event.random, k4, l7, i11);
+        }
+
+        if (event.random.nextInt(42) == 1) {
+            int k4 = event.x + event.random.nextInt(16);
+            int l7 = event.random.nextInt(16);
+            int i11 = event.z + event.random.nextInt(16);
+            (new ScatteredOrePieces(BlockListener.rubyOre.id, 10, 4)).generate( event.world, event.random, k4, l7, i11);
+        }
+
+        if (event.random.nextInt(42) == 1) {
+            int k4 = event.x + event.random.nextInt(16);
+            int l7 = event.random.nextInt(16);
+            int i11 = event.z + event.random.nextInt(16);
+            (new ScatteredOrePieces(BlockListener.emeraldOre.id, 10, 4)).generate( event.world, event.random, k4, l7, i11);
+        }
+
+        if (event.random.nextInt(42) == 1) {
+            int k4 = event.x + event.random.nextInt(16);
+            int l7 = event.random.nextInt(16);
+            int i11 = event.z + event.random.nextInt(16);
+            (new ScatteredOrePieces(BlockListener.sapphireOre.id, 10, 4)).generate( event.world, event.random, k4, l7, i11);
         }
 
         if (event.random.nextInt(16) == 1) {
@@ -176,7 +198,7 @@ public class ChunkListener {
             int k4 = event.x + event.random.nextInt(16);
             int l7 = event.random.nextInt(48) + 48;
             int i11 = event.z + event.random.nextInt(16);
-            (new OreFeature(Block.COAL_ORE.id, 12)).generate(event.world, event.random, k4, l7, i11);
+            (new UnrestrictedOreFeature(Block.COAL_ORE.id, 12)).generate(event.world, event.random, k4, l7, i11);
         }
 
         {
@@ -235,6 +257,13 @@ public class ChunkListener {
             int l7 = event.random.nextInt(48);
             int i11 = event.z + event.random.nextInt(16);
             (new OreFeature(BlockListener.leadOre.id, 12)).generate(event.world, event.random, k4, l7, i11);
+        }
+
+        if (event.random.nextInt(25) == 1) {
+            int i4 = event.x + event.random.nextInt(16);
+            int j7 = event.random.nextInt(16);
+            int k10 = event.z + event.random.nextInt(16);
+            (new UnrestrictedOreFeature(Block.DIAMOND_ORE.id, 8)).generate(event.world, event.random, i4, j7, k10);
         }
     }
 }

@@ -182,5 +182,15 @@ public class BlockListener {
         brickOvenActive = new BrickOven(Identifier.of(MOD_ID, "brick_oven_active"), Material.STONE, true, 0.875F, 1.5F);
 
         carpentryWorkstation = new CarpentryWorkstation(Identifier.of(MOD_ID, "carpentry_workstation"), Material.METAL, 1.0F);
+
+        // Changes to vanilla blast resistance
+        Block.COAL_ORE.setResistance(500F);
+        Block.IRON_ORE.setResistance(500F);
+        Block.GOLD_ORE.setResistance(500F);
+        Block.LAPIS_ORE.setResistance(500F);
+        Block.REDSTONE_ORE.setResistance(500F);
+        Block.DIAMOND_ORE.setResistance(500F);
+        Block.STONE.setResistance(8F);
+        Block.COBBLESTONE.setResistance(10F);
     }
 }

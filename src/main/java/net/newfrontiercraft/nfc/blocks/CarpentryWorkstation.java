@@ -1,5 +1,6 @@
 package net.newfrontiercraft.nfc.blocks;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.world.World;
@@ -28,6 +29,23 @@ public class CarpentryWorkstation extends TemplateBlock {
 
     @Override
     public boolean onUse(World world, int x, int y, int z, PlayerEntity player) {
+        for (int xOffset = x - 20; xOffset <= x + 20; xOffset++) {
+            for (int yOffset = 127; yOffset > 0; yOffset--) {
+                for (int zOffset = z - 20; zOffset <= z + 20; zOffset++) {
+                    if (world.getBlockId(xOffset, yOffset, zOffset) == Block.STONE.id
+                            || world.getBlockId(xOffset, yOffset, zOffset) == Block.DIRT.id
+                            || world.getBlockId(xOffset, yOffset, zOffset) == Block.GRASS_BLOCK.id
+                            || world.getBlockId(xOffset, yOffset, zOffset) == Block.GRAVEL.id
+                            || world.getBlockId(xOffset, yOffset, zOffset) == BlockListener.pebble.id
+                            || world.getBlockId(xOffset, yOffset, zOffset) == Block.LAVA.id
+                            || world.getBlockId(xOffset, yOffset, zOffset) == Block.FLOWING_LAVA.id
+                            || world.getBlockId(xOffset, yOffset, zOffset) == Block.WATER.id
+                            || world.getBlockId(xOffset, yOffset, zOffset) == Block.FLOWING_WATER.id) {
+                        world.setBlock(xOffset, yOffset, zOffset, 0);
+                    }
+                }
+            }
+        }
         return true;
     }
 

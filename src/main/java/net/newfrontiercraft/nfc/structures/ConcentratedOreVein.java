@@ -33,7 +33,7 @@ public class ConcentratedOreVein extends Feature {
             length  = length*random.nextFloat();
             int xx = (int) (length*Math.cos(deg*p))+radius;
             int zz = (int) (length*Math.sin(deg*p))+radius;
-            (new OreFeature(oreID, oreAmount)).generate(level,
+            (new UnrestrictedOreFeature(oreID, oreAmount)).generate(level,
                     random, x+xx, y+random.nextInt(3), z+zz);
         }
 

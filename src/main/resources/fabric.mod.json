@@ -4,9 +4,9 @@
   "version": "${version}",
 
   "name": "New Frontier Craft",
-  "description": "Station API port of New Frontier Craft",
+  "description": "A new adventure in old Minecraft! Now on Station API",
   "authors": [
-    "Atilist, Birdy, RoadHog, Zowja"
+    "Atilist, Vivian, Roadhog, Zowja"
   ],
   "contact": {
     "homepage": "https://glass-launcher.net/",
