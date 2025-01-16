@@ -57,12 +57,12 @@ public class ItemListener {
 
     @EventListener
     public void registerItems(ItemRegistryEvent event) {
-        ToolMaterialFactory.create("bronze", 1, 420, 4.0F, 1);
-        ToolMaterial.valueOf("bronze").inheritsFrom(ToolMaterial.STONE);
-        ToolMaterial.valueOf("bronze").requiredBlockTag(Identifier.of("needs_bronze_tool"));
-        ToolMaterial.IRON.inheritsFrom(ToolMaterial.valueOf("bronze"));
+        //ToolMaterialFactory.create("bronze", 1, 420, 4.0F, 1);
+        //ToolMaterial.valueOf("bronze").inheritsFrom(ToolMaterial.STONE);
+        //ToolMaterial.valueOf("bronze").requiredBlockTag(Identifier.of("needs_bronze_tool"));
+        //ToolMaterial.IRON.inheritsFrom(ToolMaterial.valueOf("bronze"));
 
-        bronzePickaxe = new LazyPickaxeTemplate(Identifier.of(MOD_ID, "bronze_pickaxe"), ToolMaterial.valueOf("bronze"));
+        bronzePickaxe = new LazyPickaxeTemplate(Identifier.of(MOD_ID, "bronze_pickaxe"), ToolMaterial.IRON); // TODO: Replace with actual tool material
 
         cookedEgg = new LazyFoodTemplate(Identifier.of(MOD_ID, "cooked_egg"), 4, false);
 

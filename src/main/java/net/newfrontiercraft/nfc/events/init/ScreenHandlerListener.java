@@ -4,18 +4,19 @@ import net.mine_diver.unsafeevents.listener.EventListener;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventory;
+import net.modificationstation.stationapi.api.client.gui.screen.GuiHandler;
+import net.modificationstation.stationapi.api.client.registry.GuiHandlerRegistry;
 import net.modificationstation.stationapi.api.event.registry.GuiHandlerRegistryEvent;
 import net.modificationstation.stationapi.api.mod.entrypoint.Entrypoint;
-import net.modificationstation.stationapi.api.registry.GuiHandlerRegistry;
 import net.modificationstation.stationapi.api.util.Identifier;
 import net.modificationstation.stationapi.api.util.Namespace;
 import net.modificationstation.stationapi.api.util.Null;
+import net.modificationstation.stationapi.api.registry.Registry;
 import net.newfrontiercraft.nfc.gui.BrickOvenGui;
 import net.newfrontiercraft.nfc.block.entity.BrickOvenBlockEntity;
 import net.newfrontiercraft.nfc.gui.CarpentryWorkstationGui;
-import uk.co.benjiweber.expressions.tuple.BiTuple;
 
-public class GuiListener {
+public class ScreenHandlerListener {
 
     @Entrypoint.Namespace
     public static final Namespace MOD_ID = Null.get();
@@ -24,8 +25,8 @@ public class GuiListener {
     public void registerGuiHandlers(GuiHandlerRegistryEvent event) {
         GuiHandlerRegistry registry = event.registry;
 
-        registry.registerValueNoMessage(Identifier.of(MOD_ID, "gui_brick_oven"), BiTuple.of(this::openBrickOven, BrickOvenBlockEntity::new));
-        registry.registerValueNoMessage(Identifier.of(MOD_ID, "gui_carpentry"), BiTuple.of(this::openCarpentry, () -> null));
+        Registry.register(registry, Identifier.of(MOD_ID, "gui_brick_oven"), new GuiHandler((GuiHandler.ScreenFactoryNoMessage) this::openBrickOven, BrickOvenBlockEntity::new));
+        Registry.register(registry, Identifier.of(MOD_ID, "gui_carpentry"), new GuiHandler((GuiHandler.ScreenFactoryNoMessage) this::openCarpentry, () -> null));
     }
 
     public Screen openBrickOven(PlayerEntity playerBase, Inventory inventoryBase) {

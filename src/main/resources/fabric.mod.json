@@ -19,21 +19,17 @@
   "environment": "*",
   "entrypoints": {
     "stationapi:event_bus": [
-      "net.newfrontiercraft.nfc.events.init.AchievementListener",
       "net.newfrontiercraft.nfc.events.init.BlockListener",
       "net.newfrontiercraft.nfc.events.init.ItemListener",
-      "net.newfrontiercraft.nfc.events.init.PlayerHandlerListener",
       "net.newfrontiercraft.nfc.events.init.RecipeListener",
       "net.newfrontiercraft.nfc.events.init.ChunkListener",
       "net.newfrontiercraft.nfc.events.init.BlockEntityListener"
     ],
     "stationapi:event_bus_client": [
-      "net.newfrontiercraft.nfc.events.init.KeyBindingListener",
       "net.newfrontiercraft.nfc.events.init.TextureListener",
-      "net.newfrontiercraft.nfc.events.init.GuiListener"
+      "net.newfrontiercraft.nfc.events.init.ScreenHandlerListener"
     ],
     "stationapi:event_bus_server": [
-      "net.newfrontiercraft.nfc.events.init.ServerInitListener"
     ]
   },
   "mixins": [
