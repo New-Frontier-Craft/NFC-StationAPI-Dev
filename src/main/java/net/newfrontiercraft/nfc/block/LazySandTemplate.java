@@ -41,15 +41,15 @@ public class LazySandTemplate extends TemplateSandBlock {
     }
 
     private void attemptFall(World arg, int i, int j, int k) {
-        if (method_435(arg, i, j - 1, k) && j >= 0) {
+        if (canFallThrough(arg, i, j - 1, k) && j >= 0) {
             byte var8 = 32;
-            if (!field_375 && arg.isRegionLoaded(i - var8, j - var8, k - var8, i + var8, j + var8, k + var8)) {
+            if (!fallInstantly && arg.isRegionLoaded(i - var8, j - var8, k - var8, i + var8, j + var8, k + var8)) {
                 FallingBlockEntity var9 = new FallingBlockEntity(arg, (double)((float)i + 0.5F), (double)((float)j + 0.5F), (double)((float)k + 0.5F), this.id);
                 arg.spawnEntity(var9);
             } else {
                 arg.setBlock(i, j, k, 0);
 
-                while(method_435(arg, i, j - 1, k) && j > 0) {
+                while(canFallThrough(arg, i, j - 1, k) && j > 0) {
                     --j;
                 }
 

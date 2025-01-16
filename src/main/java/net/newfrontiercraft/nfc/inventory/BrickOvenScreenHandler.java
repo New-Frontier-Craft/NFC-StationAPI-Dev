@@ -2,11 +2,11 @@ package net.newfrontiercraft.nfc.inventory;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.class_633;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.screen.ScreenHandler;
+import net.minecraft.screen.ScreenHandlerListener;
 import net.minecraft.screen.slot.FurnaceOutputSlot;
 import net.minecraft.screen.slot.Slot;
 import net.newfrontiercraft.nfc.block.entity.BrickOvenBlockEntity;
@@ -38,21 +38,21 @@ public class BrickOvenScreenHandler extends ScreenHandler {
 
     }
 
-    public void method_2075() {
-        super.method_2075();
+    public void sendContentUpdates() {
+        super.sendContentUpdates();
         for (int i = 0; i < this.listeners.size(); i++) {
-            class_633 icrafting = (class_633) this.listeners.get(i);
+            ScreenHandlerListener screenHandlerListener = (ScreenHandlerListener) this.listeners.get(i);
             if (cookTime != furnace.furnaceCookTime) {
-                icrafting.method_2099(this, 0, furnace.furnaceCookTime);
+                screenHandlerListener.onPropertyUpdate(this, 0, furnace.furnaceCookTime);
             }
             if (burnTime != furnace.furnaceBurnTime) {
-                icrafting.method_2099(this, 1, furnace.furnaceBurnTime);
+                screenHandlerListener.onPropertyUpdate(this, 1, furnace.furnaceBurnTime);
             }
             if (itemBurnTime != furnace.currentItemBurnTime) {
-                icrafting.method_2099(this, 2, furnace.currentItemBurnTime);
+                screenHandlerListener.onPropertyUpdate(this, 2, furnace.currentItemBurnTime);
             }
             if (requiredTime != furnace.requiredTime) {
-                icrafting.method_2099(this, 3, furnace.requiredTime);
+                screenHandlerListener.onPropertyUpdate(this, 3, furnace.requiredTime);
             }
         }
 
@@ -64,7 +64,7 @@ public class BrickOvenScreenHandler extends ScreenHandler {
 
     @Override
     @Environment(EnvType.CLIENT)
-    public void method_2077(int i, int j) {
+    public void setProperty(int i, int j) {
         if (i == 0) {
             furnace.furnaceCookTime = j;
         }
@@ -85,20 +85,20 @@ public class BrickOvenScreenHandler extends ScreenHandler {
     }
 
     @Override
-    public ItemStack getStackInSlot(int i) {
+    public ItemStack quickMove(int i) {
         ItemStack itemstack = null;
         Slot slot = (Slot) slots.get(i);
         if (slot != null && slot.hasStack()) {
             ItemStack itemstack1 = slot.getStack();
             itemstack = itemstack1.copy();
             if (i == 10) {
-                method_2081(itemstack1, 11, 47, true);
+                insertItem(itemstack1, 11, 47, true);
             } else if (i >= 11 && i < 38) {
-                method_2081(itemstack1, 38, 39, false);
+                insertItem(itemstack1, 38, 39, false);
             } else if (i >= 38 && i < 47) {
-                method_2081(itemstack1, 11, 38, false);
+                insertItem(itemstack1, 11, 38, false);
             } else {
-                method_2081(itemstack1, 11, 47, false);
+                insertItem(itemstack1, 11, 47, false);
             }
             if (itemstack1.count == 0) {
                 slot.setStack(null);
@@ -106,7 +106,7 @@ public class BrickOvenScreenHandler extends ScreenHandler {
                 slot.markDirty();
             }
             if (itemstack1.count != itemstack.count) {
-                slot.onCrafted(itemstack1);
+                slot.onTakeItem(itemstack1);
             } else {
                 return null;
             }

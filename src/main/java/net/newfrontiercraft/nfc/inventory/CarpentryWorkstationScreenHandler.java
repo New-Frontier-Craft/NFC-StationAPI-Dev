@@ -42,7 +42,7 @@ public class CarpentryWorkstationScreenHandler extends ScreenHandler {
     }
 
     @Override
-    public void method_2088(Inventory inventory) {
+    public void onSlotUpdate(Inventory inventory) {
         ItemStack inputStack = craftMatrix.getStack(0);
         if (inputStack == null) {
             wipeOutputs();
@@ -85,16 +85,16 @@ public class CarpentryWorkstationScreenHandler extends ScreenHandler {
     }
 
     @Override
-    public ItemStack getStackInSlot(int i) {
+    public ItemStack quickMove(int i) {
         ItemStack itemstack = null;
         Slot slot = (Slot)slots.get(i);
         if(slot != null && slot.hasStack()) {
             ItemStack itemstack1 = slot.getStack();
             itemstack = itemstack1.copy();
             if(i >= 36) {
-                method_2081(itemstack1, 0, 36, true);
+                insertItem(itemstack1, 0, 36, true);
             } else {
-                method_2081(itemstack1, 48, 49, false);
+                insertItem(itemstack1, 48, 49, false);
             }
             if(itemstack1.count == 0) {
                 slot.setStack(null);
@@ -102,7 +102,7 @@ public class CarpentryWorkstationScreenHandler extends ScreenHandler {
                 slot.markDirty();
             }
             if(itemstack1.count != itemstack.count) {
-                slot.onCrafted(itemstack1);
+                slot.onTakeItem(itemstack1);
             } else {
                 return null;
             }
