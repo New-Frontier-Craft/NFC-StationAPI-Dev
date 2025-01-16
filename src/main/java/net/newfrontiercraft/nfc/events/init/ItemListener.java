@@ -3,8 +3,12 @@ package net.newfrontiercraft.nfc.events.init;
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.minecraft.item.ToolMaterial;
 import net.modificationstation.stationapi.api.event.registry.ItemRegistryEvent;
+import net.modificationstation.stationapi.api.item.tool.TagToolLevel;
+import net.modificationstation.stationapi.api.item.tool.ToolLevel;
 import net.modificationstation.stationapi.api.item.tool.ToolMaterialFactory;
 import net.modificationstation.stationapi.api.mod.entrypoint.Entrypoint;
+import net.modificationstation.stationapi.api.registry.BlockRegistry;
+import net.modificationstation.stationapi.api.tag.TagKey;
 import net.modificationstation.stationapi.api.template.item.TemplatePickaxeItem;
 import net.modificationstation.stationapi.api.util.Identifier;
 import net.modificationstation.stationapi.api.util.Namespace;
@@ -57,12 +61,20 @@ public class ItemListener {
 
     @EventListener
     public void registerItems(ItemRegistryEvent event) {
-        //ToolMaterialFactory.create("bronze", 1, 420, 4.0F, 1);
-        //ToolMaterial.valueOf("bronze").inheritsFrom(ToolMaterial.STONE);
-        //ToolMaterial.valueOf("bronze").requiredBlockTag(Identifier.of("needs_bronze_tool"));
-        //ToolMaterial.IRON.inheritsFrom(ToolMaterial.valueOf("bronze"));
+        ToolLevel crude = new TagToolLevel(TagKey.of(BlockRegistry.KEY, MOD_ID.id("needs_crude_tool")));
+        ToolLevel basic = new TagToolLevel(TagKey.of(BlockRegistry.KEY, MOD_ID.id("needs_basic_tool")));
+        ToolLevel advanced = new TagToolLevel(TagKey.of(BlockRegistry.KEY, MOD_ID.id("needs_advanced_tool")));
 
-        bronzePickaxe = new LazyPickaxeTemplate(Identifier.of(MOD_ID, "bronze_pickaxe"), ToolMaterial.IRON); // TODO: Replace with actual tool material
+        ToolLevel.GRAPH.putEdge(ToolMaterial.STONE.getToolLevel(), crude);
+        ToolLevel.GRAPH.putEdge(crude, basic);
+        ToolLevel.GRAPH.putEdge(basic, ToolMaterial.IRON.getToolLevel());
+        ToolLevel.GRAPH.putEdge(ToolMaterial.IRON.getToolLevel(), advanced);
+        ToolLevel.GRAPH.putEdge(advanced, ToolMaterial.DIAMOND.getToolLevel());
+        ToolLevel.GRAPH.removeEdge(ToolMaterial.STONE.getToolLevel(), ToolMaterial.IRON.getToolLevel());
+        ToolLevel.GRAPH.removeEdge(ToolMaterial.IRON.getToolLevel(), ToolMaterial.DIAMOND.getToolLevel());
+
+        ToolMaterial bronzeMaterial = ToolMaterialFactory.create("bronze", 1, 420, 4.0F, 1).toolLevel(basic);
+        bronzePickaxe = new LazyPickaxeTemplate(Identifier.of(MOD_ID, "bronze_pickaxe"), bronzeMaterial);
 
         cookedEgg = new LazyFoodTemplate(Identifier.of(MOD_ID, "cooked_egg"), 4, false);
 

@@ -1,0 +1,13 @@
+{
+  "replace": true,
+  "values": [
+    "nfc:magnetite_ore",
+    "nfc:titanium_ore",
+    "nfc:tungsten_ore",
+    "nfc:ruby_ore",
+    "nfc:sapphire_ore",
+    "nfc:emerald_ore",
+    "nfc:nether_onyx_ore",
+    "obsidian"
+  ]
+}

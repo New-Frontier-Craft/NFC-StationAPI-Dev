@@ -1,0 +1,11 @@
+{
+  "replace": true,
+  "values": [
+    "nfc:aluminium_ore",
+    "nfc:bismuth_ore",
+    "nfc:copper_ore",
+    "nfc:lead_ore",
+    "nfc:tin_ore",
+    "nfc:zinc_ore"
+  ]
+}
