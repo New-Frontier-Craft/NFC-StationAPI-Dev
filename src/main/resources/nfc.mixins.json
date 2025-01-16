@@ -4,6 +4,7 @@
   "package": "net.newfrontiercraft.nfc.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
+    "FixVanillaToolBogusMixin",
     "OreSuppressionMixin"
   ],
   "server": [
