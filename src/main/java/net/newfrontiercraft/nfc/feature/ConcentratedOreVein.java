@@ -27,13 +27,12 @@ public class ConcentratedOreVein extends Feature {
     @Override
     public boolean generate(World level, Random random, int x, int y, int z) {
         double deg = 6.2831853/(double) veinAmount;
-        for(int p = veinAmount; p >= 0; p--){
+        for(int p = veinAmount; p >= 0; p--) {
             double length = radius;
             length  = length*random.nextFloat();
             int xx = (int) (length*Math.cos(deg*p))+radius;
             int zz = (int) (length*Math.sin(deg*p))+radius;
-            (new UnrestrictedOreFeature(oreID, oreAmount)).generate(level,
-                    random, x+xx, y+random.nextInt(3), z+zz);
+            (new UnrestrictedOreFeature(oreID, oreAmount, generateIn)).generate(level, random, x+xx, y+random.nextInt(3), z+zz);
         }
 
         return false;

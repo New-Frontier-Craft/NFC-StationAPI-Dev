@@ -2,6 +2,7 @@ package net.newfrontiercraft.nfc.events.init;
 
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.minecraft.block.Block;
+import net.minecraft.world.dimension.NetherDimension;
 import net.minecraft.world.dimension.OverworldDimension;
 import net.minecraft.world.gen.feature.OreFeature;
 import net.modificationstation.stationapi.api.event.world.gen.WorldGenEvent;
@@ -14,9 +15,10 @@ public class ChunkListener {
     @EventListener
     public void populate(WorldGenEvent.ChunkDecoration event) {
         if (event.world.dimension instanceof OverworldDimension) populateOverworld(event);
+        if (event.world.dimension instanceof NetherDimension) populateNether(event);
     }
 
-    public void populateOverworld (WorldGenEvent.ChunkDecoration event) {
+    public void populateOverworld(WorldGenEvent.ChunkDecoration event) {
         {
             int i6 = event.x + event.random.nextInt(16);
             int j9 = event.random.nextInt(20) + 90;
@@ -264,6 +266,36 @@ public class ChunkListener {
             int j7 = event.random.nextInt(16);
             int k10 = event.z + event.random.nextInt(16);
             (new UnrestrictedOreFeature(Block.DIAMOND_ORE.id, 8)).generate(event.world, event.random, i4, j7, k10);
+        }
+    }
+
+    public void populateNether(WorldGenEvent.ChunkDecoration event) {
+        {
+            int k4 = event.x + event.random.nextInt(16);
+            int l7 = event.random.nextInt(120) + 4;
+            int i11 = event.z + event.random.nextInt(16);
+            (new ConcentratedOreVein(BlockListener.netherAshOre.id, 10, 2, 9, Block.NETHERRACK.id)).generate(event.world, event.random, k4, l7, i11);
+        }
+
+        {
+            int k4 = event.x + event.random.nextInt(16);
+            int l7 = event.random.nextInt(120) + 4;
+            int i11 = event.z + event.random.nextInt(16);
+            (new UnrestrictedOreFeature(BlockListener.netherOnyxOre.id, 3, Block.NETHERRACK.id)).generate(event.world, event.random, k4, l7, i11);
+        }
+
+        if (event.random.nextInt(24) == 1) {
+            int k4 = event.x + event.random.nextInt(16);
+            int l7 = event.random.nextInt(120) + 4;
+            int i11 = event.z + event.random.nextInt(16);
+            (new OreCloud(BlockListener.netherGoldOre.id, 10, 0, 48, Block.NETHERRACK.id)).generate(event.world, event.random, k4, l7, i11);
+        }
+
+        for(int j2 = 0; j2 < event.random.nextInt(3) + 1; j2++) {
+            int k4 = event.x + event.random.nextInt(16);
+            int l7 = event.random.nextInt(120) + 4;
+            int i11 = event.z + event.random.nextInt(16);
+            (new UnrestrictedOreFeature(BlockListener.netherUraniniteOre.id, 16, Block.NETHERRACK.id)).generate(event.world, event.random, k4, l7, i11);
         }
     }
 }

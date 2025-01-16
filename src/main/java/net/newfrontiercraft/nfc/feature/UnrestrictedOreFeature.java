@@ -11,23 +11,31 @@ import java.util.Random;
  * Unrestricted version of the ore feature that does not get cancelled for some specific ores.
  */
 public class UnrestrictedOreFeature extends Feature {
-    private int oreBlockId;
-    private int oreCount;
+    private final int oreBlockId;
+    private final int oreCount;
+    private final int generateIn;
 
     public UnrestrictedOreFeature(int oreBlockId, int oreCount) {
         this.oreBlockId = oreBlockId;
         this.oreCount = oreCount;
+        this.generateIn = Block.STONE.id;
+    }
+
+    public UnrestrictedOreFeature(int oreBlockId, int oreCount, int generateIn) {
+        this.oreBlockId = oreBlockId;
+        this.oreCount = oreCount;
+        this.generateIn = generateIn;
     }
 
     @Override
     public boolean generate(World world, Random random, int x, int y, int z) {
         float var6 = random.nextFloat() * 3.1415927F;
-        double var7 = (double)((float)(x + 8) + MathHelper.sin(var6) * (float)this.oreCount / 8.0F);
-        double var9 = (double)((float)(x + 8) - MathHelper.sin(var6) * (float)this.oreCount / 8.0F);
-        double var11 = (double)((float)(z + 8) + MathHelper.cos(var6) * (float)this.oreCount / 8.0F);
-        double var13 = (double)((float)(z + 8) - MathHelper.cos(var6) * (float)this.oreCount / 8.0F);
-        double var15 = (double)(y + random.nextInt(3) + 2);
-        double var17 = (double)(y + random.nextInt(3) + 2);
+        double var7 = (float)(x + 8) + MathHelper.sin(var6) * (float)this.oreCount / 8.0F;
+        double var9 = (float)(x + 8) - MathHelper.sin(var6) * (float)this.oreCount / 8.0F;
+        double var11 = (float)(z + 8) + MathHelper.cos(var6) * (float)this.oreCount / 8.0F;
+        double var13 = (float)(z + 8) - MathHelper.cos(var6) * (float)this.oreCount / 8.0F;
+        double var15 = y + random.nextInt(3) + 2;
+        double var17 = y + random.nextInt(3) + 2;
 
         for(int var19 = 0; var19 <= this.oreCount; ++var19) {
             double var20 = var7 + (var9 - var7) * (double)var19 / (double)this.oreCount;
@@ -51,7 +59,7 @@ public class UnrestrictedOreFeature extends Feature {
                         if (var39 * var39 + var42 * var42 < 1.0) {
                             for(int var44 = var34; var44 <= var37; ++var44) {
                                 double var45 = ((double)var44 + 0.5 - var24) / (var28 / 2.0);
-                                if (var39 * var39 + var42 * var42 + var45 * var45 < 1.0 && world.getBlockId(var38, var41, var44) == Block.STONE.id) {
+                                if (var39 * var39 + var42 * var42 + var45 * var45 < 1.0 && world.getBlockId(var38, var41, var44) == generateIn) {
                                     world.setBlockWithoutNotifyingNeighbors(var38, var41, var44, this.oreBlockId);
                                 }
                             }
