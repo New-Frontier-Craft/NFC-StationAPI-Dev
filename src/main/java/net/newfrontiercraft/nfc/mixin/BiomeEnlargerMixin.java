@@ -30,7 +30,7 @@ public class BiomeEnlargerMixin {
 
     @Environment(EnvType.CLIENT)
     @Inject(at = @At("HEAD"), method = "getTemperature", remap = false, cancellable = true)
-    private void stretchBiomes(int x, int z, CallbackInfoReturnable<Double> cir) {
+    private void stretchTemperature(int x, int z, CallbackInfoReturnable<Double> cir) {
         temperatureMap = temperatureSampler.sample(temperatureMap, (double) x, (double) z, 1, 1, 0.01875, 0.01875, 0.5);
         cir.setReturnValue(temperatureMap[0]);
     }
