@@ -81,7 +81,35 @@ tile.nfc.pebble_large.name=Large Pebble
 
 item.nfc.cooked_egg.name=Cooked Egg
 
+
+item.nfc.aluminium_pickaxe.name=Aluminium Pickaxe
+item.nfc.bismuth_pickaxe.name=Bismuth Pickaxe
+item.nfc.copper_pickaxe.name=Copper Pickaxe
+item.nfc.lead_pickaxe.name=Lead Pickaxe
+item.nfc.tin_pickaxe.name=Tin Pickaxe
+item.nfc.zinc_pickaxe.name=Zinc Pickaxe
+
+item.nfc.boron_pickaxe.name=Boron Pickaxe
+item.nfc.brass_pickaxe.name=Brass Pickaxe
 item.nfc.bronze_pickaxe.name=Bronze Pickaxe
+item.nfc.nickel_pickaxe.name=Nickel Pickaxe
+item.nfc.platinum_pickaxe.name=Platinum Pickaxe
+item.nfc.silver_pickaxe.name=Silver Pickaxe
+
+item.nfc.chrome_pickaxe.name=Chrome Pickaxe
+item.nfc.cobalt_pickaxe.name=Cobalt Pickaxe
+item.nfc.silicon_pickaxe.name=Silicon Pickaxe
+
+item.nfc.magnet_pickaxe.name=Magnet Pickaxe
+item.nfc.steel_pickaxe.name=Steel Pickaxe
+item.nfc.titanium_pickaxe.name=Titanium Pickaxe
+item.nfc.tungsten_pickaxe.name=Tungsten Pickaxe
+item.nfc.onyx_pickaxe.name=Onyx Pickaxe
+item.nfc.sapphire_pickaxe.name=Sapphire Pickaxe
+item.nfc.ruby_pickaxe.name=Ruby Pickaxe
+item.nfc.emerald_pickaxe.name=Emerald Pickaxe
+
+item.nfc.osmium_pickaxe.name=Osmium Pickaxe
 
 item.nfc.aluminium_ingot.name=Aluminium Ingot
 item.nfc.copper_ingot.name=Copper Ingot
