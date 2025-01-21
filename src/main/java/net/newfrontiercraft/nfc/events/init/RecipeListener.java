@@ -8,6 +8,7 @@ import net.modificationstation.stationapi.api.event.recipe.RecipeRegisterEvent;
 import net.modificationstation.stationapi.api.recipe.CraftingRegistry;
 import net.modificationstation.stationapi.api.recipe.SmeltingRegistry;
 import net.modificationstation.stationapi.api.util.Identifier;
+import net.newfrontiercraft.nfc.item.LazyItemTemplate;
 import net.newfrontiercraft.nfc.registry.CarpentryRecipes;
 
 public class RecipeListener {
@@ -19,7 +20,30 @@ public class RecipeListener {
         if (type == RecipeRegisterEvent.Vanilla.CRAFTING_SHAPED.type()) {
             CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.brickOven), "XXX", "X X", "XXX", 'X', new ItemStack(BlockListener.firedBricks));
 
-            CraftingRegistry.addShapedRecipe(new ItemStack(ItemListener.bronzePickaxe), "XXX", " Y ", " Y ", 'X', new ItemStack(ItemListener.bronzeIngot), 'Y', new ItemStack(Item.STICK));
+            String[][] toolPatterns = new String[][]
+                    {{"XXX", " # ", " # "}, {"X", "#", "#"}, {"XX", "X#", " #"},
+                            {"XX", " #", " #"}, {"X", "X", "#"}};
+            Object[][] toolItems;
+
+            toolItems = new Object[][] {
+                    {ItemListener.aluminiumIngot, ItemListener.bismuthIngot, ItemListener.boronIngot, ItemListener.chromeIngot, ItemListener.cobaltIngot, ItemListener.copperIngot, ItemListener.emerald, ItemListener.nickelIngot, ItemListener.platinumIngot, ItemListener.ruby, ItemListener.sapphire, ItemListener.siliconIngot, ItemListener.silverIngot, ItemListener.tinIngot, ItemListener.leadIngot, ItemListener.titaniumIngot, ItemListener.tungstenIngot, ItemListener.zincIngot, ItemListener.brassIngot, ItemListener.bronzeIngot, ItemListener.steelIngot, ItemListener.osmiumIngot, ItemListener.onyx, ItemListener.magnetiteIngot},
+                    {ItemListener.aluminiumPickaxe, ItemListener.bismuthPickaxe, ItemListener.boronPickaxe, ItemListener.chromePickaxe, ItemListener.cobaltPickaxe, ItemListener.copperPickaxe, ItemListener.emeraldPickaxe, ItemListener.nickelPickaxe, ItemListener.platinumPickaxe, ItemListener.rubyPickaxe, ItemListener.sapphirePickaxe, ItemListener.siliconPickaxe, ItemListener.silverPickaxe, ItemListener.tinPickaxe, ItemListener.leadPickaxe, ItemListener.titaniumPickaxe, ItemListener.tungstenPickaxe, ItemListener.zincPickaxe, ItemListener.brassPickaxe, ItemListener.bronzePickaxe, ItemListener.steelPickaxe, ItemListener.osmiumPickaxe, ItemListener.onyxPickaxe, ItemListener.magnetPickaxe}
+                    //{aluminumshovel, bismuthshovel, boronshovel, chromeshovel, cobaltshovel, coppershovel, emeraldshovel, nickelshovel, platinumshovel, rubyshovel, sapphireshovel, siliconshovel, silvershovel, tinshovel, leadshovel, titaniumshovel, tungstenshovel, zincshovel, brassshovel, bronzeshovel, steelshovel, osmiumshovel, onyxshovel, magnetshovel},
+                    //{aluminumaxe, bismuthaxe, boronaxe, chromeaxe, cobaltaxe, copperaxe, emeraldaxe, nickelaxe, platinumaxe, rubyaxe, sapphireaxe, siliconaxe, silveraxe, tinaxe, leadaxe, titaniumaxe, tungstenaxe, zincaxe, brassaxe, bronzeaxe, steelaxe, osmiumaxe, onyxaxe, magnetaxe},
+                    //{aluminumhoe, bismuthhoe, boronhoe, chromehoe, cobalthoe, copperhoe, emeraldhoe, nickelhoe, platinumhoe, rubyhoe, sapphirehoe, siliconhoe, silverhoe, tinhoe, leadhoe, titaniumhoe, tungstenhoe, zinchoe, brasshoe, bronzehoe, steelhoe, osmiumhoe, onyxhoe, magnethoe},
+                    //{aluminumsword, bismuthsword, boronsword, chromesword, cobaltsword, coppersword, emeraldsword, nickelsword, platinumsword, rubysword, sapphiresword, siliconsword, silversword, tinsword, leadsword, titaniumsword, tungstensword, zincsword, brasssword, bronzesword, steelsword, osmiumsword, onyxsword, magnetsword},
+            };
+
+            for (int i = 0; i < toolItems[0].length; ++i) {
+                Object object = toolItems[0][i];
+                for (int j = 0; j < toolItems.length - 1; ++j) {
+                    Item stick = Item.STICK;
+                    Item item = (Item)toolItems[j + 1][i];
+                    if(item == null)
+                        continue;
+                    CraftingRegistry.addShapedRecipe(new ItemStack(item, 1), toolPatterns[j], ('X'), object, ('#'), stick);
+                }
+            }
 
             CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.coalBlock), "XX", "XX", 'X', new ItemStack(Item.COAL));
             CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.onyxBlock), "XX", "XX", 'X', new ItemStack(ItemListener.onyx));
