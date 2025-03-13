@@ -1,6 +1,7 @@
 package net.newfrontiercraft.nfc.events.init;
 
 import net.mine_diver.unsafeevents.listener.EventListener;
+import net.minecraft.item.Item;
 import net.minecraft.item.ToolMaterial;
 import net.modificationstation.stationapi.api.event.registry.ItemRegistryEvent;
 import net.modificationstation.stationapi.api.item.tool.TagToolLevel;
@@ -87,12 +88,14 @@ public class ItemListener {
 
     @EventListener
     public void registerItems(ItemRegistryEvent event) {
+        // New tool levels
         ToolLevel crude = new TagToolLevel(TagKey.of(BlockRegistry.KEY, MOD_ID.id("needs_tool_level_crude")));
         ToolLevel basic = new TagToolLevel(TagKey.of(BlockRegistry.KEY, MOD_ID.id("needs_tool_level_basic")));
         ToolLevel iron = ToolMaterial.IRON.getToolLevel();
         ToolLevel advanced = new TagToolLevel(TagKey.of(BlockRegistry.KEY, MOD_ID.id("needs_tool_level_advanced")));
         ToolLevel diamond = ToolMaterial.DIAMOND.getToolLevel();
 
+        // Tool level reconnections
         ToolLevel.GRAPH.putEdge(ToolMaterial.STONE.getToolLevel(), crude);
         ToolLevel.GRAPH.putEdge(crude, basic);
         ToolLevel.GRAPH.putEdge(basic, ToolMaterial.IRON.getToolLevel());
@@ -101,6 +104,7 @@ public class ItemListener {
         ToolLevel.GRAPH.removeEdge(ToolMaterial.STONE.getToolLevel(), ToolMaterial.IRON.getToolLevel());
         ToolLevel.GRAPH.removeEdge(ToolMaterial.IRON.getToolLevel(), ToolMaterial.DIAMOND.getToolLevel());
 
+        // New tool materials
         ToolMaterial aluminiumMaterial = ToolMaterialFactory.create("aluminium", 1, 35, 5.0F, 3).toolLevel(crude);
         ToolMaterial bismuthMaterial = ToolMaterialFactory.create("bismuth", 1, 65, 3.5F, 3).toolLevel(crude);
         ToolMaterial copperMaterial = ToolMaterialFactory.create("copper", 1, 50, 4.0F, 3).toolLevel(crude);
@@ -127,6 +131,64 @@ public class ItemListener {
 
         ToolMaterial osmiumMaterial = ToolMaterialFactory.create("osmium", 1, 10000, 9.0F, 20).toolLevel(diamond);
 
+        // Rebalancing of Vanilla tool durabilities
+        Item.WOODEN_SWORD.setMaxDamage(30);
+        Item.WOODEN_SHOVEL.setMaxDamage(30);
+        Item.WOODEN_PICKAXE.setMaxDamage(30);
+        Item.WOODEN_AXE.setMaxDamage(30);
+        Item.WOODEN_HOE.setMaxDamage(30);
+
+        Item.STONE_SWORD.setMaxDamage(40);
+        Item.STONE_SHOVEL.setMaxDamage(40);
+        Item.STONE_PICKAXE.setMaxDamage(40);
+        Item.STONE_AXE.setMaxDamage(40);
+        Item.STONE_HOE.setMaxDamage(40);
+
+        Item.IRON_SWORD.setMaxDamage(512);
+        Item.IRON_SHOVEL.setMaxDamage(512);
+        Item.IRON_PICKAXE.setMaxDamage(512);
+        Item.IRON_AXE.setMaxDamage(512);
+        Item.IRON_HOE.setMaxDamage(512);
+
+        Item.GOLDEN_SWORD.setMaxDamage(20);
+        Item.GOLDEN_SHOVEL.setMaxDamage(20);
+        Item.GOLDEN_PICKAXE.setMaxDamage(20);
+        Item.GOLDEN_AXE.setMaxDamage(20);
+        Item.GOLDEN_HOE.setMaxDamage(20);
+
+        Item.DIAMOND_SWORD.setMaxDamage(3250);
+        Item.DIAMOND_SHOVEL.setMaxDamage(3250);
+        Item.DIAMOND_PICKAXE.setMaxDamage(3250);
+        Item.DIAMOND_AXE.setMaxDamage(3250);
+        Item.DIAMOND_HOE.setMaxDamage(3250);
+
+        // Rebalancing of Vanilla armour durabilities
+        Item.LEATHER_HELMET.setMaxDamage(48);
+        Item.LEATHER_CHESTPLATE.setMaxDamage(48);
+        Item.LEATHER_LEGGINGS.setMaxDamage(48);
+        Item.LEATHER_BOOTS.setMaxDamage(48);
+
+        Item.CHAIN_HELMET.setMaxDamage(96);
+        Item.CHAIN_CHESTPLATE.setMaxDamage(96);
+        Item.CHAIN_LEGGINGS.setMaxDamage(96);
+        Item.CHAIN_BOOTS.setMaxDamage(96);
+
+        Item.IRON_HELMET.setMaxDamage(192);
+        Item.IRON_CHESTPLATE.setMaxDamage(192);
+        Item.IRON_LEGGINGS.setMaxDamage(192);
+        Item.IRON_BOOTS.setMaxDamage(192);
+
+        Item.GOLDEN_HELMET.setMaxDamage(20);
+        Item.GOLDEN_CHESTPLATE.setMaxDamage(20);
+        Item.GOLDEN_LEGGINGS.setMaxDamage(20);
+        Item.GOLDEN_BOOTS.setMaxDamage(20);
+
+        Item.DIAMOND_HELMET.setMaxDamage(800);
+        Item.DIAMOND_CHESTPLATE.setMaxDamage(800);
+        Item.DIAMOND_LEGGINGS.setMaxDamage(800);
+        Item.DIAMOND_BOOTS.setMaxDamage(800);
+
+        // New items
         aluminiumPickaxe = new LazyPickaxeTemplate(Identifier.of(MOD_ID, "aluminium_pickaxe"), aluminiumMaterial);
         bismuthPickaxe = new LazyPickaxeTemplate(Identifier.of(MOD_ID, "bismuth_pickaxe"), bismuthMaterial);
         copperPickaxe = new LazyPickaxeTemplate(Identifier.of(MOD_ID, "copper_pickaxe"), copperMaterial);
