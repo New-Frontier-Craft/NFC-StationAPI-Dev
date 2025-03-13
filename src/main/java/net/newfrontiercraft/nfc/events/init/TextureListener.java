@@ -24,6 +24,7 @@ public class TextureListener {
         String ingotItems = "item/ingots/";
         String pickaxes = "item/tools/pickaxes/";
         String swords = "item/tools/swords/";
+        String shovels = "item/tools/shovels/";
         String oreDrops = "item/ore_drops/";
 
         BlockListener.platedStone.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, decorativeBlocks + "plated_stone")).index);
@@ -163,7 +164,30 @@ public class TextureListener {
         ItemListener.emeraldSword.setTexture(Identifier.of(MOD_ID, swords + "emerald"));
         ItemListener.osmiumSword.setTexture(Identifier.of(MOD_ID, swords + "osmium"));
 
-        ItemListener.cookedEgg.setTexture(Identifier.of(MOD_ID, foodItems + "cooked_egg"));
+        ItemListener.aluminiumShovel.setTexture(Identifier.of(MOD_ID, shovels + "aluminium"));
+        ItemListener.bismuthShovel.setTexture(Identifier.of(MOD_ID, shovels + "bismuth"));
+        ItemListener.copperShovel.setTexture(Identifier.of(MOD_ID, shovels + "copper"));
+        ItemListener.leadShovel.setTexture(Identifier.of(MOD_ID, shovels + "lead"));
+        ItemListener.tinShovel.setTexture(Identifier.of(MOD_ID, shovels + "tin"));
+        ItemListener.zincShovel.setTexture(Identifier.of(MOD_ID, shovels + "zinc"));
+        ItemListener.boronShovel.setTexture(Identifier.of(MOD_ID, shovels + "boron"));
+        ItemListener.brassShovel.setTexture(Identifier.of(MOD_ID, shovels + "brass"));
+        ItemListener.bronzeShovel.setTexture(Identifier.of(MOD_ID, shovels + "bronze"));
+        ItemListener.nickelShovel.setTexture(Identifier.of(MOD_ID, shovels + "nickel"));
+        ItemListener.platinumShovel.setTexture(Identifier.of(MOD_ID, shovels + "platinum"));
+        ItemListener.silverShovel.setTexture(Identifier.of(MOD_ID, shovels + "silver"));
+        ItemListener.chromeShovel.setTexture(Identifier.of(MOD_ID, shovels + "chrome"));
+        ItemListener.cobaltShovel.setTexture(Identifier.of(MOD_ID, shovels + "cobalt"));
+        ItemListener.siliconShovel.setTexture(Identifier.of(MOD_ID, shovels + "silicon"));
+        ItemListener.magnetShovel.setTexture(Identifier.of(MOD_ID, shovels + "magnet"));
+        ItemListener.steelShovel.setTexture(Identifier.of(MOD_ID, shovels + "steel"));
+        ItemListener.titaniumShovel.setTexture(Identifier.of(MOD_ID, shovels + "titanium"));
+        ItemListener.tungstenShovel.setTexture(Identifier.of(MOD_ID, shovels + "tungsten"));
+        ItemListener.onyxShovel.setTexture(Identifier.of(MOD_ID, shovels + "onyx"));
+        ItemListener.sapphireShovel.setTexture(Identifier.of(MOD_ID, shovels + "sapphire"));
+        ItemListener.rubyShovel.setTexture(Identifier.of(MOD_ID, shovels + "ruby"));
+        ItemListener.emeraldShovel.setTexture(Identifier.of(MOD_ID, shovels + "emerald"));
+        ItemListener.osmiumShovel.setTexture(Identifier.of(MOD_ID, shovels + "osmium"));
 
         ItemListener.aluminiumIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "aluminium_ingot"));
         ItemListener.copperIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "copper_ingot"));
@@ -193,5 +217,7 @@ public class TextureListener {
         ItemListener.sapphire.setTexture(Identifier.of(MOD_ID, oreDrops + "sapphire"));
         ItemListener.ruby.setTexture(Identifier.of(MOD_ID, oreDrops + "ruby"));
         ItemListener.emerald.setTexture(Identifier.of(MOD_ID, oreDrops + "emerald"));
+
+        ItemListener.cookedEgg.setTexture(Identifier.of(MOD_ID, foodItems + "cooked_egg"));
     }
 }

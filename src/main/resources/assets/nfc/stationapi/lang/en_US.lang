@@ -79,9 +79,6 @@ tile.nfc.pebble_medium.name=Medium Pebble
 tile.nfc.pebble_large.name=Large Pebble
 
 
-item.nfc.cooked_egg.name=Cooked Egg
-
-
 item.nfc.aluminium_pickaxe.name=Aluminium Pickaxe
 item.nfc.bismuth_pickaxe.name=Bismuth Pickaxe
 item.nfc.copper_pickaxe.name=Copper Pickaxe
@@ -132,6 +129,31 @@ item.nfc.ruby_sword.name=Ruby Sword
 item.nfc.emerald_sword.name=Emerald Sword
 item.nfc.osmium_sword.name=Osmium Sword
 
+item.nfc.aluminium_shovel.name=Aluminium Shovel
+item.nfc.bismuth_shovel.name=Bismuth Shovel
+item.nfc.copper_shovel.name=Copper Shovel
+item.nfc.lead_shovel.name=Lead Shovel
+item.nfc.tin_shovel.name=Tin Shovel
+item.nfc.zinc_shovel.name=Zinc Shovel
+item.nfc.boron_shovel.name=Boron Shovel
+item.nfc.brass_shovel.name=Brass Shovel
+item.nfc.bronze_shovel.name=Bronze Shovel
+item.nfc.nickel_shovel.name=Nickel Shovel
+item.nfc.platinum_shovel.name=Platinum Shovel
+item.nfc.silver_shovel.name=Silver Shovel
+item.nfc.chrome_shovel.name=Chrome Shovel
+item.nfc.cobalt_shovel.name=Cobalt Shovel
+item.nfc.silicon_shovel.name=Silicon Shovel
+item.nfc.magnet_shovel.name=Magnet Shovel
+item.nfc.steel_shovel.name=Steel Shovel
+item.nfc.titanium_shovel.name=Titanium Shovel
+item.nfc.tungsten_shovel.name=Tungsten Shovel
+item.nfc.onyx_shovel.name=Onyx Shovel
+item.nfc.sapphire_shovel.name=Sapphire Shovel
+item.nfc.ruby_shovel.name=Ruby Shovel
+item.nfc.emerald_shovel.name=Emerald Shovel
+item.nfc.osmium_shovel.name=Osmium Shovel
+
 item.nfc.aluminium_ingot.name=Aluminium Ingot
 item.nfc.copper_ingot.name=Copper Ingot
 item.nfc.tin_ingot.name=Tin Ingot
@@ -160,3 +182,5 @@ item.nfc.onyx.name=Onyx
 item.nfc.sapphire.name=Sapphire
 item.nfc.ruby.name=Ruby
 item.nfc.emerald.name=Emerald
+
+item.nfc.cooked_egg.name=Cooked Egg

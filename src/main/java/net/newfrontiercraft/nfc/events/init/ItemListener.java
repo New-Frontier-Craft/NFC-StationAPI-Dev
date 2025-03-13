@@ -10,14 +10,13 @@ import net.modificationstation.stationapi.api.item.tool.ToolMaterialFactory;
 import net.modificationstation.stationapi.api.mod.entrypoint.Entrypoint;
 import net.modificationstation.stationapi.api.registry.BlockRegistry;
 import net.modificationstation.stationapi.api.tag.TagKey;
+import net.modificationstation.stationapi.api.template.item.TemplateItem;
 import net.modificationstation.stationapi.api.template.item.TemplatePickaxeItem;
+import net.modificationstation.stationapi.api.template.item.TemplateShovelItem;
 import net.modificationstation.stationapi.api.template.item.TemplateSwordItem;
 import net.modificationstation.stationapi.api.util.Identifier;
 import net.modificationstation.stationapi.api.util.Namespace;
-import net.newfrontiercraft.nfc.item.LazyFoodTemplate;
-import net.newfrontiercraft.nfc.item.LazyItemTemplate;
-import net.newfrontiercraft.nfc.item.LazyPickaxeTemplate;
-import net.newfrontiercraft.nfc.item.LazySwordTemplate;
+import net.newfrontiercraft.nfc.item.*;
 
 public class ItemListener {
 
@@ -46,7 +45,6 @@ public class ItemListener {
             bronzeIngot,
             steelIngot,
             osmiumIngot,
-
             anthracite,
             netherAsh,
             onyx,
@@ -61,18 +59,15 @@ public class ItemListener {
             leadPickaxe,
             tinPickaxe,
             zincPickaxe,
-
             boronPickaxe,
             brassPickaxe,
             bronzePickaxe,
             nickelPickaxe,
             platinumPickaxe,
             silverPickaxe,
-
             chromePickaxe,
             cobaltPickaxe,
             siliconPickaxe,
-
             magnetPickaxe,
             steelPickaxe,
             titaniumPickaxe,
@@ -81,9 +76,7 @@ public class ItemListener {
             sapphirePickaxe,
             rubyPickaxe,
             emeraldPickaxe,
-
             osmiumPickaxe;
-
 
     public static TemplateSwordItem
             aluminiumSword,
@@ -92,18 +85,15 @@ public class ItemListener {
             leadSword,
             tinSword,
             zincSword,
-
             boronSword,
             brassSword,
             bronzeSword,
             nickelSword,
             platinumSword,
             silverSword,
-
             chromeSword,
             cobaltSword,
             siliconSword,
-
             magnetSword,
             steelSword,
             titaniumSword,
@@ -112,8 +102,33 @@ public class ItemListener {
             sapphireSword,
             rubySword,
             emeraldSword,
-
             osmiumSword;
+
+    public static TemplateShovelItem
+            aluminiumShovel,
+            bismuthShovel,
+            copperShovel,
+            leadShovel,
+            tinShovel,
+            zincShovel,
+            boronShovel,
+            brassShovel,
+            bronzeShovel,
+            nickelShovel,
+            platinumShovel,
+            silverShovel,
+            chromeShovel,
+            cobaltShovel,
+            siliconShovel,
+            magnetShovel,
+            steelShovel,
+            titaniumShovel,
+            tungstenShovel,
+            onyxShovel,
+            sapphireShovel,
+            rubyShovel,
+            emeraldShovel,
+            osmiumShovel;
 
     @Entrypoint.Namespace
     public static Namespace MOD_ID;
@@ -271,7 +286,30 @@ public class ItemListener {
         emeraldSword = new LazySwordTemplate(Identifier.of(MOD_ID, "emerald_sword"), gemMaterial);
         osmiumSword = new LazySwordTemplate(Identifier.of(MOD_ID, "osmium_sword"), osmiumMaterial);
 
-        cookedEgg = new LazyFoodTemplate(Identifier.of(MOD_ID, "cooked_egg"), 4, false);
+        aluminiumShovel = new LazyShovelTemplate(Identifier.of(MOD_ID, "aluminium_shovel"), aluminiumMaterial);
+        bismuthShovel = new LazyShovelTemplate(Identifier.of(MOD_ID, "bismuth_shovel"), bismuthMaterial);
+        copperShovel = new LazyShovelTemplate(Identifier.of(MOD_ID, "copper_shovel"), copperMaterial);
+        leadShovel = new LazyShovelTemplate(Identifier.of(MOD_ID, "lead_shovel"), leadMaterial);
+        tinShovel = new LazyShovelTemplate(Identifier.of(MOD_ID, "tin_shovel"), tinMaterial);
+        zincShovel = new LazyShovelTemplate(Identifier.of(MOD_ID, "zinc_shovel"), zincMaterial);
+        boronShovel = new LazyShovelTemplate(Identifier.of(MOD_ID, "boron_shovel"), boronMaterial);
+        brassShovel = new LazyShovelTemplate(Identifier.of(MOD_ID, "brass_shovel"), brassMaterial);
+        bronzeShovel = new LazyShovelTemplate(Identifier.of(MOD_ID, "bronze_shovel"), bronzeMaterial);
+        nickelShovel = new LazyShovelTemplate(Identifier.of(MOD_ID, "nickel_shovel"), nickelMaterial);
+        platinumShovel = new LazyShovelTemplate(Identifier.of(MOD_ID, "platinum_shovel"), platinumMaterial);
+        silverShovel = new LazyShovelTemplate(Identifier.of(MOD_ID, "silver_shovel"), silverMaterial);
+        chromeShovel = new LazyShovelTemplate(Identifier.of(MOD_ID, "chrome_shovel"), chromeMaterial);
+        cobaltShovel = new LazyShovelTemplate(Identifier.of(MOD_ID, "cobalt_shovel"), cobaltMaterial);
+        siliconShovel = new LazyShovelTemplate(Identifier.of(MOD_ID, "silicon_shovel"), siliconMaterial);
+        magnetShovel = new LazyShovelTemplate(Identifier.of(MOD_ID, "magnet_shovel"), magnetMaterial);
+        steelShovel = new LazyShovelTemplate(Identifier.of(MOD_ID, "steel_shovel"), steelMaterial);
+        titaniumShovel = new LazyShovelTemplate(Identifier.of(MOD_ID, "titanium_shovel"), titaniumMaterial);
+        tungstenShovel = new LazyShovelTemplate(Identifier.of(MOD_ID, "tungsten_shovel"), tungstenMaterial);
+        onyxShovel = new LazyShovelTemplate(Identifier.of(MOD_ID, "onyx_shovel"), gemMaterial);
+        sapphireShovel = new LazyShovelTemplate(Identifier.of(MOD_ID, "sapphire_shovel"), gemMaterial);
+        rubyShovel = new LazyShovelTemplate(Identifier.of(MOD_ID, "ruby_shovel"), gemMaterial);
+        emeraldShovel = new LazyShovelTemplate(Identifier.of(MOD_ID, "emerald_shovel"), gemMaterial);
+        osmiumShovel = new LazyShovelTemplate(Identifier.of(MOD_ID, "osmium_shovel"), osmiumMaterial);
 
         aluminiumIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "aluminium_ingot"));
         copperIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "copper_ingot"));
@@ -301,6 +339,8 @@ public class ItemListener {
         sapphire = new LazyItemTemplate(Identifier.of(MOD_ID, "sapphire"));
         ruby = new LazyItemTemplate(Identifier.of(MOD_ID, "ruby"));
         emerald = new LazyItemTemplate(Identifier.of(MOD_ID, "emerald"));
+
+        cookedEgg = new LazyFoodTemplate(Identifier.of(MOD_ID, "cooked_egg"), 4, false);
 
         BlockListener.anthraciteOre.specifyCustomDrop(anthracite.id);
         BlockListener.netherAshOre.specifyCustomDrop(netherAsh.id);
