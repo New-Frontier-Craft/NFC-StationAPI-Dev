@@ -112,34 +112,34 @@ public class TextureListener {
         BlockListener.pebbleMedium.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, woldGeneration + "pebble_medium")).index);
         BlockListener.pebbleLarge.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, woldGeneration + "pebble_large")).index);
 
-        ItemListener.aluminiumPickaxe.setTexture(Identifier.of(MOD_ID, pickaxes + "aluminium_pickaxe"));
-        ItemListener.bismuthPickaxe.setTexture(Identifier.of(MOD_ID, pickaxes + "bismuth_pickaxe"));
-        ItemListener.copperPickaxe.setTexture(Identifier.of(MOD_ID, pickaxes + "copper_pickaxe"));
-        ItemListener.leadPickaxe.setTexture(Identifier.of(MOD_ID, pickaxes + "lead_pickaxe"));
-        ItemListener.tinPickaxe.setTexture(Identifier.of(MOD_ID, pickaxes + "tin_pickaxe"));
-        ItemListener.zincPickaxe.setTexture(Identifier.of(MOD_ID, pickaxes + "zinc_pickaxe"));
+        ItemListener.aluminiumPickaxe.setTexture(Identifier.of(MOD_ID, pickaxes + "aluminium"));
+        ItemListener.bismuthPickaxe.setTexture(Identifier.of(MOD_ID, pickaxes + "bismuth"));
+        ItemListener.copperPickaxe.setTexture(Identifier.of(MOD_ID, pickaxes + "copper"));
+        ItemListener.leadPickaxe.setTexture(Identifier.of(MOD_ID, pickaxes + "lead"));
+        ItemListener.tinPickaxe.setTexture(Identifier.of(MOD_ID, pickaxes + "tin"));
+        ItemListener.zincPickaxe.setTexture(Identifier.of(MOD_ID, pickaxes + "zinc"));
 
-        ItemListener.boronPickaxe.setTexture(Identifier.of(MOD_ID, pickaxes + "boron_pickaxe"));
-        ItemListener.brassPickaxe.setTexture(Identifier.of(MOD_ID, pickaxes + "brass_pickaxe"));
-        ItemListener.bronzePickaxe.setTexture(Identifier.of(MOD_ID, pickaxes + "bronze_pickaxe"));
-        ItemListener.nickelPickaxe.setTexture(Identifier.of(MOD_ID, pickaxes + "nickel_pickaxe"));
-        ItemListener.platinumPickaxe.setTexture(Identifier.of(MOD_ID, pickaxes + "platinum_pickaxe"));
-        ItemListener.silverPickaxe.setTexture(Identifier.of(MOD_ID, pickaxes + "silver_pickaxe"));
+        ItemListener.boronPickaxe.setTexture(Identifier.of(MOD_ID, pickaxes + "boron"));
+        ItemListener.brassPickaxe.setTexture(Identifier.of(MOD_ID, pickaxes + "brass"));
+        ItemListener.bronzePickaxe.setTexture(Identifier.of(MOD_ID, pickaxes + "bronze"));
+        ItemListener.nickelPickaxe.setTexture(Identifier.of(MOD_ID, pickaxes + "nickel"));
+        ItemListener.platinumPickaxe.setTexture(Identifier.of(MOD_ID, pickaxes + "platinum"));
+        ItemListener.silverPickaxe.setTexture(Identifier.of(MOD_ID, pickaxes + "silver"));
 
-        ItemListener.chromePickaxe.setTexture(Identifier.of(MOD_ID, pickaxes + "chrome_pickaxe"));
-        ItemListener.cobaltPickaxe.setTexture(Identifier.of(MOD_ID, pickaxes + "cobalt_pickaxe"));
-        ItemListener.siliconPickaxe.setTexture(Identifier.of(MOD_ID, pickaxes + "silicon_pickaxe"));
+        ItemListener.chromePickaxe.setTexture(Identifier.of(MOD_ID, pickaxes + "chrome"));
+        ItemListener.cobaltPickaxe.setTexture(Identifier.of(MOD_ID, pickaxes + "cobalt"));
+        ItemListener.siliconPickaxe.setTexture(Identifier.of(MOD_ID, pickaxes + "silicon"));
 
-        ItemListener.magnetPickaxe.setTexture(Identifier.of(MOD_ID, pickaxes + "magnet_pickaxe"));
-        ItemListener.steelPickaxe.setTexture(Identifier.of(MOD_ID, pickaxes + "steel_pickaxe"));
-        ItemListener.titaniumPickaxe.setTexture(Identifier.of(MOD_ID, pickaxes + "titanium_pickaxe"));
-        ItemListener.tungstenPickaxe.setTexture(Identifier.of(MOD_ID, pickaxes + "tungsten_pickaxe"));
-        ItemListener.onyxPickaxe.setTexture(Identifier.of(MOD_ID, pickaxes + "onyx_pickaxe"));
-        ItemListener.sapphirePickaxe.setTexture(Identifier.of(MOD_ID, pickaxes + "sapphire_pickaxe"));
-        ItemListener.rubyPickaxe.setTexture(Identifier.of(MOD_ID, pickaxes + "ruby_pickaxe"));
-        ItemListener.emeraldPickaxe.setTexture(Identifier.of(MOD_ID, pickaxes + "emerald_pickaxe"));
+        ItemListener.magnetPickaxe.setTexture(Identifier.of(MOD_ID, pickaxes + "magnet"));
+        ItemListener.steelPickaxe.setTexture(Identifier.of(MOD_ID, pickaxes + "steel"));
+        ItemListener.titaniumPickaxe.setTexture(Identifier.of(MOD_ID, pickaxes + "titanium"));
+        ItemListener.tungstenPickaxe.setTexture(Identifier.of(MOD_ID, pickaxes + "tungsten"));
+        ItemListener.onyxPickaxe.setTexture(Identifier.of(MOD_ID, pickaxes + "onyx"));
+        ItemListener.sapphirePickaxe.setTexture(Identifier.of(MOD_ID, pickaxes + "sapphire"));
+        ItemListener.rubyPickaxe.setTexture(Identifier.of(MOD_ID, pickaxes + "ruby"));
+        ItemListener.emeraldPickaxe.setTexture(Identifier.of(MOD_ID, pickaxes + "emerald"));
 
-        ItemListener.osmiumPickaxe.setTexture(Identifier.of(MOD_ID, pickaxes + "osmium_pickaxe"));
+        ItemListener.osmiumPickaxe.setTexture(Identifier.of(MOD_ID, pickaxes + "osmium"));
 
         ItemListener.cookedEgg.setTexture(Identifier.of(MOD_ID, foodItems + "cooked_egg"));
 
