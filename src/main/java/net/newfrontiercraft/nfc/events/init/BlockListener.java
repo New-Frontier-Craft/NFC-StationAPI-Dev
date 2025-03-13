@@ -7,7 +7,6 @@ import net.modificationstation.stationapi.api.event.registry.BlockRegistryEvent;
 import net.modificationstation.stationapi.api.mod.entrypoint.Entrypoint;
 import net.modificationstation.stationapi.api.util.Identifier;
 import net.modificationstation.stationapi.api.util.Namespace;
-import net.modificationstation.stationapi.api.util.Null;
 import net.newfrontiercraft.nfc.block.*;
 
 public class BlockListener {
@@ -98,7 +97,7 @@ public class BlockListener {
     public static CarpentryWorkstationBlock carpentryWorkstation;
 
     @Entrypoint.Namespace
-    public static final Namespace MOD_ID = Null.get();
+    public static Namespace MOD_ID;
 
     @EventListener
     public void registerBlocks(BlockRegistryEvent event) {

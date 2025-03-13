@@ -5,17 +5,15 @@ import net.modificationstation.stationapi.api.event.block.entity.BlockEntityRegi
 import net.modificationstation.stationapi.api.mod.entrypoint.Entrypoint;
 import net.modificationstation.stationapi.api.util.Identifier;
 import net.modificationstation.stationapi.api.util.Namespace;
-import net.modificationstation.stationapi.api.util.Null;
 import net.newfrontiercraft.nfc.block.entity.BrickOvenBlockEntity;
 
 public class BlockEntityListener {
 
     @Entrypoint.Namespace
-    public static final Namespace MOD_ID = Null.get();
+    public static Namespace MOD_ID;
 
     @EventListener
-    private static void registerBlockEntities(BlockEntityRegisterEvent event)
-    {
+    public static void registerBlockEntities(BlockEntityRegisterEvent event) {
         event.register(BrickOvenBlockEntity.class, String.valueOf(Identifier.of(MOD_ID, "block_entity_brick_oven")));
     }
 

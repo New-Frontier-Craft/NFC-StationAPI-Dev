@@ -12,7 +12,6 @@ import net.modificationstation.stationapi.api.tag.TagKey;
 import net.modificationstation.stationapi.api.template.item.TemplatePickaxeItem;
 import net.modificationstation.stationapi.api.util.Identifier;
 import net.modificationstation.stationapi.api.util.Namespace;
-import net.modificationstation.stationapi.api.util.Null;
 import net.newfrontiercraft.nfc.item.LazyFoodTemplate;
 import net.newfrontiercraft.nfc.item.LazyItemTemplate;
 import net.newfrontiercraft.nfc.item.LazyPickaxeTemplate;
@@ -84,7 +83,7 @@ public class ItemListener {
 
 
     @Entrypoint.Namespace
-    public static final Namespace MOD_ID = Null.get();
+    public static Namespace MOD_ID;
 
     @EventListener
     public void registerItems(ItemRegistryEvent event) {

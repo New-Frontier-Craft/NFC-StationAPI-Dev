@@ -8,7 +8,6 @@ import net.modificationstation.stationapi.api.event.recipe.RecipeRegisterEvent;
 import net.modificationstation.stationapi.api.recipe.CraftingRegistry;
 import net.modificationstation.stationapi.api.recipe.SmeltingRegistry;
 import net.modificationstation.stationapi.api.util.Identifier;
-import net.newfrontiercraft.nfc.item.LazyItemTemplate;
 import net.newfrontiercraft.nfc.registry.CarpentryRecipes;
 
 public class RecipeListener {

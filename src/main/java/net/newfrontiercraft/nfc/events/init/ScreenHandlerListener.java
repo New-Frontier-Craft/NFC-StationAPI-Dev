@@ -10,7 +10,6 @@ import net.modificationstation.stationapi.api.event.registry.GuiHandlerRegistryE
 import net.modificationstation.stationapi.api.mod.entrypoint.Entrypoint;
 import net.modificationstation.stationapi.api.util.Identifier;
 import net.modificationstation.stationapi.api.util.Namespace;
-import net.modificationstation.stationapi.api.util.Null;
 import net.modificationstation.stationapi.api.registry.Registry;
 import net.newfrontiercraft.nfc.gui.BrickOvenGui;
 import net.newfrontiercraft.nfc.block.entity.BrickOvenBlockEntity;
@@ -19,7 +18,7 @@ import net.newfrontiercraft.nfc.gui.CarpentryWorkstationGui;
 public class ScreenHandlerListener {
 
     @Entrypoint.Namespace
-    public static final Namespace MOD_ID = Null.get();
+    public static Namespace MOD_ID;
 
     @EventListener
     public void registerGuiHandlers(GuiHandlerRegistryEvent event) {
