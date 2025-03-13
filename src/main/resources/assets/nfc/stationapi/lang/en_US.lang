@@ -88,18 +88,15 @@ item.nfc.copper_pickaxe.name=Copper Pickaxe
 item.nfc.lead_pickaxe.name=Lead Pickaxe
 item.nfc.tin_pickaxe.name=Tin Pickaxe
 item.nfc.zinc_pickaxe.name=Zinc Pickaxe
-
 item.nfc.boron_pickaxe.name=Boron Pickaxe
 item.nfc.brass_pickaxe.name=Brass Pickaxe
 item.nfc.bronze_pickaxe.name=Bronze Pickaxe
 item.nfc.nickel_pickaxe.name=Nickel Pickaxe
 item.nfc.platinum_pickaxe.name=Platinum Pickaxe
 item.nfc.silver_pickaxe.name=Silver Pickaxe
-
 item.nfc.chrome_pickaxe.name=Chrome Pickaxe
 item.nfc.cobalt_pickaxe.name=Cobalt Pickaxe
 item.nfc.silicon_pickaxe.name=Silicon Pickaxe
-
 item.nfc.magnet_pickaxe.name=Magnet Pickaxe
 item.nfc.steel_pickaxe.name=Steel Pickaxe
 item.nfc.titanium_pickaxe.name=Titanium Pickaxe
@@ -108,8 +105,32 @@ item.nfc.onyx_pickaxe.name=Onyx Pickaxe
 item.nfc.sapphire_pickaxe.name=Sapphire Pickaxe
 item.nfc.ruby_pickaxe.name=Ruby Pickaxe
 item.nfc.emerald_pickaxe.name=Emerald Pickaxe
-
 item.nfc.osmium_pickaxe.name=Osmium Pickaxe
+
+item.nfc.aluminium_sword.name=Aluminium Sword
+item.nfc.bismuth_sword.name=Bismuth Sword
+item.nfc.copper_sword.name=Copper Sword
+item.nfc.lead_sword.name=Lead Sword
+item.nfc.tin_sword.name=Tin Sword
+item.nfc.zinc_sword.name=Zinc Sword
+item.nfc.boron_sword.name=Boron Sword
+item.nfc.brass_sword.name=Brass Sword
+item.nfc.bronze_sword.name=Bronze Sword
+item.nfc.nickel_sword.name=Nickel Sword
+item.nfc.platinum_sword.name=Platinum Sword
+item.nfc.silver_sword.name=Silver Sword
+item.nfc.chrome_sword.name=Chrome Sword
+item.nfc.cobalt_sword.name=Cobalt Sword
+item.nfc.silicon_sword.name=Silicon Sword
+item.nfc.magnet_sword.name=Magnet Sword
+item.nfc.steel_sword.name=Steel Sword
+item.nfc.titanium_sword.name=Titanium Sword
+item.nfc.tungsten_sword.name=Tungsten Sword
+item.nfc.onyx_sword.name=Onyx Sword
+item.nfc.sapphire_sword.name=Sapphire Sword
+item.nfc.ruby_sword.name=Ruby Sword
+item.nfc.emerald_sword.name=Emerald Sword
+item.nfc.osmium_sword.name=Osmium Sword
 
 item.nfc.aluminium_ingot.name=Aluminium Ingot
 item.nfc.copper_ingot.name=Copper Ingot

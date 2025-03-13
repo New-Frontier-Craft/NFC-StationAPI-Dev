@@ -23,6 +23,7 @@ public class TextureListener {
         String foodItems = "item/food/";
         String ingotItems = "item/ingots/";
         String pickaxes = "item/tools/pickaxes/";
+        String swords = "item/tools/swords/";
         String oreDrops = "item/ore_drops/";
 
         BlockListener.platedStone.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, decorativeBlocks + "plated_stone")).index);
@@ -118,18 +119,15 @@ public class TextureListener {
         ItemListener.leadPickaxe.setTexture(Identifier.of(MOD_ID, pickaxes + "lead"));
         ItemListener.tinPickaxe.setTexture(Identifier.of(MOD_ID, pickaxes + "tin"));
         ItemListener.zincPickaxe.setTexture(Identifier.of(MOD_ID, pickaxes + "zinc"));
-
         ItemListener.boronPickaxe.setTexture(Identifier.of(MOD_ID, pickaxes + "boron"));
         ItemListener.brassPickaxe.setTexture(Identifier.of(MOD_ID, pickaxes + "brass"));
         ItemListener.bronzePickaxe.setTexture(Identifier.of(MOD_ID, pickaxes + "bronze"));
         ItemListener.nickelPickaxe.setTexture(Identifier.of(MOD_ID, pickaxes + "nickel"));
         ItemListener.platinumPickaxe.setTexture(Identifier.of(MOD_ID, pickaxes + "platinum"));
         ItemListener.silverPickaxe.setTexture(Identifier.of(MOD_ID, pickaxes + "silver"));
-
         ItemListener.chromePickaxe.setTexture(Identifier.of(MOD_ID, pickaxes + "chrome"));
         ItemListener.cobaltPickaxe.setTexture(Identifier.of(MOD_ID, pickaxes + "cobalt"));
         ItemListener.siliconPickaxe.setTexture(Identifier.of(MOD_ID, pickaxes + "silicon"));
-
         ItemListener.magnetPickaxe.setTexture(Identifier.of(MOD_ID, pickaxes + "magnet"));
         ItemListener.steelPickaxe.setTexture(Identifier.of(MOD_ID, pickaxes + "steel"));
         ItemListener.titaniumPickaxe.setTexture(Identifier.of(MOD_ID, pickaxes + "titanium"));
@@ -138,8 +136,32 @@ public class TextureListener {
         ItemListener.sapphirePickaxe.setTexture(Identifier.of(MOD_ID, pickaxes + "sapphire"));
         ItemListener.rubyPickaxe.setTexture(Identifier.of(MOD_ID, pickaxes + "ruby"));
         ItemListener.emeraldPickaxe.setTexture(Identifier.of(MOD_ID, pickaxes + "emerald"));
-
         ItemListener.osmiumPickaxe.setTexture(Identifier.of(MOD_ID, pickaxes + "osmium"));
+
+        ItemListener.aluminiumSword.setTexture(Identifier.of(MOD_ID, swords + "aluminium"));
+        ItemListener.bismuthSword.setTexture(Identifier.of(MOD_ID, swords + "bismuth"));
+        ItemListener.copperSword.setTexture(Identifier.of(MOD_ID, swords + "copper"));
+        ItemListener.leadSword.setTexture(Identifier.of(MOD_ID, swords + "lead"));
+        ItemListener.tinSword.setTexture(Identifier.of(MOD_ID, swords + "tin"));
+        ItemListener.zincSword.setTexture(Identifier.of(MOD_ID, swords + "zinc"));
+        ItemListener.boronSword.setTexture(Identifier.of(MOD_ID, swords + "boron"));
+        ItemListener.brassSword.setTexture(Identifier.of(MOD_ID, swords + "brass"));
+        ItemListener.bronzeSword.setTexture(Identifier.of(MOD_ID, swords + "bronze"));
+        ItemListener.nickelSword.setTexture(Identifier.of(MOD_ID, swords + "nickel"));
+        ItemListener.platinumSword.setTexture(Identifier.of(MOD_ID, swords + "platinum"));
+        ItemListener.silverSword.setTexture(Identifier.of(MOD_ID, swords + "silver"));
+        ItemListener.chromeSword.setTexture(Identifier.of(MOD_ID, swords + "chrome"));
+        ItemListener.cobaltSword.setTexture(Identifier.of(MOD_ID, swords + "cobalt"));
+        ItemListener.siliconSword.setTexture(Identifier.of(MOD_ID, swords + "silicon"));
+        ItemListener.magnetSword.setTexture(Identifier.of(MOD_ID, swords + "magnet"));
+        ItemListener.steelSword.setTexture(Identifier.of(MOD_ID, swords + "steel"));
+        ItemListener.titaniumSword.setTexture(Identifier.of(MOD_ID, swords + "titanium"));
+        ItemListener.tungstenSword.setTexture(Identifier.of(MOD_ID, swords + "tungsten"));
+        ItemListener.onyxSword.setTexture(Identifier.of(MOD_ID, swords + "onyx"));
+        ItemListener.sapphireSword.setTexture(Identifier.of(MOD_ID, swords + "sapphire"));
+        ItemListener.rubySword.setTexture(Identifier.of(MOD_ID, swords + "ruby"));
+        ItemListener.emeraldSword.setTexture(Identifier.of(MOD_ID, swords + "emerald"));
+        ItemListener.osmiumSword.setTexture(Identifier.of(MOD_ID, swords + "osmium"));
 
         ItemListener.cookedEgg.setTexture(Identifier.of(MOD_ID, foodItems + "cooked_egg"));
 

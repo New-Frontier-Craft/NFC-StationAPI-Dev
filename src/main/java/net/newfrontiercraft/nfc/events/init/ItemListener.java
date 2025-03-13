@@ -11,11 +11,13 @@ import net.modificationstation.stationapi.api.mod.entrypoint.Entrypoint;
 import net.modificationstation.stationapi.api.registry.BlockRegistry;
 import net.modificationstation.stationapi.api.tag.TagKey;
 import net.modificationstation.stationapi.api.template.item.TemplatePickaxeItem;
+import net.modificationstation.stationapi.api.template.item.TemplateSwordItem;
 import net.modificationstation.stationapi.api.util.Identifier;
 import net.modificationstation.stationapi.api.util.Namespace;
 import net.newfrontiercraft.nfc.item.LazyFoodTemplate;
 import net.newfrontiercraft.nfc.item.LazyItemTemplate;
 import net.newfrontiercraft.nfc.item.LazyPickaxeTemplate;
+import net.newfrontiercraft.nfc.item.LazySwordTemplate;
 
 public class ItemListener {
 
@@ -83,6 +85,36 @@ public class ItemListener {
             osmiumPickaxe;
 
 
+    public static TemplateSwordItem
+            aluminiumSword,
+            bismuthSword,
+            copperSword,
+            leadSword,
+            tinSword,
+            zincSword,
+
+            boronSword,
+            brassSword,
+            bronzeSword,
+            nickelSword,
+            platinumSword,
+            silverSword,
+
+            chromeSword,
+            cobaltSword,
+            siliconSword,
+
+            magnetSword,
+            steelSword,
+            titaniumSword,
+            tungstenSword,
+            onyxSword,
+            sapphireSword,
+            rubySword,
+            emeraldSword,
+
+            osmiumSword;
+
     @Entrypoint.Namespace
     public static Namespace MOD_ID;
 
@@ -105,7 +137,7 @@ public class ItemListener {
         ToolLevel.GRAPH.removeEdge(ToolMaterial.IRON.getToolLevel(), ToolMaterial.DIAMOND.getToolLevel());
 
         // New tool materials
-        ToolMaterial aluminiumMaterial = ToolMaterialFactory.create("aluminium", 1, 35, 5.0F, 3).toolLevel(crude);
+        ToolMaterial aluminiumMaterial = ToolMaterialFactory.create("aluminium", 1, 35, 5.0F, 3).toolLevel(crude);; // This semicolon exists so my IDE stops falsely greying out the code
         ToolMaterial bismuthMaterial = ToolMaterialFactory.create("bismuth", 1, 65, 3.5F, 3).toolLevel(crude);
         ToolMaterial copperMaterial = ToolMaterialFactory.create("copper", 1, 50, 4.0F, 3).toolLevel(crude);
         ToolMaterial leadMaterial = ToolMaterialFactory.create("lead", 1, 115, 2.5F, 3).toolLevel(crude);
@@ -195,18 +227,15 @@ public class ItemListener {
         leadPickaxe = new LazyPickaxeTemplate(Identifier.of(MOD_ID, "lead_pickaxe"), leadMaterial);
         tinPickaxe = new LazyPickaxeTemplate(Identifier.of(MOD_ID, "tin_pickaxe"), tinMaterial);
         zincPickaxe = new LazyPickaxeTemplate(Identifier.of(MOD_ID, "zinc_pickaxe"), zincMaterial);
-
         boronPickaxe = new LazyPickaxeTemplate(Identifier.of(MOD_ID, "boron_pickaxe"), boronMaterial);
         brassPickaxe = new LazyPickaxeTemplate(Identifier.of(MOD_ID, "brass_pickaxe"), brassMaterial);
         bronzePickaxe = new LazyPickaxeTemplate(Identifier.of(MOD_ID, "bronze_pickaxe"), bronzeMaterial);
         nickelPickaxe = new LazyPickaxeTemplate(Identifier.of(MOD_ID, "nickel_pickaxe"), nickelMaterial);
         platinumPickaxe = new LazyPickaxeTemplate(Identifier.of(MOD_ID, "platinum_pickaxe"), platinumMaterial);
         silverPickaxe = new LazyPickaxeTemplate(Identifier.of(MOD_ID, "silver_pickaxe"), silverMaterial);
-
         chromePickaxe = new LazyPickaxeTemplate(Identifier.of(MOD_ID, "chrome_pickaxe"), chromeMaterial);
         cobaltPickaxe = new LazyPickaxeTemplate(Identifier.of(MOD_ID, "cobalt_pickaxe"), cobaltMaterial);
         siliconPickaxe = new LazyPickaxeTemplate(Identifier.of(MOD_ID, "silicon_pickaxe"), siliconMaterial);
-
         magnetPickaxe = new LazyPickaxeTemplate(Identifier.of(MOD_ID, "magnet_pickaxe"), magnetMaterial);
         steelPickaxe = new LazyPickaxeTemplate(Identifier.of(MOD_ID, "steel_pickaxe"), steelMaterial);
         titaniumPickaxe = new LazyPickaxeTemplate(Identifier.of(MOD_ID, "titanium_pickaxe"), titaniumMaterial);
@@ -215,8 +244,32 @@ public class ItemListener {
         sapphirePickaxe = new LazyPickaxeTemplate(Identifier.of(MOD_ID, "sapphire_pickaxe"), gemMaterial);
         rubyPickaxe = new LazyPickaxeTemplate(Identifier.of(MOD_ID, "ruby_pickaxe"), gemMaterial);
         emeraldPickaxe = new LazyPickaxeTemplate(Identifier.of(MOD_ID, "emerald_pickaxe"), gemMaterial);
-
         osmiumPickaxe = new LazyPickaxeTemplate(Identifier.of(MOD_ID, "osmium_pickaxe"), osmiumMaterial);
+
+        aluminiumSword = new LazySwordTemplate(Identifier.of(MOD_ID, "aluminium_sword"), aluminiumMaterial);
+        bismuthSword = new LazySwordTemplate(Identifier.of(MOD_ID, "bismuth_sword"), bismuthMaterial);
+        copperSword = new LazySwordTemplate(Identifier.of(MOD_ID, "copper_sword"), copperMaterial);
+        leadSword = new LazySwordTemplate(Identifier.of(MOD_ID, "lead_sword"), leadMaterial);
+        tinSword = new LazySwordTemplate(Identifier.of(MOD_ID, "tin_sword"), tinMaterial);
+        zincSword = new LazySwordTemplate(Identifier.of(MOD_ID, "zinc_sword"), zincMaterial);
+        boronSword = new LazySwordTemplate(Identifier.of(MOD_ID, "boron_sword"), boronMaterial);
+        brassSword = new LazySwordTemplate(Identifier.of(MOD_ID, "brass_sword"), brassMaterial);
+        bronzeSword = new LazySwordTemplate(Identifier.of(MOD_ID, "bronze_sword"), bronzeMaterial);
+        nickelSword = new LazySwordTemplate(Identifier.of(MOD_ID, "nickel_sword"), nickelMaterial);
+        platinumSword = new LazySwordTemplate(Identifier.of(MOD_ID, "platinum_sword"), platinumMaterial);
+        silverSword = new LazySwordTemplate(Identifier.of(MOD_ID, "silver_sword"), silverMaterial);
+        chromeSword = new LazySwordTemplate(Identifier.of(MOD_ID, "chrome_sword"), chromeMaterial);
+        cobaltSword = new LazySwordTemplate(Identifier.of(MOD_ID, "cobalt_sword"), cobaltMaterial);
+        siliconSword = new LazySwordTemplate(Identifier.of(MOD_ID, "silicon_sword"), siliconMaterial);
+        magnetSword = new LazySwordTemplate(Identifier.of(MOD_ID, "magnet_sword"), magnetMaterial);
+        steelSword = new LazySwordTemplate(Identifier.of(MOD_ID, "steel_sword"), steelMaterial);
+        titaniumSword = new LazySwordTemplate(Identifier.of(MOD_ID, "titanium_sword"), titaniumMaterial);
+        tungstenSword = new LazySwordTemplate(Identifier.of(MOD_ID, "tungsten_sword"), tungstenMaterial);
+        onyxSword = new LazySwordTemplate(Identifier.of(MOD_ID, "onyx_sword"), gemMaterial);
+        sapphireSword = new LazySwordTemplate(Identifier.of(MOD_ID, "sapphire_sword"), gemMaterial);
+        rubySword = new LazySwordTemplate(Identifier.of(MOD_ID, "ruby_sword"), gemMaterial);
+        emeraldSword = new LazySwordTemplate(Identifier.of(MOD_ID, "emerald_sword"), gemMaterial);
+        osmiumSword = new LazySwordTemplate(Identifier.of(MOD_ID, "osmium_sword"), osmiumMaterial);
 
         cookedEgg = new LazyFoodTemplate(Identifier.of(MOD_ID, "cooked_egg"), 4, false);
 
