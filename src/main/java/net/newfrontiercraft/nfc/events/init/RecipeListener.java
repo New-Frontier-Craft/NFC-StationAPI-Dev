@@ -44,6 +44,28 @@ public class RecipeListener {
                 }
             }
 
+            //Armor
+            String[][] armorPatterns = new String[][]
+                    {{"XXX", "X X"}, {"X X", "XXX", "XXX"},{"XXX", "X X", "X X"}, {"X X", "X X"}};
+            Object[][] armorItems;
+
+            armorItems = new Object[][] {
+                    {ItemListener.aluminiumIngot, ItemListener.bismuthIngot, ItemListener.boronIngot, ItemListener.chromeIngot, ItemListener.cobaltIngot, ItemListener.copperIngot, ItemListener.emerald, ItemListener.nickelIngot, ItemListener.platinumIngot, ItemListener.ruby, ItemListener.sapphire, ItemListener.siliconIngot, ItemListener.silverIngot, ItemListener.tinIngot, ItemListener.titaniumIngot, ItemListener.tungstenIngot, ItemListener.zincIngot, ItemListener.brassIngot, ItemListener.bronzeIngot, ItemListener.steelIngot, ItemListener.osmiumIngot, ItemListener.onyx},
+                    {ItemListener.aluminiumHelmet, ItemListener.bismuthHelmet, ItemListener.boronHelmet, ItemListener.chromeHelmet, ItemListener.cobaltHelmet, ItemListener.copperHelmet, ItemListener.emeraldHelmet, ItemListener.nickelHelmet, ItemListener.platinumHelmet, ItemListener.rubyHelmet, ItemListener.sapphireHelmet, ItemListener.siliconHelmet, ItemListener.silverHelmet, ItemListener.tinHelmet, ItemListener.titaniumHelmet, ItemListener.tungstenHelmet, ItemListener.zincHelmet, ItemListener.brassHelmet, ItemListener.bronzeHelmet, ItemListener.steelHelmet, ItemListener.osmiumHelmet, ItemListener.onyxHelmet},
+                    {ItemListener.aluminiumChestplate, ItemListener.bismuthChestplate, ItemListener.boronChestplate, ItemListener.chromeChestplate, ItemListener.cobaltChestplate, ItemListener.copperChestplate, ItemListener.emeraldChestplate, ItemListener.nickelChestplate, ItemListener.platinumChestplate, ItemListener.rubyChestplate, ItemListener.sapphireChestplate, ItemListener.siliconChestplate, ItemListener.silverChestplate, ItemListener.tinChestplate, ItemListener.titaniumChestplate, ItemListener.tungstenChestplate, ItemListener.zincChestplate, ItemListener.brassChestplate, ItemListener.bronzeChestplate, ItemListener.steelChestplate, ItemListener.osmiumChestplate, ItemListener.onyxChestplate},
+                    {ItemListener.aluminiumLeggings, ItemListener.bismuthLeggings, ItemListener.boronLeggings, ItemListener.chromeLeggings, ItemListener.cobaltLeggings, ItemListener.copperLeggings, ItemListener.emeraldLeggings, ItemListener.nickelLeggings, ItemListener.platinumLeggings, ItemListener.rubyLeggings, ItemListener.sapphireLeggings, ItemListener.siliconLeggings, ItemListener.silverLeggings, ItemListener.tinLeggings, ItemListener.titaniumLeggings, ItemListener.tungstenLeggings, ItemListener.zincLeggings, ItemListener.brassLeggings, ItemListener.bronzeLeggings, ItemListener.steelLeggings, ItemListener.osmiumLeggings, ItemListener.onyxLeggings},
+                    {ItemListener.aluminiumBoots, ItemListener.bismuthBoots, ItemListener.boronBoots, ItemListener.chromeBoots, ItemListener.cobaltBoots, ItemListener.copperBoots, ItemListener.emeraldBoots, ItemListener.nickelBoots, ItemListener.platinumBoots, ItemListener.rubyBoots, ItemListener.sapphireBoots, ItemListener.siliconBoots, ItemListener.silverBoots, ItemListener.tinBoots, ItemListener.titaniumBoots, ItemListener.tungstenBoots, ItemListener.zincBoots, ItemListener.brassBoots, ItemListener.bronzeBoots, ItemListener.steelBoots, ItemListener.osmiumBoots, ItemListener.onyxBoots},
+            };
+            for (int i = 0; i < armorItems[0].length; ++i) {
+                Object object = armorItems[0][i];
+                for (int j = 0; j < armorItems.length - 1; ++j) {
+                    Item item = (Item)armorItems[j + 1][i];
+                    if(item == null)
+                        continue;
+                    CraftingRegistry.addShapedRecipe(new ItemStack(item, 1), armorPatterns[j], ('X'), object);
+                }
+            }
+            
             CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.coalBlock), "XX", "XX", 'X', new ItemStack(Item.COAL));
             CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.onyxBlock), "XX", "XX", 'X', new ItemStack(ItemListener.onyx));
             CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.cobaltBlock), "XX", "XX", 'X', new ItemStack(ItemListener.cobaltIngot));
