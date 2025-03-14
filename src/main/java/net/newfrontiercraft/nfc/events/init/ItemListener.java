@@ -203,6 +203,30 @@ public class ItemListener {
             emeraldHelmet,
             osmiumHelmet;
 
+    public static TemplateArmorItem
+            aluminiumChestplate,
+            bismuthChestplate,
+            copperChestplate,
+            tinChestplate,
+            zincChestplate,
+            boronChestplate,
+            brassChestplate,
+            bronzeChestplate,
+            nickelChestplate,
+            platinumChestplate,
+            silverChestplate,
+            chromeChestplate,
+            cobaltChestplate,
+            siliconChestplate,
+            steelChestplate,
+            titaniumChestplate,
+            tungstenChestplate,
+            onyxChestplate,
+            sapphireChestplate,
+            rubyChestplate,
+            emeraldChestplate,
+            osmiumChestplate;
+
     @Entrypoint.Namespace
     public static Namespace MOD_ID;
 
@@ -480,6 +504,30 @@ public class ItemListener {
         rubyHelmet = new LazyArmorTemplate(Identifier.of(MOD_ID, "ruby_helmet"), 0, 400, "ruby");
         emeraldHelmet = new LazyArmorTemplate(Identifier.of(MOD_ID, "emerald_helmet"), 0, 400, "emerald");
         osmiumHelmet = new LazyArmorTemplate(Identifier.of(MOD_ID, "osmium_helmet"), 0, 1235, "osmium");
+
+        // Chestplates
+        aluminiumChestplate = new LazyArmorTemplate(Identifier.of(MOD_ID, "aluminium_chestplate"), 1, 48, "aluminium");
+        bismuthChestplate = new LazyArmorTemplate(Identifier.of(MOD_ID, "bismuth_chestplate"), 1, 48, "bismuth");
+        copperChestplate = new LazyArmorTemplate(Identifier.of(MOD_ID, "copper_chestplate"), 1, 48, "copper");
+        tinChestplate = new LazyArmorTemplate(Identifier.of(MOD_ID, "tin_chestplate"), 1, 48, "tin");
+        zincChestplate = new LazyArmorTemplate(Identifier.of(MOD_ID, "zinc_chestplate"), 1, 48, "zinc");
+        boronChestplate = new LazyArmorTemplate(Identifier.of(MOD_ID, "boron_chestplate"), 1, 96, "boron");
+        brassChestplate = new LazyArmorTemplate(Identifier.of(MOD_ID, "brass_chestplate"), 1, 96, "brass");
+        bronzeChestplate = new LazyArmorTemplate(Identifier.of(MOD_ID, "bronze_chestplate"), 1, 96, "bronze");
+        nickelChestplate = new LazyArmorTemplate(Identifier.of(MOD_ID, "nickel_chestplate"), 1, 96, "nickel");
+        platinumChestplate = new LazyArmorTemplate(Identifier.of(MOD_ID, "platinum_chestplate"), 1, 96, "platinum");
+        silverChestplate = new LazyArmorTemplate(Identifier.of(MOD_ID, "silver_chestplate"), 1, 96, "silver");
+        chromeChestplate = new LazyArmorTemplate(Identifier.of(MOD_ID, "chrome_chestplate"), 1, 192, "chrome");
+        cobaltChestplate = new LazyArmorTemplate(Identifier.of(MOD_ID, "cobalt_chestplate"), 1, 192, "cobalt");
+        siliconChestplate = new LazyArmorTemplate(Identifier.of(MOD_ID, "silicon_chestplate"), 1, 192, "silicon");
+        steelChestplate = new LazyArmorTemplate(Identifier.of(MOD_ID, "steel_chestplate"), 1, 400, "steel");
+        titaniumChestplate = new LazyArmorTemplate(Identifier.of(MOD_ID, "titanium_chestplate"), 1, 400, "titanium");
+        tungstenChestplate = new LazyArmorTemplate(Identifier.of(MOD_ID, "tungsten_chestplate"), 1, 400, "tungsten");
+        onyxChestplate = new LazyArmorTemplate(Identifier.of(MOD_ID, "onyx_chestplate"), 1, 400, "onyx");
+        sapphireChestplate = new LazyArmorTemplate(Identifier.of(MOD_ID, "sapphire_chestplate"), 1, 400, "sapphire");
+        rubyChestplate = new LazyArmorTemplate(Identifier.of(MOD_ID, "ruby_chestplate"), 1, 400, "ruby");
+        emeraldChestplate = new LazyArmorTemplate(Identifier.of(MOD_ID, "emerald_chestplate"), 1, 400, "emerald");
+        osmiumChestplate = new LazyArmorTemplate(Identifier.of(MOD_ID, "osmium_chestplate"), 1, 1235, "osmium");
 
         // Ore drops
         anthracite = new LazyItemTemplate(Identifier.of(MOD_ID, "anthracite"));
