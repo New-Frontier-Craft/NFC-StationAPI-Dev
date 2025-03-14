@@ -14,19 +14,23 @@ public class TextureListener {
 
     @EventListener
     public void registerTextures(TextureRegisterEvent event) {
+        // Block strings
         String decorativeBlocks = "block/decorative_blocks/";
         String oreBlocks = "block/ores/";
         String oreStorage = "block/ore_storage/";
         String machines = "block/machines/";
         String woldGeneration = "block/world_generation/";
 
-        String foodItems = "item/food/";
+        // Item strings
         String ingotItems = "item/ingots/";
         String pickaxes = "item/tools/pickaxes/";
         String swords = "item/tools/swords/";
         String shovels = "item/tools/shovels/";
+        String axes = "item/tools/axes/";
         String oreDrops = "item/ore_drops/";
+        String foodItems = "item/food/";
 
+        // Decorative blocks
         BlockListener.platedStone.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, decorativeBlocks + "plated_stone")).index);
         BlockListener.platedStoneVerticalCut.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, decorativeBlocks + "plated_stone_vertical_cut")).index);
         BlockListener.platedStoneHorizontalCut.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, decorativeBlocks + "plated_stone_horizontal_cut")).index);
@@ -43,6 +47,7 @@ public class TextureListener {
         BlockListener.firedBricks.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, decorativeBlocks + "fired_bricks")).index);
         BlockListener.osmiumBricks.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, decorativeBlocks + "osmium_bricks")).index);
 
+        // Ores
         BlockListener.netherAshOre.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, oreBlocks + "nether_ash_ore")).index);
         BlockListener.netherUraniniteOre.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, oreBlocks + "nether_uraninite_ore")).index);
         BlockListener.netherGoldOre.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, oreBlocks + "nether_gold_ore")).index);
@@ -71,6 +76,7 @@ public class TextureListener {
         BlockListener.platinumOre.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, oreBlocks + "platinum_ore")).index);
         BlockListener.mysteryOre.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, oreBlocks + "mystery_ore")).index);
 
+        // Machines
         BlockListener.brickOven.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, machines + "brick_oven_front")).index,
                 Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, machines + "brick_oven_front_active")).index,
                 Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, machines + "brick_oven_side")).index);
@@ -82,6 +88,7 @@ public class TextureListener {
                 Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, machines + "carpentry_workstation_bottom")).index,
                 Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, machines + "carpentry_workstation_top")).index);
 
+        // Ore storage blocks
         BlockListener.coalBlock.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, oreStorage + "coal_block")).index);
         BlockListener.onyxBlock.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, oreStorage + "onyx_block")).index);
         BlockListener.cobaltBlock.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, oreStorage + "cobalt_block")).index);
@@ -109,11 +116,13 @@ public class TextureListener {
         BlockListener.brassBlock.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, oreStorage + "brass_block")).index);
         BlockListener.steelBlock.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, oreStorage + "steel_block")).index);
 
+        // Pebble variants
         BlockListener.pebble.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, woldGeneration + "pebble")).index);
         BlockListener.pebbleSmall.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, woldGeneration + "pebble_small")).index);
         BlockListener.pebbleMedium.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, woldGeneration + "pebble_medium")).index);
         BlockListener.pebbleLarge.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, woldGeneration + "pebble_large")).index);
 
+        // Pickaxes
         ItemListener.aluminiumPickaxe.setTexture(Identifier.of(MOD_ID, pickaxes + "aluminium"));
         ItemListener.bismuthPickaxe.setTexture(Identifier.of(MOD_ID, pickaxes + "bismuth"));
         ItemListener.copperPickaxe.setTexture(Identifier.of(MOD_ID, pickaxes + "copper"));
@@ -139,6 +148,7 @@ public class TextureListener {
         ItemListener.emeraldPickaxe.setTexture(Identifier.of(MOD_ID, pickaxes + "emerald"));
         ItemListener.osmiumPickaxe.setTexture(Identifier.of(MOD_ID, pickaxes + "osmium"));
 
+        // Swords
         ItemListener.aluminiumSword.setTexture(Identifier.of(MOD_ID, swords + "aluminium"));
         ItemListener.bismuthSword.setTexture(Identifier.of(MOD_ID, swords + "bismuth"));
         ItemListener.copperSword.setTexture(Identifier.of(MOD_ID, swords + "copper"));
@@ -164,6 +174,7 @@ public class TextureListener {
         ItemListener.emeraldSword.setTexture(Identifier.of(MOD_ID, swords + "emerald"));
         ItemListener.osmiumSword.setTexture(Identifier.of(MOD_ID, swords + "osmium"));
 
+        // Shovels
         ItemListener.aluminiumShovel.setTexture(Identifier.of(MOD_ID, shovels + "aluminium"));
         ItemListener.bismuthShovel.setTexture(Identifier.of(MOD_ID, shovels + "bismuth"));
         ItemListener.copperShovel.setTexture(Identifier.of(MOD_ID, shovels + "copper"));
@@ -189,6 +200,33 @@ public class TextureListener {
         ItemListener.emeraldShovel.setTexture(Identifier.of(MOD_ID, shovels + "emerald"));
         ItemListener.osmiumShovel.setTexture(Identifier.of(MOD_ID, shovels + "osmium"));
 
+        // Axes
+        ItemListener.aluminiumAxe.setTexture(Identifier.of(MOD_ID, axes + "aluminium"));
+        ItemListener.bismuthAxe.setTexture(Identifier.of(MOD_ID, axes + "bismuth"));
+        ItemListener.copperAxe.setTexture(Identifier.of(MOD_ID, axes + "copper"));
+        ItemListener.leadAxe.setTexture(Identifier.of(MOD_ID, axes + "lead"));
+        ItemListener.tinAxe.setTexture(Identifier.of(MOD_ID, axes + "tin"));
+        ItemListener.zincAxe.setTexture(Identifier.of(MOD_ID, axes + "zinc"));
+        ItemListener.boronAxe.setTexture(Identifier.of(MOD_ID, axes + "boron"));
+        ItemListener.brassAxe.setTexture(Identifier.of(MOD_ID, axes + "brass"));
+        ItemListener.bronzeAxe.setTexture(Identifier.of(MOD_ID, axes + "bronze"));
+        ItemListener.nickelAxe.setTexture(Identifier.of(MOD_ID, axes + "nickel"));
+        ItemListener.platinumAxe.setTexture(Identifier.of(MOD_ID, axes + "platinum"));
+        ItemListener.silverAxe.setTexture(Identifier.of(MOD_ID, axes + "silver"));
+        ItemListener.chromeAxe.setTexture(Identifier.of(MOD_ID, axes + "chrome"));
+        ItemListener.cobaltAxe.setTexture(Identifier.of(MOD_ID, axes + "cobalt"));
+        ItemListener.siliconAxe.setTexture(Identifier.of(MOD_ID, axes + "silicon"));
+        ItemListener.magnetAxe.setTexture(Identifier.of(MOD_ID, axes + "magnet"));
+        ItemListener.steelAxe.setTexture(Identifier.of(MOD_ID, axes + "steel"));
+        ItemListener.titaniumAxe.setTexture(Identifier.of(MOD_ID, axes + "titanium"));
+        ItemListener.tungstenAxe.setTexture(Identifier.of(MOD_ID, axes + "tungsten"));
+        ItemListener.onyxAxe.setTexture(Identifier.of(MOD_ID, axes + "onyx"));
+        ItemListener.sapphireAxe.setTexture(Identifier.of(MOD_ID, axes + "sapphire"));
+        ItemListener.rubyAxe.setTexture(Identifier.of(MOD_ID, axes + "ruby"));
+        ItemListener.emeraldAxe.setTexture(Identifier.of(MOD_ID, axes + "emerald"));
+        ItemListener.osmiumAxe.setTexture(Identifier.of(MOD_ID, axes + "osmium"));
+
+        // Ingots
         ItemListener.aluminiumIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "aluminium_ingot"));
         ItemListener.copperIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "copper_ingot"));
         ItemListener.tinIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "tin_ingot"));
@@ -211,6 +249,7 @@ public class TextureListener {
         ItemListener.steelIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "steel_ingot"));
         ItemListener.osmiumIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "osmium_ingot"));
 
+        // Ore drops
         ItemListener.anthracite.setTexture(Identifier.of(MOD_ID, oreDrops + "anthracite"));
         ItemListener.netherAsh.setTexture(Identifier.of(MOD_ID, oreDrops + "nether_ash"));
         ItemListener.onyx.setTexture(Identifier.of(MOD_ID, oreDrops + "onyx"));
@@ -218,6 +257,7 @@ public class TextureListener {
         ItemListener.ruby.setTexture(Identifier.of(MOD_ID, oreDrops + "ruby"));
         ItemListener.emerald.setTexture(Identifier.of(MOD_ID, oreDrops + "emerald"));
 
+        // Food
         ItemListener.cookedEgg.setTexture(Identifier.of(MOD_ID, foodItems + "cooked_egg"));
     }
 }

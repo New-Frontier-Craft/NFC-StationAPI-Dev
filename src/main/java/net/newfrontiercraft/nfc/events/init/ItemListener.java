@@ -10,10 +10,7 @@ import net.modificationstation.stationapi.api.item.tool.ToolMaterialFactory;
 import net.modificationstation.stationapi.api.mod.entrypoint.Entrypoint;
 import net.modificationstation.stationapi.api.registry.BlockRegistry;
 import net.modificationstation.stationapi.api.tag.TagKey;
-import net.modificationstation.stationapi.api.template.item.TemplateItem;
-import net.modificationstation.stationapi.api.template.item.TemplatePickaxeItem;
-import net.modificationstation.stationapi.api.template.item.TemplateShovelItem;
-import net.modificationstation.stationapi.api.template.item.TemplateSwordItem;
+import net.modificationstation.stationapi.api.template.item.*;
 import net.modificationstation.stationapi.api.util.Identifier;
 import net.modificationstation.stationapi.api.util.Namespace;
 import net.newfrontiercraft.nfc.item.*;
@@ -130,6 +127,32 @@ public class ItemListener {
             emeraldShovel,
             osmiumShovel;
 
+    public static TemplateAxeItem
+            aluminiumAxe,
+            bismuthAxe,
+            copperAxe,
+            leadAxe,
+            tinAxe,
+            zincAxe,
+            boronAxe,
+            brassAxe,
+            bronzeAxe,
+            nickelAxe,
+            platinumAxe,
+            silverAxe,
+            chromeAxe,
+            cobaltAxe,
+            siliconAxe,
+            magnetAxe,
+            steelAxe,
+            titaniumAxe,
+            tungstenAxe,
+            onyxAxe,
+            sapphireAxe,
+            rubyAxe,
+            emeraldAxe,
+            osmiumAxe;
+
     @Entrypoint.Namespace
     public static Namespace MOD_ID;
 
@@ -235,7 +258,7 @@ public class ItemListener {
         Item.DIAMOND_LEGGINGS.setMaxDamage(800);
         Item.DIAMOND_BOOTS.setMaxDamage(800);
 
-        // New items
+        // Pickaxes
         aluminiumPickaxe = new LazyPickaxeTemplate(Identifier.of(MOD_ID, "aluminium_pickaxe"), aluminiumMaterial);
         bismuthPickaxe = new LazyPickaxeTemplate(Identifier.of(MOD_ID, "bismuth_pickaxe"), bismuthMaterial);
         copperPickaxe = new LazyPickaxeTemplate(Identifier.of(MOD_ID, "copper_pickaxe"), copperMaterial);
@@ -261,6 +284,7 @@ public class ItemListener {
         emeraldPickaxe = new LazyPickaxeTemplate(Identifier.of(MOD_ID, "emerald_pickaxe"), gemMaterial);
         osmiumPickaxe = new LazyPickaxeTemplate(Identifier.of(MOD_ID, "osmium_pickaxe"), osmiumMaterial);
 
+        // Swords
         aluminiumSword = new LazySwordTemplate(Identifier.of(MOD_ID, "aluminium_sword"), aluminiumMaterial);
         bismuthSword = new LazySwordTemplate(Identifier.of(MOD_ID, "bismuth_sword"), bismuthMaterial);
         copperSword = new LazySwordTemplate(Identifier.of(MOD_ID, "copper_sword"), copperMaterial);
@@ -286,6 +310,7 @@ public class ItemListener {
         emeraldSword = new LazySwordTemplate(Identifier.of(MOD_ID, "emerald_sword"), gemMaterial);
         osmiumSword = new LazySwordTemplate(Identifier.of(MOD_ID, "osmium_sword"), osmiumMaterial);
 
+        // Shovels
         aluminiumShovel = new LazyShovelTemplate(Identifier.of(MOD_ID, "aluminium_shovel"), aluminiumMaterial);
         bismuthShovel = new LazyShovelTemplate(Identifier.of(MOD_ID, "bismuth_shovel"), bismuthMaterial);
         copperShovel = new LazyShovelTemplate(Identifier.of(MOD_ID, "copper_shovel"), copperMaterial);
@@ -311,6 +336,33 @@ public class ItemListener {
         emeraldShovel = new LazyShovelTemplate(Identifier.of(MOD_ID, "emerald_shovel"), gemMaterial);
         osmiumShovel = new LazyShovelTemplate(Identifier.of(MOD_ID, "osmium_shovel"), osmiumMaterial);
 
+        // Axes
+        aluminiumAxe = new LazyAxeTemplate(Identifier.of(MOD_ID, "aluminium_axe"), aluminiumMaterial);
+        bismuthAxe = new LazyAxeTemplate(Identifier.of(MOD_ID, "bismuth_axe"), bismuthMaterial);
+        copperAxe = new LazyAxeTemplate(Identifier.of(MOD_ID, "copper_axe"), copperMaterial);
+        leadAxe = new LazyAxeTemplate(Identifier.of(MOD_ID, "lead_axe"), leadMaterial);
+        tinAxe = new LazyAxeTemplate(Identifier.of(MOD_ID, "tin_axe"), tinMaterial);
+        zincAxe = new LazyAxeTemplate(Identifier.of(MOD_ID, "zinc_axe"), zincMaterial);
+        boronAxe = new LazyAxeTemplate(Identifier.of(MOD_ID, "boron_axe"), boronMaterial);
+        brassAxe = new LazyAxeTemplate(Identifier.of(MOD_ID, "brass_axe"), brassMaterial);
+        bronzeAxe = new LazyAxeTemplate(Identifier.of(MOD_ID, "bronze_axe"), bronzeMaterial);
+        nickelAxe = new LazyAxeTemplate(Identifier.of(MOD_ID, "nickel_axe"), nickelMaterial);
+        platinumAxe = new LazyAxeTemplate(Identifier.of(MOD_ID, "platinum_axe"), platinumMaterial);
+        silverAxe = new LazyAxeTemplate(Identifier.of(MOD_ID, "silver_axe"), silverMaterial);
+        chromeAxe = new LazyAxeTemplate(Identifier.of(MOD_ID, "chrome_axe"), chromeMaterial);
+        cobaltAxe = new LazyAxeTemplate(Identifier.of(MOD_ID, "cobalt_axe"), cobaltMaterial);
+        siliconAxe = new LazyAxeTemplate(Identifier.of(MOD_ID, "silicon_axe"), siliconMaterial);
+        magnetAxe = new LazyAxeTemplate(Identifier.of(MOD_ID, "magnet_axe"), magnetMaterial);
+        steelAxe = new LazyAxeTemplate(Identifier.of(MOD_ID, "steel_axe"), steelMaterial);
+        titaniumAxe = new LazyAxeTemplate(Identifier.of(MOD_ID, "titanium_axe"), titaniumMaterial);
+        tungstenAxe = new LazyAxeTemplate(Identifier.of(MOD_ID, "tungsten_axe"), tungstenMaterial);
+        onyxAxe = new LazyAxeTemplate(Identifier.of(MOD_ID, "onyx_axe"), gemMaterial);
+        sapphireAxe = new LazyAxeTemplate(Identifier.of(MOD_ID, "sapphire_axe"), gemMaterial);
+        rubyAxe = new LazyAxeTemplate(Identifier.of(MOD_ID, "ruby_axe"), gemMaterial);
+        emeraldAxe = new LazyAxeTemplate(Identifier.of(MOD_ID, "emerald_axe"), gemMaterial);
+        osmiumAxe = new LazyAxeTemplate(Identifier.of(MOD_ID, "osmium_axe"), osmiumMaterial);
+
+        // Ingots
         aluminiumIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "aluminium_ingot"));
         copperIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "copper_ingot"));
         tinIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "tin_ingot"));
@@ -333,6 +385,7 @@ public class ItemListener {
         steelIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "steel_ingot"));
         osmiumIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "osmium_ingot"));
 
+        // Ore drops
         anthracite = new LazyItemTemplate(Identifier.of(MOD_ID, "anthracite"));
         netherAsh = new LazyItemTemplate(Identifier.of(MOD_ID, "nether_ash"));
         onyx = new LazyItemTemplate(Identifier.of(MOD_ID, "onyx"));
@@ -340,8 +393,10 @@ public class ItemListener {
         ruby = new LazyItemTemplate(Identifier.of(MOD_ID, "ruby"));
         emerald = new LazyItemTemplate(Identifier.of(MOD_ID, "emerald"));
 
+        // Food
         cookedEgg = new LazyFoodTemplate(Identifier.of(MOD_ID, "cooked_egg"), 4, false);
 
+        // Ore drop specification
         BlockListener.anthraciteOre.specifyCustomDrop(anthracite.id);
         BlockListener.netherAshOre.specifyCustomDrop(netherAsh.id);
         BlockListener.netherOnyxOre.specifyCustomDrop(onyx.id);
