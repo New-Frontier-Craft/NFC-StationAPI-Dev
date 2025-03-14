@@ -30,6 +30,7 @@ public class TextureListener {
         String hoes = "item/tools/hoes/";
         String helmets = "item/armor/helmets/";
         String chestplates = "item/armor/chestplates/";
+        String leggings = "item/armor/leggings/";
         String oreDrops = "item/ore_drops/";
         String foodItems = "item/food/";
 
@@ -302,6 +303,30 @@ public class TextureListener {
         ItemListener.rubyChestplate.setTexture(Identifier.of(MOD_ID, chestplates + "ruby"));
         ItemListener.emeraldChestplate.setTexture(Identifier.of(MOD_ID, chestplates + "emerald"));
         ItemListener.osmiumChestplate.setTexture(Identifier.of(MOD_ID, chestplates + "osmium"));
+
+        // Leggings
+        ItemListener.aluminiumLeggings.setTexture(Identifier.of(MOD_ID, leggings + "aluminium"));
+        ItemListener.bismuthLeggings.setTexture(Identifier.of(MOD_ID, leggings + "bismuth"));
+        ItemListener.copperLeggings.setTexture(Identifier.of(MOD_ID, leggings + "copper"));
+        ItemListener.tinLeggings.setTexture(Identifier.of(MOD_ID, leggings + "tin"));
+        ItemListener.zincLeggings.setTexture(Identifier.of(MOD_ID, leggings + "zinc"));
+        ItemListener.boronLeggings.setTexture(Identifier.of(MOD_ID, leggings + "boron"));
+        ItemListener.brassLeggings.setTexture(Identifier.of(MOD_ID, leggings + "brass"));
+        ItemListener.bronzeLeggings.setTexture(Identifier.of(MOD_ID, leggings + "bronze"));
+        ItemListener.nickelLeggings.setTexture(Identifier.of(MOD_ID, leggings + "nickel"));
+        ItemListener.platinumLeggings.setTexture(Identifier.of(MOD_ID, leggings + "platinum"));
+        ItemListener.silverLeggings.setTexture(Identifier.of(MOD_ID, leggings + "silver"));
+        ItemListener.chromeLeggings.setTexture(Identifier.of(MOD_ID, leggings + "chrome"));
+        ItemListener.cobaltLeggings.setTexture(Identifier.of(MOD_ID, leggings + "cobalt"));
+        ItemListener.siliconLeggings.setTexture(Identifier.of(MOD_ID, leggings + "silicon"));
+        ItemListener.steelLeggings.setTexture(Identifier.of(MOD_ID, leggings + "steel"));
+        ItemListener.titaniumLeggings.setTexture(Identifier.of(MOD_ID, leggings + "titanium"));
+        ItemListener.tungstenLeggings.setTexture(Identifier.of(MOD_ID, leggings + "tungsten"));
+        ItemListener.onyxLeggings.setTexture(Identifier.of(MOD_ID, leggings + "onyx"));
+        ItemListener.sapphireLeggings.setTexture(Identifier.of(MOD_ID, leggings + "sapphire"));
+        ItemListener.rubyLeggings.setTexture(Identifier.of(MOD_ID, leggings + "ruby"));
+        ItemListener.emeraldLeggings.setTexture(Identifier.of(MOD_ID, leggings + "emerald"));
+        ItemListener.osmiumLeggings.setTexture(Identifier.of(MOD_ID, leggings + "osmium"));
 
         // Ingots
         ItemListener.aluminiumIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "aluminium_ingot"));

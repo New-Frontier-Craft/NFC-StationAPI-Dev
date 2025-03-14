@@ -227,6 +227,30 @@ public class ItemListener {
             emeraldChestplate,
             osmiumChestplate;
 
+    public static TemplateArmorItem
+            aluminiumLeggings,
+            bismuthLeggings,
+            copperLeggings,
+            tinLeggings,
+            zincLeggings,
+            boronLeggings,
+            brassLeggings,
+            bronzeLeggings,
+            nickelLeggings,
+            platinumLeggings,
+            silverLeggings,
+            chromeLeggings,
+            cobaltLeggings,
+            siliconLeggings,
+            steelLeggings,
+            titaniumLeggings,
+            tungstenLeggings,
+            onyxLeggings,
+            sapphireLeggings,
+            rubyLeggings,
+            emeraldLeggings,
+            osmiumLeggings;
+
     @Entrypoint.Namespace
     public static Namespace MOD_ID;
 
@@ -528,6 +552,30 @@ public class ItemListener {
         rubyChestplate = new LazyArmorTemplate(Identifier.of(MOD_ID, "ruby_chestplate"), 1, 400, "ruby");
         emeraldChestplate = new LazyArmorTemplate(Identifier.of(MOD_ID, "emerald_chestplate"), 1, 400, "emerald");
         osmiumChestplate = new LazyArmorTemplate(Identifier.of(MOD_ID, "osmium_chestplate"), 1, 1235, "osmium");
+
+        // Leggings
+        aluminiumLeggings = new LazyArmorTemplate(Identifier.of(MOD_ID, "aluminium_leggings"), 2, 48, "aluminium");
+        bismuthLeggings = new LazyArmorTemplate(Identifier.of(MOD_ID, "bismuth_leggings"), 2, 48, "bismuth");
+        copperLeggings = new LazyArmorTemplate(Identifier.of(MOD_ID, "copper_leggings"), 2, 48, "copper");
+        tinLeggings = new LazyArmorTemplate(Identifier.of(MOD_ID, "tin_leggings"), 2, 48, "tin");
+        zincLeggings = new LazyArmorTemplate(Identifier.of(MOD_ID, "zinc_leggings"), 2, 48, "zinc");
+        boronLeggings = new LazyArmorTemplate(Identifier.of(MOD_ID, "boron_leggings"), 2, 96, "boron");
+        brassLeggings = new LazyArmorTemplate(Identifier.of(MOD_ID, "brass_leggings"), 2, 96, "brass");
+        bronzeLeggings = new LazyArmorTemplate(Identifier.of(MOD_ID, "bronze_leggings"), 2, 96, "bronze");
+        nickelLeggings = new LazyArmorTemplate(Identifier.of(MOD_ID, "nickel_leggings"), 2, 96, "nickel");
+        platinumLeggings = new LazyArmorTemplate(Identifier.of(MOD_ID, "platinum_leggings"), 2, 96, "platinum");
+        silverLeggings = new LazyArmorTemplate(Identifier.of(MOD_ID, "silver_leggings"), 2, 96, "silver");
+        chromeLeggings = new LazyArmorTemplate(Identifier.of(MOD_ID, "chrome_leggings"), 2, 192, "chrome");
+        cobaltLeggings = new LazyArmorTemplate(Identifier.of(MOD_ID, "cobalt_leggings"), 2, 192, "cobalt");
+        siliconLeggings = new LazyArmorTemplate(Identifier.of(MOD_ID, "silicon_leggings"), 2, 192, "silicon");
+        steelLeggings = new LazyArmorTemplate(Identifier.of(MOD_ID, "steel_leggings"), 2, 400, "steel");
+        titaniumLeggings = new LazyArmorTemplate(Identifier.of(MOD_ID, "titanium_leggings"), 2, 400, "titanium");
+        tungstenLeggings = new LazyArmorTemplate(Identifier.of(MOD_ID, "tungsten_leggings"), 2, 400, "tungsten");
+        onyxLeggings = new LazyArmorTemplate(Identifier.of(MOD_ID, "onyx_leggings"), 2, 400, "onyx");
+        sapphireLeggings = new LazyArmorTemplate(Identifier.of(MOD_ID, "sapphire_leggings"), 2, 400, "sapphire");
+        rubyLeggings = new LazyArmorTemplate(Identifier.of(MOD_ID, "ruby_leggings"), 2, 400, "ruby");
+        emeraldLeggings = new LazyArmorTemplate(Identifier.of(MOD_ID, "emerald_leggings"), 2, 400, "emerald");
+        osmiumLeggings = new LazyArmorTemplate(Identifier.of(MOD_ID, "osmium_leggings"), 2, 1235, "osmium");
 
         // Ore drops
         anthracite = new LazyItemTemplate(Identifier.of(MOD_ID, "anthracite"));
