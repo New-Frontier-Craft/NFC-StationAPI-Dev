@@ -180,7 +180,28 @@ public class ItemListener {
             osmiumHoe;
 
     public static TemplateArmorItem
-            aluminiumHelmet;
+            aluminiumHelmet,
+            bismuthHelmet,
+            copperHelmet,
+            tinHelmet,
+            zincHelmet,
+            boronHelmet,
+            brassHelmet,
+            bronzeHelmet,
+            nickelHelmet,
+            platinumHelmet,
+            silverHelmet,
+            chromeHelmet,
+            cobaltHelmet,
+            siliconHelmet,
+            steelHelmet,
+            titaniumHelmet,
+            tungstenHelmet,
+            onyxHelmet,
+            sapphireHelmet,
+            rubyHelmet,
+            emeraldHelmet,
+            osmiumHelmet;
 
     @Entrypoint.Namespace
     public static Namespace MOD_ID;
@@ -438,6 +459,27 @@ public class ItemListener {
 
         // Helmets
         aluminiumHelmet = new LazyArmorTemplate(Identifier.of(MOD_ID, "aluminium_helmet"), 0, 48, "aluminium");
+        bismuthHelmet = new LazyArmorTemplate(Identifier.of(MOD_ID, "bismuth_helmet"), 0, 48, "bismuth");
+        copperHelmet = new LazyArmorTemplate(Identifier.of(MOD_ID, "copper_helmet"), 0, 48, "copper");
+        tinHelmet = new LazyArmorTemplate(Identifier.of(MOD_ID, "tin_helmet"), 0, 48, "tin");
+        zincHelmet = new LazyArmorTemplate(Identifier.of(MOD_ID, "zinc_helmet"), 0, 48, "zinc");
+        boronHelmet = new LazyArmorTemplate(Identifier.of(MOD_ID, "boron_helmet"), 0, 96, "boron");
+        brassHelmet = new LazyArmorTemplate(Identifier.of(MOD_ID, "brass_helmet"), 0, 96, "brass");
+        bronzeHelmet = new LazyArmorTemplate(Identifier.of(MOD_ID, "bronze_helmet"), 0, 96, "bronze");
+        nickelHelmet = new LazyArmorTemplate(Identifier.of(MOD_ID, "nickel_helmet"), 0, 96, "nickel");
+        platinumHelmet = new LazyArmorTemplate(Identifier.of(MOD_ID, "platinum_helmet"), 0, 96, "platinum");
+        silverHelmet = new LazyArmorTemplate(Identifier.of(MOD_ID, "silver_helmet"), 0, 96, "silver");
+        chromeHelmet = new LazyArmorTemplate(Identifier.of(MOD_ID, "chrome_helmet"), 0, 192, "chrome");
+        cobaltHelmet = new LazyArmorTemplate(Identifier.of(MOD_ID, "cobalt_helmet"), 0, 192, "cobalt");
+        siliconHelmet = new LazyArmorTemplate(Identifier.of(MOD_ID, "silicon_helmet"), 0, 192, "silicon");
+        steelHelmet = new LazyArmorTemplate(Identifier.of(MOD_ID, "steel_helmet"), 0, 400, "steel");
+        titaniumHelmet = new LazyArmorTemplate(Identifier.of(MOD_ID, "titanium_helmet"), 0, 400, "titanium");
+        tungstenHelmet = new LazyArmorTemplate(Identifier.of(MOD_ID, "tungsten_helmet"), 0, 400, "tungsten");
+        onyxHelmet = new LazyArmorTemplate(Identifier.of(MOD_ID, "onyx_helmet"), 0, 400, "onyx");
+        sapphireHelmet = new LazyArmorTemplate(Identifier.of(MOD_ID, "sapphire_helmet"), 0, 400, "sapphire");
+        rubyHelmet = new LazyArmorTemplate(Identifier.of(MOD_ID, "ruby_helmet"), 0, 400, "ruby");
+        emeraldHelmet = new LazyArmorTemplate(Identifier.of(MOD_ID, "emerald_helmet"), 0, 400, "emerald");
+        osmiumHelmet = new LazyArmorTemplate(Identifier.of(MOD_ID, "osmium_helmet"), 0, 1235, "osmium");
 
         // Ore drops
         anthracite = new LazyItemTemplate(Identifier.of(MOD_ID, "anthracite"));

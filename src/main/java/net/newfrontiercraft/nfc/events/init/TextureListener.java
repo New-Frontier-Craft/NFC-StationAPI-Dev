@@ -256,6 +256,27 @@ public class TextureListener {
 
         // Helmets
         ItemListener.aluminiumHelmet.setTexture(Identifier.of(MOD_ID, helmets + "aluminium"));
+        ItemListener.bismuthHelmet.setTexture(Identifier.of(MOD_ID, helmets + "bismuth"));
+        ItemListener.copperHelmet.setTexture(Identifier.of(MOD_ID, helmets + "copper"));
+        ItemListener.tinHelmet.setTexture(Identifier.of(MOD_ID, helmets + "tin"));
+        ItemListener.zincHelmet.setTexture(Identifier.of(MOD_ID, helmets + "zinc"));
+        ItemListener.boronHelmet.setTexture(Identifier.of(MOD_ID, helmets + "boron"));
+        ItemListener.brassHelmet.setTexture(Identifier.of(MOD_ID, helmets + "brass"));
+        ItemListener.bronzeHelmet.setTexture(Identifier.of(MOD_ID, helmets + "bronze"));
+        ItemListener.nickelHelmet.setTexture(Identifier.of(MOD_ID, helmets + "nickel"));
+        ItemListener.platinumHelmet.setTexture(Identifier.of(MOD_ID, helmets + "platinum"));
+        ItemListener.silverHelmet.setTexture(Identifier.of(MOD_ID, helmets + "silver"));
+        ItemListener.chromeHelmet.setTexture(Identifier.of(MOD_ID, helmets + "chrome"));
+        ItemListener.cobaltHelmet.setTexture(Identifier.of(MOD_ID, helmets + "cobalt"));
+        ItemListener.siliconHelmet.setTexture(Identifier.of(MOD_ID, helmets + "silicon"));
+        ItemListener.steelHelmet.setTexture(Identifier.of(MOD_ID, helmets + "steel"));
+        ItemListener.titaniumHelmet.setTexture(Identifier.of(MOD_ID, helmets + "titanium"));
+        ItemListener.tungstenHelmet.setTexture(Identifier.of(MOD_ID, helmets + "tungsten"));
+        ItemListener.onyxHelmet.setTexture(Identifier.of(MOD_ID, helmets + "onyx"));
+        ItemListener.sapphireHelmet.setTexture(Identifier.of(MOD_ID, helmets + "sapphire"));
+        ItemListener.rubyHelmet.setTexture(Identifier.of(MOD_ID, helmets + "ruby"));
+        ItemListener.emeraldHelmet.setTexture(Identifier.of(MOD_ID, helmets + "emerald"));
+        ItemListener.osmiumHelmet.setTexture(Identifier.of(MOD_ID, helmets + "osmium"));
 
         // Ingots
         ItemListener.aluminiumIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "aluminium_ingot"));

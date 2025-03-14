@@ -205,6 +205,27 @@ item.nfc.emerald_hoe.name=Emerald Hoe
 item.nfc.osmium_hoe.name=Osmium Hoe
 
 item.nfc.aluminium_helmet.name=Aluminium Helmet
+item.nfc.bismuth_helmet.name=Bismuth Helmet
+item.nfc.copper_helmet.name=Copper Helmet
+item.nfc.tin_helmet.name=Tin Helmet
+item.nfc.zinc_helmet.name=Zinc Helmet
+item.nfc.boron_helmet.name=Boron Helmet
+item.nfc.brass_helmet.name=Brass Helmet
+item.nfc.bronze_helmet.name=Bronze Helmet
+item.nfc.nickel_helmet.name=Nickel Helmet
+item.nfc.platinum_helmet.name=Platinum Helmet
+item.nfc.silver_helmet.name=Silver Helmet
+item.nfc.chrome_helmet.name=Chrome Helmet
+item.nfc.cobalt_helmet.name=Cobalt Helmet
+item.nfc.silicon_helmet.name=Silicon Helmet
+item.nfc.steel_helmet.name=Steel Helmet
+item.nfc.titanium_helmet.name=Titanium Helmet
+item.nfc.tungsten_helmet.name=Tungsten Helmet
+item.nfc.onyx_helmet.name=Onyx Helmet
+item.nfc.sapphire_helmet.name=Sapphire Helmet
+item.nfc.ruby_helmet.name=Ruby Helmet
+item.nfc.emerald_helmet.name=Emerald Helmet
+item.nfc.osmium_helmet.name=Osmium Helmet
 
 item.nfc.aluminium_ingot.name=Aluminium Ingot
 item.nfc.copper_ingot.name=Copper Ingot
