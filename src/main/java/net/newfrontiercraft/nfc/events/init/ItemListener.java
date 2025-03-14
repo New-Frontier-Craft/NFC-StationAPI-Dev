@@ -153,6 +153,32 @@ public class ItemListener {
             emeraldAxe,
             osmiumAxe;
 
+    public static TemplateHoeItem
+            aluminiumHoe,
+            bismuthHoe,
+            copperHoe,
+            leadHoe,
+            tinHoe,
+            zincHoe,
+            boronHoe,
+            brassHoe,
+            bronzeHoe,
+            nickelHoe,
+            platinumHoe,
+            silverHoe,
+            chromeHoe,
+            cobaltHoe,
+            siliconHoe,
+            magnetHoe,
+            steelHoe,
+            titaniumHoe,
+            tungstenHoe,
+            onyxHoe,
+            sapphireHoe,
+            rubyHoe,
+            emeraldHoe,
+            osmiumHoe;
+
     @Entrypoint.Namespace
     public static Namespace MOD_ID;
 
@@ -361,6 +387,32 @@ public class ItemListener {
         rubyAxe = new LazyAxeTemplate(Identifier.of(MOD_ID, "ruby_axe"), gemMaterial);
         emeraldAxe = new LazyAxeTemplate(Identifier.of(MOD_ID, "emerald_axe"), gemMaterial);
         osmiumAxe = new LazyAxeTemplate(Identifier.of(MOD_ID, "osmium_axe"), osmiumMaterial);
+
+        // Hoes
+        aluminiumHoe = new LazyHoeTemplate(Identifier.of(MOD_ID, "aluminium_hoe"), aluminiumMaterial);
+        bismuthHoe = new LazyHoeTemplate(Identifier.of(MOD_ID, "bismuth_hoe"), bismuthMaterial);
+        copperHoe = new LazyHoeTemplate(Identifier.of(MOD_ID, "copper_hoe"), copperMaterial);
+        leadHoe = new LazyHoeTemplate(Identifier.of(MOD_ID, "lead_hoe"), leadMaterial);
+        tinHoe = new LazyHoeTemplate(Identifier.of(MOD_ID, "tin_hoe"), tinMaterial);
+        zincHoe = new LazyHoeTemplate(Identifier.of(MOD_ID, "zinc_hoe"), zincMaterial);
+        boronHoe = new LazyHoeTemplate(Identifier.of(MOD_ID, "boron_hoe"), boronMaterial);
+        brassHoe = new LazyHoeTemplate(Identifier.of(MOD_ID, "brass_hoe"), brassMaterial);
+        bronzeHoe = new LazyHoeTemplate(Identifier.of(MOD_ID, "bronze_hoe"), bronzeMaterial);
+        nickelHoe = new LazyHoeTemplate(Identifier.of(MOD_ID, "nickel_hoe"), nickelMaterial);
+        platinumHoe = new LazyHoeTemplate(Identifier.of(MOD_ID, "platinum_hoe"), platinumMaterial);
+        silverHoe = new LazyHoeTemplate(Identifier.of(MOD_ID, "silver_hoe"), silverMaterial);
+        chromeHoe = new LazyHoeTemplate(Identifier.of(MOD_ID, "chrome_hoe"), chromeMaterial);
+        cobaltHoe = new LazyHoeTemplate(Identifier.of(MOD_ID, "cobalt_hoe"), cobaltMaterial);
+        siliconHoe = new LazyHoeTemplate(Identifier.of(MOD_ID, "silicon_hoe"), siliconMaterial);
+        magnetHoe = new LazyHoeTemplate(Identifier.of(MOD_ID, "magnet_hoe"), magnetMaterial);
+        steelHoe = new LazyHoeTemplate(Identifier.of(MOD_ID, "steel_hoe"), steelMaterial);
+        titaniumHoe = new LazyHoeTemplate(Identifier.of(MOD_ID, "titanium_hoe"), titaniumMaterial);
+        tungstenHoe = new LazyHoeTemplate(Identifier.of(MOD_ID, "tungsten_hoe"), tungstenMaterial);
+        onyxHoe = new LazyHoeTemplate(Identifier.of(MOD_ID, "onyx_hoe"), gemMaterial);
+        sapphireHoe = new LazyHoeTemplate(Identifier.of(MOD_ID, "sapphire_hoe"), gemMaterial);
+        rubyHoe = new LazyHoeTemplate(Identifier.of(MOD_ID, "ruby_hoe"), gemMaterial);
+        emeraldHoe = new LazyHoeTemplate(Identifier.of(MOD_ID, "emerald_hoe"), gemMaterial);
+        osmiumHoe = new LazyHoeTemplate(Identifier.of(MOD_ID, "osmium_hoe"), osmiumMaterial);
 
         // Ingots
         aluminiumIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "aluminium_ingot"));
