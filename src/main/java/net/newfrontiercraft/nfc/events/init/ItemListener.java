@@ -251,6 +251,30 @@ public class ItemListener {
             emeraldLeggings,
             osmiumLeggings;
 
+    public static TemplateArmorItem
+            aluminiumBoots,
+            bismuthBoots,
+            copperBoots,
+            tinBoots,
+            zincBoots,
+            boronBoots,
+            brassBoots,
+            bronzeBoots,
+            nickelBoots,
+            platinumBoots,
+            silverBoots,
+            chromeBoots,
+            cobaltBoots,
+            siliconBoots,
+            steelBoots,
+            titaniumBoots,
+            tungstenBoots,
+            onyxBoots,
+            sapphireBoots,
+            rubyBoots,
+            emeraldBoots,
+            osmiumBoots;
+
     @Entrypoint.Namespace
     public static Namespace MOD_ID;
 
@@ -482,29 +506,6 @@ public class ItemListener {
         emeraldHoe = new LazyHoeTemplate(Identifier.of(MOD_ID, "emerald_hoe"), gemMaterial);
         osmiumHoe = new LazyHoeTemplate(Identifier.of(MOD_ID, "osmium_hoe"), osmiumMaterial);
 
-        // Ingots
-        aluminiumIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "aluminium_ingot"));
-        copperIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "copper_ingot"));
-        tinIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "tin_ingot"));
-        bismuthIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "bismuth_ingot"));
-        zincIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "zinc_ingot"));
-        nickelIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "nickel_ingot"));
-        cobaltIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "cobalt_ingot"));
-        tungstenIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "tungsten_ingot"));
-        magnetiteIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "magnet_ingot"));
-        silverIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "silver_ingot"));
-        leadIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "lead_ingot"));
-        siliconIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "silicon_ingot"));
-        chromeIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "chrome_ingot"));
-        titaniumIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "titanium_ingot"));
-        uraniumIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "uranium_ingot"));
-        platinumIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "platinum_ingot"));
-        boronIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "boron_ingot"));
-        brassIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "brass_ingot"));
-        bronzeIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "bronze_ingot"));
-        steelIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "steel_ingot"));
-        osmiumIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "osmium_ingot"));
-
         // Helmets
         aluminiumHelmet = new LazyArmorTemplate(Identifier.of(MOD_ID, "aluminium_helmet"), 0, 48, "aluminium");
         bismuthHelmet = new LazyArmorTemplate(Identifier.of(MOD_ID, "bismuth_helmet"), 0, 48, "bismuth");
@@ -576,6 +577,53 @@ public class ItemListener {
         rubyLeggings = new LazyArmorTemplate(Identifier.of(MOD_ID, "ruby_leggings"), 2, 400, "ruby");
         emeraldLeggings = new LazyArmorTemplate(Identifier.of(MOD_ID, "emerald_leggings"), 2, 400, "emerald");
         osmiumLeggings = new LazyArmorTemplate(Identifier.of(MOD_ID, "osmium_leggings"), 2, 1235, "osmium");
+
+        // Boots
+        aluminiumBoots = new LazyArmorTemplate(Identifier.of(MOD_ID, "aluminium_boots"), 3, 48, "aluminium");
+        bismuthBoots = new LazyArmorTemplate(Identifier.of(MOD_ID, "bismuth_boots"), 3, 48, "bismuth");
+        copperBoots = new LazyArmorTemplate(Identifier.of(MOD_ID, "copper_boots"), 3, 48, "copper");
+        tinBoots = new LazyArmorTemplate(Identifier.of(MOD_ID, "tin_boots"), 3, 48, "tin");
+        zincBoots = new LazyArmorTemplate(Identifier.of(MOD_ID, "zinc_boots"), 3, 48, "zinc");
+        boronBoots = new LazyArmorTemplate(Identifier.of(MOD_ID, "boron_boots"), 3, 96, "boron");
+        brassBoots = new LazyArmorTemplate(Identifier.of(MOD_ID, "brass_boots"), 3, 96, "brass");
+        bronzeBoots = new LazyArmorTemplate(Identifier.of(MOD_ID, "bronze_boots"), 3, 96, "bronze");
+        nickelBoots = new LazyArmorTemplate(Identifier.of(MOD_ID, "nickel_boots"), 3, 96, "nickel");
+        platinumBoots = new LazyArmorTemplate(Identifier.of(MOD_ID, "platinum_boots"), 3, 96, "platinum");
+        silverBoots = new LazyArmorTemplate(Identifier.of(MOD_ID, "silver_boots"), 3, 96, "silver");
+        chromeBoots = new LazyArmorTemplate(Identifier.of(MOD_ID, "chrome_boots"), 3, 192, "chrome");
+        cobaltBoots = new LazyArmorTemplate(Identifier.of(MOD_ID, "cobalt_boots"), 3, 192, "cobalt");
+        siliconBoots = new LazyArmorTemplate(Identifier.of(MOD_ID, "silicon_boots"), 3, 192, "silicon");
+        steelBoots = new LazyArmorTemplate(Identifier.of(MOD_ID, "steel_boots"), 3, 400, "steel");
+        titaniumBoots = new LazyArmorTemplate(Identifier.of(MOD_ID, "titanium_boots"), 3, 400, "titanium");
+        tungstenBoots = new LazyArmorTemplate(Identifier.of(MOD_ID, "tungsten_boots"), 3, 400, "tungsten");
+        onyxBoots = new LazyArmorTemplate(Identifier.of(MOD_ID, "onyx_boots"), 3, 400, "onyx");
+        sapphireBoots = new LazyArmorTemplate(Identifier.of(MOD_ID, "sapphire_boots"), 3, 400, "sapphire");
+        rubyBoots = new LazyArmorTemplate(Identifier.of(MOD_ID, "ruby_boots"), 3, 400, "ruby");
+        emeraldBoots = new LazyArmorTemplate(Identifier.of(MOD_ID, "emerald_boots"), 3, 400, "emerald");
+        osmiumBoots = new LazyArmorTemplate(Identifier.of(MOD_ID, "osmium_boots"), 3, 1235, "osmium");
+
+        // Ingots
+        aluminiumIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "aluminium_ingot"));
+        copperIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "copper_ingot"));
+        tinIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "tin_ingot"));
+        bismuthIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "bismuth_ingot"));
+        zincIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "zinc_ingot"));
+        nickelIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "nickel_ingot"));
+        cobaltIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "cobalt_ingot"));
+        tungstenIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "tungsten_ingot"));
+        magnetiteIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "magnet_ingot"));
+        silverIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "silver_ingot"));
+        leadIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "lead_ingot"));
+        siliconIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "silicon_ingot"));
+        chromeIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "chrome_ingot"));
+        titaniumIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "titanium_ingot"));
+        uraniumIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "uranium_ingot"));
+        platinumIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "platinum_ingot"));
+        boronIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "boron_ingot"));
+        brassIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "brass_ingot"));
+        bronzeIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "bronze_ingot"));
+        steelIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "steel_ingot"));
+        osmiumIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "osmium_ingot"));
 
         // Ore drops
         anthracite = new LazyItemTemplate(Identifier.of(MOD_ID, "anthracite"));
