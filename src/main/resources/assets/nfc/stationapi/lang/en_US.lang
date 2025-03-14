@@ -204,6 +204,8 @@ item.nfc.ruby_hoe.name=Ruby Hoe
 item.nfc.emerald_hoe.name=Emerald Hoe
 item.nfc.osmium_hoe.name=Osmium Hoe
 
+item.nfc.aluminium_helmet.name=Aluminium Helmet
+
 item.nfc.aluminium_ingot.name=Aluminium Ingot
 item.nfc.copper_ingot.name=Copper Ingot
 item.nfc.tin_ingot.name=Tin Ingot

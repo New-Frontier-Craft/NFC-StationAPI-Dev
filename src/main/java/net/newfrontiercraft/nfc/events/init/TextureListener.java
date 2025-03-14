@@ -28,6 +28,7 @@ public class TextureListener {
         String shovels = "item/tools/shovels/";
         String axes = "item/tools/axes/";
         String hoes = "item/tools/hoes/";
+        String helmets = "item/armor/helmets/";
         String oreDrops = "item/ore_drops/";
         String foodItems = "item/food/";
 
@@ -252,6 +253,9 @@ public class TextureListener {
         ItemListener.rubyHoe.setTexture(Identifier.of(MOD_ID, hoes + "ruby"));
         ItemListener.emeraldHoe.setTexture(Identifier.of(MOD_ID, hoes + "emerald"));
         ItemListener.osmiumHoe.setTexture(Identifier.of(MOD_ID, hoes + "osmium"));
+
+        // Helmets
+        ItemListener.aluminiumHelmet.setTexture(Identifier.of(MOD_ID, helmets + "aluminium"));
 
         // Ingots
         ItemListener.aluminiumIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "aluminium_ingot"));

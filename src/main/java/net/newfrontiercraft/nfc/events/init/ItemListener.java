@@ -179,6 +179,9 @@ public class ItemListener {
             emeraldHoe,
             osmiumHoe;
 
+    public static TemplateArmorItem
+            aluminiumHelmet;
+
     @Entrypoint.Namespace
     public static Namespace MOD_ID;
 
@@ -207,24 +210,20 @@ public class ItemListener {
         ToolMaterial leadMaterial = ToolMaterialFactory.create("lead", 1, 115, 2.5F, 3).toolLevel(crude);
         ToolMaterial tinMaterial = ToolMaterialFactory.create("tin", 1, 40, 4.5F, 3).toolLevel(crude);
         ToolMaterial zincMaterial = ToolMaterialFactory.create("zinc", 1, 80, 3.0F, 3).toolLevel(crude);
-
         ToolMaterial boronMaterial = ToolMaterialFactory.create("boron", 1, 50, 10.0F, 4).toolLevel(basic);
         ToolMaterial brassMaterial = ToolMaterialFactory.create("brass", 1, 180, 4.0F, 4).toolLevel(basic);
         ToolMaterial bronzeMaterial = ToolMaterialFactory.create("bronze", 1, 125, 5.0F, 4).toolLevel(basic);
         ToolMaterial nickelMaterial = ToolMaterialFactory.create("nickel", 1, 85, 7.0F, 4).toolLevel(basic);
         ToolMaterial platinumMaterial = ToolMaterialFactory.create("platinum", 1, 215, 3.5F, 4).toolLevel(basic);
         ToolMaterial silverMaterial = ToolMaterialFactory.create("silver", 1, 260, 3.0F, 4).toolLevel(basic);
-
         ToolMaterial chromeMaterial = ToolMaterialFactory.create("chrome", 1, 200, 8.0F, 6).toolLevel(iron);
         ToolMaterial cobaltMaterial = ToolMaterialFactory.create("cobalt", 1, 700, 4.0F, 6).toolLevel(iron);
         ToolMaterial siliconMaterial = ToolMaterialFactory.create("silicon", 1, 150, 10.0F, 6).toolLevel(iron);
-
         ToolMaterial magnetMaterial = ToolMaterialFactory.create("magnet", 1, 512, 7.0F, 5).toolLevel(advanced);
         ToolMaterial steelMaterial = ToolMaterialFactory.create("steel", 1, 700, 8.0F, 10).toolLevel(advanced);
         ToolMaterial titaniumMaterial = ToolMaterialFactory.create("titanium", 1, 700, 14.0F, 10).toolLevel(advanced);
         ToolMaterial tungstenMaterial = ToolMaterialFactory.create("tungsten", 1, 1750, 6.0F, 10).toolLevel(advanced);
         ToolMaterial gemMaterial = ToolMaterialFactory.create("gem", 1, 1450, 6.0F, 15).toolLevel(advanced);
-
         ToolMaterial osmiumMaterial = ToolMaterialFactory.create("osmium", 1, 10000, 9.0F, 20).toolLevel(diamond);
 
         // Rebalancing of Vanilla tool durabilities
@@ -436,6 +435,9 @@ public class ItemListener {
         bronzeIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "bronze_ingot"));
         steelIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "steel_ingot"));
         osmiumIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "osmium_ingot"));
+
+        // Helmets
+        aluminiumHelmet = new LazyArmorTemplate(Identifier.of(MOD_ID, "aluminium_helmet"), 0, 48, "aluminium");
 
         // Ore drops
         anthracite = new LazyItemTemplate(Identifier.of(MOD_ID, "anthracite"));
