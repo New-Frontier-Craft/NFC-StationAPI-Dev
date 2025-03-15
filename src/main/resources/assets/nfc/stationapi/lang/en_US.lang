@@ -19,7 +19,7 @@ tile.nfc.nether_uraninite_ore.name=Nether Uraninite Ore
 tile.nfc.nether_gold_ore.name=Nether Gold Ore
 tile.nfc.nether_onyx_ore.name=Nether Onyx Ore
 tile.nfc.cobalt_ore.name=Cobalt Ore
-tile.nfc.aluminium_ore.name=Aluminium Ore
+tile.nfc.aluminium_ore.name=Aluminum Ore
 tile.nfc.copper_ore.name=Copper Ore
 tile.nfc.tin_ore.name=Tin Ore
 tile.nfc.zinc_ore.name=Zinc Ore
@@ -48,7 +48,7 @@ tile.nfc.carpentry_workstation.name=Carpentry Workstation
 
 tile.nfc.coal_block.name=Coal Block
 tile.nfc.onyx_block.name=Onyx Block
-tile.nfc.aluminium_block.name=Aluminium Block
+tile.nfc.aluminium_block.name=Aluminum Block
 tile.nfc.copper_block.name=Copper Block
 tile.nfc.tin_block.name=Tin Block
 tile.nfc.bismuth_block.name=Bismuth Block
@@ -79,7 +79,7 @@ tile.nfc.pebble_medium.name=Medium Pebble
 tile.nfc.pebble_large.name=Large Pebble
 
 
-item.nfc.aluminium_pickaxe.name=Aluminium Pickaxe
+item.nfc.aluminium_pickaxe.name=Aluminum Pickaxe
 item.nfc.bismuth_pickaxe.name=Bismuth Pickaxe
 item.nfc.copper_pickaxe.name=Copper Pickaxe
 item.nfc.lead_pickaxe.name=Lead Pickaxe
@@ -104,7 +104,7 @@ item.nfc.ruby_pickaxe.name=Ruby Pickaxe
 item.nfc.emerald_pickaxe.name=Emerald Pickaxe
 item.nfc.osmium_pickaxe.name=Osmium Pickaxe
 
-item.nfc.aluminium_sword.name=Aluminium Sword
+item.nfc.aluminium_sword.name=Aluminum Sword
 item.nfc.bismuth_sword.name=Bismuth Sword
 item.nfc.copper_sword.name=Copper Sword
 item.nfc.lead_sword.name=Lead Sword
@@ -129,7 +129,7 @@ item.nfc.ruby_sword.name=Ruby Sword
 item.nfc.emerald_sword.name=Emerald Sword
 item.nfc.osmium_sword.name=Osmium Sword
 
-item.nfc.aluminium_shovel.name=Aluminium Shovel
+item.nfc.aluminium_shovel.name=Aluminum Shovel
 item.nfc.bismuth_shovel.name=Bismuth Shovel
 item.nfc.copper_shovel.name=Copper Shovel
 item.nfc.lead_shovel.name=Lead Shovel
@@ -154,7 +154,7 @@ item.nfc.ruby_shovel.name=Ruby Shovel
 item.nfc.emerald_shovel.name=Emerald Shovel
 item.nfc.osmium_shovel.name=Osmium Shovel
 
-item.nfc.aluminium_axe.name=Aluminium Axe
+item.nfc.aluminium_axe.name=Aluminum Axe
 item.nfc.bismuth_axe.name=Bismuth Axe
 item.nfc.copper_axe.name=Copper Axe
 item.nfc.lead_axe.name=Lead Axe
@@ -179,7 +179,7 @@ item.nfc.ruby_axe.name=Ruby Axe
 item.nfc.emerald_axe.name=Emerald Axe
 item.nfc.osmium_axe.name=Osmium Axe
 
-item.nfc.aluminium_hoe.name=Aluminium Hoe
+item.nfc.aluminium_hoe.name=Aluminum Hoe
 item.nfc.bismuth_hoe.name=Bismuth Hoe
 item.nfc.copper_hoe.name=Copper Hoe
 item.nfc.lead_hoe.name=Lead Hoe
@@ -204,7 +204,7 @@ item.nfc.ruby_hoe.name=Ruby Hoe
 item.nfc.emerald_hoe.name=Emerald Hoe
 item.nfc.osmium_hoe.name=Osmium Hoe
 
-item.nfc.aluminium_helmet.name=Aluminium Helmet
+item.nfc.aluminium_helmet.name=Aluminum Helmet
 item.nfc.bismuth_helmet.name=Bismuth Helmet
 item.nfc.copper_helmet.name=Copper Helmet
 item.nfc.tin_helmet.name=Tin Helmet
@@ -227,7 +227,7 @@ item.nfc.ruby_helmet.name=Ruby Helmet
 item.nfc.emerald_helmet.name=Emerald Helmet
 item.nfc.osmium_helmet.name=Osmium Helmet
 
-item.nfc.aluminium_chestplate.name=Aluminium Chestplate
+item.nfc.aluminium_chestplate.name=Aluminum Chestplate
 item.nfc.bismuth_chestplate.name=Bismuth Chestplate
 item.nfc.copper_chestplate.name=Copper Chestplate
 item.nfc.tin_chestplate.name=Tin Chestplate
@@ -250,7 +250,7 @@ item.nfc.ruby_chestplate.name=Ruby Chestplate
 item.nfc.emerald_chestplate.name=Emerald Chestplate
 item.nfc.osmium_chestplate.name=Osmium Chestplate
 
-item.nfc.aluminium_leggings.name=Aluminium Leggings
+item.nfc.aluminium_leggings.name=Aluminum Leggings
 item.nfc.bismuth_leggings.name=Bismuth Leggings
 item.nfc.copper_leggings.name=Copper Leggings
 item.nfc.tin_leggings.name=Tin Leggings
@@ -273,7 +273,7 @@ item.nfc.ruby_leggings.name=Ruby Leggings
 item.nfc.emerald_leggings.name=Emerald Leggings
 item.nfc.osmium_leggings.name=Osmium Leggings
 
-item.nfc.aluminium_boots.name=Aluminium Boots
+item.nfc.aluminium_boots.name=Aluminum Boots
 item.nfc.bismuth_boots.name=Bismuth Boots
 item.nfc.copper_boots.name=Copper Boots
 item.nfc.tin_boots.name=Tin Boots
@@ -296,7 +296,7 @@ item.nfc.ruby_boots.name=Ruby Boots
 item.nfc.emerald_boots.name=Emerald Boots
 item.nfc.osmium_boots.name=Osmium Boots
 
-item.nfc.aluminium_ingot.name=Aluminium Ingot
+item.nfc.aluminium_ingot.name=Aluminum Ingot
 item.nfc.copper_ingot.name=Copper Ingot
 item.nfc.tin_ingot.name=Tin Ingot
 item.nfc.bismuth_ingot.name=Bismuth Ingot
