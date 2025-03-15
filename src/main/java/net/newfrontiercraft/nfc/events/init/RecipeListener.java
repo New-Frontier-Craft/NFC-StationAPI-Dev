@@ -19,6 +19,7 @@ public class RecipeListener {
         if (type == RecipeRegisterEvent.Vanilla.CRAFTING_SHAPED.type()) {
             // Machines
             CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.brickOven), "XXX", "X X", "XXX", 'X', new ItemStack(BlockListener.firedBricks));
+            CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.carpentryWorkstation, 1), "XXX", "XYX", "ZZZ", 'X', Block.PLANKS, 'Y', ItemListener.bronzeIngot, 'Z', Block.COBBLESTONE);
 
             // Tools
             String[][] toolPatterns = new String[][]
