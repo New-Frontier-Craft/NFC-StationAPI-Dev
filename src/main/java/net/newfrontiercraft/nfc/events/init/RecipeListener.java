@@ -17,13 +17,14 @@ public class RecipeListener {
 
         Identifier type = event.recipeId;
         if (type == RecipeRegisterEvent.Vanilla.CRAFTING_SHAPED.type()) {
+            // Machines
             CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.brickOven), "XXX", "X X", "XXX", 'X', new ItemStack(BlockListener.firedBricks));
 
+            // Tools
             String[][] toolPatterns = new String[][]
                     {{"XXX", " # ", " # "}, {"X", "#", "#"}, {"XX", "X#", " #"},
                             {"XX", " #", " #"}, {"X", "X", "#"}};
             Object[][] toolItems;
-
             toolItems = new Object[][] {
                     {ItemListener.aluminiumIngot, ItemListener.bismuthIngot, ItemListener.boronIngot, ItemListener.chromeIngot, ItemListener.cobaltIngot, ItemListener.copperIngot, ItemListener.emerald, ItemListener.nickelIngot, ItemListener.platinumIngot, ItemListener.ruby, ItemListener.sapphire, ItemListener.siliconIngot, ItemListener.silverIngot, ItemListener.tinIngot, ItemListener.leadIngot, ItemListener.titaniumIngot, ItemListener.tungstenIngot, ItemListener.zincIngot, ItemListener.brassIngot, ItemListener.bronzeIngot, ItemListener.steelIngot, ItemListener.osmiumIngot, ItemListener.onyx, ItemListener.magnetiteIngot},
                     {ItemListener.aluminiumPickaxe, ItemListener.bismuthPickaxe, ItemListener.boronPickaxe, ItemListener.chromePickaxe, ItemListener.cobaltPickaxe, ItemListener.copperPickaxe, ItemListener.emeraldPickaxe, ItemListener.nickelPickaxe, ItemListener.platinumPickaxe, ItemListener.rubyPickaxe, ItemListener.sapphirePickaxe, ItemListener.siliconPickaxe, ItemListener.silverPickaxe, ItemListener.tinPickaxe, ItemListener.leadPickaxe, ItemListener.titaniumPickaxe, ItemListener.tungstenPickaxe, ItemListener.zincPickaxe, ItemListener.brassPickaxe, ItemListener.bronzePickaxe, ItemListener.steelPickaxe, ItemListener.osmiumPickaxe, ItemListener.onyxPickaxe, ItemListener.magnetPickaxe},
@@ -32,7 +33,6 @@ public class RecipeListener {
                     {ItemListener.aluminiumHoe, ItemListener.bismuthHoe, ItemListener.boronHoe, ItemListener.chromeHoe, ItemListener.cobaltHoe, ItemListener.copperHoe, ItemListener.emeraldHoe, ItemListener.nickelHoe, ItemListener.platinumHoe, ItemListener.rubyHoe, ItemListener.sapphireHoe, ItemListener.siliconHoe, ItemListener.silverHoe, ItemListener.tinHoe, ItemListener.leadHoe, ItemListener.titaniumHoe, ItemListener.tungstenHoe, ItemListener.zincHoe, ItemListener.brassHoe, ItemListener.bronzeHoe, ItemListener.steelHoe, ItemListener.osmiumHoe, ItemListener.onyxHoe, ItemListener.magnetHoe},
                     {ItemListener.aluminiumSword, ItemListener.bismuthSword, ItemListener.boronSword, ItemListener.chromeSword, ItemListener.cobaltSword, ItemListener.copperSword, ItemListener.emeraldSword, ItemListener.nickelSword, ItemListener.platinumSword, ItemListener.rubySword, ItemListener.sapphireSword, ItemListener.siliconSword, ItemListener.silverSword, ItemListener.tinSword, ItemListener.leadSword, ItemListener.titaniumSword, ItemListener.tungstenSword, ItemListener.zincSword, ItemListener.brassSword, ItemListener.bronzeSword, ItemListener.steelSword, ItemListener.osmiumSword, ItemListener.onyxSword, ItemListener.magnetSword},
             };
-
             for (int i = 0; i < toolItems[0].length; ++i) {
                 Object object = toolItems[0][i];
                 for (int j = 0; j < toolItems.length - 1; ++j) {
@@ -48,7 +48,6 @@ public class RecipeListener {
             String[][] armorPatterns = new String[][]
                     {{"XXX", "X X"}, {"X X", "XXX", "XXX"},{"XXX", "X X", "X X"}, {"X X", "X X"}};
             Object[][] armorItems;
-
             armorItems = new Object[][] {
                     {ItemListener.aluminiumIngot, ItemListener.bismuthIngot, ItemListener.boronIngot, ItemListener.chromeIngot, ItemListener.cobaltIngot, ItemListener.copperIngot, ItemListener.emerald, ItemListener.nickelIngot, ItemListener.platinumIngot, ItemListener.ruby, ItemListener.sapphire, ItemListener.siliconIngot, ItemListener.silverIngot, ItemListener.tinIngot, ItemListener.titaniumIngot, ItemListener.tungstenIngot, ItemListener.zincIngot, ItemListener.brassIngot, ItemListener.bronzeIngot, ItemListener.steelIngot, ItemListener.osmiumIngot, ItemListener.onyx},
                     {ItemListener.aluminiumHelmet, ItemListener.bismuthHelmet, ItemListener.boronHelmet, ItemListener.chromeHelmet, ItemListener.cobaltHelmet, ItemListener.copperHelmet, ItemListener.emeraldHelmet, ItemListener.nickelHelmet, ItemListener.platinumHelmet, ItemListener.rubyHelmet, ItemListener.sapphireHelmet, ItemListener.siliconHelmet, ItemListener.silverHelmet, ItemListener.tinHelmet, ItemListener.titaniumHelmet, ItemListener.tungstenHelmet, ItemListener.zincHelmet, ItemListener.brassHelmet, ItemListener.bronzeHelmet, ItemListener.steelHelmet, ItemListener.osmiumHelmet, ItemListener.onyxHelmet},
@@ -65,7 +64,8 @@ public class RecipeListener {
                     CraftingRegistry.addShapedRecipe(new ItemStack(item, 1), armorPatterns[j], ('X'), object);
                 }
             }
-            
+
+            // Storage block crafting
             CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.coalBlock), "XX", "XX", 'X', new ItemStack(Item.COAL));
             CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.onyxBlock), "XX", "XX", 'X', new ItemStack(ItemListener.onyx));
             CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.cobaltBlock), "XX", "XX", 'X', new ItemStack(ItemListener.cobaltIngot));
@@ -94,10 +94,13 @@ public class RecipeListener {
             CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.steelBlock), "XX", "XX", 'X', new ItemStack(ItemListener.steelIngot));
         }
         if (type == RecipeRegisterEvent.Vanilla.SMELTING.type()) {
+            // Food
             SmeltingRegistry.addSmeltingRecipe(Item.EGG.id, new ItemStack(ItemListener.cookedEgg));
 
+            // Building blocks
             SmeltingRegistry.addSmeltingRecipe(Block.BRICKS.id, new ItemStack(BlockListener.firedBricks));
 
+            // Ores
             SmeltingRegistry.addSmeltingRecipe(BlockListener.aluminiumOre.id, new ItemStack(ItemListener.aluminiumIngot));
             SmeltingRegistry.addSmeltingRecipe(BlockListener.copperOre.id, new ItemStack(ItemListener.copperIngot));
             SmeltingRegistry.addSmeltingRecipe(BlockListener.tinOre.id, new ItemStack(ItemListener.tinIngot));
@@ -118,8 +121,8 @@ public class RecipeListener {
             SmeltingRegistry.addSmeltingRecipe(BlockListener.osmiumOre.id, new ItemStack(ItemListener.osmiumIngot));
         }
         if (type == RecipeRegisterEvent.Vanilla.CRAFTING_SHAPELESS.type()) {
+            // Storage block un-crafting
             CraftingRegistry.addShapelessRecipe(new ItemStack(Item.COAL, 4), new ItemStack(BlockListener.coalBlock));
-            
             CraftingRegistry.addShapelessRecipe(new ItemStack(ItemListener.onyx, 4), new ItemStack(BlockListener.onyxBlock));
             CraftingRegistry.addShapelessRecipe(new ItemStack(ItemListener.cobaltIngot, 4), new ItemStack(BlockListener.cobaltBlock));
             CraftingRegistry.addShapelessRecipe(new ItemStack(ItemListener.aluminiumIngot, 4), new ItemStack(BlockListener.aluminiumBlock));
@@ -146,6 +149,8 @@ public class RecipeListener {
             CraftingRegistry.addShapelessRecipe(new ItemStack(ItemListener.brassIngot, 4), new ItemStack(BlockListener.brassBlock));
             CraftingRegistry.addShapelessRecipe(new ItemStack(ItemListener.steelIngot, 4), new ItemStack(BlockListener.steelBlock));
         }
+
+        // Carpentry
         CarpentryRecipes.carpentry().addCarpentry(Block.STONE.id, 0, 15,
                 new ItemStack[] {
                         new ItemStack(BlockListener.workedStone),
