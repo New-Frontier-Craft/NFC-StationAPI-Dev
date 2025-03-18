@@ -73,6 +73,166 @@ public class BrickOvenManager {
                 new ItemStack(Item.IRON_INGOT, 1),
                 new ItemStack(Item.IRON_INGOT, 1)}, 6400);
 
+        // Experimental titanium steel recipes
+        addOvenRecipe(new ItemStack(ItemListener.steelIngot, 8), new Object[] {
+                new ItemStack(ItemListener.anthracite, 1),
+                new ItemStack(ItemListener.titaniumIngot, 1),
+                new ItemStack(Item.IRON_INGOT, 1),
+                new	ItemStack(Item.IRON_INGOT, 1),
+                new ItemStack(Item.IRON_INGOT, 1),
+                new ItemStack(Item.IRON_INGOT, 1),
+                new ItemStack(Item.IRON_INGOT, 1),
+                new ItemStack(Item.IRON_INGOT, 1)}, 6400);
+
+        addOvenRecipe(new ItemStack(ItemListener.steelIngot, 8), new Object[] {
+                new ItemStack(ItemListener.anthracite, 1),
+                new ItemStack(ItemListener.chromeIngot, 1),
+                new ItemStack(ItemListener.titaniumIngot, 1),
+                new	ItemStack(Item.IRON_INGOT, 1),
+                new ItemStack(Item.IRON_INGOT, 1),
+                new ItemStack(Item.IRON_INGOT, 1),
+                new ItemStack(Item.IRON_INGOT, 1),
+                new ItemStack(Item.IRON_INGOT, 1)}, 6400);
+
+        addOvenRecipe(new ItemStack(ItemListener.steelIngot, 8), new Object[] {
+                new ItemStack(ItemListener.anthracite, 1),
+                new ItemStack(ItemListener.nickelIngot, 1),
+                new ItemStack(ItemListener.titaniumIngot, 1),
+                new	ItemStack(Item.IRON_INGOT, 1),
+                new ItemStack(Item.IRON_INGOT, 1),
+                new ItemStack(Item.IRON_INGOT, 1),
+                new ItemStack(Item.IRON_INGOT, 1),
+                new ItemStack(Item.IRON_INGOT, 1)}, 6400);
+
+        addOvenRecipe(new ItemStack(ItemListener.steelIngot, 8), new Object[] {
+                new ItemStack(ItemListener.anthracite, 1),
+                new ItemStack(ItemListener.chromeIngot, 1),
+                new ItemStack(ItemListener.nickelIngot, 1),
+                new ItemStack(ItemListener.titaniumIngot, 1),
+                new ItemStack(Item.IRON_INGOT, 1),
+                new ItemStack(Item.IRON_INGOT, 1),
+                new ItemStack(Item.IRON_INGOT, 1),
+                new ItemStack(Item.IRON_INGOT, 1)}, 6400);
+
+        // Experimental tungsten steel recipes
+        addOvenRecipe(new ItemStack(ItemListener.steelIngot, 8), new Object[] {
+                new ItemStack(ItemListener.anthracite, 1),
+                new ItemStack(ItemListener.tungstenIngot, 1),
+                new ItemStack(Item.IRON_INGOT, 1),
+                new	ItemStack(Item.IRON_INGOT, 1),
+                new ItemStack(Item.IRON_INGOT, 1),
+                new ItemStack(Item.IRON_INGOT, 1),
+                new ItemStack(Item.IRON_INGOT, 1),
+                new ItemStack(Item.IRON_INGOT, 1)}, 6400);
+
+        addOvenRecipe(new ItemStack(ItemListener.steelIngot, 8), new Object[] {
+                new ItemStack(ItemListener.anthracite, 1),
+                new ItemStack(ItemListener.chromeIngot, 1),
+                new ItemStack(ItemListener.tungstenIngot, 1),
+                new	ItemStack(Item.IRON_INGOT, 1),
+                new ItemStack(Item.IRON_INGOT, 1),
+                new ItemStack(Item.IRON_INGOT, 1),
+                new ItemStack(Item.IRON_INGOT, 1),
+                new ItemStack(Item.IRON_INGOT, 1)}, 6400);
+
+        addOvenRecipe(new ItemStack(ItemListener.steelIngot, 8), new Object[] {
+                new ItemStack(ItemListener.anthracite, 1),
+                new ItemStack(ItemListener.nickelIngot, 1),
+                new ItemStack(ItemListener.tungstenIngot, 1),
+                new	ItemStack(Item.IRON_INGOT, 1),
+                new ItemStack(Item.IRON_INGOT, 1),
+                new ItemStack(Item.IRON_INGOT, 1),
+                new ItemStack(Item.IRON_INGOT, 1),
+                new ItemStack(Item.IRON_INGOT, 1)}, 6400);
+
+        addOvenRecipe(new ItemStack(ItemListener.steelIngot, 8), new Object[] {
+                new ItemStack(ItemListener.anthracite, 1),
+                new ItemStack(ItemListener.chromeIngot, 1),
+                new ItemStack(ItemListener.nickelIngot, 1),
+                new ItemStack(ItemListener.tungstenIngot, 1),
+                new ItemStack(Item.IRON_INGOT, 1),
+                new ItemStack(Item.IRON_INGOT, 1),
+                new ItemStack(Item.IRON_INGOT, 1),
+                new ItemStack(Item.IRON_INGOT, 1)}, 6400);
+
+        // Experimental titanium-tungsten steel recipes
+        addOvenRecipe(new ItemStack(ItemListener.steelIngot, 8), new Object[] {
+                new ItemStack(ItemListener.anthracite, 1),
+                new ItemStack(ItemListener.titaniumIngot, 1),
+                new ItemStack(ItemListener.tungstenIngot, 1),
+                new	ItemStack(Item.IRON_INGOT, 1),
+                new ItemStack(Item.IRON_INGOT, 1),
+                new ItemStack(Item.IRON_INGOT, 1),
+                new ItemStack(Item.IRON_INGOT, 1),
+                new ItemStack(Item.IRON_INGOT, 1)}, 6400);
+
+        addOvenRecipe(new ItemStack(ItemListener.steelIngot, 8), new Object[] {
+                new ItemStack(ItemListener.anthracite, 1),
+                new ItemStack(ItemListener.chromeIngot, 1),
+                new ItemStack(ItemListener.titaniumIngot, 1),
+                new	ItemStack(ItemListener.tungstenIngot, 1),
+                new ItemStack(Item.IRON_INGOT, 1),
+                new ItemStack(Item.IRON_INGOT, 1),
+                new ItemStack(Item.IRON_INGOT, 1),
+                new ItemStack(Item.IRON_INGOT, 1)}, 6400);
+
+        addOvenRecipe(new ItemStack(ItemListener.steelIngot, 8), new Object[] {
+                new ItemStack(ItemListener.anthracite, 1),
+                new ItemStack(ItemListener.nickelIngot, 1),
+                new ItemStack(ItemListener.titaniumIngot, 1),
+                new	ItemStack(ItemListener.tungstenIngot, 1),
+                new ItemStack(Item.IRON_INGOT, 1),
+                new ItemStack(Item.IRON_INGOT, 1),
+                new ItemStack(Item.IRON_INGOT, 1),
+                new ItemStack(Item.IRON_INGOT, 1)}, 6400);
+
+        addOvenRecipe(new ItemStack(ItemListener.steelIngot, 8), new Object[] {
+                new ItemStack(ItemListener.anthracite, 1),
+                new ItemStack(ItemListener.chromeIngot, 1),
+                new ItemStack(ItemListener.nickelIngot, 1),
+                new ItemStack(ItemListener.titaniumIngot, 1),
+                new ItemStack(ItemListener.tungstenIngot, 1),
+                new ItemStack(Item.IRON_INGOT, 1),
+                new ItemStack(Item.IRON_INGOT, 1),
+                new ItemStack(Item.IRON_INGOT, 1)}, 6400);
+
+        // Platinum enhanced smelting
+        addOvenRecipe(new ItemStack(ItemListener.osmiumIngot, 5), new Object[] {
+                new ItemStack(BlockListener.osmiumOre, 1),
+                new ItemStack(BlockListener.osmiumOre, 1),
+                new ItemStack(BlockListener.osmiumOre, 1),
+                new ItemStack(BlockListener.osmiumOre, 1),
+                new ItemStack(ItemListener.platinumIngot, 1)}, 6400);
+
+        addOvenRecipe(new ItemStack(ItemListener.titaniumIngot, 5), new Object[] {
+                new ItemStack(BlockListener.titaniumOre, 1),
+                new ItemStack(BlockListener.titaniumOre, 1),
+                new ItemStack(BlockListener.titaniumOre, 1),
+                new ItemStack(BlockListener.titaniumOre, 1),
+                new ItemStack(ItemListener.platinumIngot, 1)}, 4800);
+
+        addOvenRecipe(new ItemStack(ItemListener.tungstenIngot, 5), new Object[] {
+                new ItemStack(BlockListener.tungstenOre, 1),
+                new ItemStack(BlockListener.tungstenOre, 1),
+                new ItemStack(BlockListener.tungstenOre, 1),
+                new ItemStack(BlockListener.tungstenOre, 1),
+                new ItemStack(ItemListener.platinumIngot, 1)}, 4800);
+
+        // Experimental boron recipes
+        addOvenRecipe(new ItemStack(ItemListener.magnetiteIngot, 5), new Object[] {
+                new ItemStack(BlockListener.magnetiteOre, 1),
+                new ItemStack(BlockListener.magnetiteOre, 1),
+                new ItemStack(BlockListener.magnetiteOre, 1),
+                new ItemStack(BlockListener.magnetiteOre, 1),
+                new ItemStack(ItemListener.boronIngot, 1)}, 4800);
+
+        addOvenRecipe(new ItemStack(ItemListener.cobaltIngot, 5), new Object[] {
+                new ItemStack(BlockListener.cobaltOre, 1),
+                new ItemStack(BlockListener.cobaltOre, 1),
+                new ItemStack(BlockListener.cobaltOre, 1),
+                new ItemStack(BlockListener.cobaltOre, 1),
+                new ItemStack(ItemListener.boronIngot, 1)}, 4800);
+
         //Smelting
         addOvenRecipe(new ItemStack(ItemListener.tungstenIngot, 1), new Object[] {new ItemStack(BlockListener.tungstenOre, 1)}, 200);
         addOvenRecipe(new ItemStack(ItemListener.titaniumIngot, 1), new Object[] {new ItemStack(BlockListener.titaniumOre, 1)}, 200);
@@ -81,8 +241,8 @@ public class BrickOvenManager {
 //		Object[][] oreRecipes;
 //
 //	    oreRecipes = new Object[][] {
-//	    	{Block.oreCoal, ItemListener.anthraciteore, Block.oreIron, Block.oreGold, Block.oreDiamond, ItemListener.aluminumore, ItemListener.bismuthore, ItemListener.boronore, ItemListener.chromeore, ItemListener.cobaltore, ItemListener.copperore, ItemListener.emeraldore, ItemListener.nickelore, ItemListener.platinumore, ItemListener.rubyore, ItemListener.sapphireore, ItemListener.siliconore, ItemListener.silverore, ItemListener.tinore, ItemListener.leadore, ItemListener.titaniumore, ItemListener.tungstenore, ItemListener.zincore, ItemListener.osmiumore, ItemListener.onyxore, ItemListener.uranite, ItemListener.netheruraninite, ItemListener.nethergoldore, ItemListener.nethercoalore, ItemListener.magnetiteore},
-//	    	{Item.coal, ItemListener.anthracite, Item.ingotIron, Item.ingotGold, Item.diamond, ItemListener.aluminum, ItemListener.bismuth, ItemListener.boron, ItemListener.chrome, ItemListener.cobalt, ItemListener.copper, ItemListener.emerald, ItemListener.nickel, ItemListener.platinum, ItemListener.ruby, ItemListener.sapphire, ItemListener.silicon, ItemListener.silver, ItemListener.tin, ItemListener.lead, ItemListener.titanium, ItemListener.tungsten, ItemListener.zinc, ItemListener.osmium, ItemListener.onyx, ItemListener.uranium, ItemListener.uranium, Item.ingotGold, ItemListener.nethercoal, ItemListener.magnet}
+//	    	{Block.oreCoal, ItemListener.anthraciteore, Block.oreIron, Block.oreGold, Block.oreDiamond, ItemListener.aluminumore, ItemListener.bismuthore, ItemListener.boronore, ItemListener.chromeore, BlockListener.cobaltOre, ItemListener.copperore, ItemListener.emeraldore, ItemListener.nickelore, ItemListener.platinumore, ItemListener.rubyore, ItemListener.sapphireore, ItemListener.siliconore, ItemListener.silverore, ItemListener.tinore, ItemListener.leadore, BlockListener.titaniumOre, BlockListener.tungstenOre, ItemListener.zincore, BlockListener.osmiumOre, ItemListener.onyxore, ItemListener.uranite, ItemListener.netheruraninite, ItemListener.nethergoldore, ItemListener.nethercoalore, BlockListener.magnetiteOre},
+//	    	{Item.coal, ItemListener.anthracite, Item.IRON_INGOT, Item.ingotGold, Item.diamond, ItemListener.aluminum, ItemListener.bismuth, ItemListener.boronIngot, ItemListener.chromeIngot, ItemListener.cobalt, ItemListener.copper, ItemListener.emerald, ItemListener.nickelIngot, ItemListener.platinumIngot, ItemListener.ruby, ItemListener.sapphire, ItemListener.silicon, ItemListener.silver, ItemListener.tin, ItemListener.lead, ItemListener.titaniumIngot, ItemListener.tungstenIngot, ItemListener.zinc, ItemListener.osmiumIngot, ItemListener.onyx, ItemListener.uranium, ItemListener.uranium, Item.ingotGold, ItemListener.nethercoal, ItemListener.magnet}
 //	    };
 //
 //	    for (int i = 0; i < oreRecipes[0].length; ++i) {

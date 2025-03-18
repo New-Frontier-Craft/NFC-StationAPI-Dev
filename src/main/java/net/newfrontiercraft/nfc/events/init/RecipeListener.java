@@ -109,17 +109,14 @@ public class RecipeListener {
             SmeltingRegistry.addSmeltingRecipe(BlockListener.zincOre.id, new ItemStack(ItemListener.zincIngot));
             SmeltingRegistry.addSmeltingRecipe(BlockListener.nickelOre.id, new ItemStack(ItemListener.nickelIngot));
             SmeltingRegistry.addSmeltingRecipe(BlockListener.cobaltOre.id, new ItemStack(ItemListener.cobaltIngot));
-            SmeltingRegistry.addSmeltingRecipe(BlockListener.tungstenOre.id, new ItemStack(ItemListener.tungstenIngot));
             SmeltingRegistry.addSmeltingRecipe(BlockListener.magnetiteOre.id, new ItemStack(ItemListener.magnetiteIngot));
             SmeltingRegistry.addSmeltingRecipe(BlockListener.silverOre.id, new ItemStack(ItemListener.silverIngot));
             SmeltingRegistry.addSmeltingRecipe(BlockListener.leadOre.id, new ItemStack(ItemListener.leadIngot));
             SmeltingRegistry.addSmeltingRecipe(BlockListener.siliconOre.id, new ItemStack(ItemListener.siliconIngot));
             SmeltingRegistry.addSmeltingRecipe(BlockListener.chromeOre.id, new ItemStack(ItemListener.chromeIngot));
-            SmeltingRegistry.addSmeltingRecipe(BlockListener.titaniumOre.id, new ItemStack(ItemListener.titaniumIngot));
             SmeltingRegistry.addSmeltingRecipe(BlockListener.uraniniteOre.id, new ItemStack(ItemListener.uraniumIngot));
             SmeltingRegistry.addSmeltingRecipe(BlockListener.platinumOre.id, new ItemStack(ItemListener.platinumIngot));
             SmeltingRegistry.addSmeltingRecipe(BlockListener.boronOre.id, new ItemStack(ItemListener.boronIngot));
-            SmeltingRegistry.addSmeltingRecipe(BlockListener.osmiumOre.id, new ItemStack(ItemListener.osmiumIngot));
         }
         if (type == RecipeRegisterEvent.Vanilla.CRAFTING_SHAPELESS.type()) {
             // Storage block un-crafting
