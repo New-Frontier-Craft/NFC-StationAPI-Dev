@@ -44,15 +44,15 @@ public class BrickOvenShapelessRecipeCategory implements RecipeCategory {
     @Override
     public void setRecipe(@NotNull RecipeLayout recipeLayout, @NotNull RecipeWrapper recipeWrapper) {
         GuiItemStackGroup guiItemStacks = recipeLayout.getItemStacks();
-        int xOffset = 21;
-        int yOffset = 26;
+        int xOffset = 29;
+        int yOffset = 8;
         for (int i = 0; i < recipeWrapper.getInputs().size(); i++) {
             guiItemStacks.init(i, true, xOffset + (i % 3) * 18, yOffset + (i / 3) * 18);
         }
         for (int i = 0; i < recipeWrapper.getInputs().size(); i++) {
             guiItemStacks.setFromRecipe(i, recipeWrapper.getInputs().get(i));
         }
-        guiItemStacks.init(9, false, 112 + xOffset, yOffset + 18);
+        guiItemStacks.init(9, false, 78 + xOffset, yOffset + 54);
         guiItemStacks.setFromRecipe(9, recipeWrapper.getOutputs().get(0));
     }
 }
