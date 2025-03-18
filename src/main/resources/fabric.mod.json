@@ -30,6 +30,9 @@
       "net.newfrontiercraft.nfc.events.init.ScreenHandlerListener"
     ],
     "stationapi:event_bus_server": [
+    ],
+    "alwaysmoreitems:plugin": [
+      "net.newfrontiercraft.nfc.compat.ami.AMICompat"
     ]
   },
   "mixins": [
