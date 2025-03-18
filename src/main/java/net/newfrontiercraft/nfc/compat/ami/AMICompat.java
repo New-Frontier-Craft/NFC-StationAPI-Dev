@@ -3,7 +3,10 @@ package net.newfrontiercraft.nfc.compat.ami;
 import net.glasslauncher.mods.alwaysmoreitems.api.*;
 import net.minecraft.nbt.NbtCompound;
 import net.modificationstation.stationapi.api.util.Identifier;
+import net.newfrontiercraft.nfc.compat.ami.brickoven.BrickOvenShapelessRecipeCategory;
+import net.newfrontiercraft.nfc.compat.ami.brickoven.BrickOvenShapelessRecipeHandler;
 import net.newfrontiercraft.nfc.events.init.BlockListener;
+import net.newfrontiercraft.nfc.registry.BrickOvenManager;
 
 public class AMICompat implements ModPluginProvider {
 
@@ -29,6 +32,9 @@ public class AMICompat implements ModPluginProvider {
 
     @Override
     public void register(ModRegistry registry) {
+        registry.addRecipeCategories(new BrickOvenShapelessRecipeCategory());
+        registry.addRecipeHandlers(new BrickOvenShapelessRecipeHandler());
+        registry.addRecipes(BrickOvenManager.smelting().getShapelessRecipes());
     }
 
     @Override

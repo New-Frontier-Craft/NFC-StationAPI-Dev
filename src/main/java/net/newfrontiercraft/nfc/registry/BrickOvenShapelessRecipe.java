@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class OvenRecipes implements OvenRecipe {
+public class BrickOvenShapelessRecipe implements BrickOvenRecipe {
 
-    public OvenRecipes(ItemStack itemstack, List list, int time) {
+    public BrickOvenShapelessRecipe(ItemStack itemstack, List list, int time) {
         recipeOutput = itemstack;
         recipeItems = list;
         recipeTime = time;
@@ -67,6 +67,10 @@ public class OvenRecipes implements OvenRecipe {
 
     public int getRecipeSize() {
         return recipeItems.size();
+    }
+
+    public List getRecipeItems() {
+        return recipeItems;
     }
 
     private final ItemStack recipeOutput;

@@ -2,7 +2,7 @@ package net.newfrontiercraft.nfc.registry;
 
 import net.minecraft.item.ItemStack;
 
-public interface OvenRecipe {
+public interface BrickOvenRecipe {
 
     boolean matches(ItemStack[] itemstacks);
 

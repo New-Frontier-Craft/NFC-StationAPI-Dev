@@ -12,7 +12,7 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtList;
 import net.newfrontiercraft.nfc.block.BrickOvenBlock;
 import net.newfrontiercraft.nfc.events.init.ItemListener;
-import net.newfrontiercraft.nfc.registry.OvenManager;
+import net.newfrontiercraft.nfc.registry.BrickOvenManager;
 
 public class BrickOvenBlockEntity extends BlockEntity implements Inventory {
 
@@ -166,7 +166,7 @@ public class BrickOvenBlockEntity extends BlockEntity implements Inventory {
     }
 
     private boolean canSmelt() {
-        ItemStack itemstack = OvenManager.smelting().findMatchingRecipe(furnaceItemStacks, this);
+        ItemStack itemstack = BrickOvenManager.smelting().findMatchingRecipe(furnaceItemStacks, this);
         if (itemstack == null) {
             return false;
         }
@@ -187,7 +187,7 @@ public class BrickOvenBlockEntity extends BlockEntity implements Inventory {
         if (!canSmelt()) {
             return;
         }
-        ItemStack itemstack = OvenManager.smelting().findMatchingRecipe(furnaceItemStacks, this);
+        ItemStack itemstack = BrickOvenManager.smelting().findMatchingRecipe(furnaceItemStacks, this);
         if (furnaceItemStacks[10] == null) {
             furnaceItemStacks[10] = itemstack.copy();
         } else if (furnaceItemStacks[10].itemId == itemstack.copy().itemId) {

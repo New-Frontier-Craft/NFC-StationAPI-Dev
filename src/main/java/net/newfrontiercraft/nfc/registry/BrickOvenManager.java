@@ -11,9 +11,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class OvenManager {
+public class BrickOvenManager {
 
-    public OvenManager() {
+    public BrickOvenManager() {
         recipes = new ArrayList();
 
         //Metal Alloys
@@ -217,21 +217,20 @@ public class OvenManager {
          */
     }
 
-    void addShapedOvenRecipe(ItemStack itemStack, Object aobj[], int time)
+    void addShapedOvenRecipe(ItemStack itemStack, Object[] aobj, int time)
     {
-        String s = "";
+        StringBuilder s = new StringBuilder();
         int i = 0;
         int j = 0;
         int k = 0;
         if(aobj[i] instanceof String[])
         {
-            String as[] = (String[])aobj[i++];
-            for(int l = 0; l < as.length; l++)
-            {
+            String[] as = (String[])aobj[i++];
+            for(int l = 0; l < as.length; l++) {
                 String s2 = as[l];
                 k++;
                 j = s2.length();
-                s = (new StringBuilder()).append(s).append(s2).toString();
+                s.append(s2);
             }
 
         } else
@@ -241,7 +240,7 @@ public class OvenManager {
                 String s1 = (String)aobj[i++];
                 k++;
                 j = s1.length();
-                s = (new StringBuilder()).append(s).append(s1).toString();
+                s = new StringBuilder(s + s1);
             }
         }
         HashMap hashmap = new HashMap();
@@ -264,22 +263,22 @@ public class OvenManager {
             hashmap.put(character, ItemStack1);
         }
 
-        ItemStack itemStacks[] = new ItemStack[j * k];
+        ItemStack[] itemStacks = new ItemStack[j * k];
         for(int i1 = 0; i1 < j * k; i1++)
         {
             char c = s.charAt(i1);
-            if(hashmap.containsKey(Character.valueOf(c)))
+            if(hashmap.containsKey(c))
             {
-                itemStacks[i1] = ((ItemStack)hashmap.get(Character.valueOf(c))).copy();
+                itemStacks[i1] = ((ItemStack)hashmap.get(c)).copy();
             } else
             {
                 itemStacks[i1] = null;
             }
         }
-        recipes.add(new OvenRecipesShaped(j, k, itemStacks, itemStack, time));
+        recipes.add(new BrickOvenRecipesShaped(j, k, itemStacks, itemStack, time));
     }
 
-    void addOvenRecipe(ItemStack itemStack, Object aobj[], int time) {
+    void addOvenRecipe(ItemStack itemStack, Object[] aobj, int time) {
         ArrayList arraylist = new ArrayList();
         Object aobj1[] = aobj;
         int i = aobj1.length;
@@ -299,16 +298,14 @@ public class OvenManager {
                 throw new RuntimeException("Invalid shapeless recipe!");
             }
         }
-        recipes.add(new OvenRecipes(itemStack, arraylist, time));
+        recipes.add(new BrickOvenShapelessRecipe(itemStack, arraylist, time));
     }
 
     public ItemStack findMatchingRecipe(ItemStack[] ItemStacks, BrickOvenBlockEntity joe) {
         //removed a lot of extra stuff
-        for (int i = 0; i < recipes.size(); i++)
-        {
-            OvenRecipe var12 = (OvenRecipe) recipes.get(i);
-            if (var12.matches(ItemStacks))
-            {
+        for (int i = 0; i < recipes.size(); i++) {
+            BrickOvenRecipe var12 = (BrickOvenRecipe) recipes.get(i);
+            if (var12.matches(ItemStacks)) {
                 joe.setTime(var12.getTime());
                 return var12.getCraftingResult(ItemStacks);
             }
@@ -317,15 +314,25 @@ public class OvenManager {
         return null;
     }
 
+    public ArrayList getShapelessRecipes() {
+        ArrayList shapelessRecipes = new ArrayList();
+        for (Object recipe : recipes) {
+            if (recipe instanceof BrickOvenShapelessRecipe) {
+                shapelessRecipes.add(recipe);
+            }
+        }
+        return shapelessRecipes;
+    }
+
     public List getRecipeList() {
         return recipes;
     }
 
-    public static final OvenManager smelting() {
+    public static final BrickOvenManager smelting() {
         return instance;
     }
 
-    private static final OvenManager instance = new OvenManager();
+    private static final BrickOvenManager instance = new BrickOvenManager();
     private List recipes;
 
 }
