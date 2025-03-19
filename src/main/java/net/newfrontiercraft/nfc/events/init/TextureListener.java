@@ -1,6 +1,7 @@
 package net.newfrontiercraft.nfc.events.init;
 
 import net.mine_diver.unsafeevents.listener.EventListener;
+import net.minecraft.block.Block;
 import net.modificationstation.stationapi.api.client.event.texture.TextureRegisterEvent;
 import net.modificationstation.stationapi.api.client.texture.atlas.Atlases;
 import net.modificationstation.stationapi.api.mod.entrypoint.Entrypoint;
@@ -20,6 +21,7 @@ public class TextureListener {
         String oreStorage = "block/ore_storage/";
         String machines = "block/machines/";
         String woldGeneration = "block/world_generation/";
+        String vanillaBlocks = "block/vanilla/";
 
         // Item strings
         String ingotItems = "item/ingots/";
@@ -386,5 +388,16 @@ public class TextureListener {
 
         // Food
         ItemListener.cookedEgg.setTexture(Identifier.of(MOD_ID, foodItems + "cooked_egg"));
+
+        // Vanilla texture changes
+        grassBlockSide = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, vanillaBlocks + "grass_block_side")).index;
+        grassBlockSideSnowy = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, vanillaBlocks + "grass_block_side_snowy")).index;
+        grassBlockSideOverlay = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, vanillaBlocks + "grass_block_side_overlay")).index;
+        Block.COBBLESTONE.textureId = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, vanillaBlocks + "cobblestone")).index;
     }
+
+    public static int
+            grassBlockSide,
+            grassBlockSideSnowy,
+            grassBlockSideOverlay;
 }

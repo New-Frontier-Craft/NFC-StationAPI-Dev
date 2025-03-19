@@ -11,6 +11,8 @@
   "server": [
   ],
   "client": [
+    "GrassBlockTextureMixin",
+    "GrassOverlayMixin"
   ],
   "injectors": {
     "defaultRequire": 1
