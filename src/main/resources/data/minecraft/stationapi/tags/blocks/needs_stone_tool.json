@@ -6,6 +6,13 @@
     "nfc:copper_ore",
     "nfc:lead_ore",
     "nfc:tin_ore",
-    "nfc:zinc_ore"
+    "nfc:zinc_ore",
+    "nfc:aluminium_block",
+    "nfc:bismuth_block",
+    "nfc:copper_block",
+    "nfc:lead_block",
+    "nfc:tin_block",
+    "nfc:zinc_block",
+    "gold_block"
   ]
 }

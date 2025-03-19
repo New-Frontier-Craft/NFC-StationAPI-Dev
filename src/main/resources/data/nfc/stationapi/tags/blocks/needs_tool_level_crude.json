@@ -4,6 +4,12 @@
     "nfc:boron_ore",
     "nfc:nickel_ore",
     "nfc:platinum_ore",
-    "nfc:silver_ore"
+    "nfc:silver_ore",
+    "nfc:boron_block",
+    "nfc:brass_block",
+    "nfc:bronze_block",
+    "nfc:nickel_block",
+    "nfc:platinum_block",
+    "nfc:silver_block"
   ]
 }

@@ -1,6 +1,8 @@
 {
   "values": [
     "diamond_ore",
-    "nfc:osmium_ore"
+    "nfc:osmium_ore",
+    "nfc:osmium_block",
+    "diamond_block"
   ]
 }

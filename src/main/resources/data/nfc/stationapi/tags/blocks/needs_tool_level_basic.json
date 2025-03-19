@@ -3,6 +3,10 @@
     "nfc:chrome_ore",
     "nfc:cobalt_ore",
     "iron_ore",
-    "nfc:silicon_ore"
+    "nfc:silicon_ore",
+    "nfc:chrome_block",
+    "nfc:cobalt_block",
+    "iron_block",
+    "nfc:silicon_block"
   ]
 }

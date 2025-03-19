@@ -8,6 +8,14 @@
     "nfc:sapphire_ore",
     "nfc:emerald_ore",
     "nfc:nether_onyx_ore",
-    "obsidian"
+    "obsidian",
+    "nfc:magnetite_block",
+    "nfc:steel_block",
+    "nfc:titanium_block",
+    "nfc:tungsten_block",
+    "nfc:sapphire_block",
+    "nfc:ruby_block",
+    "nfc:emerald_block",
+    "nfc:onyx_block"
   ]
 }
