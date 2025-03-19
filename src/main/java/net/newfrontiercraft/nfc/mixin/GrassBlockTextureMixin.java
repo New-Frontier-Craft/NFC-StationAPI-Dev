@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(GrassBlock.class)
 public class GrassBlockTextureMixin {
-    @Inject(at = @At("HEAD"), method = "getTextureId", remap = false, cancellable = true)
+    @Inject(at = @At("HEAD"), method = "getTextureId", remap = false, cancellable = true, require = 0)
     private void replaceTexture(BlockView blockView, int x, int y, int z, int side, CallbackInfoReturnable<Integer> cir) {
         if (side > 1) {
             Material topMaterial = blockView.getMaterial(x, y + 1, z);

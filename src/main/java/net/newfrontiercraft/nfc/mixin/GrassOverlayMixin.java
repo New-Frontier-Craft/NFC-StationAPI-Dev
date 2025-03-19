@@ -11,14 +11,14 @@ public class GrassOverlayMixin {
 
     @ModifyConstant(method = "renderSmooth", constant = {
             @Constant(intValue = 38)
-    })
+    }, require = 0)
     private int replaceOverlayIndex(int constant) {
         return TextureListener.grassBlockSideOverlay;
     }
 
     @ModifyConstant(method = "renderFlat", constant = {
             @Constant(intValue = 38)
-    })
+    }, require = 0)
     private int replaceFlatOverlayIndex(int constant) {
         return TextureListener.grassBlockSideOverlay;
     }
