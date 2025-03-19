@@ -398,6 +398,7 @@ public class TextureListener {
         poweredRail = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, vanillaBlocks + "powered_rail")).index;
         poweredRailActive = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, vanillaBlocks + "powered_rail_active")).index;
         Block.POWERED_RAIL.asItem().setTextureId(poweredRail);
+        Block.DIAMOND_BLOCK.textureId = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, vanillaBlocks + "diamond_block")).index;
     }
 
     public static int
