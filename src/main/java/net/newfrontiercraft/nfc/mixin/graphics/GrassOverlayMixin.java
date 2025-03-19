@@ -1,4 +1,4 @@
-package net.newfrontiercraft.nfc.mixin;
+package net.newfrontiercraft.nfc.mixin.graphics;
 
 import net.minecraft.client.render.block.BlockRenderManager;
 import net.newfrontiercraft.nfc.events.init.TextureListener;

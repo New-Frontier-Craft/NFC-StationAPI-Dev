@@ -1,4 +1,4 @@
-package net.newfrontiercraft.nfc.mixin;
+package net.newfrontiercraft.nfc.mixin.graphics;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.RailBlock;

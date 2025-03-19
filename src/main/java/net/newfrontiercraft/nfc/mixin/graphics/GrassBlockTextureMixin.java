@@ -1,4 +1,4 @@
-package net.newfrontiercraft.nfc.mixin;
+package net.newfrontiercraft.nfc.mixin.graphics;
 
 import net.minecraft.block.GrassBlock;
 import net.minecraft.block.material.Material;

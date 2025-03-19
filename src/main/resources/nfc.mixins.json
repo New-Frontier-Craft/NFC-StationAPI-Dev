@@ -11,10 +11,10 @@
   "server": [
   ],
   "client": [
-    "GrassBlockTextureMixin",
-    "GrassOverlayMixin",
-    "PoweredRailTextureMixin",
-    "SlabTextureMixin"
+    "graphics.GrassBlockTextureMixin",
+    "graphics.GrassOverlayMixin",
+    "graphics.PoweredRailTextureMixin",
+    "graphics.SlabTextureMixin"
   ],
   "injectors": {
     "defaultRequire": 1
