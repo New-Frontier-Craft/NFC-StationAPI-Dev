@@ -23,6 +23,7 @@ public class CarpentryWorkstationBlock extends TemplateBlock {
         super(identifier, material);
         setTranslationKey(identifier.namespace, identifier.path);
         setHardness(hardness);
+        setSoundGroup(Block.WOOD_SOUND_GROUP);
     }
 
     @Override

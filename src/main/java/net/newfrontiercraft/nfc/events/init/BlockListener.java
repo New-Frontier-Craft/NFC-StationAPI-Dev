@@ -180,7 +180,7 @@ public class BlockListener {
         brickOven = new BrickOvenBlock(Identifier.of(MOD_ID, "brick_oven"), Material.STONE, false, 0F, 1.5F);
         brickOvenActive = new BrickOvenBlock(Identifier.of(MOD_ID, "brick_oven_active"), Material.STONE, true, 0.875F, 1.5F);
 
-        carpentryWorkstation = new CarpentryWorkstationBlock(Identifier.of(MOD_ID, "carpentry_workstation"), Material.METAL, 1.0F);
+        carpentryWorkstation = new CarpentryWorkstationBlock(Identifier.of(MOD_ID, "carpentry_workstation"), Material.WOOD, 1.0F);
 
         // Changes to vanilla blast resistance
         Block.COAL_ORE.setResistance(500F);
