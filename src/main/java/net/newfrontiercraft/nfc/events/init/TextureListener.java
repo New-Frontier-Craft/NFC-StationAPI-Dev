@@ -394,10 +394,15 @@ public class TextureListener {
         grassBlockSideSnowy = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, vanillaBlocks + "grass_block_side_snowy")).index;
         grassBlockSideOverlay = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, vanillaBlocks + "grass_block_side_overlay")).index;
         Block.COBBLESTONE.textureId = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, vanillaBlocks + "cobblestone")).index;
+        poweredRail = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, vanillaBlocks + "powered_rail")).index;
+        poweredRailActive = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, vanillaBlocks + "powered_rail_active")).index;
+        Block.POWERED_RAIL.asItem().setTextureId(poweredRail);
     }
 
     public static int
             grassBlockSide,
             grassBlockSideSnowy,
-            grassBlockSideOverlay;
+            grassBlockSideOverlay,
+            poweredRail,
+            poweredRailActive;
 }
