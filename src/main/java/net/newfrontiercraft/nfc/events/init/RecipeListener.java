@@ -180,7 +180,7 @@ public class RecipeListener {
         }
 
         // Carpentry
-        CarpentryRecipes.carpentry().addCarpentry(Block.STONE.id, 0, 15,
+        CarpentryRecipes.carpentry().addCarpentry(Block.STONE.id, 0,
                 new ItemStack[] {
                         new ItemStack(BlockListener.workedStone),
                         new ItemStack(BlockListener.workedStoneCrossCut),

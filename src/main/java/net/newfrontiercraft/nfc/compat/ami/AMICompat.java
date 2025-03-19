@@ -5,8 +5,11 @@ import net.minecraft.nbt.NbtCompound;
 import net.modificationstation.stationapi.api.util.Identifier;
 import net.newfrontiercraft.nfc.compat.ami.brickoven.BrickOvenShapelessRecipeCategory;
 import net.newfrontiercraft.nfc.compat.ami.brickoven.BrickOvenShapelessRecipeHandler;
+import net.newfrontiercraft.nfc.compat.ami.carpentry.CarpentryRecipeCategory;
+import net.newfrontiercraft.nfc.compat.ami.carpentry.CarpentryRecipeHandler;
 import net.newfrontiercraft.nfc.events.init.BlockListener;
 import net.newfrontiercraft.nfc.registry.BrickOvenManager;
+import net.newfrontiercraft.nfc.registry.CarpentryRecipes;
 
 public class AMICompat implements ModPluginProvider {
 
@@ -35,6 +38,10 @@ public class AMICompat implements ModPluginProvider {
         registry.addRecipeCategories(new BrickOvenShapelessRecipeCategory());
         registry.addRecipeHandlers(new BrickOvenShapelessRecipeHandler());
         registry.addRecipes(BrickOvenManager.smelting().getShapelessRecipes());
+
+        registry.addRecipeCategories(new CarpentryRecipeCategory());
+        registry.addRecipeHandlers(new CarpentryRecipeHandler());
+        registry.addRecipes(CarpentryRecipes.carpentry().getRecipes());
     }
 
     @Override
