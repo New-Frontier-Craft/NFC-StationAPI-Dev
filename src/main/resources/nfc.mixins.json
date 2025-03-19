@@ -12,8 +12,6 @@
   "server": [
   ],
   "client": [
-    "graphics.GrassBlockTextureMixin",
-    "graphics.GrassOverlayMixin",
     "graphics.PoweredRailTextureMixin",
     "graphics.SlabTextureMixin"
   ],
