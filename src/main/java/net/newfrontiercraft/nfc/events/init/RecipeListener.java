@@ -22,6 +22,9 @@ public class RecipeListener {
             RecipeRemover.removeRecipe(Block.RAIL);
             RecipeRemover.removeRecipe(Block.POWERED_RAIL);
             RecipeRemover.removeRecipe(Block.DETECTOR_RAIL);
+            RecipeRemover.removeRecipe(Block.SLAB);
+            RecipeRemover.removeRecipe(Block.WOODEN_STAIRS);
+            RecipeRemover.removeRecipe(Block.COBBLESTONE_STAIRS);
 
             // Machines
             CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.brickOven), "XXX", "X X", "XXX", 'X', new ItemStack(BlockListener.firedBricks));
@@ -100,7 +103,7 @@ public class RecipeListener {
             CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.brassBlock), "XX", "XX", 'X', new ItemStack(ItemListener.brassIngot));
             CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.steelBlock), "XX", "XX", 'X', new ItemStack(ItemListener.steelIngot));
 
-            // Rail recipes
+            // Rails
             CraftingRegistry.addShapedRecipe(new ItemStack(Block.RAIL, 24), "X#X", "X#X", "X#X", 'X', Item.IRON_INGOT, '#', Item.STICK);
             CraftingRegistry.addShapedRecipe(new ItemStack(Block.POWERED_RAIL, 8), "X#X", "I#I", "XRX", 'X', Item.IRON_INGOT, 'R', Item.REDSTONE, '#', Item.STICK, 'I', ItemListener.copperIngot);
             CraftingRegistry.addShapedRecipe(new ItemStack(Block.DETECTOR_RAIL, 8), "XOX", "X#X", "XRX", 'X', Item.IRON_INGOT, 'R', Item.REDSTONE, '#', Block.STONE_PRESSURE_PLATE, 'O', Item.STICK);
@@ -111,6 +114,16 @@ public class RecipeListener {
             CraftingRegistry.addShapedRecipe(new ItemStack(Block.POWERED_RAIL, 10), "XYX", "Z+Z", "X#X", 'X', Item.IRON_INGOT, 'Y', Item.STICK, 'Z', ItemListener.copperIngot, '#', Item.REDSTONE, '+', Item.GOLD_INGOT);
             CraftingRegistry.addShapedRecipe(new ItemStack(Block.POWERED_RAIL, 16), "XYX", "Z+Z", "X#X", 'X', ItemListener.steelIngot, 'Y', Item.STICK, 'Z', ItemListener.copperIngot, '#', Item.REDSTONE, '+', Item.GOLD_INGOT);
             CraftingRegistry.addShapedRecipe(new ItemStack(Block.DETECTOR_RAIL, 12), "XYX", "XZX", "X#X", 'X', ItemListener.steelIngot, 'Y', Item.STICK, 'Z', Block.STONE_PRESSURE_PLATE, '#', Item.REDSTONE);
+
+            // Slabs
+            CraftingRegistry.addShapedRecipe(new ItemStack(Block.SLAB, 6, 3), "###", '#', Block.COBBLESTONE);
+            CraftingRegistry.addShapedRecipe(new ItemStack(Block.SLAB, 6, 0), "###", '#', Block.STONE);
+            CraftingRegistry.addShapedRecipe(new ItemStack(Block.SLAB, 6, 1), "###", '#', Block.SANDSTONE);
+            CraftingRegistry.addShapedRecipe(new ItemStack(Block.SLAB, 6, 2), "###", '#', Block.PLANKS);
+
+            // Stairs
+            CraftingRegistry.addShapedRecipe(new ItemStack(Block.WOODEN_STAIRS, 8), "#  ", "## ", "###", '#', Block.PLANKS);
+            CraftingRegistry.addShapedRecipe(new ItemStack(Block.COBBLESTONE_STAIRS, 8), "#  ", "## ", "###", '#', Block.COBBLESTONE);
         }
         if (type == RecipeRegisterEvent.Vanilla.SMELTING.type()) {
             // Food
