@@ -29,7 +29,7 @@ public class RecipeListener {
             RecipeRemover.removeRecipe(Block.DISPENSER);
 
             // Machines
-            CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.brickOven), "XXX", "X X", "XXX", 'X', new ItemStack(BlockListener.firedBricks));
+            CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.brickOven, 1, 3), "XXX", "X X", "XXX", 'X', new ItemStack(BlockListener.firedBricks));
             CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.carpentryWorkstation, 1), "XXX", "XYX", "ZZZ", 'X', Block.PLANKS, 'Y', ItemListener.bronzeIngot, 'Z', Block.COBBLESTONE);
 
             // Tools

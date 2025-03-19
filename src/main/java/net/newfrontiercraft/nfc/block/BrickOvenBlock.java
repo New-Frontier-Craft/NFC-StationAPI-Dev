@@ -38,6 +38,11 @@ public class BrickOvenBlock extends TemplateBlockWithEntity {
     }
 
     @Override
+    protected int getDroppedItemMeta(int blockMeta) {
+        return 3;
+    }
+
+    @Override
     public int getDroppedItemId(int i, Random random) {
         return BlockListener.brickOven.id;
     }
