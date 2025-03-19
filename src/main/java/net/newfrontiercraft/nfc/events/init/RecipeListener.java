@@ -25,6 +25,8 @@ public class RecipeListener {
             RecipeRemover.removeRecipe(Block.SLAB);
             RecipeRemover.removeRecipe(Block.WOODEN_STAIRS);
             RecipeRemover.removeRecipe(Block.COBBLESTONE_STAIRS);
+            RecipeRemover.removeRecipe(Block.PISTON);
+            RecipeRemover.removeRecipe(Block.DISPENSER);
 
             // Machines
             CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.brickOven), "XXX", "X X", "XXX", 'X', new ItemStack(BlockListener.firedBricks));
@@ -124,6 +126,10 @@ public class RecipeListener {
             // Stairs
             CraftingRegistry.addShapedRecipe(new ItemStack(Block.WOODEN_STAIRS, 8), "#  ", "## ", "###", '#', Block.PLANKS);
             CraftingRegistry.addShapedRecipe(new ItemStack(Block.COBBLESTONE_STAIRS, 8), "#  ", "## ", "###", '#', Block.COBBLESTONE);
+
+            // Machines
+            CraftingRegistry.addShapedRecipe(new ItemStack(Block.PISTON, 1), "TTT", "#X#", "#R#", '#', Block.COBBLESTONE, 'X', ItemListener.aluminiumIngot, 'R', Item.REDSTONE, 'T', Block.PLANKS);
+            CraftingRegistry.addShapedRecipe(new ItemStack(Block.DISPENSER, 1), "###", "#X#", "#R#", '#', Block.COBBLESTONE, 'X', Item.STRING, 'R', Item.REDSTONE);
         }
         if (type == RecipeRegisterEvent.Vanilla.SMELTING.type()) {
             // Food
