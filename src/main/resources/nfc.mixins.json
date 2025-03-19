@@ -13,7 +13,8 @@
   "client": [
     "GrassBlockTextureMixin",
     "GrassOverlayMixin",
-    "PoweredRailTextureMixin"
+    "PoweredRailTextureMixin",
+    "SlabTextureMixin"
   ],
   "injectors": {
     "defaultRequire": 1
