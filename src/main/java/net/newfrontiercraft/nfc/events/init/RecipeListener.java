@@ -9,6 +9,7 @@ import net.modificationstation.stationapi.api.recipe.CraftingRegistry;
 import net.modificationstation.stationapi.api.recipe.SmeltingRegistry;
 import net.modificationstation.stationapi.api.util.Identifier;
 import net.newfrontiercraft.nfc.registry.CarpentryRecipes;
+import net.newfrontiercraft.nfc.utils.RecipeRemover;
 
 public class RecipeListener {
 
@@ -17,6 +18,11 @@ public class RecipeListener {
 
         Identifier type = event.recipeId;
         if (type == RecipeRegisterEvent.Vanilla.CRAFTING_SHAPED.type()) {
+            // Recipe removal
+            RecipeRemover.removeRecipe(Block.RAIL);
+            RecipeRemover.removeRecipe(Block.POWERED_RAIL);
+            RecipeRemover.removeRecipe(Block.DETECTOR_RAIL);
+
             // Machines
             CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.brickOven), "XXX", "X X", "XXX", 'X', new ItemStack(BlockListener.firedBricks));
             CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.carpentryWorkstation, 1), "XXX", "XYX", "ZZZ", 'X', Block.PLANKS, 'Y', ItemListener.bronzeIngot, 'Z', Block.COBBLESTONE);
@@ -93,6 +99,18 @@ public class RecipeListener {
             CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.bronzeBlock), "XX", "XX", 'X', new ItemStack(ItemListener.bronzeIngot));
             CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.brassBlock), "XX", "XX", 'X', new ItemStack(ItemListener.brassIngot));
             CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.steelBlock), "XX", "XX", 'X', new ItemStack(ItemListener.steelIngot));
+
+            // Rail recipes
+            CraftingRegistry.addShapedRecipe(new ItemStack(Block.RAIL, 24), "X#X", "X#X", "X#X", 'X', Item.IRON_INGOT, '#', Item.STICK);
+            CraftingRegistry.addShapedRecipe(new ItemStack(Block.POWERED_RAIL, 8), "X#X", "I#I", "XRX", 'X', Item.IRON_INGOT, 'R', Item.REDSTONE, '#', Item.STICK, 'I', ItemListener.copperIngot);
+            CraftingRegistry.addShapedRecipe(new ItemStack(Block.DETECTOR_RAIL, 8), "XOX", "X#X", "XRX", 'X', Item.IRON_INGOT, 'R', Item.REDSTONE, '#', Block.STONE_PRESSURE_PLATE, 'O', Item.STICK);
+            CraftingRegistry.addShapedRecipe(new ItemStack(Block.RAIL, 6), "XYX", "XYX", "XYX", 'X', ItemListener.bronzeIngot, 'Y', Item.STICK);
+            CraftingRegistry.addShapedRecipe(new ItemStack(Block.RAIL, 6), "XYX", "XYX", "XYX", 'X', ItemListener.brassIngot, 'Y', Item.STICK);
+            CraftingRegistry.addShapedRecipe(new ItemStack(Block.RAIL, 36), "XYX", "XYX", "XYX", 'X', ItemListener.steelIngot, 'Y', Item.STICK);
+            CraftingRegistry.addShapedRecipe(new ItemStack(Block.POWERED_RAIL, 12), "XYX", "ZYZ", "X#X", 'X', ItemListener.steelIngot, 'Y', Item.STICK, 'Z', ItemListener.copperIngot, '#', Item.REDSTONE);
+            CraftingRegistry.addShapedRecipe(new ItemStack(Block.POWERED_RAIL, 10), "XYX", "Z+Z", "X#X", 'X', Item.IRON_INGOT, 'Y', Item.STICK, 'Z', ItemListener.copperIngot, '#', Item.REDSTONE, '+', Item.GOLD_INGOT);
+            CraftingRegistry.addShapedRecipe(new ItemStack(Block.POWERED_RAIL, 16), "XYX", "Z+Z", "X#X", 'X', ItemListener.steelIngot, 'Y', Item.STICK, 'Z', ItemListener.copperIngot, '#', Item.REDSTONE, '+', Item.GOLD_INGOT);
+            CraftingRegistry.addShapedRecipe(new ItemStack(Block.DETECTOR_RAIL, 12), "XYX", "XZX", "X#X", 'X', ItemListener.steelIngot, 'Y', Item.STICK, 'Z', Block.STONE_PRESSURE_PLATE, '#', Item.REDSTONE);
         }
         if (type == RecipeRegisterEvent.Vanilla.SMELTING.type()) {
             // Food
