@@ -29,13 +29,13 @@ public class BiomeEnlargerMixin {
     @Shadow private OctaveSimplexNoiseSampler weirdnessSampler;
 
     @Environment(EnvType.CLIENT)
-    @Inject(at = @At("HEAD"), method = "getTemperature", remap = false, cancellable = true)
+    @Inject(at = @At("HEAD"), method = "getTemperature", cancellable = true)
     private void stretchTemperature(int x, int z, CallbackInfoReturnable<Double> cir) {
         temperatureMap = temperatureSampler.sample(temperatureMap, (double) x, (double) z, 1, 1, 0.01875, 0.01875, 0.5);
         cir.setReturnValue(temperatureMap[0]);
     }
 
-    @Inject(at = @At("HEAD"), method = "getBiomesInArea([Lnet/minecraft/world/biome/Biome;IIII)[Lnet/minecraft/world/biome/Biome;", remap = false, cancellable = true)
+    @Inject(at = @At("HEAD"), method = "getBiomesInArea([Lnet/minecraft/world/biome/Biome;IIII)[Lnet/minecraft/world/biome/Biome;", cancellable = true)
     private void stretchBiomes(Biome[] biomes, int x, int z, int width, int depth, CallbackInfoReturnable<Biome[]> cir) {
         if (biomes == null || biomes.length < width * depth) {
             biomes = new Biome[width * depth];

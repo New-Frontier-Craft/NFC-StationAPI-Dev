@@ -16,7 +16,7 @@ public abstract class FixVanillaToolBogusMixin extends ToolItem {
         super(id, damageBoost, toolMaterial, effectiveOn);
     }
 
-    @Inject(at = @At("HEAD"), method = "isSuitableFor", remap = false, cancellable = true)
+    @Inject(at = @At("HEAD"), method = "isSuitableFor", cancellable = true)
     private void fixVanillaOreMiningLevel(Block block, CallbackInfoReturnable<Boolean> cir) {
         if (block == Block.IRON_ORE) {
             cir.setReturnValue(toolMaterial.getMiningLevel() >= 2);

@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(ToolEffectivenessImpl.class)
 public class ToolEffectivenessHijackerMixin {
-    @Inject(at = @At("HEAD"), method = "shouldApplyCustomLogic", remap = false, cancellable = true)
+    @Inject(at = @At("HEAD"), method = "shouldApplyCustomLogic", cancellable = true)
     private static void hijackMethod(ItemStack item, BlockState state, CallbackInfoReturnable<Boolean> cir) {
         cir.setReturnValue(true);
     }

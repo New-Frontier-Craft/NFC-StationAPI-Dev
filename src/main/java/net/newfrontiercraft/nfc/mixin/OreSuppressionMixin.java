@@ -16,7 +16,7 @@ public class OreSuppressionMixin {
 
     @Shadow private int oreBlockId;
 
-    @Inject(at = @At("HEAD"), method = "generate", remap = false, cancellable = true)
+    @Inject(at = @At("HEAD"), method = "generate", cancellable = true)
     private void suppressOres(World world, Random random, int x, int y, int z, CallbackInfoReturnable<Boolean> cir) {
         if (oreBlockId == Block.COAL_ORE.id || oreBlockId == Block.IRON_ORE.id || oreBlockId == Block.GOLD_ORE.id || oreBlockId == Block.DIAMOND_ORE.id) {
             cir.setReturnValue(false);

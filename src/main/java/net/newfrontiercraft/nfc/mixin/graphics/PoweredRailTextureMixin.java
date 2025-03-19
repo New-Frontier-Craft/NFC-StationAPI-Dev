@@ -19,7 +19,7 @@ public abstract class PoweredRailTextureMixin extends Block {
         super(id, material);
     }
 
-    @Inject(at = @At("HEAD"), method = "getTexture", remap = false, cancellable = true, require = 0)
+    @Inject(at = @At("HEAD"), method = "getTexture", cancellable = true, require = 0)
     private void replaceTexture(int side, int meta, CallbackInfoReturnable<Integer> cir) {
         if (alwaysStraight) {
             if (id == Block.POWERED_RAIL.id) {

@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(SlabBlock.class)
 public class SlabTextureMixin {
-    @Inject(at = @At("HEAD"), method = "getTexture(II)I", remap = false, cancellable = true, require = 0)
+    @Inject(at = @At("HEAD"), method = "getTexture(II)I", cancellable = true, require = 0)
     private void replaceTexture(int side, int meta, CallbackInfoReturnable<Integer> cir) {
         if (meta == 3) {
             cir.setReturnValue(TextureListener.cobblestone);
