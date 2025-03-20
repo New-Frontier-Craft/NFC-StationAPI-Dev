@@ -20,6 +20,7 @@ public class TextureListener {
         String wood = "block/decorative_blocks/wood/";
         String planks = "block/decorative_blocks/wood/planks/";
         String laminated = "block/decorative_blocks/wood/laminated/";
+        String stainedPlanks = "block/decorative_blocks/wood/planks/stained/";
         String mudBlocks = "block/decorative_blocks/mud/";
         String firedMudBlocks = "block/decorative_blocks/mud/fired/";
         String oreBlocks = "block/ores/";
@@ -71,6 +72,26 @@ public class TextureListener {
                         getTextureIndex(laminated + "borderless"),
                         getTextureIndex(laminated + "horizontal"),
                         getTextureIndex(laminated + "vertical")
+                }
+        );
+        BlockListener.stainedPlanks.specifyTextures(
+                new int[] {
+                        getTextureIndex(stainedPlanks + "white"),
+                        getTextureIndex(stainedPlanks + "orange"),
+                        getTextureIndex(stainedPlanks + "magenta"),
+                        getTextureIndex(stainedPlanks + "light_blue"),
+                        getTextureIndex(stainedPlanks + "yellow"),
+                        getTextureIndex(stainedPlanks + "lime"),
+                        getTextureIndex(stainedPlanks + "pink"),
+                        getTextureIndex(stainedPlanks + "grey"),
+                        getTextureIndex(stainedPlanks + "light_grey"),
+                        getTextureIndex(stainedPlanks + "cyan"),
+                        getTextureIndex(stainedPlanks + "purple"),
+                        getTextureIndex(stainedPlanks + "blue"),
+                        getTextureIndex(stainedPlanks + "brown"),
+                        getTextureIndex(stainedPlanks + "green"),
+                        getTextureIndex(stainedPlanks + "red"),
+                        getTextureIndex(stainedPlanks + "black")
                 }
         );
 
