@@ -17,6 +17,8 @@ public class TextureListener {
     public void registerTextures(TextureRegisterEvent event) {
         // Block strings
         String decorativeBlocks = "block/decorative_blocks/";
+        String mudBlocks = "block/decorative_blocks/mud/";
+        String firedMudBlocks = "block/decorative_blocks/mud/fired/";
         String oreBlocks = "block/ores/";
         String oreStorage = "block/ore_storage/";
         String machines = "block/machines/";
@@ -53,6 +55,26 @@ public class TextureListener {
         BlockListener.stoneTilingLarge.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, decorativeBlocks + "stone_tiling_large")).index);
         BlockListener.firedBricks.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, decorativeBlocks + "fired_bricks")).index);
         BlockListener.osmiumBricks.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, decorativeBlocks + "osmium_bricks")).index);
+
+        // Mud Blocks
+        BlockListener.mud.specifyTextures(
+                new int[] {
+                        getTextureIndex(mudBlocks + "plain"),
+                        getTextureIndex(mudBlocks + "bricks"),
+                        getTextureIndex(mudBlocks + "long_bricks"),
+                        getTextureIndex(mudBlocks + "random_bricks"),
+                        getTextureIndex(mudBlocks + "large_bricks")
+                }
+        );
+        BlockListener.firedMud.specifyTextures(
+                new int[] {
+                        getTextureIndex(firedMudBlocks + "plain"),
+                        getTextureIndex(firedMudBlocks + "bricks"),
+                        getTextureIndex(firedMudBlocks + "long_bricks"),
+                        getTextureIndex(firedMudBlocks + "random_bricks"),
+                        getTextureIndex(firedMudBlocks + "large_bricks")
+                }
+        );
 
         // Ores
         BlockListener.netherAshOre.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, oreBlocks + "nether_ash_ore")).index);
@@ -411,4 +433,8 @@ public class TextureListener {
             poweredRail,
             poweredRailActive,
             bricks;
+
+    private static int getTextureIndex(String path) {
+        return Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, path)).index;
+    }
 }

@@ -14,6 +14,17 @@ tile.nfc.stone_tiling_large.name=Large Stone Tiling
 tile.nfc.fired_bricks.name=Fired Bricks
 tile.nfc.osmium_bricks.name=Osmium Bricks
 
+tile.nfc.mud0.name=Mud
+tile.nfc.mud1.name=Mud Bricks
+tile.nfc.mud2.name=Long Mud Bricks
+tile.nfc.mud3.name=Random Mud Bricks
+tile.nfc.mud4.name=Large Mud Bricks
+tile.nfc.fired_mud0.name=Fired Mud
+tile.nfc.fired_mud1.name=Fired Mud Bricks
+tile.nfc.fired_mud2.name=Fired Long Mud Bricks
+tile.nfc.fired_mud3.name=Fired Random Mud Bricks
+tile.nfc.fired_mud4.name=Fired Large Mud Bricks
+
 tile.nfc.nether_ash_ore.name=Nether Ash Ore
 tile.nfc.nether_uraninite_ore.name=Nether Uraninite Ore
 tile.nfc.nether_gold_ore.name=Nether Gold Ore
