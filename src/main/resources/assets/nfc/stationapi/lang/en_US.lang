@@ -13,6 +13,7 @@ tile.nfc.stone_tiling.name=Stone Tiling
 tile.nfc.stone_tiling_large.name=Large Stone Tiling
 tile.nfc.fired_bricks.name=Fired Bricks
 tile.nfc.osmium_bricks.name=Osmium Bricks
+tile.nfc.scaffold_block.name=Scaffolding
 
 tile.nfc.nether_ash_ore.name=Nether Ash Ore
 tile.nfc.nether_uraninite_ore.name=Nether Uraninite Ore

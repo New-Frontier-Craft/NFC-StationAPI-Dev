@@ -16,6 +16,7 @@ public class TextureListener {
     @EventListener
     public void registerTextures(TextureRegisterEvent event) {
         // Block strings
+        String convenienceBlocks = "block/convenience_blocks/";
         String decorativeBlocks = "block/decorative_blocks/";
         String oreBlocks = "block/ores/";
         String oreStorage = "block/ore_storage/";
@@ -36,6 +37,11 @@ public class TextureListener {
         String boots = "item/armor/boots/";
         String oreDrops = "item/ore_drops/";
         String foodItems = "item/food/";
+
+        // Convenience blocks
+        int scaffoldTopTexture = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, convenienceBlocks + "scaffold_block_top")).index;
+        BlockListener.scaffoldBlock.specifyTextures(scaffoldTopTexture, Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, convenienceBlocks + "scaffold_block_side")).index, scaffoldTopTexture);
+
 
         // Decorative blocks
         BlockListener.platedStone.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, decorativeBlocks + "plated_stone")).index);

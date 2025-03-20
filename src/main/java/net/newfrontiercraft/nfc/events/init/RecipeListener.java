@@ -134,6 +134,9 @@ public class RecipeListener {
             // Torches
             CraftingRegistry.addShapedRecipe(new ItemStack(Block.TORCH, 4), "X", "#", 'X', ItemListener.netherAsh, '#', Item.STICK);
             CraftingRegistry.addShapedRecipe(new ItemStack(Block.TORCH, 16), "X", "O", 'X', ItemListener.anthracite, 'O', Item.STICK);
+
+            // Convenience blocks
+            CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.scaffoldBlock, 10), "###", "XXX", "XXX", '#', Block.PLANKS, 'X', Block.LADDER);
         }
         if (type == RecipeRegisterEvent.Vanilla.SMELTING.type()) {
             // Food
