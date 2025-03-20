@@ -195,6 +195,15 @@ public class RecipeListener {
 
             // Mud crafting
             CraftingRegistry.addShapelessRecipe(new ItemStack(BlockListener.mud, 2), Item.WHEAT, Block.DIRT, Block.DIRT);
+
+            //Stained planks
+            int o = 15;
+            for (int i = 0; i < 16; i++) {
+                CraftingRegistry.addShapelessRecipe(new ItemStack(BlockListener.stainedPlanks, 4, i), new ItemStack(Item.DYE, 1, o),
+                        new ItemStack(Block.PLANKS), new ItemStack(Block.PLANKS),
+                        new ItemStack(Block.PLANKS), new ItemStack(Block.PLANKS));
+                o--;
+            }
         }
 
         // Stone carpentry
