@@ -19,6 +19,11 @@ public class LazyMultivariantBlockTemplate extends LazyBlockTemplate {
         return metaSpecificTextures[meta];
     }
 
+    @Override
+    protected int getDroppedItemMeta(int blockMeta) {
+        return blockMeta;
+    }
+
     public void specifyTextures(int[] metaSpecificTextures) {
         this.metaSpecificTextures = metaSpecificTextures;
     }
