@@ -1,5 +1,6 @@
 package net.newfrontiercraft.nfc.mixin;
 
+import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.nbt.NbtCompound;
@@ -25,19 +26,19 @@ public abstract class LivingEntityMixin extends Entity {
         int z = MathHelper.floor(this.z);
 
         int id = this.world.getBlockId(x + 1, y, z);
-        if(id == BlockListener.scaffoldBlock.id){
+        if(id == BlockListener.scaffoldBlock.id || id == Block.LADDER.id && this.world.getBlockMeta(x + 1, y, z) == 5){
             cir.setReturnValue(true);
         }
         id = this.world.getBlockId(x - 1, y, z);
-        if(id == BlockListener.scaffoldBlock.id){
+        if(id == BlockListener.scaffoldBlock.id || id == Block.LADDER.id && this.world.getBlockMeta(x - 1, y, z) == 4){
             cir.setReturnValue(true);
         }
         id = this.world.getBlockId(x, y, z + 1);
-        if(id == BlockListener.scaffoldBlock.id){
+        if(id == BlockListener.scaffoldBlock.id || id == Block.LADDER.id && this.world.getBlockMeta(x, y, z + 1) == 3){
             cir.setReturnValue(true);
         }
         id = this.world.getBlockId(x, y, z - 1);
-        if(id == BlockListener.scaffoldBlock.id){
+        if(id == BlockListener.scaffoldBlock.id || id == Block.LADDER.id && this.world.getBlockMeta(x, y, z - 1) == 2){
             cir.setReturnValue(true);
         }
     }
