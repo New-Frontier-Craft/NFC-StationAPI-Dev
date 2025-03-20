@@ -86,28 +86,43 @@ public class CarpentryWorkstationScreenHandler extends ScreenHandler {
 
     @Override
     public ItemStack quickMove(int i) {
-        ItemStack itemstack = null;
+        // Slot indexes of output: 36 to 47
+        // Slot index of input: 48
+        ItemStack copyOfStack = null;
         Slot slot = (Slot)slots.get(i);
+        boolean isOutput = i >= 36 && i <= 47;
         if(slot != null && slot.hasStack()) {
-            ItemStack itemstack1 = slot.getStack();
-            itemstack = itemstack1.copy();
+            ItemStack stackInSlot = slot.getStack();
+            copyOfStack = stackInSlot.copy();
             if(i >= 36) {
-                insertItem(itemstack1, 0, 36, true);
+                if (isOutput) {
+                    stackInSlot.count = getSlot(48).getStack().count;
+                    insertItem(stackInSlot, 0, 36, true);
+                } else {
+                    insertItem(stackInSlot, 0, 36, true);
+                }
             } else {
-                insertItem(itemstack1, 48, 49, false);
+                insertItem(stackInSlot, 48, 49, false);
             }
-            if(itemstack1.count == 0) {
+            if(stackInSlot.count == 0) {
                 slot.setStack(null);
             } else {
                 slot.markDirty();
             }
-            if(itemstack1.count != itemstack.count) {
-                slot.onTakeItem(itemstack1);
+            if(stackInSlot.count != copyOfStack.count) {
+                if (isOutput) {
+                    int inputCount = getSlot(48).getStack().count;
+                    for (int j = 0; j < inputCount; j++) {
+                        slot.onTakeItem(stackInSlot);
+                    }
+                } else {
+                    slot.onTakeItem(stackInSlot);
+                }
             } else {
                 return null;
             }
         }
-        return itemstack;
+        return copyOfStack;
     }
 
     public CraftingInventory craftMatrix;
