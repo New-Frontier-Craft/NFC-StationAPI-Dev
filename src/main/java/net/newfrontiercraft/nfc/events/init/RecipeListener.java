@@ -369,5 +369,39 @@ public class RecipeListener {
                         new ItemStack(BlockListener.firedMud, 1, 2),
                         new ItemStack(BlockListener.firedMud, 1, 3),
                         new ItemStack(BlockListener.firedMud, 1, 4)});
+
+        // Wood carpentry
+        CarpentryRecipes.carpentry().addCarpentry(Block.LOG.id, 0, 2,
+                new ItemStack[] {
+                        new ItemStack(BlockListener.decorativeWood, 1, 0),
+                        new ItemStack(BlockListener.decorativeWood, 1, 1),
+                        new ItemStack(BlockListener.decorativeWood, 2, 6),
+                        new ItemStack(BlockListener.decorativeWood, 2, 7),
+                        new ItemStack(BlockListener.decorativeWood, 2, 8),
+                        new ItemStack(BlockListener.decorativeWood, 2, 9)});
+        CarpentryRecipes.carpentry().addCarpentry(Block.PLANKS.id, 0,
+                new ItemStack[] {
+                        new ItemStack(BlockListener.decorativeWood, 1, 2),
+                        new ItemStack(BlockListener.decorativeWood, 1, 3),
+                        new ItemStack(BlockListener.decorativeWood, 1, 4),
+                        new ItemStack(BlockListener.decorativeWood, 1, 5)});
+        CarpentryRecipes.carpentry().addCarpentry(BlockListener.decorativeWood.id, 0, 1,
+                new ItemStack[] {
+                        new ItemStack(BlockListener.decorativeWood, 1, 0),
+                        new ItemStack(BlockListener.decorativeWood, 1, 1),
+                        new ItemStack(Block.LOG)});
+        CarpentryRecipes.carpentry().addCarpentry(BlockListener.decorativeWood.id, 2, 5,
+                new ItemStack[] {
+                        new ItemStack(Block.PLANKS),
+                        new ItemStack(BlockListener.decorativeWood, 1, 2),
+                        new ItemStack(BlockListener.decorativeWood, 1, 3),
+                        new ItemStack(BlockListener.decorativeWood, 1, 4),
+                        new ItemStack(BlockListener.decorativeWood, 1, 5)});
+        CarpentryRecipes.carpentry().addCarpentry(BlockListener.decorativeWood.id, 6, 9,
+                new ItemStack[] {
+                        new ItemStack(BlockListener.decorativeWood.id, 1, 6),
+                        new ItemStack(BlockListener.decorativeWood.id, 1, 7),
+                        new ItemStack(BlockListener.decorativeWood.id, 1, 8),
+                        new ItemStack(BlockListener.decorativeWood.id, 1, 9)});
     }
 }
