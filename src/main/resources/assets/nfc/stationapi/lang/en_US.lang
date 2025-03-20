@@ -13,6 +13,16 @@ tile.nfc.stone_tiling.name=Stone Tiling
 tile.nfc.stone_tiling_large.name=Large Stone Tiling
 tile.nfc.fired_bricks.name=Fired Bricks
 tile.nfc.osmium_bricks.name=Osmium Bricks
+tile.nfc.decorative_wood0.name=Rounded Log
+tile.nfc.decorative_wood1.name=Small Logs
+tile.nfc.decorative_wood2.name=Parquet Planks
+tile.nfc.decorative_wood3.name=Smooth Planks
+tile.nfc.decorative_wood4.name=Vertical Planks
+tile.nfc.decorative_wood5.name=Crossed Planks
+tile.nfc.decorative_wood6.name=Bordered Laminated Wood
+tile.nfc.decorative_wood7.name=Borderless Laminated Wood
+tile.nfc.decorative_wood8.name=Vertical Laminated Wood
+tile.nfc.decorative_wood9.name=Horizontal Laminated Wood
 
 tile.nfc.mud0.name=Mud
 tile.nfc.mud1.name=Mud Bricks

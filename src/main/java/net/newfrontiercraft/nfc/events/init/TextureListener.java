@@ -17,6 +17,9 @@ public class TextureListener {
     public void registerTextures(TextureRegisterEvent event) {
         // Block strings
         String decorativeBlocks = "block/decorative_blocks/";
+        String wood = "block/decorative_blocks/wood/";
+        String planks = "block/decorative_blocks/wood/planks/";
+        String laminated = "block/decorative_blocks/wood/laminated/";
         String mudBlocks = "block/decorative_blocks/mud/";
         String firedMudBlocks = "block/decorative_blocks/mud/fired/";
         String oreBlocks = "block/ores/";
@@ -55,6 +58,21 @@ public class TextureListener {
         BlockListener.stoneTilingLarge.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, decorativeBlocks + "stone_tiling_large")).index);
         BlockListener.firedBricks.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, decorativeBlocks + "fired_bricks")).index);
         BlockListener.osmiumBricks.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, decorativeBlocks + "osmium_bricks")).index);
+        logSide = getTextureIndex(wood + "log_side");
+        BlockListener.decorativeWood.specifyTextures(
+                new int[] {
+                        getTextureIndex(wood + "rounded_log"),
+                        getTextureIndex(wood + "small_logs"),
+                        getTextureIndex(planks + "parquet"),
+                        getTextureIndex(planks + "smooth"),
+                        getTextureIndex(planks + "vertical"),
+                        getTextureIndex(planks + "crossed"),
+                        getTextureIndex(laminated + "bordered"),
+                        getTextureIndex(laminated + "borderless"),
+                        getTextureIndex(laminated + "horizontal"),
+                        getTextureIndex(laminated + "vertical")
+                }
+        );
 
         // Mud Blocks
         BlockListener.mud.specifyTextures(
@@ -432,7 +450,8 @@ public class TextureListener {
             cobblestone,
             poweredRail,
             poweredRailActive,
-            bricks;
+            bricks,
+            logSide;
 
     private static int getTextureIndex(String path) {
         return Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, path)).index;
