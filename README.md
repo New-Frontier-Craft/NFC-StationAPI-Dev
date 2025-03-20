@@ -17,4 +17,4 @@ If you still get the issue, you may need to go into `File > Settings > Build, Ex
 
 ## License
 
-This template is available under the CC0 license. Feel free to learn from it and incorporate it in your own projects.
+This template is available under the Apache License 2.0. If you want to use this project, please provide credit to the original developers.

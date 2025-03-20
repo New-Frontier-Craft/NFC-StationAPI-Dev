@@ -8,7 +8,9 @@
     "FixVanillaToolBogusMixin",
     "GlassDropMixin",
     "OreSuppressionMixin",
-    "ToolEffectivenessHijackerMixin"
+    "ToolEffectivenessHijackerMixin",
+    "LivingEntityMixin",
+    "FireBlockMixin"
   ],
   "server": [
   ],

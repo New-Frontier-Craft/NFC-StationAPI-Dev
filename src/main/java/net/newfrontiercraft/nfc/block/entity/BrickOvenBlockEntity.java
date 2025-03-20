@@ -10,6 +10,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtList;
+import net.modificationstation.stationapi.api.recipe.FuelRegistry;
 import net.newfrontiercraft.nfc.block.BrickOvenBlock;
 import net.newfrontiercraft.nfc.events.init.BlockListener;
 import net.newfrontiercraft.nfc.events.init.ItemListener;
@@ -222,14 +223,14 @@ public class BrickOvenBlockEntity extends BlockEntity implements Inventory {
         if(i < 256 && Block.BLOCKS[i].material == Material.WOOD) {
             return 100;
         }
-        /*
-        if(i == BlockListener.Scaffold.id) {
+
+        if(i == BlockListener.scaffoldBlock.id) {
             return 100;
         }
-        if(i == BlockListener.fireMushroom.id) {
-            return 200;
-        }
-         */
+//        if(i == BlockListener.fireMushroom.id) {
+//            return 200;
+//        }
+
         if((i == Item.COAL.id  || i == ItemListener.netherAsh.id) && j == 0) {
             return 1600;
         }
