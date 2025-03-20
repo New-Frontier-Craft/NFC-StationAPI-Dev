@@ -1,4 +1,7 @@
-# Fabric Example Mod with StationAPI and BIN Mappings for beta 1.7.3 server + client
+# New Frontier Craft Station API Port
+
+## About the port
+This is an Alpha of what will eventually become a complete port of New Frontier Craft to Station API. This is intended to become the main version of NFC in the long run.
 
 ## Setup
 
