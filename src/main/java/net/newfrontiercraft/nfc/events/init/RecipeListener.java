@@ -160,6 +160,9 @@ public class RecipeListener {
             SmeltingRegistry.addSmeltingRecipe(BlockListener.boronOre.id, new ItemStack(ItemListener.boronIngot));
             SmeltingRegistry.addSmeltingRecipe(BlockListener.netherGoldOre.id, new ItemStack(Item.GOLD_INGOT));
             SmeltingRegistry.addSmeltingRecipe(BlockListener.netherUraniniteOre.id, new ItemStack(ItemListener.uraniumIngot));
+
+            // Mud smelting
+            SmeltingRegistry.addSmeltingRecipe(BlockListener.mud.id, new ItemStack(BlockListener.firedMud));
         }
         if (type == RecipeRegisterEvent.Vanilla.CRAFTING_SHAPELESS.type()) {
             // Storage block un-crafting
@@ -189,6 +192,9 @@ public class RecipeListener {
             CraftingRegistry.addShapelessRecipe(new ItemStack(ItemListener.bronzeIngot, 4), new ItemStack(BlockListener.bronzeBlock));
             CraftingRegistry.addShapelessRecipe(new ItemStack(ItemListener.brassIngot, 4), new ItemStack(BlockListener.brassBlock));
             CraftingRegistry.addShapelessRecipe(new ItemStack(ItemListener.steelIngot, 4), new ItemStack(BlockListener.steelBlock));
+
+            // Mud crafting
+            CraftingRegistry.addShapelessRecipe(new ItemStack(BlockListener.mud, 2), Item.WHEAT, Block.DIRT, Block.DIRT);
         }
 
         // Stone carpentry
@@ -347,5 +353,21 @@ public class RecipeListener {
                         new ItemStack(BlockListener.pebble),
                         new ItemStack(BlockListener.pebbleSmall),
                         new ItemStack(BlockListener.pebbleMedium)});
+
+        // Mud carpentry
+        CarpentryRecipes.carpentry().addCarpentry(BlockListener.mud.id, 0, 4,
+                new ItemStack[] {
+                        new ItemStack(BlockListener.mud, 1, 0),
+                        new ItemStack(BlockListener.mud, 1, 1),
+                        new ItemStack(BlockListener.mud, 1, 2),
+                        new ItemStack(BlockListener.mud, 1, 3),
+                        new ItemStack(BlockListener.mud, 1, 4)});
+        CarpentryRecipes.carpentry().addCarpentry(BlockListener.firedMud.id, 0, 4,
+                new ItemStack[] {
+                        new ItemStack(BlockListener.firedMud, 1, 0),
+                        new ItemStack(BlockListener.firedMud, 1, 1),
+                        new ItemStack(BlockListener.firedMud, 1, 2),
+                        new ItemStack(BlockListener.firedMud, 1, 3),
+                        new ItemStack(BlockListener.firedMud, 1, 4)});
     }
 }
