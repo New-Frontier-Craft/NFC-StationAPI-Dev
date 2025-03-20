@@ -7,7 +7,9 @@
     "BiomeEnlargerMixin",
     "FixVanillaToolBogusMixin",
     "OreSuppressionMixin",
-    "ToolEffectivenessHijackerMixin"
+    "ToolEffectivenessHijackerMixin",
+    "LivingEntityMixin",
+    "FireBlockMixin"
   ],
   "server": [
   ],
