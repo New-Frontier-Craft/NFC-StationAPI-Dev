@@ -198,8 +198,7 @@ public class RecipeListener {
         }
 
         // Stone carpentry
-        CarpentryRecipes.carpentry().addCarpentry(Block.STONE.id, 0,
-                new ItemStack[] {
+        CarpentryRecipes.carpentry().addCarpentry(Block.STONE.id, 0, new ItemStack[] {
                         new ItemStack(BlockListener.workedStone),
                         new ItemStack(BlockListener.workedStoneCrossCut),
                         new ItemStack(BlockListener.workedStoneHorizontalCut),
@@ -210,8 +209,7 @@ public class RecipeListener {
                         new ItemStack(BlockListener.stoneTiling),
                         new ItemStack(BlockListener.platedStone),
                         new ItemStack(BlockListener.stoneTilingLarge)});
-        CarpentryRecipes.carpentry().addCarpentry(BlockListener.workedStone.id, 0,
-                new ItemStack[] {
+        CarpentryRecipes.carpentry().addCarpentry(BlockListener.workedStone.id, 0, new ItemStack[] {
                         new ItemStack(BlockListener.workedStoneCrossCut),
                         new ItemStack(BlockListener.workedStoneHorizontalCut),
                         new ItemStack(BlockListener.workedStoneVerticalCut),
@@ -221,8 +219,7 @@ public class RecipeListener {
                         new ItemStack(BlockListener.stoneTiling),
                         new ItemStack(BlockListener.stoneTilingLarge),
                         new ItemStack(Block.STONE)});
-        CarpentryRecipes.carpentry().addCarpentry(BlockListener.workedStoneCrossCut.id, 0,
-                new ItemStack[] {
+        CarpentryRecipes.carpentry().addCarpentry(BlockListener.workedStoneCrossCut.id, 0, new ItemStack[] {
                         new ItemStack(BlockListener.workedStone),
                         new ItemStack(BlockListener.workedStoneHorizontalCut),
                         new ItemStack(BlockListener.workedStoneVerticalCut),
@@ -232,8 +229,7 @@ public class RecipeListener {
                         new ItemStack(BlockListener.stoneTiling),
                         new ItemStack(BlockListener.stoneTilingLarge),
                         new ItemStack(Block.STONE)});
-        CarpentryRecipes.carpentry().addCarpentry(BlockListener.workedStoneHorizontalCut.id, 0,
-                new ItemStack[] {
+        CarpentryRecipes.carpentry().addCarpentry(BlockListener.workedStoneHorizontalCut.id, 0, new ItemStack[] {
                         new ItemStack(BlockListener.workedStone),
                         new ItemStack(BlockListener.workedStoneCrossCut),
                         new ItemStack(BlockListener.workedStoneVerticalCut),
@@ -243,8 +239,7 @@ public class RecipeListener {
                         new ItemStack(BlockListener.stoneTiling),
                         new ItemStack(BlockListener.stoneTilingLarge),
                         new ItemStack(Block.STONE)});
-        CarpentryRecipes.carpentry().addCarpentry(BlockListener.workedStoneVerticalCut.id, 0,
-                new ItemStack[] {
+        CarpentryRecipes.carpentry().addCarpentry(BlockListener.workedStoneVerticalCut.id, 0, new ItemStack[] {
                         new ItemStack(BlockListener.workedStone),
                         new ItemStack(BlockListener.workedStoneCrossCut),
                         new ItemStack(BlockListener.workedStoneHorizontalCut),
@@ -254,8 +249,7 @@ public class RecipeListener {
                         new ItemStack(BlockListener.stoneTiling),
                         new ItemStack(BlockListener.stoneTilingLarge),
                         new ItemStack(Block.STONE)});
-        CarpentryRecipes.carpentry().addCarpentry(BlockListener.stoneBricks.id, 0,
-                new ItemStack[] {
+        CarpentryRecipes.carpentry().addCarpentry(BlockListener.stoneBricks.id, 0, new ItemStack[] {
                         new ItemStack(BlockListener.workedStone),
                         new ItemStack(BlockListener.workedStoneCrossCut),
                         new ItemStack(BlockListener.workedStoneHorizontalCut),
@@ -265,8 +259,7 @@ public class RecipeListener {
                         new ItemStack(BlockListener.stoneTiling),
                         new ItemStack(BlockListener.stoneTilingLarge),
                         new ItemStack(Block.STONE)});
-        CarpentryRecipes.carpentry().addCarpentry(BlockListener.stoneBricksLarge.id, 0,
-                new ItemStack[] {
+        CarpentryRecipes.carpentry().addCarpentry(BlockListener.stoneBricksLarge.id, 0, new ItemStack[] {
                         new ItemStack(BlockListener.workedStone),
                         new ItemStack(BlockListener.workedStoneCrossCut),
                         new ItemStack(BlockListener.workedStoneHorizontalCut),
@@ -276,8 +269,7 @@ public class RecipeListener {
                         new ItemStack(BlockListener.stoneTiling),
                         new ItemStack(BlockListener.stoneTilingLarge),
                         new ItemStack(Block.STONE)});
-        CarpentryRecipes.carpentry().addCarpentry(BlockListener.stoneCheckers.id, 0,
-                new ItemStack[] {
+        CarpentryRecipes.carpentry().addCarpentry(BlockListener.stoneCheckers.id, 0, new ItemStack[] {
                         new ItemStack(BlockListener.workedStone),
                         new ItemStack(BlockListener.workedStoneCrossCut),
                         new ItemStack(BlockListener.workedStoneHorizontalCut),
@@ -287,8 +279,7 @@ public class RecipeListener {
                         new ItemStack(BlockListener.stoneTiling),
                         new ItemStack(BlockListener.stoneTilingLarge),
                         new ItemStack(Block.STONE)});
-        CarpentryRecipes.carpentry().addCarpentry(BlockListener.stoneTiling.id, 0,
-                new ItemStack[] {
+        CarpentryRecipes.carpentry().addCarpentry(BlockListener.stoneTiling.id, 0, new ItemStack[] {
                         new ItemStack(BlockListener.workedStone),
                         new ItemStack(BlockListener.workedStoneCrossCut),
                         new ItemStack(BlockListener.workedStoneHorizontalCut),
@@ -298,8 +289,7 @@ public class RecipeListener {
                         new ItemStack(BlockListener.stoneCheckers),
                         new ItemStack(BlockListener.stoneTilingLarge),
                         new ItemStack(Block.STONE)});
-        CarpentryRecipes.carpentry().addCarpentry(BlockListener.stoneTilingLarge.id, 0,
-                new ItemStack[] {
+        CarpentryRecipes.carpentry().addCarpentry(BlockListener.stoneTilingLarge.id, 0, new ItemStack[] {
                         new ItemStack(BlockListener.workedStone),
                         new ItemStack(BlockListener.workedStoneCrossCut),
                         new ItemStack(BlockListener.workedStoneHorizontalCut),
@@ -311,59 +301,49 @@ public class RecipeListener {
                         new ItemStack(Block.STONE)});
 
         // Plated stone carpentry
-        CarpentryRecipes.carpentry().addCarpentry(BlockListener.platedStone.id, 0,
-                new ItemStack[] {
+        CarpentryRecipes.carpentry().addCarpentry(BlockListener.platedStone.id, 0, new ItemStack[] {
                         new ItemStack(BlockListener.platedStoneVerticalCut),
                         new ItemStack(BlockListener.platedStoneHorizontalCut),
                         new ItemStack(BlockListener.platedStoneCrossCut)});
-        CarpentryRecipes.carpentry().addCarpentry(BlockListener.platedStoneVerticalCut.id, 0,
-                new ItemStack[] {
+        CarpentryRecipes.carpentry().addCarpentry(BlockListener.platedStoneVerticalCut.id, 0, new ItemStack[] {
                         new ItemStack(BlockListener.platedStone),
                         new ItemStack(BlockListener.platedStoneHorizontalCut),
                         new ItemStack(BlockListener.platedStoneCrossCut)});
-        CarpentryRecipes.carpentry().addCarpentry(BlockListener.platedStoneHorizontalCut.id, 0,
-                new ItemStack[] {
+        CarpentryRecipes.carpentry().addCarpentry(BlockListener.platedStoneHorizontalCut.id, 0, new ItemStack[] {
                         new ItemStack(BlockListener.platedStone),
                         new ItemStack(BlockListener.platedStoneVerticalCut),
                         new ItemStack(BlockListener.platedStoneCrossCut)});
-        CarpentryRecipes.carpentry().addCarpentry(BlockListener.platedStoneCrossCut.id, 0,
-                new ItemStack[] {
+        CarpentryRecipes.carpentry().addCarpentry(BlockListener.platedStoneCrossCut.id, 0, new ItemStack[] {
                         new ItemStack(BlockListener.platedStone),
                         new ItemStack(BlockListener.platedStoneVerticalCut),
                         new ItemStack(BlockListener.platedStoneHorizontalCut)});
 
         // Pebble carpentry
-        CarpentryRecipes.carpentry().addCarpentry(BlockListener.pebble.id, 0,
-                new ItemStack[] {
+        CarpentryRecipes.carpentry().addCarpentry(BlockListener.pebble.id, 0, new ItemStack[] {
                         new ItemStack(BlockListener.pebbleSmall),
                         new ItemStack(BlockListener.pebbleMedium),
                         new ItemStack(BlockListener.pebbleLarge)});
-        CarpentryRecipes.carpentry().addCarpentry(BlockListener.pebbleSmall.id, 0,
-                new ItemStack[] {
+        CarpentryRecipes.carpentry().addCarpentry(BlockListener.pebbleSmall.id, 0, new ItemStack[] {
                         new ItemStack(BlockListener.pebble),
                         new ItemStack(BlockListener.pebbleMedium),
                         new ItemStack(BlockListener.pebbleLarge)});
-        CarpentryRecipes.carpentry().addCarpentry(BlockListener.pebbleMedium.id, 0,
-                new ItemStack[] {
+        CarpentryRecipes.carpentry().addCarpentry(BlockListener.pebbleMedium.id, 0, new ItemStack[] {
                         new ItemStack(BlockListener.pebble),
                         new ItemStack(BlockListener.pebbleSmall),
                         new ItemStack(BlockListener.pebbleLarge)});
-        CarpentryRecipes.carpentry().addCarpentry(BlockListener.pebbleLarge.id, 0,
-                new ItemStack[] {
+        CarpentryRecipes.carpentry().addCarpentry(BlockListener.pebbleLarge.id, 0, new ItemStack[] {
                         new ItemStack(BlockListener.pebble),
                         new ItemStack(BlockListener.pebbleSmall),
                         new ItemStack(BlockListener.pebbleMedium)});
 
         // Mud carpentry
-        CarpentryRecipes.carpentry().addCarpentry(BlockListener.mud.id, 0, 4,
-                new ItemStack[] {
+        CarpentryRecipes.carpentry().addCarpentry(BlockListener.mud.id, 0, 4, new ItemStack[] {
                         new ItemStack(BlockListener.mud, 1, 0),
                         new ItemStack(BlockListener.mud, 1, 1),
                         new ItemStack(BlockListener.mud, 1, 2),
                         new ItemStack(BlockListener.mud, 1, 3),
                         new ItemStack(BlockListener.mud, 1, 4)});
-        CarpentryRecipes.carpentry().addCarpentry(BlockListener.firedMud.id, 0, 4,
-                new ItemStack[] {
+        CarpentryRecipes.carpentry().addCarpentry(BlockListener.firedMud.id, 0, 4, new ItemStack[] {
                         new ItemStack(BlockListener.firedMud, 1, 0),
                         new ItemStack(BlockListener.firedMud, 1, 1),
                         new ItemStack(BlockListener.firedMud, 1, 2),
@@ -371,34 +351,29 @@ public class RecipeListener {
                         new ItemStack(BlockListener.firedMud, 1, 4)});
 
         // Wood carpentry
-        CarpentryRecipes.carpentry().addCarpentry(Block.LOG.id, 0, 2,
-                new ItemStack[] {
+        CarpentryRecipes.carpentry().addCarpentry(Block.LOG.id, 0, 2, new ItemStack[] {
                         new ItemStack(BlockListener.decorativeWood, 1, 0),
                         new ItemStack(BlockListener.decorativeWood, 1, 1),
                         new ItemStack(BlockListener.decorativeWood, 2, 6),
                         new ItemStack(BlockListener.decorativeWood, 2, 7),
                         new ItemStack(BlockListener.decorativeWood, 2, 8),
                         new ItemStack(BlockListener.decorativeWood, 2, 9)});
-        CarpentryRecipes.carpentry().addCarpentry(Block.PLANKS.id, 0,
-                new ItemStack[] {
+        CarpentryRecipes.carpentry().addCarpentry(Block.PLANKS.id, 0, new ItemStack[] {
                         new ItemStack(BlockListener.decorativeWood, 1, 2),
                         new ItemStack(BlockListener.decorativeWood, 1, 3),
                         new ItemStack(BlockListener.decorativeWood, 1, 4),
                         new ItemStack(BlockListener.decorativeWood, 1, 5)});
-        CarpentryRecipes.carpentry().addCarpentry(BlockListener.decorativeWood.id, 0, 1,
-                new ItemStack[] {
+        CarpentryRecipes.carpentry().addCarpentry(BlockListener.decorativeWood.id, 0, 1, new ItemStack[] {
                         new ItemStack(BlockListener.decorativeWood, 1, 0),
                         new ItemStack(BlockListener.decorativeWood, 1, 1),
                         new ItemStack(Block.LOG)});
-        CarpentryRecipes.carpentry().addCarpentry(BlockListener.decorativeWood.id, 2, 5,
-                new ItemStack[] {
+        CarpentryRecipes.carpentry().addCarpentry(BlockListener.decorativeWood.id, 2, 5, new ItemStack[] {
                         new ItemStack(Block.PLANKS),
                         new ItemStack(BlockListener.decorativeWood, 1, 2),
                         new ItemStack(BlockListener.decorativeWood, 1, 3),
                         new ItemStack(BlockListener.decorativeWood, 1, 4),
                         new ItemStack(BlockListener.decorativeWood, 1, 5)});
-        CarpentryRecipes.carpentry().addCarpentry(BlockListener.decorativeWood.id, 6, 9,
-                new ItemStack[] {
+        CarpentryRecipes.carpentry().addCarpentry(BlockListener.decorativeWood.id, 6, 9, new ItemStack[] {
                         new ItemStack(BlockListener.decorativeWood.id, 1, 6),
                         new ItemStack(BlockListener.decorativeWood.id, 1, 7),
                         new ItemStack(BlockListener.decorativeWood.id, 1, 8),
