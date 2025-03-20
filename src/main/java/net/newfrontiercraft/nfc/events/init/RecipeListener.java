@@ -158,6 +158,8 @@ public class RecipeListener {
             SmeltingRegistry.addSmeltingRecipe(BlockListener.uraniniteOre.id, new ItemStack(ItemListener.uraniumIngot));
             SmeltingRegistry.addSmeltingRecipe(BlockListener.platinumOre.id, new ItemStack(ItemListener.platinumIngot));
             SmeltingRegistry.addSmeltingRecipe(BlockListener.boronOre.id, new ItemStack(ItemListener.boronIngot));
+            SmeltingRegistry.addSmeltingRecipe(BlockListener.netherGoldOre.id, new ItemStack(Item.GOLD_INGOT));
+            SmeltingRegistry.addSmeltingRecipe(BlockListener.netherUraniniteOre.id, new ItemStack(ItemListener.uraniumIngot));
         }
         if (type == RecipeRegisterEvent.Vanilla.CRAFTING_SHAPELESS.type()) {
             // Storage block un-crafting
