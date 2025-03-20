@@ -130,6 +130,10 @@ public class RecipeListener {
             // Machines
             CraftingRegistry.addShapedRecipe(new ItemStack(Block.PISTON, 1), "TTT", "#X#", "#R#", '#', Block.COBBLESTONE, 'X', ItemListener.aluminiumIngot, 'R', Item.REDSTONE, 'T', Block.PLANKS);
             CraftingRegistry.addShapedRecipe(new ItemStack(Block.DISPENSER, 1), "###", "#X#", "#R#", '#', Block.COBBLESTONE, 'X', Item.STRING, 'R', Item.REDSTONE);
+
+            // Torches
+            CraftingRegistry.addShapedRecipe(new ItemStack(Block.TORCH, 4), "X", "#", 'X', ItemListener.netherAsh, '#', Item.STICK);
+            CraftingRegistry.addShapedRecipe(new ItemStack(Block.TORCH, 16), "X", "O", 'X', ItemListener.anthracite, 'O', Item.STICK);
         }
         if (type == RecipeRegisterEvent.Vanilla.SMELTING.type()) {
             // Food

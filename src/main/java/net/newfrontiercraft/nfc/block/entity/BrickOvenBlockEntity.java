@@ -11,6 +11,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtList;
 import net.newfrontiercraft.nfc.block.BrickOvenBlock;
+import net.newfrontiercraft.nfc.events.init.BlockListener;
 import net.newfrontiercraft.nfc.events.init.ItemListener;
 import net.newfrontiercraft.nfc.registry.BrickOvenManager;
 
@@ -242,10 +243,10 @@ public class BrickOvenBlockEntity extends BlockEntity implements Inventory {
         if(i == BlockListener.coalLump.id) {
             return 100;
         }
-        if(i == BlockListener.coalblock.id) {
+        */
+        if(i == BlockListener.coalBlock.id) {
             return 6400;
         }
-         */
         if(i == Item.LAVA_BUCKET.id) {
             return 9600;
         }
