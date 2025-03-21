@@ -23,6 +23,7 @@ public class TextureListener {
         String laminated = "block/decorative_blocks/wood/laminated/";
         String stainedPlanks = "block/decorative_blocks/wood/planks/stained/";
         String glass = "block/decorative_blocks/glass/";
+        String walls = "block/decorative_blocks/walls/";
         String mudBlocks = "block/decorative_blocks/mud/";
         String firedMudBlocks = "block/decorative_blocks/mud/fired/";
         String oreBlocks = "block/ores/";
@@ -45,6 +46,7 @@ public class TextureListener {
         String boots = "item/armor/boots/";
         String oreDrops = "item/ore_drops/";
         String foodItems = "item/food/";
+        String otherDrops = "item/other_drops/";
 
         // Convenience blocks
         int scaffoldTopTexture = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, convenienceBlocks + "scaffold_block_top")).index;
@@ -133,6 +135,17 @@ public class TextureListener {
                 }
         );
         BlockListener.tintedGlass.specifyTextures(getTextureIndex(glass + "tinted_glass"));
+        BlockListener.snowBricks.specifyTextures(getTextureIndex(decorativeBlocks + "snow_bricks"));
+        BlockListener.hardWall.specifyTextures(
+                new int[] {
+                        getTextureIndex(walls + "cobblestone"),
+                        getTextureIndex(walls + "mossy_cobblestone"),
+                        getTextureIndex(walls + "cobblestone"),
+                        getTextureIndex(walls + "mossy_cobblestone")
+                }
+        );
+        BlockListener.hardWall.asItem().setTextureId(getTextureIndex(walls + "wall_icon"));
+        BlockListener.blueGlowstone.specifyTextures(getTextureIndex(woldGeneration + "blue_glowstone"));
 
         // Mud Blocks
         BlockListener.mud.specifyTextures(
@@ -491,6 +504,8 @@ public class TextureListener {
 
         // Oil bucket
         ItemListener.oilBucket.setTexture(Identifier.of(MOD_ID, items + "oil_bucket"));
+        // Other drops
+        ItemListener.blueGlowstoneDust.setTexture(Identifier.of(MOD_ID, otherDrops + "blue_glowstone_dust"));
 
         // Vanilla texture changes
         grassBlockSide = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, vanillaBlocks + "grass_block_side")).index;

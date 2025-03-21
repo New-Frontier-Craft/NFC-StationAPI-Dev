@@ -108,6 +108,7 @@ public class RecipeListener {
             CraftingRegistry.addShapedRecipe(new ItemStack(Block.GOLD_BLOCK), "XX", "XX", 'X', new ItemStack(Item.GOLD_INGOT));
             CraftingRegistry.addShapedRecipe(new ItemStack(Block.IRON_BLOCK), "XX", "XX", 'X', new ItemStack(Item.IRON_INGOT));
             CraftingRegistry.addShapedRecipe(new ItemStack(Block.DIAMOND_BLOCK), "XX", "XX", 'X', new ItemStack(Item.DIAMOND));
+            CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.blueGlowstone), "XX", "XX", 'X', new ItemStack(ItemListener.blueGlowstoneDust));
 
             // Rails
             CraftingRegistry.addShapedRecipe(new ItemStack(Block.RAIL, 24), "X#X", "X#X", "X#X", 'X', Item.IRON_INGOT, '#', Item.STICK);
@@ -151,6 +152,13 @@ public class RecipeListener {
 
             // Convenience blocks
             CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.scaffoldBlock, 10), "###", "XXX", "XXX", '#', Block.PLANKS, 'X', Block.LADDER);
+
+            // Snow bricks
+            CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.snowBricks, 4), "XX", "XX", 'X', new ItemStack(Block.SNOW_BLOCK));
+
+            // Walls
+            CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.hardWall, 6), "###", "###", '#', Block.COBBLESTONE);
+            CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.hardWall, 6, 1), "###", "###", '#', Block.MOSSY_COBBLESTONE);
         }
         if (type == RecipeRegisterEvent.Vanilla.SMELTING.type()) {
             // Food
