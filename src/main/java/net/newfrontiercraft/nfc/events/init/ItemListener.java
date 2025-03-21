@@ -8,6 +8,7 @@ import net.modificationstation.stationapi.api.item.tool.TagToolLevel;
 import net.modificationstation.stationapi.api.item.tool.ToolLevel;
 import net.modificationstation.stationapi.api.item.tool.ToolMaterialFactory;
 import net.modificationstation.stationapi.api.mod.entrypoint.Entrypoint;
+import net.modificationstation.stationapi.api.recipe.FuelRegistry;
 import net.modificationstation.stationapi.api.registry.BlockRegistry;
 import net.modificationstation.stationapi.api.tag.TagKey;
 import net.modificationstation.stationapi.api.template.item.*;
@@ -648,5 +649,8 @@ public class ItemListener {
         BlockListener.sapphireOre.specifyCustomDrop(sapphire.id);
         BlockListener.rubyOre.specifyCustomDrop(ruby.id);
         BlockListener.emeraldOre.specifyCustomDrop(emerald.id);
+
+        // Set fuel burn time
+        FuelRegistry.addFuelItem(oilBucket, 12800);
     }
 }
