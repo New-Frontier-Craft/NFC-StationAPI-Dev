@@ -23,7 +23,8 @@
       "net.newfrontiercraft.nfc.events.init.ItemListener",
       "net.newfrontiercraft.nfc.events.init.RecipeListener",
       "net.newfrontiercraft.nfc.events.init.ChunkListener",
-      "net.newfrontiercraft.nfc.events.init.BlockEntityListener"
+      "net.newfrontiercraft.nfc.events.init.BlockEntityListener",
+      "net.newfrontiercraft.nfc.events.init.Materials"
     ],
     "stationapi:event_bus_client": [
       "net.newfrontiercraft.nfc.events.init.TextureListener",

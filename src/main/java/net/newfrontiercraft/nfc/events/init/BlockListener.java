@@ -6,6 +6,8 @@ import net.minecraft.block.material.Material;
 import net.modificationstation.stationapi.api.event.registry.BlockRegistryEvent;
 import net.modificationstation.stationapi.api.mod.entrypoint.Entrypoint;
 import net.modificationstation.stationapi.api.recipe.FuelRegistry;
+import net.modificationstation.stationapi.api.template.block.TemplateFlowingLiquidBlock;
+import net.modificationstation.stationapi.api.template.block.TemplateStillLiquidBlock;
 import net.modificationstation.stationapi.api.util.Identifier;
 import net.modificationstation.stationapi.api.util.Namespace;
 import net.newfrontiercraft.nfc.block.*;
@@ -110,6 +112,8 @@ public class BlockListener {
     public static CarpentryWorkstationBlock carpentryWorkstation;
 
     public static ScaffoldBlock scaffoldBlock;
+    public static OilFlowingBlock oilFlowing;
+    public static OilStillBlock oilStill;
 
     @Entrypoint.Namespace
     public static Namespace MOD_ID;
@@ -206,6 +210,9 @@ public class BlockListener {
         carpentryWorkstation = new CarpentryWorkstationBlock(Identifier.of(MOD_ID, "carpentry_workstation"), Material.WOOD, 1.0F);
 
         scaffoldBlock = new ScaffoldBlock(Identifier.of(MOD_ID, "scaffold_block"), Material.WOOD, 0.2F, Block.WOOD_SOUND_GROUP);
+
+        oilFlowing = (OilFlowingBlock) new OilFlowingBlock(Identifier.of(MOD_ID, "oil_flowing"), Materials.oil).setHardness(100.0F).disableTrackingStatistics().setOpacity(3).ignoreMetaUpdates();
+        oilStill = (OilStillBlock) new OilStillBlock(Identifier.of(MOD_ID, "oil"), Materials.oil).setHardness(100.0F).disableTrackingStatistics().setOpacity(3).ignoreMetaUpdates();
 
         // Changes to vanilla blast resistance
         Block.COAL_ORE.setResistance(500F);

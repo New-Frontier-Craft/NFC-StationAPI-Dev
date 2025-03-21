@@ -275,6 +275,8 @@ public class ItemListener {
             emeraldBoots,
             osmiumBoots;
 
+    public static OilBucketItem oilBucket;
+
     @Entrypoint.Namespace
     public static Namespace MOD_ID;
 
@@ -635,6 +637,9 @@ public class ItemListener {
 
         // Food
         cookedEgg = new LazyFoodTemplate(Identifier.of(MOD_ID, "cooked_egg"), 4, false);
+
+        // Oil bucket
+        oilBucket = (OilBucketItem) new OilBucketItem(Identifier.of(MOD_ID, "oil_bucket"), BlockListener.oilStill.id).setTranslationKey(Identifier.of(MOD_ID, "oil_bucket"));
 
         // Ore drop specification
         BlockListener.anthraciteOre.specifyCustomDrop(anthracite.id);
