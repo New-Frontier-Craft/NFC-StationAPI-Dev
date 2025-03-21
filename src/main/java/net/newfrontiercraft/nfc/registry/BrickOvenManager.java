@@ -342,19 +342,18 @@ public class BrickOvenManager {
                 new ItemStack(BlockListener.firedBricks, 1)}, 6400);
 
         //Stained Glass
-        /*
         int o = 15;
         for (int i = 0; i < 16; i++) {
-            addOvenRecipe(new ItemStack(Block.lockedChest, 8, i), new Object[] {
-                    new ItemStack(Item.dyePowder, 1, o),
-                    new ItemStack(Block.glass, 1, 0), new ItemStack(Block.glass, 1, 0),
-                    new ItemStack(Block.glass, 1, 0), new ItemStack(Block.glass, 1, 0),
-                    new ItemStack(Block.glass, 1, 0), new ItemStack(Block.glass, 1, 0),
-                    new ItemStack(Block.glass, 1, 0), new ItemStack(Block.glass, 1, 0)
+            addOvenRecipe(new ItemStack(BlockListener.stainedGlass, 8, i), new Object[] {
+                    new ItemStack(Item.DYE, 1, o),
+                    new ItemStack(Block.GLASS, 1, 0), new ItemStack(Block.GLASS, 1, 0),
+                    new ItemStack(Block.GLASS, 1, 0), new ItemStack(Block.GLASS, 1, 0),
+                    new ItemStack(Block.GLASS, 1, 0), new ItemStack(Block.GLASS, 1, 0),
+                    new ItemStack(Block.GLASS, 1, 0), new ItemStack(Block.GLASS, 1, 0)
             }, 100);
             o--;
         }
-
+        /*
         //Food
         addShapedOvenRecipe(new ItemStack(Item.cake, 1), new Object[] {
                 "AAA", "BEB", "CCC",
