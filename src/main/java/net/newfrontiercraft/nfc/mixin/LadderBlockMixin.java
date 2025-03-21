@@ -21,28 +21,25 @@ public abstract class LadderBlockMixin extends Block {
         if(player.getHand() == null || player.getHand().itemId != this.id){
             return false;
         }
-        boolean loop = true;
-        boolean found = false;
-        int nextLadderY = y;
 
-        while(loop) {
-            nextLadderY--;
-            int id = world.getBlockId(x, nextLadderY, z);
-            if(nextLadderY < 0) {
+        int targetY = y - 1;
+        boolean canPlaceLadder = false;
+
+        while(targetY >= 0) {
+            int blockId = world.getBlockId(x, targetY, z);
+
+            if(blockId == 0) {
+                canPlaceLadder = true;
                 break;
+            } else if(blockId != Block.LADDER.id) {
+                return false;
             }
-
-            if(id == 0) {
-                loop = false;
-                found = true;
-            } else if(id != Block.LADDER.id) {
-                loop = false;
-            }
+            targetY--;
         }
 
-        if(!player.isSneaking() && found) {
-            world.setBlock(x, nextLadderY, z, Block.LADDER.id, world.getBlockMeta(x, nextLadderY + 1, z));
-            world.playSound(((float)x + 0.5F), ((float)y + 0.5F), ((float)z + 0.5F), this.soundGroup.getSound(), (this.soundGroup.getVolume() + 1.0F) / 2.0F, this.soundGroup.getPitch() * 0.8F);
+        if(!player.isSneaking() && canPlaceLadder) {
+            world.setBlock(x, targetY, z, Block.LADDER.id, world.getBlockMeta(x, targetY + 1, z));
+            world.playSound(x + 0.5F, targetY + 0.5F, z + 0.5F, this.soundGroup.getSound(), (this.soundGroup.getVolume() + 1.0F) / 2.0F, this.soundGroup.getPitch() * 0.8F);
             player.getHand().count--;
             return true;
         } else {
