@@ -7,9 +7,11 @@ import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.world.BlockView;
 import net.modificationstation.stationapi.api.util.Identifier;
 
-public class WindowBlock extends LazyMultivariantBlockTemplate{
-    public WindowBlock(Identifier identifier, Material material, float hardness, BlockSoundGroup blockSounds) {
+public class LazyMultivariantGlassBlockTemplate extends LazyMultivariantBlockTemplate{
+    boolean translucent;
+    public LazyMultivariantGlassBlockTemplate(Identifier identifier, Material material, float hardness, BlockSoundGroup blockSounds, boolean translucent) {
         super(identifier, material, hardness, blockSounds);
+        this.translucent = translucent;
     }
 
     @Override
@@ -27,7 +29,7 @@ public class WindowBlock extends LazyMultivariantBlockTemplate{
     @Environment(EnvType.CLIENT)
     @Override
     public int getRenderLayer() {
-        return 0;
+        return translucent ? 1 : 0;
     }
 
     @Override

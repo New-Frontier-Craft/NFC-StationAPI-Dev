@@ -22,6 +22,7 @@ public class TextureListener {
         String planks = "block/decorative_blocks/wood/planks/";
         String laminated = "block/decorative_blocks/wood/laminated/";
         String stainedPlanks = "block/decorative_blocks/wood/planks/stained/";
+        String glass = "block/decorative_blocks/glass/";
         String mudBlocks = "block/decorative_blocks/mud/";
         String firedMudBlocks = "block/decorative_blocks/mud/fired/";
         String oreBlocks = "block/ores/";
@@ -101,13 +102,34 @@ public class TextureListener {
         );
         BlockListener.window.specifyTextures(
                 new int[] {
-                        getTextureIndex(decorativeBlocks + "window"),
-                        getTextureIndex(decorativeBlocks + "vertical_double_window"),
-                        getTextureIndex(decorativeBlocks + "small_window"),
-                        getTextureIndex(decorativeBlocks + "horizontal_double_window"),
-                        getTextureIndex(decorativeBlocks + "mini_window"),
-                        getTextureIndex(decorativeBlocks + "quadruple_window"),
-                        getTextureIndex(decorativeBlocks + "gothic_window")
+                        getTextureIndex(glass + "window"),
+                        getTextureIndex(glass + "vertical_double_window"),
+                        getTextureIndex(glass + "small_window"),
+                        getTextureIndex(glass + "horizontal_double_window"),
+                        getTextureIndex(glass + "mini_window"),
+                        getTextureIndex(glass + "quadruple_window"),
+                        getTextureIndex(glass + "gothic_window")
+                }
+        );
+
+        BlockListener.stainedGlass.specifyTextures(
+                new int[] {
+                        getTextureIndex(glass + "white_stained_glass"),
+                        getTextureIndex(glass + "orange_stained_glass"),
+                        getTextureIndex(glass + "magenta_stained_glass"),
+                        getTextureIndex(glass + "light_blue_stained_glass"),
+                        getTextureIndex(glass + "yellow_stained_glass"),
+                        getTextureIndex(glass + "lime_stained_glass"),
+                        getTextureIndex(glass + "pink_stained_glass"),
+                        getTextureIndex(glass + "gray_stained_glass"),
+                        getTextureIndex(glass + "light_gray_stained_glass"),
+                        getTextureIndex(glass + "cyan_stained_glass"),
+                        getTextureIndex(glass + "purple_stained_glass"),
+                        getTextureIndex(glass + "blue_stained_glass"),
+                        getTextureIndex(glass + "brown_stained_glass"),
+                        getTextureIndex(glass + "green_stained_glass"),
+                        getTextureIndex(glass + "red_stained_glass"),
+                        getTextureIndex(glass + "black_stained_glass"),
                 }
         );
 

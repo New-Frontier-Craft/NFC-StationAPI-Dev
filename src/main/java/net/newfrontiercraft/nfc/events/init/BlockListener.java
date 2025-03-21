@@ -101,7 +101,9 @@ public class BlockListener {
             decorativeWood,
             stainedPlanks;
 
-    public static WindowBlock window;
+    public static LazyMultivariantGlassBlockTemplate
+            window,
+            stainedGlass;
 
     public static CarpentryWorkstationBlock carpentryWorkstation;
 
@@ -129,7 +131,8 @@ public class BlockListener {
         osmiumBricks = new LazyBlockTemplate(Identifier.of(MOD_ID, "osmium_bricks"), Material.STONE, 1.5F, Block.STONE_SOUND_GROUP);
         decorativeWood = new DecorativeWoodBlock(Identifier.of(MOD_ID, "decorative_wood"), Material.WOOD, 1.5F, Block.WOOD_SOUND_GROUP);
         stainedPlanks = new LazyMultivariantBlockTemplate(Identifier.of(MOD_ID, "stained_planks"), Material.WOOD, 1.5F, Block.WOOD_SOUND_GROUP);
-        window = new WindowBlock(Identifier.of(MOD_ID, "window"), Material.GLASS, 0.3F, Block.GLASS_SOUND_GROUP);
+        window = new LazyMultivariantGlassBlockTemplate(Identifier.of(MOD_ID, "window"), Material.GLASS, 0.3F, Block.GLASS_SOUND_GROUP, false);
+        stainedGlass = new LazyMultivariantGlassBlockTemplate(Identifier.of(MOD_ID, "stained_glass"), Material.GLASS, 0.3F, Block.GLASS_SOUND_GROUP, true);
 
         mud = new LazyMultivariantBlockTemplate(Identifier.of(MOD_ID, "mud"), Material.SOIL, 1.5F, Block.GRAVEL_SOUND_GROUP);
         firedMud = new LazyMultivariantBlockTemplate(Identifier.of(MOD_ID, "fired_mud"), Material.STONE, 1.5F, Block.STONE_SOUND_GROUP);
