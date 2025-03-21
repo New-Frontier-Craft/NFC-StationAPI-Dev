@@ -142,6 +142,9 @@ public class RecipeListener {
             CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.window, 9, 4), "XXX", "XOX", "XXX", 'X', Block.PLANKS, 'O', Block.GLASS);
             CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.window, 9, 5), "OXO", "XXX", "OXO", 'X', Block.PLANKS, 'O', Block.GLASS);
 
+            // Tinted glass
+            CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.tintedGlass, 6), " X ", "XOX", " X ", 'X', Block.GLASS, 'O', Block.OBSIDIAN);
+
             // Convenience blocks
             CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.scaffoldBlock, 10), "###", "XXX", "XXX", '#', Block.PLANKS, 'X', Block.LADDER);
         }
