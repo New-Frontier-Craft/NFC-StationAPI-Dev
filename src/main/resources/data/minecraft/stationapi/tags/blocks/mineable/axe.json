@@ -1,5 +1,8 @@
 {
   "values": [
-    "nfc:carpentry_workstation"
+    "nfc:carpentry_workstation",
+    "nfc:decorative_wood",
+    "nfc:stained_planks",
+    "nfc:scaffold_block"
   ]
 }
