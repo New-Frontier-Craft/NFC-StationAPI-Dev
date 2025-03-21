@@ -111,7 +111,6 @@ public class TextureListener {
                         getTextureIndex(glass + "gothic_window")
                 }
         );
-
         BlockListener.stainedGlass.specifyTextures(
                 new int[] {
                         getTextureIndex(glass + "white_stained_glass"),
@@ -132,6 +131,7 @@ public class TextureListener {
                         getTextureIndex(glass + "black_stained_glass"),
                 }
         );
+        BlockListener.tintedGlass.specifyTextures(getTextureIndex(glass + "tinted_glass"));
 
         // Mud Blocks
         BlockListener.mud.specifyTextures(
