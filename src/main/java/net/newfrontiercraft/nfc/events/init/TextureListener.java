@@ -132,6 +132,7 @@ public class TextureListener {
                 }
         );
         BlockListener.tintedGlass.specifyTextures(getTextureIndex(glass + "tinted_glass"));
+        BlockListener.snowBricks.specifyTextures(getTextureIndex(decorativeBlocks + "snow_bricks"));
 
         // Mud Blocks
         BlockListener.mud.specifyTextures(
