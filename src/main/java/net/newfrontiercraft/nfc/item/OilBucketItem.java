@@ -11,11 +11,9 @@ import net.minecraft.world.World;
 import net.modificationstation.stationapi.api.template.item.TemplateBucketItem;
 import net.modificationstation.stationapi.api.util.Identifier;
 import net.newfrontiercraft.nfc.events.init.BlockListener;
-import net.newfrontiercraft.nfc.events.init.Materials;
 
 public class OilBucketItem extends TemplateBucketItem {
 
-    private int isFull;
     public OilBucketItem(Identifier identifier, int j) {
         super(identifier, j);
     }

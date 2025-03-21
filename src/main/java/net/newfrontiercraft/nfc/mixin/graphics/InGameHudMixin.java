@@ -3,7 +3,6 @@ package net.newfrontiercraft.nfc.mixin.graphics;
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.hud.InGameHud;
-import net.minecraft.entity.LivingEntity;
 import net.newfrontiercraft.nfc.events.init.Materials;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
