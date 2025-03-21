@@ -29,6 +29,7 @@ public class BlockListener {
             firedBricks,
             osmiumBricks,
             snowBricks,
+            blueGlowstone,
 
             coalBlock,
             onyxBlock,
@@ -141,6 +142,7 @@ public class BlockListener {
         tintedGlass = (LazyGlassBlockTemplate) new LazyGlassBlockTemplate(Identifier.of(MOD_ID, "tinted_glass"), Material.GLASS, 0.6F, Block.GLASS_SOUND_GROUP, true).setResistance(12.0F).setOpacity(255);
         snowBricks = new LazyBlockTemplate(Identifier.of(MOD_ID, "snow_bricks"), Material.SNOW_BLOCK, 1.5F, Block.WOOL_SOUND_GROUP);
         hardWall = new WallBlock(Identifier.of(MOD_ID, "hard_wall"), Material.STONE, 1.5F, Block.STONE_SOUND_GROUP);
+        blueGlowstone = new BlueGlowstoneBlock(Identifier.of(MOD_ID, "blue_glowstone"), Material.STONE, 0.3F, Block.GLASS_SOUND_GROUP);
 
         mud = new LazyMultivariantBlockTemplate(Identifier.of(MOD_ID, "mud"), Material.SOIL, 1.5F, Block.GRAVEL_SOUND_GROUP);
         firedMud = new LazyMultivariantBlockTemplate(Identifier.of(MOD_ID, "fired_mud"), Material.STONE, 1.5F, Block.STONE_SOUND_GROUP);

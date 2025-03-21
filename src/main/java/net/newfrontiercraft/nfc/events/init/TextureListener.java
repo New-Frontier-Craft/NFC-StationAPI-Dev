@@ -45,6 +45,7 @@ public class TextureListener {
         String boots = "item/armor/boots/";
         String oreDrops = "item/ore_drops/";
         String foodItems = "item/food/";
+        String otherDrops = "item/other_drops/";
 
         // Convenience blocks
         int scaffoldTopTexture = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, convenienceBlocks + "scaffold_block_top")).index;
@@ -143,6 +144,7 @@ public class TextureListener {
                 }
         );
         BlockListener.hardWall.asItem().setTextureId(getTextureIndex(walls + "wall_icon"));
+        BlockListener.blueGlowstone.specifyTextures(getTextureIndex(woldGeneration + "blue_glowstone"));
 
         // Mud Blocks
         BlockListener.mud.specifyTextures(
@@ -498,6 +500,9 @@ public class TextureListener {
 
         // Food
         ItemListener.cookedEgg.setTexture(Identifier.of(MOD_ID, foodItems + "cooked_egg"));
+
+        // Other drops
+        ItemListener.blueGlowstoneDust.setTexture(Identifier.of(MOD_ID, otherDrops + "blue_glowstone_dust"));
 
         // Vanilla texture changes
         grassBlockSide = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, vanillaBlocks + "grass_block_side")).index;

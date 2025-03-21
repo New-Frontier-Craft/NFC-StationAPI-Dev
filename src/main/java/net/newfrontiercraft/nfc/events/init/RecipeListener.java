@@ -108,6 +108,7 @@ public class RecipeListener {
             CraftingRegistry.addShapedRecipe(new ItemStack(Block.GOLD_BLOCK), "XX", "XX", 'X', new ItemStack(Item.GOLD_INGOT));
             CraftingRegistry.addShapedRecipe(new ItemStack(Block.IRON_BLOCK), "XX", "XX", 'X', new ItemStack(Item.IRON_INGOT));
             CraftingRegistry.addShapedRecipe(new ItemStack(Block.DIAMOND_BLOCK), "XX", "XX", 'X', new ItemStack(Item.DIAMOND));
+            CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.blueGlowstone), "XX", "XX", 'X', new ItemStack(ItemListener.blueGlowstoneDust));
 
             // Rails
             CraftingRegistry.addShapedRecipe(new ItemStack(Block.RAIL, 24), "X#X", "X#X", "X#X", 'X', Item.IRON_INGOT, '#', Item.STICK);

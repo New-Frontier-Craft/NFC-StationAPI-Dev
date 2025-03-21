@@ -47,7 +47,8 @@ public class ItemListener {
             onyx,
             sapphire,
             ruby,
-            emerald;
+            emerald,
+            blueGlowstoneDust;
 
     public static TemplatePickaxeItem
             aluminiumPickaxe,
@@ -632,6 +633,9 @@ public class ItemListener {
         sapphire = new LazyItemTemplate(Identifier.of(MOD_ID, "sapphire"));
         ruby = new LazyItemTemplate(Identifier.of(MOD_ID, "ruby"));
         emerald = new LazyItemTemplate(Identifier.of(MOD_ID, "emerald"));
+
+        // Other drops
+        blueGlowstoneDust = new LazyItemTemplate(Identifier.of(MOD_ID, "blue_glowstone_dust"));
 
         // Food
         cookedEgg = new LazyFoodTemplate(Identifier.of(MOD_ID, "cooked_egg"), 4, false);
