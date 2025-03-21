@@ -53,7 +53,7 @@ public class BlockRendererManagerMixin{
     }
 
     @Inject(method = "render(Lnet/minecraft/block/Block;IF)V", at = @At("HEAD"))
-    public void nfcInventoryTransparencyHead(Block block, int metadata, float brightness, CallbackInfo ci) {
+    public void nfcInventoryTranslucencyHead(Block block, int metadata, float brightness, CallbackInfo ci) {
         if(!block.isOpaque()){
             GL11.glEnable(GL11.GL_BLEND);
             GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
@@ -61,7 +61,7 @@ public class BlockRendererManagerMixin{
     }
 
     @Inject(method = "render(Lnet/minecraft/block/Block;IF)V", at = @At("TAIL"))
-    public void nfcInventoryTransparencyTail(Block block, int metadata, float brightness, CallbackInfo ci) {
+    public void nfcInventoryTranslucencyTail(Block block, int metadata, float brightness, CallbackInfo ci) {
         if(!block.isOpaque()){
             GL11.glDisable(GL11.GL_BLEND);
         }
