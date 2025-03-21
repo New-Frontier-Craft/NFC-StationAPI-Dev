@@ -99,6 +99,17 @@ public class TextureListener {
                         getTextureIndex(stainedPlanks + "black")
                 }
         );
+        BlockListener.window.specifyTextures(
+                new int[] {
+                        getTextureIndex(decorativeBlocks + "window"),
+                        getTextureIndex(decorativeBlocks + "vertical_double_window"),
+                        getTextureIndex(decorativeBlocks + "small_window"),
+                        getTextureIndex(decorativeBlocks + "horizontal_double_window"),
+                        getTextureIndex(decorativeBlocks + "mini_window"),
+                        getTextureIndex(decorativeBlocks + "quadruple_window"),
+                        getTextureIndex(decorativeBlocks + "gothic_window")
+                }
+        );
 
         // Mud Blocks
         BlockListener.mud.specifyTextures(

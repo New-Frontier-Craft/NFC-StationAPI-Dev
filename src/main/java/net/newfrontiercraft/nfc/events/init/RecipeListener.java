@@ -135,6 +135,13 @@ public class RecipeListener {
             CraftingRegistry.addShapedRecipe(new ItemStack(Block.TORCH, 4), "X", "#", 'X', ItemListener.netherAsh, '#', Item.STICK);
             CraftingRegistry.addShapedRecipe(new ItemStack(Block.TORCH, 16), "X", "O", 'X', ItemListener.anthracite, 'O', Item.STICK);
 
+            // Windows
+            CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.window, 3, 1), "OXO", 'X', Block.PLANKS, 'O', Block.GLASS);
+            CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.window, 3, 2), "XOX", 'X', Block.PLANKS, 'O', Block.GLASS);
+            CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.window, 3, 3), "O", "X", "O", 'X', Block.PLANKS, 'O', Block.GLASS);
+            CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.window, 9, 4), "XXX", "XOX", "XXX", 'X', Block.PLANKS, 'O', Block.GLASS);
+            CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.window, 9, 5), "OXO", "XXX", "OXO", 'X', Block.PLANKS, 'O', Block.GLASS);
+
             // Convenience blocks
             CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.scaffoldBlock, 10), "###", "XXX", "XXX", '#', Block.PLANKS, 'X', Block.LADDER);
         }
@@ -195,6 +202,9 @@ public class RecipeListener {
             CraftingRegistry.addShapelessRecipe(new ItemStack(ItemListener.bronzeIngot, 4), new ItemStack(BlockListener.bronzeBlock));
             CraftingRegistry.addShapelessRecipe(new ItemStack(ItemListener.brassIngot, 4), new ItemStack(BlockListener.brassBlock));
             CraftingRegistry.addShapelessRecipe(new ItemStack(ItemListener.steelIngot, 4), new ItemStack(BlockListener.steelBlock));
+
+            // Window
+            CraftingRegistry.addShapelessRecipe(new ItemStack(BlockListener.window, 2, 0), Block.GLASS, Block.PLANKS);
 
             // Mud crafting
             CraftingRegistry.addShapelessRecipe(new ItemStack(BlockListener.mud, 2), Item.WHEAT, Block.DIRT, Block.DIRT);

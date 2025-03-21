@@ -40,6 +40,13 @@ tile.nfc.stained_planks12.name=Brown Stained Planks
 tile.nfc.stained_planks13.name=Green Stained Planks
 tile.nfc.stained_planks14.name=Red Stained Planks
 tile.nfc.stained_planks15.name=Black Stained Planks
+tile.nfc.window0.name=Window
+tile.nfc.window1.name=Vertical Double Window
+tile.nfc.window2.name=Small Window
+tile.nfc.window3.name=Horizontal Double Window
+tile.nfc.window4.name=Mini Window
+tile.nfc.window5.name=Quadruple Window
+tile.nfc.window6.name=Gothic Window
 
 tile.nfc.mud0.name=Mud
 tile.nfc.mud1.name=Mud Bricks
