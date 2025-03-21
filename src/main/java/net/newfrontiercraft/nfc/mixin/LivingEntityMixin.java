@@ -1,16 +1,16 @@
 package net.newfrontiercraft.nfc.mixin;
 
+import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.newfrontiercraft.nfc.events.init.BlockListener;
+import net.newfrontiercraft.nfc.events.init.Materials;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(LivingEntity.class)
@@ -41,5 +41,13 @@ public abstract class LivingEntityMixin extends Entity {
         if(id == BlockListener.scaffoldBlock.id || id == Block.LADDER.id && this.world.getBlockMeta(x, y, z - 1) == 2){
             cir.setReturnValue(true);
         }
+    }
+
+    @ModifyExpressionValue(method = "baseTick", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;isInFluid(Lnet/minecraft/block/material/Material;)Z"))
+    private boolean nfcBaseTick(boolean original){
+        if(LivingEntity.class.cast(this).isInFluid(Materials.oil)){
+            return true;
+        }
+        return original;
     }
 }

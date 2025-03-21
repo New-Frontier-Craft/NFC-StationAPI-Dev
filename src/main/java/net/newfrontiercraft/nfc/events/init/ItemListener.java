@@ -8,6 +8,7 @@ import net.modificationstation.stationapi.api.item.tool.TagToolLevel;
 import net.modificationstation.stationapi.api.item.tool.ToolLevel;
 import net.modificationstation.stationapi.api.item.tool.ToolMaterialFactory;
 import net.modificationstation.stationapi.api.mod.entrypoint.Entrypoint;
+import net.modificationstation.stationapi.api.recipe.FuelRegistry;
 import net.modificationstation.stationapi.api.registry.BlockRegistry;
 import net.modificationstation.stationapi.api.tag.TagKey;
 import net.modificationstation.stationapi.api.template.item.*;
@@ -275,6 +276,8 @@ public class ItemListener {
             rubyBoots,
             emeraldBoots,
             osmiumBoots;
+
+    public static OilBucketItem oilBucket;
 
     @Entrypoint.Namespace
     public static Namespace MOD_ID;
@@ -640,6 +643,9 @@ public class ItemListener {
         // Food
         cookedEgg = new LazyFoodTemplate(Identifier.of(MOD_ID, "cooked_egg"), 4, false);
 
+        // Oil bucket
+        oilBucket = (OilBucketItem) new OilBucketItem(Identifier.of(MOD_ID, "oil_bucket"), BlockListener.oilStill.id).setTranslationKey(Identifier.of(MOD_ID, "oil_bucket"));
+
         // Ore drop specification
         BlockListener.anthraciteOre.specifyCustomDrop(anthracite.id);
         BlockListener.netherAshOre.specifyCustomDrop(netherAsh.id);
@@ -647,5 +653,8 @@ public class ItemListener {
         BlockListener.sapphireOre.specifyCustomDrop(sapphire.id);
         BlockListener.rubyOre.specifyCustomDrop(ruby.id);
         BlockListener.emeraldOre.specifyCustomDrop(emerald.id);
+
+        // Set fuel burn time
+        FuelRegistry.addFuelItem(oilBucket, 12800);
     }
 }

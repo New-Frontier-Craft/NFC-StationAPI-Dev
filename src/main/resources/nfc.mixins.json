@@ -13,13 +13,24 @@
     "OreSuppressionMixin",
     "StorageBlockRecipeObliteratorMixin",
     "ToolEffectivenessHijackerMixin",
-    "graphics.BlockRendererManagerMixin"
+    "graphics.BlockRendererManagerMixin",
+    "MapColorInvoker",
+    "MaterialInvoker",
+    "LiquidBlockInvoker",
+    "LiquidBlockMixin",
+    "EntityMixin",
+    "PlayerEntityMixin",
+    "BucketItemMixin",
+    "FurnaceBlockEntityMixin"
   ],
   "server": [
   ],
   "client": [
     "graphics.PoweredRailTextureMixin",
-    "graphics.SlabTextureMixin"
+    "graphics.SlabTextureMixin",
+    "graphics.InGameHudMixin",
+    "graphics.HeldItemRendererMixin",
+    "graphics.GameRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1

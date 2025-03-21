@@ -33,6 +33,7 @@ public class TextureListener {
         String vanillaBlocks = "block/vanilla/";
 
         // Item strings
+        String items = "item/";
         String ingotItems = "item/ingots/";
         String pickaxes = "item/tools/pickaxes/";
         String swords = "item/tools/swords/";
@@ -501,6 +502,8 @@ public class TextureListener {
         // Food
         ItemListener.cookedEgg.setTexture(Identifier.of(MOD_ID, foodItems + "cooked_egg"));
 
+        // Oil bucket
+        ItemListener.oilBucket.setTexture(Identifier.of(MOD_ID, items + "oil_bucket"));
         // Other drops
         ItemListener.blueGlowstoneDust.setTexture(Identifier.of(MOD_ID, otherDrops + "blue_glowstone_dust"));
 
