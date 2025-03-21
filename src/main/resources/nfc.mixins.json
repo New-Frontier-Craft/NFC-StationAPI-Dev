@@ -10,7 +10,9 @@
     "OreSuppressionMixin",
     "ToolEffectivenessHijackerMixin",
     "LivingEntityMixin",
-    "FireBlockMixin"
+    "FireBlockMixin",
+    "LadderBlockMixin",
+    "graphics.BlockRendererManagerMixin"
   ],
   "server": [
   ],
