@@ -154,6 +154,10 @@ public class RecipeListener {
 
             // Snow bricks
             CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.snowBricks, 4), "XX", "XX", 'X', new ItemStack(Block.SNOW_BLOCK));
+
+            // Walls
+            CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.hardWall, 6), "###", "###", '#', Block.COBBLESTONE);
+            CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.hardWall, 6, 1), "###", "###", '#', Block.MOSSY_COBBLESTONE);
         }
         if (type == RecipeRegisterEvent.Vanilla.SMELTING.type()) {
             // Food

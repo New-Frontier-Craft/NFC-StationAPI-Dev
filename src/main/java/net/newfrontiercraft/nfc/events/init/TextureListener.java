@@ -23,6 +23,7 @@ public class TextureListener {
         String laminated = "block/decorative_blocks/wood/laminated/";
         String stainedPlanks = "block/decorative_blocks/wood/planks/stained/";
         String glass = "block/decorative_blocks/glass/";
+        String walls = "block/decorative_blocks/walls/";
         String mudBlocks = "block/decorative_blocks/mud/";
         String firedMudBlocks = "block/decorative_blocks/mud/fired/";
         String oreBlocks = "block/ores/";
@@ -133,6 +134,15 @@ public class TextureListener {
         );
         BlockListener.tintedGlass.specifyTextures(getTextureIndex(glass + "tinted_glass"));
         BlockListener.snowBricks.specifyTextures(getTextureIndex(decorativeBlocks + "snow_bricks"));
+        BlockListener.hardWall.specifyTextures(
+                new int[] {
+                        getTextureIndex(walls + "cobblestone"),
+                        getTextureIndex(walls + "mossy_cobblestone"),
+                        getTextureIndex(walls + "cobblestone"),
+                        getTextureIndex(walls + "mossy_cobblestone")
+                }
+        );
+        BlockListener.hardWall.asItem().setTextureId(getTextureIndex(walls + "wall_icon"));
 
         // Mud Blocks
         BlockListener.mud.specifyTextures(

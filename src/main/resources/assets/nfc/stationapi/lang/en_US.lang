@@ -65,6 +65,10 @@ tile.nfc.stained_glass14.name=Red Stained Glass
 tile.nfc.stained_glass15.name=Black Stained Glass
 tile.nfc.tinted_glass.name=Tinted Glass
 tile.nfc.snow_bricks.name=Snow Bricks
+tile.nfc.hard_wall0.name=Cobblestone Wall
+tile.nfc.hard_wall1.name=Mossy Cobblestone Wall
+tile.nfc.hard_wall2.name=Connective Cobblestone Wall
+tile.nfc.hard_wall3.name=Connective Mossy Cobblestone Wall
 
 tile.nfc.mud0.name=Mud
 tile.nfc.mud1.name=Mud Bricks
