@@ -5,13 +5,14 @@
   "compatibilityLevel": "JAVA_8",
   "mixins": [
     "BiomeEnlargerMixin",
+    "FireBlockMixin",
     "FixVanillaToolBogusMixin",
     "GlassDropMixin",
-    "OreSuppressionMixin",
-    "ToolEffectivenessHijackerMixin",
-    "LivingEntityMixin",
-    "FireBlockMixin",
     "LadderBlockMixin",
+    "LivingEntityMixin",
+    "OreSuppressionMixin",
+    "StorageBlockRecipeObliteratorMixin",
+    "ToolEffectivenessHijackerMixin",
     "graphics.BlockRendererManagerMixin"
   ],
   "server": [
