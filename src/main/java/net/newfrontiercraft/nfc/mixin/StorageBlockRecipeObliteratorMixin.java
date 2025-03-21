@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(StorageBlockRecipes.class)
 public class StorageBlockRecipeObliteratorMixin {
     @Inject(at = @At("HEAD"), method = "add", cancellable = true)
-    private void suppressOres(CraftingRecipeManager craftingRecipeManager, CallbackInfo ci) {
+    private void cancelEverything(CraftingRecipeManager craftingRecipeManager, CallbackInfo ci) {
         ci.cancel();
     }
 }
