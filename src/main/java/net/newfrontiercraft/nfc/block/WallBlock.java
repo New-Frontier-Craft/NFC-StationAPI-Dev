@@ -24,17 +24,18 @@ public class WallBlock extends LazyMultivariantBlockTemplate implements BlockWit
 
     @Override
     public Box getCollisionShape(World world, int x, int y, int z) {
-        this.setBlockBoundsBasedOnState(world, x, y, z);
+        this.updateBoundingBox(world, x, y, z);
         this.maxY = 1.5D;
         return super.getCollisionShape(world, x, y, z);
     }
 
-    public void setBlockBoundsBasedOnState(BlockView iblockaccess, int i, int j, int k) {
-        boolean isConnectedState = iblockaccess.getBlockMeta(i, j, k) == 2 || iblockaccess.getBlockMeta(i, j, k) == 4;
-        boolean flag = isWallAt(iblockaccess, i, j, k - 1, isConnectedState);
-        boolean flag1 = isWallAt(iblockaccess, i, j, k + 1, isConnectedState);
-        boolean flag2 = isWallAt(iblockaccess, i - 1, j, k, isConnectedState);
-        boolean flag3 = isWallAt(iblockaccess, i + 1, j, k, isConnectedState);
+    @Override
+    public void updateBoundingBox(BlockView blockView, int x, int y, int z) {
+        boolean isConnectedState = blockView.getBlockMeta(x, y, z) == 2 || blockView.getBlockMeta(x, y, z) == 4;
+        boolean flag = isWallAt(blockView, x, y, z - 1, isConnectedState);
+        boolean flag1 = isWallAt(blockView, x, y, z + 1, isConnectedState);
+        boolean flag2 = isWallAt(blockView, x - 1, y, z, isConnectedState);
+        boolean flag3 = isWallAt(blockView, x + 1, y, z, isConnectedState);
         float f = 0.25F;
         float f1 = 0.75F;
         float f2 = 0.25F;
