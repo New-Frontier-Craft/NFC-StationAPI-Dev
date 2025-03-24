@@ -3,14 +3,9 @@ package net.newfrontiercraft.nfc.block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
 import net.modificationstation.stationapi.api.registry.ItemRegistry;
-import net.modificationstation.stationapi.api.registry.Registries;
-import net.modificationstation.stationapi.api.registry.RegistryKey;
 import net.modificationstation.stationapi.api.template.block.TemplateDoorBlock;
 import net.modificationstation.stationapi.api.util.Identifier;
-
-import java.util.Map;
 import java.util.Random;
-import java.util.Set;
 
 public class DoorBlock extends TemplateDoorBlock {
     Identifier doorItem;

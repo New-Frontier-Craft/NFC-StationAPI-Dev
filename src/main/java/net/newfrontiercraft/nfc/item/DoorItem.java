@@ -1,12 +1,10 @@
 package net.newfrontiercraft.nfc.item;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
-import net.modificationstation.stationapi.api.template.item.TemplateDoorItem;
 import net.modificationstation.stationapi.api.template.item.TemplateItem;
 import net.modificationstation.stationapi.api.util.Identifier;
 
@@ -15,6 +13,7 @@ public class DoorItem extends TemplateItem {
     public DoorItem(Identifier identifier, int doorId) {
         super(identifier);
         this.doorId = doorId;
+        this.setMaxCount(1);
     }
 
     @Override

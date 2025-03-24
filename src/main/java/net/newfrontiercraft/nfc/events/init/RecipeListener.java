@@ -159,6 +159,9 @@ public class RecipeListener {
             // Walls
             CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.hardWall, 6), "###", "###", '#', Block.COBBLESTONE);
             CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.hardWall, 6, 1), "###", "###", '#', Block.MOSSY_COBBLESTONE);
+
+            // Copper Door
+            CraftingRegistry.addShapedRecipe(new ItemStack(ItemListener.copperDoor, 1), "##", "##", "##", '#', ItemListener.copperIngot);
         }
         if (type == RecipeRegisterEvent.Vanilla.SMELTING.type()) {
             // Food
