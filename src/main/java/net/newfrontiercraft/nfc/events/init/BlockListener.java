@@ -118,6 +118,7 @@ public class BlockListener {
     public static OilStillBlock oilStill;
 
     public static WallBlock hardWall;
+    public static AlphaGrassBlock alphaGrass;
 
     @Entrypoint.Namespace
     public static Namespace MOD_ID;
@@ -147,6 +148,7 @@ public class BlockListener {
         snowBricks = new LazyBlockTemplate(Identifier.of(MOD_ID, "snow_bricks"), Material.SNOW_BLOCK, 1.5F, Block.WOOL_SOUND_GROUP);
         hardWall = new WallBlock(Identifier.of(MOD_ID, "hard_wall"), Material.STONE, 1.5F, Block.STONE_SOUND_GROUP);
         blueGlowstone = new BlueGlowstoneBlock(Identifier.of(MOD_ID, "blue_glowstone"), Material.STONE, 0.3F, Block.GLASS_SOUND_GROUP);
+        alphaGrass = (AlphaGrassBlock) new AlphaGrassBlock(Identifier.of(MOD_ID, "alpha_grass")).setHardness(1.2F).setSoundGroup(Block.DIRT_SOUND_GROUP).setTranslationKey(Identifier.of(MOD_ID, "alpha_grass"));
 
         mud = new LazyMultivariantBlockTemplate(Identifier.of(MOD_ID, "mud"), Material.SOIL, 1.5F, Block.GRAVEL_SOUND_GROUP);
         firedMud = new LazyMultivariantBlockTemplate(Identifier.of(MOD_ID, "fired_mud"), Material.STONE, 1.5F, Block.STONE_SOUND_GROUP);
@@ -230,6 +232,18 @@ public class BlockListener {
         Block.DIAMOND_ORE.setResistance(500F);
         Block.STONE.setResistance(8F);
         Block.COBBLESTONE.setResistance(10F);
+
+        // Changes to vanilla hardness
+        Block.GRASS_BLOCK.setHardness(1.2F);
+        Block.DIRT.setHardness(1.0F);
+        Block.LOG.setHardness(2.5F);
+        Block.GOLD_BLOCK.setHardness(2.0F);
+        Block.IRON_BLOCK.setHardness(3.0F);
+        Block.BRICKS.setHardness(4.0F);
+        Block.OBSIDIAN.setHardness(50.0F);
+        Block.DIAMOND_ORE.setHardness(10.0F);
+        Block.REDSTONE_ORE.setHardness(4.0F);
+        Block.LIT_REDSTONE_ORE.setHardness(4.0F);
 
         // Set fuel burn time
         FuelRegistry.addFuelItem(scaffoldBlock.asItem(), 100);

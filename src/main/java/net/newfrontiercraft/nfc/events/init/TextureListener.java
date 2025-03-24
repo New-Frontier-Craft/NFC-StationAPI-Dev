@@ -146,6 +146,12 @@ public class TextureListener {
         );
         BlockListener.hardWall.asItem().setTextureId(getTextureIndex(walls + "wall_icon"));
         BlockListener.blueGlowstone.specifyTextures(getTextureIndex(woldGeneration + "blue_glowstone"));
+        BlockListener.alphaGrass.specifyTextures(
+                getTextureIndex(decorativeBlocks + "alpha_grass_top"),
+                getTextureIndex(decorativeBlocks + "alpha_grass_side"),
+                getTextureIndex(decorativeBlocks + "alpha_grass_side_snow"),
+                getTextureIndex(decorativeBlocks + "alpha_grass_bottom")
+        );
 
         // Mud Blocks
         BlockListener.mud.specifyTextures(
