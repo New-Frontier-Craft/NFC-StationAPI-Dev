@@ -70,6 +70,7 @@ tile.nfc.hard_wall1.name=Mossy Cobblestone Wall
 tile.nfc.hard_wall2.name=Connective Cobblestone Wall
 tile.nfc.hard_wall3.name=Connective Mossy Cobblestone Wall
 tile.nfc.blue_glowstone.name=Blue Glowstone
+tile.nfc.copper_door_block.name=Copper Door
 
 tile.nfc.mud0.name=Mud
 tile.nfc.mud1.name=Mud Bricks
@@ -395,5 +396,6 @@ item.nfc.emerald.name=Emerald
 
 item.nfc.cooked_egg.name=Cooked Egg
 item.nfc.oil_bucket.name=Oil Bucket
+item.nfc.copper_door.name=Copper Door
 
 item.nfc.blue_glowstone_dust.name=Blue Glowstone Dust

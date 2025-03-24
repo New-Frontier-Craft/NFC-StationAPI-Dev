@@ -74,6 +74,7 @@
     "nfc:bronze_block",
     "nfc:brass_block",
     "nfc:steel_block",
+    "nfc:copper_door_block",
 
     "nfc:brick_oven",
     "nfc:brick_oven_active"
