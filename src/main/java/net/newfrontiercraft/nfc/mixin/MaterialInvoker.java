@@ -8,4 +8,7 @@ import org.spongepowered.asm.mixin.gen.Invoker;
 public interface MaterialInvoker {
     @Invoker
     Material invokeSetDestroyPistonBehavior();
+
+    @Invoker
+    Material invokeSetHandHarvestable();
 }

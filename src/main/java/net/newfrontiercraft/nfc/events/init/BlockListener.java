@@ -119,6 +119,8 @@ public class BlockListener {
 
     public static WallBlock hardWall;
 
+    public static DoorBlock copperDoor;
+
     @Entrypoint.Namespace
     public static Namespace MOD_ID;
 
@@ -147,6 +149,8 @@ public class BlockListener {
         snowBricks = new LazyBlockTemplate(Identifier.of(MOD_ID, "snow_bricks"), Material.SNOW_BLOCK, 1.5F, Block.WOOL_SOUND_GROUP);
         hardWall = new WallBlock(Identifier.of(MOD_ID, "hard_wall"), Material.STONE, 1.5F, Block.STONE_SOUND_GROUP);
         blueGlowstone = new BlueGlowstoneBlock(Identifier.of(MOD_ID, "blue_glowstone"), Material.STONE, 0.3F, Block.GLASS_SOUND_GROUP);
+
+        copperDoor = (DoorBlock) new DoorBlock(Identifier.of(MOD_ID, "copper_door_block"), Materials.copper, Identifier.of(MOD_ID, "copper_door")).setHardness(3.0F).setSoundGroup(Block.METAL_SOUND_GROUP);
 
         mud = new LazyMultivariantBlockTemplate(Identifier.of(MOD_ID, "mud"), Material.SOIL, 1.5F, Block.GRAVEL_SOUND_GROUP);
         firedMud = new LazyMultivariantBlockTemplate(Identifier.of(MOD_ID, "fired_mud"), Material.STONE, 1.5F, Block.STONE_SOUND_GROUP);

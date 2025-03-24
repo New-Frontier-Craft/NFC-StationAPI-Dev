@@ -278,6 +278,7 @@ public class ItemListener {
             osmiumBoots;
 
     public static OilBucketItem oilBucket;
+    public static DoorItem copperDoor;
 
     @Entrypoint.Namespace
     public static Namespace MOD_ID;
@@ -645,6 +646,9 @@ public class ItemListener {
 
         // Oil bucket
         oilBucket = (OilBucketItem) new OilBucketItem(Identifier.of(MOD_ID, "oil_bucket"), BlockListener.oilStill.id).setTranslationKey(Identifier.of(MOD_ID, "oil_bucket"));
+
+        // Doors
+        copperDoor = (DoorItem) new DoorItem(Identifier.of(MOD_ID, "copper_door"), BlockListener.copperDoor.id).setTranslationKey(Identifier.of(MOD_ID, "copper_door"));
 
         // Ore drop specification
         BlockListener.anthraciteOre.specifyCustomDrop(anthracite.id);
