@@ -1,10 +1,13 @@
 package net.newfrontiercraft.nfc.block;
 
+import net.fabricmc.loader.api.FabricLoader;
+import net.minecraft.client.Minecraft;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.world.World;
 import net.modificationstation.stationapi.api.block.HasCustomBlockItemFactory;
 import net.modificationstation.stationapi.api.util.Identifier;
 import net.newfrontiercraft.nfc.block.item.BioluminescentMushroomBlockItem;
+import net.newfrontiercraft.nfc.particle.SporeParticle;
 
 import java.util.Random;
 
@@ -36,10 +39,12 @@ public class BioluminescentMushroomBlock extends LazyMushroomTemplate {
         double d = (float) x + 0.5F;
         double d1 = (float) y + 0.2F + l;
         double d2 = (float) z + 0.5F;
-        if (world.getBlockMeta(x, y, z) == 1)
-            world.addParticle("reddust", d, d1, d2, 0.5D, 0.0D, 0.5D); // TODO: Replace particle with sporepurple and set velocity values to 0
-        else
-            world.addParticle("reddust", d, d1, d2, 0.0D, 0.0D, 0.5D); // TODO: Replace particle with sporeblue and set velocity values to 0
+        if (FabricLoader.getInstance().getGameInstance() instanceof Minecraft minecraft) {
+            if (world.getBlockMeta(x, y, z) == 1)
+                minecraft.particleManager.addParticle(new SporeParticle(world, d, d1, d2, 0F, 0F, 0F, 0.98F, 0.78F, 1));
+            else
+                minecraft.particleManager.addParticle(new SporeParticle(world, d, d1, d2, 0F, 0F, 0F, 0.78F, 0.98F, 1));
+        }
     }
 
     @Override
