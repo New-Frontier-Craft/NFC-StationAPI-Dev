@@ -20,14 +20,14 @@ public class TextureListener {
         // Block strings
         String convenienceBlocks = "block/convenience_blocks/";
         String decorativeBlocks = "block/decorative_blocks/";
-        String wood = "block/decorative_blocks/wood/";
-        String planks = "block/decorative_blocks/wood/planks/";
-        String laminated = "block/decorative_blocks/wood/laminated/";
-        String stainedPlanks = "block/decorative_blocks/wood/planks/stained/";
-        String glass = "block/decorative_blocks/glass/";
-        String walls = "block/decorative_blocks/walls/";
-        String mudBlocks = "block/decorative_blocks/mud/";
-        String firedMudBlocks = "block/decorative_blocks/mud/fired/";
+        String wood = decorativeBlocks + "wood/";
+        String planks = wood + "planks/";
+        String laminated = wood + "laminated/";
+        String stainedPlanks = planks + "stained/";
+        String glass = decorativeBlocks + "glass/";
+        String walls = decorativeBlocks + "walls/";
+        String mudBlocks = decorativeBlocks + "mud/";
+        String firedMudBlocks = mudBlocks + "fired/";
         String oreBlocks = "block/ores/";
         String oreStorage = "block/ore_storage/";
         String machines = "block/machines/";
@@ -37,19 +37,19 @@ public class TextureListener {
 
         // Item strings
         String items = "item/";
-        String ingotItems = "item/ingots/";
-        String pickaxes = "item/tools/pickaxes/";
-        String swords = "item/tools/swords/";
-        String shovels = "item/tools/shovels/";
-        String axes = "item/tools/axes/";
-        String hoes = "item/tools/hoes/";
-        String helmets = "item/armor/helmets/";
-        String chestplates = "item/armor/chestplates/";
-        String leggings = "item/armor/leggings/";
-        String boots = "item/armor/boots/";
-        String oreDrops = "item/ore_drops/";
-        String foodItems = "item/food/";
-        String otherDrops = "item/other_drops/";
+        String ingotItems = items + "ingots/";
+        String pickaxes = items + "tools/pickaxes/";
+        String swords = items + "tools/swords/";
+        String shovels = items + "tools/shovels/";
+        String axes = items + "tools/axes/";
+        String hoes = items + "tools/hoes/";
+        String helmets = items + "armor/helmets/";
+        String chestplates = items + "armor/chestplates/";
+        String leggings = items + "armor/leggings/";
+        String boots = items + "armor/boots/";
+        String oreDrops = items + "ore_drops/";
+        String foodItems = items + "food/";
+        String otherDrops = items + "other_drops/";
 
         // Convenience blocks
         int scaffoldTopTexture = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, convenienceBlocks + "scaffold_block_top")).index;
