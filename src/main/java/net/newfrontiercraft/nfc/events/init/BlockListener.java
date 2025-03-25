@@ -251,5 +251,7 @@ public class BlockListener {
 
         // Set fuel burn time
         FuelRegistry.addFuelItem(scaffoldBlock.asItem(), 100);
+        FuelRegistry.addFuelItem(alphaSapling.asItem(), 100);
+
     }
 }
