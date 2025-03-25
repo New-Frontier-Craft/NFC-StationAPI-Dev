@@ -119,6 +119,8 @@ public class BlockListener {
 
     public static WallBlock hardWall;
     public static AlphaGrassBlock alphaGrass;
+    public static AlphaLeavesBlock alphaLeaves;
+    public static AlphaSapling alphaSapling;
 
     @Entrypoint.Namespace
     public static Namespace MOD_ID;
@@ -149,6 +151,8 @@ public class BlockListener {
         hardWall = new WallBlock(Identifier.of(MOD_ID, "hard_wall"), Material.STONE, 1.5F, Block.STONE_SOUND_GROUP);
         blueGlowstone = new BlueGlowstoneBlock(Identifier.of(MOD_ID, "blue_glowstone"), Material.STONE, 0.3F, Block.GLASS_SOUND_GROUP);
         alphaGrass = (AlphaGrassBlock) new AlphaGrassBlock(Identifier.of(MOD_ID, "alpha_grass")).setHardness(1.2F).setSoundGroup(Block.DIRT_SOUND_GROUP).setTranslationKey(Identifier.of(MOD_ID, "alpha_grass"));
+        alphaLeaves = (AlphaLeavesBlock)new AlphaLeavesBlock(Identifier.of(MOD_ID, "alpha_leaves"), 0).setHardness(0.2F).setOpacity(1).setSoundGroup(Block.DIRT_SOUND_GROUP).setTranslationKey(Identifier.of(MOD_ID, "alpha_leaves"));
+        alphaSapling = (AlphaSapling) new AlphaSapling(Identifier.of(MOD_ID, "alpha_sapling"), 0).setHardness(0.0F).ignoreMetaUpdates().setSoundGroup(Block.DIRT_SOUND_GROUP).setTranslationKey(Identifier.of(MOD_ID, "alpha_sapling"));
 
         mud = new LazyMultivariantBlockTemplate(Identifier.of(MOD_ID, "mud"), Material.SOIL, 1.5F, Block.GRAVEL_SOUND_GROUP);
         firedMud = new LazyMultivariantBlockTemplate(Identifier.of(MOD_ID, "fired_mud"), Material.STONE, 1.5F, Block.STONE_SOUND_GROUP);
