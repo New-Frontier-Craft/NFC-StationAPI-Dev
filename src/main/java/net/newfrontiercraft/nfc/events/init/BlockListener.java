@@ -119,6 +119,7 @@ public class BlockListener {
     public static OilStillBlock oilStill;
 
     public static WallBlock hardWall;
+    public static FenceGateBlock fenceGate;
     public static AlphaGrassBlock alphaGrass;
     public static AlphaLeavesBlock alphaLeaves;
     public static AlphaSapling alphaSapling;
@@ -152,6 +153,7 @@ public class BlockListener {
         tintedGlass = (LazyGlassBlockTemplate) new LazyGlassBlockTemplate(Identifier.of(MOD_ID, "tinted_glass"), Material.GLASS, 0.6F, Block.GLASS_SOUND_GROUP, true).setResistance(12.0F).setOpacity(255);
         snowBricks = new LazyBlockTemplate(Identifier.of(MOD_ID, "snow_bricks"), Material.SNOW_BLOCK, 1.5F, Block.WOOL_SOUND_GROUP);
         hardWall = new WallBlock(Identifier.of(MOD_ID, "hard_wall"), Material.STONE, 1.5F, Block.STONE_SOUND_GROUP);
+        fenceGate = (FenceGateBlock) new FenceGateBlock(Identifier.of(MOD_ID, "fence_gate"), Material.WOOD).setHardness(2.0F).setResistance(5.0F).setSoundGroup(Block.WOOD_SOUND_GROUP).setTranslationKey(Identifier.of(MOD_ID, "fence_gate"));
         blueGlowstone = new BlueGlowstoneBlock(Identifier.of(MOD_ID, "blue_glowstone"), Material.STONE, 0.3F, Block.GLASS_SOUND_GROUP);
         alphaGrass = (AlphaGrassBlock) new AlphaGrassBlock(Identifier.of(MOD_ID, "alpha_grass")).setHardness(1.2F).setSoundGroup(Block.DIRT_SOUND_GROUP).setTranslationKey(Identifier.of(MOD_ID, "alpha_grass"));
         alphaLeaves = (AlphaLeavesBlock)new AlphaLeavesBlock(Identifier.of(MOD_ID, "alpha_leaves"), 0).setHardness(0.2F).setOpacity(1).setSoundGroup(Block.DIRT_SOUND_GROUP).setTranslationKey(Identifier.of(MOD_ID, "alpha_leaves"));

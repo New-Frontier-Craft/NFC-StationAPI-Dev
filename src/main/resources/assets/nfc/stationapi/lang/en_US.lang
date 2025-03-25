@@ -74,6 +74,7 @@ tile.nfc.alpha_grass.name=Alpha Grass
 tile.nfc.alpha_leaves.name=Alpha Oak Leaves
 tile.nfc.alpha_sapling.name=Alpha Oak Sapling
 tile.nfc.copper_door_block.name=Copper Door
+tile.nfc.fence_gate.name=Fence Gate
 
 tile.nfc.mud0.name=Mud
 tile.nfc.mud1.name=Mud Bricks

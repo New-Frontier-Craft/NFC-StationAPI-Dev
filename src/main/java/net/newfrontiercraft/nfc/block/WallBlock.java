@@ -13,6 +13,7 @@ import net.minecraft.world.World;
 import net.modificationstation.stationapi.api.client.model.block.BlockWithInventoryRenderer;
 import net.modificationstation.stationapi.api.client.model.block.BlockWithWorldRenderer;
 import net.modificationstation.stationapi.api.util.Identifier;
+import net.newfrontiercraft.nfc.events.init.BlockListener;
 import org.lwjgl.opengl.GL11;
 
 @EnvironmentInterface(value=EnvType.CLIENT, itf=BlockWithWorldRenderer.class)
@@ -81,10 +82,6 @@ public class WallBlock extends LazyMultivariantBlockTemplate implements BlockWit
         return false;
     }
 
-    public int getRenderType() {
-        return 26;
-    }
-
     @Override
     protected int getDroppedItemMeta(int blockMeta) {
         return blockMeta % 2;
@@ -92,7 +89,7 @@ public class WallBlock extends LazyMultivariantBlockTemplate implements BlockWit
 
     public boolean isWallAt(BlockView iblockaccess, int i, int j, int k, boolean isConnected) {
         int l = iblockaccess.getBlockId(i, j, k);
-        if (l == id /*|| l == mod_NFC.fenceGate.blockID*/) {
+        if (l == id || l == BlockListener.fenceGate.id) {
             return true;
         }
         Block block = Block.BLOCKS[l];
@@ -103,10 +100,10 @@ public class WallBlock extends LazyMultivariantBlockTemplate implements BlockWit
     public boolean renderWorld(BlockRenderManager blockRenderManager, BlockView blockView, int i, int j, int k) {
         int meta = blockView.getBlockMeta(i, j, k);
         boolean wrenched = meta > 1;
-        boolean flag = blockView.getBlockId(i - 1, j, k) == this.id || /*blockView.getBlockId(i - 1, j, k) == mod_NFC.fenceGate.blockID ||*/ (Block.BLOCKS_OPAQUE[blockView.getBlockId(i - 1, j, k)] && wrenched);
-        boolean flag1 = blockView.getBlockId(i + 1, j, k) == this.id || /*blockView.getBlockId(i + 1, j, k) == mod_NFC.fenceGate.blockID ||*/ (Block.BLOCKS_OPAQUE[blockView.getBlockId(i + 1, j, k)] && wrenched);
-        boolean flag2 = blockView.getBlockId(i, j, k - 1) == this.id || /*blockView.getBlockId(i, j, k - 1) == mod_NFC.fenceGate.blockID ||*/ (Block.BLOCKS_OPAQUE[blockView.getBlockId(i, j, k - 1)] && wrenched);
-        boolean flag3 = blockView.getBlockId(i, j, k + 1) == this.id || /*blockView.getBlockId(i, j, k + 1) == mod_NFC.fenceGate.blockID ||*/ (Block.BLOCKS_OPAQUE[blockView.getBlockId(i, j, k + 1)] && wrenched);
+        boolean flag = blockView.getBlockId(i - 1, j, k) == this.id || blockView.getBlockId(i - 1, j, k) == BlockListener.fenceGate.id || (Block.BLOCKS_OPAQUE[blockView.getBlockId(i - 1, j, k)] && wrenched);
+        boolean flag1 = blockView.getBlockId(i + 1, j, k) == this.id || blockView.getBlockId(i + 1, j, k) == BlockListener.fenceGate.id || (Block.BLOCKS_OPAQUE[blockView.getBlockId(i + 1, j, k)] && wrenched);
+        boolean flag2 = blockView.getBlockId(i, j, k - 1) == this.id || blockView.getBlockId(i, j, k - 1) == BlockListener.fenceGate.id || (Block.BLOCKS_OPAQUE[blockView.getBlockId(i, j, k - 1)] && wrenched);
+        boolean flag3 = blockView.getBlockId(i, j, k + 1) == this.id || blockView.getBlockId(i, j, k + 1) == BlockListener.fenceGate.id || (Block.BLOCKS_OPAQUE[blockView.getBlockId(i, j, k + 1)] && wrenched);
         boolean flag4 = flag2 && flag3 && !flag && !flag1;
         boolean flag5 = !flag2 && !flag3 && flag && flag1;
         boolean flag6 = blockView.getBlockId(i, j + 1, k) == 0;

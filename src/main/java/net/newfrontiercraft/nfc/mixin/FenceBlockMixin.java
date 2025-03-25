@@ -57,7 +57,7 @@ public abstract class FenceBlockMixin extends Block implements FenceConnection {
     @Override
     public boolean connectFenceAt(BlockView blockView, int i, int j, int k, boolean isConnected) {
         int l = blockView.getBlockId(i, j, k);
-        if(l != this.id && l != BlockListener.scaffoldBlock.id) {
+        if(l != this.id && l != BlockListener.fenceGate.id) {
             Block block = Block.BLOCKS[l];
             return block != null && block.material.suffocates() && block.isFullCube() && isConnected ? block.material != Material.PUMPKIN : false;
         } else {
