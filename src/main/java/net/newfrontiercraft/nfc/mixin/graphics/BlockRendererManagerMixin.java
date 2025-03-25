@@ -1,10 +1,17 @@
 package net.newfrontiercraft.nfc.mixin.graphics;
 
+import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
 import net.minecraft.block.Block;
+import net.minecraft.block.FenceBlock;
 import net.minecraft.client.render.Tessellator;
 import net.minecraft.client.render.block.BlockRenderManager;
+import net.minecraft.world.BlockView;
+import net.newfrontiercraft.nfc.utils.FenceConnection;
 import org.lwjgl.opengl.GL11;
+import org.objectweb.asm.Opcodes;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -47,6 +54,19 @@ public class BlockRendererManagerMixin{
         }
 
         cir.setReturnValue(true);
+    }
+    
+    @WrapOperation(
+            method = "renderFence",
+            at = @At(value = "INVOKE",
+                    target = "Lnet/minecraft/world/BlockView;getBlockId(III)I")
+    )
+    public int nfcGetBlockId(BlockView instance, int x, int y, int z, Operation<Integer> original){
+        boolean isConnectedState = instance.getBlockMeta(x, y, z) == 1;
+        if(((FenceConnection)Block.FENCE).connectFenceAt(instance, x, y, z, isConnectedState)){
+            return Block.FENCE.id;
+        }
+        return original.call(instance, x, y, z);
     }
 
     @Inject(method = "render(Lnet/minecraft/block/Block;IF)V", at = @At("HEAD"))
