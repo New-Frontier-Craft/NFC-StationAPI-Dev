@@ -5,35 +5,36 @@
   "compatibilityLevel": "JAVA_8",
   "mixins": [
     "BiomeEnlargerMixin",
+    "BucketItemMixin",
+    "EntityMixin",
     "FireBlockMixin",
+    "FireImmunityAccessor",
     "FixVanillaToolBogusMixin",
+    "FurnaceBlockEntityMixin",
     "GlassDropMixin",
     "LadderBlockMixin",
-    "LivingEntityMixin",
-    "OreSuppressionMixin",
-    "StorageBlockRecipeObliteratorMixin",
-    "ToolEffectivenessHijackerMixin",
-    "graphics.BlockRendererManagerMixin",
-    "MapColorInvoker",
-    "MaterialInvoker",
     "LiquidBlockInvoker",
     "LiquidBlockMixin",
-    "EntityMixin",
+    "LivingEntityMixin",
+    "MapColorInvoker",
+    "MaterialInvoker",
+    "OreSuppressionMixin",
+    "PlantBlockMixin",
     "PlayerEntityMixin",
-    "BucketItemMixin",
-    "FurnaceBlockEntityMixin",
-    "PlantBlockMixin"
+    "StorageBlockRecipeObliteratorMixin",
+    "ToolEffectivenessHijackerMixin",
+    "graphics.BlockRendererManagerMixin"
   ],
   "server": [
   ],
   "client": [
-    "graphics.PoweredRailTextureMixin",
-    "graphics.SlabTextureMixin",
-    "graphics.InGameHudMixin",
-    "graphics.HeldItemRendererMixin",
     "graphics.GameRendererMixin",
-    "graphics.WorldRendererMixin",
-    "graphics.SaplingBlockMixin"
+    "graphics.HeldItemRendererMixin",
+    "graphics.InGameHudMixin",
+    "graphics.PoweredRailTextureMixin",
+    "graphics.SaplingBlockMixin",
+    "graphics.SlabTextureMixin",
+    "graphics.WorldRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1

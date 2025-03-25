@@ -97,7 +97,9 @@ public class BlockListener {
             pebble,
             pebbleSmall,
             pebbleMedium,
-            pebbleLarge;
+            pebbleLarge,
+
+            scorchedSand;
 
     public static LazyMultivariantBlockTemplate
             mud,
@@ -230,6 +232,8 @@ public class BlockListener {
 
         oilFlowing = (OilFlowingBlock) new OilFlowingBlock(Identifier.of(MOD_ID, "oil_flowing"), Materials.oil).setHardness(100.0F).disableTrackingStatistics().setOpacity(3).ignoreMetaUpdates();
         oilStill = (OilStillBlock) new OilStillBlock(Identifier.of(MOD_ID, "oil"), Materials.oil).setHardness(100.0F).disableTrackingStatistics().setOpacity(3).ignoreMetaUpdates();
+
+        scorchedSand = new ScorchedSandBlock(Identifier.of(MOD_ID, "scorched_sand"), 0.5F, Block.SAND_SOUND_GROUP, 1);
 
         // Changes to vanilla blast resistance
         Block.COAL_ORE.setResistance(500F);

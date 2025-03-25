@@ -159,6 +159,7 @@ public class TextureListener {
                 getTextureIndex(decorativeBlocks + "alpha_leaves_fast"),
                 getTextureIndex(decorativeBlocks + "alpha_leaves")
         );
+        BlockListener.scorchedSand.specifyTextures(getTextureIndex(woldGeneration + "scorched_sand"));
 
         // Mud Blocks
         BlockListener.mud.specifyTextures(
