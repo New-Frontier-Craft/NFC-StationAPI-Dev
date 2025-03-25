@@ -1,5 +1,7 @@
 package net.newfrontiercraft.nfc.block;
 
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.Minecraft;
 import net.minecraft.sound.BlockSoundGroup;
@@ -24,6 +26,7 @@ public class BioluminescentMushroomBlock extends LazyMushroomTemplate {
     }
 
     @Override
+    @Environment(EnvType.CLIENT)
     public void randomDisplayTick(World world, int x, int y, int z, Random random) {
         float l = 0;
         if (world.getBlockMeta(x, y, z) == 1)

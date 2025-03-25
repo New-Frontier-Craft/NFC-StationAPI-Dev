@@ -18,21 +18,6 @@ public abstract class LiquidBlockMixin extends Block {
         super(id, material);
     }
 
-    @Inject(method = "getFlowingAngle", at = @At("HEAD"), cancellable = true)
-    private static void nfcGetFlowingAngle(BlockView view, int x, int y, int z, Material material, CallbackInfoReturnable<Double> cir) {
-        if(material == Materials.oil){
-            Vec3d var5 = ((LiquidBlockInvoker)BlockListener.oilFlowing).invokeGetFlow(view, x, y, z);
-            cir.setReturnValue(var5.x == (double)0.0F && var5.z == (double)0.0F ? (double)-1000.0F : Math.atan2(var5.z, var5.x) - (Math.PI / 2D));
-        }
-    }
-
-    @Inject(method = "getColorMultiplier", at = @At("HEAD"), cancellable = true)
-    public void nfcGetColorMultiplier(BlockView x, int y, int z, int par4, CallbackInfoReturnable<Integer> cir) {
-        if(this.material == Materials.oil){
-            cir.setReturnValue(0x211508);
-        }
-    }
-
     @Inject(method = "getTickRate", at = @At("HEAD"), cancellable = true)
     public void nfcGetTickRate(CallbackInfoReturnable<Integer> cir){
         if(this.material == Materials.oil){
