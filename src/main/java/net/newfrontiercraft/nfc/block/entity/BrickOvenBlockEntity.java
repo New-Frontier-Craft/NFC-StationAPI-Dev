@@ -227,21 +227,20 @@ public class BrickOvenBlockEntity extends BlockEntity implements Inventory {
         if(i == BlockListener.scaffoldBlock.id) {
             return 100;
         }
-//        if(i == BlockListener.fireMushroom.id) {
+//        if(i == ItemListener.fireMushroom.id) {
 //            return 200;
 //        }
 
         if((i == Item.COAL.id  || i == ItemListener.netherAsh.id) && j == 0) {
             return 1600;
-        }
-        if(i == Item.COAL.id) {
+        } else if(i == Item.COAL.id) {
             return 800;
         }
         /*
-        if((i == BlockListener.coalLump.id || i == BlockListener.nethercoalLump.id) && j == 0) {
+        if((i == ItemListener.coalLump.id || i == ItemListener.nethercoalLump.id) && j == 0) {
             return 200;
         }
-        if(i == BlockListener.coalLump.id) {
+        if(i == ItemListener.coalLump.id) {
             return 100;
         }
         */
@@ -254,11 +253,9 @@ public class BrickOvenBlockEntity extends BlockEntity implements Inventory {
         if(i == ItemListener.anthracite.id) {
             return 11200;
         }
-        /*
-        if (i == BlockListener.bucketOil.id) {
+        if (i == ItemListener.oilBucket.id) {
             return 12800;
         }
-         */
 
         return 0;
 

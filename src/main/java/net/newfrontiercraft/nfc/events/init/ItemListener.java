@@ -660,5 +660,7 @@ public class ItemListener {
 
         // Set fuel burn time
         FuelRegistry.addFuelItem(oilBucket, 12800);
+        FuelRegistry.addFuelItem(netherAsh, 1600);
+        FuelRegistry.addFuelItem(anthracite, 11200);
     }
 }
