@@ -33,6 +33,7 @@ public class TextureListener {
         String machines = "block/machines/";
         String woldGeneration = "block/world_generation/";
         String vanillaBlocks = "block/vanilla/";
+        String scorchedSandstone = decorativeBlocks + "scorched_sandstone/";
 
         // Item strings
         String items = "item/";
@@ -160,6 +161,7 @@ public class TextureListener {
                 getTextureIndex(decorativeBlocks + "alpha_leaves")
         );
         BlockListener.scorchedSand.specifyTextures(getTextureIndex(woldGeneration + "scorched_sand"));
+        BlockListener.scorchedSandstone.specifyTextures(getTextureIndex(scorchedSandstone + "top"), getTextureIndex(scorchedSandstone + "side"), getTextureIndex(scorchedSandstone + "bottom"));
 
         // Mud Blocks
         BlockListener.mud.specifyTextures(

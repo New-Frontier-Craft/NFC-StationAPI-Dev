@@ -151,6 +151,7 @@ tile.nfc.pebble_medium.name=Medium Pebble
 tile.nfc.pebble_large.name=Large Pebble
 
 tile.nfc.scorched_sand.name=Scorched Sand
+tile.nfc.scorched_sandstone.name=Scorched Sandstone
 
 
 item.nfc.aluminium_pickaxe.name=Aluminum Pickaxe

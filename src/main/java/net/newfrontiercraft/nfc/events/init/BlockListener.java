@@ -30,6 +30,7 @@ public class BlockListener {
             osmiumBricks,
             snowBricks,
             blueGlowstone,
+            scorchedSandstone,
 
             coalBlock,
             onyxBlock,
@@ -232,6 +233,7 @@ public class BlockListener {
         oilStill = (OilStillBlock) new OilStillBlock(Identifier.of(MOD_ID, "oil"), Materials.oil).setHardness(100.0F).disableTrackingStatistics().setOpacity(3).ignoreMetaUpdates();
 
         scorchedSand = new ScorchedSandBlock(Identifier.of(MOD_ID, "scorched_sand"), 0.5F, Block.SAND_SOUND_GROUP, 1);
+        scorchedSandstone = new LazyBlockTemplate(Identifier.of(MOD_ID, "scorched_sandstone"), Material.STONE, 0.8F, Block.STONE_SOUND_GROUP);
 
         // Changes to vanilla blast resistance
         Block.COAL_ORE.setResistance(500F);
