@@ -266,8 +266,10 @@ public class BlockListener {
         Block.LIT_REDSTONE_ORE.setHardness(4.0F);
 
         // Set fuel burn time
-        FuelRegistry.addFuelItem(scaffoldBlock.asItem(), 100);
+        FuelRegistry.addFuelItem(scaffoldBlock.asItem(), 200);
         FuelRegistry.addFuelItem(alphaSapling.asItem(), 100);
+        FuelRegistry.addFuelItem(coalBlock.asItem(), 6400);
+        FuelRegistry.addFuelItem(fieryMushroom.asItem(), 600);
 
     }
 }
