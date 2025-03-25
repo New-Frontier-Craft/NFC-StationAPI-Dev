@@ -23,7 +23,8 @@
     "PlayerEntityMixin",
     "StorageBlockRecipeObliteratorMixin",
     "ToolEffectivenessHijackerMixin",
-    "graphics.BlockRendererManagerMixin"
+    "graphics.BlockRendererManagerMixin",
+    "FenceBlockMixin"
   ],
   "server": [
   ],

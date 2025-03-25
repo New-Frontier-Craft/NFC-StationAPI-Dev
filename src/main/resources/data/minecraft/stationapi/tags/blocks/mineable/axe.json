@@ -3,6 +3,8 @@
     "nfc:carpentry_workstation",
     "nfc:decorative_wood",
     "nfc:stained_planks",
-    "nfc:scaffold_block"
+    "nfc:scaffold_block",
+    "nfc:fence_gate",
+    "minecraft:oak_fence"
   ]
 }

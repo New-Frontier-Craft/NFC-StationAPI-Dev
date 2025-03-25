@@ -163,6 +163,9 @@ public class RecipeListener {
 
             // Copper Door
             CraftingRegistry.addShapedRecipe(new ItemStack(ItemListener.copperDoor, 1), "##", "##", "##", '#', ItemListener.copperIngot);
+
+            // Fence Gates
+            CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.fenceGate, 1), "YXY", "YXY", 'X', Block.PLANKS, 'Y', Item.STICK);
         }
         if (type == RecipeRegisterEvent.Vanilla.SMELTING.type()) {
             // Food
