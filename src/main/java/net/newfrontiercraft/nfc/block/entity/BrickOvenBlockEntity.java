@@ -227,9 +227,9 @@ public class BrickOvenBlockEntity extends BlockEntity implements Inventory {
         if(i == BlockListener.scaffoldBlock.id) {
             return 100;
         }
-//        if(i == ItemListener.fireMushroom.id) {
-//            return 200;
-//        }
+        if(i == BlockListener.fieryMushroom.id) {
+            return 200;
+        }
 
         if((i == Item.COAL.id  || i == ItemListener.netherAsh.id) && j == 0) {
             return 1600;

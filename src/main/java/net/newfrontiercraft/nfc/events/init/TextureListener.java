@@ -274,6 +274,8 @@ public class TextureListener {
         BlockListener.bioluminescentMushroom.asItem().setTextureId(getTextureIndex(mushrooms + "blue"));
         BlockListener.glowingMushroom.specifyTextures(getTextureIndex(mushrooms + "glowing"));
         BlockListener.glowingMushroom.asItem().setTextureId(getTextureIndex(mushrooms + "glowing"));
+        BlockListener.fieryMushroom.specifyTextures(getTextureIndex(mushrooms + "fiery"));
+        BlockListener.fieryMushroom.asItem().setTextureId(getTextureIndex(mushrooms + "fiery"));
 
         // Pickaxes
         ItemListener.aluminiumPickaxe.setTexture(Identifier.of(MOD_ID, pickaxes + "aluminium"));

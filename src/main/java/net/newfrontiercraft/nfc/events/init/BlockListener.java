@@ -127,6 +127,7 @@ public class BlockListener {
 
     public static BioluminescentMushroomBlock bioluminescentMushroom;
     public static GlowingMushroomBlock glowingMushroom;
+    public static FieryMushroomBlock fieryMushroom;
 
     @Entrypoint.Namespace
     public static Namespace MOD_ID;
@@ -239,7 +240,8 @@ public class BlockListener {
         scorchedSandstone = new LazyBlockTemplate(Identifier.of(MOD_ID, "scorched_sandstone"), Material.STONE, 0.8F, Block.STONE_SOUND_GROUP);
 
         bioluminescentMushroom = new BioluminescentMushroomBlock(Identifier.of(MOD_ID, "bioluminescent_mushroom"), 0, Block.WOOD_SOUND_GROUP, true);
-        glowingMushroom = new GlowingMushroomBlock(Identifier.of(MOD_ID, "glowing_mushroom"), 0, Block.DIRT_SOUND_GROUP, true);
+        glowingMushroom = new GlowingMushroomBlock(Identifier.of(MOD_ID, "glowing_mushroom"), 0, Block.DIRT_SOUND_GROUP, false);
+        fieryMushroom = new FieryMushroomBlock(Identifier.of(MOD_ID, "fiery_mushroom"), 0, Block.DIRT_SOUND_GROUP, false);
 
         // Changes to vanilla blast resistance
         Block.COAL_ORE.setResistance(500F);

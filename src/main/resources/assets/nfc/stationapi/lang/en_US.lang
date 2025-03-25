@@ -156,6 +156,7 @@ tile.nfc.scorched_sandstone.name=Scorched Sandstone
 tile.nfc.bioluminescent_mushroom.blue.name=Blue Mushroom
 tile.nfc.bioluminescent_mushroom.purple.name=Purple Mushroom
 tile.nfc.glowing_mushroom.name=Glowing Mushroom
+tile.nfc.fiery_mushroom.name=Fiery Mushroom
 
 
 item.nfc.aluminium_pickaxe.name=Aluminum Pickaxe
