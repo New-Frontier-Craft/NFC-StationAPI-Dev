@@ -6,8 +6,6 @@ import net.minecraft.block.material.Material;
 import net.modificationstation.stationapi.api.event.registry.BlockRegistryEvent;
 import net.modificationstation.stationapi.api.mod.entrypoint.Entrypoint;
 import net.modificationstation.stationapi.api.recipe.FuelRegistry;
-import net.modificationstation.stationapi.api.template.block.TemplateFlowingLiquidBlock;
-import net.modificationstation.stationapi.api.template.block.TemplateStillLiquidBlock;
 import net.modificationstation.stationapi.api.util.Identifier;
 import net.modificationstation.stationapi.api.util.Namespace;
 import net.newfrontiercraft.nfc.block.*;
