@@ -18,5 +18,6 @@ public abstract class FireBlockMixin {
     @Inject(at = @At("TAIL"), method = "init")
     private void nfcRegisterFlammableBlock(CallbackInfo ci){
         registerFlammableBlock(BlockListener.scaffoldBlock.id, 40, 40);
+        registerFlammableBlock(BlockListener.alphaLeaves.id, 30, 60);
     }
 }

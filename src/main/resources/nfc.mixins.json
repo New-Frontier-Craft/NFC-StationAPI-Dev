@@ -21,7 +21,8 @@
     "EntityMixin",
     "PlayerEntityMixin",
     "BucketItemMixin",
-    "FurnaceBlockEntityMixin"
+    "FurnaceBlockEntityMixin",
+    "PlantBlockMixin"
   ],
   "server": [
   ],
@@ -30,7 +31,9 @@
     "graphics.SlabTextureMixin",
     "graphics.InGameHudMixin",
     "graphics.HeldItemRendererMixin",
-    "graphics.GameRendererMixin"
+    "graphics.GameRendererMixin",
+    "graphics.WorldRendererMixin",
+    "graphics.SaplingBlockMixin"
   ],
   "injectors": {
     "defaultRequire": 1

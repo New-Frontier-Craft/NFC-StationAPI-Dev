@@ -13,6 +13,8 @@ public class TextureListener {
     @Entrypoint.Namespace
     public static Namespace MOD_ID;
 
+    public static int oakSaplingTexture;
+
     @EventListener
     public void registerTextures(TextureRegisterEvent event) {
         // Block strings
@@ -147,6 +149,16 @@ public class TextureListener {
         BlockListener.hardWall.asItem().setTextureId(getTextureIndex(walls + "wall_icon"));
         BlockListener.copperDoor.specifyTextures(getTextureIndex(convenienceBlocks + "copper_door_top"), getTextureIndex(convenienceBlocks + "copper_door_bottom"));
         BlockListener.blueGlowstone.specifyTextures(getTextureIndex(woldGeneration + "blue_glowstone"));
+        BlockListener.alphaGrass.specifyTextures(
+                getTextureIndex(decorativeBlocks + "alpha_grass_top"),
+                getTextureIndex(decorativeBlocks + "alpha_grass_side"),
+                getTextureIndex(decorativeBlocks + "alpha_grass_side_snow"),
+                getTextureIndex(decorativeBlocks + "alpha_grass_bottom")
+        );
+        BlockListener.alphaLeaves.specifyTextures(
+                getTextureIndex(decorativeBlocks + "alpha_leaves_fast"),
+                getTextureIndex(decorativeBlocks + "alpha_leaves")
+        );
 
         // Mud Blocks
         BlockListener.mud.specifyTextures(
@@ -242,6 +254,11 @@ public class TextureListener {
         BlockListener.pebbleSmall.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, woldGeneration + "pebble_small")).index);
         BlockListener.pebbleMedium.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, woldGeneration + "pebble_medium")).index);
         BlockListener.pebbleLarge.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, woldGeneration + "pebble_large")).index);
+
+        // Saplings
+        int alphaSaplingTexture = getTextureIndex(decorativeBlocks + "alpha_sapling");
+        BlockListener.alphaSapling.specifyTextures(alphaSaplingTexture);
+        BlockListener.alphaSapling.asItem().setTextureId(alphaSaplingTexture);
 
         // Pickaxes
         ItemListener.aluminiumPickaxe.setTexture(Identifier.of(MOD_ID, pickaxes + "aluminium"));
@@ -505,10 +522,10 @@ public class TextureListener {
 
         // Oil bucket
         ItemListener.oilBucket.setTexture(Identifier.of(MOD_ID, items + "oil_bucket"));
-
+      
         // Doors
         ItemListener.copperDoor.setTexture(Identifier.of(MOD_ID, items + "copper_door"));
-
+      
         // Other drops
         ItemListener.blueGlowstoneDust.setTexture(Identifier.of(MOD_ID, otherDrops + "blue_glowstone_dust"));
 
@@ -524,6 +541,7 @@ public class TextureListener {
         Block.DIAMOND_BLOCK.textureId = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, vanillaBlocks + "diamond_block")).index;
         bricks = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, vanillaBlocks + "bricks")).index;
         Block.BRICKS.textureId = bricks;
+        oakSaplingTexture = getTextureIndex(vanillaBlocks + "oak_sapling");
     }
 
     public static int
