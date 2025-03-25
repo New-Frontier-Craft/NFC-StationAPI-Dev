@@ -3,6 +3,9 @@
     "nfc:snow_bricks",
     "nfc:mud",
     "nfc:pebble",
+    "nfc:pebble_small",
+    "nfc:pebble_medium",
+    "nfc:pebble_large",
     "nfc:alpha_grass",
     "nfc:scorched_sand"
   ]
