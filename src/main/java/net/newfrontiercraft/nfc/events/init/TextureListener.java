@@ -34,6 +34,7 @@ public class TextureListener {
         String woldGeneration = "block/world_generation/";
         String vanillaBlocks = "block/vanilla/";
         String scorchedSandstone = decorativeBlocks + "scorched_sandstone/";
+        String mushrooms = woldGeneration + "mushrooms/";
 
         // Item strings
         String items = "item/";
@@ -262,6 +263,15 @@ public class TextureListener {
         int alphaSaplingTexture = getTextureIndex(decorativeBlocks + "alpha_sapling");
         BlockListener.alphaSapling.specifyTextures(alphaSaplingTexture);
         BlockListener.alphaSapling.asItem().setTextureId(alphaSaplingTexture);
+
+        // Mushrooms
+        BlockListener.bioluminescentMushroom.specifyTextures(
+                new int[] {
+                        getTextureIndex(mushrooms + "blue"),
+                        getTextureIndex(mushrooms + "purple")
+                }
+        );
+        BlockListener.bioluminescentMushroom.asItem().setTextureId(getTextureIndex(mushrooms + "blue"));
 
         // Pickaxes
         ItemListener.aluminiumPickaxe.setTexture(Identifier.of(MOD_ID, pickaxes + "aluminium"));

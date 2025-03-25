@@ -153,6 +153,9 @@ tile.nfc.pebble_large.name=Large Pebble
 tile.nfc.scorched_sand.name=Scorched Sand
 tile.nfc.scorched_sandstone.name=Scorched Sandstone
 
+tile.nfc.bioluminescent_mushroom.blue.name=Blue Mushroom
+tile.nfc.bioluminescent_mushroom.purple.name=Purple Mushroom
+
 
 item.nfc.aluminium_pickaxe.name=Aluminum Pickaxe
 item.nfc.bismuth_pickaxe.name=Bismuth Pickaxe
