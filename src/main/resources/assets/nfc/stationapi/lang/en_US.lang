@@ -73,6 +73,7 @@ tile.nfc.blue_glowstone.name=Blue Glowstone
 tile.nfc.alpha_grass.name=Alpha Grass
 tile.nfc.alpha_leaves.name=Alpha Oak Leaves
 tile.nfc.alpha_sapling.name=Alpha Oak Sapling
+tile.nfc.copper_door_block.name=Copper Door
 
 tile.nfc.mud0.name=Mud
 tile.nfc.mud1.name=Mud Bricks
@@ -398,5 +399,6 @@ item.nfc.emerald.name=Emerald
 
 item.nfc.cooked_egg.name=Cooked Egg
 item.nfc.oil_bucket.name=Oil Bucket
+item.nfc.copper_door.name=Copper Door
 
 item.nfc.blue_glowstone_dust.name=Blue Glowstone Dust

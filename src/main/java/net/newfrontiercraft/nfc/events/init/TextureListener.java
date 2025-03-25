@@ -147,6 +147,7 @@ public class TextureListener {
                 }
         );
         BlockListener.hardWall.asItem().setTextureId(getTextureIndex(walls + "wall_icon"));
+        BlockListener.copperDoor.specifyTextures(getTextureIndex(convenienceBlocks + "copper_door_top"), getTextureIndex(convenienceBlocks + "copper_door_bottom"));
         BlockListener.blueGlowstone.specifyTextures(getTextureIndex(woldGeneration + "blue_glowstone"));
         BlockListener.alphaGrass.specifyTextures(
                 getTextureIndex(decorativeBlocks + "alpha_grass_top"),
@@ -521,7 +522,10 @@ public class TextureListener {
 
         // Oil bucket
         ItemListener.oilBucket.setTexture(Identifier.of(MOD_ID, items + "oil_bucket"));
-
+      
+        // Doors
+        ItemListener.copperDoor.setTexture(Identifier.of(MOD_ID, items + "copper_door"));
+      
         // Other drops
         ItemListener.blueGlowstoneDust.setTexture(Identifier.of(MOD_ID, otherDrops + "blue_glowstone_dust"));
 

@@ -122,6 +122,8 @@ public class BlockListener {
     public static AlphaLeavesBlock alphaLeaves;
     public static AlphaSapling alphaSapling;
 
+    public static DoorBlock copperDoor;
+
     @Entrypoint.Namespace
     public static Namespace MOD_ID;
 
@@ -153,6 +155,8 @@ public class BlockListener {
         alphaGrass = (AlphaGrassBlock) new AlphaGrassBlock(Identifier.of(MOD_ID, "alpha_grass")).setHardness(1.2F).setSoundGroup(Block.DIRT_SOUND_GROUP).setTranslationKey(Identifier.of(MOD_ID, "alpha_grass"));
         alphaLeaves = (AlphaLeavesBlock)new AlphaLeavesBlock(Identifier.of(MOD_ID, "alpha_leaves"), 0).setHardness(0.2F).setOpacity(1).setSoundGroup(Block.DIRT_SOUND_GROUP).setTranslationKey(Identifier.of(MOD_ID, "alpha_leaves"));
         alphaSapling = (AlphaSapling) new AlphaSapling(Identifier.of(MOD_ID, "alpha_sapling"), 0).setHardness(0.0F).ignoreMetaUpdates().setSoundGroup(Block.DIRT_SOUND_GROUP).setTranslationKey(Identifier.of(MOD_ID, "alpha_sapling"));
+
+        copperDoor = (DoorBlock) new CopperDoorBlock(Identifier.of(MOD_ID, "copper_door_block"), Materials.copper, Identifier.of(MOD_ID, "copper_door")).setHardness(3.0F).setSoundGroup(Block.METAL_SOUND_GROUP).setTranslationKey(Identifier.of(MOD_ID, "copper_door_block"));
 
         mud = new LazyMultivariantBlockTemplate(Identifier.of(MOD_ID, "mud"), Material.SOIL, 1.5F, Block.GRAVEL_SOUND_GROUP);
         firedMud = new LazyMultivariantBlockTemplate(Identifier.of(MOD_ID, "fired_mud"), Material.STONE, 1.5F, Block.STONE_SOUND_GROUP);
