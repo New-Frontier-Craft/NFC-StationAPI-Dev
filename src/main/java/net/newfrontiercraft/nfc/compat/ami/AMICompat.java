@@ -3,6 +3,8 @@ package net.newfrontiercraft.nfc.compat.ami;
 import net.glasslauncher.mods.alwaysmoreitems.api.*;
 import net.minecraft.nbt.NbtCompound;
 import net.modificationstation.stationapi.api.util.Identifier;
+import net.newfrontiercraft.nfc.compat.ami.brickoven.BrickOvenShapedRecipeCategory;
+import net.newfrontiercraft.nfc.compat.ami.brickoven.BrickOvenShapedRecipeHander;
 import net.newfrontiercraft.nfc.compat.ami.brickoven.BrickOvenShapelessRecipeCategory;
 import net.newfrontiercraft.nfc.compat.ami.brickoven.BrickOvenShapelessRecipeHandler;
 import net.newfrontiercraft.nfc.compat.ami.carpentry.CarpentryRecipeCategory;
@@ -36,8 +38,11 @@ public class AMICompat implements ModPluginProvider {
     @Override
     public void register(ModRegistry registry) {
         registry.addRecipeCategories(new BrickOvenShapelessRecipeCategory());
+        registry.addRecipeCategories(new BrickOvenShapedRecipeCategory());
         registry.addRecipeHandlers(new BrickOvenShapelessRecipeHandler());
-        registry.addRecipes(BrickOvenManager.smelting().getShapelessRecipes());
+        registry.addRecipeHandlers(new BrickOvenShapedRecipeHander());
+        registry.addRecipes(BrickOvenManager.getInstance().getShapelessRecipes());
+        registry.addRecipes(BrickOvenManager.getInstance().getShapedRecipes());
 
         registry.addRecipeCategories(new CarpentryRecipeCategory());
         registry.addRecipeHandlers(new CarpentryRecipeHandler());
