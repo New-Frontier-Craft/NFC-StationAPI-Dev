@@ -426,5 +426,88 @@ public class RecipeListener {
                         new ItemStack(BlockListener.decorativeWood.id, 1, 7),
                         new ItemStack(BlockListener.decorativeWood.id, 1, 8),
                         new ItemStack(BlockListener.decorativeWood.id, 1, 9)});
+
+        // Nether stone carpentry
+        CarpentryRecipes.carpentry().addCarpentry(BlockListener.netherWorkedStone.id, 0, new ItemStack[] {
+                new ItemStack(BlockListener.netherWorkedStoneCrossCut),
+                new ItemStack(BlockListener.netherWorkedStoneHorizontalCut),
+                new ItemStack(BlockListener.netherWorkedStoneVerticalCut),
+                new ItemStack(BlockListener.netherStoneBricks),
+                new ItemStack(BlockListener.netherStoneBricksLarge),
+                new ItemStack(BlockListener.netherStoneCheckers),
+                new ItemStack(BlockListener.netherStoneTiling),
+                new ItemStack(BlockListener.netherStoneTilingLarge)});
+        CarpentryRecipes.carpentry().addCarpentry(BlockListener.netherWorkedStoneCrossCut.id, 0, new ItemStack[] {
+                new ItemStack(BlockListener.netherWorkedStone),
+                new ItemStack(BlockListener.netherWorkedStoneHorizontalCut),
+                new ItemStack(BlockListener.netherWorkedStoneVerticalCut),
+                new ItemStack(BlockListener.netherStoneBricks),
+                new ItemStack(BlockListener.netherStoneBricksLarge),
+                new ItemStack(BlockListener.netherStoneCheckers),
+                new ItemStack(BlockListener.netherStoneTiling),
+                new ItemStack(BlockListener.netherStoneTilingLarge)});
+        CarpentryRecipes.carpentry().addCarpentry(BlockListener.netherWorkedStoneHorizontalCut.id, 0, new ItemStack[] {
+                new ItemStack(BlockListener.netherWorkedStone),
+                new ItemStack(BlockListener.netherWorkedStoneCrossCut),
+                new ItemStack(BlockListener.netherWorkedStoneVerticalCut),
+                new ItemStack(BlockListener.netherStoneBricks),
+                new ItemStack(BlockListener.netherStoneBricksLarge),
+                new ItemStack(BlockListener.netherStoneCheckers),
+                new ItemStack(BlockListener.netherStoneTiling),
+                new ItemStack(BlockListener.netherStoneTilingLarge)});
+        CarpentryRecipes.carpentry().addCarpentry(BlockListener.netherWorkedStoneVerticalCut.id, 0, new ItemStack[] {
+                new ItemStack(BlockListener.netherWorkedStone),
+                new ItemStack(BlockListener.netherWorkedStoneCrossCut),
+                new ItemStack(BlockListener.netherWorkedStoneHorizontalCut),
+                new ItemStack(BlockListener.netherStoneBricks),
+                new ItemStack(BlockListener.netherStoneBricksLarge),
+                new ItemStack(BlockListener.netherStoneCheckers),
+                new ItemStack(BlockListener.netherStoneTiling),
+                new ItemStack(BlockListener.netherStoneTilingLarge)});
+        CarpentryRecipes.carpentry().addCarpentry(BlockListener.netherStoneBricks.id, 0, new ItemStack[] {
+                new ItemStack(BlockListener.netherWorkedStone),
+                new ItemStack(BlockListener.netherWorkedStoneCrossCut),
+                new ItemStack(BlockListener.netherWorkedStoneHorizontalCut),
+                new ItemStack(BlockListener.netherWorkedStoneVerticalCut),
+                new ItemStack(BlockListener.netherStoneBricksLarge),
+                new ItemStack(BlockListener.netherStoneCheckers),
+                new ItemStack(BlockListener.netherStoneTiling),
+                new ItemStack(BlockListener.netherStoneTilingLarge)});
+        CarpentryRecipes.carpentry().addCarpentry(BlockListener.netherStoneBricksLarge.id, 0, new ItemStack[] {
+                new ItemStack(BlockListener.netherWorkedStone),
+                new ItemStack(BlockListener.netherWorkedStoneCrossCut),
+                new ItemStack(BlockListener.netherWorkedStoneHorizontalCut),
+                new ItemStack(BlockListener.netherWorkedStoneVerticalCut),
+                new ItemStack(BlockListener.netherStoneBricks),
+                new ItemStack(BlockListener.netherStoneCheckers),
+                new ItemStack(BlockListener.netherStoneTiling),
+                new ItemStack(BlockListener.netherStoneTilingLarge)});
+        CarpentryRecipes.carpentry().addCarpentry(BlockListener.netherStoneCheckers.id, 0, new ItemStack[] {
+                new ItemStack(BlockListener.netherWorkedStone),
+                new ItemStack(BlockListener.netherWorkedStoneCrossCut),
+                new ItemStack(BlockListener.netherWorkedStoneHorizontalCut),
+                new ItemStack(BlockListener.netherWorkedStoneVerticalCut),
+                new ItemStack(BlockListener.netherStoneBricks),
+                new ItemStack(BlockListener.netherStoneBricksLarge),
+                new ItemStack(BlockListener.netherStoneTiling),
+                new ItemStack(BlockListener.netherStoneTilingLarge)});
+        CarpentryRecipes.carpentry().addCarpentry(BlockListener.netherStoneTiling.id, 0, new ItemStack[] {
+                new ItemStack(BlockListener.netherWorkedStone),
+                new ItemStack(BlockListener.netherWorkedStoneCrossCut),
+                new ItemStack(BlockListener.netherWorkedStoneHorizontalCut),
+                new ItemStack(BlockListener.netherWorkedStoneVerticalCut),
+                new ItemStack(BlockListener.netherStoneBricks),
+                new ItemStack(BlockListener.netherStoneBricksLarge),
+                new ItemStack(BlockListener.netherStoneCheckers),
+                new ItemStack(BlockListener.netherStoneTilingLarge)});
+        CarpentryRecipes.carpentry().addCarpentry(BlockListener.netherStoneTilingLarge.id, 0, new ItemStack[] {
+                new ItemStack(BlockListener.netherWorkedStone),
+                new ItemStack(BlockListener.netherWorkedStoneCrossCut),
+                new ItemStack(BlockListener.netherWorkedStoneHorizontalCut),
+                new ItemStack(BlockListener.netherWorkedStoneVerticalCut),
+                new ItemStack(BlockListener.netherStoneBricks),
+                new ItemStack(BlockListener.netherStoneBricksLarge),
+                new ItemStack(BlockListener.netherStoneCheckers),
+                new ItemStack(BlockListener.netherStoneTiling)});
     }
 }

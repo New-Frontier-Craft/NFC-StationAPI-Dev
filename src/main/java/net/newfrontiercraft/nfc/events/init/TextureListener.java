@@ -20,6 +20,7 @@ public class TextureListener {
         // Block strings
         String convenienceBlocks = "block/convenience_blocks/";
         String decorativeBlocks = "block/decorative_blocks/";
+        String netherBlocks = decorativeBlocks + "nether/";
         String wood = decorativeBlocks + "wood/";
         String planks = wood + "planks/";
         String laminated = wood + "laminated/";
@@ -61,6 +62,7 @@ public class TextureListener {
         BlockListener.platedStoneVerticalCut.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, decorativeBlocks + "plated_stone_vertical_cut")).index);
         BlockListener.platedStoneHorizontalCut.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, decorativeBlocks + "plated_stone_horizontal_cut")).index);
         BlockListener.platedStoneCrossCut.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, decorativeBlocks + "plated_stone_cross_cut")).index);
+
         BlockListener.workedStone.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, decorativeBlocks + "worked_stone")).index);
         BlockListener.workedStoneVerticalCut.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, decorativeBlocks + "worked_stone_vertical_cut")).index);
         BlockListener.workedStoneHorizontalCut.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, decorativeBlocks + "worked_stone_horizontal_cut")).index);
@@ -70,6 +72,17 @@ public class TextureListener {
         BlockListener.stoneCheckers.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, decorativeBlocks + "stone_checkers")).index);
         BlockListener.stoneTiling.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, decorativeBlocks + "stone_tiling")).index);
         BlockListener.stoneTilingLarge.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, decorativeBlocks + "stone_tiling_large")).index);
+
+        BlockListener.netherWorkedStone.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, netherBlocks + "worked_stone")).index);
+        BlockListener.netherWorkedStoneVerticalCut.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, netherBlocks + "worked_stone_vertical_cut")).index);
+        BlockListener.netherWorkedStoneHorizontalCut.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, netherBlocks + "worked_stone_horizontal_cut")).index);
+        BlockListener.netherWorkedStoneCrossCut.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, netherBlocks + "worked_stone_cross_cut")).index);
+        BlockListener.netherStoneBricks.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, netherBlocks + "stone_bricks")).index);
+        BlockListener.netherStoneBricksLarge.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, netherBlocks + "stone_bricks_large")).index);
+        BlockListener.netherStoneCheckers.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, netherBlocks + "stone_checkers")).index);
+        BlockListener.netherStoneTiling.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, netherBlocks + "stone_tiling")).index);
+        BlockListener.netherStoneTilingLarge.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, netherBlocks + "stone_tiling_large")).index);
+
         BlockListener.firedBricks.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, decorativeBlocks + "fired_bricks")).index);
         BlockListener.osmiumBricks.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, decorativeBlocks + "osmium_bricks")).index);
         logSide = getTextureIndex(wood + "log_side");
