@@ -17,7 +17,7 @@ public class BrickOvenManager {
         recipes = new ArrayList();
 
         //Metal Alloys
-        addOvenRecipe(new ItemStack(ItemListener.brassIngot, 6), new Object[] {
+        addShapelessOvenRecipe(new ItemStack(ItemListener.brassIngot, 6), new Object[] {
                 new ItemStack(ItemListener.copperIngot, 1),
                 new ItemStack(ItemListener.copperIngot, 1),
                 new ItemStack(ItemListener.copperIngot, 1),
@@ -25,7 +25,7 @@ public class BrickOvenManager {
                 new ItemStack(ItemListener.zincIngot, 1),
                 new ItemStack(ItemListener.zincIngot, 1)}, 1600);
 
-        addOvenRecipe(new ItemStack(ItemListener.bronzeIngot, 6), new Object[] {
+        addShapelessOvenRecipe(new ItemStack(ItemListener.bronzeIngot, 6), new Object[] {
                 new ItemStack(ItemListener.copperIngot, 1),
                 new ItemStack(ItemListener.copperIngot, 1),
                 new ItemStack(ItemListener.copperIngot, 1),
@@ -33,7 +33,7 @@ public class BrickOvenManager {
                 new ItemStack(ItemListener.copperIngot, 1),
                 new ItemStack(ItemListener.tinIngot, 1)}, 1600);
 
-        addOvenRecipe(new ItemStack(ItemListener.steelIngot, 8), new Object[] {
+        addShapelessOvenRecipe(new ItemStack(ItemListener.steelIngot, 8), new Object[] {
                 new ItemStack(ItemListener.anthracite, 1),
                 new ItemStack(Item.IRON_INGOT, 1),
                 new ItemStack(Item.IRON_INGOT, 1),
@@ -43,7 +43,7 @@ public class BrickOvenManager {
                 new ItemStack(Item.IRON_INGOT, 1),
                 new ItemStack(Item.IRON_INGOT, 1)}, 6400);
 
-        addOvenRecipe(new ItemStack(ItemListener.steelIngot, 8), new Object[] {
+        addShapelessOvenRecipe(new ItemStack(ItemListener.steelIngot, 8), new Object[] {
                 new ItemStack(ItemListener.anthracite, 1),
                 new ItemStack(ItemListener.chromeIngot, 1),
                 new ItemStack(Item.IRON_INGOT, 1),
@@ -53,7 +53,7 @@ public class BrickOvenManager {
                 new ItemStack(Item.IRON_INGOT, 1),
                 new ItemStack(Item.IRON_INGOT, 1)}, 6400);
 
-        addOvenRecipe(new ItemStack(ItemListener.steelIngot, 8), new Object[] {
+        addShapelessOvenRecipe(new ItemStack(ItemListener.steelIngot, 8), new Object[] {
                 new ItemStack(ItemListener.anthracite, 1),
                 new ItemStack(ItemListener.nickelIngot, 1),
                 new ItemStack(Item.IRON_INGOT, 1),
@@ -63,7 +63,7 @@ public class BrickOvenManager {
                 new ItemStack(Item.IRON_INGOT, 1),
                 new ItemStack(Item.IRON_INGOT, 1)}, 6400);
 
-        addOvenRecipe(new ItemStack(ItemListener.steelIngot, 8), new Object[] {
+        addShapelessOvenRecipe(new ItemStack(ItemListener.steelIngot, 8), new Object[] {
                 new ItemStack(ItemListener.anthracite, 1),
                 new ItemStack(ItemListener.chromeIngot, 1),
                 new ItemStack(ItemListener.nickelIngot, 1),
@@ -74,7 +74,7 @@ public class BrickOvenManager {
                 new ItemStack(Item.IRON_INGOT, 1)}, 6400);
 
         // Experimental titanium steel recipes
-        addOvenRecipe(new ItemStack(ItemListener.steelIngot, 8), new Object[] {
+        addShapelessOvenRecipe(new ItemStack(ItemListener.steelIngot, 8), new Object[] {
                 new ItemStack(ItemListener.anthracite, 1),
                 new ItemStack(ItemListener.titaniumIngot, 1),
                 new ItemStack(Item.IRON_INGOT, 1),
@@ -84,7 +84,7 @@ public class BrickOvenManager {
                 new ItemStack(Item.IRON_INGOT, 1),
                 new ItemStack(Item.IRON_INGOT, 1)}, 6400);
 
-        addOvenRecipe(new ItemStack(ItemListener.steelIngot, 8), new Object[] {
+        addShapelessOvenRecipe(new ItemStack(ItemListener.steelIngot, 8), new Object[] {
                 new ItemStack(ItemListener.anthracite, 1),
                 new ItemStack(ItemListener.chromeIngot, 1),
                 new ItemStack(ItemListener.titaniumIngot, 1),
@@ -94,7 +94,7 @@ public class BrickOvenManager {
                 new ItemStack(Item.IRON_INGOT, 1),
                 new ItemStack(Item.IRON_INGOT, 1)}, 6400);
 
-        addOvenRecipe(new ItemStack(ItemListener.steelIngot, 8), new Object[] {
+        addShapelessOvenRecipe(new ItemStack(ItemListener.steelIngot, 8), new Object[] {
                 new ItemStack(ItemListener.anthracite, 1),
                 new ItemStack(ItemListener.nickelIngot, 1),
                 new ItemStack(ItemListener.titaniumIngot, 1),
@@ -104,7 +104,7 @@ public class BrickOvenManager {
                 new ItemStack(Item.IRON_INGOT, 1),
                 new ItemStack(Item.IRON_INGOT, 1)}, 6400);
 
-        addOvenRecipe(new ItemStack(ItemListener.steelIngot, 8), new Object[] {
+        addShapelessOvenRecipe(new ItemStack(ItemListener.steelIngot, 8), new Object[] {
                 new ItemStack(ItemListener.anthracite, 1),
                 new ItemStack(ItemListener.chromeIngot, 1),
                 new ItemStack(ItemListener.nickelIngot, 1),
@@ -115,7 +115,7 @@ public class BrickOvenManager {
                 new ItemStack(Item.IRON_INGOT, 1)}, 6400);
 
         // Experimental tungsten steel recipes
-        addOvenRecipe(new ItemStack(ItemListener.steelIngot, 8), new Object[] {
+        addShapelessOvenRecipe(new ItemStack(ItemListener.steelIngot, 8), new Object[] {
                 new ItemStack(ItemListener.anthracite, 1),
                 new ItemStack(ItemListener.tungstenIngot, 1),
                 new ItemStack(Item.IRON_INGOT, 1),
@@ -125,7 +125,7 @@ public class BrickOvenManager {
                 new ItemStack(Item.IRON_INGOT, 1),
                 new ItemStack(Item.IRON_INGOT, 1)}, 6400);
 
-        addOvenRecipe(new ItemStack(ItemListener.steelIngot, 8), new Object[] {
+        addShapelessOvenRecipe(new ItemStack(ItemListener.steelIngot, 8), new Object[] {
                 new ItemStack(ItemListener.anthracite, 1),
                 new ItemStack(ItemListener.chromeIngot, 1),
                 new ItemStack(ItemListener.tungstenIngot, 1),
@@ -135,7 +135,7 @@ public class BrickOvenManager {
                 new ItemStack(Item.IRON_INGOT, 1),
                 new ItemStack(Item.IRON_INGOT, 1)}, 6400);
 
-        addOvenRecipe(new ItemStack(ItemListener.steelIngot, 8), new Object[] {
+        addShapelessOvenRecipe(new ItemStack(ItemListener.steelIngot, 8), new Object[] {
                 new ItemStack(ItemListener.anthracite, 1),
                 new ItemStack(ItemListener.nickelIngot, 1),
                 new ItemStack(ItemListener.tungstenIngot, 1),
@@ -145,7 +145,7 @@ public class BrickOvenManager {
                 new ItemStack(Item.IRON_INGOT, 1),
                 new ItemStack(Item.IRON_INGOT, 1)}, 6400);
 
-        addOvenRecipe(new ItemStack(ItemListener.steelIngot, 8), new Object[] {
+        addShapelessOvenRecipe(new ItemStack(ItemListener.steelIngot, 8), new Object[] {
                 new ItemStack(ItemListener.anthracite, 1),
                 new ItemStack(ItemListener.chromeIngot, 1),
                 new ItemStack(ItemListener.nickelIngot, 1),
@@ -156,7 +156,7 @@ public class BrickOvenManager {
                 new ItemStack(Item.IRON_INGOT, 1)}, 6400);
 
         // Experimental titanium-tungsten steel recipes
-        addOvenRecipe(new ItemStack(ItemListener.steelIngot, 8), new Object[] {
+        addShapelessOvenRecipe(new ItemStack(ItemListener.steelIngot, 8), new Object[] {
                 new ItemStack(ItemListener.anthracite, 1),
                 new ItemStack(ItemListener.titaniumIngot, 1),
                 new ItemStack(ItemListener.tungstenIngot, 1),
@@ -166,7 +166,7 @@ public class BrickOvenManager {
                 new ItemStack(Item.IRON_INGOT, 1),
                 new ItemStack(Item.IRON_INGOT, 1)}, 6400);
 
-        addOvenRecipe(new ItemStack(ItemListener.steelIngot, 8), new Object[] {
+        addShapelessOvenRecipe(new ItemStack(ItemListener.steelIngot, 8), new Object[] {
                 new ItemStack(ItemListener.anthracite, 1),
                 new ItemStack(ItemListener.chromeIngot, 1),
                 new ItemStack(ItemListener.titaniumIngot, 1),
@@ -176,7 +176,7 @@ public class BrickOvenManager {
                 new ItemStack(Item.IRON_INGOT, 1),
                 new ItemStack(Item.IRON_INGOT, 1)}, 6400);
 
-        addOvenRecipe(new ItemStack(ItemListener.steelIngot, 8), new Object[] {
+        addShapelessOvenRecipe(new ItemStack(ItemListener.steelIngot, 8), new Object[] {
                 new ItemStack(ItemListener.anthracite, 1),
                 new ItemStack(ItemListener.nickelIngot, 1),
                 new ItemStack(ItemListener.titaniumIngot, 1),
@@ -186,7 +186,7 @@ public class BrickOvenManager {
                 new ItemStack(Item.IRON_INGOT, 1),
                 new ItemStack(Item.IRON_INGOT, 1)}, 6400);
 
-        addOvenRecipe(new ItemStack(ItemListener.steelIngot, 8), new Object[] {
+        addShapelessOvenRecipe(new ItemStack(ItemListener.steelIngot, 8), new Object[] {
                 new ItemStack(ItemListener.anthracite, 1),
                 new ItemStack(ItemListener.chromeIngot, 1),
                 new ItemStack(ItemListener.nickelIngot, 1),
@@ -197,21 +197,21 @@ public class BrickOvenManager {
                 new ItemStack(Item.IRON_INGOT, 1)}, 6400);
 
         // Platinum enhanced smelting
-        addOvenRecipe(new ItemStack(ItemListener.osmiumIngot, 5), new Object[] {
+        addShapelessOvenRecipe(new ItemStack(ItemListener.osmiumIngot, 5), new Object[] {
                 new ItemStack(BlockListener.osmiumOre, 1),
                 new ItemStack(BlockListener.osmiumOre, 1),
                 new ItemStack(BlockListener.osmiumOre, 1),
                 new ItemStack(BlockListener.osmiumOre, 1),
                 new ItemStack(ItemListener.platinumIngot, 1)}, 6400);
 
-        addOvenRecipe(new ItemStack(ItemListener.titaniumIngot, 5), new Object[] {
+        addShapelessOvenRecipe(new ItemStack(ItemListener.titaniumIngot, 5), new Object[] {
                 new ItemStack(BlockListener.titaniumOre, 1),
                 new ItemStack(BlockListener.titaniumOre, 1),
                 new ItemStack(BlockListener.titaniumOre, 1),
                 new ItemStack(BlockListener.titaniumOre, 1),
                 new ItemStack(ItemListener.platinumIngot, 1)}, 4800);
 
-        addOvenRecipe(new ItemStack(ItemListener.tungstenIngot, 5), new Object[] {
+        addShapelessOvenRecipe(new ItemStack(ItemListener.tungstenIngot, 5), new Object[] {
                 new ItemStack(BlockListener.tungstenOre, 1),
                 new ItemStack(BlockListener.tungstenOre, 1),
                 new ItemStack(BlockListener.tungstenOre, 1),
@@ -219,14 +219,14 @@ public class BrickOvenManager {
                 new ItemStack(ItemListener.platinumIngot, 1)}, 4800);
 
         // Experimental boron recipes
-        addOvenRecipe(new ItemStack(ItemListener.magnetiteIngot, 5), new Object[] {
+        addShapelessOvenRecipe(new ItemStack(ItemListener.magnetiteIngot, 5), new Object[] {
                 new ItemStack(BlockListener.magnetiteOre, 1),
                 new ItemStack(BlockListener.magnetiteOre, 1),
                 new ItemStack(BlockListener.magnetiteOre, 1),
                 new ItemStack(BlockListener.magnetiteOre, 1),
                 new ItemStack(ItemListener.boronIngot, 1)}, 4800);
 
-        addOvenRecipe(new ItemStack(ItemListener.cobaltIngot, 5), new Object[] {
+        addShapelessOvenRecipe(new ItemStack(ItemListener.cobaltIngot, 5), new Object[] {
                 new ItemStack(BlockListener.cobaltOre, 1),
                 new ItemStack(BlockListener.cobaltOre, 1),
                 new ItemStack(BlockListener.cobaltOre, 1),
@@ -234,9 +234,9 @@ public class BrickOvenManager {
                 new ItemStack(ItemListener.boronIngot, 1)}, 4800);
 
         //Smelting
-        addOvenRecipe(new ItemStack(ItemListener.tungstenIngot, 1), new Object[] {new ItemStack(BlockListener.tungstenOre, 1)}, 200);
-        addOvenRecipe(new ItemStack(ItemListener.titaniumIngot, 1), new Object[] {new ItemStack(BlockListener.titaniumOre, 1)}, 200);
-        addOvenRecipe(new ItemStack(ItemListener.osmiumIngot, 1), new Object[] {new ItemStack(BlockListener.osmiumOre, 1)}, 200);
+        addShapelessOvenRecipe(new ItemStack(ItemListener.tungstenIngot, 1), new Object[] {new ItemStack(BlockListener.tungstenOre, 1)}, 200);
+        addShapelessOvenRecipe(new ItemStack(ItemListener.titaniumIngot, 1), new Object[] {new ItemStack(BlockListener.titaniumOre, 1)}, 200);
+        addShapelessOvenRecipe(new ItemStack(ItemListener.osmiumIngot, 1), new Object[] {new ItemStack(BlockListener.osmiumOre, 1)}, 200);
 
 //		Object[][] oreRecipes;
 //
@@ -324,13 +324,13 @@ public class BrickOvenManager {
 
 
         //Chain Armor Melting
-        addOvenRecipe(new ItemStack(ItemListener.steelIngot, 1), new Object[] {new ItemStack(Item.CHAIN_HELMET, 1, -1)}, 200);
-        addOvenRecipe(new ItemStack(ItemListener.steelIngot, 1), new Object[] {new ItemStack(Item.CHAIN_CHESTPLATE, 1, -1)}, 200);
-        addOvenRecipe(new ItemStack(ItemListener.steelIngot, 1), new Object[] {new ItemStack(Item.CHAIN_LEGGINGS, 1, -1)}, 200);
-        addOvenRecipe(new ItemStack(ItemListener.steelIngot, 1), new Object[] {new ItemStack(Item.CHAIN_BOOTS, 1, -1)}, 200);
+        addShapelessOvenRecipe(new ItemStack(ItemListener.steelIngot, 1), new Object[] {new ItemStack(Item.CHAIN_HELMET, 1, -1)}, 200);
+        addShapelessOvenRecipe(new ItemStack(ItemListener.steelIngot, 1), new Object[] {new ItemStack(Item.CHAIN_CHESTPLATE, 1, -1)}, 200);
+        addShapelessOvenRecipe(new ItemStack(ItemListener.steelIngot, 1), new Object[] {new ItemStack(Item.CHAIN_LEGGINGS, 1, -1)}, 200);
+        addShapelessOvenRecipe(new ItemStack(ItemListener.steelIngot, 1), new Object[] {new ItemStack(Item.CHAIN_BOOTS, 1, -1)}, 200);
 
         //Bricks
-        addOvenRecipe(new ItemStack(BlockListener.osmiumBricks, 8), new Object[] {
+        addShapelessOvenRecipe(new ItemStack(BlockListener.osmiumBricks, 8), new Object[] {
                 new ItemStack(ItemListener.osmiumIngot, 1),
                 new ItemStack(BlockListener.firedBricks, 1),
                 new ItemStack(BlockListener.firedBricks, 1),
@@ -344,7 +344,7 @@ public class BrickOvenManager {
         //Stained Glass
         int o = 15;
         for (int i = 0; i < 16; i++) {
-            addOvenRecipe(new ItemStack(BlockListener.stainedGlass, 8, i), new Object[] {
+            addShapelessOvenRecipe(new ItemStack(BlockListener.stainedGlass, 8, i), new Object[] {
                     new ItemStack(Item.DYE, 1, o),
                     new ItemStack(Block.GLASS, 1, 0), new ItemStack(Block.GLASS, 1, 0),
                     new ItemStack(Block.GLASS, 1, 0), new ItemStack(Block.GLASS, 1, 0),
@@ -353,6 +353,7 @@ public class BrickOvenManager {
             }, 100);
             o--;
         }
+        
         /*
         //Food
         addShapedOvenRecipe(new ItemStack(Item.cake, 1), new Object[] {
@@ -434,10 +435,10 @@ public class BrickOvenManager {
                 itemStacks[i1] = null;
             }
         }
-        recipes.add(new BrickOvenRecipesShaped(j, k, itemStacks, itemStack, time));
+        recipes.add(new BrickOvenShapedRecipe(j, k, itemStacks, itemStack, time));
     }
 
-    void addOvenRecipe(ItemStack itemStack, Object[] aobj, int time) {
+    void addShapelessOvenRecipe(ItemStack itemStack, Object[] aobj, int time) {
         ArrayList arraylist = new ArrayList();
         Object aobj1[] = aobj;
         int i = aobj1.length;
@@ -466,7 +467,7 @@ public class BrickOvenManager {
             BrickOvenRecipe var12 = (BrickOvenRecipe) recipes.get(i);
             if (var12.matches(ItemStacks)) {
                 joe.setTime(var12.getTime());
-                return var12.getCraftingResult(ItemStacks);
+                return var12.craft(ItemStacks);
             }
         }
 
@@ -483,11 +484,21 @@ public class BrickOvenManager {
         return shapelessRecipes;
     }
 
+    public ArrayList getShapedRecipes() {
+        ArrayList shapedRecipes = new ArrayList();
+        for (Object recipe : recipes) {
+            if (recipe instanceof BrickOvenShapedRecipe) {
+                shapedRecipes.add(recipe);
+            }
+        }
+        return shapedRecipes;
+    }
+
     public List getRecipeList() {
         return recipes;
     }
 
-    public static final BrickOvenManager smelting() {
+    public static final BrickOvenManager getInstance() {
         return instance;
     }
 

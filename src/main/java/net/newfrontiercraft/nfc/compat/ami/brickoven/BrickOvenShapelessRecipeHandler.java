@@ -21,7 +21,7 @@ public class BrickOvenShapelessRecipeHandler implements RecipeHandler<BrickOvenS
     @NotNull
     @Override
     public RecipeWrapper getRecipeWrapper(@NotNull BrickOvenShapelessRecipe recipe) {
-        return new BrickOvenShapelessRecipeWrapper(recipe);
+        return new BrickOvenRecipeWrapper(recipe);
     }
 
     @Override

@@ -2,16 +2,19 @@ package net.newfrontiercraft.nfc.registry;
 
 import net.minecraft.item.ItemStack;
 
+import java.util.List;
+
 public interface BrickOvenRecipe {
 
-    boolean matches(ItemStack[] itemstacks);
+    boolean matches(ItemStack[] craftingItems);
 
-    ItemStack getCraftingResult(ItemStack[] itemstacks);
+    ItemStack craft(ItemStack[] craftingItems);
 
-    int getRecipeSize();
+    int getSize();
 
     int getTime();
 
-    ItemStack getRecipeOutput();
+    ItemStack getOutput();
+    List getInput();
 
 }

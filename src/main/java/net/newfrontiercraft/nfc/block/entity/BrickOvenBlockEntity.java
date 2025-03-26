@@ -10,7 +10,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtList;
-import net.modificationstation.stationapi.api.recipe.FuelRegistry;
 import net.newfrontiercraft.nfc.block.BrickOvenBlock;
 import net.newfrontiercraft.nfc.events.init.BlockListener;
 import net.newfrontiercraft.nfc.events.init.ItemListener;
@@ -168,7 +167,7 @@ public class BrickOvenBlockEntity extends BlockEntity implements Inventory {
     }
 
     private boolean canSmelt() {
-        ItemStack itemstack = BrickOvenManager.smelting().findMatchingRecipe(furnaceItemStacks, this);
+        ItemStack itemstack = BrickOvenManager.getInstance().findMatchingRecipe(furnaceItemStacks, this);
         if (itemstack == null) {
             return false;
         }
@@ -189,7 +188,7 @@ public class BrickOvenBlockEntity extends BlockEntity implements Inventory {
         if (!canSmelt()) {
             return;
         }
-        ItemStack itemstack = BrickOvenManager.smelting().findMatchingRecipe(furnaceItemStacks, this);
+        ItemStack itemstack = BrickOvenManager.getInstance().findMatchingRecipe(furnaceItemStacks, this);
         if (furnaceItemStacks[10] == null) {
             furnaceItemStacks[10] = itemstack.copy();
         } else if (furnaceItemStacks[10].itemId == itemstack.copy().itemId) {
