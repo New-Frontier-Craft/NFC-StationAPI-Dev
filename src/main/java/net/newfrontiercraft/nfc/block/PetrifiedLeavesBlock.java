@@ -6,13 +6,13 @@ import net.newfrontiercraft.nfc.events.init.BlockListener;
 
 import java.util.Random;
 
-public class AlphaLeavesBlock extends LeavesBlock{
-    public AlphaLeavesBlock(Identifier identifier) {
-        super(identifier, Block.LOG.id);
+public class PetrifiedLeavesBlock extends LeavesBlock{
+    public PetrifiedLeavesBlock(Identifier identifier) {
+        super(identifier, BlockListener.petrifiedLog.id);
     }
 
     @Override
     public int getDroppedItemId(int blockMeta, Random random) {
-        return BlockListener.alphaSapling.id;
+        return Block.DEAD_BUSH.id;
     }
 }

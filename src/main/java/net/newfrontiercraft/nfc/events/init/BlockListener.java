@@ -43,6 +43,8 @@ public class BlockListener {
             snowBricks,
             blueGlowstone,
             scorchedSandstone,
+            petrifiedLog,
+            petrifiedPlanks,
 
             coalBlock,
             onyxBlock,
@@ -136,6 +138,8 @@ public class BlockListener {
     public static AlphaLeavesBlock alphaLeaves;
     public static AlphaSapling alphaSapling;
 
+    public static PetrifiedLeavesBlock petrifiedLeaves;
+
     public static DoorBlock copperDoor;
 
     public static BioluminescentMushroomBlock bioluminescentMushroom;
@@ -186,7 +190,7 @@ public class BlockListener {
         fenceGate = (FenceGateBlock) new FenceGateBlock(Identifier.of(MOD_ID, "fence_gate"), Material.WOOD).setHardness(2.0F).setResistance(5.0F).setSoundGroup(Block.WOOD_SOUND_GROUP).setTranslationKey(Identifier.of(MOD_ID, "fence_gate"));
         blueGlowstone = new BlueGlowstoneBlock(Identifier.of(MOD_ID, "blue_glowstone"), Material.STONE, 0.3F, Block.GLASS_SOUND_GROUP);
         alphaGrass = (AlphaGrassBlock) new AlphaGrassBlock(Identifier.of(MOD_ID, "alpha_grass")).setHardness(1.2F).setSoundGroup(Block.DIRT_SOUND_GROUP).setTranslationKey(Identifier.of(MOD_ID, "alpha_grass"));
-        alphaLeaves = (AlphaLeavesBlock)new AlphaLeavesBlock(Identifier.of(MOD_ID, "alpha_leaves"), 0).setHardness(0.2F).setOpacity(1).setSoundGroup(Block.DIRT_SOUND_GROUP).setTranslationKey(Identifier.of(MOD_ID, "alpha_leaves"));
+        alphaLeaves = (AlphaLeavesBlock) new AlphaLeavesBlock(Identifier.of(MOD_ID, "alpha_leaves")).setHardness(0.2F).setOpacity(1).setSoundGroup(Block.DIRT_SOUND_GROUP).setTranslationKey(Identifier.of(MOD_ID, "alpha_leaves"));
         alphaSapling = (AlphaSapling) new AlphaSapling(Identifier.of(MOD_ID, "alpha_sapling"), 0).setHardness(0.0F).ignoreMetaUpdates().setSoundGroup(Block.DIRT_SOUND_GROUP).setTranslationKey(Identifier.of(MOD_ID, "alpha_sapling"));
 
         copperDoor = (DoorBlock) new CopperDoorBlock(Identifier.of(MOD_ID, "copper_door_block"), Materials.copper, Identifier.of(MOD_ID, "copper_door")).setHardness(3.0F).setSoundGroup(Block.METAL_SOUND_GROUP).setTranslationKey(Identifier.of(MOD_ID, "copper_door_block"));
@@ -271,6 +275,9 @@ public class BlockListener {
         glowingMushroom = new GlowingMushroomBlock(Identifier.of(MOD_ID, "glowing_mushroom"), 0, Block.DIRT_SOUND_GROUP, false);
         fieryMushroom = new FieryMushroomBlock(Identifier.of(MOD_ID, "fiery_mushroom"), 0, Block.DIRT_SOUND_GROUP, false);
 
+        petrifiedLog = new LazyBlockTemplate(Identifier.of(MOD_ID, "petrified_log"), Material.STONE, 1.5F, Block.STONE_SOUND_GROUP);
+        petrifiedPlanks = new LazyBlockTemplate(Identifier.of(MOD_ID, "petrified_planks"), Material.STONE, 1.5F, Block.STONE_SOUND_GROUP);
+        petrifiedLeaves = (PetrifiedLeavesBlock) new PetrifiedLeavesBlock(Identifier.of(MOD_ID, "petrified_leaves")).setOpacity(1).setHardness(0.2F).setSoundGroup(Block.DIRT_SOUND_GROUP).setTranslationKey(Identifier.of(MOD_ID, "petrified_leaves"));
         unrestrictedNetherPortal = new UnrestrictedNetherPortalBlock(Identifier.of(MOD_ID, "unrestricted_nether_portal"));
 
         // Changes to vanilla blast resistance

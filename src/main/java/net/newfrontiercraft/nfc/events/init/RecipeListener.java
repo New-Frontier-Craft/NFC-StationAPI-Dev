@@ -166,6 +166,9 @@ public class RecipeListener {
 
             // Fence Gates
             CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.fenceGate, 1), "YXY", "YXY", 'X', Block.PLANKS, 'Y', Item.STICK);
+
+            // Planks
+            CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.petrifiedPlanks, 4),"#", '#', BlockListener.petrifiedLog);
         }
         if (type == RecipeRegisterEvent.Vanilla.SMELTING.type()) {
             // Food

@@ -290,6 +290,15 @@ public class TextureListener {
         BlockListener.fieryMushroom.specifyTextures(getTextureIndex(mushrooms + "fiery"));
         BlockListener.fieryMushroom.asItem().setTextureId(getTextureIndex(mushrooms + "fiery"));
 
+        // Petrified blocks
+        int petrifiedTopTexture = getTextureIndex(wood + "petrified_log_top");
+        BlockListener.petrifiedLog.specifyTextures(petrifiedTopTexture, getTextureIndex(wood + "petrified_log_side"), petrifiedTopTexture);
+        BlockListener.petrifiedPlanks.specifyTextures(getTextureIndex(planks + "petrified_wooden_planks"));
+        BlockListener.petrifiedLeaves.specifyTextures(
+                getTextureIndex(decorativeBlocks + "petrified_leaves_fast"),
+                getTextureIndex(decorativeBlocks + "petrified_leaves_fancy")
+        );
+
         // Pickaxes
         ItemListener.aluminiumPickaxe.setTexture(Identifier.of(MOD_ID, pickaxes + "aluminium"));
         ItemListener.bismuthPickaxe.setTexture(Identifier.of(MOD_ID, pickaxes + "bismuth"));

@@ -184,8 +184,10 @@ tile.nfc.bioluminescent_mushroom.purple.name=Purple Mushroom
 tile.nfc.glowing_mushroom.name=Glowing Mushroom
 tile.nfc.fiery_mushroom.name=Fiery Mushroom
 
+tile.nfc.petrified_log.name=Petrified Wood
+tile.nfc.petrified_planks.name=Petrified Wooden Planks
+tile.nfc.petrified_leaves.name=Dead Leaves
 tile.nfc.unrestricted_nether_portal.name=Unrestricted Nether Portal
-
 
 item.nfc.aluminium_pickaxe.name=Aluminum Pickaxe
 item.nfc.bismuth_pickaxe.name=Bismuth Pickaxe
