@@ -24,7 +24,8 @@
     "StorageBlockRecipeObliteratorMixin",
     "ToolEffectivenessHijackerMixin",
     "graphics.BlockRendererManagerMixin",
-    "FenceBlockMixin"
+    "FenceBlockMixin",
+    "SaplingBlockMixin"
   ],
   "server": [
   ],

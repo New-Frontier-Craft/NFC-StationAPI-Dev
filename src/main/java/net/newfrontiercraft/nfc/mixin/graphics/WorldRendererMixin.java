@@ -16,5 +16,6 @@ public class WorldRendererMixin {
     @Inject(method = "reload", at = @At("HEAD"))
     void nfcReload(CallbackInfo ci){
         BlockListener.alphaLeaves.setFancyGraphics(this.client.options.fancyGraphics);
+        BlockListener.petrifiedLeaves.setFancyGraphics(this.client.options.fancyGraphics);
     }
 }
