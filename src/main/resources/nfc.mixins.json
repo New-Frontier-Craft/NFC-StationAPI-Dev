@@ -7,6 +7,7 @@
     "BiomeEnlargerMixin",
     "BucketItemMixin",
     "EntityMixin",
+    "FenceBlockMixin",
     "FireBlockMixin",
     "FireImmunityAccessor",
     "FixVanillaToolBogusMixin",
@@ -21,6 +22,8 @@
     "OreSuppressionMixin",
     "PlantBlockMixin",
     "PlayerEntityMixin",
+    "PortalForcerToleranceMixin",
+    "SlabMergingMixin",
     "StorageBlockRecipeObliteratorMixin",
     "ToolEffectivenessHijackerMixin",
     "graphics.BlockRendererManagerMixin",
@@ -33,11 +36,11 @@
     "graphics.GameRendererMixin",
     "graphics.HeldItemRendererMixin",
     "graphics.InGameHudMixin",
+    "graphics.LiquidBlockGraphicsMixin",
     "graphics.PoweredRailTextureMixin",
     "graphics.SaplingBlockMixin",
     "graphics.SlabTextureMixin",
-    "graphics.WorldRendererMixin",
-    "graphics.LiquidBlockGraphicsMixin"
+    "graphics.WorldRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1

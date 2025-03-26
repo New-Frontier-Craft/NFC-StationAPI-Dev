@@ -4,6 +4,7 @@
     "nfc:plated_stone_vertical_cut",
     "nfc:plated_stone_horizontal_cut",
     "nfc:plated_stone_cross_cut",
+
     "nfc:worked_stone",
     "nfc:worked_stone_vertical_cut",
     "nfc:worked_stone_horizontal_cut",
@@ -13,6 +14,17 @@
     "nfc:stone_checkers",
     "nfc:stone_tiling",
     "nfc:stone_tiling_large",
+
+    "nfc:nether_worked_stone",
+    "nfc:nether_worked_stone_vertical_cut",
+    "nfc:nether_worked_stone_horizontal_cut",
+    "nfc:nether_worked_stone_cross_cut",
+    "nfc:nether_stone_bricks",
+    "nfc:nether_stone_bricks_large",
+    "nfc:nether_stone_checkers",
+    "nfc:nether_stone_tiling",
+    "nfc:nether_stone_tiling_large",
+
     "nfc:hard_wall",
     "nfc:window",
     "nfc:stained_glass",

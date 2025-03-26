@@ -2,6 +2,7 @@ tile.nfc.plated_stone.name=Plated Stone
 tile.nfc.plated_stone_horizontal_cut.name=Horizontally Cut Plated Stone
 tile.nfc.plated_stone_vertical_cut.name=Vertically Cut Plated Stone
 tile.nfc.plated_stone_cross_cut.name=Cross Cut Plated Stone
+
 tile.nfc.worked_stone.name=Worked Stone
 tile.nfc.worked_stone_horizontal_cut.name=Horizontally Cut Worked Stone
 tile.nfc.worked_stone_vertical_cut.name=Vertically Cut Worked Stone
@@ -11,9 +12,22 @@ tile.nfc.stone_bricks_large.name=Large Stone Bricks
 tile.nfc.stone_checkers.name=Checkered Stone
 tile.nfc.stone_tiling.name=Stone Tiling
 tile.nfc.stone_tiling_large.name=Large Stone Tiling
+
+tile.nfc.nether_worked_stone.name=Worked Nether Stone
+tile.nfc.nether_worked_stone_horizontal_cut.name=Horizontally Cut Worked Nether Stone
+tile.nfc.nether_worked_stone_vertical_cut.name=Vertically Cut Worked Nether Stone
+tile.nfc.nether_worked_stone_cross_cut.name=Cross Cut Worked Nether Stone
+tile.nfc.nether_stone_bricks.name=Nether Stone Bricks
+tile.nfc.nether_stone_bricks_large.name=Large Nether Stone Bricks
+tile.nfc.nether_stone_checkers.name=Checkered Nether Stone
+tile.nfc.nether_stone_tiling.name=Nether Stone Tiling
+tile.nfc.nether_stone_tiling_large.name=Large Nether Stone Tiling
+
 tile.nfc.fired_bricks.name=Fired Bricks
 tile.nfc.osmium_bricks.name=Osmium Bricks
+
 tile.nfc.scaffold_block.name=Scaffolding
+
 tile.nfc.decorative_wood0.name=Rounded Log
 tile.nfc.decorative_wood1.name=Small Logs
 tile.nfc.decorative_wood2.name=Parquet Planks
@@ -24,6 +38,7 @@ tile.nfc.decorative_wood6.name=Bordered Laminated Wood
 tile.nfc.decorative_wood7.name=Borderless Laminated Wood
 tile.nfc.decorative_wood8.name=Vertical Laminated Wood
 tile.nfc.decorative_wood9.name=Horizontal Laminated Wood
+
 tile.nfc.stained_planks0.name=White Stained Planks
 tile.nfc.stained_planks1.name=Orange Stained Planks
 tile.nfc.stained_planks2.name=Magenta Stained Planks
@@ -40,6 +55,7 @@ tile.nfc.stained_planks12.name=Brown Stained Planks
 tile.nfc.stained_planks13.name=Green Stained Planks
 tile.nfc.stained_planks14.name=Red Stained Planks
 tile.nfc.stained_planks15.name=Black Stained Planks
+
 tile.nfc.window0.name=Window
 tile.nfc.window1.name=Vertical Double Window
 tile.nfc.window2.name=Small Window
@@ -47,6 +63,7 @@ tile.nfc.window3.name=Horizontal Double Window
 tile.nfc.window4.name=Mini Window
 tile.nfc.window5.name=Quadruple Window
 tile.nfc.window6.name=Gothic Window
+
 tile.nfc.stained_glass0.name=White Stained Glass
 tile.nfc.stained_glass1.name=Orange Stained Glass
 tile.nfc.stained_glass2.name=Magenta Stained Glass
@@ -63,17 +80,24 @@ tile.nfc.stained_glass12.name=Brown Stained Glass
 tile.nfc.stained_glass13.name=Green Stained Glass
 tile.nfc.stained_glass14.name=Red Stained Glass
 tile.nfc.stained_glass15.name=Black Stained Glass
+
 tile.nfc.tinted_glass.name=Tinted Glass
+
 tile.nfc.snow_bricks.name=Snow Bricks
+
 tile.nfc.hard_wall0.name=Cobblestone Wall
 tile.nfc.hard_wall1.name=Mossy Cobblestone Wall
 tile.nfc.hard_wall2.name=Connective Cobblestone Wall
 tile.nfc.hard_wall3.name=Connective Mossy Cobblestone Wall
+
 tile.nfc.blue_glowstone.name=Blue Glowstone
+
 tile.nfc.alpha_grass.name=Alpha Grass
 tile.nfc.alpha_leaves.name=Alpha Oak Leaves
 tile.nfc.alpha_sapling.name=Alpha Oak Sapling
+
 tile.nfc.copper_door_block.name=Copper Door
+
 tile.nfc.fence_gate.name=Fence Gate
 
 tile.nfc.mud0.name=Mud
@@ -81,6 +105,7 @@ tile.nfc.mud1.name=Mud Bricks
 tile.nfc.mud2.name=Long Mud Bricks
 tile.nfc.mud3.name=Random Mud Bricks
 tile.nfc.mud4.name=Large Mud Bricks
+
 tile.nfc.fired_mud0.name=Fired Mud
 tile.nfc.fired_mud1.name=Fired Mud Bricks
 tile.nfc.fired_mud2.name=Fired Long Mud Bricks
@@ -162,7 +187,7 @@ tile.nfc.fiery_mushroom.name=Fiery Mushroom
 tile.nfc.petrified_log.name=Petrified Wood
 tile.nfc.petrified_planks.name=Petrified Wooden Planks
 tile.nfc.petrified_leaves.name=Dead Leaves
-
+tile.nfc.unrestricted_nether_portal.name=Unrestricted Nether Portal
 
 item.nfc.aluminium_pickaxe.name=Aluminum Pickaxe
 item.nfc.bismuth_pickaxe.name=Bismuth Pickaxe

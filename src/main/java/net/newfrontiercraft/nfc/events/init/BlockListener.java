@@ -17,6 +17,7 @@ public class BlockListener {
             platedStoneVerticalCut,
             platedStoneHorizontalCut,
             platedStoneCrossCut,
+
             workedStone,
             workedStoneVerticalCut,
             workedStoneHorizontalCut,
@@ -26,6 +27,17 @@ public class BlockListener {
             stoneCheckers,
             stoneTiling,
             stoneTilingLarge,
+
+            netherWorkedStone,
+            netherWorkedStoneVerticalCut,
+            netherWorkedStoneHorizontalCut,
+            netherWorkedStoneCrossCut,
+            netherStoneBricks,
+            netherStoneBricksLarge,
+            netherStoneCheckers,
+            netherStoneTiling,
+            netherStoneTilingLarge,
+
             firedBricks,
             osmiumBricks,
             snowBricks,
@@ -134,6 +146,8 @@ public class BlockListener {
     public static GlowingMushroomBlock glowingMushroom;
     public static FieryMushroomBlock fieryMushroom;
 
+    public static UnrestrictedNetherPortalBlock unrestrictedNetherPortal;
+
     @Entrypoint.Namespace
     public static Namespace MOD_ID;
 
@@ -143,6 +157,7 @@ public class BlockListener {
         platedStoneVerticalCut = new LazyBlockTemplate(Identifier.of(MOD_ID, "plated_stone_vertical_cut"), Material.STONE, 1.5F, Block.STONE_SOUND_GROUP);
         platedStoneHorizontalCut = new LazyBlockTemplate(Identifier.of(MOD_ID, "plated_stone_horizontal_cut"), Material.STONE, 1.5F, Block.STONE_SOUND_GROUP);
         platedStoneCrossCut = new LazyBlockTemplate(Identifier.of(MOD_ID, "plated_stone_cross_cut"), Material.STONE, 1.5F, Block.STONE_SOUND_GROUP);
+
         workedStone = new LazyBlockTemplate(Identifier.of(MOD_ID, "worked_stone"), Material.STONE, 1.5F, Block.STONE_SOUND_GROUP);
         workedStoneVerticalCut = new LazyBlockTemplate(Identifier.of(MOD_ID, "worked_stone_vertical_cut"), Material.STONE, 1.5F, Block.STONE_SOUND_GROUP);
         workedStoneHorizontalCut = new LazyBlockTemplate(Identifier.of(MOD_ID, "worked_stone_horizontal_cut"), Material.STONE, 1.5F, Block.STONE_SOUND_GROUP);
@@ -152,6 +167,17 @@ public class BlockListener {
         stoneCheckers = new LazyBlockTemplate(Identifier.of(MOD_ID, "stone_checkers"), Material.STONE, 1.5F, Block.STONE_SOUND_GROUP);
         stoneTiling = new LazyBlockTemplate(Identifier.of(MOD_ID, "stone_tiling"), Material.STONE, 1.5F, Block.STONE_SOUND_GROUP);
         stoneTilingLarge = new LazyBlockTemplate(Identifier.of(MOD_ID, "stone_tiling_large"), Material.STONE, 1.5F, Block.STONE_SOUND_GROUP);
+
+        netherWorkedStone = new LazyBlockTemplate(Identifier.of(MOD_ID, "nether_worked_stone"), Material.STONE, 1.5F, Block.STONE_SOUND_GROUP);
+        netherWorkedStoneVerticalCut = new LazyBlockTemplate(Identifier.of(MOD_ID, "nether_worked_stone_vertical_cut"), Material.STONE, 1.5F, Block.STONE_SOUND_GROUP);
+        netherWorkedStoneHorizontalCut = new LazyBlockTemplate(Identifier.of(MOD_ID, "nether_worked_stone_horizontal_cut"), Material.STONE, 1.5F, Block.STONE_SOUND_GROUP);
+        netherWorkedStoneCrossCut = new LazyBlockTemplate(Identifier.of(MOD_ID, "nether_worked_stone_cross_cut"), Material.STONE, 1.5F, Block.STONE_SOUND_GROUP);
+        netherStoneBricks = new LazyBlockTemplate(Identifier.of(MOD_ID, "nether_stone_bricks"), Material.STONE, 1.5F, Block.STONE_SOUND_GROUP);
+        netherStoneBricksLarge = new LazyBlockTemplate(Identifier.of(MOD_ID, "nether_stone_bricks_large"), Material.STONE, 1.5F, Block.STONE_SOUND_GROUP);
+        netherStoneCheckers = new LazyBlockTemplate(Identifier.of(MOD_ID, "nether_stone_checkers"), Material.STONE, 1.5F, Block.STONE_SOUND_GROUP);
+        netherStoneTiling = new LazyBlockTemplate(Identifier.of(MOD_ID, "nether_stone_tiling"), Material.STONE, 1.5F, Block.STONE_SOUND_GROUP);
+        netherStoneTilingLarge = new LazyBlockTemplate(Identifier.of(MOD_ID, "nether_stone_tiling_large"), Material.STONE, 1.5F, Block.STONE_SOUND_GROUP);
+
         firedBricks = new LazyBlockTemplate(Identifier.of(MOD_ID, "fired_bricks"), Material.STONE, 1.5F, Block.STONE_SOUND_GROUP);
         osmiumBricks = new LazyBlockTemplate(Identifier.of(MOD_ID, "osmium_bricks"), Material.STONE, 1.5F, Block.STONE_SOUND_GROUP);
         decorativeWood = new DecorativeWoodBlock(Identifier.of(MOD_ID, "decorative_wood"), Material.WOOD, 1.5F, Block.WOOD_SOUND_GROUP);
@@ -252,6 +278,7 @@ public class BlockListener {
         petrifiedLog = new LazyBlockTemplate(Identifier.of(MOD_ID, "petrified_log"), Material.STONE, 1.5F, Block.STONE_SOUND_GROUP);
         petrifiedPlanks = new LazyBlockTemplate(Identifier.of(MOD_ID, "petrified_planks"), Material.STONE, 1.5F, Block.STONE_SOUND_GROUP);
         petrifiedLeaves = (PetrifiedLeavesBlock) new PetrifiedLeavesBlock(Identifier.of(MOD_ID, "petrified_leaves")).setOpacity(1).setHardness(0.2F).setSoundGroup(Block.DIRT_SOUND_GROUP).setTranslationKey(Identifier.of(MOD_ID, "petrified_leaves"));
+        unrestrictedNetherPortal = new UnrestrictedNetherPortalBlock(Identifier.of(MOD_ID, "unrestricted_nether_portal"));
 
         // Changes to vanilla blast resistance
         Block.COAL_ORE.setResistance(500F);
