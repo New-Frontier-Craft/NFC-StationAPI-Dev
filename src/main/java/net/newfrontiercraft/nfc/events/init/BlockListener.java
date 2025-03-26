@@ -142,6 +142,8 @@ public class BlockListener {
     public static GlowingMushroomBlock glowingMushroom;
     public static FieryMushroomBlock fieryMushroom;
 
+    public static UnrestrictedNetherPortalBlock unrestrictedNetherPortal;
+
     @Entrypoint.Namespace
     public static Namespace MOD_ID;
 
@@ -268,6 +270,8 @@ public class BlockListener {
         bioluminescentMushroom = new BioluminescentMushroomBlock(Identifier.of(MOD_ID, "bioluminescent_mushroom"), 0, Block.WOOD_SOUND_GROUP, true);
         glowingMushroom = new GlowingMushroomBlock(Identifier.of(MOD_ID, "glowing_mushroom"), 0, Block.DIRT_SOUND_GROUP, false);
         fieryMushroom = new FieryMushroomBlock(Identifier.of(MOD_ID, "fiery_mushroom"), 0, Block.DIRT_SOUND_GROUP, false);
+
+        unrestrictedNetherPortal = new UnrestrictedNetherPortalBlock(Identifier.of(MOD_ID, "unrestricted_nether_portal"));
 
         // Changes to vanilla blast resistance
         Block.COAL_ORE.setResistance(500F);

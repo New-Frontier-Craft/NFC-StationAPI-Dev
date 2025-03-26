@@ -22,6 +22,7 @@
     "OreSuppressionMixin",
     "PlantBlockMixin",
     "PlayerEntityMixin",
+    "PortalForcerToleranceMixin",
     "SlabMergingMixin",
     "StorageBlockRecipeObliteratorMixin",
     "ToolEffectivenessHijackerMixin",
