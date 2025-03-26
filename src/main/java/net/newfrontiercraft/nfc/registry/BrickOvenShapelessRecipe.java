@@ -7,30 +7,35 @@ import java.util.Iterator;
 import java.util.List;
 
 public class BrickOvenShapelessRecipe implements BrickOvenRecipe {
-
-    public BrickOvenShapelessRecipe(ItemStack itemstack, List list, int time) {
-        recipeOutput = itemstack;
-        recipeItems = list;
-        recipeTime = time;
+    private final ItemStack output;
+    private final List input;
+    private final int time;
+    public BrickOvenShapelessRecipe(ItemStack output, List input, int time) {
+        this.output = output;
+        this.input = input;
+        this.time = time;
     }
 
-    public ItemStack getRecipeOutput() {
-        return recipeOutput;
+    @Override
+    public ItemStack getOutput() {
+        return output;
     }
 
+    @Override
     public int getTime(){
-        return recipeTime;
+        return time;
     }
 
-    public boolean matches(ItemStack[] itemstacks) {
-        ArrayList arraylist = new ArrayList(recipeItems);
+    @Override
+    public boolean matches(ItemStack[] craftingItems) {
+        ArrayList arraylist = new ArrayList(input);
         int i = 0;
         do {
             if (i >= 3) {
                 break;
             }
             for (int j = 0; j < 3; j++) {
-                ItemStack itemstack = itemstacks[j + (i*3)];
+                ItemStack itemstack = craftingItems[j + (i*3)];
                 if (itemstack == null) {
                     continue;
                 }
@@ -61,19 +66,18 @@ public class BrickOvenShapelessRecipe implements BrickOvenRecipe {
         return arraylist.isEmpty();
     }
 
-    public ItemStack getCraftingResult(ItemStack[] itemstacks) {
-        return recipeOutput.copy();
+    @Override
+    public ItemStack craft(ItemStack[] craftingItems) {
+        return output.copy();
     }
 
-    public int getRecipeSize() {
-        return recipeItems.size();
+    @Override
+    public int getSize() {
+        return input.size();
     }
 
-    public List getRecipeItems() {
-        return recipeItems;
+    @Override
+    public List getInput() {
+        return input;
     }
-
-    private final ItemStack recipeOutput;
-    private final List recipeItems;
-    private final int recipeTime;
 }
