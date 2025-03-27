@@ -5,6 +5,7 @@ import net.modificationstation.stationapi.api.event.block.entity.BlockEntityRegi
 import net.modificationstation.stationapi.api.mod.entrypoint.Entrypoint;
 import net.modificationstation.stationapi.api.util.Identifier;
 import net.modificationstation.stationapi.api.util.Namespace;
+import net.newfrontiercraft.nfc.block.entity.BookshelfBlockEntity;
 import net.newfrontiercraft.nfc.block.entity.BrickOvenBlockEntity;
 
 public class BlockEntityListener {
@@ -15,6 +16,7 @@ public class BlockEntityListener {
     @EventListener
     public static void registerBlockEntities(BlockEntityRegisterEvent event) {
         event.register(BrickOvenBlockEntity.class, String.valueOf(Identifier.of(MOD_ID, "block_entity_brick_oven")));
+        event.register(BookshelfBlockEntity.class, String.valueOf(Identifier.of(MOD_ID, "block_entity_bookshelf")));
     }
 
 }
