@@ -25,8 +25,8 @@ public class BookshelfScreen extends HandledScreen {
     @Override
     protected void drawForeground() {
         TranslationStorage translationStorage = TranslationStorage.getInstance();
-        this.textRenderer.draw(translationStorage.get("gui.bookshelf"), 8, 6, 4210752);
-        this.textRenderer.draw(translationStorage.get("gui.inventory.inventory"), 8, this.backgroundHeight - 96 + 2, 4210752);
+        this.textRenderer.draw(translationStorage.get("gui.nfc.bookshelf"), 8, 6, 4210752);
+        this.textRenderer.draw(playerInventory.getName(), 8, this.backgroundHeight - 96 + 2, 4210752);
     }
 
     @Override

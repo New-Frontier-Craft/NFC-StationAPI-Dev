@@ -12,14 +12,13 @@ import net.minecraft.world.World;
 import net.modificationstation.stationapi.api.gui.screen.container.GuiHelper;
 import net.modificationstation.stationapi.api.util.Identifier;
 import net.newfrontiercraft.nfc.block.entity.BookshelfBlockEntity;
-import net.newfrontiercraft.nfc.block.entity.BrickOvenBlockEntity;
 import net.newfrontiercraft.nfc.events.init.BlockEntityListener;
 import net.newfrontiercraft.nfc.inventory.BookshelfScreenHandler;
-import net.newfrontiercraft.nfc.inventory.BrickOvenScreenHandler;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.Random;
 
@@ -58,7 +57,6 @@ public abstract class BookshelfBlockMixin extends Block {
     @Override
     public void onBreak(World world, int x, int y, int z) {
         BlockEntity blockEntity = world.getBlockEntity(x, y, z);
-
         if(blockEntity != null){
             BookshelfBlockEntity bookshelfBlockEntity = (BookshelfBlockEntity) blockEntity;
             for(int l = 0; l < bookshelfBlockEntity.size(); ++l) {
@@ -75,7 +73,7 @@ public abstract class BookshelfBlockMixin extends Block {
                         }
 
                         itemstack.count -= i1;
-                        ItemEntity entityitem = new ItemEntity(world, ((float)x + f), ((float)y + f1), ((float)z + f2), itemstack.copy());
+                        ItemEntity entityitem = new ItemEntity(world, ((float)x + f), ((float)y + f1), ((float)z + f2), new ItemStack(itemstack.itemId, i1, itemstack.getDamage()));
                         float f3 = 0.05F;
                         entityitem.velocityX = ((float)this.random.nextGaussian() * f3);
                         entityitem.velocityY = ((float)this.random.nextGaussian() * f3 + 0.2F);
@@ -92,5 +90,10 @@ public abstract class BookshelfBlockMixin extends Block {
 
     BookshelfBlockEntity getBlockEntity(){
         return new BookshelfBlockEntity();
+    }
+
+    @Inject(method = "getDroppedItemCount", at = @At("HEAD"), cancellable = true)
+    void nfcGetDroppedItemCount(Random par1, CallbackInfoReturnable<Integer> cir){
+        cir.setReturnValue(1);
     }
 }

@@ -42,11 +42,10 @@ public class BookshelfScreenHandler extends ScreenHandler {
 
     @Override
     public ItemStack quickMove(int slot) {
-        ItemStack itemstack = null;
+        ItemStack stack = null;
         Slot selectedSlot = (Slot)this.slots.get(slot);
         if(selectedSlot != null && selectedSlot.hasStack()) {
-            ItemStack stack = selectedSlot.getStack();
-            itemstack = stack.copy();
+            stack = selectedSlot.getStack();
             if(slot < this.rows * 5) {
                 this.insertItem(stack, this.rows * 5, this.slots.size(), true);
             } else {
@@ -60,6 +59,6 @@ public class BookshelfScreenHandler extends ScreenHandler {
             }
         }
 
-        return itemstack;
+        return stack;
     }
 }
