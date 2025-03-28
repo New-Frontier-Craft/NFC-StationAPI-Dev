@@ -28,7 +28,8 @@
     "ToolEffectivenessHijackerMixin",
     "graphics.BlockRendererManagerMixin",
     "FenceBlockMixin",
-    "SaplingBlockMixin"
+    "SaplingBlockMixin",
+    "BookshelfBlockMixin"
   ],
   "server": [
   ],

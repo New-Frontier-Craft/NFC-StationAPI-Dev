@@ -440,3 +440,5 @@ item.nfc.oil_bucket.name=Oil Bucket
 item.nfc.copper_door.name=Copper Door
 
 item.nfc.blue_glowstone_dust.name=Blue Glowstone Dust
+
+gui.nfc.bookshelf=Bookshelf
