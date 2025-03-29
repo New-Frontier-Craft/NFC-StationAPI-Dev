@@ -1,7 +1,9 @@
 package net.newfrontiercraft.nfc.events.init;
 
+import net.fabricmc.loader.api.FabricLoader;
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.minecraft.block.Block;
+import net.minecraft.client.Minecraft;
 import net.modificationstation.stationapi.api.client.event.texture.TextureRegisterEvent;
 import net.modificationstation.stationapi.api.client.texture.atlas.Atlases;
 import net.modificationstation.stationapi.api.mod.entrypoint.Entrypoint;
@@ -36,6 +38,7 @@ public class TextureListener {
         String vanillaBlocks = "block/vanilla/";
         String scorchedSandstone = decorativeBlocks + "scorched_sandstone/";
         String mushrooms = woldGeneration + "mushrooms/";
+        String creative = "block/creative/";
 
         // Item strings
         String items = "item/";
@@ -568,6 +571,31 @@ public class TextureListener {
         // Other drops
         ItemListener.blueGlowstoneDust.setTexture(Identifier.of(MOD_ID, otherDrops + "blue_glowstone_dust"));
 
+        // Particles
+        if (FabricLoader.getInstance().getGameInstance() instanceof Minecraft minecraft) {
+            barrier = minecraft.textureManager.getTextureId("/assets/nfc/stationapi/textures/particle/barrier.png");
+            support = minecraft.textureManager.getTextureId("/assets/nfc/stationapi/textures/particle/support.png");
+            lightSource = minecraft.textureManager.getTextureId("/assets/nfc/stationapi/textures/particle/light_source.png");
+        }
+        BlockListener.barrier.specifyTextures(
+                new int[] {
+                        getTextureIndex(creative + "barrier"),
+                        getTextureIndex(creative + "support")
+                }
+        );
+        BlockListener.barrier.setParticleTextures(new int[] {
+                barrier,
+                support
+        });
+        BlockListener.lightSource.specifyTextures(
+                new int[] {
+                        getTextureIndex(creative + "light_source")
+                }
+        );
+        BlockListener.lightSource.setParticleTextures(new int[] {
+                lightSource
+        });
+
         // Vanilla texture changes
         grassBlockSide = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, vanillaBlocks + "grass_block_side")).index;
         grassBlockSideSnowy = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, vanillaBlocks + "grass_block_side_snowy")).index;
@@ -591,7 +619,11 @@ public class TextureListener {
             poweredRail,
             poweredRailActive,
             bricks,
-            logSide;
+            logSide,
+
+            barrier,
+            support,
+            lightSource;
 
     private static int getTextureIndex(String path) {
         return Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, path)).index;

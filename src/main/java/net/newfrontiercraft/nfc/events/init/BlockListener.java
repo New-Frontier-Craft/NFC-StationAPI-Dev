@@ -148,6 +148,10 @@ public class BlockListener {
 
     public static UnrestrictedNetherPortalBlock unrestrictedNetherPortal;
 
+    public static CreativeBlock
+            barrier,
+            lightSource;
+
     @Entrypoint.Namespace
     public static Namespace MOD_ID;
 
@@ -279,6 +283,9 @@ public class BlockListener {
         petrifiedPlanks = new LazyBlockTemplate(Identifier.of(MOD_ID, "petrified_planks"), Material.STONE, 1.5F, Block.STONE_SOUND_GROUP);
         petrifiedLeaves = (PetrifiedLeavesBlock) new PetrifiedLeavesBlock(Identifier.of(MOD_ID, "petrified_leaves")).setOpacity(1).setHardness(0.2F).setSoundGroup(Block.DIRT_SOUND_GROUP).setTranslationKey(Identifier.of(MOD_ID, "petrified_leaves"));
         unrestrictedNetherPortal = new UnrestrictedNetherPortalBlock(Identifier.of(MOD_ID, "unrestricted_nether_portal"));
+
+        barrier = new CreativeBlock(Identifier.of(MOD_ID, "barrier"), Material.STONE, Block.STONE_SOUND_GROUP, new boolean[] {true, false});
+        lightSource = new LightSourceBlock(Identifier.of(MOD_ID, "light_source"), Material.STONE, Block.STONE_SOUND_GROUP, new boolean[] {false});
 
         // Changes to vanilla blast resistance
         Block.COAL_ORE.setResistance(500F);

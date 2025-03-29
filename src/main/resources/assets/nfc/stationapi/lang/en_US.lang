@@ -189,6 +189,11 @@ tile.nfc.petrified_planks.name=Petrified Wooden Planks
 tile.nfc.petrified_leaves.name=Dead Leaves
 tile.nfc.unrestricted_nether_portal.name=Unrestricted Nether Portal
 
+tile.nfc.barrier0.name=Barrier Block
+tile.nfc.barrier1.name=Support Block
+tile.nfc.light_source0.name=Light Source
+
+
 item.nfc.aluminium_pickaxe.name=Aluminum Pickaxe
 item.nfc.bismuth_pickaxe.name=Bismuth Pickaxe
 item.nfc.copper_pickaxe.name=Copper Pickaxe

@@ -7,7 +7,7 @@ import net.modificationstation.stationapi.api.util.Identifier;
 
 @HasMetaNamedBlockItem
 public class LazyMultivariantBlockTemplate extends LazyBlockTemplate {
-    private int[] metaSpecificTextures;
+    protected int[] metaSpecificTextures;
 
     public LazyMultivariantBlockTemplate(Identifier identifier, Material material, float hardness, BlockSoundGroup blockSounds) {
         super(identifier, material, hardness, blockSounds);
