@@ -42,7 +42,8 @@
     "graphics.SaplingBlockMixin",
     "graphics.SlabTextureMixin",
     "graphics.WorldRendererMixin",
-    "graphics.ParticleClearingMixin"
+    "graphics.ParticleClearingMixin",
+    "graphics.ParticleManagerMixin"
   ],
   "injectors": {
     "defaultRequire": 1
