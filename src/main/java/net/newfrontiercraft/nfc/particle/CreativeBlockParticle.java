@@ -10,7 +10,7 @@ import net.minecraft.world.World;
 import net.newfrontiercraft.nfc.block.CreativeBlock;
 import org.lwjgl.opengl.GL11;
 
-public class CreativeBlockParticle extends Particle {
+public class CreativeBlockParticle extends Particle implements NfcParticle{
     private final int playerItem;
     private final int playerItemMeta;
 
@@ -68,11 +68,7 @@ public class CreativeBlockParticle extends Particle {
         tessellator.vertex((f11 - f1 * adjustedScale) + f4 * adjustedScale, f12 + f2 * adjustedScale, (f13 - f3 * adjustedScale) + f5 * adjustedScale, f7, textureY);
         tessellator.vertex(f11 + f1 * adjustedScale + f4 * adjustedScale, f12 + f2 * adjustedScale, f13 + f3 * adjustedScale + f5 * adjustedScale, textureX, textureY);
         tessellator.vertex((f11 + f1 * adjustedScale) - f4 * adjustedScale, f12 - f2 * adjustedScale, (f13 + f3 * adjustedScale) - f5 * adjustedScale, textureX, f9);
-        // This is not ideal and causes a Vanilla particle "reset" but is needed to switch the rendering back to Vanilla
-        tessellator.draw();
-        if (FabricLoader.getInstance().getGameInstance() instanceof Minecraft minecraft) {
-            GL11.glBindTexture(3553, minecraft.textureManager.getTextureId("/particles.png"));
-        }
-        tessellator.startQuads();
+
+
     }
 }
