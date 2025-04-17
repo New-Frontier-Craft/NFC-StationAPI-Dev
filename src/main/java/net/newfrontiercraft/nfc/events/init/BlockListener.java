@@ -153,21 +153,9 @@ public class BlockListener {
             lightSource;
 
     public static LazySlabTemplate
-            vanillaSlabsTop,
-            vanillaSlabsNorth,
-            vanillaSlabsSouth,
-            vanillaSlabsWest,
-            vanillaSlabsEast,
-
+            vanillaSlabs,
             nonDyedSlabs,
-            nonDyedSlabsTop,
-            nonDyedSlabsNorth,
-            nonDyedSlabsSouth,
-            nonDyedSlabsWest,
-            nonDyedSlabsEast,
-
-            stainedPlanksSlabs,
-            stainedPlanksSlabsTop;
+            stainedPlanksSlabs;
 
     @Entrypoint.Namespace
     public static Namespace MOD_ID;
@@ -304,7 +292,7 @@ public class BlockListener {
         barrier = new CreativeBlock(Identifier.of(MOD_ID, "barrier"), Material.STONE, Block.STONE_SOUND_GROUP, new boolean[] {true, false});
         lightSource = new LightSourceBlock(Identifier.of(MOD_ID, "light_source"), Material.STONE, Block.STONE_SOUND_GROUP, new boolean[] {false});
 
-        vanillaSlabsTop = new VanillaSlabBlock(Identifier.of(MOD_ID, "vanilla_slabs_top"), Material.STONE, 1.0F, Block.STONE_SOUND_GROUP,
+        vanillaSlabs = new VanillaSlabBlock(Identifier.of(MOD_ID, "vanilla_slabs"), Material.STONE, 1.0F, Block.STONE_SOUND_GROUP,
                 new int[] {
                         Block.DOUBLE_SLAB.id, Block.SANDSTONE.id, Block.PLANKS.id, Block.COBBLESTONE.id, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
                 },
@@ -313,43 +301,6 @@ public class BlockListener {
                 },
                 Block.SLAB
         );
-        vanillaSlabsNorth = new VanillaSlabBlock(Identifier.of(MOD_ID, "vanilla_slabs_north"), Material.STONE, 1.0F, Block.STONE_SOUND_GROUP,
-                new int[] {
-                        Block.DOUBLE_SLAB.id, Block.SANDSTONE.id, Block.PLANKS.id, Block.COBBLESTONE.id, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-                },
-                new float[] {
-                        0.5F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F
-                },
-                Block.SLAB
-        );
-        vanillaSlabsSouth = new VanillaSlabBlock(Identifier.of(MOD_ID, "vanilla_slabs_south"), Material.STONE, 1.0F, Block.STONE_SOUND_GROUP,
-                new int[] {
-                        Block.DOUBLE_SLAB.id, Block.SANDSTONE.id, Block.PLANKS.id, Block.COBBLESTONE.id, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-                },
-                new float[] {
-                        0.0F, 0.0F, 0.0F, 0.5F, 1.0F, 1.0F
-                },
-                Block.SLAB
-        );
-        vanillaSlabsWest = new VanillaSlabBlock(Identifier.of(MOD_ID, "vanilla_slabs_west"), Material.STONE, 1.0F, Block.STONE_SOUND_GROUP,
-                new int[] {
-                        Block.DOUBLE_SLAB.id, Block.SANDSTONE.id, Block.PLANKS.id, Block.COBBLESTONE.id, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-                },
-                new float[] {
-                        0.0F, 0.0F, 0.5F, 1.0F, 1.0F, 1.0F
-                },
-                Block.SLAB
-        );
-        vanillaSlabsEast = new VanillaSlabBlock(Identifier.of(MOD_ID, "vanilla_slabs_east"), Material.STONE, 1.0F, Block.STONE_SOUND_GROUP,
-                new int[] {
-                        Block.DOUBLE_SLAB.id, Block.SANDSTONE.id, Block.PLANKS.id, Block.COBBLESTONE.id, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-                },
-                new float[] {
-                        0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.5F
-                },
-                Block.SLAB
-        );
-
         nonDyedSlabs = new LazySlabTemplate(Identifier.of(MOD_ID, "non_dyed_slabs"), Material.STONE, 1.0F, Block.STONE_SOUND_GROUP,
                 new int[] {
                         Block.BRICKS.id, workedStone.id, stoneBricksLarge.id, stoneBricks.id, mud.id, firedMud.id, petrifiedPlanks.id, 0, 0, 0, 0, 0, 0, 0, 0, 0
@@ -357,72 +308,8 @@ public class BlockListener {
                 new int[] {
                         0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
                 },
-                new float[] {
-                        0.0F, 0.0F, 0.0F, 1.0F, 0.5F, 1.0F
-                },
                 null
         );
-        nonDyedSlabsTop = new LazySlabTemplate(Identifier.of(MOD_ID, "non_dyed_slabs_top"), Material.STONE, 1.0F, Block.STONE_SOUND_GROUP,
-                new int[] {
-                        Block.BRICKS.id, workedStone.id, stoneBricksLarge.id, stoneBricks.id, mud.id, firedMud.id, petrifiedPlanks.id, 0, 0, 0, 0, 0, 0, 0, 0, 0
-                },
-                new int[] {
-                        0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-                },
-                new float[] {
-                        0.0F, 0.5F, 0.0F, 1.0F, 1.0F, 1.0F
-                },
-                nonDyedSlabs
-        );
-        nonDyedSlabsNorth = new LazySlabTemplate(Identifier.of(MOD_ID, "non_dyed_slabs_north"), Material.STONE, 1.0F, Block.STONE_SOUND_GROUP,
-                new int[] {
-                        Block.BRICKS.id, workedStone.id, stoneBricksLarge.id, stoneBricks.id, mud.id, firedMud.id, petrifiedPlanks.id, 0, 0, 0, 0, 0, 0, 0, 0, 0
-                },
-                new int[] {
-                        0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-                },
-                new float[] {
-                        0.5F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F
-                },
-                nonDyedSlabs
-        );
-        nonDyedSlabsSouth = new LazySlabTemplate(Identifier.of(MOD_ID, "non_dyed_slabs_south"), Material.STONE, 1.0F, Block.STONE_SOUND_GROUP,
-                new int[] {
-                        Block.BRICKS.id, workedStone.id, stoneBricksLarge.id, stoneBricks.id, mud.id, firedMud.id, petrifiedPlanks.id, 0, 0, 0, 0, 0, 0, 0, 0, 0
-                },
-                new int[] {
-                        0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-                },
-                new float[] {
-                        0.0F, 0.0F, 0.0F, 0.5F, 1.0F, 1.0F
-                },
-                nonDyedSlabs
-        );
-        nonDyedSlabsWest = new LazySlabTemplate(Identifier.of(MOD_ID, "non_dyed_slabs_west"), Material.STONE, 1.0F, Block.STONE_SOUND_GROUP,
-                new int[] {
-                        Block.BRICKS.id, workedStone.id, stoneBricksLarge.id, stoneBricks.id, mud.id, firedMud.id, petrifiedPlanks.id, 0, 0, 0, 0, 0, 0, 0, 0, 0
-                },
-                new int[] {
-                        0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-                },
-                new float[] {
-                        0.0F, 0.0F, 0.5F, 1.0F, 1.0F, 1.0F
-                },
-                nonDyedSlabs
-        );
-        nonDyedSlabsEast = new LazySlabTemplate(Identifier.of(MOD_ID, "non_dyed_slabs_east"), Material.STONE, 1.0F, Block.STONE_SOUND_GROUP,
-                new int[] {
-                        Block.BRICKS.id, workedStone.id, stoneBricksLarge.id, stoneBricks.id, mud.id, firedMud.id, petrifiedPlanks.id, 0, 0, 0, 0, 0, 0, 0, 0, 0
-                },
-                new int[] {
-                        0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-                },
-                new float[] {
-                        0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.5F
-                },
-                nonDyedSlabs
-        );
-
         stainedPlanksSlabs = new LazySlabTemplate(Identifier.of(MOD_ID, "stained_planks_slabs"), Material.WOOD, 1.0F, Block.WOOD_SOUND_GROUP,
                 new int[] {
                         stainedPlanks.id, stainedPlanks.id, stainedPlanks.id, stainedPlanks.id, stainedPlanks.id, stainedPlanks.id, stainedPlanks.id, stainedPlanks.id, stainedPlanks.id, stainedPlanks.id, stainedPlanks.id, stainedPlanks.id, stainedPlanks.id, stainedPlanks.id, stainedPlanks.id, stainedPlanks.id
@@ -430,22 +317,7 @@ public class BlockListener {
                 new int[] {
                         0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15
                 },
-                new float[] {
-                        0.0F, 0.0F, 0.0F, 1.0F, 0.5F, 1.0F
-                },
                 null
-        );
-        stainedPlanksSlabsTop = new LazySlabTemplate(Identifier.of(MOD_ID, "stained_planks_slabs_top"), Material.WOOD, 1.0F, Block.WOOD_SOUND_GROUP,
-                new int[] {
-                        stainedPlanks.id, stainedPlanks.id, stainedPlanks.id, stainedPlanks.id, stainedPlanks.id, stainedPlanks.id, stainedPlanks.id, stainedPlanks.id, stainedPlanks.id, stainedPlanks.id, stainedPlanks.id, stainedPlanks.id, stainedPlanks.id, stainedPlanks.id, stainedPlanks.id, stainedPlanks.id
-                },
-                new int[] {
-                        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15
-                },
-                new float[] {
-                        0.0F, 0.5F, 0.0F, 1.0F, 1.0F, 1.0F
-                },
-                stainedPlanksSlabs
         );
 
         // Changes to vanilla blast resistance

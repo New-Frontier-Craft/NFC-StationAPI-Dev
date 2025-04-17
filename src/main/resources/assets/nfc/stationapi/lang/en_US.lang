@@ -193,30 +193,10 @@ tile.nfc.barrier0.name=Barrier Block
 tile.nfc.barrier1.name=Support Block
 tile.nfc.light_source0.name=Light Source
 
-tile.nfc.vanilla_slabs_top0.name=Upside Down Stone Slab
-tile.nfc.vanilla_slabs_top1.name=Upside Down Sandstone Slab
-tile.nfc.vanilla_slabs_top2.name=Upside Down Wooden Planks Slab
-tile.nfc.vanilla_slabs_top3.name=Upside Down Cobblestone Slab
-
-tile.nfc.vanilla_slabs_north0.name=North Stone Slab
-tile.nfc.vanilla_slabs_north1.name=North Sandstone Slab
-tile.nfc.vanilla_slabs_north2.name=North Wooden Planks Slab
-tile.nfc.vanilla_slabs_north3.name=North Cobblestone Slab
-
-tile.nfc.vanilla_slabs_south0.name=South Stone Slab
-tile.nfc.vanilla_slabs_south1.name=South Sandstone Slab
-tile.nfc.vanilla_slabs_south2.name=South Wooden Planks Slab
-tile.nfc.vanilla_slabs_south3.name=South Cobblestone Slab
-
-tile.nfc.vanilla_slabs_west0.name=West Stone Slab
-tile.nfc.vanilla_slabs_west1.name=West Sandstone Slab
-tile.nfc.vanilla_slabs_west2.name=West Wooden Planks Slab
-tile.nfc.vanilla_slabs_west3.name=West Cobblestone Slab
-
-tile.nfc.vanilla_slabs_east0.name=East Stone Slab
-tile.nfc.vanilla_slabs_east1.name=East Sandstone Slab
-tile.nfc.vanilla_slabs_east2.name=East Wooden Planks Slab
-tile.nfc.vanilla_slabs_east3.name=East Cobblestone Slab
+tile.nfc.vanilla_slabs_0.name=Stone Slab
+tile.nfc.vanilla_slabs_1.name=Sandstone Slab
+tile.nfc.vanilla_slabs_2.name=Wooden Planks Slab
+tile.nfc.vanilla_slabs_3.name=Cobblestone Slab
 
 tile.nfc.non_dyed_slabs0.name=Bricks Slab
 tile.nfc.non_dyed_slabs1.name=Worked Stone Slab
@@ -225,46 +205,6 @@ tile.nfc.non_dyed_slabs3.name=Stone Bricks Slab
 tile.nfc.non_dyed_slabs4.name=Mud Bricks Slab
 tile.nfc.non_dyed_slabs5.name=Fired Mud Bricks Slab
 tile.nfc.non_dyed_slabs6.name=Petrified Planks Slab
-
-tile.nfc.non_dyed_slabs_top0.name=Upside Down Bricks Slab
-tile.nfc.non_dyed_slabs_top1.name=Upside Down Worked Stone Slab
-tile.nfc.non_dyed_slabs_top2.name=Upside Down Large Stone Bricks Slab
-tile.nfc.non_dyed_slabs_top3.name=Upside Down Stone Bricks Slab
-tile.nfc.non_dyed_slabs_top4.name=Upside Down Mud Bricks Slab
-tile.nfc.non_dyed_slabs_top5.name=Upside Down Fired Mud Bricks Slab
-tile.nfc.non_dyed_slabs_top6.name=Upside Down Petrified Planks Slab
-
-tile.nfc.non_dyed_slabs_north0.name=North Bricks Slab
-tile.nfc.non_dyed_slabs_north1.name=North Worked Stone Slab
-tile.nfc.non_dyed_slabs_north2.name=North Large Stone Bricks Slab
-tile.nfc.non_dyed_slabs_north3.name=North Stone Bricks Slab
-tile.nfc.non_dyed_slabs_north4.name=North Mud Bricks Slab
-tile.nfc.non_dyed_slabs_north5.name=North Fired Mud Bricks Slab
-tile.nfc.non_dyed_slabs_north6.name=North Petrified Planks Slab
-
-tile.nfc.non_dyed_slabs_south0.name=South Bricks Slab
-tile.nfc.non_dyed_slabs_south1.name=South Worked Stone Slab
-tile.nfc.non_dyed_slabs_south2.name=South Large Stone Bricks Slab
-tile.nfc.non_dyed_slabs_south3.name=South Stone Bricks Slab
-tile.nfc.non_dyed_slabs_south4.name=South Mud Bricks Slab
-tile.nfc.non_dyed_slabs_south5.name=South Fired Mud Bricks Slab
-tile.nfc.non_dyed_slabs_south6.name=South Petrified Planks Slab
-
-tile.nfc.non_dyed_slabs_west0.name=West Bricks Slab
-tile.nfc.non_dyed_slabs_west1.name=West Worked Stone Slab
-tile.nfc.non_dyed_slabs_west2.name=West Large Stone Bricks Slab
-tile.nfc.non_dyed_slabs_west3.name=West Stone Bricks Slab
-tile.nfc.non_dyed_slabs_west4.name=West Mud Bricks Slab
-tile.nfc.non_dyed_slabs_west5.name=West Fired Mud Bricks Slab
-tile.nfc.non_dyed_slabs_west6.name=West Petrified Planks Slab
-
-tile.nfc.non_dyed_slabs_east0.name=East Bricks Slab
-tile.nfc.non_dyed_slabs_east1.name=East Worked Stone Slab
-tile.nfc.non_dyed_slabs_east2.name=East Large Stone Bricks Slab
-tile.nfc.non_dyed_slabs_east3.name=East Stone Bricks Slab
-tile.nfc.non_dyed_slabs_east4.name=East Mud Bricks Slab
-tile.nfc.non_dyed_slabs_east5.name=East Fired Mud Bricks Slab
-tile.nfc.non_dyed_slabs_east6.name=East Petrified Planks Slab
 
 tile.nfc.stained_planks_slabs0.name=White Stained Planks Slab
 tile.nfc.stained_planks_slabs1.name=Orange Stained Planks Slab
@@ -282,23 +222,6 @@ tile.nfc.stained_planks_slabs12.name=Brown Stained Planks Slab
 tile.nfc.stained_planks_slabs13.name=Green Stained Planks Slab
 tile.nfc.stained_planks_slabs14.name=Red Stained Planks Slab
 tile.nfc.stained_planks_slabs15.name=Black Stained Planks Slab
-
-tile.nfc.stained_planks_slabs_top0.name=Upside Down White Stained Planks Slab
-tile.nfc.stained_planks_slabs_top1.name=Upside Down Orange Stained Planks Slab
-tile.nfc.stained_planks_slabs_top2.name=Upside Down Magenta Stained Planks Slab
-tile.nfc.stained_planks_slabs_top3.name=Upside Down Light Blue Stained Planks Slab
-tile.nfc.stained_planks_slabs_top4.name=Upside Down Yellow Stained Planks Slab
-tile.nfc.stained_planks_slabs_top5.name=Upside Down Lime Stained Planks Slab
-tile.nfc.stained_planks_slabs_top6.name=Upside Down Pink Stained Planks Slab
-tile.nfc.stained_planks_slabs_top7.name=Upside Down Grey Stained Planks Slab
-tile.nfc.stained_planks_slabs_top8.name=Upside Down Light Grey Stained Planks Slab
-tile.nfc.stained_planks_slabs_top9.name=Upside Down Cyan Stained Planks Slab
-tile.nfc.stained_planks_slabs_top10.name=Upside Down Purple Stained Planks Slab
-tile.nfc.stained_planks_slabs_top11.name=Upside Down Blue Stained Planks Slab
-tile.nfc.stained_planks_slabs_top12.name=Upside Down Brown Stained Planks Slab
-tile.nfc.stained_planks_slabs_top13.name=Upside Down Green Stained Planks Slab
-tile.nfc.stained_planks_slabs_top14.name=Upside Down Red Stained Planks Slab
-tile.nfc.stained_planks_slabs_top15.name=Upside Down Black Stained Planks Slab
 
 
 item.nfc.aluminium_pickaxe.name=Aluminum Pickaxe

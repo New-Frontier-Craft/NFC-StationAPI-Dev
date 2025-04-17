@@ -7,7 +7,7 @@ import net.modificationstation.stationapi.api.util.Identifier;
 
 public class VanillaSlabBlock extends LazySlabTemplate {
     public VanillaSlabBlock(Identifier identifier, Material material, float hardness, BlockSoundGroup blockSounds, int[] fullBlocks, float[] boundingBoxValues, Block bottomSlabCounterpart) {
-        super(identifier, material, hardness, blockSounds, fullBlocks, boundingBoxValues, bottomSlabCounterpart);
+        super(identifier, material, hardness, blockSounds, fullBlocks, bottomSlabCounterpart);
     }
 
     @Override

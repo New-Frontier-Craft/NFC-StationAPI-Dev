@@ -4,9 +4,14 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.sound.BlockSoundGroup;
+import net.minecraft.util.math.Box;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+import net.modificationstation.stationapi.api.block.BlockState;
+import net.modificationstation.stationapi.api.state.StateManager;
+import net.modificationstation.stationapi.api.state.property.IntProperty;
 import net.modificationstation.stationapi.api.util.Identifier;
 import net.newfrontiercraft.nfc.mixin.DroppedMetaAccessor;
 
@@ -16,22 +21,77 @@ public class LazySlabTemplate extends LazyMultivariantBlockTemplate {
     public int[] fullBlocks;
     public int[] fullBlockMetas = new int[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
     public Block bottomSlabCounterpart;
+    public static final IntProperty ROTATIONS = IntProperty.of("rotations", 0, 6);
 
-    public LazySlabTemplate(Identifier identifier, Material material, float hardness, BlockSoundGroup blockSounds, int[] fullBlocks, float[] boundingBoxValues, Block bottomSlabCounterpart) {
+    public LazySlabTemplate(Identifier identifier, Material material, float hardness, BlockSoundGroup blockSounds, int[] fullBlocks, Block bottomSlabCounterpart) {
         super(identifier, material, hardness, blockSounds);
-        this.setBoundingBox(boundingBoxValues[0], boundingBoxValues[1], boundingBoxValues[2], boundingBoxValues[3], boundingBoxValues[4], boundingBoxValues[5]);
+        this.setBoundingBox(0.0F, 0.0F, 0.0F, 1.0F, 0.5F, 1.0F);
         this.setOpacity(2);
         this.fullBlocks = fullBlocks;
         this.bottomSlabCounterpart = bottomSlabCounterpart;
     }
 
-    public LazySlabTemplate(Identifier identifier, Material material, float hardness, BlockSoundGroup blockSounds, int[] fullBlocks, int[] fullBlockMetas, float[] boundingBoxValues, Block bottomSlabCounterpart) {
+    public LazySlabTemplate(Identifier identifier, Material material, float hardness, BlockSoundGroup blockSounds, int[] fullBlocks, int[] fullBlockMetas, Block bottomSlabCounterpart) {
         super(identifier, material, hardness, blockSounds);
-        this.setBoundingBox(boundingBoxValues[0], boundingBoxValues[1], boundingBoxValues[2], boundingBoxValues[3], boundingBoxValues[4], boundingBoxValues[5]);
+        this.setBoundingBox(0.0F, 0.0F, 0.0F, 1.0F, 0.5F, 1.0F);
         this.setOpacity(2);
         this.fullBlocks = fullBlocks;
         this.fullBlockMetas = fullBlockMetas;
         this.bottomSlabCounterpart = bottomSlabCounterpart;
+    }
+
+    @Override
+    public void appendProperties(StateManager.Builder<Block, BlockState> builder) {
+        super.appendProperties(builder);
+        builder.add(ROTATIONS);
+    }
+
+    @Environment(EnvType.CLIENT)
+    @Override
+    public Box getBoundingBox(World world, int x, int y, int z) {
+        this.updateBoundingBox(world, x, y, z);
+        return super.getBoundingBox(world, x, y, z);
+    }
+
+    @Override
+    public Box getCollisionShape(World world, int x, int y, int z) {
+        this.updateBoundingBox(world, x, y, z);
+        return super.getCollisionShape(world, x, y, z);
+    }
+
+    @Override
+    public void updateBoundingBox(BlockView blockView, int x, int y, int z) {
+        int blockId = blockView.getBlockId(x, y, z);
+        if (blockId == 0) {
+            return;
+        }
+        Block block = Block.BLOCKS[blockId];
+        if (!(block instanceof LazySlabTemplate)) {
+            return;
+        }
+        if (blockView instanceof World world) {
+            int rotation = world.getBlockState(x, y, z).get(ROTATIONS);
+            switch (rotation) {
+                case 0:
+                    this.setBoundingBox(0.0F, 0.0F, 0.0F, 1.0F, 0.5F, 1.0F);
+                    break;
+                case 1:
+                    this.setBoundingBox(0.0F, 0.5F, 0.0F, 1.0F, 1.0F, 1.0F);
+                    break;
+                case 2:
+                    this.setBoundingBox(0.5F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
+                    break;
+                case 3:
+                    this.setBoundingBox(0.0F, 0.0F, 0.0F, 0.5F, 1.0F, 1.0F);
+                    break;
+                case 4:
+                    this.setBoundingBox(0.0F, 0.0F, 0.5F, 1.0F, 1.0F, 1.0F);
+                    break;
+                case 5:
+                    this.setBoundingBox(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.5F);
+                    break;
+            }
+        }
     }
 
     @Override
@@ -78,6 +138,15 @@ public class LazySlabTemplate extends LazyMultivariantBlockTemplate {
         } else {
             return side == 0 || blockView.getBlockId(x, y, z) != this.id;
         }
+    }
+
+    // This only exists for testing
+    @Override
+    public boolean onUse(World world, int x, int y, int z, PlayerEntity player) {
+        BlockState currentState = world.getBlockState(x, y, z);
+        int rotation = world.getBlockState(x, y, z).get(ROTATIONS);
+        world.setBlockStateWithMetadataWithNotify(x, y, z, currentState.with(ROTATIONS, (rotation + 1) % 6), world.getBlockMeta(x, y, z));
+        return true;
     }
 
     // This is a placeholder, remove when block item merging has been fully implemented
