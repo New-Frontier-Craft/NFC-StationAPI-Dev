@@ -101,6 +101,10 @@
     "nfc:vanilla_slabs_east",
 
     "nfc:non_dyed_slabs",
-    "nfc:non_dyed_slabs_top"
+    "nfc:non_dyed_slabs_top",
+    "nfc:non_dyed_slabs_north",
+    "nfc:non_dyed_slabs_south",
+    "nfc:non_dyed_slabs_west",
+    "nfc:non_dyed_slabs_east"
   ]
 }

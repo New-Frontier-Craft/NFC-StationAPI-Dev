@@ -660,6 +660,50 @@ public class TextureListener {
                         getTextureIndex(planks + "petrified_wooden_planks")
                 }
         );
+        BlockListener.nonDyedSlabsNorth.specifyTextures(
+                new int[] {
+                        getTextureIndex(vanillaBlocks + "bricks"),
+                        getTextureIndex(decorativeBlocks + "worked_stone"),
+                        getTextureIndex(decorativeBlocks + "stone_bricks_large"),
+                        getTextureIndex(decorativeBlocks + "stone_bricks"),
+                        getTextureIndex(mudBlocks + "bricks"),
+                        getTextureIndex(firedMudBlocks + "bricks"),
+                        getTextureIndex(planks + "petrified_wooden_planks")
+                }
+        );
+        BlockListener.nonDyedSlabsSouth.specifyTextures(
+                new int[] {
+                        getTextureIndex(vanillaBlocks + "bricks"),
+                        getTextureIndex(decorativeBlocks + "worked_stone"),
+                        getTextureIndex(decorativeBlocks + "stone_bricks_large"),
+                        getTextureIndex(decorativeBlocks + "stone_bricks"),
+                        getTextureIndex(mudBlocks + "bricks"),
+                        getTextureIndex(firedMudBlocks + "bricks"),
+                        getTextureIndex(planks + "petrified_wooden_planks")
+                }
+        );
+        BlockListener.nonDyedSlabsWest.specifyTextures(
+                new int[] {
+                        getTextureIndex(vanillaBlocks + "bricks"),
+                        getTextureIndex(decorativeBlocks + "worked_stone"),
+                        getTextureIndex(decorativeBlocks + "stone_bricks_large"),
+                        getTextureIndex(decorativeBlocks + "stone_bricks"),
+                        getTextureIndex(mudBlocks + "bricks"),
+                        getTextureIndex(firedMudBlocks + "bricks"),
+                        getTextureIndex(planks + "petrified_wooden_planks")
+                }
+        );
+        BlockListener.nonDyedSlabsEast.specifyTextures(
+                new int[] {
+                        getTextureIndex(vanillaBlocks + "bricks"),
+                        getTextureIndex(decorativeBlocks + "worked_stone"),
+                        getTextureIndex(decorativeBlocks + "stone_bricks_large"),
+                        getTextureIndex(decorativeBlocks + "stone_bricks"),
+                        getTextureIndex(mudBlocks + "bricks"),
+                        getTextureIndex(firedMudBlocks + "bricks"),
+                        getTextureIndex(planks + "petrified_wooden_planks")
+                }
+        );
 
         BlockListener.stainedPlanksSlabs.specifyTextures(
                 new int[] {
