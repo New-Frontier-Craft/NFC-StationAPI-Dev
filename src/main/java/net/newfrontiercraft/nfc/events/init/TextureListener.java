@@ -597,7 +597,26 @@ public class TextureListener {
         });
 
         // Slabs
+        BlockListener.vanillaSlabsTop.specifyTextures(
+                new int[] {
+                        Block.SLAB.textureId,
+                        Block.SANDSTONE.textureId,
+                        Block.PLANKS.textureId,
+                        getTextureIndex(vanillaBlocks + "cobblestone")
+                }
+        );
         BlockListener.nonDyedSlabs.specifyTextures(
+                new int[] {
+                        getTextureIndex(vanillaBlocks + "bricks"),
+                        getTextureIndex(decorativeBlocks + "worked_stone"),
+                        getTextureIndex(decorativeBlocks + "stone_bricks_large"),
+                        getTextureIndex(decorativeBlocks + "stone_bricks"),
+                        getTextureIndex(mudBlocks + "bricks"),
+                        getTextureIndex(firedMudBlocks + "bricks"),
+                        getTextureIndex(planks + "petrified_wooden_planks")
+                }
+        );
+        BlockListener.nonDyedSlabsTop.specifyTextures(
                 new int[] {
                         getTextureIndex(vanillaBlocks + "bricks"),
                         getTextureIndex(decorativeBlocks + "worked_stone"),

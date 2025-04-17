@@ -92,6 +92,10 @@
     "nfc:copper_door_block",
 
     "nfc:brick_oven",
-    "nfc:brick_oven_active"
+    "nfc:brick_oven_active",
+
+    "nfc:vanilla_slabs_top",
+    "nfc:non_dyed_slabs",
+    "nfc:non_dyed_slabs_top"
   ]
 }
