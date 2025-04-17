@@ -214,6 +214,40 @@ tile.nfc.non_dyed_slabs_top4.name=Upside Down Mud Bricks Slab
 tile.nfc.non_dyed_slabs_top5.name=Upside Down Fired Mud Bricks Slab
 tile.nfc.non_dyed_slabs_top6.name=Upside Down Petrified Planks Slab
 
+tile.nfc.stained_planks_slabs0.name=White Stained Planks Slab
+tile.nfc.stained_planks_slabs1.name=Orange Stained Planks Slab
+tile.nfc.stained_planks_slabs2.name=Magenta Stained Planks Slab
+tile.nfc.stained_planks_slabs3.name=Light Blue Stained Planks Slab
+tile.nfc.stained_planks_slabs4.name=Yellow Stained Planks Slab
+tile.nfc.stained_planks_slabs5.name=Lime Stained Planks Slab
+tile.nfc.stained_planks_slabs6.name=Pink Stained Planks Slab
+tile.nfc.stained_planks_slabs7.name=Grey Stained Planks Slab
+tile.nfc.stained_planks_slabs8.name=Light Grey Stained Planks Slab
+tile.nfc.stained_planks_slabs9.name=Cyan Stained Planks Slab
+tile.nfc.stained_planks_slabs10.name=Purple Stained Planks Slab
+tile.nfc.stained_planks_slabs11.name=Blue Stained Planks Slab
+tile.nfc.stained_planks_slabs12.name=Brown Stained Planks Slab
+tile.nfc.stained_planks_slabs13.name=Green Stained Planks Slab
+tile.nfc.stained_planks_slabs14.name=Red Stained Planks Slab
+tile.nfc.stained_planks_slabs15.name=Black Stained Planks Slab
+
+tile.nfc.stained_planks_slabs_top0.name=Upside Down White Stained Planks Slab
+tile.nfc.stained_planks_slabs_top1.name=Upside Down Orange Stained Planks Slab
+tile.nfc.stained_planks_slabs_top2.name=Upside Down Magenta Stained Planks Slab
+tile.nfc.stained_planks_slabs_top3.name=Upside Down Light Blue Stained Planks Slab
+tile.nfc.stained_planks_slabs_top4.name=Upside Down Yellow Stained Planks Slab
+tile.nfc.stained_planks_slabs_top5.name=Upside Down Lime Stained Planks Slab
+tile.nfc.stained_planks_slabs_top6.name=Upside Down Pink Stained Planks Slab
+tile.nfc.stained_planks_slabs_top7.name=Upside Down Grey Stained Planks Slab
+tile.nfc.stained_planks_slabs_top8.name=Upside Down Light Grey Stained Planks Slab
+tile.nfc.stained_planks_slabs_top9.name=Upside Down Cyan Stained Planks Slab
+tile.nfc.stained_planks_slabs_top10.name=Upside Down Purple Stained Planks Slab
+tile.nfc.stained_planks_slabs_top11.name=Upside Down Blue Stained Planks Slab
+tile.nfc.stained_planks_slabs_top12.name=Upside Down Brown Stained Planks Slab
+tile.nfc.stained_planks_slabs_top13.name=Upside Down Green Stained Planks Slab
+tile.nfc.stained_planks_slabs_top14.name=Upside Down Red Stained Planks Slab
+tile.nfc.stained_planks_slabs_top15.name=Upside Down Black Stained Planks Slab
+
 
 item.nfc.aluminium_pickaxe.name=Aluminum Pickaxe
 item.nfc.bismuth_pickaxe.name=Bismuth Pickaxe

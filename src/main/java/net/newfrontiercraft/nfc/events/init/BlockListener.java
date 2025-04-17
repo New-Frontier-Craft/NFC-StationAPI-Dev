@@ -154,8 +154,12 @@ public class BlockListener {
 
     public static LazySlabTemplate
             vanillaSlabsTop,
+
             nonDyedSlabs,
-            nonDyedSlabsTop;
+            nonDyedSlabsTop,
+
+            stainedPlanksSlabs,
+            stainedPlanksSlabsTop;
 
     @Entrypoint.Namespace
     public static Namespace MOD_ID;
@@ -301,6 +305,7 @@ public class BlockListener {
                 },
                 Block.SLAB
         );
+
         nonDyedSlabs = new LazySlabTemplate(Identifier.of(MOD_ID, "non_dyed_slabs"), Material.STONE, 1.0F, Block.STONE_SOUND_GROUP,
                 new int[] {
                         Block.BRICKS.id, workedStone.id, stoneBricksLarge.id, stoneBricks.id, mud.id, firedMud.id, petrifiedPlanks.id, 0, 0, 0, 0, 0, 0, 0, 0, 0
@@ -324,6 +329,31 @@ public class BlockListener {
                         0.0F, 0.5F, 0.0F, 1.0F, 1.0F, 1.0F
                 },
                 nonDyedSlabs
+        );
+
+        stainedPlanksSlabs = new LazySlabTemplate(Identifier.of(MOD_ID, "stained_planks_slabs"), Material.WOOD, 1.0F, Block.WOOD_SOUND_GROUP,
+                new int[] {
+                        stainedPlanks.id, stainedPlanks.id, stainedPlanks.id, stainedPlanks.id, stainedPlanks.id, stainedPlanks.id, stainedPlanks.id, stainedPlanks.id, stainedPlanks.id, stainedPlanks.id, stainedPlanks.id, stainedPlanks.id, stainedPlanks.id, stainedPlanks.id, stainedPlanks.id, stainedPlanks.id
+                },
+                new int[] {
+                        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15
+                },
+                new float[] {
+                        0.0F, 0.0F, 0.0F, 1.0F, 0.5F, 1.0F
+                },
+                null
+        );
+        stainedPlanksSlabsTop = new LazySlabTemplate(Identifier.of(MOD_ID, "stained_planks_slabs_top"), Material.WOOD, 1.0F, Block.WOOD_SOUND_GROUP,
+                new int[] {
+                        stainedPlanks.id, stainedPlanks.id, stainedPlanks.id, stainedPlanks.id, stainedPlanks.id, stainedPlanks.id, stainedPlanks.id, stainedPlanks.id, stainedPlanks.id, stainedPlanks.id, stainedPlanks.id, stainedPlanks.id, stainedPlanks.id, stainedPlanks.id, stainedPlanks.id, stainedPlanks.id
+                },
+                new int[] {
+                        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15
+                },
+                new float[] {
+                        0.0F, 0.5F, 0.0F, 1.0F, 1.0F, 1.0F
+                },
+                stainedPlanksSlabs
         );
 
         // Changes to vanilla blast resistance

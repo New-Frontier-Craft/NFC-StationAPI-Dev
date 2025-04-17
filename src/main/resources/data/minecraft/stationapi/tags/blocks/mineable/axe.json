@@ -5,6 +5,9 @@
     "nfc:stained_planks",
     "nfc:scaffold_block",
     "nfc:fence_gate",
-    "minecraft:oak_fence"
+    "minecraft:oak_fence",
+
+    "nfc:stained_planks_slabs",
+    "nfc:stained_planks_slabs_top"
   ]
 }
