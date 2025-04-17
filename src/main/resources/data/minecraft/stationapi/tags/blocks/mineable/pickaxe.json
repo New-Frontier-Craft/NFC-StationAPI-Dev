@@ -95,6 +95,11 @@
     "nfc:brick_oven_active",
 
     "nfc:vanilla_slabs_top",
+    "nfc:vanilla_slabs_north",
+    "nfc:vanilla_slabs_south",
+    "nfc:vanilla_slabs_west",
+    "nfc:vanilla_slabs_east",
+
     "nfc:non_dyed_slabs",
     "nfc:non_dyed_slabs_top"
   ]

@@ -198,6 +198,26 @@ tile.nfc.vanilla_slabs_top1.name=Upside Down Sandstone Slab
 tile.nfc.vanilla_slabs_top2.name=Upside Down Wooden Planks Slab
 tile.nfc.vanilla_slabs_top3.name=Upside Down Cobblestone Slab
 
+tile.nfc.vanilla_slabs_north0.name=North Stone Slab
+tile.nfc.vanilla_slabs_north1.name=North Sandstone Slab
+tile.nfc.vanilla_slabs_north2.name=North Wooden Planks Slab
+tile.nfc.vanilla_slabs_north3.name=North Cobblestone Slab
+
+tile.nfc.vanilla_slabs_south0.name=South Stone Slab
+tile.nfc.vanilla_slabs_south1.name=South Sandstone Slab
+tile.nfc.vanilla_slabs_south2.name=South Wooden Planks Slab
+tile.nfc.vanilla_slabs_south3.name=South Cobblestone Slab
+
+tile.nfc.vanilla_slabs_west0.name=West Stone Slab
+tile.nfc.vanilla_slabs_west1.name=West Sandstone Slab
+tile.nfc.vanilla_slabs_west2.name=West Wooden Planks Slab
+tile.nfc.vanilla_slabs_west3.name=West Cobblestone Slab
+
+tile.nfc.vanilla_slabs_east0.name=East Stone Slab
+tile.nfc.vanilla_slabs_east1.name=East Sandstone Slab
+tile.nfc.vanilla_slabs_east2.name=East Wooden Planks Slab
+tile.nfc.vanilla_slabs_east3.name=East Cobblestone Slab
+
 tile.nfc.non_dyed_slabs0.name=Bricks Slab
 tile.nfc.non_dyed_slabs1.name=Worked Stone Slab
 tile.nfc.non_dyed_slabs2.name=Large Stone Bricks Slab

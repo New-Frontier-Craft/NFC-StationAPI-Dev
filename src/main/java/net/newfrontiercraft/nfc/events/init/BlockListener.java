@@ -154,6 +154,10 @@ public class BlockListener {
 
     public static LazySlabTemplate
             vanillaSlabsTop,
+            vanillaSlabsNorth,
+            vanillaSlabsSouth,
+            vanillaSlabsWest,
+            vanillaSlabsEast,
 
             nonDyedSlabs,
             nonDyedSlabsTop,
@@ -302,6 +306,42 @@ public class BlockListener {
                 },
                 new float[] {
                         0.0F, 0.5F, 0.0F, 1.0F, 1.0F, 1.0F
+                },
+                Block.SLAB
+        );
+        vanillaSlabsNorth = new VanillaSlabBlock(Identifier.of(MOD_ID, "vanilla_slabs_north"), Material.STONE, 1.0F, Block.STONE_SOUND_GROUP,
+                new int[] {
+                        Block.DOUBLE_SLAB.id, Block.SANDSTONE.id, Block.PLANKS.id, Block.COBBLESTONE.id, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+                },
+                new float[] {
+                        0.5F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F
+                },
+                Block.SLAB
+        );
+        vanillaSlabsSouth = new VanillaSlabBlock(Identifier.of(MOD_ID, "vanilla_slabs_south"), Material.STONE, 1.0F, Block.STONE_SOUND_GROUP,
+                new int[] {
+                        Block.DOUBLE_SLAB.id, Block.SANDSTONE.id, Block.PLANKS.id, Block.COBBLESTONE.id, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+                },
+                new float[] {
+                        0.0F, 0.0F, 0.0F, 0.5F, 1.0F, 1.0F
+                },
+                Block.SLAB
+        );
+        vanillaSlabsWest = new VanillaSlabBlock(Identifier.of(MOD_ID, "vanilla_slabs_west"), Material.STONE, 1.0F, Block.STONE_SOUND_GROUP,
+                new int[] {
+                        Block.DOUBLE_SLAB.id, Block.SANDSTONE.id, Block.PLANKS.id, Block.COBBLESTONE.id, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+                },
+                new float[] {
+                        0.0F, 0.0F, 0.5F, 1.0F, 1.0F, 1.0F
+                },
+                Block.SLAB
+        );
+        vanillaSlabsEast = new VanillaSlabBlock(Identifier.of(MOD_ID, "vanilla_slabs_east"), Material.STONE, 1.0F, Block.STONE_SOUND_GROUP,
+                new int[] {
+                        Block.DOUBLE_SLAB.id, Block.SANDSTONE.id, Block.PLANKS.id, Block.COBBLESTONE.id, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+                },
+                new float[] {
+                        0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.5F
                 },
                 Block.SLAB
         );

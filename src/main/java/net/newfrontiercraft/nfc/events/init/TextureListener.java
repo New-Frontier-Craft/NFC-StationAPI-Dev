@@ -605,6 +605,39 @@ public class TextureListener {
                         getTextureIndex(vanillaBlocks + "cobblestone")
                 }
         );
+        BlockListener.vanillaSlabsNorth.specifyTextures(
+                new int[] {
+                        Block.SLAB.textureId,
+                        Block.SANDSTONE.textureId,
+                        Block.PLANKS.textureId,
+                        getTextureIndex(vanillaBlocks + "cobblestone")
+                }
+        );
+        BlockListener.vanillaSlabsSouth.specifyTextures(
+                new int[] {
+                        Block.SLAB.textureId,
+                        Block.SANDSTONE.textureId,
+                        Block.PLANKS.textureId,
+                        getTextureIndex(vanillaBlocks + "cobblestone")
+                }
+        );
+        BlockListener.vanillaSlabsWest.specifyTextures(
+                new int[] {
+                        Block.SLAB.textureId,
+                        Block.SANDSTONE.textureId,
+                        Block.PLANKS.textureId,
+                        getTextureIndex(vanillaBlocks + "cobblestone")
+                }
+        );
+        BlockListener.vanillaSlabsEast.specifyTextures(
+                new int[] {
+                        Block.SLAB.textureId,
+                        Block.SANDSTONE.textureId,
+                        Block.PLANKS.textureId,
+                        getTextureIndex(vanillaBlocks + "cobblestone")
+                }
+        );
+
         BlockListener.nonDyedSlabs.specifyTextures(
                 new int[] {
                         getTextureIndex(vanillaBlocks + "bricks"),
@@ -627,6 +660,7 @@ public class TextureListener {
                         getTextureIndex(planks + "petrified_wooden_planks")
                 }
         );
+
         BlockListener.stainedPlanksSlabs.specifyTextures(
                 new int[] {
                         getTextureIndex(stainedPlanks + "white"),
