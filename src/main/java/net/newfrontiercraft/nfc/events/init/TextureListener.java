@@ -596,6 +596,19 @@ public class TextureListener {
                 lightSource
         });
 
+        // Slabs
+        BlockListener.nonDyedSlabs.specifyTextures(
+                new int[] {
+                        getTextureIndex(vanillaBlocks + "bricks"),
+                        getTextureIndex(decorativeBlocks + "worked_stone"),
+                        getTextureIndex(decorativeBlocks + "stone_bricks_large"),
+                        getTextureIndex(decorativeBlocks + "stone_bricks"),
+                        getTextureIndex(mudBlocks + "bricks"),
+                        getTextureIndex(firedMudBlocks + "bricks"),
+                        getTextureIndex(planks + "petrified_wooden_planks")
+                }
+        );
+
         // Vanilla texture changes
         grassBlockSide = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, vanillaBlocks + "grass_block_side")).index;
         grassBlockSideSnowy = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, vanillaBlocks + "grass_block_side_snowy")).index;

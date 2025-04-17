@@ -193,6 +193,14 @@ tile.nfc.barrier0.name=Barrier Block
 tile.nfc.barrier1.name=Support Block
 tile.nfc.light_source0.name=Light Source
 
+tile.nfc.non_dyed_slabs0.name=Bricks Slab
+tile.nfc.non_dyed_slabs1.name=Worked Stone Slab
+tile.nfc.non_dyed_slabs2.name=Large Stone Bricks Slab
+tile.nfc.non_dyed_slabs3.name=Stone Bricks Slab
+tile.nfc.non_dyed_slabs4.name=Mud Bricks Slab
+tile.nfc.non_dyed_slabs5.name=Fired Mud Bricks Slab
+tile.nfc.non_dyed_slabs6.name=Petrified Planks Slab
+
 
 item.nfc.aluminium_pickaxe.name=Aluminum Pickaxe
 item.nfc.bismuth_pickaxe.name=Bismuth Pickaxe

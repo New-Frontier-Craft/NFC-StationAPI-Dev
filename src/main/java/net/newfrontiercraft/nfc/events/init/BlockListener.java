@@ -152,6 +152,8 @@ public class BlockListener {
             barrier,
             lightSource;
 
+    public static LazySlabTemplate nonDyedSlabs;
+
     @Entrypoint.Namespace
     public static Namespace MOD_ID;
 
@@ -286,6 +288,15 @@ public class BlockListener {
 
         barrier = new CreativeBlock(Identifier.of(MOD_ID, "barrier"), Material.STONE, Block.STONE_SOUND_GROUP, new boolean[] {true, false});
         lightSource = new LightSourceBlock(Identifier.of(MOD_ID, "light_source"), Material.STONE, Block.STONE_SOUND_GROUP, new boolean[] {false});
+
+        nonDyedSlabs = new LazySlabTemplate(Identifier.of(MOD_ID, "non_dyed_slabs"), Material.STONE, 1.0F, Block.STONE_SOUND_GROUP,
+                new int[] {
+                        Block.BRICKS.id, workedStone.id, stoneBricksLarge.id, stoneBricks.id, mud.id, firedMud.id, petrifiedPlanks.id, 0, 0, 0, 0, 0, 0, 0, 0, 0
+                },
+                new int[] {
+                        0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+                }
+        );
 
         // Changes to vanilla blast resistance
         Block.COAL_ORE.setResistance(500F);
