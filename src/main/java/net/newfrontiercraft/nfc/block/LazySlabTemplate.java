@@ -2,14 +2,18 @@ package net.newfrontiercraft.nfc.block;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.fabricmc.api.EnvironmentInterface;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.render.block.BlockRenderManager;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.math.Box;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldRegion;
 import net.modificationstation.stationapi.api.block.BlockState;
+import net.modificationstation.stationapi.api.client.model.block.BlockWithWorldRenderer;
 import net.modificationstation.stationapi.api.state.StateManager;
 import net.modificationstation.stationapi.api.state.property.IntProperty;
 import net.modificationstation.stationapi.api.util.Identifier;
@@ -17,7 +21,8 @@ import net.newfrontiercraft.nfc.mixin.DroppedMetaAccessor;
 
 import java.util.Random;
 
-public class LazySlabTemplate extends LazyMultivariantBlockTemplate {
+@EnvironmentInterface(value=EnvType.CLIENT, itf= BlockWithWorldRenderer.class)
+public class LazySlabTemplate extends LazyMultivariantBlockTemplate implements BlockWithWorldRenderer {
     public int[] fullBlocks;
     public int[] fullBlockMetas = new int[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
     public Block bottomSlabCounterpart;
@@ -128,6 +133,7 @@ public class LazySlabTemplate extends LazyMultivariantBlockTemplate {
         return false;
     }
 
+    /* This code needs to be adapted to work with block states
     @Environment(EnvType.CLIENT)
     @Override
     public boolean isSideVisible(BlockView blockView, int x, int y, int z, int side) {
@@ -139,6 +145,7 @@ public class LazySlabTemplate extends LazyMultivariantBlockTemplate {
             return side == 0 || blockView.getBlockId(x, y, z) != this.id;
         }
     }
+     */
 
     // This only exists for testing
     @Override
@@ -165,5 +172,50 @@ public class LazySlabTemplate extends LazyMultivariantBlockTemplate {
         }
         world.setBlock(x, y, z, 0);
         world.setBlock(x, y - 1, z, fullBlocks[selfMeta], fullBlockMetas[selfMeta]);
+    }
+
+    @Override
+    public boolean renderWorld(BlockRenderManager blockRenderManager, BlockView blockView, int x, int y, int z) {
+        int blockId = blockView.getBlockId(x, y, z);
+        if (blockId == 0) {
+            return false;
+        }
+        Block block = Block.BLOCKS[blockId];
+        if (!(block instanceof LazySlabTemplate)) {
+            return false;
+        }
+        int rotation = 0;
+        if (blockView instanceof WorldRegion worldRegion) {
+            rotation = worldRegion.getBlockState(x, y, z).get(ROTATIONS);
+        } else if (blockView instanceof World world) {
+            rotation = world.getBlockState(x, y, z).get(ROTATIONS);
+        }
+        switch (rotation) {
+            case 0:
+                this.setBoundingBox(0.0F, 0.0F, 0.0F, 1.0F, 0.5F, 1.0F);
+                blockRenderManager.renderBlock(this, x, y, z);
+                break;
+            case 1:
+                this.setBoundingBox(0.0F, 0.5F, 0.0F, 1.0F, 1.0F, 1.0F);
+                blockRenderManager.renderBlock(this, x, y, z);
+                break;
+            case 2:
+                this.setBoundingBox(0.5F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
+                blockRenderManager.renderBlock(this, x, y, z);
+                break;
+            case 3:
+                this.setBoundingBox(0.0F, 0.0F, 0.0F, 0.5F, 1.0F, 1.0F);
+                blockRenderManager.renderBlock(this, x, y, z);
+                break;
+            case 4:
+                this.setBoundingBox(0.0F, 0.0F, 0.5F, 1.0F, 1.0F, 1.0F);
+                blockRenderManager.renderBlock(this, x, y, z);
+                break;
+            case 5:
+                this.setBoundingBox(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.5F);
+                blockRenderManager.renderBlock(this, x, y, z);
+                break;
+        }
+        return true;
     }
 }
