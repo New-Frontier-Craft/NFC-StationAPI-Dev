@@ -15,6 +15,9 @@ public class VanillaSlabBlock extends LazySlabTemplate {
         if (side == 0 && meta == 1) {
             return Block.SANDSTONE.textureId + 16;
         }
+        if (side == 1 && meta == 1) {
+            return Block.SANDSTONE.textureId - 16;
+        }
         return super.getTexture(side, meta);
     }
 }
