@@ -20,7 +20,7 @@ public class LazySlabTemplate extends LazyMultivariantBlockTemplate {
     public LazySlabTemplate(Identifier identifier, Material material, float hardness, BlockSoundGroup blockSounds, int[] fullBlocks, float[] boundingBoxValues, Block bottomSlabCounterpart) {
         super(identifier, material, hardness, blockSounds);
         this.setBoundingBox(boundingBoxValues[0], boundingBoxValues[1], boundingBoxValues[2], boundingBoxValues[3], boundingBoxValues[4], boundingBoxValues[5]);
-        this.setOpacity(255);
+        this.setOpacity(2);
         this.fullBlocks = fullBlocks;
         this.bottomSlabCounterpart = bottomSlabCounterpart;
     }
@@ -28,7 +28,7 @@ public class LazySlabTemplate extends LazyMultivariantBlockTemplate {
     public LazySlabTemplate(Identifier identifier, Material material, float hardness, BlockSoundGroup blockSounds, int[] fullBlocks, int[] fullBlockMetas, float[] boundingBoxValues, Block bottomSlabCounterpart) {
         super(identifier, material, hardness, blockSounds);
         this.setBoundingBox(boundingBoxValues[0], boundingBoxValues[1], boundingBoxValues[2], boundingBoxValues[3], boundingBoxValues[4], boundingBoxValues[5]);
-        this.setOpacity(255);
+        this.setOpacity(2);
         this.fullBlocks = fullBlocks;
         this.fullBlockMetas = fullBlockMetas;
         this.bottomSlabCounterpart = bottomSlabCounterpart;
