@@ -6,9 +6,13 @@ import net.minecraft.item.BlockItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.SlabBlockItem;
 import net.minecraft.util.hit.HitResult;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Box;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.modificationstation.stationapi.api.block.BlockState;
+import net.modificationstation.stationapi.api.util.math.Direction;
+import net.modificationstation.stationapi.api.util.math.StationBlockPos;
 import net.newfrontiercraft.nfc.block.LazySlabTemplate;
 import net.newfrontiercraft.nfc.events.init.BlockListener;
 import org.spongepowered.asm.mixin.Mixin;
@@ -21,131 +25,132 @@ public abstract class SlabBlockItemMixin extends BlockItem {
 
     @Override
     public boolean useOnBlock(ItemStack stack, PlayerEntity user, World world, int x, int y, int z, int side) {
-        int blockX = x;
-        int blockY = y;
-        int blockZ = z;
-
-        HitResult hitResult = user.raycast(5, 0);
-        double hitOffsetX = hitResult.pos.x - (float)hitResult.blockX;
-        double hitOffsetY = hitResult.pos.y - (float)hitResult.blockY;
-        double hitOffsetZ = hitResult.pos.z - (float)hitResult.blockZ;
-        System.out.println(hitResult.pos.x - (float)hitResult.blockX);
-        System.out.println(hitResult.pos.y - (float)hitResult.blockY);
-        System.out.println(hitResult.pos.z - (float)hitResult.blockZ);
-
-        System.out.println(hitResult.pos.x + " - " + hitResult.blockX);
+        StationBlockPos blockOffset = new BlockPos(x, y, z);
+        blockOffset = blockOffset.offset(Direction.byId(side));
 
         System.out.println(side);
-        // Merge existing slab into full block
+
+        if(attemptSlabMerge(world, x, y, z, stack, side, false)){
+            return true;
+        }
+        if(attemptSlabMerge(world, blockOffset.getX(), blockOffset.getY(), blockOffset.getZ(), stack, side, true)){
+            return true;
+        }
+        if(this.attemptSlabPlace(world, blockOffset.getX(), blockOffset.getY(), blockOffset.getZ(), user, stack, side)){
+            return true;
+        }
+        return false;
+    }
+
+    public boolean attemptSlabMerge(World world, int x, int y, int z, ItemStack stack, int side, boolean skipPlacementCheck){
         if((world.getBlockId(x, y, z) == Block.SLAB.id || world.getBlockId(x, y, z) == BlockListener.vanillaSlabs.id) && world.getBlockMeta(x, y, z) == stack.getDamage()){
             boolean canPlace = false;
             BlockState currentBlockState = world.getBlockState(x, y, z);
             int meta = world.getBlockMeta(x, y, z);
-            BlockState fullBlockState = getFullBlockState(meta);
+            BlockState fullBlockState = getFullBlockState(currentBlockState, meta);
 
-            if(currentBlockState.getBlock().id == BlockListener.vanillaSlabs.id){
-                int slabDirection = currentBlockState.get(LazySlabTemplate.ROTATIONS);
-                if(slabDirection == 1 && side == 0){
-                    canPlace = true;
-                }
-                if(slabDirection == 2 && side == 4){
-                    canPlace = true;
-                }
-                if(slabDirection == 3 && side == 5){
-                    canPlace = true;
-                }
-                if(slabDirection == 4 && side == 2){
-                    canPlace = true;
-                }
-                if(slabDirection == 5 && side == 3){
-                    canPlace = true;
-                }
-            }
-            if(currentBlockState.getBlock().id == Block.SLAB.id){
-                if(side == 1){
-                    canPlace = true;
-                }
-            }
-            if(canPlace){
-                this.placeBlock(world, x, y, z, fullBlockState, 0);
-                return true;
-            }
-        }
-        else {
-            switch (side){
-                case 0:
-                    blockY--;
-                    break;
-                case 1:
-                    blockY++;
-                    break;
-                case 2:
-                    blockZ--;
-                    break;
-                case 3:
-                    blockZ++;
-                    break;
-                case 4:
-                    blockX--;
-                    break;
-                case 5:
-                    blockX++;
-                    break;
-            }
-            // Merge existing slab into full block
-            if(world.getBlockId(blockX, blockY, blockZ) == Block.SLAB.id || world.getBlockId(blockX, blockY, blockZ) == BlockListener.vanillaSlabs.id){
-                int meta = world.getBlockMeta(blockX, blockY, blockZ);
-                BlockState fullBlockState = getFullBlockState(meta);
-                this.placeBlock(world, blockX, blockY, blockZ, fullBlockState, 0);
-                return true;
-            }
-            if(world.isAir(blockX, blockY, blockZ)){
-                if(user.isSneaking()){
-                    int rotation = MathHelper.floor((double)(user.yaw * 4.0F / 360.0F) + 0.5) & 3;
-                    System.out.println("rotation "+ rotation);
-                    int slabDirection = 0;
-                    if(side == 0 || side == 1){
-                        switch (rotation){
-                            case 0:
-                            case 2:
-                                if(hitOffsetZ < 0.5f){
-                                    slabDirection = 5;
-                                }
-                                else {
-                                    slabDirection = 4;
-                                }
-                                break;
-                            case 1:
-                            case 3:
-                                if(hitOffsetX < 0.5f){
-                                    slabDirection = 3;
-                                }
-                                else {
-                                    slabDirection = 2;
-                                }
-                                break;
-                        }
+            if(!skipPlacementCheck){
+                if(currentBlockState.getBlock().id == BlockListener.vanillaSlabs.id){
+                    int slabDirection = currentBlockState.get(LazySlabTemplate.ROTATIONS);
+                    if(slabDirection == 1 && side == 0){
+                        canPlace = true;
                     }
-                    else {
-                        slabDirection = getSlabDirectionFromPlacementDirection(side);
+                    if(slabDirection == 2 && side == 4){
+                        canPlace = true;
                     }
-                    this.placeBlock(world, blockX, blockY, blockZ, BlockListener.vanillaSlabs.getDefaultState().with(LazySlabTemplate.ROTATIONS, slabDirection), stack.getDamage());
-                }
-                else {
-                    if((hitOffsetY < 0.5f && side != 0) || side == 1){
-                        this.placeBlock(world, blockX, blockY, blockZ, Block.SLAB.getDefaultState(), stack.getDamage());
+                    if(slabDirection == 3 && side == 5){
+                        canPlace = true;
                     }
-                    else {
-                        this.placeBlock(world, blockX, blockY, blockZ, BlockListener.vanillaSlabs.getDefaultState().with(LazySlabTemplate.ROTATIONS, 1), stack.getDamage());
+                    if(slabDirection == 4 && side == 2){
+                        canPlace = true;
+                    }
+                    if(slabDirection == 5 && side == 3){
+                        canPlace = true;
                     }
                 }
-                return true;
+                if(currentBlockState.getBlock().id == Block.SLAB.id){
+                    if(side == 1){
+                        canPlace = true;
+                    }
+                }
+            }
+            if(canPlace || skipPlacementCheck){
+                if(this.placeBlock(world, x, y, z, fullBlockState, 0)){
+                    return true;
+                }
             }
         }
         return false;
     }
 
-    public BlockState getFullBlockState(int meta){
+    public boolean attemptSlabPlace(World world, int x, int y, int z, PlayerEntity user, ItemStack stack, int side){
+        if(world.isAir(x, y, z)){
+            HitResult hitResult = user.raycast(5, 0);
+            double hitOffsetX = hitResult.pos.x - (float)hitResult.blockX;
+            double hitOffsetY = hitResult.pos.y - (float)hitResult.blockY;
+            double hitOffsetZ = hitResult.pos.z - (float)hitResult.blockZ;
+
+            System.out.println("oX " + (hitResult.pos.x - (float)hitResult.blockX));
+            System.out.println("oY " + (hitResult.pos.y - (float)hitResult.blockY));
+            System.out.println("oZ " + (hitResult.pos.z - (float)hitResult.blockZ));
+
+            boolean canPlace;
+
+            if(user.isSneaking()){
+                int rotation = MathHelper.floor((double)(user.yaw * 4.0F / 360.0F) + 0.5) & 3;
+                System.out.println("rotation "+ rotation);
+                int slabDirection = 0;
+                if(true){
+                    switch (rotation){
+                        case 0:
+                        case 2:
+                            if(side == 2 || side == 3){
+                                slabDirection = getSlabDirectionFromPlacementDirection(side);
+                            }
+                            else {
+                                if(hitOffsetZ > 0 && hitOffsetZ < 0.5f){
+                                    slabDirection = 5;
+                                }
+                                else {
+                                    slabDirection = 4;
+                                }
+                            }
+                            break;
+                        case 1:
+                        case 3:
+                            if(side == 4 || side == 5){
+                                slabDirection = getSlabDirectionFromPlacementDirection(side);
+                            }
+                            else {
+                                if(hitOffsetX > 0 && hitOffsetX <= 0.5f){
+                                    slabDirection = 3;
+                                }
+                                else {
+                                    slabDirection = 2;
+                                }
+                            }
+                            break;
+                    }
+                }
+                else {
+                    slabDirection = getSlabDirectionFromPlacementDirection(side);
+                }
+                canPlace = this.placeBlock(world, x, y, z, BlockListener.vanillaSlabs.getDefaultState().with(LazySlabTemplate.ROTATIONS, slabDirection), stack.getDamage());
+            }
+            else {
+                if((hitOffsetY < 0.5f && side != 0) || side == 1){
+                    canPlace = this.placeBlock(world, x, y, z, Block.SLAB.getDefaultState(), stack.getDamage());
+                }
+                else {
+                    canPlace = this.placeBlock(world, x, y, z, BlockListener.vanillaSlabs.getDefaultState().with(LazySlabTemplate.ROTATIONS, 1), stack.getDamage());
+                }
+            }
+            return canPlace;
+        }
+        return false;
+    }
+
+    public BlockState getFullBlockState(BlockState currentBlockState, int meta){
         BlockState fullBlockState = Block.DOUBLE_SLAB.getDefaultState();
         switch (meta){
             case 1:
@@ -161,8 +166,24 @@ public abstract class SlabBlockItemMixin extends BlockItem {
         return fullBlockState;
     }
 
-    public void placeBlock(World world, int x, int y, int z, BlockState blockState, int meta){
-        world.setBlockStateWithMetadataWithNotify(x, y, z, blockState, meta);
+    public boolean placeBlock(World world, int x, int y, int z, BlockState blockState, int meta){
+        Block block = blockState.getBlock();
+        if(this.canPlace(world, block.id, x, y, z)){
+            world.playSound(x + 0.5F, y + 0.5F, z + 0.5F, block.soundGroup.getSound(), (block.soundGroup.getVolume() + 1.0F) / 2.0F, block.soundGroup.getPitch() * 0.8F);
+            world.setBlockStateWithMetadataWithNotify(x, y, z, blockState, meta);
+            return true;
+        }
+        return false;
+    }
+
+    public boolean canPlace(World world, int blockId, int x, int y, int z) {
+        Block blockToPlace = Block.BLOCKS[blockId];
+        Box var10 = blockToPlace.getCollisionShape(world, x, y, z);
+
+        if (var10 != null && !world.canSpawnEntity(var10)) {
+            return false;
+        }
+        return blockId > 0;
     }
 
     public int getSlabDirectionFromPlacementDirection(int direction){

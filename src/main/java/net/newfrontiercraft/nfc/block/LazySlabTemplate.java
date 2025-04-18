@@ -161,22 +161,10 @@ public class LazySlabTemplate extends LazyMultivariantBlockTemplate implements B
         return false;
     }
 
-    // This is a placeholder, remove when block item merging has been fully implemented
     @Override
-    public void onPlaced(World world, int x, int y, int z) {
-        int blockId = world.getBlockId(x, y - 1, z);
-        int selfMeta = world.getBlockMeta(x, y, z);
-        int belowMeta = world.getBlockMeta(x, y - 1, z);
-        if (selfMeta != belowMeta) {
-            super.onPlaced(world, x, y, z);
-            return;
-        }
-        if (blockId != this.id) {
-            super.onPlaced(world, x, y, z);
-            return;
-        }
-        world.setBlock(x, y, z, 0);
-        world.setBlock(x, y - 1, z, fullBlocks[selfMeta], fullBlockMetas[selfMeta]);
+    public boolean canPlaceAt(World world, int x, int y, int z) {
+        int var5 = world.getBlockId(x, y, z);
+        return var5 == 0 || var5 == id || BLOCKS[var5].material.isReplaceable();
     }
 
     @Override
