@@ -223,6 +223,11 @@ tile.nfc.stained_planks_slabs13.name=Green Stained Planks Slab
 tile.nfc.stained_planks_slabs14.name=Red Stained Planks Slab
 tile.nfc.stained_planks_slabs15.name=Black Stained Planks Slab
 
+tile.nfc.wooden_vanilla_stairs0.name=Wooden Planks Stairs
+
+tile.nfc.stone_vanilla_stairs0.name=Cobblestone Stairs
+tile.nfc.stone_vanilla_stairs1.name=Sandstone Stairs
+
 tile.nfc.non_dyed_stairs0.name=Bricks Stairs
 tile.nfc.non_dyed_stairs1.name=Worked Stone Stairs
 tile.nfc.non_dyed_stairs2.name=Large Stone Bricks Stairs

@@ -638,6 +638,17 @@ public class TextureListener {
         );
 
         // Stairs
+        BlockListener.woodenVanillaStairs.specifyTextures(
+                new int[] {
+                        Block.PLANKS.textureId
+                }
+        );
+        BlockListener.stoneVanillaStairs.specifyTextures(
+                new int[] {
+                        getTextureIndex(vanillaBlocks + "cobblestone"),
+                        Block.SANDSTONE.textureId
+                }
+        );
         BlockListener.nonDyedStairs.specifyTextures(
                 new int[] {
                         getTextureIndex(vanillaBlocks + "bricks"),
