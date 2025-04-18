@@ -157,6 +157,8 @@ public class BlockListener {
             nonDyedSlabs,
             stainedPlanksSlabs;
 
+    public static DoubleStoneSlabBlock doubleStoneSlab;
+
     @Entrypoint.Namespace
     public static Namespace MOD_ID;
 
@@ -319,6 +321,8 @@ public class BlockListener {
                 },
                 null
         );
+
+        doubleStoneSlab = new DoubleStoneSlabBlock(Identifier.of(MOD_ID, "double_stone_slab"), Material.STONE, 1.0F, Block.STONE_SOUND_GROUP);
 
         // Changes to vanilla blast resistance
         Block.COAL_ORE.setResistance(500F);

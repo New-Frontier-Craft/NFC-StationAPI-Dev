@@ -44,7 +44,8 @@
     "graphics.PoweredRailTextureMixin",
     "graphics.SaplingBlockMixin",
     "graphics.SlabTextureMixin",
-    "graphics.WorldRendererMixin"
+    "graphics.WorldRendererMixin",
+    "graphics.BlockRenderManagerAccessor"
   ],
   "injectors": {
     "defaultRequire": 1
