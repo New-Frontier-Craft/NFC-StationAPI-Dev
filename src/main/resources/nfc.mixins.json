@@ -29,6 +29,8 @@
     "SlabMergingMixin",
     "StorageBlockRecipeObliteratorMixin",
     "ToolEffectivenessHijackerMixin",
+    "graphics.BlockRendererManagerMixin",
+    "SlabBlockItemMixin"
     "TrapdoorLiberationMixin",
     "graphics.BlockRendererManagerMixin"
   ],
@@ -44,7 +46,8 @@
     "graphics.PoweredRailTextureMixin",
     "graphics.SaplingBlockMixin",
     "graphics.SlabTextureMixin",
-    "graphics.WorldRendererMixin"
+    "graphics.WorldRendererMixin",
+    "graphics.BlockRenderManagerAccessor"
   ],
   "injectors": {
     "defaultRequire": 1

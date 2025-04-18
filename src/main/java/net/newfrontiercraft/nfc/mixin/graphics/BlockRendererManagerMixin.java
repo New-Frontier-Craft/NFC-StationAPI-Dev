@@ -8,6 +8,7 @@ import net.minecraft.client.render.Tessellator;
 import net.minecraft.client.render.block.BlockRenderManager;
 import net.minecraft.world.BlockView;
 import net.newfrontiercraft.nfc.block.FenceGateBlock;
+import net.newfrontiercraft.nfc.utils.BlockWithItemRenderBounds;
 import net.newfrontiercraft.nfc.utils.FenceConnection;
 import org.lwjgl.opengl.GL11;
 import org.spongepowered.asm.mixin.Mixin;
@@ -78,6 +79,13 @@ public class BlockRendererManagerMixin{
     public void nfcInventoryTranslucencyTail(Block block, int metadata, float brightness, CallbackInfo ci) {
         if(!block.isOpaque()){
             GL11.glDisable(GL11.GL_BLEND);
+        }
+    }
+
+    @Inject(method = "render(Lnet/minecraft/block/Block;IF)V", at = @At("HEAD"))
+    public void nfcBlockWithItemRenderBounds(Block block, int metadata, float brightness, CallbackInfo ci) {
+        if(block instanceof BlockWithItemRenderBounds blockWithItemRenderBounds){
+            blockWithItemRenderBounds.setBlockBoundsForItemRender();
         }
     }
 }
