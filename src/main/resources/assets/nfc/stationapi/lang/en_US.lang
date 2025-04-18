@@ -253,6 +253,7 @@ tile.nfc.stained_planks_stairs13.name=Green Stained Planks Stairs
 tile.nfc.stained_planks_stairs14.name=Red Stained Planks Stairs
 tile.nfc.stained_planks_stairs15.name=Black Stained Planks Stairs
 
+tile.nfc.double_stone_slab.name=Stone Slab
 
 item.nfc.aluminium_pickaxe.name=Aluminum Pickaxe
 item.nfc.bismuth_pickaxe.name=Bismuth Pickaxe

@@ -14,18 +14,24 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldRegion;
 import net.modificationstation.stationapi.api.block.BlockState;
+import net.modificationstation.stationapi.api.block.HasCustomBlockItemFactory;
 import net.modificationstation.stationapi.api.client.model.block.BlockWithWorldRenderer;
 import net.modificationstation.stationapi.api.state.StateManager;
 import net.modificationstation.stationapi.api.state.property.IntProperty;
 import net.modificationstation.stationapi.api.util.Identifier;
+import net.newfrontiercraft.nfc.block.item.BioluminescentMushroomBlockItem;
+import net.newfrontiercraft.nfc.block.item.SlabBlockItem;
 import net.modificationstation.stationapi.api.util.math.Direction;
 import net.modificationstation.stationapi.api.util.math.StationBlockPos;
 import net.newfrontiercraft.nfc.mixin.DroppedMetaAccessor;
+import net.newfrontiercraft.nfc.utils.BlockWithItemRenderBounds;
+import org.lwjgl.input.Keyboard;
 
 import java.util.Random;
 
 @EnvironmentInterface(value=EnvType.CLIENT, itf= BlockWithWorldRenderer.class)
-public class LazySlabTemplate extends LazyMultivariantBlockTemplate implements BlockWithWorldRenderer {
+@HasCustomBlockItemFactory(SlabBlockItem.class)
+public class LazySlabTemplate extends LazyMultivariantBlockTemplate implements BlockWithWorldRenderer, BlockWithItemRenderBounds {
     public int[] fullBlocks;
     public int[] fullBlockMetas = new int[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
     public Block bottomSlabCounterpart;
@@ -136,6 +142,7 @@ public class LazySlabTemplate extends LazyMultivariantBlockTemplate implements B
         return false;
     }
 
+
     @Environment(EnvType.CLIENT)
     @Override
     public boolean isSideVisible(BlockView blockView, int x, int y, int z, int side) {
@@ -245,5 +252,10 @@ public class LazySlabTemplate extends LazyMultivariantBlockTemplate implements B
                 break;
         }
         return true;
+    }
+
+    @Override
+    public void setBlockBoundsForItemRender() {
+        this.setBoundingBox(0.0F, 0.0F, 0.0F, 1.0F, 0.5F, 1.0F);
     }
 }

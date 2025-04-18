@@ -98,6 +98,8 @@
     "nfc:non_dyed_slabs",
 
     "nfc:stone_vanilla_stairs",
-    "nfc:non_dyed_stairs"
+    "nfc:non_dyed_stairs",
+
+    "nfc:double_stone_slab"
   ]
 }
