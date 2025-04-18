@@ -158,7 +158,8 @@ public class BlockListener {
             stainedPlanksSlabs;
 
     public static LazyStairsTemplate
-            nonDyedStairs;
+            nonDyedStairs,
+            stainedPlanksStairs;
 
     @Entrypoint.Namespace
     public static Namespace MOD_ID;
@@ -324,6 +325,7 @@ public class BlockListener {
         );
 
         nonDyedStairs = new LazyStairsTemplate(Identifier.of(MOD_ID, "non_dyed_stairs"), Material.STONE, 1.0F, Block.STONE_SOUND_GROUP);
+        stainedPlanksStairs = new LazyStairsTemplate(Identifier.of(MOD_ID, "stained_planks_stairs"), Material.WOOD, 1.0F, Block.WOOD_SOUND_GROUP);
 
         // Changes to vanilla blast resistance
         Block.COAL_ORE.setResistance(500F);

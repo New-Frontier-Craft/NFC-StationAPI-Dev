@@ -231,6 +231,23 @@ tile.nfc.non_dyed_stairs4.name=Mud Bricks Stairs
 tile.nfc.non_dyed_stairs5.name=Fired Mud Bricks Stairs
 tile.nfc.non_dyed_stairs6.name=Petrified Planks Stairs
 
+tile.nfc.stained_planks_stairs0.name=White Stained Planks Stairs
+tile.nfc.stained_planks_stairs1.name=Orange Stained Planks Stairs
+tile.nfc.stained_planks_stairs2.name=Magenta Stained Planks Stairs
+tile.nfc.stained_planks_stairs3.name=Light Blue Stained Planks Stairs
+tile.nfc.stained_planks_stairs4.name=Yellow Stained Planks Stairs
+tile.nfc.stained_planks_stairs5.name=Lime Stained Planks Stairs
+tile.nfc.stained_planks_stairs6.name=Pink Stained Planks Stairs
+tile.nfc.stained_planks_stairs7.name=Grey Stained Planks Stairs
+tile.nfc.stained_planks_stairs8.name=Light Grey Stained Planks Stairs
+tile.nfc.stained_planks_stairs9.name=Cyan Stained Planks Stairs
+tile.nfc.stained_planks_stairs10.name=Purple Stained Planks Stairs
+tile.nfc.stained_planks_stairs11.name=Blue Stained Planks Stairs
+tile.nfc.stained_planks_stairs12.name=Brown Stained Planks Stairs
+tile.nfc.stained_planks_stairs13.name=Green Stained Planks Stairs
+tile.nfc.stained_planks_stairs14.name=Red Stained Planks Stairs
+tile.nfc.stained_planks_stairs15.name=Black Stained Planks Stairs
+
 
 item.nfc.aluminium_pickaxe.name=Aluminum Pickaxe
 item.nfc.bismuth_pickaxe.name=Bismuth Pickaxe

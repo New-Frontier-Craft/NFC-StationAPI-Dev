@@ -636,6 +636,8 @@ public class TextureListener {
                         getTextureIndex(stainedPlanks + "black")
                 }
         );
+
+        // Stairs
         BlockListener.nonDyedStairs.specifyTextures(
                 new int[] {
                         getTextureIndex(vanillaBlocks + "bricks"),
@@ -645,6 +647,26 @@ public class TextureListener {
                         getTextureIndex(mudBlocks + "bricks"),
                         getTextureIndex(firedMudBlocks + "bricks"),
                         getTextureIndex(planks + "petrified_wooden_planks")
+                }
+        );
+        BlockListener.stainedPlanksStairs.specifyTextures(
+                new int[] {
+                        getTextureIndex(stainedPlanks + "white"),
+                        getTextureIndex(stainedPlanks + "orange"),
+                        getTextureIndex(stainedPlanks + "magenta"),
+                        getTextureIndex(stainedPlanks + "light_blue"),
+                        getTextureIndex(stainedPlanks + "yellow"),
+                        getTextureIndex(stainedPlanks + "lime"),
+                        getTextureIndex(stainedPlanks + "pink"),
+                        getTextureIndex(stainedPlanks + "grey"),
+                        getTextureIndex(stainedPlanks + "light_grey"),
+                        getTextureIndex(stainedPlanks + "cyan"),
+                        getTextureIndex(stainedPlanks + "purple"),
+                        getTextureIndex(stainedPlanks + "blue"),
+                        getTextureIndex(stainedPlanks + "brown"),
+                        getTextureIndex(stainedPlanks + "green"),
+                        getTextureIndex(stainedPlanks + "red"),
+                        getTextureIndex(stainedPlanks + "black")
                 }
         );
 
