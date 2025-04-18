@@ -123,11 +123,23 @@ public class RecipeListener {
             CraftingRegistry.addShapedRecipe(new ItemStack(Block.POWERED_RAIL, 16), "XYX", "Z+Z", "X#X", 'X', ItemListener.steelIngot, 'Y', Item.STICK, 'Z', ItemListener.copperIngot, '#', Item.REDSTONE, '+', Item.GOLD_INGOT);
             CraftingRegistry.addShapedRecipe(new ItemStack(Block.DETECTOR_RAIL, 12), "XYX", "XZX", "X#X", 'X', ItemListener.steelIngot, 'Y', Item.STICK, 'Z', Block.STONE_PRESSURE_PLATE, '#', Item.REDSTONE);
 
-            // Slabs
+            // Vanilla Slabs
             CraftingRegistry.addShapedRecipe(new ItemStack(Block.SLAB, 6, 3), "###", '#', Block.COBBLESTONE);
             CraftingRegistry.addShapedRecipe(new ItemStack(Block.SLAB, 6, 0), "###", '#', Block.STONE);
             CraftingRegistry.addShapedRecipe(new ItemStack(Block.SLAB, 6, 1), "###", '#', Block.SANDSTONE);
             CraftingRegistry.addShapedRecipe(new ItemStack(Block.SLAB, 6, 2), "###", '#', Block.PLANKS);
+
+            // Modded Slabs
+            CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.nonDyedSlabs, 6, 0), "###", '#', Block.BRICKS);
+            CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.nonDyedSlabs, 6, 1), "###", '#', BlockListener.workedStone);
+            CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.nonDyedSlabs, 6, 2), "###", '#', BlockListener.stoneBricksLarge);
+            CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.nonDyedSlabs, 6, 3), "###", '#', BlockListener.stoneBricks);
+            CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.nonDyedSlabs, 6, 4), "###", '#', new ItemStack(BlockListener.mud, 1, 1));
+            CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.nonDyedSlabs, 6, 5), "###", '#', new ItemStack(BlockListener.firedMud, 1, 1));
+            CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.nonDyedSlabs, 6, 6), "###", '#', BlockListener.petrifiedPlanks);
+            for (int i = 0; i < 16; i++) {
+                CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.stainedPlanksSlabs, 6, i), "###", '#', new ItemStack(BlockListener.stainedPlanks, 1, i));
+            }
 
             // Stairs
             CraftingRegistry.addShapedRecipe(new ItemStack(Block.WOODEN_STAIRS, 8), "#  ", "## ", "###", '#', Block.PLANKS);
