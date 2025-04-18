@@ -13,17 +13,22 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldRegion;
 import net.modificationstation.stationapi.api.block.BlockState;
+import net.modificationstation.stationapi.api.block.HasCustomBlockItemFactory;
 import net.modificationstation.stationapi.api.client.model.block.BlockWithWorldRenderer;
 import net.modificationstation.stationapi.api.state.StateManager;
 import net.modificationstation.stationapi.api.state.property.IntProperty;
 import net.modificationstation.stationapi.api.util.Identifier;
+import net.newfrontiercraft.nfc.block.item.BioluminescentMushroomBlockItem;
+import net.newfrontiercraft.nfc.block.item.SlabBlockItem;
 import net.newfrontiercraft.nfc.mixin.DroppedMetaAccessor;
+import net.newfrontiercraft.nfc.utils.BlockWithItemRenderBounds;
 import org.lwjgl.input.Keyboard;
 
 import java.util.Random;
 
 @EnvironmentInterface(value=EnvType.CLIENT, itf= BlockWithWorldRenderer.class)
-public class LazySlabTemplate extends LazyMultivariantBlockTemplate implements BlockWithWorldRenderer {
+@HasCustomBlockItemFactory(SlabBlockItem.class)
+public class LazySlabTemplate extends LazyMultivariantBlockTemplate implements BlockWithWorldRenderer, BlockWithItemRenderBounds {
     public int[] fullBlocks;
     public int[] fullBlockMetas = new int[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
     public Block bottomSlabCounterpart;
@@ -134,33 +139,6 @@ public class LazySlabTemplate extends LazyMultivariantBlockTemplate implements B
         return false;
     }
 
-    /* This code needs to be adapted to work with block states
-    @Environment(EnvType.CLIENT)
-    @Override
-    public boolean isSideVisible(BlockView blockView, int x, int y, int z, int side) {
-        if (side == 1) {
-            return true;
-        } else if (!super.isSideVisible(blockView, x, y, z, side)) {
-            return false;
-        } else {
-            return side == 0 || blockView.getBlockId(x, y, z) != this.id;
-        }
-    }
-     */
-
-    //This only exists for testing
-    @Override
-    public boolean onUse(World world, int x, int y, int z, PlayerEntity player) {
-        BlockState currentState = world.getBlockState(x, y, z);
-        int rotation = world.getBlockState(x, y, z).get(ROTATIONS);
-        System.out.println(rotation);
-        if(Keyboard.isKeyDown(Keyboard.KEY_C)){
-            world.setBlockStateWithMetadataWithNotify(x, y, z, currentState.with(ROTATIONS, (rotation + 1) % 6), world.getBlockMeta(x, y, z));
-            return true;
-        }
-        return false;
-    }
-
     @Override
     public boolean renderWorld(BlockRenderManager blockRenderManager, BlockView blockView, int x, int y, int z) {
         int blockId = blockView.getBlockId(x, y, z);
@@ -204,5 +182,10 @@ public class LazySlabTemplate extends LazyMultivariantBlockTemplate implements B
                 break;
         }
         return true;
+    }
+
+    @Override
+    public void setBlockBoundsForItemRender() {
+        this.setBoundingBox(0.0F, 0.0F, 0.0F, 1.0F, 0.5F, 1.0F);
     }
 }

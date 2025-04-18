@@ -13,7 +13,6 @@ public class SlabMergingMixin {
 
     @Inject(at = @At("HEAD"), method = "onPlaced", cancellable = true)
     private void changeMergingLogic(World world, int x, int y, int z, CallbackInfo ci) {
-        System.out.println("ee");
         ci.cancel();
     }
 }
