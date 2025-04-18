@@ -182,33 +182,6 @@ public class LazySlabTemplate extends LazyMultivariantBlockTemplate implements B
         return true;
     }
 
-    // This only exists for testing
-    @Override
-    public boolean onUse(World world, int x, int y, int z, PlayerEntity player) {
-        BlockState currentState = world.getBlockState(x, y, z);
-        int rotation = world.getBlockState(x, y, z).get(ROTATIONS);
-        world.setBlockStateWithMetadataWithNotify(x, y, z, currentState.with(ROTATIONS, (rotation + 1) % 6), world.getBlockMeta(x, y, z));
-        return true;
-    }
-
-    // This is a placeholder, remove when block item merging has been fully implemented
-    @Override
-    public void onPlaced(World world, int x, int y, int z) {
-        int blockId = world.getBlockId(x, y - 1, z);
-        int selfMeta = world.getBlockMeta(x, y, z);
-        int belowMeta = world.getBlockMeta(x, y - 1, z);
-        if (selfMeta != belowMeta) {
-            super.onPlaced(world, x, y, z);
-            return;
-        }
-        if (blockId != this.id) {
-            super.onPlaced(world, x, y, z);
-            return;
-        }
-        world.setBlock(x, y, z, 0);
-        world.setBlock(x, y - 1, z, fullBlocks[selfMeta], fullBlockMetas[selfMeta]);
-    }
-
     @Override
     public boolean renderWorld(BlockRenderManager blockRenderManager, BlockView blockView, int x, int y, int z) {
         int blockId = blockView.getBlockId(x, y, z);
