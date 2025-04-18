@@ -27,6 +27,7 @@
     "PortalForcerToleranceMixin",
     "SaplingBlockMixin",
     "SlabMergingMixin",
+    "StairsDropMixin",
     "StorageBlockRecipeObliteratorMixin",
     "ToolEffectivenessHijackerMixin",
     "TrapdoorLiberationMixin",
