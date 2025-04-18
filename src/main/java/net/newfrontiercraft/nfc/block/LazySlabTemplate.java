@@ -8,6 +8,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.client.render.block.BlockRenderManager;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.sound.BlockSoundGroup;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
@@ -17,6 +18,8 @@ import net.modificationstation.stationapi.api.client.model.block.BlockWithWorldR
 import net.modificationstation.stationapi.api.state.StateManager;
 import net.modificationstation.stationapi.api.state.property.IntProperty;
 import net.modificationstation.stationapi.api.util.Identifier;
+import net.modificationstation.stationapi.api.util.math.Direction;
+import net.modificationstation.stationapi.api.util.math.StationBlockPos;
 import net.newfrontiercraft.nfc.mixin.DroppedMetaAccessor;
 
 import java.util.Random;
@@ -133,19 +136,44 @@ public class LazySlabTemplate extends LazyMultivariantBlockTemplate implements B
         return false;
     }
 
-    /* This code needs to be adapted to work with block states
     @Environment(EnvType.CLIENT)
     @Override
     public boolean isSideVisible(BlockView blockView, int x, int y, int z, int side) {
-        if (side == 1) {
+        if (!(blockView instanceof WorldRegion)) {
             return true;
-        } else if (!super.isSideVisible(blockView, x, y, z, side)) {
-            return false;
-        } else {
-            return side == 0 || blockView.getBlockId(x, y, z) != this.id;
         }
+        StationBlockPos blockOffset = new BlockPos(x, y, z);
+        int mirroredSide = switch (side) {
+            case 0 -> 1;
+            case 1 -> 0;
+            case 2 -> 3;
+            case 3 -> 2;
+            case 4 -> 5;
+            case 5 -> 4;
+            default -> 0;
+        };
+        blockOffset = blockOffset.offset(Direction.byId(mirroredSide));
+        if (blockView.getBlockId(blockOffset.getX(), blockOffset.getY(), blockOffset.getZ()) != this.id) {
+            return true;
+        }
+        int rotation = ((WorldRegion)blockView).getBlockState(blockOffset.getX(), blockOffset.getY(), blockOffset.getZ()).get(ROTATIONS);
+        if (rotation > 1 && rotation < 4) {
+            rotation += 2;
+        } else if (rotation > 3) {
+            rotation -= 2;
+        }
+        if (rotation <= 1) {
+            rotation = switch (rotation) {
+                case 0 -> 1;
+                case 1 -> 0;
+                default -> 0;
+            };
+        }
+        if (side != rotation) {
+            return super.isSideVisible(blockView, x, y, z, side);
+        }
+        return true;
     }
-     */
 
     // This only exists for testing
     @Override
