@@ -157,13 +157,13 @@ public class BlockListener {
             nonDyedSlabs,
             stainedPlanksSlabs;
 
-    public static DoubleStoneSlabBlock doubleStoneSlab;
-
     public static LazyStairsTemplate
             woodenVanillaStairs,
             stoneVanillaStairs,
             nonDyedStairs,
             stainedPlanksStairs;
+
+    public static DoubleStoneSlabBlock doubleStoneSlab;
 
     @Entrypoint.Namespace
     public static Namespace MOD_ID;
@@ -328,6 +328,10 @@ public class BlockListener {
                 null
         );
 
+        woodenVanillaStairs = new WoodenVanillaStairs(Identifier.of(MOD_ID, "wooden_vanilla_stairs"), Material.WOOD, 1.0F, Block.WOOD_SOUND_GROUP);
+        stoneVanillaStairs = new StoneVanillaStairs(Identifier.of(MOD_ID, "stone_vanilla_stairs"), Material.STONE, 1.0F, Block.STONE_SOUND_GROUP);
+        nonDyedStairs = new LazyStairsTemplate(Identifier.of(MOD_ID, "non_dyed_stairs"), Material.STONE, 1.0F, Block.STONE_SOUND_GROUP);
+        stainedPlanksStairs = new LazyStairsTemplate(Identifier.of(MOD_ID, "stained_planks_stairs"), Material.WOOD, 1.0F, Block.WOOD_SOUND_GROUP);
         doubleStoneSlab = new DoubleStoneSlabBlock(Identifier.of(MOD_ID, "double_stone_slab"), Material.STONE, 1.0F, Block.STONE_SOUND_GROUP);
 
         // Changes to vanilla blast resistance

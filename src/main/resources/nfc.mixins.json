@@ -31,7 +31,7 @@
     "StorageBlockRecipeObliteratorMixin",
     "ToolEffectivenessHijackerMixin",
     "graphics.BlockRendererManagerMixin",
-    "SlabBlockItemMixin"
+    "SlabBlockItemMixin",
     "TrapdoorLiberationMixin",
     "graphics.BlockRendererManagerMixin"
   ],
