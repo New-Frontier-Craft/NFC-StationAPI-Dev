@@ -18,6 +18,7 @@ import net.modificationstation.stationapi.api.state.StateManager;
 import net.modificationstation.stationapi.api.state.property.IntProperty;
 import net.modificationstation.stationapi.api.util.Identifier;
 import net.newfrontiercraft.nfc.mixin.DroppedMetaAccessor;
+import org.lwjgl.input.Keyboard;
 
 import java.util.Random;
 
@@ -147,13 +148,17 @@ public class LazySlabTemplate extends LazyMultivariantBlockTemplate implements B
     }
      */
 
-    // This only exists for testing
+    //This only exists for testing
     @Override
     public boolean onUse(World world, int x, int y, int z, PlayerEntity player) {
         BlockState currentState = world.getBlockState(x, y, z);
         int rotation = world.getBlockState(x, y, z).get(ROTATIONS);
-        world.setBlockStateWithMetadataWithNotify(x, y, z, currentState.with(ROTATIONS, (rotation + 1) % 6), world.getBlockMeta(x, y, z));
-        return true;
+        System.out.println(rotation);
+        if(Keyboard.isKeyDown(Keyboard.KEY_C)){
+            world.setBlockStateWithMetadataWithNotify(x, y, z, currentState.with(ROTATIONS, (rotation + 1) % 6), world.getBlockMeta(x, y, z));
+            return true;
+        }
+        return false;
     }
 
     // This is a placeholder, remove when block item merging has been fully implemented
