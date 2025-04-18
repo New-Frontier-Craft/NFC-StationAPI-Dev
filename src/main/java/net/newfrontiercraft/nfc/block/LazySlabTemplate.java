@@ -162,12 +162,6 @@ public class LazySlabTemplate extends LazyMultivariantBlockTemplate implements B
     }
 
     @Override
-    public boolean canPlaceAt(World world, int x, int y, int z) {
-        int var5 = world.getBlockId(x, y, z);
-        return var5 == 0 || var5 == id || BLOCKS[var5].material.isReplaceable();
-    }
-
-    @Override
     public boolean renderWorld(BlockRenderManager blockRenderManager, BlockView blockView, int x, int y, int z) {
         int blockId = blockView.getBlockId(x, y, z);
         if (blockId == 0) {
