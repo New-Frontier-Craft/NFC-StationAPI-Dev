@@ -6,7 +6,6 @@ import net.fabricmc.api.EnvironmentInterface;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.render.block.BlockRenderManager;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
@@ -19,13 +18,11 @@ import net.modificationstation.stationapi.api.client.model.block.BlockWithWorldR
 import net.modificationstation.stationapi.api.state.StateManager;
 import net.modificationstation.stationapi.api.state.property.IntProperty;
 import net.modificationstation.stationapi.api.util.Identifier;
-import net.newfrontiercraft.nfc.block.item.BioluminescentMushroomBlockItem;
 import net.newfrontiercraft.nfc.block.item.SlabBlockItem;
 import net.modificationstation.stationapi.api.util.math.Direction;
 import net.modificationstation.stationapi.api.util.math.StationBlockPos;
 import net.newfrontiercraft.nfc.mixin.DroppedMetaAccessor;
 import net.newfrontiercraft.nfc.utils.BlockWithItemRenderBounds;
-import org.lwjgl.input.Keyboard;
 
 import java.util.Random;
 
