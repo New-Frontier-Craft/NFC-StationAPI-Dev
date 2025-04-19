@@ -201,6 +201,7 @@ public class RecipeListener {
 
             // Building blocks
             SmeltingRegistry.addSmeltingRecipe(Block.BRICKS.id, new ItemStack(BlockListener.firedBricks));
+            SmeltingRegistry.addSmeltingRecipe(BlockListener.scorchedSand.id, new ItemStack(BlockListener.window, 1, 6));
 
             // Ores
             SmeltingRegistry.addSmeltingRecipe(BlockListener.aluminiumOre.id, new ItemStack(ItemListener.aluminiumIngot));
