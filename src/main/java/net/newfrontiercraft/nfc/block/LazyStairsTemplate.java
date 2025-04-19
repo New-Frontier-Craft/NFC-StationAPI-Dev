@@ -58,7 +58,7 @@ public class LazyStairsTemplate extends LazyMultivariantBlockTemplate implements
     public boolean onUse(World world, int x, int y, int z, PlayerEntity player) {
         BlockState currentState = world.getBlockState(x, y, z);
         int rotation = world.getBlockState(x, y, z).get(ROTATIONS);
-        world.setBlockStateWithMetadataWithNotify(x, y, z, currentState.with(ROTATIONS, (rotation + 1) % 8), world.getBlockMeta(x, y, z));
+        world.setBlockStateWithMetadataWithNotify(x, y, z, currentState.with(ROTATIONS, (rotation + 1) % 12), world.getBlockMeta(x, y, z));
         return true;
     }
 
@@ -104,6 +104,26 @@ public class LazyStairsTemplate extends LazyMultivariantBlockTemplate implements
             setBoundingBox(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.5F);
             super.addIntersectingBoundingBox(world, x, y, z, box, boxes);
             setBoundingBox(0.0F, 0.5F, 0.5F, 1.0F, 1.0F, 1.0F);
+            super.addIntersectingBoundingBox(world, x, y, z, box, boxes);
+        } else if(rotation == 8) {
+            this.setBoundingBox(0.5F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
+            super.addIntersectingBoundingBox(world, x, y, z, box, boxes);
+            this.setBoundingBox(0.0F, 0.0F, 0.5F, 0.5F, 1.0F, 1.0F);
+            super.addIntersectingBoundingBox(world, x, y, z, box, boxes);
+        } else if(rotation == 9) {
+            this.setBoundingBox(0.0F, 0.0F, 0.0F, 0.5F, 1.0F, 1.0F);
+            super.addIntersectingBoundingBox(world, x, y, z, box, boxes);
+            this.setBoundingBox(0.5F, 0.0F, 0.5F, 1.0F, 1.0F, 1.0F);
+            super.addIntersectingBoundingBox(world, x, y, z, box, boxes);
+        } else if(rotation == 10) {
+            this.setBoundingBox(0.0F, 0.0F, 0.0F, 0.5F, 1.0F, 1.0F);
+            super.addIntersectingBoundingBox(world, x, y, z, box, boxes);
+            this.setBoundingBox(0.5F, 0.0F, 0.0F, 1.0F, 1.0F, 0.5F);
+            super.addIntersectingBoundingBox(world, x, y, z, box, boxes);
+        } else if(rotation == 11) {
+            this.setBoundingBox(0.5F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
+            super.addIntersectingBoundingBox(world, x, y, z, box, boxes);
+            this.setBoundingBox(0.0F, 0.0F, 0.0F, 0.5F, 1.0F, 0.5F);
             super.addIntersectingBoundingBox(world, x, y, z, box, boxes);
         }
         setBoundingBox(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
@@ -172,6 +192,30 @@ public class LazyStairsTemplate extends LazyMultivariantBlockTemplate implements
             this.setBoundingBox(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.5F);
             blockRenderManager.renderBlock(this, x, y, z);
             this.setBoundingBox(0.0F, 0.5F, 0.5F, 1.0F, 1.0F, 1.0F);
+            blockRenderManager.renderBlock(this, x, y, z);
+            flag = true;
+        } else if(rotation == 8) {
+            this.setBoundingBox(0.5F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
+            blockRenderManager.renderBlock(this, x, y, z);
+            this.setBoundingBox(0.0F, 0.0F, 0.5F, 0.5F, 1.0F, 1.0F);
+            blockRenderManager.renderBlock(this, x, y, z);
+            flag = true;
+        } else if(rotation == 9) {
+            this.setBoundingBox(0.0F, 0.0F, 0.0F, 0.5F, 1.0F, 1.0F);
+            blockRenderManager.renderBlock(this, x, y, z);
+            this.setBoundingBox(0.5F, 0.0F, 0.5F, 1.0F, 1.0F, 1.0F);
+            blockRenderManager.renderBlock(this, x, y, z);
+            flag = true;
+        } else if(rotation == 10) {
+            this.setBoundingBox(0.0F, 0.0F, 0.0F, 0.5F, 1.0F, 1.0F);
+            blockRenderManager.renderBlock(this, x, y, z);
+            this.setBoundingBox(0.5F, 0.0F, 0.0F, 1.0F, 1.0F, 0.5F);
+            blockRenderManager.renderBlock(this, x, y, z);
+            flag = true;
+        } else if(rotation == 11) {
+            this.setBoundingBox(0.5F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
+            blockRenderManager.renderBlock(this, x, y, z);
+            this.setBoundingBox(0.0F, 0.0F, 0.0F, 0.5F, 1.0F, 0.5F);
             blockRenderManager.renderBlock(this, x, y, z);
             flag = true;
         }
