@@ -6,24 +6,32 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.render.Tessellator;
 import net.minecraft.client.render.block.BlockRenderManager;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.sound.BlockSoundGroup;
+import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.Box;
+import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldRegion;
 import net.modificationstation.stationapi.api.block.BlockState;
+import net.modificationstation.stationapi.api.block.HasCustomBlockItemFactory;
 import net.modificationstation.stationapi.api.client.model.block.BlockWithInventoryRenderer;
 import net.modificationstation.stationapi.api.client.model.block.BlockWithWorldRenderer;
 import net.modificationstation.stationapi.api.state.StateManager;
 import net.modificationstation.stationapi.api.state.property.IntProperty;
 import net.modificationstation.stationapi.api.util.Identifier;
+import net.newfrontiercraft.nfc.block.item.SlabBlockItem;
+import net.newfrontiercraft.nfc.block.item.StairBlockItem;
 import org.lwjgl.opengl.GL11;
 
 import java.util.ArrayList;
 
 @EnvironmentInterface(value= EnvType.CLIENT, itf= BlockWithInventoryRenderer.class)
 @EnvironmentInterface(value= EnvType.CLIENT, itf= BlockWithWorldRenderer.class)
+@HasCustomBlockItemFactory(StairBlockItem.class)
 public class LazyStairsTemplate extends LazyMultivariantBlockTemplate implements BlockWithWorldRenderer, BlockWithInventoryRenderer {
     public static final IntProperty ROTATIONS = IntProperty.of("rotations", 0, 12);
 
@@ -51,15 +59,6 @@ public class LazyStairsTemplate extends LazyMultivariantBlockTemplate implements
     @Override
     public boolean isFullCube() {
         return false;
-    }
-
-    // This only exists for testing
-    @Override
-    public boolean onUse(World world, int x, int y, int z, PlayerEntity player) {
-        BlockState currentState = world.getBlockState(x, y, z);
-        int rotation = world.getBlockState(x, y, z).get(ROTATIONS);
-        world.setBlockStateWithMetadataWithNotify(x, y, z, currentState.with(ROTATIONS, (rotation + 1) % 12), world.getBlockMeta(x, y, z));
-        return true;
     }
 
     @Override
