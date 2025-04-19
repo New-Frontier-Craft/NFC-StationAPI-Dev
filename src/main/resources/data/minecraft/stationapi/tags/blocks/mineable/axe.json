@@ -8,6 +8,10 @@
     "minecraft:oak_fence",
     "nfc:stained_planks_slabs",
     "nfc:wooden_vanilla_stairs",
-    "nfc:stained_planks_stairs"
+    "nfc:stained_planks_stairs",
+    "minecraft:oak_stairs",
+    "minecraft:crafting_table",
+    "minecraft:oak_trapdoor",
+    "minecraft:oak_door"
   ]
 }
