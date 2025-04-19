@@ -1,8 +1,12 @@
 package net.newfrontiercraft.nfc.mixin;
 
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import net.minecraft.block.Block;
 import net.minecraft.block.TorchBlock;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
+import net.modificationstation.stationapi.api.block.BlockState;
 import net.newfrontiercraft.nfc.block.LazySlabTemplate;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -67,5 +71,33 @@ public class TorchPlacementMixin {
                 ci.cancel();
             }
         }
+    }
+
+    @WrapOperation(
+            method = "raycast",
+            at = @At(
+                    value = "INVOKE",
+                    target = "Lnet/minecraft/block/TorchBlock;setBoundingBox(FFFFFF)V",
+                    ordinal = 4
+            )
+    )
+    public void nfcSlabTorchSetBoundingBox(TorchBlock instance, float minX, float minY, float minZ, float maxX, float maxY, float maxZ, Operation<Void> original, World world, int x, int y, int z, Vec3d startPos, Vec3d endPos){
+        int belowId = world.getBlockId(x, y - 1, z);
+        float offset = 0;
+        if (belowId == Block.SLAB.id) {
+            offset = 0.5F;
+        } else if (belowId != 0) {
+            Block belowBlock = Block.BLOCKS[belowId];
+            if (belowBlock instanceof LazySlabTemplate) {
+                BlockState slabBlockState = world.getBlockState(x, y - 1, z);
+                if(slabBlockState.contains(LazySlabTemplate.ROTATIONS)){
+                    int rotation = slabBlockState.get(LazySlabTemplate.ROTATIONS);
+                    if (rotation == 0) {
+                        offset = 0.5F;
+                    }
+                }
+            }
+        }
+        original.call(instance, minX, minY - offset, minZ, maxX, maxY - offset, maxZ);
     }
 }
