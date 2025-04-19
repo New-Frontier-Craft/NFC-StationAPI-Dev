@@ -49,7 +49,9 @@
     "graphics.PoweredRailTextureMixin",
     "graphics.SaplingBlockMixin",
     "graphics.SlabTextureMixin",
-    "graphics.WorldRendererMixin"
+    "graphics.WorldRendererMixin",
+    "graphics.TorchBlockMixin",
+    "graphics.RedstoneTorchBlockMixin"
   ],
   "injectors": {
     "defaultRequire": 1
