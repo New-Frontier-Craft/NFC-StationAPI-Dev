@@ -145,6 +145,19 @@ public class RecipeListener {
             CraftingRegistry.addShapedRecipe(new ItemStack(Block.WOODEN_STAIRS, 8), "#  ", "## ", "###", '#', Block.PLANKS);
             CraftingRegistry.addShapedRecipe(new ItemStack(Block.COBBLESTONE_STAIRS, 8), "#  ", "## ", "###", '#', Block.COBBLESTONE);
 
+            // Modded Stairs
+            CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.stoneVanillaStairs, 8, 1), "#  ", "## ", "###", '#', Block.SANDSTONE);
+            CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.nonDyedStairs, 8, 0), "#  ", "## ", "###", '#', Block.BRICKS);
+            CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.nonDyedStairs, 8, 1), "#  ", "## ", "###", '#', BlockListener.workedStone);
+            CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.nonDyedStairs, 8, 2), "#  ", "## ", "###", '#', BlockListener.stoneBricksLarge);
+            CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.nonDyedStairs, 8, 3), "#  ", "## ", "###", '#', BlockListener.stoneBricks);
+            CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.nonDyedStairs, 8, 4), "#  ", "## ", "###", '#', new ItemStack(BlockListener.mud, 1, 1));
+            CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.nonDyedStairs, 8, 5), "#  ", "## ", "###", '#', new ItemStack(BlockListener.firedMud, 1, 1));
+            CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.nonDyedStairs, 8, 6), "#  ", "## ", "###", '#', BlockListener.petrifiedPlanks);
+            for (int i = 0; i < 16; i++) {
+                CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.stainedPlanksStairs, 8, i), "#  ", "## ", "###", '#', new ItemStack(BlockListener.stainedPlanks, 1, i));
+            }
+
             // Machines
             CraftingRegistry.addShapedRecipe(new ItemStack(Block.PISTON, 1), "TTT", "#X#", "#R#", '#', Block.COBBLESTONE, 'X', ItemListener.aluminiumIngot, 'R', Item.REDSTONE, 'T', Block.PLANKS);
             CraftingRegistry.addShapedRecipe(new ItemStack(Block.DISPENSER, 1), "###", "#X#", "#R#", '#', Block.COBBLESTONE, 'X', Item.STRING, 'R', Item.REDSTONE);
