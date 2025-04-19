@@ -30,7 +30,7 @@ public abstract class LiquidBlockGraphicsMixin extends Block {
     @Inject(method = "getColorMultiplier", at = @At("HEAD"), cancellable = true)
     public void nfcGetColorMultiplier(BlockView x, int y, int z, int par4, CallbackInfoReturnable<Integer> cir) {
         if(this.material == Materials.oil){
-            cir.setReturnValue(0x211508);
+            cir.setReturnValue(0x5C3000);
         }
     }
 }
