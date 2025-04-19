@@ -5,6 +5,7 @@
   "compatibilityLevel": "JAVA_8",
   "mixins": [
     "BiomeEnlargerMixin",
+    "BlockItemMixin",
     "BookshelfBlockMixin",
     "BucketItemMixin",
     "DroppedMetaAccessor",
@@ -26,19 +27,19 @@
     "PlayerEntityMixin",
     "PortalForcerToleranceMixin",
     "SaplingBlockMixin",
+    "SlabBlockItemMixin",
     "SlabMergingMixin",
     "StairsDropMixin",
     "StorageBlockRecipeObliteratorMixin",
     "ToolEffectivenessHijackerMixin",
-    "graphics.BlockRendererManagerMixin",
-    "SlabBlockItemMixin",
+    "TorchPlacementMixin",
     "TrapdoorLiberationMixin",
-    "graphics.BlockRendererManagerMixin",
-    "BlockItemMixin"
+    "graphics.BlockRendererManagerMixin"
   ],
   "server": [
   ],
   "client": [
+    "graphics.BlockRenderManagerAccessor",
     "graphics.GameRendererMixin",
     "graphics.HeldItemRendererMixin",
     "graphics.InGameHudMixin",
@@ -48,8 +49,7 @@
     "graphics.PoweredRailTextureMixin",
     "graphics.SaplingBlockMixin",
     "graphics.SlabTextureMixin",
-    "graphics.WorldRendererMixin",
-    "graphics.BlockRenderManagerAccessor"
+    "graphics.WorldRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1
