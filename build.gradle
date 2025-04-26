@@ -92,6 +92,10 @@ dependencies {
 	modImplementation("net.glasslauncher.mods:AlwaysMoreItems:${project.alwaysmoreitems_version}") {
 		transitive false
 	}
+
+	modRuntimeOnly("maven.modrinth:unitweaks:${project.unitweaks_version}-fabric,b1.7.3") {
+		transitive false
+	}
 }
 
 processResources {
