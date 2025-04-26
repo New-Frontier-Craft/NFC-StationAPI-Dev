@@ -17,6 +17,13 @@ public class ChunkListener {
 
     public void populateOverworld(WorldGenEvent.ChunkDecoration event) {
 
+        if (event.random.nextInt(32) == 0) {
+            int x = event.x + event.random.nextInt(16) + 8;
+            int y = event.random.nextInt(64) + 24;
+            int z = event.z + event.random.nextInt(16) + 8;
+            (new StalactiteCaveFeature()).generate(event.world, event.random, x, y, z);
+        }
+
         if (event.random.nextInt(64) == 0) {
             int x = event.x + event.random.nextInt(16) + 8;
             int y = event.random.nextInt(32) + 40;
