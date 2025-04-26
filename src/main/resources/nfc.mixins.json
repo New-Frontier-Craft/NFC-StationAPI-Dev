@@ -8,6 +8,7 @@
     "BlockItemMixin",
     "BookshelfBlockMixin",
     "BucketItemMixin",
+    "CaveWorldCarverMixin",
     "DroppedMetaAccessor",
     "EntityMixin",
     "FenceBlockMixin",
@@ -47,11 +48,11 @@
     "graphics.ParticleClearingMixin",
     "graphics.ParticleManagerMixin",
     "graphics.PoweredRailTextureMixin",
+    "graphics.RedstoneTorchBlockMixin",
     "graphics.SaplingBlockMixin",
     "graphics.SlabTextureMixin",
-    "graphics.WorldRendererMixin",
     "graphics.TorchBlockMixin",
-    "graphics.RedstoneTorchBlockMixin"
+    "graphics.WorldRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1
