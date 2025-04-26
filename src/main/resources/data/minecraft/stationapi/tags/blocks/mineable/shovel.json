@@ -7,6 +7,7 @@
     "nfc:pebble_medium",
     "nfc:pebble_large",
     "nfc:alpha_grass",
-    "nfc:scorched_sand"
+    "nfc:scorched_sand",
+    "nfc:unfired_planter"
   ]
 }

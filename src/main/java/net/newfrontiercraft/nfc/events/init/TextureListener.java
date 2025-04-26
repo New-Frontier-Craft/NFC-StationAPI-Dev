@@ -39,6 +39,9 @@ public class TextureListener {
         String scorchedSandstone = decorativeBlocks + "scorched_sandstone/";
         String mushrooms = woldGeneration + "mushrooms/";
         String creative = "block/creative/";
+        String farming = "block/farming/";
+        String planter = farming + "planter/";
+        String unfiredPlanter = planter + "unfired/";
 
         // Item strings
         String items = "item/";
@@ -301,6 +304,14 @@ public class TextureListener {
                 getTextureIndex(decorativeBlocks + "petrified_leaves_fast"),
                 getTextureIndex(decorativeBlocks + "petrified_leaves_fancy")
         );
+
+        // Farming
+        BlockListener.unfiredPlanter.specifyTextures(getTextureIndex(unfiredPlanter + "top"), getTextureIndex(unfiredPlanter + "side"), getTextureIndex(unfiredPlanter + "side"));
+
+        planterSide = getTextureIndex(planter + "side");
+        planterEmpty = getTextureIndex(planter + "empty");
+        planterFilled = getTextureIndex(planter + "filled");
+        planterIrrigated = getTextureIndex(planter + "irrigated");
 
         // Pickaxes
         ItemListener.aluminiumPickaxe.setTexture(Identifier.of(MOD_ID, pickaxes + "aluminium"));
@@ -708,7 +719,12 @@ public class TextureListener {
 
             barrier,
             support,
-            lightSource;
+            lightSource,
+
+            planterSide,
+            planterEmpty,
+            planterFilled,
+            planterIrrigated;
 
     private static int getTextureIndex(String path) {
         return Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, path)).index;

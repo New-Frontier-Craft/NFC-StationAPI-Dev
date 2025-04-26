@@ -194,6 +194,9 @@ public class RecipeListener {
 
             // Planks
             CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.petrifiedPlanks, 4),"#", '#', BlockListener.petrifiedLog);
+
+            // Planter
+            CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.unfiredPlanter, 2), "X X", "X X", "XXX", 'X', Item.CLAY);
         }
         if (type == RecipeRegisterEvent.Vanilla.SMELTING.type()) {
             // Food
@@ -224,6 +227,9 @@ public class RecipeListener {
 
             // Mud smelting
             SmeltingRegistry.addSmeltingRecipe(BlockListener.mud.id, new ItemStack(BlockListener.firedMud));
+
+            // Planter smelting
+            SmeltingRegistry.addSmeltingRecipe(BlockListener.unfiredPlanter.id, new ItemStack(BlockListener.planter));
         }
         if (type == RecipeRegisterEvent.Vanilla.CRAFTING_SHAPELESS.type()) {
             // Storage block un-crafting
@@ -272,6 +278,9 @@ public class RecipeListener {
                         new ItemStack(Block.PLANKS), new ItemStack(Block.PLANKS));
                 o--;
             }
+
+            // Planter
+            CraftingRegistry.addShapelessRecipe(new ItemStack(BlockListener.planter, 1, 1), new ItemStack(BlockListener.planter, 1, 0), new ItemStack(Block.DIRT));
         }
 
         // Stone carpentry

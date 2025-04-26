@@ -23,7 +23,7 @@ public class ShrubFeature extends Feature {
     public boolean generate(World world, Random random, int x, int y, int z) {
         if (!(world.getBlockId(x, y, z) == 0 && world.getLightLevel(x, y, z) > 0.9F)) return false;
         int ground = world.getBlockId(x, y - 1, z);
-        if (ground != Block.GRASS_BLOCK.id && ground != Block.FARMLAND.id && /*ground != mod_NFC.planter.id && TODO: Reactivate once planter is implemented */ ground != Block.DIRT.id) return false;
+        if (ground != Block.GRASS_BLOCK.id && ground != Block.FARMLAND.id && ground != BlockListener.planter.id && ground != Block.DIRT.id) return false;
         int randomHeight = random.nextInt(3) + 2;
         for (int sphereCount = 0; sphereCount < random.nextInt(8) + 4; sphereCount++) {
             generateFoliageSphere(world, x - random.nextInt(3) + 1, y + random.nextInt(randomHeight), z - random.nextInt(3) + 1);
@@ -54,9 +54,9 @@ public class ShrubFeature extends Feature {
                 }
             }
         }
-        //if (ground != mod_NFC.planter.id) { TODO: Reactivate once planter is implemented
-        //    world.setBlock(x, y - 1, z, Block.dirt.id);
-        //}
+        if (ground != BlockListener.planter.id) {
+            world.setBlock(x, y - 1, z, Block.DIRT.id);
+        }
         return true;
     }
 

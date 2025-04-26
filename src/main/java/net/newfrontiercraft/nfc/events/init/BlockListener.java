@@ -71,7 +71,9 @@ public class BlockListener {
             platinumBlock,
             bronzeBlock,
             brassBlock,
-            steelBlock;
+            steelBlock,
+
+            unfiredPlanter;
 
     public static LazyOreTemplate
             netherAshOre,
@@ -164,6 +166,8 @@ public class BlockListener {
             stainedPlanksStairs;
 
     public static DoubleStoneSlabBlock doubleStoneSlab;
+
+    public static PlanterBlock planter;
 
     @Entrypoint.Namespace
     public static Namespace MOD_ID;
@@ -333,6 +337,9 @@ public class BlockListener {
         nonDyedStairs = new LazyStairsTemplate(Identifier.of(MOD_ID, "non_dyed_stairs"), Material.STONE, 1.0F, Block.STONE_SOUND_GROUP);
         stainedPlanksStairs = new LazyStairsTemplate(Identifier.of(MOD_ID, "stained_planks_stairs"), Material.WOOD, 1.0F, Block.WOOD_SOUND_GROUP);
         doubleStoneSlab = new DoubleStoneSlabBlock(Identifier.of(MOD_ID, "double_stone_slab"), Material.STONE, 1.0F, Block.STONE_SOUND_GROUP);
+
+        unfiredPlanter = new LazyBlockTemplate(Identifier.of(MOD_ID, "unfired_planter"), Material.SOIL, 1.0F, Block.DIRT_SOUND_GROUP);
+        planter = new PlanterBlock(Identifier.of(MOD_ID, "planter"), Material.STONE, 1.0F, Block.STONE_SOUND_GROUP);
 
         // Changes to vanilla blast resistance
         Block.COAL_ORE.setResistance(500F);

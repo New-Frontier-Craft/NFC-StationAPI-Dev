@@ -255,6 +255,12 @@ tile.nfc.stained_planks_stairs15.name=Black Stained Planks Stairs
 
 tile.nfc.double_stone_slab.name=Stone Slab
 
+tile.nfc.unfired_planter.name=Unfired Planter
+tile.nfc.planter0.name=Empty Planter
+tile.nfc.planter1.name=Filled Planter
+tile.nfc.planter2.name=Irrigated Filled Planter
+
+
 item.nfc.aluminium_pickaxe.name=Aluminum Pickaxe
 item.nfc.bismuth_pickaxe.name=Bismuth Pickaxe
 item.nfc.copper_pickaxe.name=Copper Pickaxe

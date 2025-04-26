@@ -9,6 +9,7 @@ import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.GlowstoneClusterFeature;
 import net.minecraft.world.gen.feature.LakeFeature;
+import net.newfrontiercraft.nfc.events.init.BlockListener;
 import net.newfrontiercraft.nfc.feature.ShrubFeature;
 import net.newfrontiercraft.nfc.world.gen.feature.DeadTreeFeature;
 import org.spongepowered.asm.mixin.Mixin;
@@ -42,12 +43,12 @@ public abstract class SaplingBlockMixin extends PlantBlock {
             if (world.getBlockMeta(x, y - 1, z) > 0) {
                 fertility = 16;
             }
-        } /*else if (world.getBlockId(i, j - 1, k) == mod_NFC.planter.blockID && world.getBlockMetadata(i, j - 1, k) > 0) { TODO: Reactivate when planter gets added
+        } else if (world.getBlockId(x, y - 1, z) == BlockListener.planter.id && world.getBlockMeta(x, y - 1, z) > 0) {
             fertility = 8;
-            if (world.getBlockMetadata(i, j - 1, k) > 1) {
+            if (world.getBlockMeta(x, y - 1, z) > 1) {
                 fertility = 32;
             }
-        }*/
+        }
         if (random.nextInt(fertility) == 0 &&
                 (world.method_1781().getBiome(x, z) == Biome.SAVANNA ||
                         world.method_1781().getBiome(x, z) == Biome.SHRUBLAND ||
