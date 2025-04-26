@@ -6,6 +6,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.dimension.NetherDimension;
 import net.minecraft.world.dimension.OverworldDimension;
+import net.minecraft.world.gen.feature.LakeFeature;
 import net.minecraft.world.gen.feature.OreFeature;
 import net.minecraft.world.gen.feature.PlantPatchFeature;
 import net.modificationstation.stationapi.api.event.world.gen.WorldGenEvent;
@@ -58,6 +59,13 @@ public class ChunkListener {
                 int z = event.z + event.random.nextInt(16);
                 (new ShrubFeature()).generate(event.world, event.random, x, y, z);
             }
+        }
+
+        if (random.nextInt(16) == 1) {
+            int i1 = event.x + random.nextInt(16) + 8;
+            int l4 = random.nextInt(random.nextInt(random.nextInt(32) + 1) + 1) + random.nextInt(32) + 4;
+            int i8 = event.z + random.nextInt(16) + 8;
+            (new LakeFeature(BlockListener.oilStill.id)).generate(world, random, i1, l4, i8);
         }
 
         if (event.random.nextInt(32) == 0) {
