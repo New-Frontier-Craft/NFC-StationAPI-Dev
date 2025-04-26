@@ -51,9 +51,9 @@ public abstract class SaplingBlockMixin extends PlantBlock {
         }
         if (random.nextInt(fertility) == 0 &&
                 (world.method_1781().getBiome(x, z) == Biome.SAVANNA ||
-                        world.method_1781().getBiome(x, z) == Biome.SHRUBLAND ||
-                        world.method_1781().getBiome(x, z) == Biome.DESERT ||
-                        world.method_1781().getBiome(x, z) == Biome.TUNDRA)) {
+                 world.method_1781().getBiome(x, z) == Biome.SHRUBLAND ||
+                 world.method_1781().getBiome(x, z) == Biome.DESERT ||
+                 world.method_1781().getBiome(x, z) == Biome.TUNDRA)) {
             world.setBlock(x, y, z, 0);
             Feature feature = new ShrubFeature(meta);
             if(!feature.generate(world, random, x, y, z)) {
@@ -66,7 +66,7 @@ public abstract class SaplingBlockMixin extends PlantBlock {
 
     @Override
     protected boolean canPlantOnTop(int id) {
-        if(id == Block.SOUL_SAND.id){
+        if(id == Block.SOUL_SAND.id || id == BlockListener.planter.id) {
             return true;
         }
         return super.canPlantOnTop(id);

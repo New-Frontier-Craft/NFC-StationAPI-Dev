@@ -10,10 +10,16 @@ import java.util.Random;
 public class ShrubFeature extends Feature {
 
     int meta;
+    boolean alphaMode;
 
     public ShrubFeature(int meta) {
         super();
         this.meta = meta;
+    }
+
+    public ShrubFeature(boolean alphaMode) {
+        super();
+        this.alphaMode = alphaMode;
     }
 
     public ShrubFeature() {
@@ -38,7 +44,7 @@ public class ShrubFeature extends Feature {
         if (ground == Block.GRASS_BLOCK.id || ground == Block.FARMLAND.id) {
             world.setBlock(x, y - 1, z, Block.DIRT.id);
         }
-        if(meta == 3) {
+        if(alphaMode) {
             for(int i2 = -2; i2 <= 2; i2++) {
                 for(int j2 = -2; j2 <= 0; j2++) {
                     for(int k2 = -2; k2 <= 2; k2++) {
@@ -66,7 +72,7 @@ public class ShrubFeature extends Feature {
                 for (int yOffset = -1; yOffset <= 1; yOffset++) {
                     if ((xOffset == 1 || xOffset == -1) && (yOffset == 1 || yOffset == -1) && (zOffset == 1 || zOffset == -1)) continue;
                     if (world.getBlockId(x + xOffset, y + yOffset, z + zOffset) != 0) continue;
-                    world.setBlock(x + xOffset, y + yOffset, z + zOffset, Block.LEAVES.id, meta);
+                    world.setBlock(x + xOffset, y + yOffset, z + zOffset, alphaMode ? BlockListener.alphaLeaves.id : Block.LEAVES.id, meta);
                 }
             }
         }
