@@ -6,6 +6,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.dimension.NetherDimension;
 import net.minecraft.world.dimension.OverworldDimension;
+import net.minecraft.world.gen.feature.GlowstoneClusterFeature;
 import net.minecraft.world.gen.feature.OreFeature;
 import net.minecraft.world.gen.feature.PlantPatchFeature;
 import net.modificationstation.stationapi.api.event.world.gen.WorldGenEvent;
@@ -327,6 +328,13 @@ public class ChunkListener {
     public void populateNether(WorldGenEvent.ChunkDecoration event) {
         Random random = event.random;
         World world = event.world;
+
+        if (random.nextInt(4) == 0) {
+            int l2 = event.x + random.nextInt(16) + 8;
+            int j4 = random.nextInt(128);
+            int l5 = event.z + random.nextInt(16) + 8;
+            (new CrystalClusterFeature(BlockListener.blueGlowstone.id, Block.NETHERRACK.id)).generate(world, random, l2, j4, l5);
+        }
 
         {
             int l2 = event.x + random.nextInt(16) + 8;
