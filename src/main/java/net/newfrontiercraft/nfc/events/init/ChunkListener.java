@@ -6,10 +6,7 @@ import net.minecraft.world.dimension.NetherDimension;
 import net.minecraft.world.dimension.OverworldDimension;
 import net.minecraft.world.gen.feature.OreFeature;
 import net.modificationstation.stationapi.api.event.world.gen.WorldGenEvent;
-import net.newfrontiercraft.nfc.feature.OreCloud;
-import net.newfrontiercraft.nfc.feature.ConcentratedOreVein;
-import net.newfrontiercraft.nfc.feature.ScatteredOrePieces;
-import net.newfrontiercraft.nfc.feature.UnrestrictedOreFeature;
+import net.newfrontiercraft.nfc.feature.*;
 
 public class ChunkListener {
     @EventListener
@@ -19,6 +16,14 @@ public class ChunkListener {
     }
 
     public void populateOverworld(WorldGenEvent.ChunkDecoration event) {
+
+        if (event.random.nextInt(64) == 0) {
+            int x = event.x + event.random.nextInt(16) + 8;
+            int y = event.random.nextInt(32) + 40;
+            int z = event.z + event.random.nextInt(16) + 8;
+            (new RavineFeature()).generate(event.world, event.random, x, y, z);
+        }
+
         {
             int i6 = event.x + event.random.nextInt(16);
             int j9 = event.random.nextInt(20) + 90;
