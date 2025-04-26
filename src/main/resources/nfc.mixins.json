@@ -37,6 +37,7 @@
     "ToolEffectivenessHijackerMixin",
     "TorchPlacementMixin",
     "TrapdoorLiberationMixin",
+    "ScorchedSandWorldGenMixin",
     "graphics.BlockRendererManagerMixin"
   ],
   "server": [
