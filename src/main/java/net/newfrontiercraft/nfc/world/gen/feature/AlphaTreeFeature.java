@@ -41,17 +41,16 @@ public class AlphaTreeFeature extends Feature {
                 return false;
             } else {
                 int groundBlock = world.getBlockId(x, y - 1, z);
-                if ((groundBlock == Block.GRASS_BLOCK.id || groundBlock == Block.DIRT.id) && y < 128 - treeHeight - 1) {
-                    world.setBlockWithoutNotifyingNeighbors(x, y - 1, z, Block.DIRT.id);
+                if ((groundBlock == Block.GRASS_BLOCK.id || groundBlock == Block.DIRT.id || groundBlock == BlockListener.planter.id) && y < 128 - treeHeight - 1) {
+                    if (groundBlock != BlockListener.planter.id) {
+                        world.setBlockWithoutNotifyingNeighbors(x, y - 1, z, Block.DIRT.id);
+                    }
 
                     for(int xOffset = -2; xOffset <= 2; ++xOffset) {
                         for(int yOffset = -2; yOffset <= 0; ++yOffset) {
                             for(int zOffset = -2; zOffset <= 2; ++zOffset) {
                                 if(world.getBlockId(x + xOffset, y + yOffset, z + zOffset) == Block.GRASS_BLOCK.id) {
-                                    boolean placeGrass = true;
-                                    if((xOffset < -1 || xOffset > 1 || zOffset < -1 || zOffset > 1) && random.nextInt(2) == 0) {
-                                        placeGrass = false;
-                                    }
+                                    boolean placeGrass = (xOffset >= -1 && xOffset <= 1 && zOffset >= -1 && zOffset <= 1) || random.nextInt(2) != 0;
 
                                     if(placeGrass) {
                                         world.setBlock(x + xOffset, y + yOffset, z + zOffset, BlockListener.alphaGrass.id);

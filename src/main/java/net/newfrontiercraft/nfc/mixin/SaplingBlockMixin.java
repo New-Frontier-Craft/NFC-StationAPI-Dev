@@ -6,10 +6,11 @@ import net.minecraft.block.SaplingBlock;
 import net.minecraft.block.material.Material;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
-import net.minecraft.world.gen.feature.Feature;
-import net.minecraft.world.gen.feature.GlowstoneClusterFeature;
-import net.minecraft.world.gen.feature.LakeFeature;
+import net.minecraft.world.gen.feature.*;
 import net.newfrontiercraft.nfc.events.init.BlockListener;
+import net.newfrontiercraft.nfc.feature.PlanterBirchTreeFeature;
+import net.newfrontiercraft.nfc.feature.PlanterOakTreeFeature;
+import net.newfrontiercraft.nfc.feature.PlanterSpruceTreeFeature;
 import net.newfrontiercraft.nfc.feature.ShrubFeature;
 import net.newfrontiercraft.nfc.world.gen.feature.DeadTreeFeature;
 import org.spongepowered.asm.mixin.Mixin;
@@ -59,6 +60,20 @@ public abstract class SaplingBlockMixin extends PlantBlock {
             if(!feature.generate(world, random, x, y, z)) {
                 world.setBlock(x, y, z, this.id, meta);
                 return;
+            }
+            ci.cancel();
+        } else if (world.getBlockId(x, y - 1, z) == BlockListener.planter.id && world.getBlockMeta(x, y - 1, z) > 0) {
+            world.setBlockWithoutNotifyingNeighbors(x, y, z, 0);
+            Feature var7;
+            if (meta == 1) {
+                var7 = new PlanterSpruceTreeFeature();
+            } else if (meta == 2) {
+                var7 = new PlanterBirchTreeFeature();
+            } else {
+                var7 = new PlanterOakTreeFeature();
+            }
+            if (!var7.generate(world, random, x, y, z)) {
+                world.setBlockWithoutNotifyingNeighbors(x, y, z, this.id, meta);
             }
             ci.cancel();
         }
