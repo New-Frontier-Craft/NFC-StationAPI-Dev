@@ -2,12 +2,16 @@ package net.newfrontiercraft.nfc.events.init;
 
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.minecraft.block.Block;
+import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.dimension.NetherDimension;
 import net.minecraft.world.dimension.OverworldDimension;
 import net.minecraft.world.gen.feature.OreFeature;
+import net.minecraft.world.gen.feature.PlantPatchFeature;
 import net.modificationstation.stationapi.api.event.world.gen.WorldGenEvent;
 import net.newfrontiercraft.nfc.feature.*;
+
+import java.util.Random;
 
 public class ChunkListener {
     @EventListener
@@ -17,7 +21,33 @@ public class ChunkListener {
     }
 
     public void populateOverworld(WorldGenEvent.ChunkDecoration event) {
-
+        Random random = event.random;
+        World world = event.world;
+        Biome biome = event.biome;
+        
+        if (random.nextInt(32) == 0) {
+            int j14 = event.x + random.nextInt(16) + 8;
+            int j16 = random.nextInt(56);
+            int j19 = event.z + random.nextInt(16) + 8;
+            (new PlantPatchFeature(BlockListener.bioluminescentMushroom.id)).generate(world, random, j14, j16, j19);
+        }
+        if (biome == Biome.SEASONAL_FOREST) {
+            if (random.nextInt(48) == 0) {
+                int j14 = event.x + random.nextInt(16) + 8;
+                int j16 = random.nextInt(64) + 64;
+                int j19 = event.z + random.nextInt(16) + 8;
+                (new PlantPatchFeature(BlockListener.bioluminescentMushroom.id)).generate(world, random, j14, j16, j19);
+            }
+        }
+        if (biome == Biome.TAIGA || biome == Biome.TUNDRA) {
+            if (random.nextInt(32) == 0) {
+                int j14 = event.x + random.nextInt(16) + 8;
+                int j16 = random.nextInt(16) + 45;
+                int j19 = event.z + random.nextInt(16) + 8;
+                (new PlantPatchFeature(BlockListener.bioluminescentMushroom.id)).generate(world, random, j14, j16, j19);
+            }
+        }
+        
         if (event.biome == Biome.SAVANNA || event.biome == Biome.SHRUBLAND) {
             double humidity = event.world.method_1781().downfallMap[0];
             humidity *= 100;
