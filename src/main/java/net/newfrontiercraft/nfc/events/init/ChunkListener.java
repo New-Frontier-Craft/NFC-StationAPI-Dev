@@ -2,6 +2,7 @@ package net.newfrontiercraft.nfc.events.init;
 
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.minecraft.block.Block;
+import net.minecraft.world.biome.Biome;
 import net.minecraft.world.dimension.NetherDimension;
 import net.minecraft.world.dimension.OverworldDimension;
 import net.minecraft.world.gen.feature.OreFeature;
@@ -16,6 +17,18 @@ public class ChunkListener {
     }
 
     public void populateOverworld(WorldGenEvent.ChunkDecoration event) {
+
+        if (event.biome == Biome.SAVANNA || event.biome == Biome.SHRUBLAND) {
+            double humidity = event.world.method_1781().downfallMap[0];
+            humidity *= 100;
+            humidity = Math.floor(humidity);
+            for (int k = 0; k < humidity; k++) {
+                int x = event.x + event.random.nextInt(16);
+                int y = event.random.nextInt(32) + 64;
+                int z = event.z + event.random.nextInt(16);
+                (new ShrubFeature()).generate(event.world, event.random, x, y, z);
+            }
+        }
 
         if (event.random.nextInt(32) == 0) {
             int x = event.x + event.random.nextInt(16) + 8;
