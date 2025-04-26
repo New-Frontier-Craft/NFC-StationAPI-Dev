@@ -35,6 +35,9 @@ public class ShrubFeature extends Feature {
         for (int logHeight = 0; logHeight < randomHeight - 1; logHeight++) {
             world.setBlock(x, y + logHeight, z, Block.LOG.id, meta);
         }
+        if (ground == Block.GRASS_BLOCK.id || ground == Block.FARMLAND.id) {
+            world.setBlock(x, y - 1, z, Block.DIRT.id);
+        }
         if(meta == 3) {
             for(int i2 = -2; i2 <= 2; i2++) {
                 for(int j2 = -2; j2 <= 0; j2++) {
