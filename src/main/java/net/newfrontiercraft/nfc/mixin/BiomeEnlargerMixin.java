@@ -14,8 +14,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(BiomeSource.class)
 public class BiomeEnlargerMixin {
 
-    @Shadow public Biome[] biomes;
-
     @Shadow public double[] temperatureMap;
 
     @Shadow public double[] downfallMap;
@@ -79,5 +77,38 @@ public class BiomeEnlargerMixin {
         }
 
         cir.setReturnValue(biomes);
+    }
+
+    @Inject(at = @At("HEAD"), method = "create", cancellable = true)
+    private void stretchTemperatureCreation(double[] map, int x, int z, int width, int depth, CallbackInfoReturnable<double[]> cir) {
+        if (map == null || map.length < width * depth) {
+            map = new double[width * depth];
+        }
+
+        map = this.temperatureSampler.sample(map, (double)x, (double)z, width, depth, 0.015D, 0.015D, 0.25);
+        this.weirdnessMap = this.weirdnessSampler.sample(this.weirdnessMap, (double)x, (double)z, width, depth, 0.4D, 0.4D, 0.5882352941176471);
+        int var6 = 0;
+
+        for(int var7 = 0; var7 < width; ++var7) {
+            for(int var8 = 0; var8 < depth; ++var8) {
+                double var9 = this.weirdnessMap[var6] * 1.1 + 0.5;
+                double var11 = 0.01;
+                double var13 = 1.0 - var11;
+                double var15 = (map[var6] * 0.15 + 0.725D) * var13 + var9 * var11;
+                var15 = 1.0 - (1.0 - var15) * (1.0 - var15);
+                if (var15 < 0.0) {
+                    var15 = 0.0;
+                }
+
+                if (var15 > 1.0) {
+                    var15 = 1.0;
+                }
+
+                map[var6] = var15;
+                ++var6;
+            }
+        }
+
+        cir.setReturnValue(map);
     }
 }
