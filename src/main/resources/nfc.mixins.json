@@ -37,6 +37,7 @@
     "ToolEffectivenessHijackerMixin",
     "TorchPlacementMixin",
     "TrapdoorLiberationMixin",
+    "OverworldWorldCarversMixin",
     "graphics.BlockRendererManagerMixin"
   ],
   "server": [
