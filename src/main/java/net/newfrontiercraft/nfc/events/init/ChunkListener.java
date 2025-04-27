@@ -10,7 +10,7 @@ import net.minecraft.world.gen.feature.LakeFeature;
 import net.minecraft.world.gen.feature.OreFeature;
 import net.minecraft.world.gen.feature.PlantPatchFeature;
 import net.modificationstation.stationapi.api.event.world.gen.WorldGenEvent;
-import net.newfrontiercraft.nfc.feature.*;
+import net.newfrontiercraft.nfc.world.gen.feature.*;
 
 import java.util.Random;
 

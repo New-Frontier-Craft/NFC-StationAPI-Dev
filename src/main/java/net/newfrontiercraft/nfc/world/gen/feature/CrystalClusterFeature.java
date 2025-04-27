@@ -1,4 +1,4 @@
-package net.newfrontiercraft.nfc.feature;
+package net.newfrontiercraft.nfc.world.gen.feature;
 
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.Feature;
