@@ -13,8 +13,8 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.*;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
-@Debug(export = true)
 @Mixin(NetherChunkGenerator.class)
+// This mixin is currently not in use so if scorched sand worldgen is already handled somewhere else it can be safely deleted
 public class ScorchedSandWorldGenMixin {
     @Shadow private OctavePerlinNoiseSampler perlinNoise2;
     private double[] scorchedSandBuffer = new double[256];

@@ -10,7 +10,7 @@ import net.minecraft.world.gen.feature.LakeFeature;
 import net.minecraft.world.gen.feature.OreFeature;
 import net.minecraft.world.gen.feature.PlantPatchFeature;
 import net.modificationstation.stationapi.api.event.world.gen.WorldGenEvent;
-import net.newfrontiercraft.nfc.feature.*;
+import net.newfrontiercraft.nfc.world.gen.feature.*;
 
 import java.util.Random;
 
@@ -79,7 +79,7 @@ public class ChunkListener {
             int x = event.x + event.random.nextInt(16) + 8;
             int y = event.random.nextInt(32) + 40;
             int z = event.z + event.random.nextInt(16) + 8;
-            (new RavineFeature()).generate(event.world, event.random, x, y, z);
+            //(new RavineFeature()).generate(event.world, event.random, x, y, z);
         }
 
         {

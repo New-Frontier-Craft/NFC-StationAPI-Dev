@@ -8,7 +8,7 @@ import net.modificationstation.stationapi.api.block.BlockState;
 import net.modificationstation.stationapi.api.template.block.TemplateSaplingBlock;
 import net.modificationstation.stationapi.api.util.Identifier;
 import net.newfrontiercraft.nfc.events.init.BlockListener;
-import net.newfrontiercraft.nfc.feature.ShrubFeature;
+import net.newfrontiercraft.nfc.world.gen.feature.ShrubFeature;
 import net.newfrontiercraft.nfc.world.gen.feature.AlphaTreeFeature;
 import net.newfrontiercraft.nfc.world.gen.feature.LargeAlphaTreeFeature;
 

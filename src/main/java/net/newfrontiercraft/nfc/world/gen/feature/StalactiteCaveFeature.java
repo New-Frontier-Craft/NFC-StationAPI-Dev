@@ -1,4 +1,4 @@
-package net.newfrontiercraft.nfc.feature;
+package net.newfrontiercraft.nfc.world.gen.feature;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.OreBlock;
