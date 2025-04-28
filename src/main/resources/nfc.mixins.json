@@ -25,6 +25,7 @@
     "MapColorInvoker",
     "MaterialInvoker",
     "OreSuppressionMixin",
+    "OverworldWorldCarversMixin",
     "PlantBlockMixin",
     "PlayerEntityMixin",
     "PortalForcerToleranceMixin",
@@ -37,7 +38,6 @@
     "ToolEffectivenessHijackerMixin",
     "TorchPlacementMixin",
     "TrapdoorLiberationMixin",
-    "OverworldWorldCarversMixin",
     "graphics.BlockRendererManagerMixin"
   ],
   "server": [

@@ -79,10 +79,16 @@ public abstract class SaplingBlockMixin extends PlantBlock {
     }
 
     @Override
-    protected boolean canPlantOnTop(int id) {
-        if(id == Block.SOUL_SAND.id || id == BlockListener.planter.id) {
+    public boolean canPlaceAt(World world, int x, int y, int z) {
+        int var5 = world.getBlockId(x, y, z);
+        boolean canPlaceHere = var5 == 0 || BLOCKS[var5].material.isReplaceable();
+        if (!canPlaceHere) {
+            return false;
+        }
+        int belowId = world.getBlockId(x, y - 1, z);
+        if (belowId == Block.GRASS_BLOCK.id || belowId == Block.DIRT.id || belowId == Block.FARMLAND.id || belowId == Block.SOUL_SAND.id || belowId == BlockListener.planter.id) {
             return true;
         }
-        return super.canPlantOnTop(id);
+        return false;
     }
 }

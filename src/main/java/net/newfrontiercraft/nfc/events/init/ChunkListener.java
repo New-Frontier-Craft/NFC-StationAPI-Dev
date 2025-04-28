@@ -343,26 +343,26 @@ public class ChunkListener {
             (new CrystalClusterFeature(BlockListener.blueGlowstone.id, Block.NETHERRACK.id)).generate(world, random, l2, j4, l5);
         }
 
-        {
-            int l2 = event.x + random.nextInt(16) + 8;
-            int j4 = random.nextInt(128);
-            int l5 = event.z + random.nextInt(16) + 8;
-            (new PlantPatchFeature(BlockListener.glowingMushroom.id)).generate(world, random, l2, j4, l5);
-        }
-
-        if (random.nextInt(2) == 0) {
-            int l2 = event.x + random.nextInt(16) + 8;
-            int j4 = random.nextInt(128);
-            int l5 = event.z + random.nextInt(16) + 8;
-            (new PlantPatchFeature(BlockListener.fieryMushroom.id)).generate(world, random, l2, j4, l5);
-        }
-
-        if (random.nextInt(48) == 0) {
-            int l2 = event.x + random.nextInt(16) + 8;
-            int j4 = random.nextInt(128);
-            int l5 = event.z + random.nextInt(16) + 8;
-            (new MetaCapablePlantPatchFeature(BlockListener.bioluminescentMushroom.id, 1)).generate(world, random, l2, j4, l5);
-        }
+//        {
+//            int l2 = event.x + random.nextInt(16) + 8;
+//            int j4 = random.nextInt(128);
+//            int l5 = event.z + random.nextInt(16) + 8;
+//            (new PlantPatchFeature(BlockListener.glowingMushroom.id)).generate(world, random, l2, j4, l5);
+//        }
+//
+//        if (random.nextInt(2) == 0) {
+//            int l2 = event.x + random.nextInt(16) + 8;
+//            int j4 = random.nextInt(128);
+//            int l5 = event.z + random.nextInt(16) + 8;
+//            (new PlantPatchFeature(BlockListener.fieryMushroom.id)).generate(world, random, l2, j4, l5);
+//        }
+//
+//        if (random.nextInt(48) == 0) {
+//            int l2 = event.x + random.nextInt(16) + 8;
+//            int j4 = random.nextInt(128);
+//            int l5 = event.z + random.nextInt(16) + 8;
+//            (new MetaCapablePlantPatchFeature(BlockListener.bioluminescentMushroom.id, 1)).generate(world, random, l2, j4, l5);
+//        }
 
         {
             int k4 = event.x + event.random.nextInt(16);
