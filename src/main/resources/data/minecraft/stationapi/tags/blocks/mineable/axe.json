@@ -12,6 +12,10 @@
     "minecraft:oak_stairs",
     "minecraft:crafting_table",
     "minecraft:oak_trapdoor",
-    "minecraft:oak_door"
+    "minecraft:oak_door",
+    "nfc:fiery_mushroom_cap",
+    "nfc:fiery_mushroom_stem",
+    "nfc:glowing_mushroom_cap",
+    "nfc:glowing_mushroom_stem"
   ]
 }

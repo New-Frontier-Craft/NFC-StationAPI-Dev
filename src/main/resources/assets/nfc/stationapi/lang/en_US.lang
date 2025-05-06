@@ -260,6 +260,11 @@ tile.nfc.planter0.name=Empty Planter
 tile.nfc.planter1.name=Filled Planter
 tile.nfc.planter2.name=Irrigated Filled Planter
 
+tile.nfc.fiery_mushroom_cap.name=Fiery Mushroom Cap
+tile.nfc.fiery_mushroom_stem.name=Fiery Mushroom Stem
+tile.nfc.glowing_mushroom_cap.name=Glowing Mushroom Cap
+tile.nfc.glowing_mushroom_stem.name=Glowing Mushroom Stem
+
 
 item.nfc.aluminium_pickaxe.name=Aluminum Pickaxe
 item.nfc.bismuth_pickaxe.name=Bismuth Pickaxe

@@ -42,6 +42,7 @@ public class TextureListener {
         String farming = "block/farming/";
         String planter = farming + "planter/";
         String unfiredPlanter = planter + "unfired/";
+        String bigMushrooms = mushrooms + "big/";
 
         // Item strings
         String items = "item/";
@@ -691,6 +692,12 @@ public class TextureListener {
                         getTextureIndex(stainedPlanks + "black")
                 }
         );
+
+        // Big mushrooms
+        BlockListener.fieryMushroomCap.specifyTextures(getTextureIndex(bigMushrooms + "fiery_cap"));
+        BlockListener.fieryMushroomStem.specifyTextures(getTextureIndex(bigMushrooms + "fiery_stem"));
+        BlockListener.glowingMushroomCap.specifyTextures(getTextureIndex(bigMushrooms + "glowing_cap"));
+        BlockListener.glowingMushroomStem.specifyTextures(getTextureIndex(bigMushrooms + "glowing_stem"));
 
         // Vanilla texture changes
         grassBlockSide = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, vanillaBlocks + "grass_block_side")).index;
