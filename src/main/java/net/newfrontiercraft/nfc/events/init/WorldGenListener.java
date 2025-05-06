@@ -26,9 +26,9 @@ public class WorldGenListener {
 
         BiomeBuilder biomeBuilder;
 
-        // Ash deposits
+        // Scorched deposits
         SurfaceRule ashSurface = SurfaceBuilder.start(BlockListener.scorchedSand).replace(Block.NETHERRACK).build();
-        biomeBuilder = BiomeBuilder.start("Ash Deposits");
+        biomeBuilder = BiomeBuilder.start("Scorched Deposits");
         netherBiomes[0] = biomeBuilder.height(0, 127).snow(false).surfaceRule(ashSurface).feature(new LeveledScatterFeature(new PlantPatchFeature(BlockListener.fieryMushroom.id), 1)).build();
 
         // Glowing Mushroom Forest
