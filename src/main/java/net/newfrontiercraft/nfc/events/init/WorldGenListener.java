@@ -14,6 +14,7 @@ import net.modificationstation.stationapi.api.worldgen.feature.LeveledScatterFea
 import net.modificationstation.stationapi.api.worldgen.surface.SurfaceBuilder;
 import net.modificationstation.stationapi.api.worldgen.surface.SurfaceRule;
 import net.newfrontiercraft.nfc.world.gen.feature.DeadTreeFeature;
+import net.newfrontiercraft.nfc.world.gen.feature.GlowingMushroomFeature;
 import net.newfrontiercraft.nfc.world.gen.feature.MetaCapablePlantPatchFeature;
 
 public class WorldGenListener {
@@ -26,19 +27,18 @@ public class WorldGenListener {
         BiomeBuilder biomeBuilder;
 
         // Scorched deposits
-        SurfaceRule ashSurface = SurfaceBuilder.start(BlockListener.scorchedSand).replace(Block.NETHERRACK).build();
+        SurfaceRule scorchedSurface = SurfaceBuilder.start(BlockListener.scorchedSand).replace(Block.NETHERRACK).build();
         biomeBuilder = BiomeBuilder.start("Scorched Deposits");
-        netherBiomes[0] = biomeBuilder.height(0, 127).snow(false).surfaceRule(ashSurface).feature(new LeveledScatterFeature(new PlantPatchFeature(BlockListener.fieryMushroom.id), 1)).build();
+        netherBiomes[0] = biomeBuilder.height(0, 127).snow(false).feature(new LeveledScatterFeature(new PlantPatchFeature(BlockListener.fieryMushroom.id), 1)).surfaceRule(scorchedSurface).build();
 
         // Glowing Mushroom Forest
-        SurfaceRule glowingMushroomSurface = SurfaceBuilder.start(Block.GOLD_BLOCK).replace(Block.NETHERRACK).build(); // TODO: Replace with proper surface block or remove
         biomeBuilder = BiomeBuilder.start("Glowing Mushroom Forest");
-        netherBiomes[1] = biomeBuilder.height(0, 127).snow(false).surfaceRule(glowingMushroomSurface).feature(new LeveledScatterFeature(new PlantPatchFeature(BlockListener.glowingMushroom.id), 1)).build();
+        netherBiomes[1] = biomeBuilder.height(0, 127).snow(false).feature(new LeveledScatterFeature(new PlantPatchFeature(BlockListener.glowingMushroom.id), 1)).feature(new LeveledScatterFeature(new GlowingMushroomFeature(), 1)).build();
 
         // Purple Mushroom Forest
         SurfaceRule purpleMushroomSurface = SurfaceBuilder.start(Block.STONE).replace(Block.NETHERRACK).build(); // TODO: Replace with proper surface block or remove
         biomeBuilder = BiomeBuilder.start("Purple Mushroom Forest");
-        netherBiomes[2] = biomeBuilder.height(0, 127).snow(false).surfaceRule(purpleMushroomSurface).feature(new LeveledScatterFeature(new MetaCapablePlantPatchFeature(BlockListener.bioluminescentMushroom.id, 1), 2)).build();
+        netherBiomes[2] = biomeBuilder.height(0, 127).snow(false).feature(new LeveledScatterFeature(new MetaCapablePlantPatchFeature(BlockListener.bioluminescentMushroom.id, 1), 2)).surfaceRule(purpleMushroomSurface).build();
 
         // Dead Forest
         SurfaceRule deadForestSurface = SurfaceBuilder.start(Block.SOUL_SAND).replace(Block.NETHERRACK).build(); // TODO: Replace with proper surface block or remove
@@ -48,7 +48,6 @@ public class WorldGenListener {
 
     @EventListener
     public void registerRegions(BiomeProviderRegisterEvent event) {
-        // Simple climate provider with biomes by temperature
         VoronoiBiomeProvider provider = new VoronoiBiomeProvider();
         provider.addBiome(netherBiomes[0]);
         provider.addBiome(netherBiomes[1]);
