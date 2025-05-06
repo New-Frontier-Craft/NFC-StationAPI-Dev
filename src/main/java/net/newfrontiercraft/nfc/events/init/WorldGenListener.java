@@ -27,7 +27,7 @@ public class WorldGenListener {
         BiomeBuilder biomeBuilder;
 
         // Scorched deposits
-        SurfaceRule scorchedSurface = SurfaceBuilder.start(BlockListener.scorchedSand).replace(Block.NETHERRACK).build();
+        SurfaceRule scorchedSurface = SurfaceBuilder.start(BlockListener.scorchedSand).ground(2).replace(Block.NETHERRACK).build();
         biomeBuilder = BiomeBuilder.start("Scorched Deposits");
         netherBiomes[0] = biomeBuilder.height(0, 127).snow(false).feature(new LeveledScatterFeature(new PlantPatchFeature(BlockListener.fieryMushroom.id), 1)).surfaceRule(scorchedSurface).build();
 
@@ -36,24 +36,27 @@ public class WorldGenListener {
         netherBiomes[1] = biomeBuilder.height(0, 127).snow(false).feature(new LeveledScatterFeature(new PlantPatchFeature(BlockListener.glowingMushroom.id), 1)).feature(new LeveledScatterFeature(new GlowingMushroomFeature(), 1)).build();
 
         // Purple Mushroom Forest
-        SurfaceRule purpleMushroomSurface = SurfaceBuilder.start(Block.STONE).replace(Block.NETHERRACK).build(); // TODO: Replace with proper surface block or remove
+        SurfaceRule purpleMushroomSurface = SurfaceBuilder.start(Block.STONE).ground(1).replace(Block.NETHERRACK).build(); // TODO: Replace with proper surface block or remove
         biomeBuilder = BiomeBuilder.start("Purple Mushroom Forest");
         netherBiomes[2] = biomeBuilder.height(0, 127).snow(false).feature(new LeveledScatterFeature(new MetaCapablePlantPatchFeature(BlockListener.bioluminescentMushroom.id, 1), 2)).surfaceRule(purpleMushroomSurface).build();
 
         // Dead Forest
-        SurfaceRule deadForestSurface = SurfaceBuilder.start(Block.SOUL_SAND).replace(Block.NETHERRACK).build(); // TODO: Replace with proper surface block or remove
+        SurfaceRule deadForestSurface = SurfaceBuilder.start(Block.SOUL_SAND).ground(4).replace(Block.NETHERRACK).build(); // TODO: Replace with proper surface block or remove
         biomeBuilder = BiomeBuilder.start("Dead Forest");
         netherBiomes[3] = biomeBuilder.height(0, 127).snow(false).feature(new LeveledScatterFeature(new DeadTreeFeature(), 1)).surfaceRule(deadForestSurface).build();
     }
 
     @EventListener
     public void registerRegions(BiomeProviderRegisterEvent event) {
-        VoronoiBiomeProvider provider = new VoronoiBiomeProvider();
-        provider.addBiome(netherBiomes[0]);
-        provider.addBiome(netherBiomes[1]);
-        provider.addBiome(netherBiomes[2]);
-        provider.addBiome(netherBiomes[3]);
+        VoronoiBiomeProvider firstProvider = new VoronoiBiomeProvider();
+        firstProvider.addBiome(netherBiomes[0]);
+        firstProvider.addBiome(netherBiomes[1]);
 
-        BiomeAPI.addNetherBiomeProvider(StationAPI.NAMESPACE.id("nfc_nether_provider"), provider);
+        VoronoiBiomeProvider secondProvider = new VoronoiBiomeProvider();
+        secondProvider.addBiome(netherBiomes[2]);
+        secondProvider.addBiome(netherBiomes[3]);
+
+        BiomeAPI.addNetherBiomeProvider(StationAPI.NAMESPACE.id("first_nether_provider"), firstProvider);
+        BiomeAPI.addNetherBiomeProvider(StationAPI.NAMESPACE.id("second_nether_provider"), secondProvider);
     }
 }
