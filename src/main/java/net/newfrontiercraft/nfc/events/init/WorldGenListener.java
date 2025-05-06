@@ -10,7 +10,6 @@ import net.modificationstation.stationapi.api.event.worldgen.biome.BiomeProvider
 import net.modificationstation.stationapi.api.worldgen.BiomeAPI;
 import net.modificationstation.stationapi.api.worldgen.biome.BiomeBuilder;
 import net.modificationstation.stationapi.api.worldgen.biome.VoronoiBiomeProvider;
-import net.modificationstation.stationapi.api.worldgen.feature.HeightScatterFeature;
 import net.modificationstation.stationapi.api.worldgen.feature.LeveledScatterFeature;
 import net.modificationstation.stationapi.api.worldgen.surface.SurfaceBuilder;
 import net.modificationstation.stationapi.api.worldgen.surface.SurfaceRule;
