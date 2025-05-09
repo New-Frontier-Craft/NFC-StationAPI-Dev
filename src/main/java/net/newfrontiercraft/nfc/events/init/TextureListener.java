@@ -698,6 +698,8 @@ public class TextureListener {
         BlockListener.fieryMushroomStem.specifyTextures(getTextureIndex(bigMushrooms + "fiery_stem"));
         BlockListener.glowingMushroomCap.specifyTextures(getTextureIndex(bigMushrooms + "glowing_cap"));
         BlockListener.glowingMushroomStem.specifyTextures(getTextureIndex(bigMushrooms + "glowing_stem"));
+        BlockListener.purpleMushroomCap.specifyTextures(getTextureIndex(bigMushrooms + "purple_cap"));
+        BlockListener.purpleMushroomStem.specifyTextures(getTextureIndex(bigMushrooms + "purple_stem"));
 
         // Vanilla texture changes
         grassBlockSide = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, vanillaBlocks + "grass_block_side")).index;

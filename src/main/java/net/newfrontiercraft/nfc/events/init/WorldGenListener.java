@@ -34,9 +34,8 @@ public class WorldGenListener {
         netherBiomes[1] = biomeBuilder.height(0, 127).snow(false).feature(new RareFeature(new LeveledScatterFeature(new PlantPatchFeature(BlockListener.glowingMushroom.id), 1), 4)).feature(new LeveledScatterFeature(new GlowingMushroomFeature(), 1)).build();
 
         // Purple Mushroom Forest
-        SurfaceRule purpleMushroomSurface = SurfaceBuilder.start(Block.STONE).ground(1).replace(Block.NETHERRACK).build(); // TODO: Replace with proper surface block or remove
         biomeBuilder = BiomeBuilder.start("Purple Mushroom Forest");
-        netherBiomes[2] = biomeBuilder.height(0, 127).snow(false).feature(new RareFeature(new LeveledScatterFeature(new MetaCapablePlantPatchFeature(BlockListener.bioluminescentMushroom.id, 1), 1), 4)).surfaceRule(purpleMushroomSurface).build();
+        netherBiomes[2] = biomeBuilder.height(0, 127).snow(false).feature(new RareFeature(new LeveledScatterFeature(new MetaCapablePlantPatchFeature(BlockListener.bioluminescentMushroom.id, 1), 1), 4)).feature(new LeveledScatterFeature(new PurpleMushroomFeature(), 1)).build();
 
         // Dead Forest
         SurfaceRule deadForestSurface = SurfaceBuilder.start(Block.SOUL_SAND).ground(4).replace(Block.NETHERRACK).build(); // TODO: Replace with proper surface block or remove
