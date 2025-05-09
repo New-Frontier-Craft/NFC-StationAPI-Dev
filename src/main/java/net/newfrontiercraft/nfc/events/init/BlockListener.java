@@ -352,6 +352,8 @@ public class BlockListener {
         glowingMushroomCap = new ItemDroppingBlock(Identifier.of(MOD_ID, "glowing_mushroom_cap"), Material.WOOD, 1.0F, Block.WOOD_SOUND_GROUP);
         glowingMushroomStem = new ItemDroppingBlock(Identifier.of(MOD_ID, "glowing_mushroom_stem"), Material.WOOD, 1.0F, Block.WOOD_SOUND_GROUP);
 
+        fieryMushroomCap.setLuminance(0.695F);
+        fieryMushroomStem.setLuminance(0.695F);
         glowingMushroomCap.setLuminance(1.0F);
         glowingMushroomStem.setLuminance(1.0F);
 

@@ -13,10 +13,7 @@ import net.modificationstation.stationapi.api.worldgen.biome.VoronoiBiomeProvide
 import net.modificationstation.stationapi.api.worldgen.feature.LeveledScatterFeature;
 import net.modificationstation.stationapi.api.worldgen.surface.SurfaceBuilder;
 import net.modificationstation.stationapi.api.worldgen.surface.SurfaceRule;
-import net.newfrontiercraft.nfc.world.gen.feature.DeadTreeFeature;
-import net.newfrontiercraft.nfc.world.gen.feature.GlowingMushroomFeature;
-import net.newfrontiercraft.nfc.world.gen.feature.MetaCapablePlantPatchFeature;
-import net.newfrontiercraft.nfc.world.gen.feature.RareFeature;
+import net.newfrontiercraft.nfc.world.gen.feature.*;
 
 public class WorldGenListener {
     private Biome[] netherBiomes;
@@ -30,7 +27,7 @@ public class WorldGenListener {
         // Scorched deposits
         SurfaceRule scorchedSurface = SurfaceBuilder.start(BlockListener.scorchedSand).ground(2).replace(Block.NETHERRACK).build();
         biomeBuilder = BiomeBuilder.start("Scorched Deposits");
-        netherBiomes[0] = biomeBuilder.height(0, 127).snow(false).feature(new RareFeature(new LeveledScatterFeature(new PlantPatchFeature(BlockListener.fieryMushroom.id), 1), 4)).surfaceRule(scorchedSurface).build();
+        netherBiomes[0] = biomeBuilder.height(0, 127).snow(false).feature(new RareFeature(new LeveledScatterFeature(new PlantPatchFeature(BlockListener.fieryMushroom.id), 1), 4)).feature(new LeveledScatterFeature(new FieryMushroomFeature(), 1)).surfaceRule(scorchedSurface).build();
 
         // Glowing Mushroom Forest
         biomeBuilder = BiomeBuilder.start("Glowing Mushroom Forest");
