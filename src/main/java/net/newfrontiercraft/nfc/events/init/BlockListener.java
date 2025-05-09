@@ -175,7 +175,9 @@ public class BlockListener {
             glowingMushroomCap,
             glowingMushroomStem,
             purpleMushroomCap,
-            purpleMushroomStem;
+            purpleMushroomStem,
+            blueMushroomCap,
+            blueMushroomStem;
 
     @Entrypoint.Namespace
     public static Namespace MOD_ID;
@@ -355,6 +357,8 @@ public class BlockListener {
         glowingMushroomStem = new ItemDroppingBlock(Identifier.of(MOD_ID, "glowing_mushroom_stem"), Material.WOOD, 1.0F, Block.WOOD_SOUND_GROUP);
         purpleMushroomCap = new ItemDroppingBlock(Identifier.of(MOD_ID, "purple_mushroom_cap"), Material.WOOD, 1.0F, Block.WOOD_SOUND_GROUP);
         purpleMushroomStem = new ItemDroppingBlock(Identifier.of(MOD_ID, "purple_mushroom_stem"), Material.WOOD, 1.0F, Block.WOOD_SOUND_GROUP);
+        blueMushroomCap = new ItemDroppingBlock(Identifier.of(MOD_ID, "blue_mushroom_cap"), Material.WOOD, 1.0F, Block.WOOD_SOUND_GROUP);
+        blueMushroomStem = new ItemDroppingBlock(Identifier.of(MOD_ID, "blue_mushroom_stem"), Material.WOOD, 1.0F, Block.WOOD_SOUND_GROUP);
 
         fieryMushroomCap.setLuminance(0.695F);
         fieryMushroomStem.setLuminance(0.695F);
@@ -362,6 +366,8 @@ public class BlockListener {
         glowingMushroomStem.setLuminance(1.0F);
         purpleMushroomCap.setLuminance(1.0F);
         purpleMushroomStem.setLuminance(1.0F);
+        blueMushroomCap.setLuminance(1.0F);
+        blueMushroomStem.setLuminance(1.0F);
 
         fieryMushroomCap.setDropId(fieryMushroom.id);
         fieryMushroomStem.setDropId(fieryMushroom.id);
@@ -371,6 +377,8 @@ public class BlockListener {
         purpleMushroomCap.setDropMeta(1);
         purpleMushroomStem.setDropId(bioluminescentMushroom.id);
         purpleMushroomStem.setDropMeta(1);
+        blueMushroomCap.setDropId(bioluminescentMushroom.id);
+        blueMushroomStem.setDropId(bioluminescentMushroom.id);
 
         // Changes to vanilla blast resistance
         Block.COAL_ORE.setResistance(500F);

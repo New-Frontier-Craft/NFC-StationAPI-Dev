@@ -266,6 +266,8 @@ tile.nfc.glowing_mushroom_cap.name=Glowing Mushroom Cap
 tile.nfc.glowing_mushroom_stem.name=Glowing Mushroom Stem
 tile.nfc.purple_mushroom_cap.name=Purple Mushroom Cap
 tile.nfc.purple_mushroom_stem.name=Purple Mushroom Stem
+tile.nfc.blue_mushroom_cap.name=Blue Mushroom Cap
+tile.nfc.blue_mushroom_stem.name=Blue Mushroom Stem
 
 
 item.nfc.aluminium_pickaxe.name=Aluminum Pickaxe

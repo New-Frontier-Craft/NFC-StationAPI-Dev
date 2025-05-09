@@ -40,6 +40,14 @@ public class ChunkListener {
                 (new PlantPatchFeature(BlockListener.bioluminescentMushroom.id)).generate(world, random, j14, j16, j19);
             }
         }
+        if (biome == Biome.RAINFOREST) {
+            for (int i = 0; i < 4; i++) {
+                int j14 = event.x + random.nextInt(16) + 8;
+                int j16 = random.nextInt(64) + 64;
+                int j19 = event.z + random.nextInt(16) + 8;
+                (new BlueMushroomFeature()).generate(world, random, j14, j16, j19);
+            }
+        }
         if (biome == Biome.TAIGA || biome == Biome.TUNDRA) {
             if (random.nextInt(32) == 0) {
                 int j14 = event.x + random.nextInt(16) + 8;
