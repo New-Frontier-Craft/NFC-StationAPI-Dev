@@ -7,9 +7,11 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.world.World;
+import net.modificationstation.stationapi.api.block.BlockState;
 import net.modificationstation.stationapi.api.util.Identifier;
 import net.newfrontiercraft.nfc.events.init.BlockListener;
 import net.newfrontiercraft.nfc.mixin.FireImmunityAccessor;
+import net.newfrontiercraft.nfc.world.gen.feature.FieryMushroomFeature;
 
 import java.util.Random;
 
@@ -56,5 +58,16 @@ public class FieryMushroomBlock extends LazyMushroomTemplate {
                 }
             }
         }
+    }
+
+    @Override
+    public boolean onBonemealUse(World world, int x, int y, int z, BlockState state) {
+        world.setBlockWithoutNotifyingNeighbors(x, y, z, 0);
+        FieryMushroomFeature feature = new FieryMushroomFeature();
+        if (!feature.generate(world, new Random(), x, y, z)) {
+            world.setBlockWithoutNotifyingNeighbors(x, y, z, BlockListener.fieryMushroom.id);
+            return false;
+        }
+        return true;
     }
 }

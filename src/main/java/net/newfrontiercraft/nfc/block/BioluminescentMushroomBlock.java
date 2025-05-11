@@ -6,10 +6,16 @@ import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.Minecraft;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.world.World;
+import net.minecraft.world.gen.feature.Feature;
+import net.modificationstation.stationapi.api.block.BlockState;
 import net.modificationstation.stationapi.api.block.HasCustomBlockItemFactory;
 import net.modificationstation.stationapi.api.util.Identifier;
 import net.newfrontiercraft.nfc.block.item.BioluminescentMushroomBlockItem;
+import net.newfrontiercraft.nfc.events.init.BlockListener;
 import net.newfrontiercraft.nfc.particle.SporeParticle;
+import net.newfrontiercraft.nfc.world.gen.feature.BlueMushroomFeature;
+import net.newfrontiercraft.nfc.world.gen.feature.GlowingMushroomFeature;
+import net.newfrontiercraft.nfc.world.gen.feature.PurpleMushroomFeature;
 
 import java.util.Random;
 
@@ -65,5 +71,20 @@ public class BioluminescentMushroomBlock extends LazyMushroomTemplate {
     @Override
     protected int getDroppedItemMeta(int blockMeta) {
         return blockMeta & 1;
+    }
+
+    @Override
+    public boolean onBonemealUse(World world, int x, int y, int z, BlockState state) {
+        Feature feature = new BlueMushroomFeature();
+        int mushroomMeta = world.getBlockMeta(x, y, z);
+        if (mushroomMeta == 1) {
+            feature = new PurpleMushroomFeature();
+        }
+        world.setBlockWithoutNotifyingNeighbors(x, y, z, 0);
+        if (!feature.generate(world, new Random(), x, y, z)) {
+            world.setBlockWithoutNotifyingNeighbors(x, y, z, BlockListener.bioluminescentMushroom.id, mushroomMeta);
+            return false;
+        }
+        return true;
     }
 }
