@@ -14,7 +14,6 @@ import net.newfrontiercraft.nfc.block.item.BioluminescentMushroomBlockItem;
 import net.newfrontiercraft.nfc.events.init.BlockListener;
 import net.newfrontiercraft.nfc.particle.SporeParticle;
 import net.newfrontiercraft.nfc.world.gen.feature.BlueMushroomFeature;
-import net.newfrontiercraft.nfc.world.gen.feature.GlowingMushroomFeature;
 import net.newfrontiercraft.nfc.world.gen.feature.PurpleMushroomFeature;
 
 import java.util.Random;
@@ -86,5 +85,9 @@ public class BioluminescentMushroomBlock extends LazyMushroomTemplate {
             return false;
         }
         return true;
+    }
+
+    @Override
+    public void onTick(World world, int x, int y, int z, Random random) {
     }
 }
