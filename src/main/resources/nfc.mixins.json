@@ -17,6 +17,7 @@
     "FireImmunityAccessor",
     "FixVanillaToolBogusMixin",
     "FurnaceBlockEntityMixin",
+    "GhastVapourizerMixin",
     "GlassDropMixin",
     "LadderBlockMixin",
     "LiquidBlockInvoker",
