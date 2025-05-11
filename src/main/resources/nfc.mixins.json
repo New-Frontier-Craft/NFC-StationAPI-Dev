@@ -13,6 +13,7 @@
     "DroppedMetaAccessor",
     "EntityMixin",
     "FenceBlockMixin",
+    "FireballExplosionNerf",
     "FireBlockMixin",
     "FireImmunityAccessor",
     "FixVanillaToolBogusMixin",
