@@ -58,4 +58,9 @@ public class AMICompat implements ModPluginProvider {
     public SyncableRecipe deserializeRecipe(NbtCompound recipe) {
         return null;
     }
+
+    @Override
+    public void updateBlacklist(AMIHelpers amiHelpers) {
+
+    }
 }
