@@ -98,6 +98,11 @@ dependencies {
 	modRuntimeOnly("maven.modrinth:unitweaks:${project.unitweaks_version}-fabric,b1.7.3") {
 		transitive false
 	}
+
+	// Compatibility testing
+	modImplementation("com.github.paulevsGitch:BetterNetherBeta:${project.bnb_version}") {
+		transitive false
+	}
 }
 
 processResources {
