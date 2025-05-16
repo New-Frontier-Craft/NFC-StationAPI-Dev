@@ -16,13 +16,14 @@ import net.newfrontiercraft.nfc.world.gen.feature.*;
 import java.util.Random;
 
 public class ChunkListener {
+    static boolean isBnbPresent = FabricLoader.getInstance().isModLoaded("bnb");
+    static boolean isSnoPresent = FabricLoader.getInstance().isModLoaded("simplenetherores");
+
     @EventListener
     public void populate(WorldGenEvent.ChunkDecoration event) {
         if (event.world.dimension instanceof OverworldDimension) populateOverworld(event);
         if (event.world.dimension instanceof NetherDimension) populateNether(event);
     }
-
-    static boolean isBnbPresent = FabricLoader.getInstance().isModLoaded("bnb");
 
     public void populateOverworld(WorldGenEvent.ChunkDecoration event) {
         Random random = event.random;
@@ -377,11 +378,13 @@ public class ChunkListener {
             (new UnrestrictedOreFeature(BlockListener.netherOnyxOre.id, 3, Block.NETHERRACK.id)).generate(event.world, event.random, k4, l7, i11);
         }
 
-        if (event.random.nextInt(24) < frequencyMultiplier) {
-            int k4 = event.x + event.random.nextInt(16);
-            int l7 = event.random.nextInt(120 + heightRangeExtension) + 4 + heightOffset;
-            int i11 = event.z + event.random.nextInt(16);
-            (new OreCloud(BlockListener.netherGoldOre.id, 10, 0, 48, Block.NETHERRACK.id)).generate(event.world, event.random, k4, l7, i11);
+        if (!isSnoPresent) {
+            if (event.random.nextInt(24) < frequencyMultiplier) {
+                int k4 = event.x + event.random.nextInt(16);
+                int l7 = event.random.nextInt(120 + heightRangeExtension) + 4 + heightOffset;
+                int i11 = event.z + event.random.nextInt(16);
+                (new OreCloud(BlockListener.netherGoldOre.id, 10, 0, 48, Block.NETHERRACK.id)).generate(event.world, event.random, k4, l7, i11);
+            }
         }
 
         for (int j2 = 0; j2 < event.random.nextInt(3 * frequencyMultiplier) + 1; j2++) {
