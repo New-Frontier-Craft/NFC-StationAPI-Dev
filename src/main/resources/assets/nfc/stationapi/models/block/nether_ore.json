@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:block/block",
+  "textures": {
+    "terrain": "minecraft:block/netherrack",
+    "particle": "#terrain"
+  },
+  "elements": [
+    {
+      "from": [ 0, 0, 0 ],
+      "to": [ 16, 16, 16 ],
+      "faces": {
+        "down": { "texture": "#terrain", "cullface": "down" },
+        "up": { "texture": "#terrain", "cullface": "up" },
+        "north": { "texture": "#terrain", "cullface": "north" },
+        "south": { "texture": "#terrain", "cullface": "south" },
+        "west": { "texture": "#terrain", "cullface": "west" },
+        "east": { "texture": "#terrain", "cullface": "east" }
+      }
+    },
+    {
+      "from": [ 0, 0, 0 ],
+      "to": [ 16, 16, 16 ],
+      "faces": {
+        "down": { "texture": "#ore", "cullface": "down" },
+        "up": { "texture": "#ore", "cullface": "up" },
+        "north": { "texture": "#ore", "cullface": "north" },
+        "south": { "texture": "#ore", "cullface": "south" },
+        "west": { "texture": "#ore", "cullface": "west" },
+        "east": { "texture": "#ore", "cullface": "east" }
+      }
+    }
+  ]
+}
+
