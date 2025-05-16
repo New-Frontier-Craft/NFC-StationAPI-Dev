@@ -86,9 +86,6 @@ public abstract class SaplingBlockMixin extends PlantBlock {
             return false;
         }
         int belowId = world.getBlockId(x, y - 1, z);
-        if (belowId == Block.GRASS_BLOCK.id || belowId == Block.DIRT.id || belowId == Block.FARMLAND.id || belowId == Block.SOUL_SAND.id || belowId == BlockListener.planter.id) {
-            return true;
-        }
-        return false;
+        return belowId == Block.GRASS_BLOCK.id || belowId == Block.DIRT.id || belowId == Block.FARMLAND.id || belowId == Block.SOUL_SAND.id || belowId == BlockListener.planter.id;
     }
 }
