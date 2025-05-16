@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "nfc:scorched_sand"
+  },
+  "result": {
+    "item": "nfc:window",
+    "damage": 6
+  }
+}

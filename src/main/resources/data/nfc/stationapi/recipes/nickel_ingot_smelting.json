@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "nfc:nickel_ore"
+  },
+  "result": {
+    "item": "nfc:nickel_ingot"
+  }
+}

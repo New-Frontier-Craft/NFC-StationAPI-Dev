@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "nfc:uraninite_ore"
+  },
+  "result": {
+    "item": "nfc:uranium_ingot"
+  }
+}
