@@ -7,5 +7,6 @@ import net.modificationstation.stationapi.api.util.Identifier;
 public class OilFlowingBlock extends TemplateFlowingLiquidBlock {
     public OilFlowingBlock(Identifier identifier, Material material) {
         super(identifier, material);
+        setTranslationKey(identifier.namespace, identifier.path);
     }
 }

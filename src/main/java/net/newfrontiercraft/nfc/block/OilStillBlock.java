@@ -7,5 +7,6 @@ import net.modificationstation.stationapi.api.util.Identifier;
 public class OilStillBlock extends TemplateStillLiquidBlock {
     public OilStillBlock(Identifier identifier, Material arg) {
         super(identifier, arg);
+        setTranslationKey(identifier.namespace, identifier.path);
     }
 }
