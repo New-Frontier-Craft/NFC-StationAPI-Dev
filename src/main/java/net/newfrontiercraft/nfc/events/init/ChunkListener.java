@@ -386,12 +386,5 @@ public class ChunkListener {
             int i11 = event.z + event.random.nextInt(16);
             (new UnrestrictedOreFeature(BlockListener.netherUraniniteOre.id, 16, Block.NETHERRACK.id)).generate(event.world, event.random, k4, l7, i11);
         }
-
-        for(int i = 0; i <= 1; ++i) {
-            int j6 = event.x + event.random.nextInt(16) + 8;
-            int k9 = event.random.nextInt(48) + 32;
-            int j21 = event.z + event.random.nextInt(16) + 8;
-            (new ScorchedSandFeature()).generate(event.world, event.random, j6, k9, j21);
-        }
     }
 }
