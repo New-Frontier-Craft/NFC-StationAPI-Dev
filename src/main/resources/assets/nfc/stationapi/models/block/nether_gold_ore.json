@@ -1,0 +1,6 @@
+{
+  "parent": "nfc:block/nether_ore",
+  "textures": {
+    "ore": "nfc:block/ores/nether_gold_ore"
+  }
+}
