@@ -9,6 +9,7 @@ import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.slot.CraftingResultSlot;
 import net.minecraft.screen.slot.Slot;
 import net.minecraft.world.World;
+import net.modificationstation.stationapi.api.registry.ItemRegistry;
 import net.newfrontiercraft.nfc.inventory.crafting.CraftingResultInventoryMatrix;
 import net.newfrontiercraft.nfc.registry.CarpentryRecipes;
 
@@ -49,7 +50,7 @@ public class CarpentryWorkstationScreenHandler extends ScreenHandler {
             return;
         }
         ItemStack[] outputItems;
-        outputItems = CarpentryRecipes.carpentry().getCarpentryResult(inputStack.itemId, inputStack.getDamage());
+        outputItems = CarpentryRecipes.carpentry().getCarpentryResult(ItemRegistry.INSTANCE.getId(inputStack.getItem()), inputStack.getDamage());
         if (outputItems == null) {
             wipeOutputs();
             return;
