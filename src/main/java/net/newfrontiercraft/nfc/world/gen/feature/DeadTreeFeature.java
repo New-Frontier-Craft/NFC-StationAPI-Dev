@@ -1,24 +1,32 @@
 package net.newfrontiercraft.nfc.world.gen.feature;
 
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.block.Block;
 import net.minecraft.world.World;
+import net.minecraft.world.dimension.NetherDimension;
 import net.minecraft.world.gen.feature.Feature;
 import net.newfrontiercraft.nfc.events.init.BlockListener;
 
 import java.util.Random;
 
 public class DeadTreeFeature extends Feature {
+    public static boolean isBnbPresent = FabricLoader.getInstance().isModLoaded("bnb");
+
     @Override
     public boolean generate(World world, Random random, int x, int y, int z) {
         int l = random.nextInt(3) + 5;
-        if(y >= 1 && y + l + 1 <= 128) {
+        int heightLimit = 128;
+        if (world.dimension instanceof NetherDimension && isBnbPresent) {
+            heightLimit = 256;
+        }
+        if(y >= 1 && y + l + 1 <= heightLimit) {
             int x0 = x;
             int i22 = z;
             int bottomBlock = world.getBlockId(x, y - 1, z);
             if (world.getBlockId(x, y + 1, z) != 0) {
                 return false;
             }
-            if((bottomBlock == Block.GRASS.id || bottomBlock == Block.DIRT.id || bottomBlock == Block.SOUL_SAND.id) && y < 128 - l - 1) {
+            if((bottomBlock == Block.GRASS.id || bottomBlock == Block.DIRT.id || bottomBlock == Block.SOUL_SAND.id) && y < heightLimit - l - 1) {
                 int maxFallenLeaves = random.nextInt(3) > 0 ? random.nextInt(24) + 8 : 0;
                 boolean z23 = false;
                 int swayHeight = -1;

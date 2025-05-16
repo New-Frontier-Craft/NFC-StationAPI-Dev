@@ -16,8 +16,8 @@ import net.newfrontiercraft.nfc.world.gen.feature.*;
 import java.util.Random;
 
 public class ChunkListener {
-    static boolean isBnbPresent = FabricLoader.getInstance().isModLoaded("bnb");
-    static boolean isSnoPresent = FabricLoader.getInstance().isModLoaded("simplenetherores");
+    public static boolean isBnbPresent = FabricLoader.getInstance().isModLoaded("bnb");
+    public static boolean isSnoPresent = FabricLoader.getInstance().isModLoaded("simplenetherores");
 
     @EventListener
     public void populate(WorldGenEvent.ChunkDecoration event) {

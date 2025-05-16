@@ -1,5 +1,6 @@
 package net.newfrontiercraft.nfc.events.init;
 
+import net.fabricmc.loader.api.FabricLoader;
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.minecraft.block.Block;
 import net.minecraft.world.biome.Biome;
@@ -17,30 +18,34 @@ import net.newfrontiercraft.nfc.world.gen.feature.*;
 
 public class WorldGenListener {
     private Biome[] netherBiomes;
+    public static boolean isBnbPresent = FabricLoader.getInstance().isModLoaded("bnb");
 
     @EventListener
     public void registerBiomes(BiomeRegisterEvent event) {
         netherBiomes = new Biome[4];
-
         BiomeBuilder biomeBuilder;
+        int heightLimit = 127;
+        if (isBnbPresent) {
+            heightLimit = 255;
+        }
 
         // Scorched deposits
         SurfaceRule scorchedSurface = SurfaceBuilder.start(BlockListener.scorchedSand).ground(2).replace(Block.NETHERRACK).build();
         biomeBuilder = BiomeBuilder.start("Scorched Deposits");
-        netherBiomes[0] = biomeBuilder.height(0, 127).snow(false).feature(new RareFeature(new LeveledScatterFeature(new PlantPatchFeature(BlockListener.fieryMushroom.id), 1), 4)).feature(new LeveledScatterFeature(new FieryMushroomFeature(), 1)).surfaceRule(scorchedSurface).fogColor(0x220000).build();
+        netherBiomes[0] = biomeBuilder.height(0, heightLimit).snow(false).feature(new RareFeature(new LeveledScatterFeature(new PlantPatchFeature(BlockListener.fieryMushroom.id), 1), 4)).feature(new LeveledScatterFeature(new FieryMushroomFeature(), 1)).surfaceRule(scorchedSurface).fogColor(0x220000).build();
 
         // Glowing Mushroom Forest
         biomeBuilder = BiomeBuilder.start("Glowing Mushroom Forest");
-        netherBiomes[1] = biomeBuilder.height(0, 127).snow(false).feature(new RareFeature(new LeveledScatterFeature(new PlantPatchFeature(BlockListener.glowingMushroom.id), 1), 4)).feature(new LeveledScatterFeature(new GlowingMushroomFeature(), 1)).fogColor(0x887700).build();
+        netherBiomes[1] = biomeBuilder.height(0, heightLimit).snow(false).feature(new RareFeature(new LeveledScatterFeature(new PlantPatchFeature(BlockListener.glowingMushroom.id), 1), 4)).feature(new LeveledScatterFeature(new GlowingMushroomFeature(), 1)).fogColor(0x887700).build();
 
         // Purple Mushroom Forest
         biomeBuilder = BiomeBuilder.start("Purple Mushroom Forest");
-        netherBiomes[2] = biomeBuilder.height(0, 127).snow(false).feature(new RareFeature(new LeveledScatterFeature(new MetaCapablePlantPatchFeature(BlockListener.bioluminescentMushroom.id, 1), 1), 4)).feature(new LeveledScatterFeature(new PurpleMushroomFeature(), 1)).fogColor(0x440044).build();
+        netherBiomes[2] = biomeBuilder.height(0, heightLimit).snow(false).feature(new RareFeature(new LeveledScatterFeature(new MetaCapablePlantPatchFeature(BlockListener.bioluminescentMushroom.id, 1), 1), 4)).feature(new LeveledScatterFeature(new PurpleMushroomFeature(), 1)).fogColor(0x440044).build();
 
         // Dead Forest
         SurfaceRule deadForestSurface = SurfaceBuilder.start(Block.SOUL_SAND).ground(4).replace(Block.NETHERRACK).build();
         biomeBuilder = BiomeBuilder.start("Dead Forest");
-        netherBiomes[3] = biomeBuilder.height(0, 127).snow(false).feature(new LeveledScatterFeature(new DeadTreeFeature(), 1)).surfaceRule(deadForestSurface).fogColor(0x661100).build();
+        netherBiomes[3] = biomeBuilder.height(0, heightLimit).snow(false).feature(new LeveledScatterFeature(new DeadTreeFeature(), 1)).surfaceRule(deadForestSurface).fogColor(0x661100).build();
     }
 
     @EventListener
