@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "nfc:magnetite_ore"
+  },
+  "result": {
+    "item": "nfc:magnet_ingot"
+  }
+}

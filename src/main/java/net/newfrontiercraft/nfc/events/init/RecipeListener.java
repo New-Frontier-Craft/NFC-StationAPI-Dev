@@ -199,39 +199,6 @@ public class RecipeListener {
             // Planter
             CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.unfiredPlanter, 2), "X X", "X X", "XXX", 'X', Item.CLAY);
         }
-        if (type == RecipeRegisterEvent.Vanilla.SMELTING.type()) {
-            // Food
-            SmeltingRegistry.addSmeltingRecipe(Item.EGG.id, new ItemStack(ItemListener.cookedEgg));
-
-            // Building blocks
-            SmeltingRegistry.addSmeltingRecipe(Block.BRICKS.id, new ItemStack(BlockListener.firedBricks));
-            SmeltingRegistry.addSmeltingRecipe(BlockListener.scorchedSand.id, new ItemStack(BlockListener.window, 1, 6));
-
-            // Ores
-            SmeltingRegistry.addSmeltingRecipe(BlockListener.aluminiumOre.id, new ItemStack(ItemListener.aluminiumIngot));
-            SmeltingRegistry.addSmeltingRecipe(BlockListener.copperOre.id, new ItemStack(ItemListener.copperIngot));
-            SmeltingRegistry.addSmeltingRecipe(BlockListener.tinOre.id, new ItemStack(ItemListener.tinIngot));
-            SmeltingRegistry.addSmeltingRecipe(BlockListener.bismuthOre.id, new ItemStack(ItemListener.bismuthIngot));
-            SmeltingRegistry.addSmeltingRecipe(BlockListener.zincOre.id, new ItemStack(ItemListener.zincIngot));
-            SmeltingRegistry.addSmeltingRecipe(BlockListener.nickelOre.id, new ItemStack(ItemListener.nickelIngot));
-            SmeltingRegistry.addSmeltingRecipe(BlockListener.cobaltOre.id, new ItemStack(ItemListener.cobaltIngot));
-            SmeltingRegistry.addSmeltingRecipe(BlockListener.magnetiteOre.id, new ItemStack(ItemListener.magnetiteIngot));
-            SmeltingRegistry.addSmeltingRecipe(BlockListener.silverOre.id, new ItemStack(ItemListener.silverIngot));
-            SmeltingRegistry.addSmeltingRecipe(BlockListener.leadOre.id, new ItemStack(ItemListener.leadIngot));
-            SmeltingRegistry.addSmeltingRecipe(BlockListener.siliconOre.id, new ItemStack(ItemListener.siliconIngot));
-            SmeltingRegistry.addSmeltingRecipe(BlockListener.chromeOre.id, new ItemStack(ItemListener.chromeIngot));
-            SmeltingRegistry.addSmeltingRecipe(BlockListener.uraniniteOre.id, new ItemStack(ItemListener.uraniumIngot));
-            SmeltingRegistry.addSmeltingRecipe(BlockListener.platinumOre.id, new ItemStack(ItemListener.platinumIngot));
-            SmeltingRegistry.addSmeltingRecipe(BlockListener.boronOre.id, new ItemStack(ItemListener.boronIngot));
-            SmeltingRegistry.addSmeltingRecipe(BlockListener.netherGoldOre.id, new ItemStack(Item.GOLD_INGOT));
-            SmeltingRegistry.addSmeltingRecipe(BlockListener.netherUraniniteOre.id, new ItemStack(ItemListener.uraniumIngot));
-
-            // Mud smelting
-            SmeltingRegistry.addSmeltingRecipe(BlockListener.mud.id, new ItemStack(BlockListener.firedMud));
-
-            // Planter smelting
-            SmeltingRegistry.addSmeltingRecipe(BlockListener.unfiredPlanter.id, new ItemStack(BlockListener.planter));
-        }
         if (type == RecipeRegisterEvent.Vanilla.CRAFTING_SHAPELESS.type()) {
             // Storage block un-crafting
             CraftingRegistry.addShapelessRecipe(new ItemStack(Item.COAL, 4), new ItemStack(BlockListener.coalBlock));

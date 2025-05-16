@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "minecraft:bricks"
+  },
+  "result": {
+    "item": "nfc:fired_bricks"
+  }
+}

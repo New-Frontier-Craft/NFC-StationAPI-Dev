@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "nfc:lead_ore"
+  },
+  "result": {
+    "item": "nfc:lead_ingot"
+  }
+}
