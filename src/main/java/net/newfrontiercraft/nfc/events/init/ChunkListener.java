@@ -348,41 +348,45 @@ public class ChunkListener {
         World world = event.world;
 
         int heightOffset = 0;
+        int heightRangeExtension = 0;
+        int frequencyMultiplier = 1;
         if (isBnbPresent) {
-            heightOffset = 128;
+            heightOffset = 96;
+            heightRangeExtension = 32;
+            frequencyMultiplier = 8;
         }
 
-        if (random.nextInt(4) == 0) {
+        if (random.nextInt(4) < frequencyMultiplier) {
             int l2 = event.x + random.nextInt(16) + 8;
-            int j4 = random.nextInt(128) + heightOffset;
+            int j4 = random.nextInt(128 + heightRangeExtension) + heightOffset;
             int l5 = event.z + random.nextInt(16) + 8;
             (new CrystalClusterFeature(BlockListener.blueGlowstone.id, Block.NETHERRACK.id)).generate(world, random, l2, j4, l5);
         }
 
-        {
+        for (int i = 0; i < frequencyMultiplier; i++) {
             int k4 = event.x + event.random.nextInt(16);
-            int l7 = event.random.nextInt(120) + 4 + heightOffset;
+            int l7 = event.random.nextInt(120 + heightRangeExtension) + 4 + heightOffset;
             int i11 = event.z + event.random.nextInt(16);
             (new ConcentratedOreVein(BlockListener.netherAshOre.id, 10, 2, 9, Block.NETHERRACK.id)).generate(event.world, event.random, k4, l7, i11);
         }
 
-        {
+        for (int i = 0; i < frequencyMultiplier; i++) {
             int k4 = event.x + event.random.nextInt(16);
-            int l7 = event.random.nextInt(120) + 4 + heightOffset;
+            int l7 = event.random.nextInt(120 + heightRangeExtension) + 4 + heightOffset;
             int i11 = event.z + event.random.nextInt(16);
             (new UnrestrictedOreFeature(BlockListener.netherOnyxOre.id, 3, Block.NETHERRACK.id)).generate(event.world, event.random, k4, l7, i11);
         }
 
-        if (event.random.nextInt(24) == 1) {
+        if (event.random.nextInt(24) < frequencyMultiplier) {
             int k4 = event.x + event.random.nextInt(16);
-            int l7 = event.random.nextInt(120) + 4 + heightOffset;
+            int l7 = event.random.nextInt(120 + heightRangeExtension) + 4 + heightOffset;
             int i11 = event.z + event.random.nextInt(16);
             (new OreCloud(BlockListener.netherGoldOre.id, 10, 0, 48, Block.NETHERRACK.id)).generate(event.world, event.random, k4, l7, i11);
         }
 
-        for (int j2 = 0; j2 < event.random.nextInt(3) + 1; j2++) {
+        for (int j2 = 0; j2 < event.random.nextInt(3 * frequencyMultiplier) + 1; j2++) {
             int k4 = event.x + event.random.nextInt(16);
-            int l7 = event.random.nextInt(120) + 4 + heightOffset;
+            int l7 = event.random.nextInt(120 + heightRangeExtension) + 4 + heightOffset;
             int i11 = event.z + event.random.nextInt(16);
             (new UnrestrictedOreFeature(BlockListener.netherUraniniteOre.id, 16, Block.NETHERRACK.id)).generate(event.world, event.random, k4, l7, i11);
         }
