@@ -1,5 +1,5 @@
 {
-  "replace": true,
+  "replace": false,
   "values": [
     "nfc:aluminium_ore",
     "nfc:bismuth_ore",
