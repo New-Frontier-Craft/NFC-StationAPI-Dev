@@ -1,5 +1,6 @@
 package net.newfrontiercraft.nfc.events.init;
 
+import net.fabricmc.loader.api.FabricLoader;
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.minecraft.block.Block;
 import net.minecraft.world.World;
@@ -20,6 +21,8 @@ public class ChunkListener {
         if (event.world.dimension instanceof OverworldDimension) populateOverworld(event);
         if (event.world.dimension instanceof NetherDimension) populateNether(event);
     }
+
+    static boolean isBnbPresent = FabricLoader.getInstance().isModLoaded("bnb");
 
     public void populateOverworld(WorldGenEvent.ChunkDecoration event) {
         Random random = event.random;
@@ -344,58 +347,42 @@ public class ChunkListener {
         Random random = event.random;
         World world = event.world;
 
+        int heightOffset = 0;
+        if (isBnbPresent) {
+            heightOffset = 128;
+        }
+
         if (random.nextInt(4) == 0) {
             int l2 = event.x + random.nextInt(16) + 8;
-            int j4 = random.nextInt(128);
+            int j4 = random.nextInt(128) + heightOffset;
             int l5 = event.z + random.nextInt(16) + 8;
             (new CrystalClusterFeature(BlockListener.blueGlowstone.id, Block.NETHERRACK.id)).generate(world, random, l2, j4, l5);
         }
 
-//        {
-//            int l2 = event.x + random.nextInt(16) + 8;
-//            int j4 = random.nextInt(128);
-//            int l5 = event.z + random.nextInt(16) + 8;
-//            (new PlantPatchFeature(BlockListener.glowingMushroom.id)).generate(world, random, l2, j4, l5);
-//        }
-//
-//        if (random.nextInt(2) == 0) {
-//            int l2 = event.x + random.nextInt(16) + 8;
-//            int j4 = random.nextInt(128);
-//            int l5 = event.z + random.nextInt(16) + 8;
-//            (new PlantPatchFeature(BlockListener.fieryMushroom.id)).generate(world, random, l2, j4, l5);
-//        }
-//
-//        if (random.nextInt(48) == 0) {
-//            int l2 = event.x + random.nextInt(16) + 8;
-//            int j4 = random.nextInt(128);
-//            int l5 = event.z + random.nextInt(16) + 8;
-//            (new MetaCapablePlantPatchFeature(BlockListener.bioluminescentMushroom.id, 1)).generate(world, random, l2, j4, l5);
-//        }
-
         {
             int k4 = event.x + event.random.nextInt(16);
-            int l7 = event.random.nextInt(120) + 4;
+            int l7 = event.random.nextInt(120) + 4 + heightOffset;
             int i11 = event.z + event.random.nextInt(16);
             (new ConcentratedOreVein(BlockListener.netherAshOre.id, 10, 2, 9, Block.NETHERRACK.id)).generate(event.world, event.random, k4, l7, i11);
         }
 
         {
             int k4 = event.x + event.random.nextInt(16);
-            int l7 = event.random.nextInt(120) + 4;
+            int l7 = event.random.nextInt(120) + 4 + heightOffset;
             int i11 = event.z + event.random.nextInt(16);
             (new UnrestrictedOreFeature(BlockListener.netherOnyxOre.id, 3, Block.NETHERRACK.id)).generate(event.world, event.random, k4, l7, i11);
         }
 
         if (event.random.nextInt(24) == 1) {
             int k4 = event.x + event.random.nextInt(16);
-            int l7 = event.random.nextInt(120) + 4;
+            int l7 = event.random.nextInt(120) + 4 + heightOffset;
             int i11 = event.z + event.random.nextInt(16);
             (new OreCloud(BlockListener.netherGoldOre.id, 10, 0, 48, Block.NETHERRACK.id)).generate(event.world, event.random, k4, l7, i11);
         }
 
         for (int j2 = 0; j2 < event.random.nextInt(3) + 1; j2++) {
             int k4 = event.x + event.random.nextInt(16);
-            int l7 = event.random.nextInt(120) + 4;
+            int l7 = event.random.nextInt(120) + 4 + heightOffset;
             int i11 = event.z + event.random.nextInt(16);
             (new UnrestrictedOreFeature(BlockListener.netherUraniniteOre.id, 16, Block.NETHERRACK.id)).generate(event.world, event.random, k4, l7, i11);
         }
