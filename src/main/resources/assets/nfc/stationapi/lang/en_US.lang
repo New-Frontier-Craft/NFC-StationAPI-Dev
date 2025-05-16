@@ -100,7 +100,7 @@ tile.nfc.copper_door_block.name=Copper Door
 
 tile.nfc.fence_gate.name=Fence Gate
 
-tile.nfc.mud0.name=Mud
+tile.nfc.mud0.name=Plain Mud
 tile.nfc.mud1.name=Mud Bricks
 tile.nfc.mud2.name=Long Mud Bricks
 tile.nfc.mud3.name=Random Mud Bricks
