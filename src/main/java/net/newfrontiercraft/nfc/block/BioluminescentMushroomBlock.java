@@ -70,7 +70,7 @@ public class BioluminescentMushroomBlock extends LazyMushroomTemplate {
 
     @Override
     protected int getDroppedItemMeta(int blockMeta) {
-        return blockMeta & 1;
+        return blockMeta;
     }
 
     @Override
