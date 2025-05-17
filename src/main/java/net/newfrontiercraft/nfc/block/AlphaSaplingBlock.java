@@ -79,4 +79,9 @@ public class AlphaSaplingBlock extends TemplateSaplingBlock {
     public void specifyTextures(int texture){
         this.texture = texture;
     }
+
+    @Override
+    protected boolean canPlantOnTop(int id) {
+        return id == Block.GRASS_BLOCK.id || id == Block.DIRT.id || id == Block.FARMLAND.id || id == Block.SOUL_SAND.id || id == BlockListener.planter.id;
+    }
 }
