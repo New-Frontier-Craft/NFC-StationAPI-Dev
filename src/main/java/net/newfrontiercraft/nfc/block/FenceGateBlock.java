@@ -1,5 +1,7 @@
 package net.newfrontiercraft.nfc.block;
 
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.EnvironmentInterface;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.render.Tessellator;
 import net.minecraft.client.render.block.BlockRenderManager;
@@ -16,6 +18,8 @@ import net.modificationstation.stationapi.api.util.Identifier;
 import net.newfrontiercraft.nfc.events.init.BlockListener;
 import org.lwjgl.opengl.GL11;
 
+@EnvironmentInterface(value= EnvType.CLIENT, itf=BlockWithWorldRenderer.class)
+@EnvironmentInterface(value=EnvType.CLIENT, itf=BlockWithInventoryRenderer.class)
 public class FenceGateBlock extends TemplateBlock implements BlockWithWorldRenderer, BlockWithInventoryRenderer {
     public FenceGateBlock(Identifier identifier, Material material) {
         super(identifier, material);

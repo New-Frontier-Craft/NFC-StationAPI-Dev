@@ -10,12 +10,12 @@ import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
-import net.modificationstation.stationapi.api.block.BlockState;
 import net.modificationstation.stationapi.api.client.model.block.BlockWithWorldRenderer;
 import net.modificationstation.stationapi.api.util.Identifier;
 import net.newfrontiercraft.nfc.mixin.graphics.BlockRenderManagerAccessor;
 
 import java.util.Random;
+
 @EnvironmentInterface(value= EnvType.CLIENT, itf= BlockWithWorldRenderer.class)
 public class DoubleStoneSlabBlock extends LazyBlockTemplate implements BlockWithWorldRenderer{
     public DoubleStoneSlabBlock(Identifier identifier, Material material, float hardness, BlockSoundGroup blockSounds) {

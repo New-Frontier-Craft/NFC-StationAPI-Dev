@@ -6,13 +6,8 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.render.Tessellator;
 import net.minecraft.client.render.block.BlockRenderManager;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.sound.BlockSoundGroup;
-import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.Box;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldRegion;
@@ -23,7 +18,6 @@ import net.modificationstation.stationapi.api.client.model.block.BlockWithWorldR
 import net.modificationstation.stationapi.api.state.StateManager;
 import net.modificationstation.stationapi.api.state.property.IntProperty;
 import net.modificationstation.stationapi.api.util.Identifier;
-import net.newfrontiercraft.nfc.block.item.SlabBlockItem;
 import net.newfrontiercraft.nfc.block.item.StairBlockItem;
 import org.lwjgl.opengl.GL11;
 
