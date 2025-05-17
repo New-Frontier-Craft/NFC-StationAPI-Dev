@@ -14,7 +14,7 @@ import net.newfrontiercraft.nfc.world.gen.feature.LargeAlphaTreeFeature;
 
 import java.util.Random;
 
-public class AlphaSapling extends TemplateSaplingBlock {
+public class AlphaSaplingBlock extends TemplateSaplingBlock {
     int texture;
 
     @Override
@@ -27,7 +27,7 @@ public class AlphaSapling extends TemplateSaplingBlock {
         return this.getTexture(meta);
     }
 
-    public AlphaSapling(Identifier identifier, int j) {
+    public AlphaSaplingBlock(Identifier identifier, int j) {
         super(identifier, j);
     }
 

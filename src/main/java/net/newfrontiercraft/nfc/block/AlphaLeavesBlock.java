@@ -13,6 +13,6 @@ public class AlphaLeavesBlock extends LeavesBlock{
 
     @Override
     public int getDroppedItemId(int blockMeta, Random random) {
-        return BlockListener.alphaSapling.id;
+        return BlockListener.alphaSaplingBlock.id;
     }
 }

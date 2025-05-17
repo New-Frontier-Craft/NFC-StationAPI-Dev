@@ -138,7 +138,7 @@ public class BlockListener {
     public static FenceGateBlock fenceGate;
     public static AlphaGrassBlock alphaGrass;
     public static AlphaLeavesBlock alphaLeaves;
-    public static AlphaSapling alphaSapling;
+    public static AlphaSaplingBlock alphaSaplingBlock;
 
     public static PetrifiedLeavesBlock petrifiedLeaves;
 
@@ -222,7 +222,7 @@ public class BlockListener {
         blueGlowstone = new BlueGlowstoneBlock(Identifier.of(MOD_ID, "blue_glowstone"), Material.STONE, 0.3F, Block.GLASS_SOUND_GROUP);
         alphaGrass = (AlphaGrassBlock) new AlphaGrassBlock(Identifier.of(MOD_ID, "alpha_grass")).setHardness(1.2F).setSoundGroup(Block.DIRT_SOUND_GROUP).setTranslationKey(Identifier.of(MOD_ID, "alpha_grass"));
         alphaLeaves = (AlphaLeavesBlock) new AlphaLeavesBlock(Identifier.of(MOD_ID, "alpha_leaves")).setHardness(0.2F).setOpacity(1).setSoundGroup(Block.DIRT_SOUND_GROUP).setTranslationKey(Identifier.of(MOD_ID, "alpha_leaves"));
-        alphaSapling = (AlphaSapling) new AlphaSapling(Identifier.of(MOD_ID, "alpha_sapling"), 0).setHardness(0.0F).ignoreMetaUpdates().setSoundGroup(Block.DIRT_SOUND_GROUP).setTranslationKey(Identifier.of(MOD_ID, "alpha_sapling"));
+        alphaSaplingBlock = (AlphaSaplingBlock) new AlphaSaplingBlock(Identifier.of(MOD_ID, "alpha_sapling"), 0).setHardness(0.0F).ignoreMetaUpdates().setSoundGroup(Block.DIRT_SOUND_GROUP).setTranslationKey(Identifier.of(MOD_ID, "alpha_sapling"));
 
         copperDoor = (DoorBlock) new CopperDoorBlock(Identifier.of(MOD_ID, "copper_door_block"), Materials.copper, Identifier.of(MOD_ID, "copper_door")).setHardness(3.0F).setSoundGroup(Block.METAL_SOUND_GROUP).setTranslationKey(Identifier.of(MOD_ID, "copper_door_block"));
 
@@ -404,7 +404,7 @@ public class BlockListener {
 
         // Set fuel burn time
         FuelRegistry.addFuelItem(scaffoldBlock.asItem(), 200);
-        FuelRegistry.addFuelItem(alphaSapling.asItem(), 100);
+        FuelRegistry.addFuelItem(alphaSaplingBlock.asItem(), 100);
         FuelRegistry.addFuelItem(coalBlock.asItem(), 6400);
         FuelRegistry.addFuelItem(fieryMushroom.asItem(), 600);
 

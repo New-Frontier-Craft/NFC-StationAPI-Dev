@@ -277,8 +277,8 @@ public class TextureListener {
 
         // Saplings
         int alphaSaplingTexture = getTextureIndex(decorativeBlocks + "alpha_sapling");
-        BlockListener.alphaSapling.specifyTextures(alphaSaplingTexture);
-        BlockListener.alphaSapling.asItem().setTextureId(alphaSaplingTexture);
+        BlockListener.alphaSaplingBlock.specifyTextures(alphaSaplingTexture);
+        BlockListener.alphaSaplingBlock.asItem().setTextureId(alphaSaplingTexture);
 
         // Mushrooms
         BlockListener.bioluminescentMushroom.specifyTextures(
