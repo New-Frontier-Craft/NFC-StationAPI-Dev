@@ -369,16 +369,16 @@ public class BlockListener {
         blueMushroomCap.setLuminance(1.0F);
         blueMushroomStem.setLuminance(1.0F);
 
-        fieryMushroomCap.setDropId(fieryMushroom.id);
-        fieryMushroomStem.setDropId(fieryMushroom.id);
-        glowingMushroomCap.setDropId(glowingMushroom.id);
-        glowingMushroomStem.setDropId(glowingMushroom.id);
-        purpleMushroomCap.setDropId(bioluminescentMushroom.id);
+        fieryMushroomCap.setDropId(MOD_ID.id("fiery_mushroom"));
+        fieryMushroomStem.setDropId(MOD_ID.id("fiery_mushroom"));
+        glowingMushroomCap.setDropId(MOD_ID.id("glowing_mushroom"));
+        glowingMushroomStem.setDropId(MOD_ID.id("glowing_mushroom"));
+        purpleMushroomCap.setDropId(MOD_ID.id("bioluminescent_mushroom"));
         purpleMushroomCap.setDropMeta(1);
-        purpleMushroomStem.setDropId(bioluminescentMushroom.id);
+        purpleMushroomStem.setDropId(MOD_ID.id("bioluminescent_mushroom"));
         purpleMushroomStem.setDropMeta(1);
-        blueMushroomCap.setDropId(bioluminescentMushroom.id);
-        blueMushroomStem.setDropId(bioluminescentMushroom.id);
+        blueMushroomCap.setDropId(MOD_ID.id("bioluminescent_mushroom"));
+        blueMushroomStem.setDropId(MOD_ID.id("bioluminescent_mushroom"));
 
         // Changes to vanilla blast resistance
         Block.COAL_ORE.setResistance(500F);
