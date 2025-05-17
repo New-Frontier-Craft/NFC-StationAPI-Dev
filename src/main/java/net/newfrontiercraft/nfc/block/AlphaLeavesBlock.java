@@ -8,11 +8,6 @@ import java.util.Random;
 
 public class AlphaLeavesBlock extends LeavesBlock{
     public AlphaLeavesBlock(Identifier identifier) {
-        super(identifier, Block.LOG.id);
-    }
-
-    @Override
-    public int getDroppedItemId(int blockMeta, Random random) {
-        return BlockListener.alphaSaplingBlock.id;
+        super(identifier, Block.LOG.id, BlockListener.MOD_ID.id("alpha_sapling"));
     }
 }

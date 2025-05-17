@@ -6,6 +6,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.stat.Stats;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+import net.modificationstation.stationapi.api.registry.ItemRegistry;
 import net.modificationstation.stationapi.api.template.block.TemplateLeavesBlock;
 import net.modificationstation.stationapi.api.util.Identifier;
 
@@ -16,10 +17,12 @@ public class LeavesBlock extends TemplateLeavesBlock {
     int fastTexture;
     int fancyTexture;
     int logBlockId;
+    Identifier dropID;
 
-    public LeavesBlock(Identifier identifier, int logBlockId) {
+    public LeavesBlock(Identifier identifier, int logBlockId, Identifier dropID) {
         super(identifier, 0);
         this.logBlockId = logBlockId;
+        this.dropID = dropID;
     }
 
     public void specifyTextures(int fastTexture, int fancyTexture){
@@ -152,10 +155,13 @@ public class LeavesBlock extends TemplateLeavesBlock {
     @Override
     public void afterBreak(World world, PlayerEntity playerEntity, int x, int y, int z, int meta) {
         if (!world.isRemote && playerEntity.getHand() != null && playerEntity.getHand().itemId == Item.SHEARS.id) {
-            playerEntity.increaseStat(Stats.MINE_BLOCK[this.id], 1);
+//            playerEntity.increaseStat(Stats.MINE_BLOCK[this.id], 1);
             this.dropStack(world, x, y, z, new ItemStack(id, 1, meta & 3));
         } else {
-            super.afterBreak(world, playerEntity, x, y, z, meta);
+            int droppedCount = getDroppedItemCount(new Random());
+            if (droppedCount > 0) {
+                dropStack(world, x, y, z, new ItemStack(ItemRegistry.INSTANCE.get(dropID), droppedCount, 0));
+            }
         }
     }
 }
