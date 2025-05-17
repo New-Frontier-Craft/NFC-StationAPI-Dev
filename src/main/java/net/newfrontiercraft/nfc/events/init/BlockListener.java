@@ -284,10 +284,10 @@ public class BlockListener {
         brassBlock = new LazyBlockTemplate(Identifier.of(MOD_ID, "brass_block"), Material.METAL, 2.5F, Block.METAL_SOUND_GROUP);
         steelBlock = new LazyBlockTemplate(Identifier.of(MOD_ID, "steel_block"), Material.METAL, 3.5F, Block.METAL_SOUND_GROUP);
 
-        pebble = new LazySandTemplate(Identifier.of(MOD_ID, "pebble"), 3F, Block.GRAVEL_SOUND_GROUP, 8);
-        pebbleSmall = new LazySandTemplate(Identifier.of(MOD_ID, "pebble_small"), 3F, Block.GRAVEL_SOUND_GROUP, 8);
-        pebbleMedium = new LazySandTemplate(Identifier.of(MOD_ID, "pebble_medium"), 3F, Block.GRAVEL_SOUND_GROUP, 8);
-        pebbleLarge = new LazySandTemplate(Identifier.of(MOD_ID, "pebble_large"), 3F, Block.GRAVEL_SOUND_GROUP, 8);
+        pebble = new LazySandTemplate(Identifier.of(MOD_ID, "pebble"), 3F, Block.GRAVEL_SOUND_GROUP, 8, Material.SOIL);
+        pebbleSmall = new LazySandTemplate(Identifier.of(MOD_ID, "pebble_small"), 3F, Block.GRAVEL_SOUND_GROUP, 8, Material.SOIL);
+        pebbleMedium = new LazySandTemplate(Identifier.of(MOD_ID, "pebble_medium"), 3F, Block.GRAVEL_SOUND_GROUP, 8, Material.SOIL);
+        pebbleLarge = new LazySandTemplate(Identifier.of(MOD_ID, "pebble_large"), 3F, Block.GRAVEL_SOUND_GROUP, 8, Material.SOIL);
 
         brickOven = new BrickOvenBlock(Identifier.of(MOD_ID, "brick_oven"), Material.STONE, false, 0F, 1.5F);
         brickOvenActive = new BrickOvenBlock(Identifier.of(MOD_ID, "brick_oven_active"), Material.STONE, true, 0.875F, 1.5F);

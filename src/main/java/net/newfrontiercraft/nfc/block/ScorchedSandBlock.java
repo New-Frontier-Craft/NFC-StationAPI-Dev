@@ -1,6 +1,7 @@
 package net.newfrontiercraft.nfc.block;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -15,7 +16,7 @@ import java.util.Random;
 
 public class ScorchedSandBlock extends LazySandTemplate {
     public ScorchedSandBlock(Identifier identifier, float hardness, BlockSoundGroup blockSounds, int fallingRarity) {
-        super(identifier, hardness, blockSounds, fallingRarity);
+        super(identifier, hardness, blockSounds, fallingRarity, Material.SAND);
     }
 
     @Override
