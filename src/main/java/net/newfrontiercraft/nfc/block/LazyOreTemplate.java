@@ -1,6 +1,11 @@
 package net.newfrontiercraft.nfc.block;
 
 import net.minecraft.block.Block;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.ShearsItem;
+import net.minecraft.world.World;
+import net.modificationstation.stationapi.api.registry.ItemRegistry;
 import net.modificationstation.stationapi.api.template.block.TemplateOreBlock;
 import net.modificationstation.stationapi.api.util.Identifier;
 
@@ -9,7 +14,7 @@ import java.util.Random;
 public class LazyOreTemplate extends TemplateOreBlock {
 
     int textureInternal;
-    int dropID = this.id;
+    Identifier dropID;
 
     public LazyOreTemplate(Identifier identifier, float hardness) {
         super(identifier, 0);
@@ -17,14 +22,16 @@ public class LazyOreTemplate extends TemplateOreBlock {
         setResistance(500F);
         setHardness(hardness);
         setSoundGroup(Block.STONE_SOUND_GROUP);
+        this.dropID = identifier;
     }
 
     @Override
-    public int getDroppedItemId(int i, Random random) {
-        return dropID;
+    public void afterBreak(World world, PlayerEntity player, int x, int y, int z, int meta) {
+        if (world.isRemote) return;
+        dropStack(world, x, y, z, new ItemStack(ItemRegistry.INSTANCE.get(dropID), 1, 0));
     }
 
-    public void specifyCustomDrop(int dropID) {
+    public void specifyCustomDrop(Identifier dropID) {
         this.dropID = dropID;
     }
 

@@ -651,12 +651,12 @@ public class ItemListener {
         copperDoor = (DoorItem) new DoorItem(Identifier.of(MOD_ID, "copper_door"), BlockListener.copperDoor.id).setTranslationKey(Identifier.of(MOD_ID, "copper_door"));
 
         // Ore drop specification
-        BlockListener.anthraciteOre.specifyCustomDrop(anthracite.id);
-        BlockListener.netherAshOre.specifyCustomDrop(netherAsh.id);
-        BlockListener.netherOnyxOre.specifyCustomDrop(onyx.id);
-        BlockListener.sapphireOre.specifyCustomDrop(sapphire.id);
-        BlockListener.rubyOre.specifyCustomDrop(ruby.id);
-        BlockListener.emeraldOre.specifyCustomDrop(emerald.id);
+        BlockListener.anthraciteOre.specifyCustomDrop(MOD_ID.id("anthracite"));
+        BlockListener.netherAshOre.specifyCustomDrop(MOD_ID.id("nether_ash"));
+        BlockListener.netherOnyxOre.specifyCustomDrop(MOD_ID.id("onyx"));
+        BlockListener.sapphireOre.specifyCustomDrop(MOD_ID.id("sapphire"));
+        BlockListener.rubyOre.specifyCustomDrop(MOD_ID.id("ruby"));
+        BlockListener.emeraldOre.specifyCustomDrop(MOD_ID.id("emerald"));
 
         // Set fuel burn time
         FuelRegistry.addFuelItem(oilBucket, 12800);
