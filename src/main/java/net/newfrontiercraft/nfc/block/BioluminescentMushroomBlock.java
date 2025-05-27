@@ -105,6 +105,6 @@ public class BioluminescentMushroomBlock extends LazyMushroomTemplate {
 
     @Override
     protected boolean canPlantOnTop(int id) {
-        return true;
+        return id != 0;
     }
 }
