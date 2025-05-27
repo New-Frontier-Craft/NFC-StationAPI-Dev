@@ -27,11 +27,6 @@ public class CarpentryWorkstationBlock extends TemplateBlock {
     }
 
     @Override
-    public int getDroppedItemId(int i, Random random) {
-        return BlockListener.carpentryWorkstation.id;
-    }
-
-    @Override
     public boolean onUse(World world, int x, int y, int z, PlayerEntity player) {
         GuiHelper.openGUI(player, Identifier.of(BlockEntityListener.MOD_ID, "gui_carpentry"), player.inventory, new CarpentryWorkstationScreenHandler(player.inventory, player.world, x, y, z));
         return true;
