@@ -351,14 +351,14 @@ public class BlockListener {
         unfiredPlanter = new LazyBlockTemplate(Identifier.of(MOD_ID, "unfired_planter"), Material.SOIL, 1.0F, Block.DIRT_SOUND_GROUP);
         planter = new PlanterBlock(Identifier.of(MOD_ID, "planter"), Material.STONE, 1.0F, Block.STONE_SOUND_GROUP);
 
-        fieryMushroomCap = new ItemDroppingBlock(Identifier.of(MOD_ID, "fiery_mushroom_cap"), Material.WOOD, 1.0F, Block.WOOD_SOUND_GROUP);
-        fieryMushroomStem = new ItemDroppingBlock(Identifier.of(MOD_ID, "fiery_mushroom_stem"), Material.WOOD, 1.0F, Block.WOOD_SOUND_GROUP);
-        glowingMushroomCap = new ItemDroppingBlock(Identifier.of(MOD_ID, "glowing_mushroom_cap"), Material.WOOD, 1.0F, Block.WOOD_SOUND_GROUP);
-        glowingMushroomStem = new ItemDroppingBlock(Identifier.of(MOD_ID, "glowing_mushroom_stem"), Material.WOOD, 1.0F, Block.WOOD_SOUND_GROUP);
-        purpleMushroomCap = new ItemDroppingBlock(Identifier.of(MOD_ID, "purple_mushroom_cap"), Material.WOOD, 1.0F, Block.WOOD_SOUND_GROUP);
-        purpleMushroomStem = new ItemDroppingBlock(Identifier.of(MOD_ID, "purple_mushroom_stem"), Material.WOOD, 1.0F, Block.WOOD_SOUND_GROUP);
-        blueMushroomCap = new ItemDroppingBlock(Identifier.of(MOD_ID, "blue_mushroom_cap"), Material.WOOD, 1.0F, Block.WOOD_SOUND_GROUP);
-        blueMushroomStem = new ItemDroppingBlock(Identifier.of(MOD_ID, "blue_mushroom_stem"), Material.WOOD, 1.0F, Block.WOOD_SOUND_GROUP);
+        fieryMushroomCap = new ItemDroppingBlock(Identifier.of(MOD_ID, "fiery_mushroom_cap"), Material.SOLID_ORGANIC, 1.0F, Block.WOOD_SOUND_GROUP);
+        fieryMushroomStem = new ItemDroppingBlock(Identifier.of(MOD_ID, "fiery_mushroom_stem"), Material.SOLID_ORGANIC, 1.0F, Block.WOOD_SOUND_GROUP);
+        glowingMushroomCap = new ItemDroppingBlock(Identifier.of(MOD_ID, "glowing_mushroom_cap"), Material.SOLID_ORGANIC, 1.0F, Block.WOOD_SOUND_GROUP);
+        glowingMushroomStem = new ItemDroppingBlock(Identifier.of(MOD_ID, "glowing_mushroom_stem"), Material.SOLID_ORGANIC, 1.0F, Block.WOOD_SOUND_GROUP);
+        purpleMushroomCap = new ItemDroppingBlock(Identifier.of(MOD_ID, "purple_mushroom_cap"), Material.SOLID_ORGANIC, 1.0F, Block.WOOD_SOUND_GROUP);
+        purpleMushroomStem = new ItemDroppingBlock(Identifier.of(MOD_ID, "purple_mushroom_stem"), Material.SOLID_ORGANIC, 1.0F, Block.WOOD_SOUND_GROUP);
+        blueMushroomCap = new ItemDroppingBlock(Identifier.of(MOD_ID, "blue_mushroom_cap"), Material.SOLID_ORGANIC, 1.0F, Block.WOOD_SOUND_GROUP);
+        blueMushroomStem = new ItemDroppingBlock(Identifier.of(MOD_ID, "blue_mushroom_stem"), Material.SOLID_ORGANIC, 1.0F, Block.WOOD_SOUND_GROUP);
 
         fieryMushroomCap.setLuminance(0.695F);
         fieryMushroomStem.setLuminance(0.695F);
