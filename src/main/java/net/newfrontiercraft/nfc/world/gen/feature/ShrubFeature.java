@@ -3,6 +3,7 @@ package net.newfrontiercraft.nfc.world.gen.feature;
 import net.minecraft.block.Block;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.Feature;
+import net.newfrontiercraft.nfc.compat.vbe.VBELeafPlacer;
 import net.newfrontiercraft.nfc.events.init.BlockListener;
 
 import java.util.Random;
@@ -72,7 +73,7 @@ public class ShrubFeature extends Feature {
                 for (int yOffset = -1; yOffset <= 1; yOffset++) {
                     if ((xOffset == 1 || xOffset == -1) && (yOffset == 1 || yOffset == -1) && (zOffset == 1 || zOffset == -1)) continue;
                     if (world.getBlockId(x + xOffset, y + yOffset, z + zOffset) != 0) continue;
-                    world.setBlock(x + xOffset, y + yOffset, z + zOffset, alphaMode ? BlockListener.alphaLeaves.id : Block.LEAVES.id, meta);
+                    world.setBlockWithoutNotifyingNeighbors(x + xOffset, y + yOffset, z + zOffset, alphaMode ? BlockListener.alphaLeaves.id : Block.LEAVES.id, meta);
                 }
             }
         }
