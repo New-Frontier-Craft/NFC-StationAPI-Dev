@@ -106,6 +106,9 @@ dependencies {
 	modImplementation("com.github.paulevsGitch:SimpleNetherOres:${project.simplenetherores_version}") {
 		transitive false
 	}
+	modImplementation("com.github.paulevsGitch:VanillaBlockEnhancements:${project.vbe_version}") {
+		transitive false
+	}
 }
 
 processResources {
