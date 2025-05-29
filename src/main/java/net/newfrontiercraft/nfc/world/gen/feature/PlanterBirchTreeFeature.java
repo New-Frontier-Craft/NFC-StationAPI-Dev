@@ -3,6 +3,7 @@ package net.newfrontiercraft.nfc.world.gen.feature;
 import net.minecraft.block.Block;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.Feature;
+import net.newfrontiercraft.nfc.compat.vbe.VBEBlockIdGetter;
 import net.newfrontiercraft.nfc.events.init.BlockListener;
 
 import java.util.Random;
@@ -12,6 +13,11 @@ public class PlanterBirchTreeFeature extends Feature {
     }
 
     public boolean generate(World world, Random random, int x, int y, int z) {
+        int leavesId = Block.LEAVES.id;
+        if (BlockListener.isVbePresent) {
+            leavesId = VBEBlockIdGetter.getBirchLeavesId();
+        }
+
         int var6 = random.nextInt(3) + 5;
         boolean var7 = true;
         if (y >= 1 && y + var6 + 1 <= 128) {
@@ -68,7 +74,7 @@ public class PlanterBirchTreeFeature extends Feature {
 
                     for(var9 = 0; var9 < var6; ++var9) {
                         var10 = world.getBlockId(x, y + var9, z);
-                        if (var10 == 0 || var10 == Block.LEAVES.id) {
+                        if (var10 == 0 || var10 == leavesId) {
                             world.setBlockWithoutNotifyingNeighbors(x, y + var9, z, Block.LOG.id, 2);
                         }
                     }
