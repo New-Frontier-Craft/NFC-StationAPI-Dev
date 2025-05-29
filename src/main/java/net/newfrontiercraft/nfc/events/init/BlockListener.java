@@ -1,5 +1,6 @@
 package net.newfrontiercraft.nfc.events.init;
 
+import net.fabricmc.loader.api.FabricLoader;
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -11,6 +12,8 @@ import net.modificationstation.stationapi.api.util.Namespace;
 import net.newfrontiercraft.nfc.block.*;
 
 public class BlockListener {
+
+    public static boolean isVbePresent = FabricLoader.getInstance().isModLoaded("vbe");
 
     public static LazyBlockTemplate
             platedStone,

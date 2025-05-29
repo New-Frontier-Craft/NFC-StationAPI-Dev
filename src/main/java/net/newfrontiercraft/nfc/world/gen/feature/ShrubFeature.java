@@ -3,7 +3,6 @@ package net.newfrontiercraft.nfc.world.gen.feature;
 import net.minecraft.block.Block;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.Feature;
-import net.newfrontiercraft.nfc.compat.vbe.VBELeafPlacer;
 import net.newfrontiercraft.nfc.events.init.BlockListener;
 
 import java.util.Random;
