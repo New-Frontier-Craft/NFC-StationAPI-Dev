@@ -86,7 +86,7 @@ public class SlabPlacer {
     }
 
     protected boolean attemptSlabPlace(World world, int x, int y, int z, PlayerEntity user, ItemStack stack, int side){
-        HitResult hitResult = user.raycast(5, 0);
+        HitResult hitResult = Raycast.raycast(user, 5, 0);
         Vec3d hitOffset;
         if(hitResult == null){
             hitOffset = Vec3d.create(0, 0, 0);
