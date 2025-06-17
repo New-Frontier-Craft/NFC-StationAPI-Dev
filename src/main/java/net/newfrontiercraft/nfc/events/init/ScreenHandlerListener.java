@@ -11,13 +11,11 @@ import net.modificationstation.stationapi.api.mod.entrypoint.Entrypoint;
 import net.modificationstation.stationapi.api.util.Identifier;
 import net.modificationstation.stationapi.api.util.Namespace;
 import net.modificationstation.stationapi.api.registry.Registry;
+import net.newfrontiercraft.nfc.block.entity.BasicItemChuteBlockEntity;
 import net.newfrontiercraft.nfc.block.entity.BookshelfBlockEntity;
 import net.newfrontiercraft.nfc.block.entity.CombustionHeaterBlockEntity;
-import net.newfrontiercraft.nfc.gui.BookshelfScreen;
-import net.newfrontiercraft.nfc.gui.BrickOvenGui;
+import net.newfrontiercraft.nfc.gui.*;
 import net.newfrontiercraft.nfc.block.entity.BrickOvenBlockEntity;
-import net.newfrontiercraft.nfc.gui.CarpentryWorkstationGui;
-import net.newfrontiercraft.nfc.gui.CombustionHeaterScreen;
 
 public class ScreenHandlerListener {
 
@@ -32,6 +30,7 @@ public class ScreenHandlerListener {
         Registry.register(registry, Identifier.of(MOD_ID, "gui_carpentry"), new GuiHandler((GuiHandler.ScreenFactoryNoMessage) this::openCarpentry, () -> null));
         Registry.register(registry, Identifier.of(MOD_ID, "gui_bookshelf"), new GuiHandler((GuiHandler.ScreenFactoryNoMessage) this::openBookshelf, BookshelfBlockEntity::new));
         Registry.register(registry, Identifier.of(MOD_ID, "gui_combustion_heater"), new GuiHandler((GuiHandler.ScreenFactoryNoMessage) this::openCombustionHeater, CombustionHeaterBlockEntity::new));
+        Registry.register(registry, Identifier.of(MOD_ID, "gui_basic_item_chute"), new GuiHandler((GuiHandler.ScreenFactoryNoMessage) this::openBasicItemChute, BasicItemChuteBlockEntity::new));
     }
 
     public Screen openBrickOven(PlayerEntity playerBase, Inventory inventoryBase) {
@@ -48,5 +47,9 @@ public class ScreenHandlerListener {
 
     public Screen openCombustionHeater(PlayerEntity playerBase, Inventory inventoryBase) {
         return new CombustionHeaterScreen(playerBase.inventory, (CombustionHeaterBlockEntity) inventoryBase);
+    }
+
+    public Screen openBasicItemChute(PlayerEntity playerBase, Inventory inventoryBase) {
+        return new BasicItemChuteScreen(playerBase.inventory, (BasicItemChuteBlockEntity) inventoryBase);
     }
 }

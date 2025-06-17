@@ -275,6 +275,8 @@ tile.nfc.heat_coil.name=Heat Coil
 tile.nfc.combustion_heater.name=Combustion Heater
 tile.nfc.combustion_heater_active.name=Lit Combustion Heater
 
+tile.nfc.basic_item_chute.name=Basic Item Chute
+
 
 item.nfc.aluminium_pickaxe.name=Aluminum Pickaxe
 item.nfc.bismuth_pickaxe.name=Bismuth Pickaxe

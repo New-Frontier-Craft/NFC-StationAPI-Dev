@@ -202,6 +202,9 @@ public class RecipeListener {
             // Heat machines
             CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.heatCoil, 1), " X ", "XYX", " X ", 'X', ItemListener.cupronickelIngot, 'Y', ItemListener.copperIngot);
             CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.combustionHeater, 1, 2), "XXX", "X X", "XYX", 'X', Block.COBBLESTONE, 'Y', ItemListener.cupronickelIngot);
+
+            // Chutes
+            CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.basicItemChute, 1, 0), "X X", "YZY", "Y Y", 'X', ItemListener.bronzeIngot, 'Y', ItemListener.brassIngot, 'Z', Block.CHEST);
         }
         if (type == RecipeRegisterEvent.Vanilla.CRAFTING_SHAPELESS.type()) {
             // Storage block un-crafting

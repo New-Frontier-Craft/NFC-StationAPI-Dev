@@ -249,6 +249,7 @@ public class TextureListener {
                 getTextureIndex(machines + "combustion_heater_side"),
                 getTextureIndex(machines + "combustion_heater_bottom"),
                 getTextureIndex(machines + "combustion_heater_front_active"));
+        BlockListener.basicItemChute.specifyTextures(getTextureIndex(machines + "basic_item_chute_top"), getTextureIndex(machines + "basic_item_chute_side"), getTextureIndex(machines + "basic_item_chute_bottom"));
 
         // Ore storage blocks
         BlockListener.coalBlock.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, oreStorage + "coal")).index);
