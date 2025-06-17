@@ -170,6 +170,7 @@ tile.nfc.brass_block.name=Brass Block
 tile.nfc.bronze_block.name=Bronze Block
 tile.nfc.steel_block.name=Steel Block
 tile.nfc.osmium_block.name=Osmium Block
+tile.nfc.cupronickel_block.name=Cupronickel Block
 
 tile.nfc.pebble.name=Pebble
 tile.nfc.pebble_small.name=Small Pebble
@@ -508,6 +509,7 @@ item.nfc.brass_ingot.name=Brass Ingot
 item.nfc.bronze_ingot.name=Bronze Ingot
 item.nfc.steel_ingot.name=Steel Ingot
 item.nfc.osmium_ingot.name=Osmium Ingot
+item.nfc.cupronickel_ingot.name=Cupronickel Ingot
 
 item.nfc.anthracite.name=Anthracite
 item.nfc.nether_ash.name=Nether Ash

@@ -104,6 +104,7 @@ public class RecipeListener {
             CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.bronzeBlock), "XX", "XX", 'X', new ItemStack(ItemListener.bronzeIngot));
             CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.brassBlock), "XX", "XX", 'X', new ItemStack(ItemListener.brassIngot));
             CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.steelBlock), "XX", "XX", 'X', new ItemStack(ItemListener.steelIngot));
+            CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.cupronickelBlock), "XX", "XX", 'X', new ItemStack(ItemListener.cupronickelIngot));
             CraftingRegistry.addShapedRecipe(new ItemStack(Block.LAPIS_BLOCK), "XX", "XX", 'X', new ItemStack(Item.DYE, 1, 4));
             CraftingRegistry.addShapedRecipe(new ItemStack(Block.GOLD_BLOCK), "XX", "XX", 'X', new ItemStack(Item.GOLD_INGOT));
             CraftingRegistry.addShapedRecipe(new ItemStack(Block.IRON_BLOCK), "XX", "XX", 'X', new ItemStack(Item.IRON_INGOT));
@@ -226,6 +227,7 @@ public class RecipeListener {
             CraftingRegistry.addShapelessRecipe(new ItemStack(ItemListener.bronzeIngot, 4), new ItemStack(BlockListener.bronzeBlock));
             CraftingRegistry.addShapelessRecipe(new ItemStack(ItemListener.brassIngot, 4), new ItemStack(BlockListener.brassBlock));
             CraftingRegistry.addShapelessRecipe(new ItemStack(ItemListener.steelIngot, 4), new ItemStack(BlockListener.steelBlock));
+            CraftingRegistry.addShapelessRecipe(new ItemStack(ItemListener.cupronickelIngot, 4), new ItemStack(BlockListener.cupronickelBlock));
             CraftingRegistry.addShapelessRecipe(new ItemStack(Item.DYE, 4, 4), new ItemStack(Block.LAPIS_BLOCK));
             CraftingRegistry.addShapelessRecipe(new ItemStack(Item.GOLD_INGOT, 4), new ItemStack(Block.GOLD_BLOCK));
             CraftingRegistry.addShapelessRecipe(new ItemStack(Item.IRON_INGOT, 4), new ItemStack(Block.IRON_BLOCK));

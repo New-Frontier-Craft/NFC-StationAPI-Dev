@@ -268,6 +268,7 @@ public class TextureListener {
         BlockListener.bronzeBlock.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, oreStorage + "bronze")).index);
         BlockListener.brassBlock.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, oreStorage + "brass")).index);
         BlockListener.steelBlock.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, oreStorage + "steel")).index);
+        BlockListener.cupronickelBlock.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, oreStorage + "cupronickel")).index);
 
         // Pebble variants
         BlockListener.pebble.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, woldGeneration + "pebble")).index);
@@ -558,6 +559,7 @@ public class TextureListener {
         ItemListener.bronzeIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "bronze"));
         ItemListener.steelIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "steel"));
         ItemListener.osmiumIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "osmium"));
+        ItemListener.cupronickelIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "cupronickel"));
 
         // Ore drops
         ItemListener.anthracite.setTexture(Identifier.of(MOD_ID, oreDrops + "anthracite"));

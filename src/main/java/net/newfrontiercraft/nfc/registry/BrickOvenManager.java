@@ -33,6 +33,14 @@ public class BrickOvenManager {
                 new ItemStack(ItemListener.copperIngot, 1),
                 new ItemStack(ItemListener.tinIngot, 1)}, 1600);
 
+        addShapelessOvenRecipe(new ItemStack(ItemListener.cupronickelIngot, 6), new Object[] {
+                new ItemStack(ItemListener.copperIngot, 1),
+                new ItemStack(ItemListener.copperIngot, 1),
+                new ItemStack(ItemListener.copperIngot, 1),
+                new	ItemStack(ItemListener.nickelIngot, 1),
+                new ItemStack(ItemListener.nickelIngot, 1),
+                new ItemStack(ItemListener.nickelIngot, 1)}, 1600);
+
         addShapelessOvenRecipe(new ItemStack(ItemListener.steelIngot, 8), new Object[] {
                 new ItemStack(ItemListener.anthracite, 1),
                 new ItemStack(Item.IRON_INGOT, 1),

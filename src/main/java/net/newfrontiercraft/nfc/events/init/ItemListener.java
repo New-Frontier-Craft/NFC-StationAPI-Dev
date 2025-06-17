@@ -43,6 +43,7 @@ public class ItemListener {
             bronzeIngot,
             steelIngot,
             osmiumIngot,
+            cupronickelIngot,
             anthracite,
             netherAsh,
             onyx,
@@ -629,6 +630,7 @@ public class ItemListener {
         bronzeIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "bronze_ingot"));
         steelIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "steel_ingot"));
         osmiumIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "osmium_ingot"));
+        cupronickelIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "cupronickel_ingot"));
 
         // Ore drops
         anthracite = new LazyItemTemplate(Identifier.of(MOD_ID, "anthracite"));

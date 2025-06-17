@@ -75,6 +75,7 @@ public class BlockListener {
             bronzeBlock,
             brassBlock,
             steelBlock,
+            cupronickelBlock,
 
             unfiredPlanter;
 
@@ -286,6 +287,7 @@ public class BlockListener {
         bronzeBlock = new LazyBlockTemplate(Identifier.of(MOD_ID, "bronze_block"), Material.METAL, 2.5F, Block.METAL_SOUND_GROUP);
         brassBlock = new LazyBlockTemplate(Identifier.of(MOD_ID, "brass_block"), Material.METAL, 2.5F, Block.METAL_SOUND_GROUP);
         steelBlock = new LazyBlockTemplate(Identifier.of(MOD_ID, "steel_block"), Material.METAL, 3.5F, Block.METAL_SOUND_GROUP);
+        cupronickelBlock = new LazyBlockTemplate(Identifier.of(MOD_ID, "cupronickel_block"), Material.METAL, 2.5F, Block.METAL_SOUND_GROUP);
 
         pebble = new LazySandTemplate(Identifier.of(MOD_ID, "pebble"), 3F, Block.GRAVEL_SOUND_GROUP, 8, Material.SOIL);
         pebbleSmall = new LazySandTemplate(Identifier.of(MOD_ID, "pebble_small"), 3F, Block.GRAVEL_SOUND_GROUP, 8, Material.SOIL);
