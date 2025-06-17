@@ -10,18 +10,28 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtList;
+import net.newfrontiercraft.nfc.api.HeatConsumer;
 import net.newfrontiercraft.nfc.block.BrickOvenBlock;
 import net.newfrontiercraft.nfc.events.init.BlockListener;
 import net.newfrontiercraft.nfc.events.init.ItemListener;
 import net.newfrontiercraft.nfc.registry.BrickOvenManager;
 
-public class BrickOvenBlockEntity extends BlockEntity implements Inventory {
+public class BrickOvenBlockEntity extends BlockEntity implements Inventory, HeatConsumer {
+
+    private ItemStack[] furnaceItemStacks;
+    public int furnaceBurnTime;
+    public int currentItemBurnTime;
+    public int furnaceCookTime;
+    public int requiredTime = 200;
+    private boolean isMultiBlock;
+    private static final int MAXIMUM_ADDED_BURN_TIME = 1000;
 
     public BrickOvenBlockEntity() {
         furnaceItemStacks = new ItemStack[11];
         furnaceBurnTime = 0;
         currentItemBurnTime = 0;
         furnaceCookTime = 0;
+        isMultiBlock = false;
     }
 
     @Override
@@ -82,6 +92,7 @@ public class BrickOvenBlockEntity extends BlockEntity implements Inventory {
         furnaceBurnTime = nbttagcompound.getShort("BurnTime");
         furnaceCookTime = nbttagcompound.getShort("CookTime");
         currentItemBurnTime = getItemBurnTime(furnaceItemStacks[9]);
+        isMultiBlock = nbttagcompound.getBoolean("IsMultiBlock");
     }
 
     @Override
@@ -100,6 +111,7 @@ public class BrickOvenBlockEntity extends BlockEntity implements Inventory {
         }
 
         nbttagcompound.put("Items", nbttaglist);
+        nbttagcompound.putBoolean("IsMultiBlock", isMultiBlock);
     }
 
     @Override
@@ -272,9 +284,25 @@ public class BrickOvenBlockEntity extends BlockEntity implements Inventory {
         requiredTime = i;
     }
 
-    private ItemStack[] furnaceItemStacks;
-    public int furnaceBurnTime;
-    public int currentItemBurnTime;
-    public int furnaceCookTime;
-    public int requiredTime = 200;
+    // Methods of heat interface
+    @Override
+    public int addHeat(int heat) {
+        if (isMultiBlock || getItemBurnTime(furnaceItemStacks[9]) > 0 || furnaceBurnTime >= MAXIMUM_ADDED_BURN_TIME) {
+            return 0;
+        }
+        int totalBurnTime = furnaceBurnTime + heat;
+        if (totalBurnTime <= MAXIMUM_ADDED_BURN_TIME) {
+            furnaceBurnTime = totalBurnTime;
+            BrickOvenBlock.updateFurnaceBlockState(furnaceBurnTime > 0, world, x, y, z);
+            return heat;
+        }
+        furnaceBurnTime = MAXIMUM_ADDED_BURN_TIME;
+        BrickOvenBlock.updateFurnaceBlockState(true, world, x, y, z);
+        return heat - (totalBurnTime - MAXIMUM_ADDED_BURN_TIME);
+    }
+
+    @Override
+    public int getHeat() {
+        return furnaceBurnTime;
+    }
 }
