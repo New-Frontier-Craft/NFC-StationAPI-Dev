@@ -1,14 +1,15 @@
 package net.newfrontiercraft.nfc.block;
 
+import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
-import net.modificationstation.stationapi.api.template.block.TemplateBlock;
+import net.modificationstation.stationapi.api.template.block.TemplateBlockWithEntity;
 import net.modificationstation.stationapi.api.util.Identifier;
 
-public class LazyBlockTemplate extends TemplateBlock {
+public class LazyBlockWithEntityTemplate extends TemplateBlockWithEntity {
 
     int topTexture;
     int sideTexture;
@@ -17,7 +18,7 @@ public class LazyBlockTemplate extends TemplateBlock {
     int backTexture;
     boolean directional = false;
 
-    public LazyBlockTemplate(Identifier identifier, Material material, float hardness, BlockSoundGroup blockSounds) {
+    public LazyBlockWithEntityTemplate(Identifier identifier, Material material, float hardness, BlockSoundGroup blockSounds) {
         super(identifier, material);
         setTranslationKey(identifier.namespace, identifier.path);
         setHardness(hardness);
@@ -25,8 +26,13 @@ public class LazyBlockTemplate extends TemplateBlock {
     }
 
     @Override
-    public LazyBlockTemplate setHardness(float hardness) {
-        return (LazyBlockTemplate) super.setHardness(hardness);
+    public LazyBlockWithEntityTemplate setHardness(float hardness) {
+        return (LazyBlockWithEntityTemplate) super.setHardness(hardness);
+    }
+
+    @Override
+    protected BlockEntity createBlockEntity() {
+        return null;
     }
 
     public void specifyTextures(int topTexture, int sideTexture, int bottomTexture, int frontTexture, int backTexture) {
