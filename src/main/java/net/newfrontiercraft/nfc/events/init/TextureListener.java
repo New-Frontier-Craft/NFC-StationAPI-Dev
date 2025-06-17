@@ -537,27 +537,27 @@ public class TextureListener {
         ItemListener.osmiumBoots.setTexture(Identifier.of(MOD_ID, boots + "osmium"));
 
         // Ingots
-        ItemListener.aluminiumIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "aluminium_ingot"));
-        ItemListener.copperIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "copper_ingot"));
-        ItemListener.tinIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "tin_ingot"));
-        ItemListener.bismuthIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "bismuth_ingot"));
-        ItemListener.zincIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "zinc_ingot"));
-        ItemListener.nickelIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "nickel_ingot"));
-        ItemListener.cobaltIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "cobalt_ingot"));
-        ItemListener.tungstenIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "tungsten_ingot"));
-        ItemListener.magnetiteIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "magnetite_ingot"));
-        ItemListener.silverIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "silver_ingot"));
-        ItemListener.leadIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "lead_ingot"));
-        ItemListener.siliconIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "silicon_ingot"));
-        ItemListener.chromeIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "chrome_ingot"));
-        ItemListener.titaniumIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "titanium_ingot"));
-        ItemListener.uraniumIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "uranium_ingot"));
-        ItemListener.platinumIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "platinum_ingot"));
-        ItemListener.boronIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "boron_ingot"));
-        ItemListener.brassIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "brass_ingot"));
-        ItemListener.bronzeIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "bronze_ingot"));
-        ItemListener.steelIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "steel_ingot"));
-        ItemListener.osmiumIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "osmium_ingot"));
+        ItemListener.aluminiumIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "aluminium"));
+        ItemListener.copperIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "copper"));
+        ItemListener.tinIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "tin"));
+        ItemListener.bismuthIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "bismuth"));
+        ItemListener.zincIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "zinc"));
+        ItemListener.nickelIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "nickel"));
+        ItemListener.cobaltIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "cobalt"));
+        ItemListener.tungstenIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "tungsten"));
+        ItemListener.magnetiteIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "magnetite"));
+        ItemListener.silverIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "silver"));
+        ItemListener.leadIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "lead"));
+        ItemListener.siliconIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "silicon"));
+        ItemListener.chromeIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "chrome"));
+        ItemListener.titaniumIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "titanium"));
+        ItemListener.uraniumIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "uranium"));
+        ItemListener.platinumIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "platinum"));
+        ItemListener.boronIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "boron"));
+        ItemListener.brassIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "brass"));
+        ItemListener.bronzeIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "bronze"));
+        ItemListener.steelIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "steel"));
+        ItemListener.osmiumIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "osmium"));
 
         // Ore drops
         ItemListener.anthracite.setTexture(Identifier.of(MOD_ID, oreDrops + "anthracite"));
