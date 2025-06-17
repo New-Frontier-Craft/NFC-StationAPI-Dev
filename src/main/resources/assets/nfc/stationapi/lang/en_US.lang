@@ -270,6 +270,8 @@ tile.nfc.purple_mushroom_stem.name=Purple Mushroom Stem
 tile.nfc.blue_mushroom_cap.name=Blue Mushroom Cap
 tile.nfc.blue_mushroom_stem.name=Blue Mushroom Stem
 
+tile.nfc.heat_coil.name=Heat Coil
+
 
 item.nfc.aluminium_pickaxe.name=Aluminum Pickaxe
 item.nfc.bismuth_pickaxe.name=Bismuth Pickaxe

@@ -104,6 +104,8 @@
 
     "nfc:double_stone_slab",
 
-    "nfc:planter"
+    "nfc:planter",
+
+    "nfc:heat_coil"
   ]
 }

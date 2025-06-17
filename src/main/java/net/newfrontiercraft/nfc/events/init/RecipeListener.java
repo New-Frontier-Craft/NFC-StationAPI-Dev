@@ -198,6 +198,9 @@ public class RecipeListener {
 
             // Planter
             CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.unfiredPlanter, 2), "X X", "X X", "XXX", 'X', Item.CLAY);
+
+            // Heat coil
+            CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.heatCoil, 1), " X ", "XYX", " X ", 'X', ItemListener.cupronickelIngot, 'Y', ItemListener.copperIngot);
         }
         if (type == RecipeRegisterEvent.Vanilla.CRAFTING_SHAPELESS.type()) {
             // Storage block un-crafting
