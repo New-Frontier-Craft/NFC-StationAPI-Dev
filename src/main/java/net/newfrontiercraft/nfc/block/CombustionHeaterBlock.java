@@ -117,7 +117,7 @@ public class CombustionHeaterBlock extends LazyBlockWithEntityTemplate {
     @Override
     public void afterBreak(World world, PlayerEntity playerEntity, int x, int y, int z, int meta) {
         if (world.isRemote) return;
-        this.dropStack(world, x, y, z, new ItemStack(BlockListener.combustionHeater, 1, 0));
+        this.dropStack(world, x, y, z, new ItemStack(BlockListener.combustionHeater, 1, 2));
     }
 
     @Override
