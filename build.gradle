@@ -109,6 +109,11 @@ dependencies {
 	modImplementation("com.github.paulevsGitch:VanillaBlockEnhancements:${project.vbe_version}") {
 		transitive false
 	}
+
+	// Required libraries
+	modImplementation("net.danygames2014:NyaLib:${project.nyalib_version}") {
+		transitive false
+	}
 }
 
 processResources {
