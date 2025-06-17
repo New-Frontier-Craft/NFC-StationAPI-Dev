@@ -185,6 +185,10 @@ public class BlockListener {
 
     public static HeatCoilBlock heatCoil;
 
+    public static CombustionHeaterBlock
+            combustionHeater,
+            combustionHeaterActive;
+
     @Entrypoint.Namespace
     public static Namespace MOD_ID;
 
@@ -388,6 +392,9 @@ public class BlockListener {
         blueMushroomStem.setDropId(MOD_ID.id("bioluminescent_mushroom"));
 
         heatCoil = new HeatCoilBlock(Identifier.of(MOD_ID, "heat_coil"), Material.METAL, 1.5F, Block.METAL_SOUND_GROUP);
+
+        combustionHeater = new CombustionHeaterBlock(Identifier.of(MOD_ID, "combustion_heater"), Material.STONE, 1.0F, Block.STONE_SOUND_GROUP, false);
+        combustionHeaterActive = new CombustionHeaterBlock(Identifier.of(MOD_ID, "combustion_heater_active"), Material.STONE, 1.0F, Block.STONE_SOUND_GROUP, true);
 
         // Changes to vanilla blast resistance
         Block.COAL_ORE.setResistance(500F);

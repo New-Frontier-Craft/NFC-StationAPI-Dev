@@ -7,6 +7,7 @@ import net.modificationstation.stationapi.api.util.Identifier;
 import net.modificationstation.stationapi.api.util.Namespace;
 import net.newfrontiercraft.nfc.block.entity.BookshelfBlockEntity;
 import net.newfrontiercraft.nfc.block.entity.BrickOvenBlockEntity;
+import net.newfrontiercraft.nfc.block.entity.CombustionHeaterBlockEntity;
 import net.newfrontiercraft.nfc.block.entity.HeatCoilBlockEntity;
 
 public class BlockEntityListener {
@@ -19,6 +20,7 @@ public class BlockEntityListener {
         event.register(BrickOvenBlockEntity.class, String.valueOf(Identifier.of(MOD_ID, "block_entity_brick_oven")));
         event.register(BookshelfBlockEntity.class, String.valueOf(Identifier.of(MOD_ID, "block_entity_bookshelf")));
         event.register(HeatCoilBlockEntity.class, String.valueOf(Identifier.of(MOD_ID, "block_entity_heat_coil")));
+        event.register(CombustionHeaterBlockEntity.class, String.valueOf(Identifier.of(MOD_ID, "block_entity_combustion_heater")));
     }
 
 }

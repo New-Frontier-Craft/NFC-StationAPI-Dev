@@ -241,6 +241,14 @@ public class TextureListener {
                 Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, machines + "carpentry_workstation_bottom")).index,
                 Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, machines + "carpentry_workstation_top")).index);
         BlockListener.heatCoil.specifyTextures(getTextureIndex(machines + "heat_coil"));
+        BlockListener.combustionHeater.specifyTextures(getTextureIndex(machines + "combustion_heater_top"),
+                getTextureIndex(machines + "combustion_heater_side"),
+                getTextureIndex(machines + "combustion_heater_bottom"),
+                getTextureIndex(machines + "combustion_heater_front"));
+        BlockListener.combustionHeaterActive.specifyTextures(getTextureIndex(machines + "combustion_heater_top"),
+                getTextureIndex(machines + "combustion_heater_side"),
+                getTextureIndex(machines + "combustion_heater_bottom"),
+                getTextureIndex(machines + "combustion_heater_front_active"));
 
         // Ore storage blocks
         BlockListener.coalBlock.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, oreStorage + "coal")).index);

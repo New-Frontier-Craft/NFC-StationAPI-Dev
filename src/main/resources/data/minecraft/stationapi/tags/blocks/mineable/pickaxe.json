@@ -106,6 +106,9 @@
 
     "nfc:planter",
 
-    "nfc:heat_coil"
+    "nfc:heat_coil",
+
+    "nfc:combustion_heater",
+    "nfc:combustion_heater_active"
   ]
 }

@@ -38,16 +38,6 @@ public class BrickOvenBlock extends TemplateBlockWithEntity {
     }
 
     @Override
-    protected int getDroppedItemMeta(int blockMeta) {
-        return 3;
-    }
-
-    @Override
-    public int getDroppedItemId(int i, Random random) {
-        return BlockListener.brickOven.id;
-    }
-
-    @Override
     public boolean onUse(World world, int x, int y, int z, PlayerEntity player) {
         BlockEntity tileEntity = world.getBlockEntity(x, y, z);
         if (tileEntity instanceof BrickOvenBlockEntity brickOvenBlockEntity)
@@ -191,6 +181,17 @@ public class BrickOvenBlock extends TemplateBlockWithEntity {
         }
 
         super.onBreak(arg, i, j, k);
+    }
+
+    @Override
+    public void afterBreak(World world, PlayerEntity playerEntity, int x, int y, int z, int meta) {
+        if (world.isRemote) return;
+        this.dropStack(world, x, y, z, new ItemStack(BlockListener.brickOven, 1, 3));
+    }
+
+    @Override
+    public int getDroppedItemCount(Random random) {
+        return 0;
     }
 
     @Override
