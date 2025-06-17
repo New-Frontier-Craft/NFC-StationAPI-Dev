@@ -169,7 +169,7 @@ public class BrickOvenBlock extends TemplateBlockWithEntity {
                         }
 
                         var7.count -= var11;
-                        ItemEntity var12 = new ItemEntity(arg, (double)((float)i + var8), (double)((float)j + var9), (double)((float)k + var10), new ItemStack(var7.itemId, var11, var7.getDamage()));
+                        ItemEntity var12 = new ItemEntity(arg, (double)((float)i + var8), (double)((float)j + var9), (double)((float)k + var10), new ItemStack(var7.getItem(), var11, var7.getDamage()));
                         float var13 = 0.05F;
                         var12.velocityX = (double)((float)this.furnaceRand.nextGaussian() * var13);
                         var12.velocityY = (double)((float)this.furnaceRand.nextGaussian() * var13 + 0.2F);

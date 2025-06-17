@@ -99,7 +99,7 @@ public class CombustionHeaterBlock extends LazyBlockWithEntityTemplate {
                     itemstack.count -= i1;
                     ItemEntity entityitem = new ItemEntity(world,
                             (float) i + f, (float) j + f1, (float) k + f2,
-                            new ItemStack(itemstack.getStationNbt()));
+                            new ItemStack(itemstack.getItem(), i1, itemstack.getDamage()));
                     float f3 = 0.05F;
                     entityitem.velocityX = (float) random.nextGaussian()
                             * f3;
