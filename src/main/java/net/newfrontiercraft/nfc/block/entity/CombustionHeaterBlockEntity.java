@@ -1,5 +1,6 @@
 package net.newfrontiercraft.nfc.block.entity;
 
+import net.danygames2014.nyalib.item.ItemHandler;
 import net.minecraft.block.Block;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.material.Material;
@@ -10,11 +11,13 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtList;
+import net.modificationstation.stationapi.api.util.math.Direction;
 import net.newfrontiercraft.nfc.block.CombustionHeaterBlock;
 import net.newfrontiercraft.nfc.events.init.BlockListener;
 import net.newfrontiercraft.nfc.events.init.ItemListener;
+import org.jetbrains.annotations.Nullable;
 
-public class CombustionHeaterBlockEntity extends BlockEntity implements Inventory {
+public class CombustionHeaterBlockEntity extends BlockEntity implements Inventory, ItemHandler {
 
     public CombustionHeaterBlockEntity() {
         furnaceItemStacks = new ItemStack[1];
@@ -220,4 +223,67 @@ public class CombustionHeaterBlockEntity extends BlockEntity implements Inventor
     private ItemStack[] furnaceItemStacks;
     public int furnaceBurnTime;
     public int currentItemBurnTime;
+
+    @Override
+    public boolean canExtractItem(@Nullable Direction direction) {
+        return false;
+    }
+
+    @Override
+    public ItemStack extractItem(int i, int i1, @Nullable Direction direction) {
+        return null;
+    }
+
+    @Override
+    public boolean canInsertItem(@Nullable Direction direction) {
+        return true;
+    }
+
+    @Override
+    public ItemStack insertItem(ItemStack itemStack, int i, @Nullable Direction direction) {
+        if (itemStack == null) {
+            return null;
+        }
+        ItemStack itemToInsert = itemStack.copy();
+        if (furnaceItemStacks[0] == null) {
+            furnaceItemStacks[0] = itemToInsert;
+            return null;
+        } else if (furnaceItemStacks[0].isItemEqual(itemToInsert)) {
+            int totalItemCount = furnaceItemStacks[0].count + itemStack.count;
+            if (totalItemCount <= furnaceItemStacks[0].getMaxCount()) {
+                furnaceItemStacks[0].count = totalItemCount;
+                return null;
+            } else {
+                furnaceItemStacks[0].count = furnaceItemStacks[0].getMaxCount();
+                itemToInsert.count = totalItemCount - furnaceItemStacks[0].getMaxCount();
+                return itemToInsert;
+            }
+        }
+        return itemToInsert;
+    }
+
+    @Override
+    public ItemStack insertItem(ItemStack itemStack, @Nullable Direction direction) {
+        return this.insertItem(itemStack, 0, direction);
+    }
+
+    @Override
+    public ItemStack getItemInSlot(int i, @Nullable Direction direction) {
+        return furnaceItemStacks[0];
+    }
+
+    @Override
+    public int getItemSlots(@Nullable Direction direction) {
+        return 1;
+    }
+
+    @Override
+    public ItemStack[] getInventory(@Nullable Direction direction) {
+        return furnaceItemStacks;
+    }
+
+    @Override
+    public boolean canConnectItem(Direction direction) {
+        return true;
+    }
 }
