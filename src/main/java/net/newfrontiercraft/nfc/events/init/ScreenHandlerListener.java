@@ -11,11 +11,8 @@ import net.modificationstation.stationapi.api.mod.entrypoint.Entrypoint;
 import net.modificationstation.stationapi.api.util.Identifier;
 import net.modificationstation.stationapi.api.util.Namespace;
 import net.modificationstation.stationapi.api.registry.Registry;
-import net.newfrontiercraft.nfc.block.entity.BasicItemChuteBlockEntity;
-import net.newfrontiercraft.nfc.block.entity.BookshelfBlockEntity;
-import net.newfrontiercraft.nfc.block.entity.CombustionHeaterBlockEntity;
+import net.newfrontiercraft.nfc.block.entity.*;
 import net.newfrontiercraft.nfc.gui.*;
-import net.newfrontiercraft.nfc.block.entity.BrickOvenBlockEntity;
 
 public class ScreenHandlerListener {
 
@@ -31,6 +28,7 @@ public class ScreenHandlerListener {
         Registry.register(registry, Identifier.of(MOD_ID, "gui_bookshelf"), new GuiHandler((GuiHandler.ScreenFactoryNoMessage) this::openBookshelf, BookshelfBlockEntity::new));
         Registry.register(registry, Identifier.of(MOD_ID, "gui_combustion_heater"), new GuiHandler((GuiHandler.ScreenFactoryNoMessage) this::openCombustionHeater, CombustionHeaterBlockEntity::new));
         Registry.register(registry, Identifier.of(MOD_ID, "gui_basic_item_chute"), new GuiHandler((GuiHandler.ScreenFactoryNoMessage) this::openBasicItemChute, BasicItemChuteBlockEntity::new));
+        Registry.register(registry, Identifier.of(MOD_ID, "gui_filtering_item_chute"), new GuiHandler((GuiHandler.ScreenFactoryNoMessage) this::openFilteringItemChute, FilteringItemChuteBlockEntity::new));
     }
 
     public Screen openBrickOven(PlayerEntity playerBase, Inventory inventoryBase) {
@@ -51,5 +49,9 @@ public class ScreenHandlerListener {
 
     public Screen openBasicItemChute(PlayerEntity playerBase, Inventory inventoryBase) {
         return new BasicItemChuteScreen(playerBase.inventory, (BasicItemChuteBlockEntity) inventoryBase);
+    }
+
+    public Screen openFilteringItemChute(PlayerEntity playerBase, Inventory inventoryBase) {
+        return new FilteringItemChuteScreen(playerBase.inventory, (FilteringItemChuteBlockEntity) inventoryBase);
     }
 }

@@ -112,6 +112,7 @@
     "nfc:combustion_heater_active",
 
     "nfc:basic_item_chute",
-    "nfc:item_chute_extender"
+    "nfc:item_chute_extender",
+    "nfc:filtering_item_chute"
   ]
 }
