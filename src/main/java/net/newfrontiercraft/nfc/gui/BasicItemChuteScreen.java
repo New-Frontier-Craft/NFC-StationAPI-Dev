@@ -7,13 +7,15 @@ import net.newfrontiercraft.nfc.inventory.BasicItemChuteScreenHandler;
 import org.lwjgl.opengl.GL11;
 
 public class BasicItemChuteScreen extends HandledScreen {
+    boolean chuteExtender;
     public BasicItemChuteScreen(PlayerInventory inventoryplayer, BasicItemChuteBlockEntity tileEntityChute) {
         super(new BasicItemChuteScreenHandler(inventoryplayer, tileEntityChute));
+        chuteExtender = tileEntityChute.chuteExtender;
     }
 
     @Override
     protected void drawForeground() {
-        this.textRenderer.draw("Basic Item Chute", 60, 6, 0x404040);
+        this.textRenderer.draw(chuteExtender ? "Item Chute Extender" : "Basic Item Chute", 8, 6, 0x404040);
         this.textRenderer.draw("Inventory", 8, (backgroundHeight - 96) + 2, 0x404040);
     }
 

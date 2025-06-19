@@ -7,7 +7,6 @@ import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.sound.BlockSoundGroup;
-import net.minecraft.util.math.Box;
 import net.minecraft.world.World;
 import net.modificationstation.stationapi.api.gui.screen.container.GuiHelper;
 import net.modificationstation.stationapi.api.util.Identifier;
@@ -17,50 +16,18 @@ import net.newfrontiercraft.nfc.inventory.BasicItemChuteScreenHandler;
 
 import java.util.Random;
 
-public class BasicItemChuteBlock extends LazyBlockWithEntityTemplate {
+public class ItemChuteExtenderBlock extends LazyBlockWithEntityTemplate {
 
     private final Random random;
 
-    public BasicItemChuteBlock(Identifier identifier, Material material, float hardness, BlockSoundGroup blockSounds) {
+    public ItemChuteExtenderBlock(Identifier identifier, Material material, float hardness, BlockSoundGroup blockSounds) {
         super(identifier, material, hardness, blockSounds);
         random = new Random();
     }
 
     @Override
     protected BlockEntity createBlockEntity() {
-        return new BasicItemChuteBlockEntity(false);
-    }
-
-    @Override
-    public Box getCollisionShape(World world, int x, int y, int z) {
-        return Box.createCached((float)x, y, (float)z, (float)(x + 1), y + 0.99F, (float)(z + 1));
-    }
-
-    @Override
-    public void onEntityCollision(World world, int i, int j, int k, Entity entity) {
-        BlockEntity tileEntity = world.getBlockEntity(i, j, k);
-        if (tileEntity == null) {
-            return;
-        }
-        if (!(tileEntity instanceof BasicItemChuteBlockEntity)) {
-            return;
-        }
-        if (entity == null) {
-            return;
-        }
-        if (!(entity instanceof ItemEntity)) {
-            return;
-        }
-        ItemStack collidedItem = ((ItemEntity) entity).stack;
-        if (collidedItem == null) {
-            return;
-        }
-        int remainingCount = ((BasicItemChuteBlockEntity)tileEntity).handleGroundItem(collidedItem.copy());
-        if (remainingCount == 0) {
-            entity.markDead();
-        } else if (remainingCount != collidedItem.count) {
-            collidedItem.count = remainingCount;
-        }
+        return new BasicItemChuteBlockEntity(true);
     }
 
     @Override
@@ -108,3 +75,4 @@ public class BasicItemChuteBlock extends LazyBlockWithEntityTemplate {
         super.onBreak(world, i, j, k);
     }
 }
+

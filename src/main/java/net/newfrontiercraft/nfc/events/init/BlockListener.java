@@ -190,6 +190,7 @@ public class BlockListener {
             combustionHeaterActive;
 
     public static BasicItemChuteBlock basicItemChute;
+    public static ItemChuteExtenderBlock itemChuteExtender;
 
     @Entrypoint.Namespace
     public static Namespace MOD_ID;
@@ -398,7 +399,8 @@ public class BlockListener {
         combustionHeater = new CombustionHeaterBlock(Identifier.of(MOD_ID, "combustion_heater"), Material.STONE, 1.0F, Block.STONE_SOUND_GROUP, false);
         combustionHeaterActive = new CombustionHeaterBlock(Identifier.of(MOD_ID, "combustion_heater_active"), Material.STONE, 1.0F, Block.STONE_SOUND_GROUP, true);
 
-        basicItemChute = new BasicItemChuteBlock(Identifier.of(MOD_ID, "basic_item_chute"), Material.STONE, 1.0F, Block.STONE_SOUND_GROUP);
+        basicItemChute = new BasicItemChuteBlock(Identifier.of(MOD_ID, "basic_item_chute"), Material.STONE, 1.0F, Block.METAL_SOUND_GROUP);
+        itemChuteExtender = new ItemChuteExtenderBlock(Identifier.of(MOD_ID, "item_chute_extender"), Material.STONE, 1.0F, Block.METAL_SOUND_GROUP);
 
         // Changes to vanilla blast resistance
         Block.COAL_ORE.setResistance(500F);

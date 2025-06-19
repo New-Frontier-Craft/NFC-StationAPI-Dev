@@ -15,6 +15,15 @@ public class BasicItemChuteBlockEntity extends BlockEntity implements Inventory,
     protected ItemStack storedItem;
     protected int tickTimer;
     protected boolean awaitingMinecart;
+    public boolean chuteExtender;
+
+    public BasicItemChuteBlockEntity(boolean chuteExtender) {
+        this.chuteExtender = chuteExtender;
+    }
+
+    public BasicItemChuteBlockEntity() {
+        this.chuteExtender = false;
+    }
 
     @Override
     public void tick() {
@@ -45,6 +54,9 @@ public class BasicItemChuteBlockEntity extends BlockEntity implements Inventory,
         BlockEntity inputTarget = world.getBlockEntity(x, y - 1, z);
         if (inputTarget != null && storedItem != null) {
             pushOutOfChute(inputTarget);
+        }
+        if (chuteExtender) {
+            return;
         }
         BlockEntity outputTarget = world.getBlockEntity(x, y + 1, z);
         if (outputTarget != null && meta != 1) {
@@ -218,6 +230,7 @@ public class BasicItemChuteBlockEntity extends BlockEntity implements Inventory,
         super.readNbt(nbttagcompound);
         tickTimer = nbttagcompound.getInt("TickTimer");
         awaitingMinecart = nbttagcompound.getBoolean("AwaitingMinecart");
+        chuteExtender = nbttagcompound.getBoolean("ChuteExtender");
         NbtList nbttaglist = nbttagcompound.getList("Item");
         if (nbttaglist.size() == 0) {
             return;
@@ -231,6 +244,7 @@ public class BasicItemChuteBlockEntity extends BlockEntity implements Inventory,
         super.writeNbt(nbttagcompound);
         nbttagcompound.putInt("TickTimer", tickTimer);
         nbttagcompound.putBoolean("AwaitingMinecart", awaitingMinecart);
+        nbttagcompound.putBoolean("ChuteExtender", chuteExtender);
         NbtList nbttaglist = new NbtList();
         if (storedItem != null) {
             NbtCompound nbttagcompound1 = new NbtCompound();
