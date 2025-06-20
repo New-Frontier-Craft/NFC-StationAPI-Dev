@@ -113,6 +113,7 @@
 
     "nfc:basic_item_chute",
     "nfc:item_chute_extender",
-    "nfc:filtering_item_chute"
+    "nfc:filtering_item_chute",
+    "nfc:precise_item_chute"
   ]
 }

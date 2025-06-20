@@ -252,6 +252,7 @@ public class TextureListener {
         BlockListener.basicItemChute.specifyTextures(getTextureIndex(machines + "basic_item_chute_top"), getTextureIndex(machines + "basic_item_chute_side"), getTextureIndex(machines + "basic_item_chute_bottom"));
         BlockListener.itemChuteExtender.specifyTextures(getTextureIndex(machines + "item_chute_extender_top"), getTextureIndex(machines + "item_chute_extender_side"), getTextureIndex(machines + "item_chute_extender_bottom"));
         BlockListener.filteringItemChute.specifyTextures(getTextureIndex(machines + "filtering_item_chute_top"), getTextureIndex(machines + "filtering_item_chute_side"), getTextureIndex(machines + "filtering_item_chute_bottom"));
+        BlockListener.preciseItemChute.specifyTextures(getTextureIndex(machines + "precise_item_chute_top"), getTextureIndex(machines + "precise_item_chute_side"), getTextureIndex(machines + "precise_item_chute_bottom"));
 
         // Ore storage blocks
         BlockListener.coalBlock.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, oreStorage + "coal")).index);

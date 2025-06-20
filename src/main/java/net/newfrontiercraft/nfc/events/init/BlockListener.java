@@ -191,7 +191,7 @@ public class BlockListener {
 
     public static BasicItemChuteBlock basicItemChute;
     public static ItemChuteExtenderBlock itemChuteExtender;
-    public static FilteringItemChuteBlock filteringItemChute;
+    public static FilteringItemChuteBlock filteringItemChute, preciseItemChute;
 
     @Entrypoint.Namespace
     public static Namespace MOD_ID;
@@ -402,7 +402,8 @@ public class BlockListener {
 
         basicItemChute = new BasicItemChuteBlock(Identifier.of(MOD_ID, "basic_item_chute"), Material.STONE, 1.0F, Block.METAL_SOUND_GROUP);
         itemChuteExtender = new ItemChuteExtenderBlock(Identifier.of(MOD_ID, "item_chute_extender"), Material.STONE, 1.0F, Block.METAL_SOUND_GROUP);
-        filteringItemChute = new FilteringItemChuteBlock(Identifier.of(MOD_ID, "filtering_item_chute"), Material.STONE, 1.0F, Block.METAL_SOUND_GROUP);
+        filteringItemChute = new FilteringItemChuteBlock(Identifier.of(MOD_ID, "filtering_item_chute"), Material.STONE, 1.0F, Block.METAL_SOUND_GROUP, false);
+        preciseItemChute = new FilteringItemChuteBlock(Identifier.of(MOD_ID, "precise_item_chute"), Material.STONE, 1.0F, Block.METAL_SOUND_GROUP, true);
 
         // Changes to vanilla blast resistance
         Block.COAL_ORE.setResistance(500F);

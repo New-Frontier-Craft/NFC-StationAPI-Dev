@@ -7,13 +7,16 @@ import net.newfrontiercraft.nfc.inventory.FilteringItemChuteScreenHandler;
 import org.lwjgl.opengl.GL11;
 
 public class FilteringItemChuteScreen extends HandledScreen {
+    private final FilteringItemChuteBlockEntity filteringItemChuteBlockEntity;
+
     public FilteringItemChuteScreen(PlayerInventory inventoryplayer, FilteringItemChuteBlockEntity filteringItemChuteBlockEntity) {
         super(new FilteringItemChuteScreenHandler(inventoryplayer, filteringItemChuteBlockEntity));
+        this.filteringItemChuteBlockEntity = filteringItemChuteBlockEntity;
     }
 
     @Override
     protected void drawForeground() {
-        this.textRenderer.draw("Filtering Item Chute", 8, 6, 0x404040);
+        this.textRenderer.draw(filteringItemChuteBlockEntity.precise ? "Precise Item Chute" : "Filtering Item Chute", 8, 6, 0x404040);
         this.textRenderer.draw("Inventory", 8, (backgroundHeight - 96) + 2, 0x404040);
     }
 

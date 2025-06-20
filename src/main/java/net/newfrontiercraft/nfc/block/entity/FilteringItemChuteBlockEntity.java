@@ -9,7 +9,17 @@ import net.minecraft.nbt.NbtList;
 import net.modificationstation.stationapi.api.util.math.Direction;
 
 public class FilteringItemChuteBlockEntity extends BasicItemChuteBlockEntity {
+
     protected ItemStack filter;
+    public boolean precise;
+
+    public FilteringItemChuteBlockEntity(boolean precise) {
+        this.precise = precise;
+    }
+
+    public FilteringItemChuteBlockEntity() {
+
+    }
 
     @Override
     public int size() {
@@ -68,6 +78,60 @@ public class FilteringItemChuteBlockEntity extends BasicItemChuteBlockEntity {
         }
     }
 
+    protected void pushOutOfChute(BlockEntity inputTarget) {
+        if (filter == null) {
+            return;
+        }
+        if (!(inputTarget instanceof ItemHandler)) {
+            return;
+        }
+        if (!((ItemHandler)inputTarget).canInsertItem(Direction.DOWN)) {
+            return;
+        }
+        ItemStack insertedItem;
+        int slotCount = ((ItemHandler)inputTarget).getItemSlots(Direction.DOWN);
+        ItemStack[] allDestinationSlots = ((ItemHandler)inputTarget).getInventory(Direction.DOWN);
+        int totalCountInDestination = 0;
+        if (precise) {
+            for (ItemStack destinationSlot : allDestinationSlots) {
+                if (destinationSlot == null) {
+                    continue;
+                }
+                if (destinationSlot.isItemEqual(filter)) {
+                    totalCountInDestination += destinationSlot.count;
+                }
+            }
+        }
+        int countToInsert;
+        for (int i = 0; i < slotCount; i++) {
+            if (storedItem == null) {
+                break;
+            }
+            insertedItem = storedItem.copy();
+            if (precise) {
+                if (totalCountInDestination >= filter.count) {
+                    break;
+                }
+                if (totalCountInDestination + insertedItem.count > filter.count) {
+                    countToInsert = filter.count - totalCountInDestination;
+                    insertedItem.count = countToInsert;
+                    ItemStack remainingCountStack = ((ItemHandler) inputTarget).insertItem(insertedItem, i, Direction.DOWN);
+                    if (remainingCountStack == null) {
+                        storedItem.count -= countToInsert;
+                        break;
+                    } else {
+                        storedItem.count -= countToInsert - remainingCountStack.count;
+                        insertedItem.count -= countToInsert - remainingCountStack.count;
+                    }
+                } else {
+                    storedItem = ((ItemHandler) inputTarget).insertItem(storedItem, i, Direction.DOWN);
+                }
+            } else {
+                storedItem = ((ItemHandler) inputTarget).insertItem(storedItem, i, Direction.DOWN);
+            }
+        }
+    }
+
     protected void pullIntoChute(BlockEntity outputTarget) {
         if (!(outputTarget instanceof ItemHandler)) {
             return;
@@ -122,6 +186,7 @@ public class FilteringItemChuteBlockEntity extends BasicItemChuteBlockEntity {
         }
         NbtCompound nbttagcompound1 = (NbtCompound)nbttaglist.get(0);
         filter = new ItemStack(nbttagcompound1);
+        precise = nbttagcompound.getBoolean("Precise");
     }
 
     @Override
@@ -134,6 +199,7 @@ public class FilteringItemChuteBlockEntity extends BasicItemChuteBlockEntity {
             nbttaglist.add(nbttagcompound1);
         }
         nbttagcompound.put("Filter", nbttaglist);
+        nbttagcompound.putBoolean("Precise", precise);
     }
 
     @Override

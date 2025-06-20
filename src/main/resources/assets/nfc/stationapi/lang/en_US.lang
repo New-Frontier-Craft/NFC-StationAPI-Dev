@@ -278,6 +278,7 @@ tile.nfc.combustion_heater_active.name=Lit Combustion Heater
 tile.nfc.basic_item_chute.name=Basic Item Chute
 tile.nfc.item_chute_extender.name=Item Chute Extender
 tile.nfc.filtering_item_chute.name=Filtering Item Chute
+tile.nfc.precise_item_chute.name=Precise Item Chute
 
 
 item.nfc.aluminium_pickaxe.name=Aluminum Pickaxe

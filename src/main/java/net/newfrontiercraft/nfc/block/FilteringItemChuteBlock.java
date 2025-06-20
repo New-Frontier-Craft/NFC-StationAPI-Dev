@@ -12,13 +12,17 @@ import net.newfrontiercraft.nfc.events.init.BlockEntityListener;
 import net.newfrontiercraft.nfc.inventory.FilteringItemChuteScreenHandler;
 
 public class FilteringItemChuteBlock extends BasicItemChuteBlock {
-    public FilteringItemChuteBlock(Identifier identifier, Material material, float hardness, BlockSoundGroup blockSounds) {
+
+    private final boolean precise;
+
+    public FilteringItemChuteBlock(Identifier identifier, Material material, float hardness, BlockSoundGroup blockSounds, boolean precise) {
         super(identifier, material, hardness, blockSounds);
+        this.precise = precise;
     }
 
     @Override
     protected BlockEntity createBlockEntity() {
-        return new FilteringItemChuteBlockEntity();
+        return new FilteringItemChuteBlockEntity(precise);
     }
 
     @Override

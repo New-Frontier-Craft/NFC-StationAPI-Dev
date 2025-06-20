@@ -207,6 +207,7 @@ public class RecipeListener {
             CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.basicItemChute, 1, 0), "X X", "YZY", "Y Y", 'X', ItemListener.bronzeIngot, 'Y', ItemListener.brassIngot, 'Z', Block.CHEST);
             CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.itemChuteExtender, 1, 0), "X X", "YZY", "Y Y", 'X', ItemListener.bronzeIngot, 'Y', Block.PLANKS, 'Z', Block.CHEST);
             CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.filteringItemChute, 1, 0), "X X", "YZY", "Y Y", 'X', Item.GOLD_INGOT, 'Y', ItemListener.brassIngot, 'Z', Block.CHEST);
+            CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.preciseItemChute, 1, 0), "X X", "YZY", "# #", 'X', Item.GOLD_INGOT, 'Y', ItemListener.brassIngot, 'Z', Block.CHEST, '#', ItemListener.silverIngot);
         }
         if (type == RecipeRegisterEvent.Vanilla.CRAFTING_SHAPELESS.type()) {
             // Storage block un-crafting
