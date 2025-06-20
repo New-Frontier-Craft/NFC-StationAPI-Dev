@@ -1,6 +1,7 @@
 package net.newfrontiercraft.nfc.block.entity;
 
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.nbt.NbtCompound;
 import net.newfrontiercraft.nfc.api.HeatConsumer;
 
 public class HeatCoilBlockEntity extends BlockEntity {
@@ -75,5 +76,19 @@ public class HeatCoilBlockEntity extends BlockEntity {
 
     public int getHeatLevel() {
         return heatLevel;
+    }
+
+    @Override
+    public void readNbt(NbtCompound nbt) {
+        super.readNbt(nbt);
+        heatLevel = nbt.getInt("HeatLevel");
+        tickTimer = nbt.getInt("TickTimer");
+    }
+
+    @Override
+    public void writeNbt(NbtCompound nbt) {
+        super.writeNbt(nbt);
+        nbt.putInt("HeatLevel", heatLevel);
+        nbt.putInt("TickTimer", tickTimer);
     }
 }
