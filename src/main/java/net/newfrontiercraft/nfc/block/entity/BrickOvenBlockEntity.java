@@ -23,7 +23,8 @@ public class BrickOvenBlockEntity extends BlockEntity implements Inventory, Heat
     public int currentItemBurnTime;
     public int furnaceCookTime;
     public int requiredTime = 200;
-    private boolean isMultiBlock;
+    public boolean isMultiBlock;
+    private int checkTimer;
     private static final int MAXIMUM_ADDED_BURN_TIME = 1000;
 
     public BrickOvenBlockEntity() {
@@ -93,6 +94,7 @@ public class BrickOvenBlockEntity extends BlockEntity implements Inventory, Heat
         furnaceCookTime = nbttagcompound.getShort("CookTime");
         currentItemBurnTime = getItemBurnTime(furnaceItemStacks[9]);
         isMultiBlock = nbttagcompound.getBoolean("IsMultiBlock");
+        checkTimer = nbttagcompound.getInt("CheckTimer");
     }
 
     @Override
@@ -112,6 +114,7 @@ public class BrickOvenBlockEntity extends BlockEntity implements Inventory, Heat
 
         nbttagcompound.put("Items", nbttaglist);
         nbttagcompound.putBoolean("IsMultiBlock", isMultiBlock);
+        nbttagcompound.putInt("CheckTimer", checkTimer);
     }
 
     @Override
@@ -136,10 +139,20 @@ public class BrickOvenBlockEntity extends BlockEntity implements Inventory, Heat
 
     @Override
     public void tick() {
+        if (checkTimer < 40) {
+            checkTimer++;
+        } else {
+            isMultiBlock = checkMultiBlockStructure();
+            checkTimer = 0;
+        }
         boolean flag = furnaceBurnTime > 0;
         boolean flag1 = false;
         if (furnaceBurnTime > 0) {
-            furnaceBurnTime--;
+            if (isMultiBlock) {
+                furnaceBurnTime -= 4;
+            } else {
+                furnaceBurnTime--;
+            }
         }
         if (!world.isRemote) {
             if (furnaceBurnTime == 0 && canSmelt()) {
@@ -158,7 +171,11 @@ public class BrickOvenBlockEntity extends BlockEntity implements Inventory, Heat
                 }
             }
             if (isBurning() && canSmelt()) {
-                furnaceCookTime++;
+                if (isMultiBlock) {
+                    furnaceCookTime += 8;
+                } else {
+                    furnaceCookTime++;
+                }
                 if (furnaceCookTime >= requiredTime) {
                     furnaceCookTime = 0;
                     smeltItem();
@@ -176,6 +193,40 @@ public class BrickOvenBlockEntity extends BlockEntity implements Inventory, Heat
         if (flag1) {
             this.markDirty();
         }
+    }
+
+    private boolean checkMultiBlockStructure() {
+        int meta = world.getBlockMeta(x, y, z);
+        int xCentered = x;
+        int zCentered = z;
+        switch (meta) {
+            case 2:
+                zCentered++;
+                break;
+            case 3:
+                zCentered--;
+                break;
+            case 4:
+                xCentered++;
+                break;
+            case 5:
+                xCentered--;
+                break;
+        }
+        if (world.getBlockId(xCentered, y, zCentered) != 0) {
+            return false;
+        }
+        if (world.getBlockId(xCentered, y - 1, zCentered) != BlockListener.heatCoil.id) {
+            return false;
+        }
+        HeatCoilBlockEntity heatSource = (HeatCoilBlockEntity) world.getBlockEntity(xCentered, y - 1, zCentered);
+        int heatSourceValue = heatSource.getHeatLevel();
+        if (heatSourceValue > furnaceBurnTime) {
+            int transferredHeat = (heatSourceValue - furnaceBurnTime)/2;
+            furnaceBurnTime += transferredHeat;
+            heatSource.changeHeatLevel(-transferredHeat);
+        }
+        return true;
     }
 
     private boolean canSmelt() {

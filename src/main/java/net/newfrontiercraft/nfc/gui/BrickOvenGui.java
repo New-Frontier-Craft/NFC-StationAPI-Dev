@@ -15,7 +15,9 @@ public class BrickOvenGui extends HandledScreen {
     }
 
     protected void drawForeground() {
-
+        if (furnaceInventory.isMultiBlock) {
+            this.textRenderer.draw("Multi Block Mode", 68, (backgroundHeight - 96) + 2, 0x006600);
+        }
         this.textRenderer.draw("Brick Oven", 60, 6, 0x404040);
         this.textRenderer.draw("Inventory", 8, (backgroundHeight - 96) + 2, 0x404040);
     }
