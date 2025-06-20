@@ -3,6 +3,7 @@ package net.newfrontiercraft.nfc.block.entity;
 import net.danygames2014.nyalib.item.ItemHandler;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.FurnaceBlockEntity;
+import net.minecraft.entity.vehicle.MinecartEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtList;
@@ -75,6 +76,119 @@ public class FilteringItemChuteBlockEntity extends BasicItemChuteBlockEntity {
             storedItem = itemstack;
         } else {
             filter = itemstack;
+        }
+    }
+
+    @Override
+    protected void insertIntoMinecart(MinecartEntity entityMinecart) {
+        int slotCount = entityMinecart.size();
+        int remainingItemCount = storedItem.count;
+        for (int i = 0; i < slotCount; i++) {
+            int totalCountInInput = countItemsInMinecart(entityMinecart);
+            ItemStack minecartItem = entityMinecart.getStack(i);
+            if (minecartItem == null) {
+                if (precise && filter != null) {
+                    if (totalCountInInput >= filter.count) {
+                        break;
+                    } else if (totalCountInInput + storedItem.count <= filter.count) {
+                        entityMinecart.setStack(i, storedItem);
+                        remainingItemCount = 0;
+                    } else {
+                        ItemStack stackForInsertion = storedItem.copy();
+                        stackForInsertion.count = filter.count - totalCountInInput;
+                        entityMinecart.setStack(i, stackForInsertion);
+                        remainingItemCount -= (filter.count - totalCountInInput);
+                    }
+                } else {
+                    entityMinecart.setStack(i, storedItem);
+                    remainingItemCount = 0;
+                }
+            } else if (!minecartItem.isItemEqual(storedItem)) {
+                continue;
+            } else {
+                int totalItemCount = minecartItem.count + storedItem.count;
+                if (precise && filter != null) {
+                    if (totalCountInInput >= filter.count) {
+                        break;
+                    } else if (totalItemCount + totalCountInInput <= filter.count) {
+                        minecartItem.count = totalItemCount;
+                        entityMinecart.setStack(i, minecartItem);
+                        remainingItemCount = 0;
+                    } else {
+                        minecartItem.count += filter.count - totalCountInInput;
+                        entityMinecart.setStack(i, minecartItem);
+                        remainingItemCount -= filter.count - totalCountInInput;
+                    }
+                } else {
+                    if (totalItemCount < storedItem.getMaxCount()) {
+                        minecartItem.count = totalItemCount;
+                        entityMinecart.setStack(i, minecartItem);
+                        remainingItemCount = 0;
+                    } else {
+                        minecartItem.count = minecartItem.getMaxCount();
+                        entityMinecart.setStack(i, minecartItem);
+                        remainingItemCount = totalItemCount - storedItem.getMaxCount();
+                    }
+                }
+            }
+            if (remainingItemCount <= 0) {
+                storedItem = null;
+                break;
+            } else {
+                storedItem.count = remainingItemCount;
+            }
+        }
+    }
+
+    protected int countItemsInMinecart(MinecartEntity entityMinecart) {
+        if (filter == null) {
+            return 0;
+        }
+        int totalCount = 0;
+        for (int i = 0; i < entityMinecart.size(); i++) {
+            ItemStack slotItem = entityMinecart.getStack(i);
+            if (slotItem == null) {
+                continue;
+            }
+            if (filter.isItemEqual(slotItem)) {
+                totalCount += slotItem.count;
+            }
+        }
+        return totalCount;
+    }
+
+    @Override
+    protected void extractFromMinecart(MinecartEntity entityMinecart) {
+        if (storedItem != null && storedItem.count >= storedItem.getMaxCount()) {
+            return;
+        }
+        int slotCount = entityMinecart.size();
+        for (int i = 0; i < slotCount; i++) {
+            ItemStack minecartItem = entityMinecart.getStack(i);
+            if (minecartItem == null) {
+                continue;
+            }
+            if (filter != null && !filter.isItemEqual(minecartItem)) {
+                continue;
+            }
+            if (storedItem == null) {
+                storedItem = minecartItem;
+                entityMinecart.setStack(i, null);
+                continue;
+            }
+            if (!storedItem.isItemEqual(minecartItem)) {
+                continue;
+            }
+            if (storedItem.count + minecartItem.count <= storedItem.getMaxCount()) {
+                storedItem.count += minecartItem.count;
+                entityMinecart.setStack(i, null);
+            } else {
+                int removedCount = minecartItem.count - (storedItem.count + minecartItem.count - storedItem.getMaxCount());
+                storedItem.count = storedItem.getMaxCount();
+                minecartItem.count -= removedCount;
+                entityMinecart.setStack(i, minecartItem);
+                break;
+            }
         }
     }
 
