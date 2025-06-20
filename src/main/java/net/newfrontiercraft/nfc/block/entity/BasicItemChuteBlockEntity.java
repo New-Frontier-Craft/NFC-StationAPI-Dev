@@ -4,12 +4,16 @@ import net.danygames2014.nyalib.item.ItemHandler;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.FurnaceBlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.vehicle.MinecartEntity;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtList;
+import net.minecraft.util.math.Box;
 import net.modificationstation.stationapi.api.util.math.Direction;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public class BasicItemChuteBlockEntity extends BlockEntity implements Inventory, ItemHandler {
     protected ItemStack storedItem;
@@ -31,24 +35,26 @@ public class BasicItemChuteBlockEntity extends BlockEntity implements Inventory,
             tickTimer++;
             return;
         }
-//        if (awaitingMinecart) {
-//            if (storedItem != null) {
-//                List minecarts = world.getEntitiesWithinAABB(EntityMinecart.class, AxisAlignedBB.getBoundingBox(x, y - 1, z, x + 1, y, z + 1));
-//                for (Object minecart : minecarts) {
-//                    EntityMinecart entityMinecart = (EntityMinecart) minecart;
-//                    if (entityMinecart != null && entityMinecart.minecartType == 1) {
-//                        insertIntoMinecart(entityMinecart);
-//                    }
-//                }
-//            }
-//            List minecarts = world.getEntitiesWithinAABB(EntityMinecart.class, AxisAlignedBB.getBoundingBox(x, y + 1, z, x + 1, y + 2, z + 1));
-//            for (Object minecart : minecarts) {
-//                EntityMinecart entityMinecart = (EntityMinecart) minecart;
-//                if (entityMinecart != null && entityMinecart.minecartType == 1) {
-//                    extractFromMinecart(entityMinecart);
-//                }
-//            }
-//        }
+        if (awaitingMinecart) {
+            if (storedItem != null) {
+                List minecarts = world.getEntities(null, Box.createCached(x, y - 1, z, x + 1, y, z + 1));
+                for (Object minecart : minecarts) {
+                    if (minecart instanceof MinecartEntity minecartEntity) {
+                        if (minecartEntity.type == 1) {
+                            insertIntoMinecart(minecartEntity);
+                        }
+                    }
+                }
+            }
+            List minecarts = world.getEntities(null, Box.createCached(x, y + 1, z, x + 1, y + 2, z + 1));
+            for (Object minecart : minecarts) {
+                if (minecart instanceof MinecartEntity minecartEntity) {
+                    if (minecartEntity.type == 1) {
+                        extractFromMinecart(minecartEntity);
+                    }
+                }
+            }
+        }
         tickTimer = 0;
         int meta = world.getBlockMeta(x, y, z);
         BlockEntity inputTarget = world.getBlockEntity(x, y - 1, z);
@@ -64,67 +70,67 @@ public class BasicItemChuteBlockEntity extends BlockEntity implements Inventory,
         }
     }
 
-//    protected void insertIntoMinecart(EntityMinecart entityMinecart) {
-//        int slotCount = entityMinecart.getSizeInventory();
-//        int remainingItemCount;
-//        for (int i = 0; i < slotCount; i++) {
-//            ItemStack minecartItem = entityMinecart.getStack(i);
-//            if (minecartItem == null) {
-//                entityMinecart.setStack(i, storedItem);
-//                remainingItemCount = 0;
-//            } else if (!minecartItem.isItemEqual(storedItem)) {
-//                continue;
-//            } else {
-//                int totalItemCount = minecartItem.count + storedItem.count;
-//                if (totalItemCount < storedItem.getMaxCount()) {
-//                    minecartItem.count = totalItemCount;
-//                    entityMinecart.setStack(i, minecartItem);
-//                    remainingItemCount = 0;
-//                } else {
-//                    minecartItem.count = minecartItem.getMaxCount();
-//                    entityMinecart.setStack(i, minecartItem);
-//                    remainingItemCount = totalItemCount - storedItem.getMaxCount();
-//                }
-//            }
-//            if (remainingItemCount <= 0) {
-//                storedItem = null;
-//                break;
-//            } else {
-//                storedItem.count = remainingItemCount;
-//            }
-//        }
-//    }
-//
-//    protected void extractFromMinecart(EntityMinecart entityMinecart) {
-//        if (storedItem != null && storedItem.count >= storedItem.getMaxCount()) {
-//            return;
-//        }
-//        int slotCount = entityMinecart.getSizeInventory();
-//        for (int i = 0; i < slotCount; i++) {
-//            ItemStack minecartItem = entityMinecart.getStack(i);
-//            if (minecartItem == null) {
-//                continue;
-//            }
-//            if (storedItem == null) {
-//                storedItem = minecartItem;
-//                entityMinecart.setStack(i, null);
-//                continue;
-//            }
-//            if (!storedItem.isItemEqual(minecartItem)) {
-//                continue;
-//            }
-//            if (storedItem.count + minecartItem.count <= storedItem.getMaxCount()) {
-//                storedItem.count += minecartItem.count;
-//                entityMinecart.setStack(i, null);
-//            } else {
-//                int removedCount = minecartItem.count - (storedItem.count + minecartItem.count - storedItem.getMaxCount());
-//                storedItem.count = storedItem.getMaxCount();
-//                minecartItem.count -= removedCount;
-//                entityMinecart.setStack(i, minecartItem);
-//                break;
-//            }
-//        }
-//    }
+    protected void insertIntoMinecart(MinecartEntity entityMinecart) {
+        int slotCount = entityMinecart.size();
+        int remainingItemCount;
+        for (int i = 0; i < slotCount; i++) {
+            ItemStack minecartItem = entityMinecart.getStack(i);
+            if (minecartItem == null) {
+                entityMinecart.setStack(i, storedItem);
+                remainingItemCount = 0;
+            } else if (!minecartItem.isItemEqual(storedItem)) {
+                continue;
+            } else {
+                int totalItemCount = minecartItem.count + storedItem.count;
+                if (totalItemCount < storedItem.getMaxCount()) {
+                    minecartItem.count = totalItemCount;
+                    entityMinecart.setStack(i, minecartItem);
+                    remainingItemCount = 0;
+                } else {
+                    minecartItem.count = minecartItem.getMaxCount();
+                    entityMinecart.setStack(i, minecartItem);
+                    remainingItemCount = totalItemCount - storedItem.getMaxCount();
+                }
+            }
+            if (remainingItemCount <= 0) {
+                storedItem = null;
+                break;
+            } else {
+                storedItem.count = remainingItemCount;
+            }
+        }
+    }
+
+    protected void extractFromMinecart(MinecartEntity entityMinecart) {
+        if (storedItem != null && storedItem.count >= storedItem.getMaxCount()) {
+            return;
+        }
+        int slotCount = entityMinecart.size();
+        for (int i = 0; i < slotCount; i++) {
+            ItemStack minecartItem = entityMinecart.getStack(i);
+            if (minecartItem == null) {
+                continue;
+            }
+            if (storedItem == null) {
+                storedItem = minecartItem;
+                entityMinecart.setStack(i, null);
+                continue;
+            }
+            if (!storedItem.isItemEqual(minecartItem)) {
+                continue;
+            }
+            if (storedItem.count + minecartItem.count <= storedItem.getMaxCount()) {
+                storedItem.count += minecartItem.count;
+                entityMinecart.setStack(i, null);
+            } else {
+                int removedCount = minecartItem.count - (storedItem.count + minecartItem.count - storedItem.getMaxCount());
+                storedItem.count = storedItem.getMaxCount();
+                minecartItem.count -= removedCount;
+                entityMinecart.setStack(i, minecartItem);
+                break;
+            }
+        }
+    }
 
     protected void pushOutOfChute(BlockEntity inputTarget) {
         if (!(inputTarget instanceof ItemHandler)) {

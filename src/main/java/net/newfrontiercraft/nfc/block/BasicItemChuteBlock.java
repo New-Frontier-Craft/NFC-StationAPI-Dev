@@ -1,5 +1,6 @@
 package net.newfrontiercraft.nfc.block;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
@@ -106,5 +107,21 @@ public class BasicItemChuteBlock extends LazyBlockWithEntityTemplate {
             } while (true);
         }
         super.onBreak(world, i, j, k);
+    }
+
+    @Override
+    public void neighborUpdate(World world, int x, int y, int z, int id) {
+        BlockEntity blockEntity = world.getBlockEntity(x, y, z);
+        if (blockEntity == null) {
+            return;
+        }
+        if (!(blockEntity instanceof BasicItemChuteBlockEntity)) {
+            return;
+        }
+        if (world.isEmittingRedstonePower(x, y, z) && id == Block.DETECTOR_RAIL.id) {
+            ((BasicItemChuteBlockEntity)blockEntity).activateMinecartSearch();
+        } else if (!world.isEmittingRedstonePower(x, y, z) && id == Block.DETECTOR_RAIL.id) {
+            ((BasicItemChuteBlockEntity)blockEntity).deactivateMinecartSearch();
+        }
     }
 }
