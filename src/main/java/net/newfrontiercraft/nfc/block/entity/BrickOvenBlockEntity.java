@@ -219,11 +219,25 @@ public class BrickOvenBlockEntity extends BlockEntity implements Inventory, Heat
         if (world.getBlockId(xCentered, y - 1, zCentered) != BlockListener.heatCoil.id) {
             return false;
         }
+        int brickCount = 0;
+        for (int xOffset = -1; xOffset <= 1; xOffset++) {
+            for (int yOffset = -1; yOffset <= 1; yOffset++) {
+                for (int zOffset = -1; zOffset <= 1; zOffset++) {
+                    if (world.getBlockId(xCentered + xOffset, y + yOffset, zCentered + zOffset) == BlockListener.firedBricks.id) {
+                        brickCount++;
+                    }
+                }
+            }
+        }
+        if (brickCount != 24) {
+            return false;
+        }
         HeatCoilBlockEntity heatSource = (HeatCoilBlockEntity) world.getBlockEntity(xCentered, y - 1, zCentered);
         int heatSourceValue = heatSource.getHeatLevel();
         if (heatSourceValue > furnaceBurnTime) {
             int transferredHeat = (heatSourceValue - furnaceBurnTime)/2;
             furnaceBurnTime += transferredHeat;
+            BrickOvenBlock.updateFurnaceBlockState(furnaceBurnTime > 0, world, x, y, z);
             heatSource.changeHeatLevel(-transferredHeat);
         }
         return true;
