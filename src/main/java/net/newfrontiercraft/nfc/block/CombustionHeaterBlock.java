@@ -33,7 +33,7 @@ public class CombustionHeaterBlock extends LazyBlockWithEntityTemplate {
         }
         int l = world.getBlockMeta(i, j, k);
         float f = (float) i + 0.5F;
-        float f1 = (float) j + 0.0F + (random.nextFloat() * 6F) / 16F;
+        float f1 = (float) j + 0.5F + (random.nextFloat() * 6F) / 16F;
         float f2 = (float) k + 0.5F;
         float f3 = 0.52F;
         float f4 = random.nextFloat() * 0.6F - 0.3F;
