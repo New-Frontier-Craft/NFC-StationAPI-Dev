@@ -145,20 +145,19 @@ public class BrickOvenBlockEntity extends BlockEntity implements Inventory, Heat
             isMultiBlock = checkMultiBlockStructure();
             checkTimer = 0;
         }
-        boolean flag = furnaceBurnTime > 0;
-        boolean flag1 = false;
         if (furnaceBurnTime > 0) {
             if (isMultiBlock) {
                 furnaceBurnTime -= 4;
             } else {
                 furnaceBurnTime--;
             }
+        } else if (furnaceBurnTime < 0) {
+            furnaceBurnTime = 0;
         }
         if (!world.isRemote) {
             if (furnaceBurnTime == 0 && canSmelt()) {
                 currentItemBurnTime = furnaceBurnTime = getItemBurnTime(furnaceItemStacks[9]);
                 if (furnaceBurnTime > 0) {
-                    flag1 = true;
                     if (furnaceItemStacks[9] != null) {
                         furnaceItemStacks[9].count--;
                         if (furnaceItemStacks[9].getItem() instanceof BucketItem) {
@@ -179,19 +178,10 @@ public class BrickOvenBlockEntity extends BlockEntity implements Inventory, Heat
                 if (furnaceCookTime >= requiredTime) {
                     furnaceCookTime = 0;
                     smeltItem();
-                    flag1 = true;
                 }
             } else {
                 furnaceCookTime = 0;
             }
-            if (flag != (furnaceBurnTime > 0)) {
-                flag1 = true;
-                BrickOvenBlock.updateFurnaceBlockState(furnaceBurnTime > 0,
-                        world, x, y, z);
-            }
-        }
-        if (flag1) {
-            this.markDirty();
         }
     }
 
@@ -234,10 +224,11 @@ public class BrickOvenBlockEntity extends BlockEntity implements Inventory, Heat
         }
         HeatCoilBlockEntity heatSource = (HeatCoilBlockEntity) world.getBlockEntity(xCentered, y - 1, zCentered);
         int heatSourceValue = heatSource.getHeatLevel();
-        if (heatSourceValue > furnaceBurnTime) {
+        if (heatSourceValue > furnaceBurnTime && furnaceBurnTime < MAXIMUM_ADDED_BURN_TIME && furnaceBurnTime >= 0) {
             int transferredHeat = (heatSourceValue - furnaceBurnTime)/2;
             furnaceBurnTime += transferredHeat;
-            BrickOvenBlock.updateFurnaceBlockState(furnaceBurnTime > 0, world, x, y, z);
+            System.out.println("Incoming heat: " + transferredHeat);
+            System.out.println("Block entity: " + this);
             heatSource.changeHeatLevel(-transferredHeat);
         }
         return true;

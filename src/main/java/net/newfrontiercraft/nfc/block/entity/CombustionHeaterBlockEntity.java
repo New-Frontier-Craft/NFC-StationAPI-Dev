@@ -122,8 +122,10 @@ public class CombustionHeaterBlockEntity extends BlockEntity implements Inventor
         if (furnaceBurnTime > 0) {
             BlockEntity tileEntity = world.getBlockEntity(x, y - 1, z);
             if (tileEntity != null) {
-                if (tileEntity instanceof HeatCoilBlockEntity) {
-                    ((HeatCoilBlockEntity)tileEntity).changeHeatLevel(4);
+                if (tileEntity instanceof HeatCoilBlockEntity heatCoilBlockEntity) {
+                    if (heatCoilBlockEntity.getHeatLevel() < 1000) {
+                        heatCoilBlockEntity.changeHeatLevel(2);
+                    }
                 }
             }
             furnaceBurnTime--;

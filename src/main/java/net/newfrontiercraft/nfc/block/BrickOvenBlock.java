@@ -126,6 +126,7 @@ public class BrickOvenBlock extends TemplateBlockWithEntity {
         } else {
             world.setBlock(i, j, k, BlockListener.brickOven.id);
         }
+
         keepFurnaceInventory = false;
         world.setBlockMeta(i, j, k, l);
         tileentity.cancelRemoval();

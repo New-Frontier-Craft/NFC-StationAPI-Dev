@@ -16,6 +16,9 @@ public class HeatCoilBlockEntity extends BlockEntity {
             return;
         }
         tickTimer = 0;
+        if (heatLevel < 0) {
+            System.out.println("!!!!!!!!!!!!!!!! HEAT LEVEL BELOW 0 DETECTED !!!!!!!!!!!!!!!!");
+        }
         if (heatLevel <= 0) {
             return;
         }
