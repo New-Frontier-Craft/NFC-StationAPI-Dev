@@ -227,8 +227,6 @@ public class BrickOvenBlockEntity extends BlockEntity implements Inventory, Heat
         if (heatSourceValue > furnaceBurnTime && furnaceBurnTime < MAXIMUM_ADDED_BURN_TIME && furnaceBurnTime >= 0) {
             int transferredHeat = (heatSourceValue - furnaceBurnTime)/2;
             furnaceBurnTime += transferredHeat;
-            System.out.println("Incoming heat: " + transferredHeat);
-            System.out.println("Block entity: " + this);
             heatSource.changeHeatLevel(-transferredHeat);
         }
         return true;
