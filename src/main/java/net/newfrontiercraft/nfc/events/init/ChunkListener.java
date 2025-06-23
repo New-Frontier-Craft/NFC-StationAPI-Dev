@@ -11,6 +11,7 @@ import net.minecraft.world.gen.feature.LakeFeature;
 import net.minecraft.world.gen.feature.OreFeature;
 import net.minecraft.world.gen.feature.PlantPatchFeature;
 import net.modificationstation.stationapi.api.event.world.gen.WorldGenEvent;
+import net.newfrontiercraft.nfc.utils.RandomUtil;
 import net.newfrontiercraft.nfc.world.gen.feature.*;
 
 import java.util.Random;
@@ -29,6 +30,7 @@ public class ChunkListener {
         Random random = event.random;
         World world = event.world;
         Biome biome = event.biome;
+        RandomUtil randomUtil = new RandomUtil(random);
         
         if (random.nextInt(32) == 0) {
             int j14 = event.x + random.nextInt(16) + 8;
@@ -45,11 +47,21 @@ public class ChunkListener {
             }
         }
         if (biome == Biome.RAINFOREST) {
-            for (int i = 0; i < 4; i++) {
-                int j14 = event.x + random.nextInt(16) + 8;
-                int j16 = random.nextInt(64) + 64;
-                int j19 = event.z + random.nextInt(16) + 8;
-                (new BlueMushroomFeature()).generate(world, random, j14, j16, j19);
+            for (int i = 0; i < 2; i++) {
+                int localX = event.x + random.nextInt(16) + 8;
+                int localY = random.nextInt(64) + 64;
+                int localZ = event.z + random.nextInt(16) + 8;
+                int mushroomX = localX;
+                int mushroomY = localY;
+                int mushroomZ = localZ;
+                for (int j = 0; j < random.nextInt(16); j++) {
+                    mushroomX += randomUtil.bidirectionalRandom(12);
+                    mushroomY += randomUtil.bidirectionalRandom(4);
+                    mushroomZ += randomUtil.bidirectionalRandom(12);
+                    if (new BlueMushroomFeature().generate(world, random, mushroomX, mushroomY, mushroomZ)) {
+                        (new VariablePlantPatchFeature(BlockListener.bioluminescentMushroom.id, 16)).generate(world, random, mushroomX, mushroomY, mushroomZ);
+                    }
+                }
             }
         }
         if (biome == Biome.TAIGA || biome == Biome.TUNDRA) {

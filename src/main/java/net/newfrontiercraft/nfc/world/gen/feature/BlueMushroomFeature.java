@@ -63,6 +63,10 @@ public class BlueMushroomFeature extends Feature {
                 world.setBlock(x + i, y + stemHeight, z + j, BlockListener.blueMushroomCap.id);
             }
         }
+        world.setBlock(x + 1, y + stemHeight - 1, z, BlockListener.blueShroomlight.id);
+        world.setBlock(x - 1, y + stemHeight - 1, z, BlockListener.blueShroomlight.id);
+        world.setBlock(x, y + stemHeight - 1, z + 1, BlockListener.blueShroomlight.id);
+        world.setBlock(x, y + stemHeight - 1, z - 1, BlockListener.blueShroomlight.id);
         return true;
     }
 }
