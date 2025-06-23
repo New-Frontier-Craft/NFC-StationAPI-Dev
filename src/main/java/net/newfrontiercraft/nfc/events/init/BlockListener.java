@@ -193,6 +193,9 @@ public class BlockListener {
     public static ItemChuteExtenderBlock itemChuteExtender;
     public static FilteringItemChuteBlock filteringItemChute, preciseItemChute;
 
+    public static ShroomlightBlock
+            blueShroomlight;
+
     @Entrypoint.Namespace
     public static Namespace MOD_ID;
 
@@ -374,6 +377,8 @@ public class BlockListener {
         purpleMushroomStem = new ItemDroppingBlock(Identifier.of(MOD_ID, "purple_mushroom_stem"), Material.SOLID_ORGANIC, 1.0F, Block.WOOD_SOUND_GROUP);
         blueMushroomCap = new ItemDroppingBlock(Identifier.of(MOD_ID, "blue_mushroom_cap"), Material.SOLID_ORGANIC, 1.0F, Block.WOOD_SOUND_GROUP);
         blueMushroomStem = new ItemDroppingBlock(Identifier.of(MOD_ID, "blue_mushroom_stem"), Material.SOLID_ORGANIC, 1.0F, Block.WOOD_SOUND_GROUP);
+
+        blueShroomlight = new ShroomlightBlock(Identifier.of(MOD_ID, "blue_shroomlight"));
 
         fieryMushroomCap.setLuminance(0.695F);
         fieryMushroomStem.setLuminance(0.695F);
