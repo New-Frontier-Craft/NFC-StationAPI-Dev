@@ -131,14 +131,14 @@ public class BrickOvenBlock extends TemplateBlockWithEntity {
         BlockState currentState = world.getBlockState(x, y, z);
         BlockEntity blockEntity = world.getBlockEntity(x, y, z);
         if (active && meta < 6) {
+            world.setBlockStateWithNotify(x, y, z, currentState.with(ACTIVE, true));
+            world.setBlockEntity(x, y, z, blockEntity);
             world.setBlockMeta(x, y, z, meta + 6);
-            //world.setBlockStateWithNotify(x, y, z, currentState.with(ACTIVE, true));
-            //blockEntity.cancelRemoval();
             update = true;
         } else if (!active && meta > 6) {
+            world.setBlockStateWithNotify(x, y, z, currentState.with(ACTIVE, false));
+            world.setBlockEntity(x, y, z, blockEntity);
             world.setBlockMeta(x, y, z, meta - 6);
-            //world.setBlockStateWithNotify(x, y, z, currentState.with(ACTIVE, false));
-            //blockEntity.cancelRemoval();
             update = true;
         }
         if (update) {
