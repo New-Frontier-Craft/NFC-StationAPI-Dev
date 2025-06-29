@@ -26,6 +26,7 @@ public class BrickOvenBlockEntity extends BlockEntity implements Inventory, Heat
     public boolean isMultiBlock;
     private int checkTimer;
     private static final int MAXIMUM_ADDED_BURN_TIME = 1000;
+    private boolean scheduledForRemoval = false;
 
     public BrickOvenBlockEntity() {
         furnaceItemStacks = new ItemStack[11];
@@ -139,6 +140,9 @@ public class BrickOvenBlockEntity extends BlockEntity implements Inventory, Heat
 
     @Override
     public void tick() {
+        if (scheduledForRemoval) {
+            return;
+        }
         boolean previouslyActive = furnaceBurnTime > 0;
         if (checkTimer < 40) {
             checkTimer++;
@@ -191,6 +195,14 @@ public class BrickOvenBlockEntity extends BlockEntity implements Inventory, Heat
     }
 
     private boolean checkMultiBlockStructure() {
+        if (scheduledForRemoval) {
+            return false;
+        }
+        BlockEntity blockEntity = world.getBlockEntity(x, y, z);
+        if (blockEntity != this) {
+            scheduledForRemoval = true;
+            return false;
+        }
         int meta = world.getBlockMeta(x, y, z) % 6;
         int xCentered = x;
         int zCentered = z;
@@ -332,6 +344,9 @@ public class BrickOvenBlockEntity extends BlockEntity implements Inventory, Heat
     }
 
     public boolean canPlayerUse(PlayerEntity entityplayer) {
+        if (scheduledForRemoval) {
+            return false;
+        }
         if (world.getBlockEntity(x, y, z) != this) {
             return false;
         }
@@ -346,6 +361,9 @@ public class BrickOvenBlockEntity extends BlockEntity implements Inventory, Heat
     // Methods of heat interface
     @Override
     public int addHeat(int heat) {
+        if (scheduledForRemoval) {
+            return 0;
+        }
         if (isMultiBlock || getItemBurnTime(furnaceItemStacks[9]) > 0 || furnaceBurnTime >= MAXIMUM_ADDED_BURN_TIME) {
             return 0;
         }

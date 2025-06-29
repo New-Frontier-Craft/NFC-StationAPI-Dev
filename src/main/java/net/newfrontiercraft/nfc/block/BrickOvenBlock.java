@@ -179,7 +179,6 @@ public class BrickOvenBlock extends TemplateBlockWithEntity {
             }
             this.dropStack(world, x, y, z, new ItemStack(BlockListener.brickOven, 1, 3));
         }
-
         super.onBreak(world, x, y, z);
     }
 
