@@ -368,6 +368,7 @@ public class BrickOvenBlockEntity extends BlockEntity implements Inventory, Heat
             return 0;
         }
         int totalBurnTime = furnaceBurnTime + heat;
+        BrickOvenBlock.updateFurnaceBlockState(true, world, x, y, z);
         if (totalBurnTime <= MAXIMUM_ADDED_BURN_TIME) {
             furnaceBurnTime = totalBurnTime;
             return heat;

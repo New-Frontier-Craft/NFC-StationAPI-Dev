@@ -9,7 +9,10 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
+import net.modificationstation.stationapi.api.block.BlockState;
 import net.modificationstation.stationapi.api.gui.screen.container.GuiHelper;
+import net.modificationstation.stationapi.api.state.StateManager;
+import net.modificationstation.stationapi.api.state.property.BooleanProperty;
 import net.modificationstation.stationapi.api.template.block.TemplateBlockWithEntity;
 import net.modificationstation.stationapi.api.util.Identifier;
 import net.newfrontiercraft.nfc.inventory.BrickOvenScreenHandler;
@@ -20,6 +23,8 @@ import net.newfrontiercraft.nfc.block.entity.BrickOvenBlockEntity;
 import java.util.Random;
 
 public class BrickOvenBlock extends TemplateBlockWithEntity {
+
+    public static final BooleanProperty ACTIVE = BooleanProperty.of("active");
 
     int frontTexture;
     int frontTextureActive;
@@ -32,6 +37,13 @@ public class BrickOvenBlock extends TemplateBlockWithEntity {
         setTranslationKey(identifier.namespace, identifier.path);
         furnaceRand = new Random();
         setHardness(hardness);
+        setDefaultState(getStateManager().getDefaultState().with(ACTIVE, false));
+        setLuminance((BlockState blockState) -> blockState.get(ACTIVE) ? 15 : 0);
+    }
+
+    @Override
+    public void appendProperties(StateManager.Builder<Block, BlockState> builder) {
+        builder.add(ACTIVE);
     }
 
     @Override
@@ -116,11 +128,17 @@ public class BrickOvenBlock extends TemplateBlockWithEntity {
     public static void updateFurnaceBlockState(boolean active, World world, int x, int y, int z) {
         int meta = world.getBlockMeta(x, y, z);
         boolean update = false;
+        BlockState currentState = world.getBlockState(x, y, z);
+        BlockEntity blockEntity = world.getBlockEntity(x, y, z);
         if (active && meta < 6) {
             world.setBlockMeta(x, y, z, meta + 6);
+            //world.setBlockStateWithNotify(x, y, z, currentState.with(ACTIVE, true));
+            //blockEntity.cancelRemoval();
             update = true;
         } else if (!active && meta > 6) {
             world.setBlockMeta(x, y, z, meta - 6);
+            //world.setBlockStateWithNotify(x, y, z, currentState.with(ACTIVE, false));
+            //blockEntity.cancelRemoval();
             update = true;
         }
         if (update) {
