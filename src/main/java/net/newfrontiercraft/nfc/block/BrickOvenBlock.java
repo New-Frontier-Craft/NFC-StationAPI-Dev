@@ -24,8 +24,8 @@ public class BrickOvenBlock extends TemplateBlockWithEntity {
     int frontTexture;
     int frontTextureActive;
     int sideTexture;
-    private Random furnaceRand;
-    private final boolean ACTIVE;
+    private final Random furnaceRand;
+    private final boolean active;
     private static boolean keepFurnaceInventory = false;
     
     public BrickOvenBlock(Identifier identifier, Material material, boolean active, float lightEmittance, float hardness) {
@@ -33,7 +33,7 @@ public class BrickOvenBlock extends TemplateBlockWithEntity {
         setLuminance(lightEmittance);
         setTranslationKey(identifier.namespace, identifier.path);
         furnaceRand = new Random();
-        this.ACTIVE = active;
+        this.active = active;
         setHardness(hardness);
     }
 
@@ -77,32 +77,31 @@ public class BrickOvenBlock extends TemplateBlockWithEntity {
 
     @Override
     public void randomDisplayTick(World world, int i, int j, int k, Random random) {
-        if (!ACTIVE) {
+        int meta = world.getBlockMeta(i, j, k);
+        if (meta < 6) {
             return;
         }
-        int l = world.getBlockMeta(i, j, k);
         float f = (float) i + 0.5F;
         float f1 = (float) j + 0.25F + (random.nextFloat() * 6F) / 16F;
         float f2 = (float) k + 0.5F;
         float f3 = 0.52F;
         float f4 = random.nextFloat() * 0.6F - 0.3F;
-        if (l == 4) {
+        if (meta == 10) {
             world.addParticle("smoke", f - f3, f1, f2 + f4, 0.0D, 0.0D, 0.0D);
             world.addParticle("flame", f - f3, f1, f2 + f4, 0.0D, 0.0D, 0.0D);
-        } else if (l == 5) {
+        } else if (meta == 11) {
             world.addParticle("smoke", f + f3, f1, f2 + f4, 0.0D, 0.0D, 0.0D);
             world.addParticle("flame", f + f3, f1, f2 + f4, 0.0D, 0.0D, 0.0D);
-        } else if (l == 2) {
+        } else if (meta == 8) {
             world.addParticle("smoke", f + f4, f1, f2 - f3, 0.0D, 0.0D, 0.0D);
             world.addParticle("flame", f + f4, f1, f2 - f3, 0.0D, 0.0D, 0.0D);
-        } else if (l == 3) {
+        } else if (meta == 9) {
             world.addParticle("smoke", f + f4, f1, f2 + f3, 0.0D, 0.0D, 0.0D);
             world.addParticle("flame", f + f4, f1, f2 + f3, 0.0D, 0.0D, 0.0D);
         }
     }
 
-    public void specifyTextures(int frontTexture, int frontActiveTexture, int sideTexture)
-    {
+    public void specifyTextures(int frontTexture, int frontActiveTexture, int sideTexture) {
         this.frontTexture = frontTexture;
         frontTextureActive = frontActiveTexture;
         this.sideTexture = sideTexture;
@@ -110,27 +109,26 @@ public class BrickOvenBlock extends TemplateBlockWithEntity {
     
     @Override
     public int getTexture(int side, int meta) {
-        if (side == meta) {
-            return ACTIVE ? frontTextureActive : frontTexture;
+        if (side == meta % 6) {
+            return meta > 6 ? frontTextureActive : frontTexture;
         } else {
             return sideTexture;
         }
     }
 
-    public static void updateFurnaceBlockState(boolean flag, World world, int i, int j, int k) {
-        int l = world.getBlockMeta(i, j, k);
-        BlockEntity tileentity = world.getBlockEntity(i, j, k);
-        keepFurnaceInventory = true;
-        if (flag) {
-            world.setBlock(i, j, k, BlockListener.brickOvenActive.id);
-        } else {
-            world.setBlock(i, j, k, BlockListener.brickOven.id);
+    public static void updateFurnaceBlockState(boolean active, World world, int x, int y, int z) {
+        int meta = world.getBlockMeta(x, y, z);
+        boolean update = false;
+        if (active && meta < 6) {
+            world.setBlockMeta(x, y, z, meta + 6);
+            update = true;
+        } else if (!active && meta > 6) {
+            world.setBlockMeta(x, y, z, meta - 6);
+            update = true;
         }
-
-        keepFurnaceInventory = false;
-        world.setBlockMeta(i, j, k, l);
-        tileentity.cancelRemoval();
-        world.setBlockEntity(i, j, k, tileentity);
+        if (update) {
+            world.blockUpdateEvent(x, y, z);
+        }
     }
 
     @Override
