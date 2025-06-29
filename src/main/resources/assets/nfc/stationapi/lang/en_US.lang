@@ -141,7 +141,7 @@ tile.nfc.platinum_ore.name=Platinum Ore
 tile.nfc.mystery_ore.name=Mystery Ore
 
 tile.nfc.brick_oven.name=Brick Oven
-tile.nfc.brick_oven_active.name=Lit Brick Oven
+tile.nfc.brick_oven_active.name=Lit Brick Oven (DEPRECATED)
 tile.nfc.carpentry_workstation.name=Carpentry Workstation
 
 tile.nfc.coal_block.name=Coal Block
