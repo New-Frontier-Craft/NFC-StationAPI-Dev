@@ -307,8 +307,8 @@ public class BlockListener {
         pebbleMedium = new LazySandTemplate(Identifier.of(MOD_ID, "pebble_medium"), 3F, Block.GRAVEL_SOUND_GROUP, 8, Material.SOIL);
         pebbleLarge = new LazySandTemplate(Identifier.of(MOD_ID, "pebble_large"), 3F, Block.GRAVEL_SOUND_GROUP, 8, Material.SOIL);
 
-        brickOven = new BrickOvenBlock(Identifier.of(MOD_ID, "brick_oven"), Material.STONE, false, 0F, 1.5F);
-        brickOvenActive = new BrickOvenBlock(Identifier.of(MOD_ID, "brick_oven_active"), Material.STONE, true, 0.875F, 1.5F);
+        brickOven = new BrickOvenBlock(Identifier.of(MOD_ID, "brick_oven"), Material.STONE, 0F, 1.5F);
+        brickOvenActive = new BrickOvenBlock(Identifier.of(MOD_ID, "brick_oven_active"), Material.STONE, 0.875F, 1.5F);
 
         carpentryWorkstation = new CarpentryWorkstationBlock(Identifier.of(MOD_ID, "carpentry_workstation"), Material.WOOD, 1.0F);
 

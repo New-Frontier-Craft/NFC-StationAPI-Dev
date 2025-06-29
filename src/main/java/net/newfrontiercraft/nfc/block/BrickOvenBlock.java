@@ -25,15 +25,12 @@ public class BrickOvenBlock extends TemplateBlockWithEntity {
     int frontTextureActive;
     int sideTexture;
     private final Random furnaceRand;
-    private final boolean active;
-    private static boolean keepFurnaceInventory = false;
-    
-    public BrickOvenBlock(Identifier identifier, Material material, boolean active, float lightEmittance, float hardness) {
+
+    public BrickOvenBlock(Identifier identifier, Material material, float lightEmittance, float hardness) {
         super(identifier, material);
         setLuminance(lightEmittance);
         setTranslationKey(identifier.namespace, identifier.path);
         furnaceRand = new Random();
-        this.active = active;
         setHardness(hardness);
     }
 
@@ -151,34 +148,29 @@ public class BrickOvenBlock extends TemplateBlockWithEntity {
 
     @Override
     public void onBreak(World world, int x, int y, int z) {
-        if (!keepFurnaceInventory) {
-            BrickOvenBlockEntity brickOven = (BrickOvenBlockEntity)world.getBlockEntity(x, y, z);
-
-            for(int var6 = 0; var6 < brickOven.size(); ++var6) {
-                ItemStack var7 = brickOven.getStack(var6);
-                if (var7 != null) {
-                    float var8 = this.furnaceRand.nextFloat() * 0.8F + 0.1F;
-                    float var9 = this.furnaceRand.nextFloat() * 0.8F + 0.1F;
-                    float var10 = this.furnaceRand.nextFloat() * 0.8F + 0.1F;
-
-                    while(var7.count > 0) {
-                        int var11 = this.furnaceRand.nextInt(21) + 10;
-                        if (var11 > var7.count) {
-                            var11 = var7.count;
-                        }
-
-                        var7.count -= var11;
-                        ItemEntity var12 = new ItemEntity(world, (double)((float)x + var8), (double)((float)y + var9), (double)((float)z + var10), new ItemStack(var7.getItem(), var11, var7.getDamage()));
-                        float var13 = 0.05F;
-                        var12.velocityX = (double)((float)this.furnaceRand.nextGaussian() * var13);
-                        var12.velocityY = (double)((float)this.furnaceRand.nextGaussian() * var13 + 0.2F);
-                        var12.velocityZ = (double)((float)this.furnaceRand.nextGaussian() * var13);
-                        world.spawnEntity(var12);
+        BrickOvenBlockEntity brickOven = (BrickOvenBlockEntity)world.getBlockEntity(x, y, z);
+        for(int var6 = 0; var6 < brickOven.size(); ++var6) {
+            ItemStack var7 = brickOven.getStack(var6);
+            if (var7 != null) {
+                float var8 = this.furnaceRand.nextFloat() * 0.8F + 0.1F;
+                float var9 = this.furnaceRand.nextFloat() * 0.8F + 0.1F;
+                float var10 = this.furnaceRand.nextFloat() * 0.8F + 0.1F;
+                while(var7.count > 0) {
+                    int var11 = this.furnaceRand.nextInt(21) + 10;
+                    if (var11 > var7.count) {
+                        var11 = var7.count;
                     }
+                    var7.count -= var11;
+                    ItemEntity var12 = new ItemEntity(world, (double)((float)x + var8), (double)((float)y + var9), (double)((float)z + var10), new ItemStack(var7.getItem(), var11, var7.getDamage()));
+                    float var13 = 0.05F;
+                    var12.velocityX = (double)((float)this.furnaceRand.nextGaussian() * var13);
+                    var12.velocityY = (double)((float)this.furnaceRand.nextGaussian() * var13 + 0.2F);
+                    var12.velocityZ = (double)((float)this.furnaceRand.nextGaussian() * var13);
+                    world.spawnEntity(var12);
                 }
             }
-            this.dropStack(world, x, y, z, new ItemStack(BlockListener.brickOven, 1, 3));
         }
+        this.dropStack(world, x, y, z, new ItemStack(BlockListener.brickOven, 1, 3));
         super.onBreak(world, x, y, z);
     }
 
