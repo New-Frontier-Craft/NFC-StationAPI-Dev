@@ -27,6 +27,7 @@
     "MapColorInvoker",
     "MaterialInvoker",
     "OreSuppressionMixin",
+    "OverworldHeightMixin",
     "OverworldWorldCarversMixin",
     "PlantBlockMixin",
     "PlayerEntityMixin",
