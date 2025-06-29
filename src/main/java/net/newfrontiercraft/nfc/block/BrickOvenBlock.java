@@ -81,7 +81,7 @@ public class BrickOvenBlock extends TemplateBlockWithEntity {
         if (Block.BLOCKS_OPAQUE[k1] && !Block.BLOCKS_OPAQUE[j1]) {
             byte0 = 4;
         }
-        world.setBlock(i, j, k, this.id, byte0);
+        world.setBlockMeta(i, j, k, byte0);
     }
 
     @Override
