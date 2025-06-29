@@ -150,9 +150,9 @@ public class BrickOvenBlock extends TemplateBlockWithEntity {
     }
 
     @Override
-    public void onBreak(World arg, int i, int j, int k) {
+    public void onBreak(World world, int x, int y, int z) {
         if (!keepFurnaceInventory) {
-            BrickOvenBlockEntity brickOven = (BrickOvenBlockEntity)arg.getBlockEntity(i, j, k);
+            BrickOvenBlockEntity brickOven = (BrickOvenBlockEntity)world.getBlockEntity(x, y, z);
 
             for(int var6 = 0; var6 < brickOven.size(); ++var6) {
                 ItemStack var7 = brickOven.getStack(var6);
@@ -168,24 +168,19 @@ public class BrickOvenBlock extends TemplateBlockWithEntity {
                         }
 
                         var7.count -= var11;
-                        ItemEntity var12 = new ItemEntity(arg, (double)((float)i + var8), (double)((float)j + var9), (double)((float)k + var10), new ItemStack(var7.getItem(), var11, var7.getDamage()));
+                        ItemEntity var12 = new ItemEntity(world, (double)((float)x + var8), (double)((float)y + var9), (double)((float)z + var10), new ItemStack(var7.getItem(), var11, var7.getDamage()));
                         float var13 = 0.05F;
                         var12.velocityX = (double)((float)this.furnaceRand.nextGaussian() * var13);
                         var12.velocityY = (double)((float)this.furnaceRand.nextGaussian() * var13 + 0.2F);
                         var12.velocityZ = (double)((float)this.furnaceRand.nextGaussian() * var13);
-                        arg.spawnEntity(var12);
+                        world.spawnEntity(var12);
                     }
                 }
             }
+            this.dropStack(world, x, y, z, new ItemStack(BlockListener.brickOven, 1, 3));
         }
 
-        super.onBreak(arg, i, j, k);
-    }
-
-    @Override
-    public void afterBreak(World world, PlayerEntity playerEntity, int x, int y, int z, int meta) {
-        if (world.isRemote) return;
-        this.dropStack(world, x, y, z, new ItemStack(BlockListener.brickOven, 1, 3));
+        super.onBreak(world, x, y, z);
     }
 
     @Override
