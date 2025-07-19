@@ -36,8 +36,8 @@ public abstract class PlantBlockMixin extends Block {
             if((belowId != 0 && belowId != Block.LEAVES.id && Block.BLOCKS[belowId].isOpaque())) {
                 cir.setReturnValue(true);
             }
-        } else {
-            cir.setReturnValue(super.canPlaceAt(world, x, y, z) && (canThisPlantGrowOnThisBlockID(belowId) || isFilledPlanterBelow(belowId, world.getBlockMeta(x, y - 1, z))));
+        } else if (super.canPlaceAt(world, x, y, z) && (canThisPlantGrowOnThisBlockID(belowId) || isFilledPlanterBelow(belowId, world.getBlockMeta(x, y - 1, z)))) {
+            cir.setReturnValue(true);
         }
     }
 
