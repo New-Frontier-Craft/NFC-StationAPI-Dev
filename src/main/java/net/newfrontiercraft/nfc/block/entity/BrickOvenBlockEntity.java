@@ -29,6 +29,7 @@ public class BrickOvenBlockEntity extends BlockEntity implements Inventory, Heat
     private boolean scheduledForRemoval = false;
 
     public BrickOvenBlockEntity() {
+        // First slots 0 to 8 are inputs. 9 is fuel, 10 is output
         furnaceItemStacks = new ItemStack[11];
         furnaceBurnTime = 0;
         currentItemBurnTime = 0;
@@ -245,6 +246,143 @@ public class BrickOvenBlockEntity extends BlockEntity implements Inventory, Heat
             int transferredHeat = (heatSourceValue - furnaceBurnTime)/2;
             furnaceBurnTime += transferredHeat;
             heatSource.changeHeatLevel(-transferredHeat);
+        }
+        // Meta values to coordinates
+        // 2 -> z+
+        // 3 -> z-
+        // 4 -> x+
+        // 5 -> x-
+        // Automatic input
+        switch (meta) {
+            case 2:
+                for (int zOffset = 1; zOffset >= -1; zOffset--) {
+                    for (int xOffset = 1; xOffset >= -1; xOffset--) {
+                        if (world.getBlockEntity(xCentered + xOffset, y + 2, zCentered + zOffset) instanceof BasicItemChuteBlockEntity basicItemChuteBlockEntity) {
+                            if (basicItemChuteBlockEntity.storedItem == null) {
+                                break;
+                            }
+                            int ovenIndex = (-xOffset + 1) + (-zOffset + 1) * 3;
+                            if (furnaceItemStacks[ovenIndex] == null) {
+                                furnaceItemStacks[ovenIndex] = basicItemChuteBlockEntity.storedItem;
+                                basicItemChuteBlockEntity.storedItem = null;
+                            } else if (furnaceItemStacks[ovenIndex].isItemEqual(basicItemChuteBlockEntity.storedItem)) {
+                                int totalCount = furnaceItemStacks[ovenIndex].count + basicItemChuteBlockEntity.storedItem.count;
+                                if (totalCount <= basicItemChuteBlockEntity.storedItem.getMaxCount()) {
+                                    furnaceItemStacks[ovenIndex].count = totalCount;
+                                    basicItemChuteBlockEntity.storedItem = null;
+                                } else {
+                                    int leftovers = totalCount - basicItemChuteBlockEntity.storedItem.getMaxCount();
+                                    furnaceItemStacks[ovenIndex].count = basicItemChuteBlockEntity.storedItem.getMaxCount();
+                                    basicItemChuteBlockEntity.storedItem.count = leftovers;
+                                }
+                            }
+                        }
+                    }
+                }
+                break;
+            case 3:
+                for (int zOffset = -1; zOffset <= 1; zOffset++) {
+                    for (int xOffset = -1; xOffset <= 1; xOffset++) {
+                        if (world.getBlockEntity(xCentered + xOffset, y + 2, zCentered + zOffset) instanceof BasicItemChuteBlockEntity basicItemChuteBlockEntity) {
+                            if (basicItemChuteBlockEntity.storedItem == null) {
+                                break;
+                            }
+                            int ovenIndex = (xOffset + 1) + (zOffset + 1) * 3;
+                            if (furnaceItemStacks[ovenIndex] == null) {
+                                furnaceItemStacks[ovenIndex] = basicItemChuteBlockEntity.storedItem;
+                                basicItemChuteBlockEntity.storedItem = null;
+                            } else if (furnaceItemStacks[ovenIndex].isItemEqual(basicItemChuteBlockEntity.storedItem)) {
+                                int totalCount = furnaceItemStacks[ovenIndex].count + basicItemChuteBlockEntity.storedItem.count;
+                                if (totalCount <= basicItemChuteBlockEntity.storedItem.getMaxCount()) {
+                                    furnaceItemStacks[ovenIndex].count = totalCount;
+                                    basicItemChuteBlockEntity.storedItem = null;
+                                } else {
+                                    int leftovers = totalCount - basicItemChuteBlockEntity.storedItem.getMaxCount();
+                                    furnaceItemStacks[ovenIndex].count = basicItemChuteBlockEntity.storedItem.getMaxCount();
+                                    basicItemChuteBlockEntity.storedItem.count = leftovers;
+                                }
+                            }
+                        }
+                    }
+                }
+                break;
+            case 4:
+                for (int xOffset = 1; xOffset >= -1; xOffset--) {
+                    for (int zOffset = -1; zOffset <= 1; zOffset++) {
+                        if (world.getBlockEntity(xCentered + xOffset, y + 2, zCentered + zOffset) instanceof BasicItemChuteBlockEntity basicItemChuteBlockEntity) {
+                            if (basicItemChuteBlockEntity.storedItem == null) {
+                                break;
+                            }
+                            int ovenIndex = (zOffset + 1) + (-xOffset + 1) * 3;
+                            if (furnaceItemStacks[ovenIndex] == null) {
+                                furnaceItemStacks[ovenIndex] = basicItemChuteBlockEntity.storedItem;
+                                basicItemChuteBlockEntity.storedItem = null;
+                            } else if (furnaceItemStacks[ovenIndex].isItemEqual(basicItemChuteBlockEntity.storedItem)) {
+                                int totalCount = furnaceItemStacks[ovenIndex].count + basicItemChuteBlockEntity.storedItem.count;
+                                if (totalCount <= basicItemChuteBlockEntity.storedItem.getMaxCount()) {
+                                    furnaceItemStacks[ovenIndex].count = totalCount;
+                                    basicItemChuteBlockEntity.storedItem = null;
+                                } else {
+                                    int leftovers = totalCount - basicItemChuteBlockEntity.storedItem.getMaxCount();
+                                    furnaceItemStacks[ovenIndex].count = basicItemChuteBlockEntity.storedItem.getMaxCount();
+                                    basicItemChuteBlockEntity.storedItem.count = leftovers;
+                                }
+                            }
+                        }
+                    }
+                }
+                break;
+            case 5:
+                for (int xOffset = -1; xOffset <= 1; xOffset++) {
+                    for (int zOffset = 1; zOffset >= -1; zOffset--) {
+                        if (world.getBlockEntity(xCentered + xOffset, y + 2, zCentered + zOffset) instanceof BasicItemChuteBlockEntity basicItemChuteBlockEntity) {
+                            if (basicItemChuteBlockEntity.storedItem == null) {
+                                break;
+                            }
+                            int ovenIndex = (-zOffset + 1) + (xOffset + 1) * 3;
+                            if (furnaceItemStacks[ovenIndex] == null) {
+                                furnaceItemStacks[ovenIndex] = basicItemChuteBlockEntity.storedItem;
+                                basicItemChuteBlockEntity.storedItem = null;
+                            } else if (furnaceItemStacks[ovenIndex].isItemEqual(basicItemChuteBlockEntity.storedItem)) {
+                                int totalCount = furnaceItemStacks[ovenIndex].count + basicItemChuteBlockEntity.storedItem.count;
+                                if (totalCount <= basicItemChuteBlockEntity.storedItem.getMaxCount()) {
+                                    furnaceItemStacks[ovenIndex].count = totalCount;
+                                    basicItemChuteBlockEntity.storedItem = null;
+                                } else {
+                                    int leftovers = totalCount - basicItemChuteBlockEntity.storedItem.getMaxCount();
+                                    furnaceItemStacks[ovenIndex].count = basicItemChuteBlockEntity.storedItem.getMaxCount();
+                                    basicItemChuteBlockEntity.storedItem.count = leftovers;
+                                }
+                            }
+                        }
+                    }
+                }
+                break;
+        }
+        // Automatic output
+        if (furnaceItemStacks[10] == null) {
+            return true;
+        }
+        for (int xOffset = -1; xOffset <= 1; xOffset++) {
+            for (int zOffset = -1; zOffset <= 1; zOffset++) {
+                if (furnaceItemStacks[10] != null && world.getBlockEntity(xCentered + xOffset, y - 2, zCentered + zOffset) instanceof BasicItemChuteBlockEntity basicItemChuteBlockEntity) {
+                    if (basicItemChuteBlockEntity.storedItem == null) {
+                        basicItemChuteBlockEntity.storedItem = furnaceItemStacks[10];
+                        furnaceItemStacks[10] = null;
+                        return true;
+                    } else if (basicItemChuteBlockEntity.storedItem.isItemEqual(furnaceItemStacks[10])) {
+                        int totalCount = furnaceItemStacks[10].count + basicItemChuteBlockEntity.storedItem.count;
+                        if (totalCount <= basicItemChuteBlockEntity.storedItem.getMaxCount()) {
+                            basicItemChuteBlockEntity.storedItem.count = totalCount;
+                            furnaceItemStacks[10] = null;
+                        } else {
+                            int leftovers = totalCount - basicItemChuteBlockEntity.storedItem.getMaxCount();
+                            basicItemChuteBlockEntity.storedItem.count = basicItemChuteBlockEntity.storedItem.getMaxCount();
+                            furnaceItemStacks[10].count = leftovers;
+                        }
+                    }
+                }
+            }
         }
         return true;
     }
