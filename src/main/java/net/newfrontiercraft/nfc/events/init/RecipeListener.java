@@ -8,8 +8,13 @@ import net.modificationstation.stationapi.api.event.recipe.RecipeRegisterEvent;
 import net.modificationstation.stationapi.api.recipe.CraftingRegistry;
 import net.modificationstation.stationapi.api.registry.BlockRegistry;
 import net.modificationstation.stationapi.api.util.Identifier;
+import net.newfrontiercraft.nfc.registry.BlockPatternEntry;
 import net.newfrontiercraft.nfc.registry.CarpentryRecipes;
+import net.newfrontiercraft.nfc.registry.MultiBlockRecipeRegistry;
 import net.newfrontiercraft.nfc.utils.RecipeRemover;
+
+import java.util.List;
+import java.util.Map;
 
 public class RecipeListener {
 
@@ -18,6 +23,9 @@ public class RecipeListener {
 
         Identifier type = event.recipeId;
         if (type == RecipeRegisterEvent.Vanilla.CRAFTING_SHAPED.type()) {
+
+
+
             // Recipe removal
             RecipeRemover.removeRecipe(Block.RAIL);
             RecipeRemover.removeRecipe(Block.POWERED_RAIL);
@@ -526,5 +534,19 @@ public class RecipeListener {
                 new ItemStack(BlockListener.netherStoneBricksLarge),
                 new ItemStack(BlockListener.netherStoneCheckers),
                 new ItemStack(BlockListener.netherStoneTiling)});
+
+        List<String[]> multiblockLayers = List.of(
+                new String[]{"xxx", "xxx", "xxx"},
+                new String[]{"yxy", "xxx", "yxy"},
+                new String[]{"xxx", "xxx", "xxx"}
+        );
+
+        List<BlockPatternEntry> multiblockPatterns = List.of(
+                new BlockPatternEntry('x', Block.DIAMOND_BLOCK.getDefaultState(), 0, new ItemStack(Block.DIAMOND_BLOCK.asItem())),
+                new BlockPatternEntry('y', Block.COBBLESTONE.getDefaultState(), 0, new ItemStack(Block.COBBLESTONE.asItem()))
+        );
+
+        // TODO: fix recipes being registered 3 times;
+        MultiBlockRecipeRegistry.INSTANCE.addMultiblockRecipe(multiblockLayers, multiblockPatterns);
     }
 }
