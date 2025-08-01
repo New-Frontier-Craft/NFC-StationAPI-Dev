@@ -118,7 +118,10 @@ public class BrickOvenBlock extends TemplateBlockWithEntity {
     
     @Override
     public int getTexture(int side, int meta) {
-        if (side == meta % 6) {
+        if(meta == 0 && side == 3){
+            return frontTexture;
+        }
+        if (side == meta % 6 && meta > 1) {
             return meta > 6 ? frontTextureActive : frontTexture;
         } else {
             return sideTexture;
