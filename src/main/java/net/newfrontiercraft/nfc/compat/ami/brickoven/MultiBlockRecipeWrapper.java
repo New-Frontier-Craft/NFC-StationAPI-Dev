@@ -83,8 +83,10 @@ public class MultiBlockRecipeWrapper implements RecipeWrapper {
 
     @Override
     public void drawAnimations(@NotNull Minecraft minecraft, int i, int i1) {
-        InventoryBlockView blockView = new InventoryBlockView();
+        InventoryBlockView blockView = new InventoryBlockView(minecraft.world);
         BlockRenderManager blockRenderManager = new BlockRenderManager(blockView);
+        GL11.glEnable(GL11.GL_BLEND);
+        GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
         GL11.glPushMatrix();
         GL11.glTranslatef(81,65,80);
         GL11.glRotatef(pitch, 1f, 0f, 0);
@@ -98,14 +100,19 @@ public class MultiBlockRecipeWrapper implements RecipeWrapper {
         tessellator.translate(-(recipe.getStructureWidth() / 2f), -(recipe.getStructureHeight() / 2f), -(recipe.getStructureDepth() / 2f));
 
         List<BlockPos> blockPositions = blockView.getBlockPositions();
-        for(BlockPos blockPos : blockPositions){
-            BlockState blockState = blockView.getBlockState(blockPos.getX(), blockPos.getY(), blockPos.getZ());
-            blockRenderManager.render(blockState.getBlock(), blockPos.getX(), blockPos.getY(), blockPos.getZ());
+        for(int renderLayer = 0; renderLayer < 2; renderLayer++){
+            for(BlockPos blockPos : blockPositions){
+                BlockState blockState = blockView.getBlockState(blockPos.getX(), blockPos.getY(), blockPos.getZ());
+                if(blockState.getBlock().getRenderLayer() == renderLayer){
+                    blockRenderManager.render(blockState.getBlock(), blockPos.getX(), blockPos.getY(), blockPos.getZ());
+                }
+            }
         }
         tessellator.draw();
         tessellator.translate(0.0, 0.0, 0.0);
 
         GL11.glPopMatrix();
+        GL11.glDisable(GL11.GL_BLEND);
     }
 
     @Override

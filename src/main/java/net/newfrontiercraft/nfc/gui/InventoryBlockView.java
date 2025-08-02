@@ -4,6 +4,7 @@ import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.material.Material;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.BlockView;
+import net.minecraft.world.World;
 import net.minecraft.world.biome.source.BiomeSource;
 import net.modificationstation.stationapi.api.block.BlockState;
 import net.modificationstation.stationapi.api.block.States;
@@ -16,8 +17,10 @@ import java.util.Map;
 public class InventoryBlockView implements BlockView, StationFlatteningWorld {
     private Map<BlockPos, BlockState> blockStates;
     private Map<BlockPos, Integer> metas;
+    private World world;
 
-    public InventoryBlockView(){
+    public InventoryBlockView(World world){
+        this.world = world;
         blockStates = new HashMap<>();
         metas = new HashMap<>();
     }
@@ -56,7 +59,9 @@ public class InventoryBlockView implements BlockView, StationFlatteningWorld {
 
     @Override
     public Material getMaterial(int x, int y, int z) {
-        return blockStates.get(new BlockPos(x, y, z)).getMaterial();
+        BlockState blockState = blockStates.get(new BlockPos(x, y, z));
+        if(blockState == null || blockState.isAir()) return Material.AIR;
+        return blockState.getMaterial();
     }
 
     //isOpaque
@@ -76,7 +81,7 @@ public class InventoryBlockView implements BlockView, StationFlatteningWorld {
 
     @Override
     public BiomeSource method_1781() {
-        return null;
+        return new InventoryBiomeSource(world);
     }
 
     @Override

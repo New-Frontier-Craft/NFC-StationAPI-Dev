@@ -559,8 +559,21 @@ public class RecipeListener {
                 new BlockPatternEntry('y', BNBBlocks.SPINNING_WHEEL.getDefaultState(), 0, new ItemStack(BNBBlocks.SPINNING_WHEEL.asItem()))
         );
 
+        List<String[]> renderlayerTestLayers = List.of(
+                new String[]{"xxx", "xxx", "xxx"},
+                new String[]{"   ", "www", "ggg"},
+                new String[]{"   ", "   ", "ggg"}
+        );
+
+        List<BlockPatternEntry> renderlayerTestPatterns = List.of(
+                new BlockPatternEntry('x', Block.GRASS_BLOCK.getDefaultState(), 0, new ItemStack(Block.GRASS_BLOCK.asItem())),
+                new BlockPatternEntry('w', Block.WATER.getDefaultState(), 0, new ItemStack(Item.WATER_BUCKET)),
+                new BlockPatternEntry('g', Block.GLASS.getDefaultState(), 0, new ItemStack(Block.GLASS.asItem()))
+        );
+
         // TODO: fix recipes being registered 3 times;
         MultiBlockRecipeRegistry.INSTANCE.addMultiblockRecipe(multiblockLayers, multiblockPatterns);
         MultiBlockRecipeRegistry.INSTANCE.addMultiblockRecipe(testMultiblockLayers, testMultiblockPatterns);
+        MultiBlockRecipeRegistry.INSTANCE.addMultiblockRecipe(renderlayerTestLayers, renderlayerTestPatterns);
     }
 }

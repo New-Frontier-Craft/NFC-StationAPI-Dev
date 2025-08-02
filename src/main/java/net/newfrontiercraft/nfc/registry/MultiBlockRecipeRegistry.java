@@ -5,7 +5,7 @@ import java.util.List;
 
 public class MultiBlockRecipeRegistry {
     public static MultiBlockRecipeRegistry INSTANCE = new MultiBlockRecipeRegistry();
-    private List<MultiBlockRecipe> recipes;
+    private final List<MultiBlockRecipe> recipes;
 
     public MultiBlockRecipeRegistry(){
         recipes = new ArrayList<>();
