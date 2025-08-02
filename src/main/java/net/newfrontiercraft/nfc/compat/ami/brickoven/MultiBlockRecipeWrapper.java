@@ -1,6 +1,8 @@
 package net.newfrontiercraft.nfc.compat.ami.brickoven;
 
 import net.glasslauncher.mods.alwaysmoreitems.api.recipe.RecipeWrapper;
+import net.glasslauncher.mods.alwaysmoreitems.gui.DrawableHelper;
+import net.glasslauncher.mods.alwaysmoreitems.util.AMIHelpers;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.render.Tessellator;
@@ -9,12 +11,17 @@ import net.newfrontiercraft.nfc.gui.InventoryBlockView;
 import net.newfrontiercraft.nfc.registry.MultiBlockRecipe;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.GL11;
+import paulevs.bnb.block.BNBBlocks;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MultiBlockRecipeWrapper implements RecipeWrapper {
+    float pitch = 0f;
+    float yaw = 0f;
+    boolean mouseDown = false;
     private float rotation = 12f;
     private final MultiBlockRecipe recipe;
     public MultiBlockRecipeWrapper(MultiBlockRecipe recipe){
@@ -32,30 +39,61 @@ public class MultiBlockRecipeWrapper implements RecipeWrapper {
 
     @Override
     public void drawInfo(@NotNull Minecraft minecraft, int i, int i1, int i2, int i3) {
-
+        if(Mouse.getEventButton() == 0){
+            if(Mouse.getEventButtonState()){
+                mouseDown = true;
+                System.out.println("mouseDown");
+            }
+            else {
+                mouseDown = false;
+                System.out.println("mouseNotDown");
+            }
+        }
+        if(mouseDown){
+            pitch += Mouse.getDY();
+            yaw += Mouse.getDX();
+        }
     }
+
+
+
 
     @Override
     public void drawAnimations(@NotNull Minecraft minecraft, int i, int i1) {
         InventoryBlockView blockView = new InventoryBlockView();
         BlockRenderManager blockRenderManager = new BlockRenderManager(blockView);
         GL11.glPushMatrix();
-        GL11.glRotatef(rotation, 0, 1f, 0);
-        //GL11.glTranslatef(-1,-1,-1);
+        GL11.glTranslatef(81,65,30);
+        GL11.glRotatef(pitch, 1f, 0f, 0);
+        GL11.glRotatef(yaw, 0f, 1f, 0);
         Tessellator tessellator = Tessellator.INSTANCE;
         tessellator.startQuads();
         GL11.glScalef(10f, 10f, 10f);
         minecraft.textureManager.bindTexture(minecraft.textureManager.getTextureId("/terrain.png"));
         blockView.setBlockStateWithMetadata(0, 0, 0, Block.DIAMOND_BLOCK.getDefaultState(), 0);
-        for (int x = -10; x < 10; x++){
-            for (int y = -10; y < 10; y++){
-                for (int z = -10; z < 10; z++){
-                    blockRenderManager.render(Block.DIAMOND_BLOCK, x, y, z);
-                }
-            }
-        }
+        blockView.setBlockStateWithMetadata(1, 0, 0, Block.DIAMOND_BLOCK.getDefaultState(), 0);
+        blockView.setBlockStateWithMetadata(2, 0, 0, Block.DIAMOND_BLOCK.getDefaultState(), 0);
+        blockView.setBlockStateWithMetadata(0, 1, 0, Block.DIAMOND_BLOCK.getDefaultState(), 0);
+        blockView.setBlockStateWithMetadata(0, 2, 0, Block.DIAMOND_BLOCK.getDefaultState(), 0);
+        blockView.setBlockStateWithMetadata(0, 3, 0, Block.DIAMOND_BLOCK.getDefaultState(), 0);
+        blockView.setBlockStateWithMetadata(0, 4, 0, Block.DIAMOND_BLOCK.getDefaultState(), 0);
+        blockView.setBlockStateWithMetadata(0, 5, 0, BNBBlocks.SPINNING_WHEEL.getDefaultState(), 0);
+//        for (int x = -10; x < 10; x++){
+//            for (int y = -10; y < 10; y++){
+//                for (int z = -10; z < 10; z++){
+//                    blockRenderManager.render(Block.DIAMOND_BLOCK, x, y, z);
+//                }
+//            }
+//        }
 
-//        blockRenderManager.render(Block.DIAMOND_BLOCK, 4, 1, 2);
+        blockRenderManager.render(Block.DIAMOND_BLOCK, 0, 0, 0);
+        blockRenderManager.render(Block.DIAMOND_BLOCK, 1, 0, 0);
+        blockRenderManager.render(Block.DIAMOND_BLOCK, 2, 0, 0);
+        blockRenderManager.render(Block.DIAMOND_BLOCK, 0, 1, 0);
+        blockRenderManager.render(Block.DIAMOND_BLOCK, 0, 2, 0);
+        blockRenderManager.render(Block.DIAMOND_BLOCK, 0, 3, 0);
+        blockRenderManager.render(Block.DIAMOND_BLOCK, 0, 4, 0);
+        blockRenderManager.render(BNBBlocks.SPINNING_WHEEL, 0, 5, 0);
 //        blockRenderManager.render(Block.DIAMOND_BLOCK, 2, 50, 3);
 //        blockRenderManager.render(Block.DIAMOND_BLOCK, 0, 100, -100);
 //        blockRenderManager.render(Block.DIAMOND_BLOCK, 0, 2, -1);
@@ -73,6 +111,7 @@ public class MultiBlockRecipeWrapper implements RecipeWrapper {
 
     @Override
     public boolean handleClick(@NotNull Minecraft minecraft, int i, int i1, int i2) {
+        System.out.println(i + " " + i1 + " " + i2);
         rotation += 12f;
         return true;
     }

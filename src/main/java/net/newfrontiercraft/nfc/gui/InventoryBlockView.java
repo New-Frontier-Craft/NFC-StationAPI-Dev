@@ -54,9 +54,12 @@ public class InventoryBlockView implements BlockView, StationFlatteningWorld {
         return blockStates.get(new BlockPos(x, y, z)).getMaterial();
     }
 
+    //isOpaque
     @Override
     public boolean method_1783(int x, int y, int z) {
-        return false;
+        BlockState blockState = blockStates.get(new BlockPos(x, y, z));
+        if(blockState == null || blockState.isAir()) return false;
+        return blockState.getBlock().isOpaque();
     }
 
     @Override
