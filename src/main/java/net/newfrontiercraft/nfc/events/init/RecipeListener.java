@@ -12,6 +12,7 @@ import net.newfrontiercraft.nfc.registry.BlockPatternEntry;
 import net.newfrontiercraft.nfc.registry.CarpentryRecipes;
 import net.newfrontiercraft.nfc.registry.MultiBlockRecipeRegistry;
 import net.newfrontiercraft.nfc.utils.RecipeRemover;
+import paulevs.bnb.block.BNBBlocks;
 
 import java.util.List;
 import java.util.Map;
@@ -546,7 +547,20 @@ public class RecipeListener {
                 new BlockPatternEntry('y', Block.COBBLESTONE.getDefaultState(), 0, new ItemStack(Block.COBBLESTONE.asItem()))
         );
 
+        List<String[]> testMultiblockLayers = List.of(
+                new String[]{"xxxx"},
+                new String[]{"   x"},
+                new String[]{"   x"},
+                new String[]{"   y"}
+        );
+
+        List<BlockPatternEntry> testMultiblockPatterns = List.of(
+                new BlockPatternEntry('x', Block.WOOL.getDefaultState(), 4, new ItemStack(Block.WOOL.asItem())),
+                new BlockPatternEntry('y', BNBBlocks.SPINNING_WHEEL.getDefaultState(), 0, new ItemStack(BNBBlocks.SPINNING_WHEEL.asItem()))
+        );
+
         // TODO: fix recipes being registered 3 times;
         MultiBlockRecipeRegistry.INSTANCE.addMultiblockRecipe(multiblockLayers, multiblockPatterns);
+        MultiBlockRecipeRegistry.INSTANCE.addMultiblockRecipe(testMultiblockLayers, testMultiblockPatterns);
     }
 }

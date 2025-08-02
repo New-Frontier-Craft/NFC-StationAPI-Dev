@@ -98,6 +98,7 @@ public class InventoryBlockView implements BlockView, StationFlatteningWorld {
     @Override
     public BlockState setBlockStateWithMetadata(int x, int y, int z, BlockState blockState, int meta) {
         blockStates.put(new BlockPos(x, y, z), blockState);
+        metas.put(new BlockPos(x, y, z), meta);
         return blockState;
     }
 
