@@ -40,12 +40,12 @@ public class InventoryBlockView implements BlockView, StationFlatteningWorld {
 
     @Override
     public float getNaturalBrightness(int x, int y, int z, int blockLight) {
-        return 15;
+        return 1f;
     }
 
     @Override
     public float method_1782(int x, int y, int z) {
-        return 0;
+        return 1f;
     }
 
     @Override

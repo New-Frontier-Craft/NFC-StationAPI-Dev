@@ -93,9 +93,6 @@ public class MultiBlockRecipeWrapper implements RecipeWrapper {
         minecraft.textureManager.bindTexture(minecraft.textureManager.getTextureId("/terrain.png"));
         loadRecipeStructure(blockView, recipe);
 
-
-        GL11.glEnable(GL11.GL_DEPTH_TEST);
-        GL11.glClear(GL11.GL_DEPTH_BUFFER_BIT);
         Tessellator tessellator = Tessellator.INSTANCE;
         tessellator.startQuads();
         tessellator.translate(-(recipe.getStructureWidth() / 2f), -(recipe.getStructureHeight() / 2f), -(recipe.getStructureDepth() / 2f));
@@ -123,6 +120,6 @@ public class MultiBlockRecipeWrapper implements RecipeWrapper {
         }
         System.out.println(i + " " + i1 + " " + i2);
         rotation += 12f;
-        return true;
+        return false;
     }
 }
