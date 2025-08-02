@@ -537,7 +537,7 @@ public class RecipeListener {
 
         List<String[]> multiblockLayers = List.of(
                 new String[]{"xxx", "xxx", "xxx"},
-                new String[]{"yxy", "xxx", "yxy"},
+                new String[]{"yxy", "x x", "yxy"},
                 new String[]{"xxx", "xxx", "xxx"}
         );
 

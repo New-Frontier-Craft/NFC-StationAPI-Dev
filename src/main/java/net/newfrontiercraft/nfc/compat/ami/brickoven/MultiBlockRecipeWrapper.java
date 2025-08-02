@@ -73,7 +73,7 @@ public class MultiBlockRecipeWrapper implements RecipeWrapper {
             mouseDown = false;
         }
         if(mouseDown){
-            pitch -= Mouse.getDY();
+            pitch += Mouse.getDY();
             yaw += Mouse.getDX();
         }
     }
@@ -83,24 +83,22 @@ public class MultiBlockRecipeWrapper implements RecipeWrapper {
 
     @Override
     public void drawAnimations(@NotNull Minecraft minecraft, int i, int i1) {
-        GL11.glEnable(GL11.GL_DEPTH_TEST);
-        GL11.glDepthFunc(GL11.GL_LEQUAL); // optional, default
-        GL11.glDepthMask(true);
         InventoryBlockView blockView = new InventoryBlockView();
         BlockRenderManager blockRenderManager = new BlockRenderManager(blockView);
         GL11.glPushMatrix();
-        //GLU.gluPerspective(70.0f, (float) minecraft.displayWidth / (float)minecraft.displayHeight, 0.05f, 100.0f);
         GL11.glTranslatef(81,65,80);
         GL11.glRotatef(pitch, 1f, 0f, 0);
         GL11.glRotatef(yaw, 0f, 1f, 0);
-        GL11.glEnable(GL11.GL_DEPTH_TEST);
-        GL11.glScalef(10f, 10f, 10f);
+        GL11.glScalef(-10f, -10f, -10f);
         minecraft.textureManager.bindTexture(minecraft.textureManager.getTextureId("/terrain.png"));
         loadRecipeStructure(blockView, recipe);
 
 
+        GL11.glEnable(GL11.GL_DEPTH_TEST);
+        GL11.glClear(GL11.GL_DEPTH_BUFFER_BIT);
         Tessellator tessellator = Tessellator.INSTANCE;
         tessellator.startQuads();
+        tessellator.translate(-(recipe.getStructureWidth() / 2f), -(recipe.getStructureHeight() / 2f), -(recipe.getStructureDepth() / 2f));
 
         List<BlockPos> blockPositions = blockView.getBlockPositions();
         for(BlockPos blockPos : blockPositions){
@@ -108,6 +106,7 @@ public class MultiBlockRecipeWrapper implements RecipeWrapper {
             blockRenderManager.render(blockState.getBlock(), blockPos.getX(), blockPos.getY(), blockPos.getZ());
         }
         tessellator.draw();
+        tessellator.translate(0.0, 0.0, 0.0);
 
         GL11.glPopMatrix();
     }

@@ -1,6 +1,7 @@
 package net.newfrontiercraft.nfc.registry;
 
 import net.minecraft.item.ItemStack;
+import net.modificationstation.stationapi.api.block.States;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
@@ -26,6 +27,9 @@ public class MultiBlockRecipe {
 
     @Nullable
     public BlockPatternEntry getEntryForPattern(char pattern){
+        if(pattern == ' '){
+            return new BlockPatternEntry(' ', States.AIR.get(), 0, null);
+        }
         for(BlockPatternEntry patternEntry : blockPatterns){
             if(patternEntry.pattern() == pattern){
                 return patternEntry;
