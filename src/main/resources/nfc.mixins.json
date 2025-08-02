@@ -58,7 +58,8 @@
     "graphics.SaplingBlockMixin",
     "graphics.SlabTextureMixin",
     "graphics.TorchBlockMixin",
-    "graphics.WorldRendererMixin"
+    "graphics.WorldRendererMixin",
+    "graphics.WorldRendererAccessor"
   ],
   "injectors": {
     "defaultRequire": 1
