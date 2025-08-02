@@ -10,6 +10,7 @@ import net.modificationstation.stationapi.api.block.States;
 import net.modificationstation.stationapi.api.world.StationFlatteningWorld;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class InventoryBlockView implements BlockView, StationFlatteningWorld {
@@ -19,6 +20,10 @@ public class InventoryBlockView implements BlockView, StationFlatteningWorld {
     public InventoryBlockView(){
         blockStates = new HashMap<>();
         metas = new HashMap<>();
+    }
+
+    public List<BlockPos> getBlockPositions(){
+        return blockStates.keySet().stream().toList();
     }
 
     @Override
@@ -64,7 +69,9 @@ public class InventoryBlockView implements BlockView, StationFlatteningWorld {
 
     @Override
     public boolean shouldSuffocate(int x, int y, int z) {
-        return false;
+        BlockState blockState = blockStates.get(new BlockPos(x, y, z));
+        if(blockState == null || blockState.isAir()) return false;
+        return blockState.getBlock().material.suffocates() && blockState.getBlock().isFullCube();
     }
 
     @Override
