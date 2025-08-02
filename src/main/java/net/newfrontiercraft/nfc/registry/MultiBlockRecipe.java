@@ -2,6 +2,7 @@ package net.newfrontiercraft.nfc.registry;
 
 import net.minecraft.item.ItemStack;
 
+import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -13,6 +14,24 @@ public class MultiBlockRecipe {
     public MultiBlockRecipe(List<String[]> layers, List<BlockPatternEntry> blockPatterns){
         this.layers = layers;
         this.blockPatterns = blockPatterns;
+    }
+
+    public List<BlockPatternEntry> getBlockPatterns() {
+        return blockPatterns;
+    }
+
+    public List<String[]> getLayers(){
+        return layers;
+    }
+
+    @Nullable
+    public BlockPatternEntry getEntryForPattern(char pattern){
+        for(BlockPatternEntry patternEntry : blockPatterns){
+            if(patternEntry.pattern() == pattern){
+                return patternEntry;
+            }
+        }
+        return null;
     }
 
     public List<ItemStack> getItems(){

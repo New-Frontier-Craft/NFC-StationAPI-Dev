@@ -10,6 +10,7 @@ import net.minecraft.client.render.block.BlockRenderManager;
 import net.minecraft.util.math.BlockPos;
 import net.modificationstation.stationapi.api.block.BlockState;
 import net.newfrontiercraft.nfc.gui.InventoryBlockView;
+import net.newfrontiercraft.nfc.registry.BlockPatternEntry;
 import net.newfrontiercraft.nfc.registry.MultiBlockRecipe;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -40,6 +41,32 @@ public class MultiBlockRecipeWrapper implements RecipeWrapper {
         return List.of();
     }
 
+    private void loadRecipeStructure(InventoryBlockView blockView, MultiBlockRecipe recipe){
+        List<String[]> layers = recipe.getLayers();
+        int x = 0;
+        int y = 0;
+        int z = 0;
+        for(String[] layer : layers){
+            z = 0;
+            for(String section : layer){
+                x = 0;
+                for(char pattern : section.toCharArray()){
+                    BlockPatternEntry entry = recipe.getEntryForPattern(pattern);
+                    if(entry != null){
+                        blockView.setBlockStateWithMetadata(x, y, z, entry.blockstate(), entry.meta());
+                    }
+                    // TODO: warn for missing keys
+                    else {
+
+                    }
+                    x++;
+                }
+                z++;
+            }
+            y++;
+        }
+    }
+
     @Override
     public void drawInfo(@NotNull Minecraft minecraft, int i, int i1, int i2, int i3) {
         if(!Mouse.isButtonDown(0) && mouseDown){
@@ -63,30 +90,25 @@ public class MultiBlockRecipeWrapper implements RecipeWrapper {
         BlockRenderManager blockRenderManager = new BlockRenderManager(blockView);
         GL11.glPushMatrix();
         //GLU.gluPerspective(70.0f, (float) minecraft.displayWidth / (float)minecraft.displayHeight, 0.05f, 100.0f);
-        GL11.glTranslatef(81,65,0);
+        GL11.glTranslatef(81,65,80);
         GL11.glRotatef(pitch, 1f, 0f, 0);
         GL11.glRotatef(yaw, 0f, 1f, 0);
         GL11.glEnable(GL11.GL_DEPTH_TEST);
         GL11.glScalef(10f, 10f, 10f);
         minecraft.textureManager.bindTexture(minecraft.textureManager.getTextureId("/terrain.png"));
-        blockView.setBlockStateWithMetadata(0, 0, 0, Block.DIAMOND_BLOCK.getDefaultState(), 0);
-        blockView.setBlockStateWithMetadata(1, 0, 0, Block.DIAMOND_BLOCK.getDefaultState(), 0);
-        blockView.setBlockStateWithMetadata(2, 0, 0, Block.DIAMOND_BLOCK.getDefaultState(), 0);
-        blockView.setBlockStateWithMetadata(0, 1, 0, Block.DIAMOND_BLOCK.getDefaultState(), 0);
-        blockView.setBlockStateWithMetadata(0, 2, 0, Block.DIAMOND_BLOCK.getDefaultState(), 0);
-        blockView.setBlockStateWithMetadata(0, 3, 0, Block.DIAMOND_BLOCK.getDefaultState(), 0);
-        blockView.setBlockStateWithMetadata(0, 4, 0, Block.DIAMOND_BLOCK.getDefaultState(), 0);
-        blockView.setBlockStateWithMetadata(0, 5, 0, BNBBlocks.SPINNING_WHEEL.getDefaultState(), 0);
+        loadRecipeStructure(blockView, recipe);
 
 
         Tessellator tessellator = Tessellator.INSTANCE;
         tessellator.startQuads();
+
         List<BlockPos> blockPositions = blockView.getBlockPositions();
         for(BlockPos blockPos : blockPositions){
             BlockState blockState = blockView.getBlockState(blockPos.getX(), blockPos.getY(), blockPos.getZ());
             blockRenderManager.render(blockState.getBlock(), blockPos.getX(), blockPos.getY(), blockPos.getZ());
         }
         tessellator.draw();
+
         GL11.glPopMatrix();
     }
 
