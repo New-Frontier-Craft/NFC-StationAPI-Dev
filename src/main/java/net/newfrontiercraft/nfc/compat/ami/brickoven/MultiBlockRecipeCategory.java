@@ -49,8 +49,15 @@ public class MultiBlockRecipeCategory implements RecipeCategory {
 
     @Override
     public void drawExtras(Minecraft minecraft) {
+        //System.out.println(minecraft.currentScreen.height);
+
         int x = -28;
         int y = -33;
+
+        if(minecraft.currentScreen.height > 300){
+            y -= 45;
+        }
+
         costTop.draw(minecraft, x, y);
         y += 5;
         for(int i = 0; i < cost.size(); i++){
