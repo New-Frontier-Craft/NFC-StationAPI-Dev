@@ -54,12 +54,13 @@
     "graphics.ParticleClearingMixin",
     "graphics.ParticleManagerMixin",
     "graphics.PoweredRailTextureMixin",
+    "graphics.RecipesGuiAccessor",
     "graphics.RedstoneTorchBlockMixin",
     "graphics.SaplingBlockMixin",
     "graphics.SlabTextureMixin",
     "graphics.TorchBlockMixin",
-    "graphics.WorldRendererMixin",
-    "graphics.WorldRendererAccessor"
+    "graphics.WorldRendererAccessor",
+    "graphics.WorldRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1

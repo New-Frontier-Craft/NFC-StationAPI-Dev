@@ -19,10 +19,16 @@ public class InventoryBlockView implements BlockView, StationFlatteningWorld {
     private Map<BlockPos, Integer> metas;
     private World world;
 
+    private int visibleLayer = -1;
+
     public InventoryBlockView(World world){
         this.world = world;
         blockStates = new HashMap<>();
         metas = new HashMap<>();
+    }
+
+    public void setVisibleLayer(int layer){
+        this.visibleLayer = layer;
     }
 
     public List<BlockPos> getBlockPositions(){
@@ -31,6 +37,9 @@ public class InventoryBlockView implements BlockView, StationFlatteningWorld {
 
     @Override
     public int getBlockId(int x, int y, int z) {
+        if(visibleLayer != -1 && y != visibleLayer){
+            return 0;
+        }
         BlockState blockState = blockStates.get(new BlockPos(x, y, z));
         if(blockState == null || blockState.isAir()) return 0;
         return blockState.getBlock().id;
@@ -53,12 +62,18 @@ public class InventoryBlockView implements BlockView, StationFlatteningWorld {
 
     @Override
     public int getBlockMeta(int x, int y, int z) {
+        if(visibleLayer != -1 && y != visibleLayer){
+            return 0;
+        }
         Integer meta = metas.get(new BlockPos(x, y, z));
         return meta != null ? meta : 0;
     }
 
     @Override
     public Material getMaterial(int x, int y, int z) {
+        if(visibleLayer != -1 && y != visibleLayer){
+            return Material.AIR;
+        }
         BlockState blockState = blockStates.get(new BlockPos(x, y, z));
         if(blockState == null || blockState.isAir()) return Material.AIR;
         return blockState.getMaterial();
@@ -67,6 +82,9 @@ public class InventoryBlockView implements BlockView, StationFlatteningWorld {
     //isOpaque
     @Override
     public boolean method_1783(int x, int y, int z) {
+        if(visibleLayer != -1 && y != visibleLayer){
+            return false;
+        }
         BlockState blockState = blockStates.get(new BlockPos(x, y, z));
         if(blockState == null || blockState.isAir()) return false;
         return blockState.getBlock().isOpaque();
@@ -86,6 +104,9 @@ public class InventoryBlockView implements BlockView, StationFlatteningWorld {
 
     @Override
     public BlockState getBlockState(int x, int y, int z) {
+        if(visibleLayer != -1 && y != visibleLayer){
+            return States.AIR.get();
+        }
         BlockState blockState = blockStates.get(new BlockPos(x, y, z));
         return blockState != null ? blockState : States.AIR.get();
     }
