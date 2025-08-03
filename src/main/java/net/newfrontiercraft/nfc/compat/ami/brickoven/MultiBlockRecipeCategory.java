@@ -8,6 +8,7 @@ import net.glasslauncher.mods.alwaysmoreitems.api.recipe.RecipeWrapper;
 import net.glasslauncher.mods.alwaysmoreitems.gui.DrawableHelper;
 import net.minecraft.block.Block;
 import net.minecraft.client.render.Tessellator;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.BlockView;
 import net.minecraft.client.Minecraft;
@@ -25,9 +26,13 @@ import java.util.List;
 
 public class MultiBlockRecipeCategory implements RecipeCategory {
     private final AMIDrawable background = DrawableHelper.createDrawable("/assets/nfc/stationapi/gui/multiblock.png", 0, 0, 162, 130);
+
     private final AMIDrawable costTop = DrawableHelper.createDrawable("/assets/nfc/stationapi/gui/multiblock.png", 162, 0, 25, 5);
+    private final AMIDrawable costExtensionTop = DrawableHelper.createDrawable("/assets/nfc/stationapi/gui/multiblock.png", 162, 0, 23, 5);
     private final AMIDrawable costMiddle = DrawableHelper.createDrawable("/assets/nfc/stationapi/gui/multiblock.png", 162, 5, 25, 18);
+    private final AMIDrawable costExtensionMiddle = DrawableHelper.createDrawable("/assets/nfc/stationapi/gui/multiblock.png", 162, 5, 23, 18);
     private final AMIDrawable costBottom = DrawableHelper.createDrawable("/assets/nfc/stationapi/gui/multiblock.png", 162, 23, 25, 5);
+    private final AMIDrawable costExtensionBottom = DrawableHelper.createDrawable("/assets/nfc/stationapi/gui/multiblock.png", 162, 28, 23, 5);
 
     GuiItemStackGroup itemStackGroup;
     List<ItemStack> cost;
@@ -58,15 +63,41 @@ public class MultiBlockRecipeCategory implements RecipeCategory {
             y -= 45;
         }
 
-        costTop.draw(minecraft, x, y);
-        y += 5;
-        for(int i = 0; i < cost.size(); i++){
-            costMiddle.draw(minecraft, x, y);
-            itemStackGroup.init(i, true, x + 5, y);
-            itemStackGroup.setFromRecipe(i, cost.get(i));
-            y += 18;
+        int availableSpace = minecraft.currentScreen.height + y;
+
+        int columns = (int)Math.ceil((10 + 18 * cost.size()) / (double)availableSpace);
+
+        System.out.println(minecraft.currentScreen.height + " " + availableSpace);
+
+        int startY = y;
+        for(int i = 0; i < columns; i++){
+            y = startY;
+            if(i == 0){
+                costTop.draw(minecraft, x, y);
+            }
+            else {
+                costExtensionTop.draw(minecraft, x, y);
+            }
+            y += 5;
+            for(int j = 0; j < cost.size(); j++){
+                if(i == 0){
+                    costMiddle.draw(minecraft, x, y);
+                }
+                else {
+                    costExtensionMiddle.draw(minecraft, x, y);
+                }
+                itemStackGroup.init(j, true, x + 5, y);
+                itemStackGroup.setFromRecipe(j, cost.get(i));
+                y += 18;
+            }
+            if(i == 0){
+                costBottom.draw(minecraft, x, y);
+            }
+            else {
+                costExtensionBottom.draw(minecraft, x, y);
+            }
+            x -= 18;
         }
-        costBottom.draw(minecraft, x, y);
     }
 
     @Override
@@ -77,6 +108,11 @@ public class MultiBlockRecipeCategory implements RecipeCategory {
     @Override
     public void setRecipe(@NotNull RecipeLayout recipeLayout, @NotNull RecipeWrapper recipeWrapper) {
         this.cost = ((MultiBlockRecipeWrapper)recipeWrapper).getCost();
+
+        for(int i = 0; i < 10; i++){
+            cost.add(new ItemStack(Item.APPLE));
+        }
+
         this.itemStackGroup = recipeLayout.getItemStacks();
 //        int xOffset = 29;
 //        int yOffset = 8;
