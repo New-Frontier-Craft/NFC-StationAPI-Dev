@@ -59,16 +59,19 @@ public class MultiBlockRecipeCategory implements RecipeCategory {
         int x = -28;
         int y = -33;
 
+        int maxRows = 8;
+
         if(minecraft.currentScreen.height > 300){
             y -= 45;
+            maxRows =  13;
         }
 
-        int availableSpace = minecraft.currentScreen.height + y;
+        int columns = (int) Math.ceil((double) cost.size() / (double)maxRows);
+        int rows = Math.min(cost.size(), maxRows);
 
-        int columns = (int)Math.ceil((10 + 18 * cost.size()) / (double)availableSpace);
+        System.out.println(columns + " " + rows);
 
-        System.out.println(minecraft.currentScreen.height + " " + availableSpace);
-
+        int currentCostIndex = 0;
         int startY = y;
         for(int i = 0; i < columns; i++){
             y = startY;
@@ -79,16 +82,19 @@ public class MultiBlockRecipeCategory implements RecipeCategory {
                 costExtensionTop.draw(minecraft, x, y);
             }
             y += 5;
-            for(int j = 0; j < cost.size(); j++){
+            for(int j = 0; j < rows; j++){
                 if(i == 0){
                     costMiddle.draw(minecraft, x, y);
                 }
                 else {
                     costExtensionMiddle.draw(minecraft, x, y);
                 }
-                itemStackGroup.init(j, true, x + 5, y);
-                itemStackGroup.setFromRecipe(j, cost.get(i));
+                if(currentCostIndex < cost.size()){
+                    itemStackGroup.init(currentCostIndex, true, x + 5, y);
+                    itemStackGroup.setFromRecipe(currentCostIndex, cost.get(currentCostIndex));
+                }
                 y += 18;
+                currentCostIndex++;
             }
             if(i == 0){
                 costBottom.draw(minecraft, x, y);
