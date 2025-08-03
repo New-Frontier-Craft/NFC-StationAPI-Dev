@@ -1,5 +1,6 @@
 package net.newfrontiercraft.nfc.compat.ami.brickoven;
 
+import net.glasslauncher.mods.alwaysmoreitems.api.gui.AMIDrawable;
 import net.glasslauncher.mods.alwaysmoreitems.api.recipe.RecipeWrapper;
 import net.glasslauncher.mods.alwaysmoreitems.gui.DrawableHelper;
 import net.glasslauncher.mods.alwaysmoreitems.util.AMIHelpers;
@@ -24,6 +25,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MultiBlockRecipeWrapper implements RecipeWrapper {
+
+    private final AMIDrawable leftButton = DrawableHelper.createDrawable("/assets/nfc/stationapi/gui/multiblock.png", 187, 0, 7, 11);
+    private final AMIDrawable leftButtonHover = DrawableHelper.createDrawable("/assets/nfc/stationapi/gui/multiblock.png", 187, 11, 7, 11);
+    private final AMIDrawable rightButton = DrawableHelper.createDrawable("/assets/nfc/stationapi/gui/multiblock.png", 194, 0, 7, 11);
+    private final AMIDrawable rightButtonHover = DrawableHelper.createDrawable("/assets/nfc/stationapi/gui/multiblock.png", 194, 11, 7, 11);
+
     float pitch = 0f;
     float yaw = 0f;
     boolean mouseDown = false;
@@ -93,7 +100,7 @@ public class MultiBlockRecipeWrapper implements RecipeWrapper {
         GL11.glEnable(GL11.GL_BLEND);
         GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
         GL11.glPushMatrix();
-        GL11.glTranslatef(81,65,80);
+        GL11.glTranslatef(81f,58.5f,80f);
         GL11.glRotatef(pitch, 1f, 0f, 0);
         GL11.glRotatef(yaw, 0f, 1f, 0);
         GL11.glScalef(-10f, -10f, -10f);
@@ -118,6 +125,11 @@ public class MultiBlockRecipeWrapper implements RecipeWrapper {
 
         GL11.glPopMatrix();
         GL11.glDisable(GL11.GL_BLEND);
+
+        leftButton.draw(minecraft, 0, 118);
+        leftButtonHover.draw(minecraft, 60, 0);
+        rightButton.draw(minecraft, 70, 0);
+        rightButtonHover.draw(minecraft, 80, 0);
     }
 
     @Override

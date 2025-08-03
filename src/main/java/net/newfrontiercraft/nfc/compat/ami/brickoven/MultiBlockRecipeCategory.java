@@ -54,8 +54,6 @@ public class MultiBlockRecipeCategory implements RecipeCategory {
 
     @Override
     public void drawExtras(Minecraft minecraft) {
-        //System.out.println(minecraft.currentScreen.height);
-
         int x = -28;
         int y = -33;
 
@@ -68,8 +66,6 @@ public class MultiBlockRecipeCategory implements RecipeCategory {
 
         int columns = (int) Math.ceil((double) cost.size() / (double)maxRows);
         int rows = Math.min(cost.size(), maxRows);
-
-        System.out.println(columns + " " + rows);
 
         int currentCostIndex = 0;
         int startY = y;
@@ -114,19 +110,6 @@ public class MultiBlockRecipeCategory implements RecipeCategory {
     @Override
     public void setRecipe(@NotNull RecipeLayout recipeLayout, @NotNull RecipeWrapper recipeWrapper) {
         this.cost = ((MultiBlockRecipeWrapper)recipeWrapper).getCost();
-
-        for(int i = 0; i < 10; i++){
-            cost.add(new ItemStack(Item.APPLE));
-        }
-
         this.itemStackGroup = recipeLayout.getItemStacks();
-//        int xOffset = 29;
-//        int yOffset = 8;
-//        for (int i = 0; i < ((MultiBlockRecipeWrapper)recipeWrapper).getCost().size(); i++) {
-//            guiItemStacks.init(i, true, xOffset + (i % 3) * 18, yOffset + (i / 3) * 18);
-//        }
-//        for (int i = 0; i < ((MultiBlockRecipeWrapper)recipeWrapper).getCost().size(); i++) {
-//            guiItemStacks.setFromRecipe(i, ((MultiBlockRecipeWrapper)recipeWrapper).getCost().get(i));
-//        }
     }
 }
