@@ -7,6 +7,7 @@ import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.render.Tessellator;
 import net.minecraft.client.render.block.BlockRenderManager;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.modificationstation.stationapi.api.block.BlockState;
 import net.newfrontiercraft.nfc.gui.InventoryBlockView;
@@ -26,7 +27,7 @@ public class MultiBlockRecipeWrapper implements RecipeWrapper {
     float pitch = 0f;
     float yaw = 0f;
     boolean mouseDown = false;
-    private float rotation = 12f;
+    int currentLayer = -1;
     private final MultiBlockRecipe recipe;
     public MultiBlockRecipeWrapper(MultiBlockRecipe recipe){
         this.recipe = recipe;
@@ -78,6 +79,10 @@ public class MultiBlockRecipeWrapper implements RecipeWrapper {
         }
     }
 
+    public List<ItemStack> getCost(){
+        return recipe.getCost();
+    }
+
 
 
 
@@ -126,7 +131,6 @@ public class MultiBlockRecipeWrapper implements RecipeWrapper {
             mouseDown = true;
         }
         System.out.println(i + " " + i1 + " " + i2);
-        rotation += 12f;
         return false;
     }
 }

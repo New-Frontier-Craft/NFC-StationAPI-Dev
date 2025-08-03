@@ -5,6 +5,7 @@ import net.modificationstation.stationapi.api.block.States;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 
@@ -23,6 +24,32 @@ public class MultiBlockRecipe {
 
     public List<String[]> getLayers(){
         return layers;
+    }
+
+    private int getPatternCount(char pattern){
+        int count = 0;
+        for(String[] layer : layers){
+            for(String section : layer){
+                for(char currentPattern : section.toCharArray()){
+                    if(currentPattern == pattern){
+                        count++;
+                    }
+                }
+            }
+        }
+        return count;
+    }
+
+    public List<ItemStack> getCost(){
+        List<ItemStack> cost = new ArrayList<>();
+        for(BlockPatternEntry entry : blockPatterns){
+            if(entry.item() == null) continue;
+            ItemStack stack = entry.item().copy();
+            stack.count = getPatternCount(entry.pattern());
+            cost.add(stack);
+        }
+        cost.sort((a, b) -> Integer.compare(b.count, a.count));
+        return cost;
     }
 
     @Nullable
