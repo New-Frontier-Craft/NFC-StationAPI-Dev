@@ -5,9 +5,7 @@ import net.modificationstation.stationapi.api.block.States;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
-import java.util.Map;
 
 public class MultiBlockRecipe {
     private final String name;

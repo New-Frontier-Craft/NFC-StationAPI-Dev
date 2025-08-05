@@ -12,11 +12,9 @@ import net.newfrontiercraft.nfc.registry.BlockPatternEntry;
 import net.newfrontiercraft.nfc.registry.CarpentryRecipes;
 import net.newfrontiercraft.nfc.registry.MultiBlockRecipeRegistry;
 import net.newfrontiercraft.nfc.utils.RecipeRemover;
-import paulevs.bnb.block.BNBBlocks;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class RecipeListener {
 
@@ -288,7 +286,7 @@ public class RecipeListener {
                     this.add("atilist pls add proper description");
                 }
             };
-            MultiBlockRecipeRegistry.INSTANCE.addMultiblockRecipe("Brick Oven", brickOvenDescription, brickOvenMultiBlockLayers, brickOvenMultiBlockPatterns);
+            MultiBlockRecipeRegistry.INSTANCE.addMultiblockRecipe("multiblock.nfc.brickoven", brickOvenDescription, brickOvenMultiBlockLayers, brickOvenMultiBlockPatterns);
         }
 
         // Stone carpentry

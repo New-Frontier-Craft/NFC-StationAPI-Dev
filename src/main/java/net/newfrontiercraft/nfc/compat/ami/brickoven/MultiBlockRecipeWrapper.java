@@ -10,7 +10,7 @@ import net.glasslauncher.mods.alwaysmoreitems.util.HoverChecker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.render.Tessellator;
 import net.minecraft.client.render.block.BlockRenderManager;
-import net.minecraft.client.util.ScreenScaler;
+import net.minecraft.client.resource.language.TranslationStorage;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.modificationstation.stationapi.api.block.BlockState;
@@ -28,22 +28,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MultiBlockRecipeWrapper implements RecipeWrapper {
-
-    private HoverChecker leftButtonHoverChecker;
-    private HoverChecker rightButtonHoverChecker;
     private final AMIDrawable leftButton = DrawableHelper.createDrawable("/assets/nfc/stationapi/gui/multiblock.png", 187, 0, 7, 11);
     private final AMIDrawable leftButtonHover = DrawableHelper.createDrawable("/assets/nfc/stationapi/gui/multiblock.png", 187, 11, 7, 11);
     private final AMIDrawable rightButton = DrawableHelper.createDrawable("/assets/nfc/stationapi/gui/multiblock.png", 194, 0, 7, 11);
     private final AMIDrawable rightButtonHover = DrawableHelper.createDrawable("/assets/nfc/stationapi/gui/multiblock.png", 194, 11, 7, 11);
 
+    private final MultiBlockRecipe recipe;
+
+    private HoverChecker leftButtonHoverChecker;
+    private HoverChecker rightButtonHoverChecker;
+    private int leftButtonX;
+
     float pitch = -45f;
     float yaw = -45f;
     float scale = -10f;
+
     boolean leftMouseDown = false;
     boolean rightMouseDown = false;
+
     int currentLayer = -1;
-    int leftButtonX;
-    private final MultiBlockRecipe recipe;
     public MultiBlockRecipeWrapper(MultiBlockRecipe recipe){
         this.recipe = recipe;
     }
@@ -138,30 +141,34 @@ public class MultiBlockRecipeWrapper implements RecipeWrapper {
                 recipeLayout = r;
             }
         }
-        if(recipeLayout != null){
-        }
 
         float xScale = (float) minecraft.displayWidth / recipesGui.width;
         float yScale = (float) minecraft.displayHeight / recipesGui.height;
 
         GL11.glEnable(GL11.GL_BLEND);
         GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+
         GL11.glPushMatrix();
+
         GL11.glTranslatef(81f,71f,180f);
         GL11.glRotatef(pitch, 1f, 0f, 0);
         GL11.glRotatef(yaw, 0f, 1f, 0);
         GL11.glScalef(scale, scale, scale);
+
         minecraft.textureManager.bindTexture(minecraft.textureManager.getTextureId("/terrain.png"));
+
         loadRecipeStructure(blockView, recipe);
 
         GL11.glScissor((int) ((recipeLayout.getPosX() + 1) * xScale), (int) (minecraft.displayHeight - ((recipeLayout.getPosY() + 128) * yScale)), (int)(160 * xScale), (int)(114 * yScale));
         GL11.glEnable(GL11.GL_SCISSOR_TEST);
 
-
         Tessellator tessellator = Tessellator.INSTANCE;
         tessellator.startQuads();
+
         tessellator.translate(-(recipe.getStructureWidth() / 2f), -(recipe.getStructureHeight() / 2f), -(recipe.getStructureDepth() / 2f));
+
         blockView.setVisibleLayer(currentLayer);
+
         List<BlockPos> blockPositions = blockView.getBlockPositions();
         for(int renderLayer = 0; renderLayer < 2; renderLayer++){
             for(BlockPos blockPos : blockPositions){
@@ -173,19 +180,23 @@ public class MultiBlockRecipeWrapper implements RecipeWrapper {
                 }
             }
         }
+
         tessellator.draw();
         tessellator.translate(0.0, 0.0, 0.0);
 
         GL11.glPopMatrix();
+
         GL11.glDisable(GL11.GL_BLEND);
         GL11.glDisable(GL11.GL_SCISSOR_TEST);
+
         String layerText = "Layer: " + getLayerString(currentLayer);
 
         leftButtonX = 161 - 6 - 2 - minecraft.textRenderer.getWidth(layerText) - 7 - 2;
         leftButtonHoverChecker = new HoverChecker(1, 11, leftButtonX, leftButtonX + 6);
         rightButtonHoverChecker = new HoverChecker(1, 11, 161 - 6, 161);
+
         minecraft.textRenderer.drawWithShadow(layerText, 161 - 6 - 2 - minecraft.textRenderer.getWidth(layerText), 3, 0xFFFFFF);
-        minecraft.textRenderer.drawWithShadow(recipe.getName(), 0, 3, 0xFFFFFF);
+        minecraft.textRenderer.drawWithShadow(TranslationStorage.getInstance().get(recipe.getName()), 0, 3, 0xFFFFFF);
     }
 
     @Override
@@ -205,8 +216,6 @@ public class MultiBlockRecipeWrapper implements RecipeWrapper {
             rightMouseDown = true;
         }
 
-        System.out.println(i + " " + i1 + " " + i2);
-
         if(leftButtonHoverChecker.isOver(i, i1)){
             currentLayer--;
             if(currentLayer < -1){
@@ -219,11 +228,6 @@ public class MultiBlockRecipeWrapper implements RecipeWrapper {
                 currentLayer = -1;
             }
         }
-
-//        int mouseX = Mouse.getX() * screenScaler.getScaledWidth() / minecraft.displayWidth;
-//        int mouseY = screenScaler.getScaledHeight() - Mouse.getY() * screenScaler.getScaledHeight() / minecraft.displayHeight - 1;
-
-//        System.out.println(mouseX + " : " + mouseY);
         return false;
     }
 }
