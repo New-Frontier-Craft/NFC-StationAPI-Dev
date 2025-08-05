@@ -132,39 +132,20 @@ public class MultiBlockRecipeWrapper implements RecipeWrapper {
         if(recipeLayout != null){
         }
 
-        //this.guiLeft = (this.width - this.xSize) / 2;
-        int top = (recipesGui.height - recipesGui.getYSize()) / 2;
-
-
-
-        recipesGui.getXSize();
-
         float xScale = (float) minecraft.displayWidth / recipesGui.width;
         float yScale = (float) minecraft.displayHeight / recipesGui.height;
-        int temp = recipesGui.height;
-        ScreenScaler screenScaler = new ScreenScaler(minecraft.options, minecraft.displayWidth, minecraft.displayHeight);
-        if(recipeLayout != null){
-            minecraft.textRenderer.drawWithShadow(String.valueOf(recipeLayout.getPosY()), 10, 50, 0xFFFFFF);
-        }
-
 
         GL11.glEnable(GL11.GL_BLEND);
         GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
         GL11.glPushMatrix();
-        GL11.glTranslatef(81f,58.5f,80f);
+        GL11.glTranslatef(81f,58.5f,180f);
         GL11.glRotatef(pitch, 1f, 0f, 0);
         GL11.glRotatef(yaw, 0f, 1f, 0);
         GL11.glScalef(scale, scale, scale);
         minecraft.textureManager.bindTexture(minecraft.textureManager.getTextureId("/terrain.png"));
         loadRecipeStructure(blockView, recipe);
 
-        int scissorYOffset = 30;
-        if(minecraft.currentScreen.height > 300){
-            scissorYOffset = 60;
-        }
-
-
-        GL11.glScissor((int) ((int) (minecraft.displayWidth * 0.5) - ((162 * xScale) / 2)), (int) (minecraft.displayHeight - ((recipeLayout.getPosY() + 130) * yScale)), (int)(162 * xScale), (int)(130 * yScale));
+        GL11.glScissor((int) ((recipeLayout.getPosX() + 1) * xScale), (int) (minecraft.displayHeight - ((recipeLayout.getPosY() + 116) * yScale)), (int)(160 * xScale), (int)(115 * yScale));
         GL11.glEnable(GL11.GL_SCISSOR_TEST);
 
 
