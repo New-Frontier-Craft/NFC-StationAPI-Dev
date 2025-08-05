@@ -41,6 +41,7 @@ public class MultiBlockRecipeWrapper implements RecipeWrapper {
     boolean leftMouseDown = false;
     boolean rightMouseDown = false;
     int currentLayer = -1;
+    int leftButtonX;
     private final MultiBlockRecipe recipe;
     public MultiBlockRecipeWrapper(MultiBlockRecipe recipe){
         this.recipe = recipe;
@@ -100,10 +101,17 @@ public class MultiBlockRecipeWrapper implements RecipeWrapper {
         }
 
         if(leftButtonHoverChecker.isOver(mouseX, mouseY)){
-            leftButtonHover.draw(minecraft, 0, 118);
+            leftButtonHover.draw(minecraft, leftButtonX, 0);
         }
         else {
-            leftButton.draw(minecraft, 0, 118);
+            leftButton.draw(minecraft, leftButtonX, 0);
+        }
+
+        if(rightButtonHoverChecker.isOver(mouseX, mouseY)){
+            rightButtonHover.draw(minecraft, 162 - 7, 0);
+        }
+        else {
+            rightButton.draw(minecraft, 162 - 7, 0);
         }
     }
 
@@ -138,14 +146,14 @@ public class MultiBlockRecipeWrapper implements RecipeWrapper {
         GL11.glEnable(GL11.GL_BLEND);
         GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
         GL11.glPushMatrix();
-        GL11.glTranslatef(81f,58.5f,180f);
+        GL11.glTranslatef(81f,71.5f,180f);
         GL11.glRotatef(pitch, 1f, 0f, 0);
         GL11.glRotatef(yaw, 0f, 1f, 0);
         GL11.glScalef(scale, scale, scale);
         minecraft.textureManager.bindTexture(minecraft.textureManager.getTextureId("/terrain.png"));
         loadRecipeStructure(blockView, recipe);
 
-        GL11.glScissor((int) ((recipeLayout.getPosX() + 1) * xScale), (int) (minecraft.displayHeight - ((recipeLayout.getPosY() + 116) * yScale)), (int)(160 * xScale), (int)(115 * yScale));
+        GL11.glScissor((int) ((recipeLayout.getPosX() + 1) * xScale), (int) (minecraft.displayHeight - ((recipeLayout.getPosY() + 129) * yScale)), (int)(160 * xScale), (int)(115 * yScale));
         GL11.glEnable(GL11.GL_SCISSOR_TEST);
 
 
@@ -170,12 +178,13 @@ public class MultiBlockRecipeWrapper implements RecipeWrapper {
         GL11.glPopMatrix();
         GL11.glDisable(GL11.GL_BLEND);
         GL11.glDisable(GL11.GL_SCISSOR_TEST);
-        leftButtonHoverChecker = new HoverChecker(118, 128, 0, 6);
         String layerText = "Layer: " + getLayerString(currentLayer);
-        minecraft.textRenderer.drawWithShadow(layerText, 10, 120, 0xFFFFFF);
-        int rightButtonXOffset = 13 + minecraft.textRenderer.getWidth(layerText);
-        rightButton.draw(minecraft, rightButtonXOffset, 118);
-        rightButtonHoverChecker = new HoverChecker(118, 128, rightButtonXOffset, rightButtonXOffset + 6);
+
+        leftButtonX = 161 - 6 - 2 - minecraft.textRenderer.getWidth(layerText) - 7 - 2;
+        leftButtonHoverChecker = new HoverChecker(0, 10, leftButtonX, leftButtonX + 6);
+        rightButtonHoverChecker = new HoverChecker(0, 10, 161 - 6, 161);
+        minecraft.textRenderer.drawWithShadow(layerText, 161 - 6 - 2 - minecraft.textRenderer.getWidth(layerText), 2, 0xFFFFFF);
+        minecraft.textRenderer.drawWithShadow("Multiblock name", 0, 2, 0xFFFFFF);
     }
 
     @Override
