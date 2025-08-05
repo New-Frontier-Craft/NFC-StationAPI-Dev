@@ -14,6 +14,7 @@ import net.newfrontiercraft.nfc.registry.MultiBlockRecipeRegistry;
 import net.newfrontiercraft.nfc.utils.RecipeRemover;
 import paulevs.bnb.block.BNBBlocks;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -571,9 +572,32 @@ public class RecipeListener {
                 new BlockPatternEntry('g', Block.GLASS.getDefaultState(), 0, new ItemStack(Block.GLASS.asItem()))
         );
 
+        List<Object> description1 = new ArrayList<>() {
+            {
+                this.add("Diamond block");
+                this.add("Hollow diamond block or something");
+            }
+        };
+
+        List<Object> description2 = new ArrayList<>() {
+            {
+                this.add("L");
+                this.add("wool with metadata pagman, also has a json model");
+            }
+        };
+
+        List<Object> description3 = new ArrayList<>() {
+            {
+                this.add("Render layer something");
+                this.add("transparency blablabla");
+                this.add("");
+                this.add("blablabla");
+            }
+        };
+
         // TODO: fix recipes being registered 3 times;
-        MultiBlockRecipeRegistry.INSTANCE.addMultiblockRecipe(multiblockLayers, multiblockPatterns);
-        MultiBlockRecipeRegistry.INSTANCE.addMultiblockRecipe(testMultiblockLayers, testMultiblockPatterns);
-        MultiBlockRecipeRegistry.INSTANCE.addMultiblockRecipe(renderlayerTestLayers, renderlayerTestPatterns);
+        MultiBlockRecipeRegistry.INSTANCE.addMultiblockRecipe("Diamond Block", description1, multiblockLayers, multiblockPatterns);
+        MultiBlockRecipeRegistry.INSTANCE.addMultiblockRecipe("JSON Model Test", description2, testMultiblockLayers, testMultiblockPatterns);
+        MultiBlockRecipeRegistry.INSTANCE.addMultiblockRecipe("Transparency Test", description3, renderlayerTestLayers, renderlayerTestPatterns);
     }
 }

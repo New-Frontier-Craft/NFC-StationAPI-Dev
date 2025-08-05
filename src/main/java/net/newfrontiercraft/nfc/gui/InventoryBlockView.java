@@ -15,9 +15,9 @@ import java.util.List;
 import java.util.Map;
 
 public class InventoryBlockView implements BlockView, StationFlatteningWorld {
-    private Map<BlockPos, BlockState> blockStates;
-    private Map<BlockPos, Integer> metas;
-    private World world;
+    private final Map<BlockPos, BlockState> blockStates;
+    private final Map<BlockPos, Integer> metas;
+    private final World world;
 
     private int visibleLayer = -1;
 

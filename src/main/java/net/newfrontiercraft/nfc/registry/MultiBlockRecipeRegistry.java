@@ -15,7 +15,7 @@ public class MultiBlockRecipeRegistry {
         return recipes;
     }
 
-    public void addMultiblockRecipe(List<String[]> layers, List<BlockPatternEntry> blockPatterns){
-        recipes.add(new MultiBlockRecipe(layers, blockPatterns));
+    public void addMultiblockRecipe(String name, List<Object> description, List<String[]> layers, List<BlockPatternEntry> blockPatterns){
+        recipes.add(new MultiBlockRecipe(name, description, layers, blockPatterns));
     }
 }

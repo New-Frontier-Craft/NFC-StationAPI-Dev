@@ -6,21 +6,9 @@ import net.glasslauncher.mods.alwaysmoreitems.api.gui.RecipeLayout;
 import net.glasslauncher.mods.alwaysmoreitems.api.recipe.RecipeCategory;
 import net.glasslauncher.mods.alwaysmoreitems.api.recipe.RecipeWrapper;
 import net.glasslauncher.mods.alwaysmoreitems.gui.DrawableHelper;
-import net.minecraft.block.Block;
-import net.minecraft.client.render.Tessellator;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.world.BlockView;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.render.block.BlockRenderManager;
-import net.newfrontiercraft.nfc.gui.InventoryBlockView;
-import net.newfrontiercraft.nfc.gui.InventoryDimension;
-import net.newfrontiercraft.nfc.gui.InventoryWorld;
-import net.newfrontiercraft.nfc.mixin.graphics.WorldRendererAccessor;
-import net.newfrontiercraft.nfc.registry.MultiBlockRecipe;
 import org.jetbrains.annotations.NotNull;
-import org.lwjgl.opengl.GL11;
-import org.lwjgl.util.glu.GLU;
 
 import java.util.List;
 

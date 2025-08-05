@@ -10,16 +10,28 @@ import java.util.List;
 import java.util.Map;
 
 public class MultiBlockRecipe {
+    private final String name;
+    private final List<Object> description;
     private final List<String[]> layers;
     private final List<BlockPatternEntry> blockPatterns;
 
-    public MultiBlockRecipe(List<String[]> layers, List<BlockPatternEntry> blockPatterns){
+    public MultiBlockRecipe(String name, List<Object> description, List<String[]> layers, List<BlockPatternEntry> blockPatterns){
+        this.name = name;
+        this.description = description;
         this.layers = layers;
         this.blockPatterns = blockPatterns;
     }
 
     public List<BlockPatternEntry> getBlockPatterns() {
         return blockPatterns;
+    }
+
+    public String getName(){
+        return this.name;
+    }
+
+    public List<Object> getDescription(){
+        return this.description;
     }
 
     public List<String[]> getLayers(){
