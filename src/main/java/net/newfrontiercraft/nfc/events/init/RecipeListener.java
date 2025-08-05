@@ -8,8 +8,13 @@ import net.modificationstation.stationapi.api.event.recipe.RecipeRegisterEvent;
 import net.modificationstation.stationapi.api.recipe.CraftingRegistry;
 import net.modificationstation.stationapi.api.registry.BlockRegistry;
 import net.modificationstation.stationapi.api.util.Identifier;
+import net.newfrontiercraft.nfc.registry.BlockPatternEntry;
 import net.newfrontiercraft.nfc.registry.CarpentryRecipes;
+import net.newfrontiercraft.nfc.registry.MultiBlockRecipeRegistry;
 import net.newfrontiercraft.nfc.utils.RecipeRemover;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class RecipeListener {
 
@@ -18,6 +23,9 @@ public class RecipeListener {
 
         Identifier type = event.recipeId;
         if (type == RecipeRegisterEvent.Vanilla.CRAFTING_SHAPED.type()) {
+
+
+
             // Recipe removal
             RecipeRemover.removeRecipe(Block.RAIL);
             RecipeRemover.removeRecipe(Block.POWERED_RAIL);
@@ -260,6 +268,25 @@ public class RecipeListener {
 
             // Planter
             CraftingRegistry.addShapelessRecipe(new ItemStack(BlockListener.planter, 1, 1), new ItemStack(BlockListener.planter, 1, 0), new ItemStack(Block.DIRT));
+
+            // Brick Oven MultiBlock
+            List<String[]> brickOvenMultiBlockLayers = List.of(
+                    new String[]{"xyx", "xcx", "xxx"},
+                    new String[]{"xxx", "x x", "xxx"},
+                    new String[]{"xxx", "xxx", "xxx"}
+            );
+            List<BlockPatternEntry> brickOvenMultiBlockPatterns = List.of(
+                    new BlockPatternEntry('x', BlockListener.firedBricks.getDefaultState(), 0, new ItemStack(BlockListener.firedBricks.asItem())),
+                    new BlockPatternEntry('y', BlockListener.brickOven.getDefaultState(), 2, new ItemStack(BlockListener.brickOven.asItem())),
+                    new BlockPatternEntry('c', BlockListener.heatCoil.getDefaultState(), 0, new ItemStack(BlockListener.heatCoil.asItem()))
+            );
+            List<Object> brickOvenDescription = new ArrayList<>() {
+                {
+                    this.add("Brick Oven");
+                    this.add("atilist pls add proper description");
+                }
+            };
+            MultiBlockRecipeRegistry.INSTANCE.addMultiblockRecipe("multiblock.nfc.brickoven", brickOvenDescription, brickOvenMultiBlockLayers, brickOvenMultiBlockPatterns);
         }
 
         // Stone carpentry
