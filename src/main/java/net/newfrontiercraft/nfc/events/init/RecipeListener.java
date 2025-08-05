@@ -270,6 +270,25 @@ public class RecipeListener {
 
             // Planter
             CraftingRegistry.addShapelessRecipe(new ItemStack(BlockListener.planter, 1, 1), new ItemStack(BlockListener.planter, 1, 0), new ItemStack(Block.DIRT));
+
+            // Brick Oven MultiBlock
+            List<String[]> brickOvenMultiBlockLayers = List.of(
+                    new String[]{"xyx", "xcx", "xxx"},
+                    new String[]{"xxx", "x x", "xxx"},
+                    new String[]{"xxx", "xxx", "xxx"}
+            );
+            List<BlockPatternEntry> brickOvenMultiBlockPatterns = List.of(
+                    new BlockPatternEntry('x', BlockListener.firedBricks.getDefaultState(), 0, new ItemStack(BlockListener.firedBricks.asItem())),
+                    new BlockPatternEntry('y', BlockListener.brickOven.getDefaultState(), 2, new ItemStack(BlockListener.brickOven.asItem())),
+                    new BlockPatternEntry('c', BlockListener.heatCoil.getDefaultState(), 0, new ItemStack(BlockListener.heatCoil.asItem()))
+            );
+            List<Object> brickOvenDescription = new ArrayList<>() {
+                {
+                    this.add("Brick Oven");
+                    this.add("atilist pls add proper description");
+                }
+            };
+            MultiBlockRecipeRegistry.INSTANCE.addMultiblockRecipe("Brick Oven", brickOvenDescription, brickOvenMultiBlockLayers, brickOvenMultiBlockPatterns);
         }
 
         // Stone carpentry
@@ -536,68 +555,5 @@ public class RecipeListener {
                 new ItemStack(BlockListener.netherStoneBricksLarge),
                 new ItemStack(BlockListener.netherStoneCheckers),
                 new ItemStack(BlockListener.netherStoneTiling)});
-
-        List<String[]> multiblockLayers = List.of(
-                new String[]{"xxx", "xxx", "xxx"},
-                new String[]{"yxy", "x x", "yxy"},
-                new String[]{"xxx", "xxx", "xxx"}
-        );
-
-        List<BlockPatternEntry> multiblockPatterns = List.of(
-                new BlockPatternEntry('x', Block.DIAMOND_BLOCK.getDefaultState(), 0, new ItemStack(Block.DIAMOND_BLOCK.asItem())),
-                new BlockPatternEntry('y', Block.COBBLESTONE.getDefaultState(), 0, new ItemStack(Block.COBBLESTONE.asItem()))
-        );
-
-        List<String[]> testMultiblockLayers = List.of(
-                new String[]{"xxxx"},
-                new String[]{"   x"},
-                new String[]{"   x"},
-                new String[]{"   y"}
-        );
-
-        List<BlockPatternEntry> testMultiblockPatterns = List.of(
-                new BlockPatternEntry('x', Block.WOOL.getDefaultState(), 4, new ItemStack(Block.WOOL.asItem())),
-                new BlockPatternEntry('y', BNBBlocks.SPINNING_WHEEL.getDefaultState(), 0, new ItemStack(BNBBlocks.SPINNING_WHEEL.asItem()))
-        );
-
-        List<String[]> renderlayerTestLayers = List.of(
-                new String[]{"xxx", "xxx", "xxx"},
-                new String[]{"   ", "www", "ggg"},
-                new String[]{"   ", "   ", "ggg"}
-        );
-
-        List<BlockPatternEntry> renderlayerTestPatterns = List.of(
-                new BlockPatternEntry('x', Block.GRASS_BLOCK.getDefaultState(), 0, new ItemStack(Block.GRASS_BLOCK.asItem())),
-                new BlockPatternEntry('w', Block.WATER.getDefaultState(), 0, new ItemStack(Item.WATER_BUCKET)),
-                new BlockPatternEntry('g', Block.GLASS.getDefaultState(), 0, new ItemStack(Block.GLASS.asItem()))
-        );
-
-        List<Object> description1 = new ArrayList<>() {
-            {
-                this.add("Diamond block");
-                this.add("Hollow diamond block or something");
-            }
-        };
-
-        List<Object> description2 = new ArrayList<>() {
-            {
-                this.add("L");
-                this.add("wool with metadata pagman, also has a json model");
-            }
-        };
-
-        List<Object> description3 = new ArrayList<>() {
-            {
-                this.add("Render layer something");
-                this.add("transparency blablabla");
-                this.add("");
-                this.add("blablabla");
-            }
-        };
-
-        // TODO: fix recipes being registered 3 times;
-        MultiBlockRecipeRegistry.INSTANCE.addMultiblockRecipe("Diamond Block", description1, multiblockLayers, multiblockPatterns);
-        MultiBlockRecipeRegistry.INSTANCE.addMultiblockRecipe("JSON Model Test", description2, testMultiblockLayers, testMultiblockPatterns);
-        MultiBlockRecipeRegistry.INSTANCE.addMultiblockRecipe("Transparency Test", description3, renderlayerTestLayers, renderlayerTestPatterns);
     }
 }
