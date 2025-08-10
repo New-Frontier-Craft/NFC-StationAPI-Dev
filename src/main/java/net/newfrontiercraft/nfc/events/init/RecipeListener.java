@@ -283,7 +283,12 @@ public class RecipeListener {
             List<Object> brickOvenDescription = new ArrayList<>() {
                 {
                     this.add("Brick Oven");
-                    this.add("atilist pls add proper description");
+                    this.add("Smelts items 8 times faster");
+                    this.add("while consuming 4 times more fuel per tick,");
+                    this.add("making it twice as fuel efficient.");
+                    this.add("Requires heating from the heat coil below.");
+                    this.add("Can be filled and emptied");
+                    this.add("by adding chutes above and below.");
                 }
             };
             MultiBlockRecipeRegistry.INSTANCE.addMultiblockRecipe("multiblock.nfc.brickoven", brickOvenDescription, brickOvenMultiBlockLayers, brickOvenMultiBlockPatterns);
