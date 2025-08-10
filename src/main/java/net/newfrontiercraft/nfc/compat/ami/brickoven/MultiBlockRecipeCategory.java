@@ -24,6 +24,8 @@ public class MultiBlockRecipeCategory implements RecipeCategory {
 
     GuiItemStackGroup itemStackGroup;
     List<ItemStack> cost;
+    int descriptionFade;
+    int descriptionFadeTick;
 
     @Override
     public @NotNull String getUid() {
@@ -88,6 +90,35 @@ public class MultiBlockRecipeCategory implements RecipeCategory {
             }
             x -= 18;
         }
+        int colour = switch (descriptionFade) {
+            case 0:
+                yield 0x0B0B0B;
+            case 1:
+                yield 0x1B1B1B;
+            case 2:
+                yield 0x2B2B2B;
+            case 3:
+                yield 0x3B3B3B;
+            case 4:
+                yield 0x4B4B4B;
+            case 5:
+                yield 0x5B5B5B;
+            case 6:
+                yield 0x6B6B6B;
+            case 7:
+                yield 0x7B7B7B;
+            case 8:
+                yield 0x8B8B8B;
+            default:
+                yield 0;
+        };
+        minecraft.textRenderer.draw("Hold shift for description!", 2, 118, colour);
+        if (descriptionFadeTick >= 20) {
+            descriptionFadeTick = 0;
+            descriptionFade++;
+        } else if (descriptionFade < 8) {
+            descriptionFadeTick++;
+        }
     }
 
     @Override
@@ -99,5 +130,7 @@ public class MultiBlockRecipeCategory implements RecipeCategory {
     public void setRecipe(@NotNull RecipeLayout recipeLayout, @NotNull RecipeWrapper recipeWrapper) {
         this.cost = ((MultiBlockRecipeWrapper)recipeWrapper).getCost();
         this.itemStackGroup = recipeLayout.getItemStacks();
+        descriptionFadeTick = 0;
+        descriptionFade = 0;
     }
 }
