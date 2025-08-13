@@ -80,7 +80,9 @@ public class StairPlacer {
     protected void placeBlock(World world, int x, int y, int z, BlockState blockState, ItemStack stack, int meta){
         Block block = blockState.getBlock();
         world.playSound(x + 0.5F, y + 0.5F, z + 0.5F, block.soundGroup.getSound(), (block.soundGroup.getVolume() + 1.0F) / 2.0F, block.soundGroup.getPitch() * 0.8F);
-        world.setBlockStateWithMetadataWithNotify(x, y, z, blockState, meta);
+        if (!world.isRemote) {
+            world.setBlockStateWithMetadataWithNotify(x, y, z, blockState, meta);
+        }
         stack.count--;
     }
 
