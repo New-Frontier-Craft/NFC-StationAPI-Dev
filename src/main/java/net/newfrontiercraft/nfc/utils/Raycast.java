@@ -6,10 +6,10 @@ import net.minecraft.util.math.Vec3d;
 
 public class Raycast {
     public static HitResult raycast(LivingEntity origin, double distance, float tickDelta) {
-        Vec3d var4 = getPosition(origin, tickDelta);
-        Vec3d var5 = origin.getLookVector(tickDelta);
-        Vec3d var6 = var4.add(var5.x * distance, var5.y * distance, var5.z * distance);
-        return origin.world.raycast(var4, var6);
+        Vec3d position = getPosition(origin, tickDelta);
+        Vec3d lookVector = origin.getLookVector(tickDelta);
+        Vec3d target = position.add(lookVector.x * distance, lookVector.y * distance, lookVector.z * distance);
+        return origin.world.raycast(position, target);
     }
 
     public static Vec3d getPosition(LivingEntity origin, float tickDelta) {
