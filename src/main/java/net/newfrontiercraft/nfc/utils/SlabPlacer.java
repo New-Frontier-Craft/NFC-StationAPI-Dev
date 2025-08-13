@@ -85,7 +85,11 @@ public class SlabPlacer {
     }
 
     protected boolean attemptSlabPlace(World world, int x, int y, int z, PlayerEntity user, ItemStack stack, int side){
-        HitResult hitResult = Raycast.raycast(user, 5, 0);
+        int rotation = MathHelper.floor((double)(user.yaw * 4.0F / 360.0F) + 0.5) & 3;
+        Vec3d lookVector = user.getLookVector(0);
+        Vec3d previousPlayerLocation = Vec3d.create(user.prevX, user.prevY, user.prevZ);
+        HitResult hitResult = Raycast.raycast(user, 5, lookVector, previousPlayerLocation);
+
         Vec3d hitOffset;
         if(hitResult == null){
             hitOffset = Vec3d.create(0, 0, 0);
@@ -101,7 +105,7 @@ public class SlabPlacer {
         boolean canPlace;
 
         if(user.isSneaking()){
-            int slabRotation = getVerticalSlabRotation(user, hitOffset, side);
+            int slabRotation = getVerticalSlabRotation(hitOffset, side, rotation);
             canPlace = this.placeBlock(world, x, y, z, getSlabBlockStateFromSlabRotation(slabRotation), stack, stack.getDamage(), false);
         }
         else {
@@ -119,8 +123,7 @@ public class SlabPlacer {
         return slabBlockItem.getBlock().getDefaultState().with(LazySlabTemplate.ROTATIONS, rotation);
     }
 
-    protected int getVerticalSlabRotation(PlayerEntity user, Vec3d hitOffset, int side){
-        int rotation = MathHelper.floor((double)(user.yaw * 4.0F / 360.0F) + 0.5) & 3;
+    protected int getVerticalSlabRotation(Vec3d hitOffset, int side, int rotation){
         int slabRotation = 0;
 
         switch (rotation){

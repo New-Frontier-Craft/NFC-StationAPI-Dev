@@ -31,8 +31,9 @@ public class StairPlacer {
     }
 
     protected void placeStair(World world, int x, int y, int z, PlayerEntity user, ItemStack stack, int side){
-
-        HitResult hitResult = Raycast.raycast(user, 5, 0);
+        Vec3d lookVector = user.getLookVector(0);
+        Vec3d previousPlayerLocation = Vec3d.create(user.prevX, user.prevY, user.prevZ);
+        HitResult hitResult = Raycast.raycast(user, 5, lookVector, previousPlayerLocation);
         Vec3d hitOffset;
         if(hitResult == null){
             hitOffset = Vec3d.create(0, 0, 0);
