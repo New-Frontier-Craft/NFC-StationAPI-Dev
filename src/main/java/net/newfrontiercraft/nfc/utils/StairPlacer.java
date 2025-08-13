@@ -31,9 +31,11 @@ public class StairPlacer {
     }
 
     protected void placeStair(World world, int x, int y, int z, PlayerEntity user, ItemStack stack, int side){
+        double yaw = user.yaw;
         Vec3d lookVector = user.getLookVector(0);
         Vec3d previousPlayerLocation = Vec3d.create(user.prevX, user.prevY, user.prevZ);
         HitResult hitResult = Raycast.raycast(user, 5, lookVector, previousPlayerLocation);
+
         Vec3d hitOffset;
         if(hitResult == null){
             hitOffset = Vec3d.create(0, 0, 0);
@@ -48,17 +50,17 @@ public class StairPlacer {
 
         int rotation;
         if(user.isSneaking()) {
-            rotation = getVerticalStairRotation(user, hitOffset, side);
+            rotation = getVerticalStairRotation(yaw);
         }
         else {
-            rotation = getStairRotation(user, hitOffset, side);
+            rotation = getStairRotation(yaw, hitOffset, side);
         }
         BlockState stairBlockState = getStairBlockStateFromStairRotation(rotation);
         this.placeBlock(world, x, y, z, stairBlockState, stack, this.usesMetaForRotation() ? getStairMetadataFromStairRotation(rotation, stack.getDamage()) : stack.getDamage());
     }
 
-    protected int getStairRotation(PlayerEntity user, Vec3d hitOffset, int side){
-        int rotation = MathHelper.floor((double)(user.yaw * 4.0F / 360.0F) + 0.5) & 3;
+    protected int getStairRotation(double yaw, Vec3d hitOffset, int side){
+        int rotation = MathHelper.floor((yaw * 4.0F / 360.0F) + 0.5) & 3;
 
         int offset = 0;
         if(side > 1 && hitOffset.y > 0.5F){
@@ -87,8 +89,8 @@ public class StairPlacer {
         stack.count--;
     }
 
-    protected int getVerticalStairRotation(PlayerEntity user, Vec3d hitOffset, int side){
-        int rotation = MathHelper.floor((double)((user.yaw + 45.0F) * 4.0F / 360.0F) + 0.5) & 3;
+    protected int getVerticalStairRotation(double yaw){
+        int rotation = MathHelper.floor(((yaw + 45.0F) * 4.0F / 360.0F) + 0.5) & 3;
 
         return rotation + 8;
     }
