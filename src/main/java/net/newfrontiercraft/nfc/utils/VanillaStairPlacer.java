@@ -7,7 +7,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.modificationstation.stationapi.api.block.BlockState;
 import net.newfrontiercraft.nfc.block.LazyStairsTemplate;
+import net.newfrontiercraft.nfc.compat.vbe.VBEBlockIdGetter;
 import net.newfrontiercraft.nfc.events.init.BlockListener;
+import paulevs.vbe.block.VBEBlocks;
 
 public class VanillaStairPlacer extends StairPlacer{
     public static VanillaStairPlacer INSTANCE = new VanillaStairPlacer((BlockItem)BlockListener.stoneVanillaStairs.asItem());
@@ -30,6 +32,9 @@ public class VanillaStairPlacer extends StairPlacer{
         BlockState stairBlockState;
         if(rotation < 4){
             stairBlockState = isStone ? Block.COBBLESTONE_STAIRS.getDefaultState() : Block.WOODEN_STAIRS.getDefaultState();
+            if(BlockListener.isVbePresent){
+                return VBEBlockIdGetter.getRotatedVBEStair(stairBlockState, rotation);
+            }
         }
         else{
             stairBlockState = isStone ?

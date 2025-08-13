@@ -1,5 +1,7 @@
 package net.newfrontiercraft.nfc.utils;
 
+import net.fabricmc.api.EnvType;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BlockItem;
@@ -11,9 +13,11 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.modificationstation.stationapi.api.block.BlockState;
+import net.modificationstation.stationapi.api.network.packet.PacketHelper;
 import net.modificationstation.stationapi.api.util.math.Direction;
 import net.modificationstation.stationapi.api.util.math.StationBlockPos;
 import net.newfrontiercraft.nfc.block.LazySlabTemplate;
+import net.newfrontiercraft.nfc.packet.c2s.BlockPlacementPacket;
 
 public class SlabPlacer {
     public BlockItem slabBlockItem;
@@ -23,6 +27,9 @@ public class SlabPlacer {
     }
 
     public boolean useOnBlock(ItemStack stack, PlayerEntity user, World world, int x, int y, int z, int side) {
+        if(FabricLoader.getInstance().getEnvironmentType() == EnvType.SERVER){
+            return true;
+        }
         StationBlockPos blockOffset = new BlockPos(x, y, z);
         blockOffset = blockOffset.offset(Direction.byId(side));
 
@@ -48,8 +55,7 @@ public class SlabPlacer {
             if(!skipPlacementCheck){
                 canPlace = checkIfSlabCanMergeFromSide(currentBlockState, side);
             }
-            return (canPlace || skipPlacementCheck) &&
-                    (world.isRemote || this.placeBlock(world, x, y, z, fullBlockState, stack, getFullBlockMeta(currentBlockState, meta), true));
+            return (canPlace || skipPlacementCheck) && this.placeBlock(world, x, y, z, fullBlockState, stack, getFullBlockMeta(currentBlockState, meta), true);
         }
         return false;
     }
@@ -173,6 +179,9 @@ public class SlabPlacer {
             world.playSound(x + 0.5F, y + 0.5F, z + 0.5F, block.soundGroup.getSound(), (block.soundGroup.getVolume() + 1.0F) / 2.0F, block.soundGroup.getPitch() * 0.8F);
             if (!world.isRemote) {
                 world.setBlockStateWithMetadataWithNotify(x, y, z, blockState, meta);
+            }
+            else {
+                PacketHelper.send(new BlockPlacementPacket(x, y, z, blockState, meta));
             }
             stack.count--;
             return true;
