@@ -48,9 +48,8 @@ public class SlabPlacer {
             if(!skipPlacementCheck){
                 canPlace = checkIfSlabCanMergeFromSide(currentBlockState, side);
             }
-            if((canPlace || skipPlacementCheck) && this.placeBlock(world, x, y, z, fullBlockState, stack, getFullBlockMeta(currentBlockState, meta), true)){
-                return true;
-            }
+            return (canPlace || skipPlacementCheck) &&
+                    (world.isRemote || this.placeBlock(world, x, y, z, fullBlockState, stack, getFullBlockMeta(currentBlockState, meta), true));
         }
         return false;
     }
