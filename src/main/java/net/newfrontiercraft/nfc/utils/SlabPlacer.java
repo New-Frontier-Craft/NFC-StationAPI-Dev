@@ -169,7 +169,9 @@ public class SlabPlacer {
         Block block = blockState.getBlock();
         if(this.canPlace(world, block.id, x, y, z, ignoreExistingBlock)){
             world.playSound(x + 0.5F, y + 0.5F, z + 0.5F, block.soundGroup.getSound(), (block.soundGroup.getVolume() + 1.0F) / 2.0F, block.soundGroup.getPitch() * 0.8F);
-            world.setBlockStateWithMetadataWithNotify(x, y, z, blockState, meta);
+            if (!world.isRemote) {
+                world.setBlockStateWithMetadataWithNotify(x, y, z, blockState, meta);
+            }
             stack.count--;
             return true;
         }
