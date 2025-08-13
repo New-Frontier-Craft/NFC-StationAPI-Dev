@@ -196,6 +196,7 @@ public class BrickOvenBlockEntity extends BlockEntity implements Inventory, Heat
     }
 
     private boolean checkMultiBlockStructure() {
+        // Handle duplicate block entities
         if (scheduledForRemoval) {
             return false;
         }
@@ -204,6 +205,7 @@ public class BrickOvenBlockEntity extends BlockEntity implements Inventory, Heat
             scheduledForRemoval = true;
             return false;
         }
+        // Calculate central coordinates
         int meta = world.getBlockMeta(x, y, z) % 6;
         int xCentered = x;
         int zCentered = z;
@@ -221,6 +223,7 @@ public class BrickOvenBlockEntity extends BlockEntity implements Inventory, Heat
                 xCentered--;
                 break;
         }
+        // Check structural integrity
         if (world.getBlockId(xCentered, y, zCentered) != 0) {
             return false;
         }
@@ -240,6 +243,7 @@ public class BrickOvenBlockEntity extends BlockEntity implements Inventory, Heat
         if (brickCount != 24) {
             return false;
         }
+        // Extract heat
         HeatCoilBlockEntity heatSource = (HeatCoilBlockEntity) world.getBlockEntity(xCentered, y - 1, zCentered);
         int heatSourceValue = heatSource.getHeatLevel();
         if (heatSourceValue > furnaceBurnTime && furnaceBurnTime < MAXIMUM_ADDED_BURN_TIME && furnaceBurnTime >= 0) {
@@ -360,12 +364,13 @@ public class BrickOvenBlockEntity extends BlockEntity implements Inventory, Heat
                 break;
         }
         // Automatic output
-        if (furnaceItemStacks[10] == null) {
-            return true;
-        }
         for (int xOffset = -1; xOffset <= 1; xOffset++) {
             for (int zOffset = -1; zOffset <= 1; zOffset++) {
-                if (furnaceItemStacks[10] != null && world.getBlockEntity(xCentered + xOffset, y - 2, zCentered + zOffset) instanceof BasicItemChuteBlockEntity basicItemChuteBlockEntity) {
+                // Standard output from output slot
+                BlockEntity target = world.getBlockEntity(xCentered + xOffset, y - 2, zCentered + zOffset);
+                if (furnaceItemStacks[10] != null
+                        && target instanceof BasicItemChuteBlockEntity basicItemChuteBlockEntity
+                        && !(target instanceof FilteringItemChuteBlockEntity)) {
                     if (basicItemChuteBlockEntity.storedItem == null) {
                         basicItemChuteBlockEntity.storedItem = furnaceItemStacks[10];
                         furnaceItemStacks[10] = null;
@@ -380,6 +385,26 @@ public class BrickOvenBlockEntity extends BlockEntity implements Inventory, Heat
                             basicItemChuteBlockEntity.storedItem.count = basicItemChuteBlockEntity.storedItem.getMaxCount();
                             furnaceItemStacks[10].count = leftovers;
                         }
+                    }
+                }
+                // Input byproduct clearing through filtered item chutes
+                for (int slot = 0; slot < 9; slot++) {
+                    ItemStack slotItem = furnaceItemStacks[slot];
+                    if (slotItem == null) {
+                        continue;
+                    }
+                    if (target instanceof FilteringItemChuteBlockEntity filteringItemChuteBlockEntity) {
+                        if (filteringItemChuteBlockEntity.filter == null) {
+                            break;
+                        }
+                        if (filteringItemChuteBlockEntity.storedItem != null) {
+                            break;
+                        }
+                        if (!slotItem.isItemEqual(filteringItemChuteBlockEntity.filter)) {
+                            continue;
+                        }
+                        filteringItemChuteBlockEntity.storedItem = slotItem;
+                        furnaceItemStacks[slot] = null;
                     }
                 }
             }
