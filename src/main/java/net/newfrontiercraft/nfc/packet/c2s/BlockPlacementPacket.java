@@ -2,12 +2,12 @@ package net.newfrontiercraft.nfc.packet.c2s;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.block.Block;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.network.NetworkHandler;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.util.math.BlockPos;
 import net.modificationstation.stationapi.api.block.BlockState;
-import net.modificationstation.stationapi.api.block.States;
 import net.modificationstation.stationapi.api.entity.player.PlayerHelper;
 import net.modificationstation.stationapi.api.network.packet.ManagedPacket;
 import net.modificationstation.stationapi.api.network.packet.PacketType;
@@ -37,7 +37,7 @@ public class BlockPlacementPacket extends Packet implements ManagedPacket<BlockP
     public void read(DataInputStream stream) {
         try {
             this.blockPos = StationBlockPos.fromLong(stream.readLong());
-            this.blockState = States.STATE_IDS.get(stream.readInt());
+            this.blockState = Block.STATE_IDS.get(stream.readInt());
             this.meta = stream.readInt();
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -46,7 +46,7 @@ public class BlockPlacementPacket extends Packet implements ManagedPacket<BlockP
 
     @Override
     public void write(DataOutputStream stream) {
-        int rawId = States.STATE_IDS.getRawId(blockState);
+        int rawId = Block.STATE_IDS.getRawId(blockState);
         try {
             stream.writeLong(blockPos.asLong());
             stream.writeInt(rawId);
