@@ -4,6 +4,8 @@ import net.fabricmc.loader.api.FabricLoader;
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.modificationstation.stationapi.api.block.BlockState;
+import net.modificationstation.stationapi.api.block.States;
 import net.modificationstation.stationapi.api.event.registry.BlockRegistryEvent;
 import net.modificationstation.stationapi.api.mod.entrypoint.Entrypoint;
 import net.modificationstation.stationapi.api.recipe.FuelRegistry;
@@ -333,8 +335,8 @@ public class BlockListener {
         lightSource = new LightSourceBlock(Identifier.of(MOD_ID, "light_source"), Material.STONE, Block.STONE_SOUND_GROUP, new boolean[] {false});
 
         vanillaSlabs = new VanillaSlabBlock(Identifier.of(MOD_ID, "vanilla_slabs"), Material.STONE, 1.0F, Block.STONE_SOUND_GROUP,
-                new int[] {
-                        Block.DOUBLE_SLAB.id, Block.SANDSTONE.id, Block.PLANKS.id, Block.COBBLESTONE.id, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+                new BlockState[] {
+                        Block.DOUBLE_SLAB.getDefaultState(), Block.SANDSTONE.getDefaultState(), Block.PLANKS.getDefaultState(), Block.COBBLESTONE.getDefaultState(), States.AIR.get(), States.AIR.get(), States.AIR.get(), States.AIR.get(), States.AIR.get(), States.AIR.get(), States.AIR.get(), States.AIR.get(), States.AIR.get(), States.AIR.get(), States.AIR.get(), States.AIR.get()
                 },
                 new float[] {
                         0.0F, 0.5F, 0.0F, 1.0F, 1.0F, 1.0F
@@ -342,8 +344,8 @@ public class BlockListener {
                 Block.SLAB
         );
         nonDyedSlabs = new LazySlabTemplate(Identifier.of(MOD_ID, "non_dyed_slabs"), Material.STONE, 1.0F, Block.STONE_SOUND_GROUP,
-                new int[] {
-                        Block.BRICKS.id, workedStone.id, stoneBricksLarge.id, stoneBricks.id, mud.id, firedMud.id, petrifiedPlanks.id, 0, 0, 0, 0, 0, 0, 0, 0, 0
+                new BlockState[] {
+                        Block.BRICKS.getDefaultState(), workedStone.getDefaultState(), stoneBricksLarge.getDefaultState(), stoneBricks.getDefaultState(), mud.getDefaultState(), firedMud.getDefaultState(), petrifiedPlanks.getDefaultState(), States.AIR.get(), States.AIR.get(), States.AIR.get(), States.AIR.get(), States.AIR.get(), States.AIR.get(), States.AIR.get(), States.AIR.get(), States.AIR.get()
                 },
                 new int[] {
                         0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
@@ -351,8 +353,8 @@ public class BlockListener {
                 null
         );
         stainedPlanksSlabs = new LazySlabTemplate(Identifier.of(MOD_ID, "stained_planks_slabs"), Material.WOOD, 1.0F, Block.WOOD_SOUND_GROUP,
-                new int[] {
-                        stainedPlanks.id, stainedPlanks.id, stainedPlanks.id, stainedPlanks.id, stainedPlanks.id, stainedPlanks.id, stainedPlanks.id, stainedPlanks.id, stainedPlanks.id, stainedPlanks.id, stainedPlanks.id, stainedPlanks.id, stainedPlanks.id, stainedPlanks.id, stainedPlanks.id, stainedPlanks.id
+                new BlockState[] {
+                        stainedPlanks.getDefaultState(), stainedPlanks.getDefaultState(), stainedPlanks.getDefaultState(), stainedPlanks.getDefaultState(), stainedPlanks.getDefaultState(), stainedPlanks.getDefaultState(), stainedPlanks.getDefaultState(), stainedPlanks.getDefaultState(), stainedPlanks.getDefaultState(), stainedPlanks.getDefaultState(), stainedPlanks.getDefaultState(), stainedPlanks.getDefaultState(), stainedPlanks.getDefaultState(), stainedPlanks.getDefaultState(), stainedPlanks.getDefaultState(), stainedPlanks.getDefaultState()
                 },
                 new int[] {
                         0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15

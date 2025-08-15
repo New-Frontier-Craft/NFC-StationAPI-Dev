@@ -18,6 +18,7 @@ import net.modificationstation.stationapi.api.util.math.Direction;
 import net.modificationstation.stationapi.api.util.math.StationBlockPos;
 import net.newfrontiercraft.nfc.block.LazySlabTemplate;
 import net.newfrontiercraft.nfc.packet.c2s.BlockPlacementPacket;
+import paulevs.bnb.block.BNBBlocks;
 
 public class SlabPlacer {
     public BlockItem slabBlockItem;
@@ -166,7 +167,7 @@ public class SlabPlacer {
     }
 
     protected BlockState getFullBlockState(BlockState currentBlockState, int meta){
-        return Block.BLOCKS[((LazySlabTemplate) slabBlockItem.getBlock()).fullBlocks[meta]].getDefaultState();
+        return ((LazySlabTemplate) slabBlockItem.getBlock()).fullBlockStates[meta];
     }
 
     protected int getFullBlockMeta(BlockState currentBlockState, int meta){
@@ -179,11 +180,11 @@ public class SlabPlacer {
             world.playSound(x + 0.5F, y + 0.5F, z + 0.5F, block.soundGroup.getSound(), (block.soundGroup.getVolume() + 1.0F) / 2.0F, block.soundGroup.getPitch() * 0.8F);
             if (!world.isRemote) {
                 world.setBlockStateWithMetadataWithNotify(x, y, z, blockState, meta);
+                stack.count--;
             }
             else {
                 PacketHelper.send(new BlockPlacementPacket(x, y, z, blockState, meta));
             }
-            stack.count--;
             return true;
         }
         return false;

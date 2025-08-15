@@ -66,6 +66,9 @@ public class BlockPlacementPacket extends Packet implements ManagedPacket<BlockP
         if(playerEntity == null || playerEntity.getHand() == null || playerEntity.getHand().count <= 0) return;
         playerEntity.world.setBlockStateWithMetadataWithNotify(blockPos.getX(), blockPos.getY(), blockPos.getZ(), blockState, meta);
         playerEntity.getHand().count--;
+        if(playerEntity.getHand().count == 0) {
+            playerEntity.inventory.main[playerEntity.inventory.selectedSlot] = null;
+        }
     }
 
     @Override
