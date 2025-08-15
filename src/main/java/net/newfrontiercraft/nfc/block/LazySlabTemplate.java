@@ -29,24 +29,24 @@ import java.util.Random;
 @EnvironmentInterface(value=EnvType.CLIENT, itf= BlockWithWorldRenderer.class)
 @HasCustomBlockItemFactory(SlabBlockItem.class)
 public class LazySlabTemplate extends LazyMultivariantBlockTemplate implements BlockWithWorldRenderer, BlockWithItemRenderBounds {
-    public int[] fullBlocks;
+    public BlockState[] fullBlockStates;
     public int[] fullBlockMetas = new int[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
     public Block bottomSlabCounterpart;
     public static final IntProperty ROTATIONS = IntProperty.of("rotations", 0, 6);
 
-    public LazySlabTemplate(Identifier identifier, Material material, float hardness, BlockSoundGroup blockSounds, int[] fullBlocks, Block bottomSlabCounterpart) {
+    public LazySlabTemplate(Identifier identifier, Material material, float hardness, BlockSoundGroup blockSounds, BlockState[] fullBlockStates, Block bottomSlabCounterpart) {
         super(identifier, material, hardness, blockSounds);
         this.setBoundingBox(0.0F, 0.0F, 0.0F, 1.0F, 0.5F, 1.0F);
         this.setOpacity(2);
-        this.fullBlocks = fullBlocks;
+        this.fullBlockStates = fullBlockStates;
         this.bottomSlabCounterpart = bottomSlabCounterpart;
     }
 
-    public LazySlabTemplate(Identifier identifier, Material material, float hardness, BlockSoundGroup blockSounds, int[] fullBlocks, int[] fullBlockMetas, Block bottomSlabCounterpart) {
+    public LazySlabTemplate(Identifier identifier, Material material, float hardness, BlockSoundGroup blockSounds, BlockState[] fullBlockStates, int[] fullBlockMetas, Block bottomSlabCounterpart) {
         super(identifier, material, hardness, blockSounds);
         this.setBoundingBox(0.0F, 0.0F, 0.0F, 1.0F, 0.5F, 1.0F);
         this.setOpacity(2);
-        this.fullBlocks = fullBlocks;
+        this.fullBlockStates = fullBlockStates;
         this.fullBlockMetas = fullBlockMetas;
         this.bottomSlabCounterpart = bottomSlabCounterpart;
     }

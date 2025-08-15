@@ -12,8 +12,8 @@ import net.modificationstation.stationapi.api.util.Identifier;
 import net.newfrontiercraft.nfc.mixin.graphics.BlockRenderManagerAccessor;
 
 public class VanillaSlabBlock extends LazySlabTemplate {
-    public VanillaSlabBlock(Identifier identifier, Material material, float hardness, BlockSoundGroup blockSounds, int[] fullBlocks, float[] boundingBoxValues, Block bottomSlabCounterpart) {
-        super(identifier, material, hardness, blockSounds, fullBlocks, bottomSlabCounterpart);
+    public VanillaSlabBlock(Identifier identifier, Material material, float hardness, BlockSoundGroup blockSounds, BlockState[] fullBlockStates, float[] boundingBoxValues, Block bottomSlabCounterpart) {
+        super(identifier, material, hardness, blockSounds, fullBlockStates, bottomSlabCounterpart);
     }
 
     @Override

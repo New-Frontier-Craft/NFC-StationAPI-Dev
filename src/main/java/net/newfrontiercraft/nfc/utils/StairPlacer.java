@@ -1,5 +1,7 @@
 package net.newfrontiercraft.nfc.utils;
 
+import net.fabricmc.api.EnvType;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BlockItem;
@@ -11,9 +13,11 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.modificationstation.stationapi.api.block.BlockState;
+import net.modificationstation.stationapi.api.network.packet.PacketHelper;
 import net.modificationstation.stationapi.api.util.math.Direction;
 import net.modificationstation.stationapi.api.util.math.StationBlockPos;
 import net.newfrontiercraft.nfc.block.LazyStairsTemplate;
+import net.newfrontiercraft.nfc.packet.c2s.BlockPlacementPacket;
 
 public class StairPlacer {
     public BlockItem stairBlockItem;
@@ -21,6 +25,9 @@ public class StairPlacer {
         this.stairBlockItem = stairBlockItem;
     }
     public boolean useOnBlock(ItemStack stack, PlayerEntity user, World world, int x, int y, int z, int side) {
+        if(FabricLoader.getInstance().getEnvironmentType() == EnvType.SERVER){
+            return true;
+        }
         StationBlockPos blockOffset = new BlockPos(x, y, z);
         blockOffset = blockOffset.offset(Direction.byId(side));
         if(this.canPlace(world, this.stairBlockItem.getBlock().id, blockOffset.getX(), blockOffset.getY(), blockOffset.getZ())){
@@ -63,7 +70,7 @@ public class StairPlacer {
         int rotation = MathHelper.floor((yaw * 4.0F / 360.0F) + 0.5) & 3;
 
         int offset = 0;
-        if(side > 1 && hitOffset.y > 0.5F){
+        if(side > 1 && hitOffset.y > 0.5F || side == 0){
             offset = 4;
         }
 
@@ -81,12 +88,16 @@ public class StairPlacer {
     }
 
     protected void placeBlock(World world, int x, int y, int z, BlockState blockState, ItemStack stack, int meta){
+
         Block block = blockState.getBlock();
         world.playSound(x + 0.5F, y + 0.5F, z + 0.5F, block.soundGroup.getSound(), (block.soundGroup.getVolume() + 1.0F) / 2.0F, block.soundGroup.getPitch() * 0.8F);
         if (!world.isRemote) {
             world.setBlockStateWithMetadataWithNotify(x, y, z, blockState, meta);
+            stack.count--;
         }
-        stack.count--;
+        else {
+            PacketHelper.send(new BlockPlacementPacket(x, y, z, blockState, meta));
+        }
     }
 
     protected int getVerticalStairRotation(double yaw){
