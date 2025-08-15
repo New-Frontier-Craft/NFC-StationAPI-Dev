@@ -590,7 +590,10 @@ public class TextureListener {
       
         // Doors
         ItemListener.copperDoor.setTexture(Identifier.of(MOD_ID, items + "copper_door"));
-      
+
+        // Telescope
+        ItemListener.telescopeItem.setTexture(Identifier.of(MOD_ID, items + "tools/telescope"));
+
         // Other drops
         ItemListener.blueGlowstoneDust.setTexture(Identifier.of(MOD_ID, otherDrops + "blue_glowstone_dust"));
 

@@ -30,12 +30,17 @@
     ],
     "stationapi:event_bus_client": [
       "net.newfrontiercraft.nfc.events.init.TextureListener",
-      "net.newfrontiercraft.nfc.events.init.ScreenHandlerListener"
+      "net.newfrontiercraft.nfc.events.init.ScreenHandlerListener",
+      "net.newfrontiercraft.nfc.events.ingame.KeyStateChangedListener",
+      "net.newfrontiercraft.nfc.events.init.KeybindListener"
     ],
     "stationapi:event_bus_server": [
     ],
     "alwaysmoreitems:plugin": [
       "net.newfrontiercraft.nfc.compat.ami.AMICompat"
+    ],
+    "unitweaks:event_bus": [
+      "net.newfrontiercraft.nfc.events.init.CompatListener"
     ]
   },
   "mixins": [

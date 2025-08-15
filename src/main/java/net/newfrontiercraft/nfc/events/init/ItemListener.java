@@ -280,6 +280,7 @@ public class ItemListener {
 
     public static OilBucketItem oilBucket;
     public static DoorItem copperDoor;
+    public static TelescopeItem telescopeItem;
 
     @Entrypoint.Namespace
     public static Namespace MOD_ID;
@@ -651,6 +652,9 @@ public class ItemListener {
 
         // Doors
         copperDoor = (DoorItem) new DoorItem(Identifier.of(MOD_ID, "copper_door"), BlockListener.copperDoor.id).setTranslationKey(Identifier.of(MOD_ID, "copper_door"));
+
+        // Telescope
+        telescopeItem = new TelescopeItem(Identifier.of(MOD_ID, "telescope"));
 
         // Ore drop specification
         BlockListener.anthraciteOre.specifyCustomDrop(MOD_ID.id("anthracite"));

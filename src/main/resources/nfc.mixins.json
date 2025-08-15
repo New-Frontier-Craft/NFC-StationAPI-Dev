@@ -41,7 +41,8 @@
     "ToolEffectivenessHijackerMixin",
     "TorchPlacementMixin",
     "TrapdoorLiberationMixin",
-    "graphics.BlockRendererManagerMixin"
+    "graphics.BlockRendererManagerMixin",
+    "PlayerInventoryAccessor"
   ],
   "server": [
   ],
