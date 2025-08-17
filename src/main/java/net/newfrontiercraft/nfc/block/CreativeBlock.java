@@ -3,6 +3,7 @@ package net.newfrontiercraft.nfc.block;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.loader.api.FabricLoader;
+import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.PlayerEntity;
@@ -73,7 +74,11 @@ public class CreativeBlock extends LazyMultivariantBlockTemplate {
             }
             int itemId = heldItem.itemId;
             int meta = heldItem.getDamage();
-            if (world.getBlockId(x, y, z) != itemId || meta != world.getBlockMeta(x, y, z)) {
+            Block block = Block.BLOCKS[world.getBlockId(x, y, z)];
+            if (block == null) {
+                return;
+            }
+            if (block.asItem().id != itemId || meta != world.getBlockMeta(x, y, z)) {
                 return;
             }
             for (CreativeBlockParticle particle : creativeBlockParticles) {
