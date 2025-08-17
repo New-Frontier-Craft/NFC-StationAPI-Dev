@@ -77,7 +77,9 @@ dependencies {
 	implementation "blue.endless:jankson:1.2.1"
 	implementation "me.carleslc:Simple-Yaml:1.8.4"
 
-	modImplementation "net.modificationstation:StationAPI:${project.stapi_version}"
+	modImplementation ("net.modificationstation:StationAPI:${project.stapi_version}") {
+		exclude group: "babric", module: "fabric-loader"
+	}
 
 	// Optional, but convenient mods for mod creators and users alike.
 	modImplementation("net.glasslauncher.mods:ModMenu:${project.modmenu_version}") {
