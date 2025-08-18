@@ -41,6 +41,9 @@
     ],
     "unitweaks:event_bus": [
       "net.newfrontiercraft.nfc.events.init.CompatListener"
+    ],
+    "whatsthis": [
+      "net.newfrontiercraft.nfc.events.init.ProbeInfoProviderListener"
     ]
   },
   "mixins": [
