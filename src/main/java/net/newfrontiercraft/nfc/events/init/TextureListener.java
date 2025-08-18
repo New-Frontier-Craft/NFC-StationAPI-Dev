@@ -240,7 +240,12 @@ public class TextureListener {
                 Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, machines + "carpentry_workstation_side")).index,
                 Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, machines + "carpentry_workstation_bottom")).index,
                 Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, machines + "carpentry_workstation_top")).index);
-        BlockListener.heatCoil.specifyTextures(getTextureIndex(machines + "heat_coil"));
+        BlockListener.heatCoil.specifyTextures(
+                getTextureIndex(machines + "heat_coil_0"),
+                getTextureIndex(machines + "heat_coil_1"),
+                getTextureIndex(machines + "heat_coil_2"),
+                getTextureIndex(machines + "heat_coil_3")
+        );
         BlockListener.combustionHeater.specifyTextures(getTextureIndex(machines + "combustion_heater_top"),
                 getTextureIndex(machines + "combustion_heater_side"),
                 getTextureIndex(machines + "combustion_heater_bottom"),
