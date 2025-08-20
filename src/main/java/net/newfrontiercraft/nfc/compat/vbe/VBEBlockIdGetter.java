@@ -3,7 +3,6 @@ package net.newfrontiercraft.nfc.compat.vbe;
 import net.modificationstation.stationapi.api.block.BlockState;
 import net.modificationstation.stationapi.api.state.property.Properties;
 import net.modificationstation.stationapi.api.util.math.Direction;
-import paulevs.vbe.block.VBEBlockProperties;
 import paulevs.vbe.block.VBEBlocks;
 
 public class VBEBlockIdGetter {

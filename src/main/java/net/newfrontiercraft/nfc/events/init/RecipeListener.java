@@ -1,5 +1,6 @@
 package net.newfrontiercraft.nfc.events.init;
 
+import net.fabricmc.loader.api.FabricLoader;
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -8,6 +9,7 @@ import net.modificationstation.stationapi.api.event.recipe.RecipeRegisterEvent;
 import net.modificationstation.stationapi.api.recipe.CraftingRegistry;
 import net.modificationstation.stationapi.api.registry.BlockRegistry;
 import net.modificationstation.stationapi.api.util.Identifier;
+import net.newfrontiercraft.nfc.compat.vbe.VBERecipes;
 import net.newfrontiercraft.nfc.registry.BlockPatternEntry;
 import net.newfrontiercraft.nfc.registry.CarpentryRecipes;
 import net.newfrontiercraft.nfc.registry.MultiBlockRecipeRegistry;
@@ -18,13 +20,13 @@ import java.util.List;
 
 public class RecipeListener {
 
+    public static boolean isVbePresent = FabricLoader.getInstance().isModLoaded("vbe");
+
     @EventListener
     public void registerRecipes(RecipeRegisterEvent event) {
 
         Identifier type = event.recipeId;
         if (type == RecipeRegisterEvent.Vanilla.CRAFTING_SHAPED.type()) {
-
-
 
             // Recipe removal
             RecipeRemover.removeRecipe(Block.RAIL);
@@ -451,22 +453,26 @@ public class RecipeListener {
                         new ItemStack(BlockListener.firedMud, 1, 4)});
 
         // Wood carpentry
-        CarpentryRecipes.carpentry().addCarpentry(BlockRegistry.INSTANCE.getId(Block.LOG), 0, 2, new ItemStack[] {
-                        new ItemStack(BlockListener.decorativeWood, 1, 0),
-                        new ItemStack(BlockListener.decorativeWood, 1, 1),
-                        new ItemStack(BlockListener.decorativeWood, 2, 6),
-                        new ItemStack(BlockListener.decorativeWood, 2, 7),
-                        new ItemStack(BlockListener.decorativeWood, 2, 8),
-                        new ItemStack(BlockListener.decorativeWood, 2, 9)});
+        if (isVbePresent) {
+            VBERecipes.addVbeRecipes(event);
+        } else {
+            CarpentryRecipes.carpentry().addCarpentry(BlockRegistry.INSTANCE.getId(Block.LOG), 0, 2, new ItemStack[] {
+                    new ItemStack(BlockListener.decorativeWood, 1, 0),
+                    new ItemStack(BlockListener.decorativeWood, 1, 1),
+                    new ItemStack(BlockListener.decorativeWood, 2, 6),
+                    new ItemStack(BlockListener.decorativeWood, 2, 7),
+                    new ItemStack(BlockListener.decorativeWood, 2, 8),
+                    new ItemStack(BlockListener.decorativeWood, 2, 9)});
+            CarpentryRecipes.carpentry().addCarpentry(BlockListener.MOD_ID.id("decorative_wood"), 0, 1, new ItemStack[] {
+                    new ItemStack(BlockListener.decorativeWood, 1, 0),
+                    new ItemStack(BlockListener.decorativeWood, 1, 1),
+                    new ItemStack(Block.LOG)});
+        }
         CarpentryRecipes.carpentry().addCarpentry(BlockRegistry.INSTANCE.getId(Block.PLANKS), 0, new ItemStack[] {
                         new ItemStack(BlockListener.decorativeWood, 1, 2),
                         new ItemStack(BlockListener.decorativeWood, 1, 3),
                         new ItemStack(BlockListener.decorativeWood, 1, 4),
                         new ItemStack(BlockListener.decorativeWood, 1, 5)});
-        CarpentryRecipes.carpentry().addCarpentry(BlockListener.MOD_ID.id("decorative_wood"), 0, 1, new ItemStack[] {
-                        new ItemStack(BlockListener.decorativeWood, 1, 0),
-                        new ItemStack(BlockListener.decorativeWood, 1, 1),
-                        new ItemStack(Block.LOG)});
         CarpentryRecipes.carpentry().addCarpentry(BlockListener.MOD_ID.id("decorative_wood"), 2, 5, new ItemStack[] {
                         new ItemStack(Block.PLANKS),
                         new ItemStack(BlockListener.decorativeWood, 1, 2),
