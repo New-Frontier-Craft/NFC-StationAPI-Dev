@@ -81,6 +81,8 @@ public class BlockListener {
 
             unfiredPlanter,
 
+            machineFrame,
+
             creativeGenerator,
             stirlingGenerator;
 
@@ -417,9 +419,9 @@ public class BlockListener {
         filteringItemChute = new FilteringItemChuteBlock(Identifier.of(MOD_ID, "filtering_item_chute"), Material.STONE, 1.0F, Block.METAL_SOUND_GROUP, false);
         preciseItemChute = new FilteringItemChuteBlock(Identifier.of(MOD_ID, "precise_item_chute"), Material.STONE, 1.0F, Block.METAL_SOUND_GROUP, true);
 
+        machineFrame = new LazyBlockTemplate(Identifier.of(MOD_ID, "machine_frame"), Material.METAL, 2.0F, Block.METAL_SOUND_GROUP);
         creativeGenerator = new CreativeGeneratorBlock(Identifier.of(MOD_ID, "creative_generator"), Material.METAL, 2.0F, Block.METAL_SOUND_GROUP);
         stirlingGenerator = new StirlingGeneratorBlock(Identifier.of(MOD_ID, "stirling_generator"), Material.METAL, 2.0F, Block.METAL_SOUND_GROUP);
-
         machineGearBox = new MachineGearBoxBlock(Identifier.of(MOD_ID, "machine_gear_box"), Material.METAL, 2.0F, Block.METAL_SOUND_GROUP);
 
         // Changes to vanilla blast resistance

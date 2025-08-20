@@ -117,6 +117,7 @@
     "nfc:filtering_item_chute",
     "nfc:precise_item_chute",
 
+    "nfc:machine_frame",
     "nfc:creative_generator",
     "nfc:stirling_generator",
     "nfc:machine_gear_box"

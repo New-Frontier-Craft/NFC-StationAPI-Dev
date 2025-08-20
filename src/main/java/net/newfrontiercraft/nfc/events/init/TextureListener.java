@@ -259,6 +259,7 @@ public class TextureListener {
         BlockListener.itemChuteExtender.specifyTextures(getTextureIndex(machines + "item_chute_extender_top"), getTextureIndex(machines + "item_chute_extender_side"), getTextureIndex(machines + "item_chute_extender_bottom"));
         BlockListener.filteringItemChute.specifyTextures(getTextureIndex(machines + "filtering_item_chute_top"), getTextureIndex(machines + "filtering_item_chute_side"), getTextureIndex(machines + "filtering_item_chute_bottom"));
         BlockListener.preciseItemChute.specifyTextures(getTextureIndex(machines + "precise_item_chute_top"), getTextureIndex(machines + "precise_item_chute_side"), getTextureIndex(machines + "precise_item_chute_bottom"));
+        BlockListener.machineFrame.specifyTextures(getTextureIndex(machines + "machine_frame"));
         BlockListener.creativeGenerator.specifyTextures(getTextureIndex(machines + "generator_output"), getTextureIndex(machines + "creative_generator_side"), getTextureIndex(machines + "generator_input"));
         BlockListener.stirlingGenerator.specifyTextures(getTextureIndex(machines + "generator_output"), getTextureIndex(machines + "stirling_generator_side"), getTextureIndex(machines + "generator_input"));
         BlockListener.machineGearBox.specifyTextures(getTextureIndex(machines + "machine_gear_box"));
