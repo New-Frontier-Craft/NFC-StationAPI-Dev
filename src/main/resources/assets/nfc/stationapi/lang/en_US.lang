@@ -540,6 +540,9 @@ item.nfc.telescope.name=Telescope
 
 item.nfc.blue_glowstone_dust.name=Blue Glowstone Dust
 
+item.nfc.aluminium_gear.name=Aluminum Gear
+item.nfc.redstone_circuit.name=Redstone Circuit
+
 gui.nfc.bookshelf=Bookshelf
 
 multiblock.nfc.brickoven=Brick Oven

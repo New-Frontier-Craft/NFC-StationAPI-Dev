@@ -59,6 +59,7 @@ public class TextureListener {
         String oreDrops = items + "ore_drops/";
         String foodItems = items + "food/";
         String otherDrops = items + "other_drops/";
+        String parts = items + "parts/";
 
         // Convenience blocks
         int scaffoldTopTexture = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, convenienceBlocks + "scaffold_block_top")).index;
@@ -604,6 +605,10 @@ public class TextureListener {
 
         // Other drops
         ItemListener.blueGlowstoneDust.setTexture(Identifier.of(MOD_ID, otherDrops + "blue_glowstone_dust"));
+
+        // Intermediate items
+        ItemListener.aluminiumGear.setTexture(Identifier.of(MOD_ID, parts + "aluminium_gear"));
+        ItemListener.redstoneCircuit.setTexture(Identifier.of(MOD_ID, parts + "redstone_circuit"));
 
         // Particles
         if (FabricLoader.getInstance().getGameInstance() instanceof Minecraft minecraft) {

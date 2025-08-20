@@ -50,7 +50,9 @@ public class ItemListener {
             sapphire,
             ruby,
             emerald,
-            blueGlowstoneDust;
+            blueGlowstoneDust,
+            aluminiumGear,
+            redstoneCircuit;
 
     public static TemplatePickaxeItem
             aluminiumPickaxe,
@@ -655,6 +657,10 @@ public class ItemListener {
 
         // Telescope
         telescopeItem = new TelescopeItem(Identifier.of(MOD_ID, "telescope"));
+
+        // Intermediate items
+        aluminiumGear = new LazyItemTemplate(Identifier.of(MOD_ID, "aluminium_gear"));
+        redstoneCircuit = new LazyItemTemplate(Identifier.of(MOD_ID, "redstone_circuit"));
 
         // Ore drop specification
         BlockListener.anthraciteOre.specifyCustomDrop(MOD_ID.id("anthracite"));

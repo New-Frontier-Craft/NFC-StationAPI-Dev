@@ -221,6 +221,10 @@ public class RecipeListener {
 
             // Telescope
             CraftingRegistry.addShapedRecipe(new ItemStack(ItemListener.telescopeItem, 1),"XO ", "OH ", "  O", 'X', Block.GLASS, 'H', Item.LEATHER, 'O', ItemListener.brassIngot);
+
+            // Intermediate items
+            CraftingRegistry.addShapedRecipe(new ItemStack(ItemListener.aluminiumGear, 8, 0), " X ", "XYX", " X ", 'X', ItemListener.aluminiumIngot, 'Y', Item.IRON_INGOT);
+            CraftingRegistry.addShapedRecipe(new ItemStack(ItemListener.redstoneCircuit, 8, 0), "XYX", "ZZZ", 'X', Block.LIT_REDSTONE_TORCH, 'Y', Item.REDSTONE, 'Z', ItemListener.siliconIngot);
         }
         if (type == RecipeRegisterEvent.Vanilla.CRAFTING_SHAPELESS.type()) {
             // Storage block un-crafting
