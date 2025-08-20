@@ -7,12 +7,13 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.modificationstation.stationapi.api.block.BlockState;
 import net.newfrontiercraft.nfc.block.entity.HeatCoilBlockEntity;
+import net.newfrontiercraft.nfc.block.entity.MachineGearBoxBlockEntity;
 import net.newfrontiercraft.nfc.events.init.BlockListener;
 
 public class NfcProbeInfoProvider implements IProbeInfoProvider {
     @Override
     public String getID() {
-        return BlockListener.MOD_ID.id("wolves_block").toString();
+        return BlockListener.MOD_ID.id("wolves_block").toString(); // We have no idea what this does, it only works with this weirdly wrong name
     }
 
     @Override
@@ -21,6 +22,9 @@ public class NfcProbeInfoProvider implements IProbeInfoProvider {
         BlockPos pos = iProbeHitData.getPos();
         if(world.getBlockEntity(pos.x, pos.y, pos.z) instanceof HeatCoilBlockEntity heatCoilBlockEntity){
             iProbeInfo.text(TextStyleClass.INFO + "Heat: " + heatCoilBlockEntity.getHeatLevel());
+        }
+        if(world.getBlockEntity(pos.x, pos.y, pos.z) instanceof MachineGearBoxBlockEntity machineGearBoxBlockEntity){
+            iProbeInfo.text(TextStyleClass.INFO + "Torque: " + machineGearBoxBlockEntity.getTorque());
         }
     }
 }

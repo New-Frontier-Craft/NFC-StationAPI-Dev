@@ -20,6 +20,7 @@ public class BlockEntityListener {
         event.register(CombustionHeaterBlockEntity.class, String.valueOf(Identifier.of(MOD_ID, "block_entity_combustion_heater")));
         event.register(BasicItemChuteBlockEntity.class, String.valueOf(Identifier.of(MOD_ID, "block_entity_basic_item_chute")));
         event.register(FilteringItemChuteBlockEntity.class, String.valueOf(Identifier.of(MOD_ID, "block_entity_filtering_item_chute")));
+        event.register(MachineGearBoxBlockEntity.class, String.valueOf(Identifier.of(MOD_ID, "machine_gear_box_block_entity")));
     }
 
 }

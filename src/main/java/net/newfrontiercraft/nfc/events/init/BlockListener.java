@@ -79,7 +79,10 @@ public class BlockListener {
             steelBlock,
             cupronickelBlock,
 
-            unfiredPlanter;
+            unfiredPlanter,
+
+            creativeGenerator,
+            stirlingGenerator;
 
     public static LazyOreTemplate
             netherAshOre,
@@ -197,6 +200,8 @@ public class BlockListener {
 
     public static ShroomlightBlock
             blueShroomlight;
+
+    public static MachineGearBoxBlock machineGearBox;
 
     @Entrypoint.Namespace
     public static Namespace MOD_ID;
@@ -411,6 +416,11 @@ public class BlockListener {
         itemChuteExtender = new ItemChuteExtenderBlock(Identifier.of(MOD_ID, "item_chute_extender"), Material.STONE, 1.0F, Block.METAL_SOUND_GROUP);
         filteringItemChute = new FilteringItemChuteBlock(Identifier.of(MOD_ID, "filtering_item_chute"), Material.STONE, 1.0F, Block.METAL_SOUND_GROUP, false);
         preciseItemChute = new FilteringItemChuteBlock(Identifier.of(MOD_ID, "precise_item_chute"), Material.STONE, 1.0F, Block.METAL_SOUND_GROUP, true);
+
+        creativeGenerator = new CreativeGeneratorBlock(Identifier.of(MOD_ID, "creative_generator"), Material.METAL, 2.0F, Block.METAL_SOUND_GROUP);
+        stirlingGenerator = new StirlingGeneratorBlock(Identifier.of(MOD_ID, "stirling_generator"), Material.METAL, 2.0F, Block.METAL_SOUND_GROUP);
+
+        machineGearBox = new MachineGearBoxBlock(Identifier.of(MOD_ID, "machine_gear_box"), Material.METAL, 2.0F, Block.METAL_SOUND_GROUP);
 
         // Changes to vanilla blast resistance
         Block.COAL_ORE.setResistance(500F);

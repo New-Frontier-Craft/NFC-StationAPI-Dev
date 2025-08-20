@@ -281,6 +281,10 @@ tile.nfc.item_chute_extender.name=Item Chute Extender
 tile.nfc.filtering_item_chute.name=Filtering Item Chute
 tile.nfc.precise_item_chute.name=Precise Item Chute
 
+tile.nfc.creative_generator.name=Creative Generator
+tile.nfc.stirling_generator.name=Stirling Generator
+tile.nfc.machine_gear_box.name=Machine Gear Box
+
 
 item.nfc.aluminium_pickaxe.name=Aluminum Pickaxe
 item.nfc.bismuth_pickaxe.name=Bismuth Pickaxe
