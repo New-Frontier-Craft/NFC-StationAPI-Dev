@@ -480,10 +480,10 @@ public class RecipeListener {
                         new ItemStack(BlockListener.decorativeWood, 1, 4),
                         new ItemStack(BlockListener.decorativeWood, 1, 5)});
         CarpentryRecipes.carpentry().addCarpentry(BlockListener.MOD_ID.id("decorative_wood"), 6, 9, new ItemStack[] {
-                        new ItemStack(BlockListener.decorativeWood.id, 1, 6),
-                        new ItemStack(BlockListener.decorativeWood.id, 1, 7),
-                        new ItemStack(BlockListener.decorativeWood.id, 1, 8),
-                        new ItemStack(BlockListener.decorativeWood.id, 1, 9)});
+                        new ItemStack(BlockListener.decorativeWood, 1, 6),
+                        new ItemStack(BlockListener.decorativeWood, 1, 7),
+                        new ItemStack(BlockListener.decorativeWood, 1, 8),
+                        new ItemStack(BlockListener.decorativeWood, 1, 9)});
 
         // Nether stone carpentry
         CarpentryRecipes.carpentry().addCarpentry(BlockListener.MOD_ID.id("nether_worked_stone"), 0, new ItemStack[] {
