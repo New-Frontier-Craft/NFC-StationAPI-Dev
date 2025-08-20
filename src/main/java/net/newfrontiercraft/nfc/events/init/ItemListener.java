@@ -10,6 +10,7 @@ import net.modificationstation.stationapi.api.item.tool.ToolMaterialFactory;
 import net.modificationstation.stationapi.api.mod.entrypoint.Entrypoint;
 import net.modificationstation.stationapi.api.recipe.FuelRegistry;
 import net.modificationstation.stationapi.api.registry.BlockRegistry;
+import net.modificationstation.stationapi.api.registry.ItemRegistry;
 import net.modificationstation.stationapi.api.tag.TagKey;
 import net.modificationstation.stationapi.api.template.item.*;
 import net.modificationstation.stationapi.api.util.Identifier;
@@ -17,6 +18,9 @@ import net.modificationstation.stationapi.api.util.Namespace;
 import net.newfrontiercraft.nfc.item.*;
 
 public class ItemListener {
+
+    @Entrypoint.Namespace
+    public static Namespace MOD_ID;
 
     public static LazyFoodTemplate
             cookedEgg;
@@ -281,9 +285,6 @@ public class ItemListener {
     public static OilBucketItem oilBucket;
     public static DoorItem copperDoor;
     public static TelescopeItem telescopeItem;
-
-    @Entrypoint.Namespace
-    public static Namespace MOD_ID;
 
     @EventListener
     public void registerItems(ItemRegistryEvent event) {

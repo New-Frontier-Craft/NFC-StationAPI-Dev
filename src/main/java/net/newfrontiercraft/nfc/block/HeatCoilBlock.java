@@ -3,17 +3,30 @@ package net.newfrontiercraft.nfc.block;
 import net.minecraft.block.Block;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.sound.BlockSoundGroup;
+import net.minecraft.util.math.Box;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.BlockView;
+import net.minecraft.world.World;
 import net.modificationstation.stationapi.api.block.BlockState;
+import net.modificationstation.stationapi.api.registry.ItemRegistry;
 import net.modificationstation.stationapi.api.state.StateManager;
 import net.modificationstation.stationapi.api.state.property.IntProperty;
+import net.modificationstation.stationapi.api.tag.TagKey;
 import net.modificationstation.stationapi.api.template.block.TemplateBlockWithEntity;
 import net.modificationstation.stationapi.api.util.Identifier;
+import net.modificationstation.stationapi.api.util.Namespace;
+import net.modificationstation.stationapi.api.util.math.Direction;
 import net.modificationstation.stationapi.api.world.BlockStateView;
-import net.modificationstation.stationapi.api.world.StationFlatteningWorld;
-import net.modificationstation.stationapi.api.world.StationFlatteningWorldPopulationRegion;
 import net.newfrontiercraft.nfc.block.entity.HeatCoilBlockEntity;
+import net.newfrontiercraft.nfc.events.init.ItemListener;
+import net.newfrontiercraft.nfc.utils.BoxUtil;
+import net.newfrontiercraft.nfc.utils.CoilDamageCooldown;
 
 public class HeatCoilBlock extends TemplateBlockWithEntity {
 
@@ -35,6 +48,68 @@ public class HeatCoilBlock extends TemplateBlockWithEntity {
     public void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         super.appendProperties(builder);
         builder.add(HEAT);
+    }
+
+    @Override
+    public Box getCollisionShape(World world, int x, int y, int z) {
+        return Box.createCached((float)x + 0.01, y + 0.01, (float)z + 0.01, (float)(x + 0.99F), y + 0.99F, (float)(z + 0.99F));
+    }
+
+    @Override
+    public boolean isFullCube() {
+        return false;
+    }
+
+    @Override
+    public void onEntityCollision(World world, int x, int y, int z, Entity entity) {
+        if(entity instanceof LivingEntity livingEntity){
+            CoilDamageCooldown coilDamageCooldown = (CoilDamageCooldown)livingEntity;
+            if(coilDamageCooldown.getCoilDamageCooldown() <= 0){
+                BlockState blockState = world.getBlockState(x, y, z);
+                if(blockState.contains(HEAT) && blockState.get(HEAT) > 0 && shouldBurnEntity(world, livingEntity, blockState, x, y, z)){
+                    coilDamageCooldown.setCoilDamageCooldown(20);
+                    livingEntity.damage(null, blockState.get(HEAT));
+                    world.playSound(livingEntity, "random.fizz", 0.5F, 2.6F + (livingEntity.world.random.nextFloat() - livingEntity.world.random.nextFloat()) * 0.8F);
+                }
+            }
+        }
+    }
+
+    private boolean shouldBurnEntity(World world, LivingEntity livingEntity, BlockState blockState, int x, int y, int z){
+        if(livingEntity instanceof PlayerEntity playerEntity){
+            float var7 = playerEntity.width / 2.0F;
+            float var8 = playerEntity.height;
+            Box playerBox = Box.create(playerEntity.x - (double)var7, playerEntity.y - (double)playerEntity.standingEyeHeight + (double)playerEntity.cameraOffset, playerEntity.z - (double)var7, playerEntity.x + (double)var7, playerEntity.y - (double)playerEntity.standingEyeHeight + (double)playerEntity.cameraOffset + (double)var8, playerEntity.z + (double)var7);
+            Box coilBox = blockState.getBlock().getBoundingBox(world, x, y, z);
+
+            Direction collisionSide = BoxUtil.getCollisionSideFromBoxes(coilBox, playerBox);
+
+            switch(collisionSide){
+                case NORTH:
+                case EAST:
+                case SOUTH:
+                case WEST:
+                    if(playerEntity.inventory.armor[1] != null && isArmorPieceEffective(playerEntity.inventory.armor[1]) && playerEntity.inventory.armor[2] != null && isArmorPieceEffective(playerEntity.inventory.armor[2])){
+                        return false;
+                    }
+                    break;
+                case UP:
+                    if(playerEntity.inventory.armor[0] != null && isArmorPieceEffective(playerEntity.inventory.armor[0])){
+                        return false;
+                    }
+                    break;
+                case DOWN:
+                    if(playerEntity.inventory.armor[3] != null && isArmorPieceEffective(playerEntity.inventory.armor[3])){
+                        return false;
+                    }
+            }
+        }
+        return true;
+    }
+
+    private boolean isArmorPieceEffective(ItemStack armorPiece){
+        TagKey HEAT_PROTECTION = TagKey.of(ItemRegistry.KEY, ItemListener.MOD_ID.id("heat_protection"));
+        return armorPiece.isIn(HEAT_PROTECTION);
     }
 
     @Override
@@ -64,7 +139,6 @@ public class HeatCoilBlock extends TemplateBlockWithEntity {
         if(blockView instanceof BlockStateView blockStateView){
             BlockState blockState = blockStateView.getBlockState(x, y, z);
             if(blockState.contains(HEAT)){
-                System.out.println(blockState.get(HEAT));
                 switch (blockState.get(HEAT)){
                     case 0:
                         return heatLevel0Texture;
