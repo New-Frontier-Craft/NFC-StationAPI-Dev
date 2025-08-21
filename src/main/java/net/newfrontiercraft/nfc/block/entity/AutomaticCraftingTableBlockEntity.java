@@ -9,6 +9,7 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtList;
 import net.minecraft.recipe.CraftingRecipeManager;
 import net.newfrontiercraft.nfc.block.AutomaticCraftingTableBlock;
+import net.newfrontiercraft.nfc.events.init.BlockListener;
 import net.newfrontiercraft.nfc.inventory.crafting.AutocraftingMatrix;
 import net.newfrontiercraft.nfc.inventory.crafting.AutocraftingScreenHandler;
 
@@ -62,8 +63,203 @@ public class AutomaticCraftingTableBlockEntity extends BlockEntity implements In
     }
 
     private boolean checkMultiBlockStructure() {
-        torque = 4;
-        return false;
+        // Calculate central coordinates
+        int meta = world.getBlockMeta(x, y, z) % 6;
+        int xCentered = x;
+        int zCentered = z;
+        switch (meta) {
+            case 2:
+                zCentered++;
+                break;
+            case 3:
+                zCentered--;
+                break;
+            case 4:
+                xCentered++;
+                break;
+            case 5:
+                xCentered--;
+                break;
+        }
+        // Check structural integrity
+        if (world.getBlockId(xCentered, y, zCentered) != BlockListener.machineGearBox.id) {
+            torque = 0;
+            return false;
+        }
+        BlockEntity blockEntity = world.getBlockEntity(xCentered, y, zCentered);
+        if (blockEntity instanceof MachineGearBoxBlockEntity machineGearBoxBlockEntity) {
+            torque = machineGearBoxBlockEntity.getTorque();
+        }
+        int frameCount = 0;
+        for (int xOffset = -1; xOffset <= 1; xOffset++) {
+            for (int zOffset = -1; zOffset <= 1; zOffset++) {
+                if (world.getBlockId(xCentered + xOffset, y, zCentered + zOffset) == BlockListener.machineFrame.id) {
+                    frameCount++;
+                }
+            }
+        }
+        if (frameCount != 7) {
+            return false;
+        }
+        // Meta values to coordinates
+        // 2 -> z+
+        // 3 -> z-
+        // 4 -> x+
+        // 5 -> x-
+        // Automatic input
+        switch (meta) {
+            case 2:
+                for (int zOffset = 1; zOffset >= -1; zOffset--) {
+                    for (int xOffset = 1; xOffset >= -1; xOffset--) {
+                        if (world.getBlockEntity(xCentered + xOffset, y + 1, zCentered + zOffset) instanceof BasicItemChuteBlockEntity basicItemChuteBlockEntity) {
+                            if (basicItemChuteBlockEntity.storedItem == null) {
+                                continue;
+                            }
+                            int ovenIndex = (-xOffset + 1) + (-zOffset + 1) * 3;
+                            if (craftingTableItemStacks[ovenIndex] == null) {
+                                craftingTableItemStacks[ovenIndex] = basicItemChuteBlockEntity.storedItem;
+                                basicItemChuteBlockEntity.storedItem = null;
+                            } else if (craftingTableItemStacks[ovenIndex].isItemEqual(basicItemChuteBlockEntity.storedItem)) {
+                                int totalCount = craftingTableItemStacks[ovenIndex].count + basicItemChuteBlockEntity.storedItem.count;
+                                if (totalCount <= basicItemChuteBlockEntity.storedItem.getMaxCount()) {
+                                    craftingTableItemStacks[ovenIndex].count = totalCount;
+                                    basicItemChuteBlockEntity.storedItem = null;
+                                } else {
+                                    int leftovers = totalCount - basicItemChuteBlockEntity.storedItem.getMaxCount();
+                                    craftingTableItemStacks[ovenIndex].count = basicItemChuteBlockEntity.storedItem.getMaxCount();
+                                    basicItemChuteBlockEntity.storedItem.count = leftovers;
+                                }
+                            }
+                        }
+                    }
+                }
+                break;
+            case 3:
+                for (int zOffset = -1; zOffset <= 1; zOffset++) {
+                    for (int xOffset = -1; xOffset <= 1; xOffset++) {
+                        if (world.getBlockEntity(xCentered + xOffset, y + 1, zCentered + zOffset) instanceof BasicItemChuteBlockEntity basicItemChuteBlockEntity) {
+                            if (basicItemChuteBlockEntity.storedItem == null) {
+                                continue;
+                            }
+                            int ovenIndex = (xOffset + 1) + (zOffset + 1) * 3;
+                            if (craftingTableItemStacks[ovenIndex] == null) {
+                                craftingTableItemStacks[ovenIndex] = basicItemChuteBlockEntity.storedItem;
+                                basicItemChuteBlockEntity.storedItem = null;
+                            } else if (craftingTableItemStacks[ovenIndex].isItemEqual(basicItemChuteBlockEntity.storedItem)) {
+                                int totalCount = craftingTableItemStacks[ovenIndex].count + basicItemChuteBlockEntity.storedItem.count;
+                                if (totalCount <= basicItemChuteBlockEntity.storedItem.getMaxCount()) {
+                                    craftingTableItemStacks[ovenIndex].count = totalCount;
+                                    basicItemChuteBlockEntity.storedItem = null;
+                                } else {
+                                    int leftovers = totalCount - basicItemChuteBlockEntity.storedItem.getMaxCount();
+                                    craftingTableItemStacks[ovenIndex].count = basicItemChuteBlockEntity.storedItem.getMaxCount();
+                                    basicItemChuteBlockEntity.storedItem.count = leftovers;
+                                }
+                            }
+                        }
+                    }
+                }
+                break;
+            case 4:
+                for (int xOffset = 1; xOffset >= -1; xOffset--) {
+                    for (int zOffset = -1; zOffset <= 1; zOffset++) {
+                        if (world.getBlockEntity(xCentered + xOffset, y + 1, zCentered + zOffset) instanceof BasicItemChuteBlockEntity basicItemChuteBlockEntity) {
+                            if (basicItemChuteBlockEntity.storedItem == null) {
+                                continue;
+                            }
+                            int ovenIndex = (zOffset + 1) + (-xOffset + 1) * 3;
+                            if (craftingTableItemStacks[ovenIndex] == null) {
+                                craftingTableItemStacks[ovenIndex] = basicItemChuteBlockEntity.storedItem;
+                                basicItemChuteBlockEntity.storedItem = null;
+                            } else if (craftingTableItemStacks[ovenIndex].isItemEqual(basicItemChuteBlockEntity.storedItem)) {
+                                int totalCount = craftingTableItemStacks[ovenIndex].count + basicItemChuteBlockEntity.storedItem.count;
+                                if (totalCount <= basicItemChuteBlockEntity.storedItem.getMaxCount()) {
+                                    craftingTableItemStacks[ovenIndex].count = totalCount;
+                                    basicItemChuteBlockEntity.storedItem = null;
+                                } else {
+                                    int leftovers = totalCount - basicItemChuteBlockEntity.storedItem.getMaxCount();
+                                    craftingTableItemStacks[ovenIndex].count = basicItemChuteBlockEntity.storedItem.getMaxCount();
+                                    basicItemChuteBlockEntity.storedItem.count = leftovers;
+                                }
+                            }
+                        }
+                    }
+                }
+                break;
+            case 5:
+                for (int xOffset = -1; xOffset <= 1; xOffset++) {
+                    for (int zOffset = 1; zOffset >= -1; zOffset--) {
+                        if (world.getBlockEntity(xCentered + xOffset, y + 1, zCentered + zOffset) instanceof BasicItemChuteBlockEntity basicItemChuteBlockEntity) {
+                            if (basicItemChuteBlockEntity.storedItem == null) {
+                                continue;
+                            }
+                            int ovenIndex = (-zOffset + 1) + (xOffset + 1) * 3;
+                            if (craftingTableItemStacks[ovenIndex] == null) {
+                                craftingTableItemStacks[ovenIndex] = basicItemChuteBlockEntity.storedItem;
+                                basicItemChuteBlockEntity.storedItem = null;
+                            } else if (craftingTableItemStacks[ovenIndex].isItemEqual(basicItemChuteBlockEntity.storedItem)) {
+                                int totalCount = craftingTableItemStacks[ovenIndex].count + basicItemChuteBlockEntity.storedItem.count;
+                                if (totalCount <= basicItemChuteBlockEntity.storedItem.getMaxCount()) {
+                                    craftingTableItemStacks[ovenIndex].count = totalCount;
+                                    basicItemChuteBlockEntity.storedItem = null;
+                                } else {
+                                    int leftovers = totalCount - basicItemChuteBlockEntity.storedItem.getMaxCount();
+                                    craftingTableItemStacks[ovenIndex].count = basicItemChuteBlockEntity.storedItem.getMaxCount();
+                                    basicItemChuteBlockEntity.storedItem.count = leftovers;
+                                }
+                            }
+                        }
+                    }
+                }
+                break;
+        }
+        // Automatic output
+        for (int xOffset = -1; xOffset <= 1; xOffset++) {
+            for (int zOffset = -1; zOffset <= 1; zOffset++) {
+                // Standard output from output slot
+                BlockEntity target = world.getBlockEntity(xCentered + xOffset, y - 1, zCentered + zOffset);
+                if (craftingTableItemStacks[OUTPUT] != null
+                        && target instanceof BasicItemChuteBlockEntity basicItemChuteBlockEntity
+                        && !(target instanceof FilteringItemChuteBlockEntity)) {
+                    if (basicItemChuteBlockEntity.storedItem == null) {
+                        basicItemChuteBlockEntity.storedItem = craftingTableItemStacks[OUTPUT];
+                        craftingTableItemStacks[OUTPUT] = null;
+                        return true;
+                    } else if (basicItemChuteBlockEntity.storedItem.isItemEqual(craftingTableItemStacks[OUTPUT])) {
+                        int totalCount = craftingTableItemStacks[OUTPUT].count + basicItemChuteBlockEntity.storedItem.count;
+                        if (totalCount <= basicItemChuteBlockEntity.storedItem.getMaxCount()) {
+                            basicItemChuteBlockEntity.storedItem.count = totalCount;
+                            craftingTableItemStacks[OUTPUT] = null;
+                        } else {
+                            int leftovers = totalCount - basicItemChuteBlockEntity.storedItem.getMaxCount();
+                            basicItemChuteBlockEntity.storedItem.count = basicItemChuteBlockEntity.storedItem.getMaxCount();
+                            craftingTableItemStacks[OUTPUT].count = leftovers;
+                        }
+                    }
+                }
+                // Input byproduct clearing through filtered item chutes
+                for (int slot = 0; slot < 9; slot++) {
+                    ItemStack slotItem = craftingTableItemStacks[slot];
+                    if (slotItem == null) {
+                        continue;
+                    }
+                    if (target instanceof FilteringItemChuteBlockEntity filteringItemChuteBlockEntity) {
+                        if (filteringItemChuteBlockEntity.filter == null) {
+                            break;
+                        }
+                        if (filteringItemChuteBlockEntity.storedItem != null) {
+                            break;
+                        }
+                        if (!slotItem.isItemEqual(filteringItemChuteBlockEntity.filter)) {
+                            continue;
+                        }
+                        filteringItemChuteBlockEntity.storedItem = slotItem;
+                        craftingTableItemStacks[slot] = null;
+                    }
+                }
+            }
+        }
+        return true;
     }
 
     private boolean canCraft() {
