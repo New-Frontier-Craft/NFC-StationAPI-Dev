@@ -4,6 +4,8 @@ import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.CraftingInventory;
 import net.minecraft.inventory.Inventory;
+import net.minecraft.item.BucketItem;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtList;
@@ -312,9 +314,14 @@ public class AutomaticCraftingTableBlockEntity extends BlockEntity implements In
         // Clear input slots
         for(int i = 0; i < 9; i++) {
             if(craftingTableItemStacks[i] != null){
-                craftingTableItemStacks[i].count--;
-                if (craftingTableItemStacks[i].copy().count <= 0) {
-                    craftingTableItemStacks[i] = null;
+                if (craftingTableItemStacks[i].getItem() instanceof BucketItem
+                        && craftingTableItemStacks[i].getItem().id != Item.BUCKET.id) {
+                    craftingTableItemStacks[i] = new ItemStack(Item.BUCKET, 1);
+                } else {
+                    craftingTableItemStacks[i].count--;
+                    if (craftingTableItemStacks[i].copy().count <= 0) {
+                        craftingTableItemStacks[i] = null;
+                    }
                 }
             }
         }
