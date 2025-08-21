@@ -1,5 +1,6 @@
 package net.newfrontiercraft.nfc.block.entity;
 
+import net.danygames2014.nyalib.item.ItemHandler;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.CraftingInventory;
@@ -10,12 +11,14 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtList;
 import net.minecraft.recipe.CraftingRecipeManager;
+import net.modificationstation.stationapi.api.util.math.Direction;
 import net.newfrontiercraft.nfc.block.AutomaticCraftingTableBlock;
 import net.newfrontiercraft.nfc.events.init.BlockListener;
 import net.newfrontiercraft.nfc.inventory.crafting.AutocraftingMatrix;
 import net.newfrontiercraft.nfc.inventory.crafting.AutocraftingScreenHandler;
+import org.jetbrains.annotations.Nullable;
 
-public class AutomaticCraftingTableBlockEntity extends BlockEntity implements Inventory {
+public class AutomaticCraftingTableBlockEntity extends BlockEntity implements Inventory, ItemHandler {
 
     public static final int RECIPE_TIME = 1000;
     private static final int OUTPUT = 9;
@@ -423,5 +426,90 @@ public class AutomaticCraftingTableBlockEntity extends BlockEntity implements In
         nbtCompound.putBoolean("IsMultiBlock", isMultiBlock);
         nbtCompound.putInt("CheckTimer", checkTimer);
         nbtCompound.putInt("Torque", torque);
+    }
+
+    @Override
+    public boolean canExtractItem(@Nullable Direction direction) {
+        return !isMultiBlock && direction == Direction.UP;
+    }
+
+    @Override
+    public ItemStack extractItem(int slot, int amount, @Nullable Direction direction) {
+        ItemStack slotItem = craftingTableItemStacks[OUTPUT];
+        if (slotItem == null) {
+            return null;
+        }
+        if (slotItem.count <= amount) {
+            craftingTableItemStacks[OUTPUT] = null;
+            return slotItem;
+        } else {
+            slotItem.count = amount;
+            craftingTableItemStacks[OUTPUT].count -= amount;
+        }
+        return null;
+    }
+
+    @Override
+    public boolean canInsertItem(@Nullable Direction direction) {
+        return !isMultiBlock && direction == Direction.DOWN;
+    }
+
+    @Override
+    public ItemStack insertItem(ItemStack itemStack, int i, @Nullable Direction direction) {
+        ItemStack existingStack = craftingTableItemStacks[i];
+        if (existingStack == null) {
+            craftingTableItemStacks[i] = itemStack;
+            return null;
+        } else {
+            int totalCount = existingStack.count + itemStack.count;
+            if (totalCount < itemStack.getMaxCount()) {
+                craftingTableItemStacks[i].count = totalCount;
+                return null;
+            } else {
+                itemStack.count = totalCount - itemStack.getMaxCount();
+                craftingTableItemStacks[i].count = itemStack.getMaxCount();
+                return itemStack;
+            }
+        }
+    }
+
+    @Override
+    public ItemStack insertItem(ItemStack itemStack, @Nullable Direction direction) {
+        return null;
+    }
+
+    @Override
+    public ItemStack getItemInSlot(int slot, @Nullable Direction direction) {
+        if (direction == Direction.UP) {
+            return craftingTableItemStacks[OUTPUT];
+        }
+        return null;
+    }
+
+    @Override
+    public int getItemSlots(@Nullable Direction direction) {
+        if (direction == Direction.UP) {
+            return 1;
+        } else if (direction == Direction.DOWN) {
+            return 9;
+        }
+        return 0;
+    }
+
+    @Override
+    public ItemStack[] getInventory(@Nullable Direction direction) {
+        if (direction == Direction.UP) {
+            return new ItemStack[] {craftingTableItemStacks[OUTPUT]};
+        } else if (direction == Direction.DOWN) {
+            return new ItemStack[] {craftingTableItemStacks[0], craftingTableItemStacks[1], craftingTableItemStacks[2],
+                    craftingTableItemStacks[3], craftingTableItemStacks[4], craftingTableItemStacks[5],
+                    craftingTableItemStacks[6], craftingTableItemStacks[7], craftingTableItemStacks[9]};
+        }
+        return null;
+    }
+
+    @Override
+    public boolean canConnectItem(Direction direction) {
+        return direction == Direction.UP || direction == Direction.DOWN;
     }
 }
