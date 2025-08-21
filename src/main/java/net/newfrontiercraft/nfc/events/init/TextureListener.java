@@ -262,7 +262,7 @@ public class TextureListener {
         BlockListener.machineFrame.specifyTextures(getTextureIndex(machines + "machine_frame"));
         BlockListener.creativeGenerator.specifyTextures(getTextureIndex(machines + "generator_output"), getTextureIndex(machines + "creative_generator_side"), getTextureIndex(machines + "generator_input"));
         BlockListener.stirlingGenerator.specifyTextures(getTextureIndex(machines + "generator_output"), getTextureIndex(machines + "stirling_generator_side"), getTextureIndex(machines + "generator_input"));
-        BlockListener.machineGearBox.specifyTextures(getTextureIndex(machines + "machine_gear_box"));
+        BlockListener.machineGearBox.specifyTextures(getTextureIndex(machines + "machine_gear_box"), getTextureIndex(machines + "machine_gear_box_active"));
         BlockListener.automaticCraftingTable.specifyTextures(getTextureIndex(machines + "automatic_crafting_table_top"),
                 getTextureIndex(machines + "automatic_crafting_table_front"), getTextureIndex(machines + "automatic_crafting_table_front_active"),
                 getTextureIndex(machines + "automatic_crafting_table_side"), getTextureIndex(machines + "automatic_crafting_table_bottom"));

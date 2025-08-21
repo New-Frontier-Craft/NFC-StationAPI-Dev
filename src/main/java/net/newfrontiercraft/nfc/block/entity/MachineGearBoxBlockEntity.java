@@ -23,12 +23,16 @@ public class MachineGearBoxBlockEntity extends BlockEntity {
     private void updateTorque() {
         int belowBlockId = world.getBlockId(x, y - 1, z);
         if (belowBlockId == 0) {
+            world.setBlockMeta(x, y, z, 0);
             torque = 0;
             return;
         }
         Block block = Block.BLOCKS[belowBlockId];
         if (block instanceof TorqueGenerator torqueGenerator) {
             torque = torqueGenerator.getTorque(world, x, y - 1, z);
+            if (torque > 0) {
+                world.setBlockMeta(x, y, z, 1);
+            }
         }
     }
 
