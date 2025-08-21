@@ -548,3 +548,4 @@ item.nfc.redstone_circuit.name=Redstone Circuit
 gui.nfc.bookshelf=Bookshelf
 
 multiblock.nfc.brickoven=Brick Oven
+multiblock.nfc.automatic_crafting_table=Automatic Crafting Table
