@@ -137,6 +137,8 @@ public class BlockListener {
             window,
             stainedGlass;
 
+    public static AutomaticCraftingTableBlock automaticCraftingTable;
+
     public static LazyGlassBlockTemplate tintedGlass;
 
     public static CarpentryWorkstationBlock carpentryWorkstation;
@@ -423,6 +425,8 @@ public class BlockListener {
         creativeGenerator = new CreativeGeneratorBlock(Identifier.of(MOD_ID, "creative_generator"), Material.METAL, 2.0F, Block.METAL_SOUND_GROUP);
         stirlingGenerator = new StirlingGeneratorBlock(Identifier.of(MOD_ID, "stirling_generator"), Material.METAL, 2.0F, Block.METAL_SOUND_GROUP);
         machineGearBox = new MachineGearBoxBlock(Identifier.of(MOD_ID, "machine_gear_box"), Material.METAL, 2.0F, Block.METAL_SOUND_GROUP);
+
+        automaticCraftingTable = new AutomaticCraftingTableBlock(Identifier.of(MOD_ID, "automatic_crafting_table"), Material.METAL, 2.0F, Block.METAL_SOUND_GROUP);
 
         // Changes to vanilla blast resistance
         Block.COAL_ORE.setResistance(500F);

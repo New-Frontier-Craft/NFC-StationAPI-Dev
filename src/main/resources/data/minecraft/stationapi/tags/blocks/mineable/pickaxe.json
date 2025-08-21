@@ -120,6 +120,7 @@
     "nfc:machine_frame",
     "nfc:creative_generator",
     "nfc:stirling_generator",
-    "nfc:machine_gear_box"
+    "nfc:machine_gear_box",
+    "nfc:automatic_crafting_table"
   ]
 }
