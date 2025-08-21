@@ -30,13 +30,13 @@ public class StirlingGeneratorBlock extends LazyBlockTemplate implements TorqueG
                 return 0;
             } else if (heat < 500) {
                 heatCoilBlockEntity.changeHeatLevel(-10);
-                return 1;
+                return 10;
             } else if (heat < 750) {
                 heatCoilBlockEntity.changeHeatLevel(-10);
-                return 2;
+                return 20;
             } else {
                 heatCoilBlockEntity.changeHeatLevel(-10);
-                return 3;
+                return 30;
             }
         }
         return 0;
