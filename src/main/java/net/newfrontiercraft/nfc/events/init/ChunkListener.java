@@ -45,6 +45,14 @@ public class ChunkListener {
                 int j19 = event.z + random.nextInt(16) + 8;
                 (new PlantPatchFeature(BlockListener.bioluminescentMushroom.id)).generate(world, random, j14, j16, j19);
             }
+            if (event.random.nextInt(8) == 1) {
+                int k4 = event.x + event.random.nextInt(16);
+                int l7 = event.random.nextInt(24) + 50;
+                int i11 = event.z + event.random.nextInt(16);
+                (new ConcentratedOreVein(Block.COAL_ORE.id, 9, 8, 32)).generate(event.world, event.random, k4, l7, i11);
+                (new UnrestrictedOreFeature(Block.COAL_ORE.id, 32)).generate(event.world, event.random, k4, l7, i11);
+                (new ConcentratedOreVein(BlockListener.anthraciteOre.id, 4, 3, 12, Block.COAL_ORE.id)).generate(event.world, event.random, k4, l7, i11);
+            }
         }
         if (biome == Biome.RAINFOREST) {
             for (int i = 0; i < 2; i++) {
@@ -62,6 +70,14 @@ public class ChunkListener {
                         (new VariablePlantPatchFeature(BlockListener.bioluminescentMushroom.id, 16)).generate(world, random, mushroomX, mushroomY, mushroomZ);
                     }
                 }
+            }
+            if (event.random.nextInt(4) == 1) {
+                int k4 = event.x + event.random.nextInt(16);
+                int l7 = event.random.nextInt(24) + 50;
+                int i11 = event.z + event.random.nextInt(16);
+                (new ConcentratedOreVein(Block.COAL_ORE.id, 9, 8, 64)).generate(event.world, event.random, k4, l7, i11);
+                (new UnrestrictedOreFeature(Block.COAL_ORE.id, 64)).generate(event.world, event.random, k4, l7, i11);
+                (new ConcentratedOreVein(BlockListener.anthraciteOre.id, 4, 6, 24, Block.COAL_ORE.id)).generate(event.world, event.random, k4, l7, i11);
             }
         }
         if (biome == Biome.TAIGA || biome == Biome.TUNDRA) {
@@ -97,13 +113,6 @@ public class ChunkListener {
             int y = event.random.nextInt(64) + 24;
             int z = event.z + event.random.nextInt(16) + 8;
             (new StalactiteCaveFeature()).generate(event.world, event.random, x, y, z);
-        }
-
-        if (event.random.nextInt(64) == 0) {
-            int x = event.x + event.random.nextInt(16) + 8;
-            int y = event.random.nextInt(32) + 40;
-            int z = event.z + event.random.nextInt(16) + 8;
-            //(new RavineFeature()).generate(event.world, event.random, x, y, z);
         }
 
         {
