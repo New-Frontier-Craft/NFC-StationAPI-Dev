@@ -31,6 +31,14 @@ public class ChunkListener {
         World world = event.world;
         Biome biome = event.biome;
         RandomUtil randomUtil = new RandomUtil(random);
+
+        int rareMetalFactor = 8;
+
+        if (biome == Biome.TAIGA) {
+            rareMetalFactor = 4;
+        } else if (biome == Biome.TUNDRA) {
+            rareMetalFactor = 2;
+        }
         
         if (random.nextInt(32) == 0) {
             int j14 = event.x + random.nextInt(16) + 8;
@@ -122,7 +130,7 @@ public class ChunkListener {
             (new OreFeature(BlockListener.mysteryOre.id, 1)).generate( event.world, event.random, i6, j9, i12);
         }
 
-        if (event.random.nextInt(50) == 1) {
+        if (event.random.nextInt(6 * rareMetalFactor) == 1) {
             int k4 = event.x + event.random.nextInt(16);
             int l7 = event.random.nextInt(12);
             int i11 = event.z + event.random.nextInt(16);
@@ -136,7 +144,7 @@ public class ChunkListener {
             (new OreFeature(BlockListener.zincOre.id, 10)).generate( event.world, event.random, k4, l7, i11);
         }
 
-        if (event.random.nextInt(32) == 1) {
+        if (event.random.nextInt(4 * rareMetalFactor) == 1) {
             int k4 = event.x + event.random.nextInt(16);
             int l7 = event.random.nextInt(60);
             int i11 = event.z + event.random.nextInt(16);
@@ -150,14 +158,14 @@ public class ChunkListener {
             (new OreCloud(BlockListener.boronOre.id, 4, 0, 10)).generate( event.world, event.random, k4, l7, i11);
         }
         
-        if (event.random.nextInt(16) == 1) {
+        if (event.random.nextInt(2 * rareMetalFactor) == 1) {
             int k4 = event.x + event.random.nextInt(16);
             int l7 = event.random.nextInt(50);
             int i11 = event.z + event.random.nextInt(16);
             (new ConcentratedOreVein(BlockListener.silverOre.id, 12, 6, 8)).generate( event.world, event.random, k4, l7, i11);
         }
 
-        if (event.random.nextInt(20) == 1) {
+        if (event.random.nextInt(2 * rareMetalFactor) == 1) {
             int k4 = event.x + event.random.nextInt(16);
             int l7 = event.random.nextInt(40);
             int i11 = event.z + event.random.nextInt(16);
@@ -171,7 +179,7 @@ public class ChunkListener {
             (new OreCloud(Block.IRON_ORE.id, 16, 2, 200)).generate( event.world, event.random, k4, l7, i11);
         }
 
-        if (event.random.nextInt(16) == 1) {
+        if (event.random.nextInt(2 * rareMetalFactor) == 1) {
             int k4 = event.x + event.random.nextInt(16);
             int l7 = event.random.nextInt(32);
             int i11 = event.z + event.random.nextInt(16);
@@ -185,14 +193,14 @@ public class ChunkListener {
             (new OreFeature(BlockListener.chromeOre.id, 10)).generate( event.world, event.random, k4, l7, i11);
         }
         
-        if (event.random.nextInt(25) == 1) {
+        if (event.random.nextInt(3 * rareMetalFactor) == 1) {
             int k4 = event.x + event.random.nextInt(16);
             int l7 = event.random.nextInt(16);
             int i11 = event.z + event.random.nextInt(16);
             (new OreCloud(BlockListener.titaniumOre.id, 8, 3, 25)).generate( event.world, event.random, k4, l7, i11);
         }
 
-        {
+        for (int i = 0; i <= 8 - rareMetalFactor; i++) {
             int k4 = event.x + event.random.nextInt(16);
             int l7 = event.random.nextInt(6) + 3;
             int i11 = event.z + event.random.nextInt(16);
@@ -222,14 +230,14 @@ public class ChunkListener {
         }
          */
 
-        if (event.random.nextInt(32) == 1) {
+        if (event.random.nextInt(4 * rareMetalFactor) == 1) {
             int k4 = event.x + event.random.nextInt(16);
             int l7 = event.random.nextInt(32);
             int i11 = event.z + event.random.nextInt(16);
             (new OreFeature(BlockListener.uraniniteOre.id, 16)).generate( event.world, event.random, k4, l7, i11);
         }
 
-        if (event.random.nextInt(10) == 1) {
+        if (event.random.nextInt(rareMetalFactor) == 1) {
             int k4 = event.x + event.random.nextInt(16);
             int l7 = event.random.nextInt(32);
             int i11 = event.z + event.random.nextInt(16);
