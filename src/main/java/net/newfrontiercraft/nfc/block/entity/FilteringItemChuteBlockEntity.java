@@ -258,7 +258,7 @@ public class FilteringItemChuteBlockEntity extends BasicItemChuteBlockEntity {
         }
         int slotCount = ((ItemHandler)outputTarget).getItemSlots(Direction.UP);
         for (int i = 0; i < slotCount; i++) {
-            ItemStack outputItem = ((ItemHandler)outputTarget).getItemInSlot(i, Direction.UP);
+            ItemStack outputItem = ((ItemHandler)outputTarget).getItem(i, Direction.UP);
             if (outputItem == null) {
                 continue;
             }

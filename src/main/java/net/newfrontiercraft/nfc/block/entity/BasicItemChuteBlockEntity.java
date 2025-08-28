@@ -160,7 +160,7 @@ public class BasicItemChuteBlockEntity extends BlockEntity implements Inventory,
         }
         int slotCount = ((ItemHandler)outputTarget).getItemSlots(Direction.UP);
         for (int i = 0; i < slotCount; i++) {
-            ItemStack outputItem = ((ItemHandler)outputTarget).getItemInSlot(i, Direction.UP);
+            ItemStack outputItem = ((ItemHandler)outputTarget).getItem(i, Direction.UP);
             if (outputItem == null) {
                 continue;
             }
@@ -380,8 +380,14 @@ public class BasicItemChuteBlockEntity extends BlockEntity implements Inventory,
     }
 
     @Override
-    public ItemStack getItemInSlot(int slot, @Nullable Direction direction) {
+    public ItemStack getItem(int i, @Nullable Direction direction) {
         return storedItem;
+    }
+
+    @Override
+    public boolean setItem(ItemStack itemStack, int i, @Nullable Direction direction) {
+        storedItem = itemStack;
+        return true;
     }
 
     @Override
