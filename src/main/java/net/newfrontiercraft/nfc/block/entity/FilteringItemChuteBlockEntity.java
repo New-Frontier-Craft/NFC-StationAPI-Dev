@@ -2,7 +2,6 @@ package net.newfrontiercraft.nfc.block.entity;
 
 import net.danygames2014.nyalib.item.ItemHandler;
 import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.block.entity.FurnaceBlockEntity;
 import net.minecraft.entity.vehicle.MinecartEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
@@ -199,12 +198,12 @@ public class FilteringItemChuteBlockEntity extends BasicItemChuteBlockEntity {
         if (!(inputTarget instanceof ItemHandler)) {
             return;
         }
-        if (!((ItemHandler)inputTarget).canInsertItem(Direction.DOWN)) {
+        if (!((ItemHandler)inputTarget).canInsertItem(Direction.UP)) {
             return;
         }
         ItemStack insertedItem;
-        int slotCount = ((ItemHandler)inputTarget).getItemSlots(Direction.DOWN);
-        ItemStack[] allDestinationSlots = ((ItemHandler)inputTarget).getInventory(Direction.DOWN);
+        int slotCount = ((ItemHandler)inputTarget).getItemSlots(Direction.UP);
+        ItemStack[] allDestinationSlots = ((ItemHandler)inputTarget).getInventory(Direction.UP);
         int totalCountInDestination = 0;
         if (precise) {
             for (ItemStack destinationSlot : allDestinationSlots) {
@@ -216,20 +215,20 @@ public class FilteringItemChuteBlockEntity extends BasicItemChuteBlockEntity {
                 }
             }
         }
-        int countToInsert;
-        for (int i = 0; i < slotCount; i++) {
-            if (storedItem == null) {
-                break;
-            }
-            insertedItem = storedItem.copy();
-            if (precise) {
+        if (precise) {
+            int countToInsert;
+            for (int i = 0; i < slotCount; i++) {
+                if (storedItem == null) {
+                    break;
+                }
+                insertedItem = storedItem.copy();
                 if (totalCountInDestination >= filter.count) {
                     break;
                 }
                 if (totalCountInDestination + insertedItem.count > filter.count) {
                     countToInsert = filter.count - totalCountInDestination;
                     insertedItem.count = countToInsert;
-                    ItemStack remainingCountStack = ((ItemHandler) inputTarget).insertItem(insertedItem, i, Direction.DOWN);
+                    ItemStack remainingCountStack = ((ItemHandler) inputTarget).insertItem(insertedItem, i, Direction.UP);
                     if (remainingCountStack == null) {
                         storedItem.count -= countToInsert;
                         break;
@@ -238,11 +237,11 @@ public class FilteringItemChuteBlockEntity extends BasicItemChuteBlockEntity {
                         insertedItem.count -= countToInsert - remainingCountStack.count;
                     }
                 } else {
-                    storedItem = ((ItemHandler) inputTarget).insertItem(storedItem, i, Direction.DOWN);
+                    storedItem = ((ItemHandler) inputTarget).insertItem(storedItem, i, Direction.UP);
                 }
-            } else {
-                storedItem = ((ItemHandler) inputTarget).insertItem(storedItem, i, Direction.DOWN);
             }
+        } else {
+            storedItem = ((ItemHandler) inputTarget).insertItem(storedItem, Direction.UP);
         }
     }
 
@@ -250,15 +249,15 @@ public class FilteringItemChuteBlockEntity extends BasicItemChuteBlockEntity {
         if (!(outputTarget instanceof ItemHandler)) {
             return;
         }
-        if (!((ItemHandler)outputTarget).canExtractItem(outputTarget instanceof FurnaceBlockEntity ? Direction.NORTH : Direction.UP)) { // Lie to the furnace in order to extract from it
+        if (!((ItemHandler)outputTarget).canExtractItem(Direction.DOWN)) {
             return;
         }
         if (storedItem != null && storedItem.count >= storedItem.getMaxCount()) {
             return;
         }
-        int slotCount = ((ItemHandler)outputTarget).getItemSlots(Direction.UP);
+        int slotCount = ((ItemHandler)outputTarget).getItemSlots(Direction.DOWN);
         for (int i = 0; i < slotCount; i++) {
-            ItemStack outputItem = ((ItemHandler)outputTarget).getItem(i, Direction.UP);
+            ItemStack outputItem = ((ItemHandler)outputTarget).getItem(i, Direction.DOWN);
             if (outputItem == null) {
                 continue;
             }
@@ -268,7 +267,7 @@ public class FilteringItemChuteBlockEntity extends BasicItemChuteBlockEntity {
                 }
             }
             if (storedItem == null) {
-                storedItem = ((ItemHandler)outputTarget).extractItem(i, outputItem.count, Direction.UP);
+                storedItem = ((ItemHandler)outputTarget).extractItem(i, outputItem.count, Direction.DOWN);
                 continue;
             }
             if (!storedItem.isItemEqual(outputItem)) {
@@ -276,11 +275,11 @@ public class FilteringItemChuteBlockEntity extends BasicItemChuteBlockEntity {
             }
             if (storedItem.count + outputItem.count <= storedItem.getMaxCount()) {
                 storedItem.count += outputItem.count;
-                ((ItemHandler)outputTarget).extractItem(i, outputItem.count, Direction.UP);
+                ((ItemHandler)outputTarget).extractItem(i, outputItem.count, Direction.DOWN);
             } else {
                 int removedCount = outputItem.count - (storedItem.count + outputItem.count - storedItem.getMaxCount());
                 storedItem.count = storedItem.getMaxCount();
-                ((ItemHandler)outputTarget).extractItem(i, removedCount, Direction.UP);
+                ((ItemHandler)outputTarget).extractItem(i, removedCount, Direction.DOWN);
                 break;
             }
         }
