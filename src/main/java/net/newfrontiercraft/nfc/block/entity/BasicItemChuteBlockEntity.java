@@ -2,6 +2,7 @@ package net.newfrontiercraft.nfc.block.entity;
 
 import net.danygames2014.nyalib.item.ItemHandler;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.entity.FurnaceBlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.vehicle.MinecartEntity;
 import net.minecraft.inventory.Inventory;
@@ -152,7 +153,12 @@ public class BasicItemChuteBlockEntity extends BlockEntity implements Inventory,
             return;
         }
         int slotCount = ((ItemHandler)outputTarget).getItemSlots(Direction.DOWN);
-        for (int i = 0; i < slotCount; i++) {
+        int startingSlot = 0; // This cursed mess is to blame on an API dispute
+        if (outputTarget instanceof FurnaceBlockEntity) {
+            slotCount = 3;
+            startingSlot = 2;
+        }
+        for (int i = startingSlot; i < slotCount; i++) {
             ItemStack outputItem = ((ItemHandler)outputTarget).getItem(i, Direction.DOWN);
             if (outputItem == null) {
                 continue;
