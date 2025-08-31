@@ -28,6 +28,8 @@ public class SwordItemMixin implements CustomTooltipProvider {
         } else {
             return new String[]{originalTooltip};
         }
-        return new String[]{toolTierEnum.getColourCode() + originalTooltip, "§7" + TranslationStorage.getInstance().get("tool_tier.tier") + ": " + toolTierEnum.getColourCode() + TranslationStorage.getInstance().get(toolTierEnum.getName())};
+        return new String[]{toolTierEnum.getColourCode() + originalTooltip,
+                "§7" + TranslationStorage.getInstance().get("tool_tier.tier") + ": " + toolTierEnum.getColourCode() + TranslationStorage.getInstance().get(toolTierEnum.getName()),
+                "§9" + "+" + stack.getItem().getAttackDamage(null) + " " + TranslationStorage.getInstance().get("tool_tier.attack_damage")};
     }
 }
