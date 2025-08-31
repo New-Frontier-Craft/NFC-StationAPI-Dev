@@ -61,7 +61,8 @@
     "graphics.SlabTextureMixin",
     "graphics.TorchBlockMixin",
     "graphics.WorldRendererAccessor",
-    "graphics.WorldRendererMixin"
+    "graphics.WorldRendererMixin",
+    "ToolItemMixin"
   ],
   "injectors": {
     "defaultRequire": 1
