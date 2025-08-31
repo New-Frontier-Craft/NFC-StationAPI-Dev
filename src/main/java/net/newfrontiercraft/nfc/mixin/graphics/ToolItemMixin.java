@@ -20,7 +20,7 @@ public class ToolItemMixin implements CustomTooltipProvider {
         } else if (item == Item.STONE_PICKAXE || item == Item.STONE_AXE || item == Item.STONE_SHOVEL) {
             toolTierEnum = ToolTierEnum.STONE;
         } else if (item == Item.GOLDEN_PICKAXE || item == Item.GOLDEN_AXE || item == Item.GOLDEN_SHOVEL) {
-            toolTierEnum = ToolTierEnum.BASIC;
+            toolTierEnum = ToolTierEnum.WOOD;
         } else if (item == Item.IRON_PICKAXE || item == Item.IRON_AXE || item == Item.IRON_SHOVEL) {
             toolTierEnum = ToolTierEnum.IRON;
         } else if (item == Item.DIAMOND_PICKAXE || item == Item.DIAMOND_AXE || item == Item.DIAMOND_SHOVEL) {

@@ -20,7 +20,7 @@ public class HoeItemMixin implements CustomTooltipProvider {
         } else if (item == Item.STONE_HOE) {
             toolTierEnum = ToolTierEnum.STONE;
         } else if (item == Item.GOLDEN_HOE) {
-            toolTierEnum = ToolTierEnum.BASIC;
+            toolTierEnum = ToolTierEnum.WOOD;
         } else if (item == Item.IRON_HOE) {
             toolTierEnum = ToolTierEnum.IRON;
         } else if (item == Item.DIAMOND_HOE) {

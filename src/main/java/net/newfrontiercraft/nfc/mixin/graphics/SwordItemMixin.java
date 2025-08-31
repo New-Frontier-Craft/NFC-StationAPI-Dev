@@ -20,7 +20,7 @@ public class SwordItemMixin implements CustomTooltipProvider {
         } else if (item == Item.STONE_SWORD) {
             toolTierEnum = ToolTierEnum.STONE;
         } else if (item == Item.GOLDEN_SWORD) {
-            toolTierEnum = ToolTierEnum.BASIC;
+            toolTierEnum = ToolTierEnum.WOOD;
         } else if (item == Item.IRON_SWORD) {
             toolTierEnum = ToolTierEnum.IRON;
         } else if (item == Item.DIAMOND_SWORD) {
