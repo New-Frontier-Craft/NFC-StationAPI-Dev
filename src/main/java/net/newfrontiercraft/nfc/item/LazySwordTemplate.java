@@ -20,6 +20,8 @@ public class LazySwordTemplate extends TemplateSwordItem implements CustomToolti
 
     @Override
     public @NotNull String[] getTooltip(ItemStack itemStack, String originalTooltip) {
-        return new String[]{toolTierEnum.getColourCode() + originalTooltip, "§7" + TranslationStorage.getInstance().get("tool_tier.tier") + ": " + toolTierEnum.getColourCode() + TranslationStorage.getInstance().get(toolTierEnum.getName())};
+        return new String[]{toolTierEnum.getColourCode() + originalTooltip,
+                "§7" + TranslationStorage.getInstance().get("tool_tier.tier") + ": " + toolTierEnum.getColourCode() + TranslationStorage.getInstance().get(toolTierEnum.getName()),
+                "§9" + "+" + itemStack.getItem().getAttackDamage(null) + " " + TranslationStorage.getInstance().get("tool_tier.attack_damage")};
     }
 }

@@ -541,6 +541,7 @@ gui.nfc.bookshelf=Bookshelf
 multiblock.nfc.brickoven=Brick Oven
 
 tool_tier.tier=Tier
+tool_tier.attack_damage=Attack Damage
 tool_tier.wooden=Wooden
 tool_tier.stone=Stone
 tool_tier.crude=Crude
