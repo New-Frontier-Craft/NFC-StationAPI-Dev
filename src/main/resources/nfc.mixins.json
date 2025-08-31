@@ -63,7 +63,8 @@
     "graphics.WorldRendererAccessor",
     "graphics.WorldRendererMixin",
     "graphics.ToolItemMixin",
-    "graphics.SwordItemMixin"
+    "graphics.SwordItemMixin",
+    "graphics.HoeItemMixin"
   ],
   "injectors": {
     "defaultRequire": 1
