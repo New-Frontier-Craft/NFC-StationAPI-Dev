@@ -539,3 +539,12 @@ item.nfc.blue_glowstone_dust.name=Blue Glowstone Dust
 gui.nfc.bookshelf=Bookshelf
 
 multiblock.nfc.brickoven=Brick Oven
+
+tool_tier.tier=Tier
+tool_tier.wooden=Wooden
+tool_tier.stone=Stone
+tool_tier.crude=Crude
+tool_tier.basic=Basic
+tool_tier.iron=Improved
+tool_tier.advanced=Advanced
+tool_tier.diamond=Excellent
