@@ -62,7 +62,8 @@
     "graphics.TorchBlockMixin",
     "graphics.WorldRendererAccessor",
     "graphics.WorldRendererMixin",
-    "ToolItemMixin"
+    "graphics.ToolItemMixin",
+    "graphics.SwordItemMixin"
   ],
   "injectors": {
     "defaultRequire": 1
