@@ -65,7 +65,8 @@
     "graphics.ToolItemMixin",
     "graphics.SwordItemMixin",
     "graphics.HoeItemMixin",
-    "graphics.ArmorItemMixin"
+    "graphics.ArmorItemMixin",
+    "graphics.OreBlockMixin"
   ],
   "injectors": {
     "defaultRequire": 1
