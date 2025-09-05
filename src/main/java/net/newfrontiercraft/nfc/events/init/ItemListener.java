@@ -611,36 +611,36 @@ public class ItemListener {
         osmiumBoots = new LazyArmorTemplate(Identifier.of(MOD_ID, "osmium_boots"), 3, 1235, "osmium", ToolTierEnum.DIAMOND);
 
         // Ingots
-        aluminiumIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "aluminium_ingot"));
-        copperIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "copper_ingot"));
-        tinIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "tin_ingot"));
-        bismuthIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "bismuth_ingot"));
-        zincIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "zinc_ingot"));
-        nickelIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "nickel_ingot"));
-        cobaltIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "cobalt_ingot"));
-        tungstenIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "tungsten_ingot"));
-        magnetiteIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "magnet_ingot"));
-        silverIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "silver_ingot"));
-        leadIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "lead_ingot"));
-        siliconIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "silicon_ingot"));
-        chromeIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "chrome_ingot"));
-        titaniumIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "titanium_ingot"));
+        aluminiumIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "aluminium_ingot"), ToolTierEnum.CRUDE);
+        copperIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "copper_ingot"), ToolTierEnum.CRUDE);
+        tinIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "tin_ingot"), ToolTierEnum.CRUDE);
+        bismuthIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "bismuth_ingot"), ToolTierEnum.CRUDE);
+        zincIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "zinc_ingot"), ToolTierEnum.CRUDE);
+        nickelIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "nickel_ingot"), ToolTierEnum.BASIC);
+        cobaltIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "cobalt_ingot"), ToolTierEnum.IRON);
+        tungstenIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "tungsten_ingot"), ToolTierEnum.ADVANCED);
+        magnetiteIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "magnet_ingot"), ToolTierEnum.ADVANCED);
+        silverIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "silver_ingot"), ToolTierEnum.BASIC);
+        leadIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "lead_ingot"), ToolTierEnum.IRON);
+        siliconIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "silicon_ingot"), ToolTierEnum.IRON);
+        chromeIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "chrome_ingot"), ToolTierEnum.IRON);
+        titaniumIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "titanium_ingot"), ToolTierEnum.ADVANCED);
         uraniumIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "uranium_ingot"));
-        platinumIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "platinum_ingot"));
-        boronIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "boron_ingot"));
-        brassIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "brass_ingot"));
-        bronzeIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "bronze_ingot"));
-        steelIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "steel_ingot"));
-        osmiumIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "osmium_ingot"));
+        platinumIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "platinum_ingot"), ToolTierEnum.CRUDE);
+        boronIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "boron_ingot"), ToolTierEnum.CRUDE);
+        brassIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "brass_ingot"), ToolTierEnum.BASIC);
+        bronzeIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "bronze_ingot"), ToolTierEnum.BASIC);
+        steelIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "steel_ingot"), ToolTierEnum.ADVANCED);
+        osmiumIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "osmium_ingot"), ToolTierEnum.DIAMOND);
         cupronickelIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "cupronickel_ingot"));
 
         // Ore drops
         anthracite = new LazyItemTemplate(Identifier.of(MOD_ID, "anthracite"));
         netherAsh = new LazyItemTemplate(Identifier.of(MOD_ID, "nether_ash"));
-        onyx = new LazyItemTemplate(Identifier.of(MOD_ID, "onyx"));
-        sapphire = new LazyItemTemplate(Identifier.of(MOD_ID, "sapphire"));
-        ruby = new LazyItemTemplate(Identifier.of(MOD_ID, "ruby"));
-        emerald = new LazyItemTemplate(Identifier.of(MOD_ID, "emerald"));
+        onyx = new LazyItemTemplate(Identifier.of(MOD_ID, "onyx"), ToolTierEnum.ADVANCED);
+        sapphire = new LazyItemTemplate(Identifier.of(MOD_ID, "sapphire"), ToolTierEnum.ADVANCED);
+        ruby = new LazyItemTemplate(Identifier.of(MOD_ID, "ruby"), ToolTierEnum.ADVANCED);
+        emerald = new LazyItemTemplate(Identifier.of(MOD_ID, "emerald"), ToolTierEnum.ADVANCED);
 
         // Other drops
         blueGlowstoneDust = new LazyItemTemplate(Identifier.of(MOD_ID, "blue_glowstone_dust"));
