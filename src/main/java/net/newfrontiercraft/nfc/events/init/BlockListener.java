@@ -12,6 +12,7 @@ import net.modificationstation.stationapi.api.recipe.FuelRegistry;
 import net.modificationstation.stationapi.api.util.Identifier;
 import net.modificationstation.stationapi.api.util.Namespace;
 import net.newfrontiercraft.nfc.block.*;
+import net.newfrontiercraft.nfc.utils.ToolTierEnum;
 
 public class BlockListener {
 
@@ -250,30 +251,30 @@ public class BlockListener {
 
         netherAshOre = new LazyOreTemplate(Identifier.of(MOD_ID, "nether_ash_ore"), 3F);
         netherUraniniteOre = new LazyOreTemplate(Identifier.of(MOD_ID, "nether_uraninite_ore"), 3F);
-        netherGoldOre = new LazyOreTemplate(Identifier.of(MOD_ID, "nether_gold_ore"), 3F);
-        netherOnyxOre = new LazyOreTemplate(Identifier.of(MOD_ID, "nether_onyx_ore"), 4F);
-        cobaltOre = new LazyOreTemplate(Identifier.of(MOD_ID, "cobalt_ore"), 4F);
-        aluminiumOre = new LazyOreTemplate(Identifier.of(MOD_ID, "aluminium_ore"), 3F);
-        copperOre = new LazyOreTemplate(Identifier.of(MOD_ID, "copper_ore"), 3F);
-        tinOre = new LazyOreTemplate(Identifier.of(MOD_ID, "tin_ore"), 3F);
-        zincOre = new LazyOreTemplate(Identifier.of(MOD_ID, "zinc_ore"), 3F);
-        nickelOre = new LazyOreTemplate(Identifier.of(MOD_ID, "nickel_ore"), 3.5F);
-        bismuthOre = new LazyOreTemplate(Identifier.of(MOD_ID, "bismuth_ore"), 3F);
-        osmiumOre = new LazyOreTemplate(Identifier.of(MOD_ID, "osmium_ore"), 10F);
-        tungstenOre = new LazyOreTemplate(Identifier.of(MOD_ID, "tungsten_ore"), 6F);
-        magnetiteOre = new LazyOreTemplate(Identifier.of(MOD_ID, "magnetite_ore"), 4F);
-        silverOre = new LazyOreTemplate(Identifier.of(MOD_ID, "silver_ore"), 3.5F);
-        leadOre = new LazyOreTemplate(Identifier.of(MOD_ID, "lead_ore"), 3F);
-        siliconOre = new LazyOreTemplate(Identifier.of(MOD_ID, "silicon_ore"), 4F);
-        chromeOre = new LazyOreTemplate(Identifier.of(MOD_ID, "chrome_ore"), 4F);
+        netherGoldOre = new LazyOreTemplate(Identifier.of(MOD_ID, "nether_gold_ore"), 3F, ToolTierEnum.WOOD);
+        netherOnyxOre = new LazyOreTemplate(Identifier.of(MOD_ID, "nether_onyx_ore"), 4F, ToolTierEnum.ADVANCED);
+        cobaltOre = new LazyOreTemplate(Identifier.of(MOD_ID, "cobalt_ore"), 4F, ToolTierEnum.IRON);
+        aluminiumOre = new LazyOreTemplate(Identifier.of(MOD_ID, "aluminium_ore"), 3F, ToolTierEnum.CRUDE);
+        copperOre = new LazyOreTemplate(Identifier.of(MOD_ID, "copper_ore"), 3F, ToolTierEnum.CRUDE);
+        tinOre = new LazyOreTemplate(Identifier.of(MOD_ID, "tin_ore"), 3F, ToolTierEnum.CRUDE);
+        zincOre = new LazyOreTemplate(Identifier.of(MOD_ID, "zinc_ore"), 3F, ToolTierEnum.CRUDE);
+        nickelOre = new LazyOreTemplate(Identifier.of(MOD_ID, "nickel_ore"), 3.5F, ToolTierEnum.BASIC);
+        bismuthOre = new LazyOreTemplate(Identifier.of(MOD_ID, "bismuth_ore"), 3F, ToolTierEnum.CRUDE);
+        osmiumOre = new LazyOreTemplate(Identifier.of(MOD_ID, "osmium_ore"), 10F, ToolTierEnum.DIAMOND);
+        tungstenOre = new LazyOreTemplate(Identifier.of(MOD_ID, "tungsten_ore"), 6F, ToolTierEnum.ADVANCED);
+        magnetiteOre = new LazyOreTemplate(Identifier.of(MOD_ID, "magnetite_ore"), 4F, ToolTierEnum.ADVANCED);
+        silverOre = new LazyOreTemplate(Identifier.of(MOD_ID, "silver_ore"), 3.5F, ToolTierEnum.BASIC);
+        leadOre = new LazyOreTemplate(Identifier.of(MOD_ID, "lead_ore"), 3F, ToolTierEnum.CRUDE);
+        siliconOre = new LazyOreTemplate(Identifier.of(MOD_ID, "silicon_ore"), 4F, ToolTierEnum.IRON);
+        chromeOre = new LazyOreTemplate(Identifier.of(MOD_ID, "chrome_ore"), 4F, ToolTierEnum.IRON);
         anthraciteOre = new LazyOreTemplate(Identifier.of(MOD_ID, "anthracite_ore"), 4F);
-        titaniumOre = new LazyOreTemplate(Identifier.of(MOD_ID, "titanium_ore"), 6F);
+        titaniumOre = new LazyOreTemplate(Identifier.of(MOD_ID, "titanium_ore"), 6F, ToolTierEnum.ADVANCED);
         uraniniteOre = new LazyOreTemplate(Identifier.of(MOD_ID, "uraninite_ore"), 8F);
-        rubyOre = new LazyOreTemplate(Identifier.of(MOD_ID, "ruby_ore"), 8F);
-        sapphireOre = new LazyOreTemplate(Identifier.of(MOD_ID, "sapphire_ore"), 8F);
-        emeraldOre = new LazyOreTemplate(Identifier.of(MOD_ID, "emerald_ore"), 8F);
-        boronOre = new LazyOreTemplate(Identifier.of(MOD_ID, "boron_ore"), 3.5F);
-        platinumOre = new LazyOreTemplate(Identifier.of(MOD_ID, "platinum_ore"), 3.5F);
+        rubyOre = new LazyOreTemplate(Identifier.of(MOD_ID, "ruby_ore"), 8F, ToolTierEnum.ADVANCED);
+        sapphireOre = new LazyOreTemplate(Identifier.of(MOD_ID, "sapphire_ore"), 8F, ToolTierEnum.ADVANCED);
+        emeraldOre = new LazyOreTemplate(Identifier.of(MOD_ID, "emerald_ore"), 8F, ToolTierEnum.ADVANCED);
+        boronOre = new LazyOreTemplate(Identifier.of(MOD_ID, "boron_ore"), 3.5F, ToolTierEnum.BASIC);
+        platinumOre = new LazyOreTemplate(Identifier.of(MOD_ID, "platinum_ore"), 3.5F, ToolTierEnum.BASIC);
         mysteryOre = new LazyOreTemplate(Identifier.of(MOD_ID, "mystery_ore"), 2F);
 
         coalBlock = new LazyBlockTemplate(Identifier.of(MOD_ID, "coal_block"), Material.STONE, 3F, Block.STONE_SOUND_GROUP);
