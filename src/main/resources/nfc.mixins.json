@@ -68,7 +68,8 @@
     "graphics.ArmorItemMixin",
     "graphics.OreBlockMixin",
     "graphics.OreStorageBlockMixin",
-    "graphics.ItemMixin"
+    "graphics.ItemMixin",
+    "MusicTweaksMixin"
   ],
   "injectors": {
     "defaultRequire": 1
