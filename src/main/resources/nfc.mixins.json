@@ -67,7 +67,8 @@
     "graphics.HoeItemMixin",
     "graphics.ArmorItemMixin",
     "graphics.OreBlockMixin",
-    "graphics.OreStorageBlockMixin"
+    "graphics.OreStorageBlockMixin",
+    "graphics.ItemMixin"
   ],
   "injectors": {
     "defaultRequire": 1
