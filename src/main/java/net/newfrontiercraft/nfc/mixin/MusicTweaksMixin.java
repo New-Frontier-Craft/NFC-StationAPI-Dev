@@ -3,6 +3,7 @@ package net.newfrontiercraft.nfc.mixin;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import net.minecraft.client.sound.SoundManager;
+import net.newfrontiercraft.nfc.events.init.ConfigListener;
 import org.objectweb.asm.Opcodes;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -32,11 +33,13 @@ public class MusicTweaksMixin {
             )
     )
     public void tick(SoundManager instance, int value, Operation<Void> original) {
-        original.call(instance, 1);
+        original.call(instance, random.nextInt(Math.max(1, ConfigListener.NEW_FRONTIER_CONFIG.audioConfig.musicInterval)) + Math.abs(ConfigListener.NEW_FRONTIER_CONFIG.audioConfig.musicInterval));
     }
 
     @Inject(at = @At(value = "INVOKE", target = "Lpaulscode/sound/SoundSystem;setVolume(Ljava/lang/String;F)V", shift = At.Shift.AFTER), method = "tick")
     public void randomizePitch(CallbackInfo ci) {
-        soundSystem.setPitch("BgMusic", random.nextFloat() + 0.5F);
+        if (ConfigListener.NEW_FRONTIER_CONFIG.audioConfig.randomizeMusicPitch) {
+            soundSystem.setPitch("BgMusic", random.nextFloat() + 0.5F);
+        }
     }
 }

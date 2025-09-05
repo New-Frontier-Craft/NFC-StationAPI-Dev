@@ -19,6 +19,7 @@
   "environment": "*",
   "entrypoints": {
     "stationapi:event_bus": [
+      "net.newfrontiercraft.nfc.events.init.ConfigListener",
       "net.newfrontiercraft.nfc.events.init.BlockListener",
       "net.newfrontiercraft.nfc.events.init.ItemListener",
       "net.newfrontiercraft.nfc.events.init.RecipeListener",
@@ -41,6 +42,9 @@
     ],
     "unitweaks:event_bus": [
       "net.newfrontiercraft.nfc.events.init.CompatListener"
+    ],
+    "gcapi3": [
+      "net.newfrontiercraft.nfc.events.init.ConfigListener"
     ]
   },
   "mixins": [
