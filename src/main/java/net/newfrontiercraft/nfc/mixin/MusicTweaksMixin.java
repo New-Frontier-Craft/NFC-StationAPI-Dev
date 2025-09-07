@@ -36,7 +36,7 @@ public class MusicTweaksMixin {
         original.call(instance, random.nextInt(Math.max(1, ConfigListener.NEW_FRONTIER_CONFIG.audioConfig.musicInterval)) + Math.abs(ConfigListener.NEW_FRONTIER_CONFIG.audioConfig.musicInterval));
     }
 
-    @Inject(at = @At(value = "INVOKE", target = "Lpaulscode/sound/SoundSystem;setVolume(Ljava/lang/String;F)V", shift = At.Shift.AFTER), method = "tick")
+    @Inject(at = @At(value = "INVOKE", target = "Lpaulscode/sound/SoundSystem;setVolume(Ljava/lang/String;F)V", shift = At.Shift.AFTER), method = "tick", remap = false)
     public void randomizePitch(CallbackInfo ci) {
         if (ConfigListener.NEW_FRONTIER_CONFIG.audioConfig.randomizeMusicPitch) {
             soundSystem.setPitch("BgMusic", random.nextFloat() + 0.5F);
