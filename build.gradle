@@ -97,9 +97,6 @@ dependencies {
 	modImplementation("maven.modrinth:bh-creative:${project.bhcreative_version}-fabric,b1.7.3") {
 		transitive false
 	}
-	modImplementation("maven.modrinth:unitweaks:${project.unitweaks_version}-fabric,b1.7.3") {
-		transitive false
-	}
 
 	// Compatibility testing
 	modImplementation("com.github.paulevsGitch:BetterNetherBeta:${project.bnb_version}") {
@@ -109,6 +106,12 @@ dependencies {
 		transitive false
 	}
 	modImplementation("com.github.paulevsGitch:VanillaBlockEnhancements:${project.vbe_version}") {
+		transitive false
+	}
+	modImplementation("net.danygames2014:WhatsThis:${project.whatsthis_version}") {
+		transitive false
+	}
+	modImplementation("maven.modrinth:unitweaks:${project.unitweaks_version}-fabric,b1.7.3") {
 		transitive false
 	}
 

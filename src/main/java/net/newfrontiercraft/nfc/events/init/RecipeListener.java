@@ -41,6 +41,10 @@ public class RecipeListener {
             // Machines
             CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.brickOven, 1), "XXX", "X X", "XXX", 'X', new ItemStack(BlockListener.firedBricks));
             CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.carpentryWorkstation, 1), "XXX", "XYX", "ZZZ", 'X', Block.PLANKS, 'Y', ItemListener.bronzeIngot, 'Z', Block.COBBLESTONE);
+            CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.machineFrame, 8, 0), "XYX", "YZY", "XYX", 'X', ItemListener.aluminiumIngot, 'Y', Block.PLANKS, 'Z', ItemListener.aluminiumGear);
+            CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.machineGearBox, 1, 0), " Y ", "YZY", " Y ", 'Y', ItemListener.aluminiumGear, 'Z', BlockListener.machineFrame);
+            CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.stirlingGenerator, 8, 0), "X#X", "YZY", "+#+", 'X', Block.PISTON, 'Y', ItemListener.cupronickelIngot, 'Z', BlockListener.machineFrame, '#', ItemListener.aluminiumIngot, '+', ItemListener.aluminiumGear);
+            CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.automaticCraftingTable, 1), "X#X", "YZY", "+#+", 'X', Block.PISTON, 'Y', ItemListener.redstoneCircuit, 'Z', BlockListener.machineFrame, '#', Block.CRAFTING_TABLE, '+', ItemListener.aluminiumGear);
 
             // Tools
             String[][] toolPatterns = new String[][]
@@ -221,6 +225,10 @@ public class RecipeListener {
 
             // Telescope
             CraftingRegistry.addShapedRecipe(new ItemStack(ItemListener.telescopeItem, 1),"XO ", "OH ", "  O", 'X', Block.GLASS, 'H', Item.LEATHER, 'O', ItemListener.brassIngot);
+
+            // Intermediate items
+            CraftingRegistry.addShapedRecipe(new ItemStack(ItemListener.aluminiumGear, 8, 0), " X ", "XYX", " X ", 'X', ItemListener.aluminiumIngot, 'Y', Item.IRON_INGOT);
+            CraftingRegistry.addShapedRecipe(new ItemStack(ItemListener.redstoneCircuit, 8, 0), "XYX", "ZZZ", 'X', Block.LIT_REDSTONE_TORCH, 'Y', Item.REDSTONE, 'Z', ItemListener.siliconIngot);
         }
         if (type == RecipeRegisterEvent.Vanilla.CRAFTING_SHAPELESS.type()) {
             // Storage block un-crafting
@@ -274,7 +282,7 @@ public class RecipeListener {
             // Planter
             CraftingRegistry.addShapelessRecipe(new ItemStack(BlockListener.planter, 1, 1), new ItemStack(BlockListener.planter, 1, 0), new ItemStack(Block.DIRT));
 
-            // Brick Oven MultiBlock
+            // Brick Oven Multi-Block
             List<String[]> brickOvenMultiBlockLayers = List.of(
                     new String[]{"xyx", "xcx", "xxx"},
                     new String[]{"xxx", "x x", "xxx"},
@@ -297,6 +305,29 @@ public class RecipeListener {
                 }
             };
             MultiBlockRecipeRegistry.INSTANCE.addMultiblockRecipe("multiblock.nfc.brickoven", brickOvenDescription, brickOvenMultiBlockLayers, brickOvenMultiBlockPatterns);
+
+            // Automatic Crafting Table Multi-Block
+            List<String[]> automaticCraftingTableMultiBlockLayers = List.of(
+                    new String[] {"xyx", "xcx", "xxx"},
+                    new String[] {}
+            );
+            List<BlockPatternEntry> automaticCraftingTableMultiBlockPatterns = List.of(
+                    new BlockPatternEntry('x', BlockListener.machineFrame.getDefaultState(), 0, new ItemStack(BlockListener.machineFrame.asItem())),
+                    new BlockPatternEntry('y', BlockListener.automaticCraftingTable.getDefaultState(), 2, new ItemStack(BlockListener.automaticCraftingTable.asItem())),
+                    new BlockPatternEntry('c', BlockListener.machineGearBox.getDefaultState(), 0, new ItemStack(BlockListener.machineGearBox.asItem()))
+            );
+            List<Object> automaticCraftingTableDescription = new ArrayList<>() {
+                {
+                    this.add("Automatic Crafting Table");
+                    this.add("Crafts items automatically.");
+                    this.add("Speed determined by torque in");
+                    this.add("the gear box. Use generators below");
+                    this.add("the gear box to provide torque.");
+                    this.add("Can be filled and emptied");
+                    this.add("by adding chutes above and below.");
+                }
+            };
+            MultiBlockRecipeRegistry.INSTANCE.addMultiblockRecipe("multiblock.nfc.automatic_crafting_table", automaticCraftingTableDescription, automaticCraftingTableMultiBlockLayers, automaticCraftingTableMultiBlockPatterns);
         }
 
         // Stone carpentry

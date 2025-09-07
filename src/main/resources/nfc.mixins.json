@@ -31,6 +31,7 @@
     "OverworldWorldCarversMixin",
     "PlantBlockMixin",
     "PlayerEntityMixin",
+    "PlayerInventoryAccessor",
     "PortalForcerToleranceMixin",
     "SaplingBlockMixin",
     "SeedsItemMixin",
@@ -38,11 +39,11 @@
     "SlabMergingMixin",
     "StairsDropMixin",
     "StorageBlockRecipeObliteratorMixin",
+    "TntBlastMixin",
     "ToolEffectivenessHijackerMixin",
     "TorchPlacementMixin",
     "TrapdoorLiberationMixin",
-    "graphics.BlockRendererManagerMixin",
-    "PlayerInventoryAccessor"
+    "graphics.BlockRendererManagerMixin"
   ],
   "server": [
   ],

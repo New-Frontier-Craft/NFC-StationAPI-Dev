@@ -45,6 +45,9 @@
     ],
     "gcapi3": [
       "net.newfrontiercraft.nfc.events.init.ConfigListener"
+    ],
+    "whatsthis": [
+      "net.newfrontiercraft.nfc.events.init.ProbeInfoProviderListener"
     ]
   },
   "mixins": [

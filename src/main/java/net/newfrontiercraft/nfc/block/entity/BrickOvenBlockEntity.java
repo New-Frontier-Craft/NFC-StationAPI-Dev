@@ -263,7 +263,7 @@ public class BrickOvenBlockEntity extends BlockEntity implements Inventory, Heat
                     for (int xOffset = 1; xOffset >= -1; xOffset--) {
                         if (world.getBlockEntity(xCentered + xOffset, y + 2, zCentered + zOffset) instanceof BasicItemChuteBlockEntity basicItemChuteBlockEntity) {
                             if (basicItemChuteBlockEntity.storedItem == null) {
-                                break;
+                                continue;
                             }
                             int ovenIndex = (-xOffset + 1) + (-zOffset + 1) * 3;
                             if (furnaceItemStacks[ovenIndex] == null) {
@@ -289,7 +289,7 @@ public class BrickOvenBlockEntity extends BlockEntity implements Inventory, Heat
                     for (int xOffset = -1; xOffset <= 1; xOffset++) {
                         if (world.getBlockEntity(xCentered + xOffset, y + 2, zCentered + zOffset) instanceof BasicItemChuteBlockEntity basicItemChuteBlockEntity) {
                             if (basicItemChuteBlockEntity.storedItem == null) {
-                                break;
+                                continue;
                             }
                             int ovenIndex = (xOffset + 1) + (zOffset + 1) * 3;
                             if (furnaceItemStacks[ovenIndex] == null) {
@@ -315,7 +315,7 @@ public class BrickOvenBlockEntity extends BlockEntity implements Inventory, Heat
                     for (int zOffset = -1; zOffset <= 1; zOffset++) {
                         if (world.getBlockEntity(xCentered + xOffset, y + 2, zCentered + zOffset) instanceof BasicItemChuteBlockEntity basicItemChuteBlockEntity) {
                             if (basicItemChuteBlockEntity.storedItem == null) {
-                                break;
+                                continue;
                             }
                             int ovenIndex = (zOffset + 1) + (-xOffset + 1) * 3;
                             if (furnaceItemStacks[ovenIndex] == null) {
@@ -341,7 +341,7 @@ public class BrickOvenBlockEntity extends BlockEntity implements Inventory, Heat
                     for (int zOffset = 1; zOffset >= -1; zOffset--) {
                         if (world.getBlockEntity(xCentered + xOffset, y + 2, zCentered + zOffset) instanceof BasicItemChuteBlockEntity basicItemChuteBlockEntity) {
                             if (basicItemChuteBlockEntity.storedItem == null) {
-                                break;
+                                continue;
                             }
                             int ovenIndex = (-zOffset + 1) + (xOffset + 1) * 3;
                             if (furnaceItemStacks[ovenIndex] == null) {

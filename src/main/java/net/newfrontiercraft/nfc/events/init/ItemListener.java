@@ -10,6 +10,7 @@ import net.modificationstation.stationapi.api.item.tool.ToolMaterialFactory;
 import net.modificationstation.stationapi.api.mod.entrypoint.Entrypoint;
 import net.modificationstation.stationapi.api.recipe.FuelRegistry;
 import net.modificationstation.stationapi.api.registry.BlockRegistry;
+import net.modificationstation.stationapi.api.registry.ItemRegistry;
 import net.modificationstation.stationapi.api.tag.TagKey;
 import net.modificationstation.stationapi.api.template.item.*;
 import net.modificationstation.stationapi.api.util.Identifier;
@@ -18,6 +19,9 @@ import net.newfrontiercraft.nfc.item.*;
 import net.newfrontiercraft.nfc.utils.ToolTierEnum;
 
 public class ItemListener {
+
+    @Entrypoint.Namespace
+    public static Namespace MOD_ID;
 
     public static LazyFoodTemplate
             cookedEgg;
@@ -51,7 +55,9 @@ public class ItemListener {
             sapphire,
             ruby,
             emerald,
-            blueGlowstoneDust;
+            blueGlowstoneDust,
+            aluminiumGear,
+            redstoneCircuit;
 
     public static TemplatePickaxeItem
             aluminiumPickaxe,
@@ -282,9 +288,6 @@ public class ItemListener {
     public static OilBucketItem oilBucket;
     public static DoorItem copperDoor;
     public static TelescopeItem telescopeItem;
-
-    @Entrypoint.Namespace
-    public static Namespace MOD_ID;
 
     @EventListener
     public void registerItems(ItemRegistryEvent event) {
@@ -656,6 +659,10 @@ public class ItemListener {
 
         // Telescope
         telescopeItem = new TelescopeItem(Identifier.of(MOD_ID, "telescope"));
+
+        // Intermediate items
+        aluminiumGear = new LazyItemTemplate(Identifier.of(MOD_ID, "aluminium_gear"));
+        redstoneCircuit = new LazyItemTemplate(Identifier.of(MOD_ID, "redstone_circuit"));
 
         // Ore drop specification
         BlockListener.anthraciteOre.specifyCustomDrop(MOD_ID.id("anthracite"));
