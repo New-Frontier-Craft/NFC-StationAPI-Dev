@@ -281,6 +281,12 @@ tile.nfc.item_chute_extender.name=Item Chute Extender
 tile.nfc.filtering_item_chute.name=Filtering Item Chute
 tile.nfc.precise_item_chute.name=Precise Item Chute
 
+tile.nfc.machine_frame.name=Machine Frame
+tile.nfc.creative_generator.name=Creative Generator
+tile.nfc.stirling_generator.name=Stirling Generator
+tile.nfc.machine_gear_box.name=Machine Gear Box
+tile.nfc.automatic_crafting_table.name=Automatic Crafting Table
+
 
 item.nfc.aluminium_pickaxe.name=Aluminum Pickaxe
 item.nfc.bismuth_pickaxe.name=Bismuth Pickaxe
@@ -536,9 +542,13 @@ item.nfc.telescope.name=Telescope
 
 item.nfc.blue_glowstone_dust.name=Blue Glowstone Dust
 
+item.nfc.aluminium_gear.name=Aluminum Gear
+item.nfc.redstone_circuit.name=Redstone Circuit
+
 gui.nfc.bookshelf=Bookshelf
 
 multiblock.nfc.brickoven=Brick Oven
+multiblock.nfc.automatic_crafting_table=Automatic Crafting Table
 
 tool_tier.tier=Tier
 tool_tier.attack_damage=Attack Damage

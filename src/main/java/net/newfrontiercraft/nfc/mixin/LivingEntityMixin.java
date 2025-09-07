@@ -8,13 +8,18 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.newfrontiercraft.nfc.events.init.BlockListener;
 import net.newfrontiercraft.nfc.events.init.Materials;
+import net.newfrontiercraft.nfc.utils.CoilDamageCooldown;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(LivingEntity.class)
-public abstract class LivingEntityMixin extends Entity {
+public abstract class LivingEntityMixin extends Entity implements CoilDamageCooldown {
+    @Unique int coilCooldown = 0;
+
     public LivingEntityMixin(World world) {
         super(world);
     }
@@ -49,5 +54,22 @@ public abstract class LivingEntityMixin extends Entity {
             return true;
         }
         return original;
+    }
+
+    @Inject(method = "baseTick", at = @At("HEAD"))
+    public void nfcBaseTick(CallbackInfo ci){
+        if(this.coilCooldown > 0){
+            this.coilCooldown--;
+        }
+    }
+
+    @Override
+    public int getCoilDamageCooldown() {
+        return coilCooldown;
+    }
+
+    @Override
+    public void setCoilDamageCooldown(int cooldown) {
+        this.coilCooldown = cooldown;
     }
 }

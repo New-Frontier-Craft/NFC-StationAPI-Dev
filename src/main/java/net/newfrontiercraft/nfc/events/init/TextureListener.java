@@ -59,6 +59,7 @@ public class TextureListener {
         String oreDrops = items + "ore_drops/";
         String foodItems = items + "food/";
         String otherDrops = items + "other_drops/";
+        String parts = items + "parts/";
 
         // Convenience blocks
         int scaffoldTopTexture = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, convenienceBlocks + "scaffold_block_top")).index;
@@ -240,7 +241,12 @@ public class TextureListener {
                 Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, machines + "carpentry_workstation_side")).index,
                 Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, machines + "carpentry_workstation_bottom")).index,
                 Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, machines + "carpentry_workstation_top")).index);
-        BlockListener.heatCoil.specifyTextures(getTextureIndex(machines + "heat_coil"));
+        BlockListener.heatCoil.specifyTextures(
+                getTextureIndex(machines + "heat_coil_0"),
+                getTextureIndex(machines + "heat_coil_1"),
+                getTextureIndex(machines + "heat_coil_2"),
+                getTextureIndex(machines + "heat_coil_3")
+        );
         BlockListener.combustionHeater.specifyTextures(getTextureIndex(machines + "combustion_heater_top"),
                 getTextureIndex(machines + "combustion_heater_side"),
                 getTextureIndex(machines + "combustion_heater_bottom"),
@@ -253,6 +259,13 @@ public class TextureListener {
         BlockListener.itemChuteExtender.specifyTextures(getTextureIndex(machines + "item_chute_extender_top"), getTextureIndex(machines + "item_chute_extender_side"), getTextureIndex(machines + "item_chute_extender_bottom"));
         BlockListener.filteringItemChute.specifyTextures(getTextureIndex(machines + "filtering_item_chute_top"), getTextureIndex(machines + "filtering_item_chute_side"), getTextureIndex(machines + "filtering_item_chute_bottom"));
         BlockListener.preciseItemChute.specifyTextures(getTextureIndex(machines + "precise_item_chute_top"), getTextureIndex(machines + "precise_item_chute_side"), getTextureIndex(machines + "precise_item_chute_bottom"));
+        BlockListener.machineFrame.specifyTextures(getTextureIndex(machines + "machine_frame"));
+        BlockListener.creativeGenerator.specifyTextures(getTextureIndex(machines + "generator_output"), getTextureIndex(machines + "creative_generator_side"), getTextureIndex(machines + "generator_input"));
+        BlockListener.stirlingGenerator.specifyTextures(getTextureIndex(machines + "generator_output"), getTextureIndex(machines + "stirling_generator_side"), getTextureIndex(machines + "generator_input"));
+        BlockListener.machineGearBox.specifyTextures(getTextureIndex(machines + "machine_gear_box"), getTextureIndex(machines + "machine_gear_box_active"));
+        BlockListener.automaticCraftingTable.specifyTextures(getTextureIndex(machines + "automatic_crafting_table_top"),
+                getTextureIndex(machines + "automatic_crafting_table_front"), getTextureIndex(machines + "automatic_crafting_table_front_active"),
+                getTextureIndex(machines + "automatic_crafting_table_side"), getTextureIndex(machines + "automatic_crafting_table_bottom"));
 
         // Ore storage blocks
         BlockListener.coalBlock.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, oreStorage + "coal")).index);
@@ -596,6 +609,10 @@ public class TextureListener {
 
         // Other drops
         ItemListener.blueGlowstoneDust.setTexture(Identifier.of(MOD_ID, otherDrops + "blue_glowstone_dust"));
+
+        // Intermediate items
+        ItemListener.aluminiumGear.setTexture(Identifier.of(MOD_ID, parts + "aluminium_gear"));
+        ItemListener.redstoneCircuit.setTexture(Identifier.of(MOD_ID, parts + "redstone_circuit"));
 
         // Particles
         if (FabricLoader.getInstance().getGameInstance() instanceof Minecraft minecraft) {

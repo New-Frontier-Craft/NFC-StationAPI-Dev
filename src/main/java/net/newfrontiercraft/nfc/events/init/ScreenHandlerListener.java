@@ -29,6 +29,7 @@ public class ScreenHandlerListener {
         Registry.register(registry, Identifier.of(MOD_ID, "gui_combustion_heater"), new GuiHandler((GuiHandler.ScreenFactoryNoMessage) this::openCombustionHeater, CombustionHeaterBlockEntity::new));
         Registry.register(registry, Identifier.of(MOD_ID, "gui_basic_item_chute"), new GuiHandler((GuiHandler.ScreenFactoryNoMessage) this::openBasicItemChute, BasicItemChuteBlockEntity::new));
         Registry.register(registry, Identifier.of(MOD_ID, "gui_filtering_item_chute"), new GuiHandler((GuiHandler.ScreenFactoryNoMessage) this::openFilteringItemChute, FilteringItemChuteBlockEntity::new));
+        Registry.register(registry, Identifier.of(MOD_ID, "gui_automatic_crafting_table"), new GuiHandler((GuiHandler.ScreenFactoryNoMessage) this::openAutomaticCraftingTable, AutomaticCraftingTableBlockEntity::new));
     }
 
     public Screen openBrickOven(PlayerEntity playerBase, Inventory inventoryBase) {
@@ -53,5 +54,9 @@ public class ScreenHandlerListener {
 
     public Screen openFilteringItemChute(PlayerEntity playerBase, Inventory inventoryBase) {
         return new FilteringItemChuteScreen(playerBase.inventory, (FilteringItemChuteBlockEntity) inventoryBase);
+    }
+
+    public Screen openAutomaticCraftingTable(PlayerEntity playerBase, Inventory inventoryBase) {
+        return new AutomaticCraftingTableScreen(playerBase.inventory, (AutomaticCraftingTableBlockEntity) inventoryBase);
     }
 }
