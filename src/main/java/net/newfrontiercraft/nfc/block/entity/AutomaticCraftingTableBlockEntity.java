@@ -430,7 +430,7 @@ public class AutomaticCraftingTableBlockEntity extends BlockEntity implements In
 
     @Override
     public boolean canExtractItem(@Nullable Direction direction) {
-        return !isMultiBlock && direction == Direction.UP;
+        return !isMultiBlock && direction == Direction.DOWN;
     }
 
     @Override
@@ -451,7 +451,7 @@ public class AutomaticCraftingTableBlockEntity extends BlockEntity implements In
 
     @Override
     public boolean canInsertItem(@Nullable Direction direction) {
-        return !isMultiBlock && direction == Direction.DOWN;
+        return !isMultiBlock && direction == Direction.UP;
     }
 
     @Override
@@ -475,22 +475,40 @@ public class AutomaticCraftingTableBlockEntity extends BlockEntity implements In
 
     @Override
     public ItemStack insertItem(ItemStack itemStack, @Nullable Direction direction) {
-        return null;
+        if (isMultiBlock) {
+            return itemStack;
+        }
+        for (int i = 0; i < 9; i++) {
+            itemStack = insertItem(itemStack, i, direction);
+            if (itemStack == null) {
+                return null;
+            }
+        }
+        return itemStack;
     }
 
     @Override
-    public ItemStack getItemInSlot(int slot, @Nullable Direction direction) {
-        if (direction == Direction.UP) {
+    public ItemStack getItem(int i, @Nullable Direction direction) {
+        if (direction == Direction.DOWN) {
             return craftingTableItemStacks[OUTPUT];
         }
         return null;
     }
 
     @Override
+    public boolean setItem(ItemStack itemStack, int i, @Nullable Direction direction) {
+        if (i >= craftingTableItemStacks.length) {
+            return false;
+        }
+        craftingTableItemStacks[i] = itemStack;
+        return true;
+    }
+
+    @Override
     public int getItemSlots(@Nullable Direction direction) {
-        if (direction == Direction.UP) {
+        if (direction == Direction.DOWN) {
             return 1;
-        } else if (direction == Direction.DOWN) {
+        } else if (direction == Direction.UP) {
             return 9;
         }
         return 0;
@@ -498,9 +516,9 @@ public class AutomaticCraftingTableBlockEntity extends BlockEntity implements In
 
     @Override
     public ItemStack[] getInventory(@Nullable Direction direction) {
-        if (direction == Direction.UP) {
+        if (direction == Direction.DOWN) {
             return new ItemStack[] {craftingTableItemStacks[OUTPUT]};
-        } else if (direction == Direction.DOWN) {
+        } else if (direction == Direction.UP) {
             return new ItemStack[] {craftingTableItemStacks[0], craftingTableItemStacks[1], craftingTableItemStacks[2],
                     craftingTableItemStacks[3], craftingTableItemStacks[4], craftingTableItemStacks[5],
                     craftingTableItemStacks[6], craftingTableItemStacks[7], craftingTableItemStacks[9]};
@@ -510,6 +528,6 @@ public class AutomaticCraftingTableBlockEntity extends BlockEntity implements In
 
     @Override
     public boolean canConnectItem(Direction direction) {
-        return direction == Direction.UP || direction == Direction.DOWN;
+        return direction == Direction.DOWN || direction == Direction.UP;
     }
 }
