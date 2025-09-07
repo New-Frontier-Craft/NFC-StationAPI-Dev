@@ -1,5 +1,5 @@
 plugins {
-	id 'fabric-loom' version '1.8.9'
+	id 'fabric-loom' version '1.11.7'
 	id 'babric-loom-extension' version '1.8.9'
 	id 'maven-publish'
 }
@@ -117,6 +117,8 @@ dependencies {
 
 	// Required libraries
 	modImplementation("net.danygames2014:NyaLib:${project.nyalib_version}") {
+	}
+	modImplementation("net.danygames2014:WhatsThis:${project.whatsthis_version}") {
 		transitive false
 	}
 }

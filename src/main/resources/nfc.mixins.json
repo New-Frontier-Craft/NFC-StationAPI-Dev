@@ -62,7 +62,15 @@
     "graphics.SlabTextureMixin",
     "graphics.TorchBlockMixin",
     "graphics.WorldRendererAccessor",
-    "graphics.WorldRendererMixin"
+    "graphics.WorldRendererMixin",
+    "graphics.ToolItemMixin",
+    "graphics.SwordItemMixin",
+    "graphics.HoeItemMixin",
+    "graphics.ArmorItemMixin",
+    "graphics.OreBlockMixin",
+    "graphics.OreStorageBlockMixin",
+    "graphics.ItemMixin",
+    "MusicTweaksMixin"
   ],
   "injectors": {
     "defaultRequire": 1

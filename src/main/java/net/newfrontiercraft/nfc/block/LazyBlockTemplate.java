@@ -1,21 +1,31 @@
 package net.newfrontiercraft.nfc.block;
 
 import net.minecraft.block.material.Material;
+import net.minecraft.client.resource.language.TranslationStorage;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
+import net.modificationstation.stationapi.api.client.item.CustomTooltipProvider;
 import net.modificationstation.stationapi.api.template.block.TemplateBlock;
 import net.modificationstation.stationapi.api.util.Identifier;
+import net.newfrontiercraft.nfc.utils.ToolTierEnum;
+import org.jetbrains.annotations.NotNull;
 
-public class LazyBlockTemplate extends TemplateBlock {
-
+public class LazyBlockTemplate extends TemplateBlock implements CustomTooltipProvider {
+    private ToolTierEnum toolTierEnum;
     int topTexture;
     int sideTexture;
     int bottomTexture;
     int frontTexture;
     int backTexture;
     boolean directional = false;
+
+    public LazyBlockTemplate(Identifier identifier, Material material, float hardness, BlockSoundGroup blockSounds, ToolTierEnum toolTierEnum) {
+        this(identifier, material, hardness, blockSounds);
+        this.toolTierEnum = toolTierEnum;
+    }
 
     public LazyBlockTemplate(Identifier identifier, Material material, float hardness, BlockSoundGroup blockSounds) {
         super(identifier, material);
@@ -83,5 +93,14 @@ public class LazyBlockTemplate extends TemplateBlock {
         if (!directional) return;
         int facing = MathHelper.floor((double)(living.yaw * 4.0F / 360.0F) + 0.5D) & 3;
         level.setBlockMeta(x, y, z, facing);
+    }
+
+    @Override
+    public @NotNull String[] getTooltip(ItemStack stack, String originalTooltip) {
+        if (toolTierEnum == null) {
+            return new String[] {originalTooltip};
+        }
+        return new String[]{toolTierEnum.getColourCode() + originalTooltip,
+                "§7" + TranslationStorage.getInstance().get("tool_tier.tier") + ": " + toolTierEnum.getColourCode() + TranslationStorage.getInstance().get(toolTierEnum.getName())};
     }
 }

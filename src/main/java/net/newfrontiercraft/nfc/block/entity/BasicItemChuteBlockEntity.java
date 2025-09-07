@@ -136,36 +136,35 @@ public class BasicItemChuteBlockEntity extends BlockEntity implements Inventory,
         if (!(inputTarget instanceof ItemHandler)) {
             return;
         }
-        if (!((ItemHandler)inputTarget).canInsertItem(Direction.DOWN)) {
+        if (!((ItemHandler)inputTarget).canInsertItem(Direction.UP)) {
             return;
         }
-        int slotCount = ((ItemHandler)inputTarget).getItemSlots(Direction.DOWN);
-        for (int i = 0; i < slotCount; i++) {
-            storedItem = ((ItemHandler)inputTarget).insertItem(storedItem, i, Direction.DOWN);
-            if (storedItem == null) {
-                break;
-            }
-        }
+        storedItem = ((ItemHandler)inputTarget).insertItem(storedItem, Direction.UP);
     }
 
     protected void pullIntoChute(BlockEntity outputTarget) {
         if (!(outputTarget instanceof ItemHandler)) {
             return;
         }
-        if (!((ItemHandler)outputTarget).canExtractItem(outputTarget instanceof FurnaceBlockEntity ? Direction.NORTH : Direction.UP)) { // Lie to the furnace in order to extract from it
+        if (!((ItemHandler)outputTarget).canExtractItem(Direction.DOWN)) {
             return;
         }
         if (storedItem != null && storedItem.count >= storedItem.getMaxCount()) {
             return;
         }
-        int slotCount = ((ItemHandler)outputTarget).getItemSlots(Direction.UP);
-        for (int i = 0; i < slotCount; i++) {
-            ItemStack outputItem = ((ItemHandler)outputTarget).getItemInSlot(i, Direction.UP);
+        int slotCount = ((ItemHandler)outputTarget).getItemSlots(Direction.DOWN);
+        int startingSlot = 0; // This cursed mess is to blame on an API dispute
+        if (outputTarget instanceof FurnaceBlockEntity) {
+            slotCount = 3;
+            startingSlot = 2;
+        }
+        for (int i = startingSlot; i < slotCount; i++) {
+            ItemStack outputItem = ((ItemHandler)outputTarget).getItem(i, Direction.DOWN);
             if (outputItem == null) {
                 continue;
             }
             if (storedItem == null) {
-                storedItem = ((ItemHandler)outputTarget).extractItem(i, outputItem.count, Direction.UP);
+                storedItem = ((ItemHandler)outputTarget).extractItem(i, outputItem.count, Direction.DOWN);
                 continue;
             }
             if (!storedItem.isItemEqual(outputItem)) {
@@ -173,11 +172,11 @@ public class BasicItemChuteBlockEntity extends BlockEntity implements Inventory,
             }
             if (storedItem.count + outputItem.count <= storedItem.getMaxCount()) {
                 storedItem.count += outputItem.count;
-                ((ItemHandler)outputTarget).extractItem(i, outputItem.count, Direction.UP);
+                ((ItemHandler)outputTarget).extractItem(i, outputItem.count, Direction.DOWN);
             } else {
                 int removedCount = outputItem.count - (storedItem.count + outputItem.count - storedItem.getMaxCount());
                 storedItem.count = storedItem.getMaxCount();
-                ((ItemHandler)outputTarget).extractItem(i, removedCount, Direction.UP);
+                ((ItemHandler)outputTarget).extractItem(i, removedCount, Direction.DOWN);
                 break;
             }
         }
@@ -380,8 +379,14 @@ public class BasicItemChuteBlockEntity extends BlockEntity implements Inventory,
     }
 
     @Override
-    public ItemStack getItemInSlot(int slot, @Nullable Direction direction) {
+    public ItemStack getItem(int i, @Nullable Direction direction) {
         return storedItem;
+    }
+
+    @Override
+    public boolean setItem(ItemStack itemStack, int i, @Nullable Direction direction) {
+        storedItem = itemStack;
+        return true;
     }
 
     @Override

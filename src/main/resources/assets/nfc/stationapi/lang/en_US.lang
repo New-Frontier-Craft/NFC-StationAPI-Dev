@@ -549,3 +549,13 @@ gui.nfc.bookshelf=Bookshelf
 
 multiblock.nfc.brickoven=Brick Oven
 multiblock.nfc.automatic_crafting_table=Automatic Crafting Table
+
+tool_tier.tier=Tier
+tool_tier.attack_damage=Attack Damage
+tool_tier.wooden=Wooden
+tool_tier.stone=Stone
+tool_tier.crude=Crude
+tool_tier.basic=Basic
+tool_tier.iron=Improved
+tool_tier.advanced=Advanced
+tool_tier.diamond=Excellent

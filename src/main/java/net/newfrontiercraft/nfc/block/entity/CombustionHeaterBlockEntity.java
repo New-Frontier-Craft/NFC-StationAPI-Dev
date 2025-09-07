@@ -270,8 +270,17 @@ public class CombustionHeaterBlockEntity extends BlockEntity implements Inventor
     }
 
     @Override
-    public ItemStack getItemInSlot(int i, @Nullable Direction direction) {
+    public ItemStack getItem(int slot, @Nullable Direction direction) {
         return furnaceItemStacks[0];
+    }
+
+    @Override
+    public boolean setItem(ItemStack stack, int slot, @Nullable Direction direction) {
+        if (slot >= furnaceItemStacks.length) {
+            return false;
+        }
+        furnaceItemStacks[slot] = stack;
+        return true;
     }
 
     @Override
