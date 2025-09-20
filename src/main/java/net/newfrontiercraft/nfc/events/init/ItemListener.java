@@ -665,12 +665,12 @@ public class ItemListener {
         redstoneCircuit = new LazyItemTemplate(Identifier.of(MOD_ID, "redstone_circuit"));
 
         // Ore drop specification
-        BlockListener.anthraciteOre.specifyCustomDrop(MOD_ID.id("anthracite"));
-        BlockListener.netherAshOre.specifyCustomDrop(MOD_ID.id("nether_ash"));
-        BlockListener.netherOnyxOre.specifyCustomDrop(MOD_ID.id("onyx"));
-        BlockListener.sapphireOre.specifyCustomDrop(MOD_ID.id("sapphire"));
-        BlockListener.rubyOre.specifyCustomDrop(MOD_ID.id("ruby"));
-        BlockListener.emeraldOre.specifyCustomDrop(MOD_ID.id("emerald"));
+        BlockListener.anthraciteOre.specifyCustomDrop(ItemListener.anthracite);
+        BlockListener.netherAshOre.specifyCustomDrop(ItemListener.netherAsh);
+        BlockListener.netherOnyxOre.specifyCustomDrop(ItemListener.onyx);
+        BlockListener.sapphireOre.specifyCustomDrop(ItemListener.sapphire);
+        BlockListener.rubyOre.specifyCustomDrop(ItemListener.ruby);
+        BlockListener.emeraldOre.specifyCustomDrop(ItemListener.emerald);
 
         // Set fuel burn time
         FuelRegistry.addFuelItem(oilBucket, 12800);
