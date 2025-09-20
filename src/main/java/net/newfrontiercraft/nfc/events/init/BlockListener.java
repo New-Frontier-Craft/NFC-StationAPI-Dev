@@ -52,7 +52,10 @@ public class BlockListener {
             petrifiedLog,
             petrifiedPlanks,
 
+            charcoalBlock,
             coalBlock,
+            coalCokeBlock,
+            anthraciteBlock,
             onyxBlock,
             cobaltBlock,
             aluminiumBlock,
@@ -286,7 +289,10 @@ public class BlockListener {
         platinumOre = new LazyOreTemplate(Identifier.of(MOD_ID, "platinum_ore"), 3.5F, ToolTierEnum.BASIC);
         mysteryOre = new LazyOreTemplate(Identifier.of(MOD_ID, "mystery_ore"), 2F);
 
+        charcoalBlock = new LazyBlockTemplate(Identifier.of(MOD_ID, "charcoal_block"), Material.STONE, 3F, Block.STONE_SOUND_GROUP);
         coalBlock = new LazyBlockTemplate(Identifier.of(MOD_ID, "coal_block"), Material.STONE, 3F, Block.STONE_SOUND_GROUP);
+        coalCokeBlock = new LazyBlockTemplate(Identifier.of(MOD_ID, "coal_coke_block"), Material.STONE, 3F, Block.STONE_SOUND_GROUP);
+        anthraciteBlock = new LazyBlockTemplate(Identifier.of(MOD_ID, "anthracite_block"), Material.STONE, 3F, Block.STONE_SOUND_GROUP);
         onyxBlock = new LazyBlockTemplate(Identifier.of(MOD_ID, "onyx_block"), Material.METAL, 4F, Block.METAL_SOUND_GROUP, ToolTierEnum.ADVANCED);
         cobaltBlock = new LazyBlockTemplate(Identifier.of(MOD_ID, "cobalt_block"), Material.METAL, 3F, Block.METAL_SOUND_GROUP, ToolTierEnum.IRON);
         aluminiumBlock = new LazyBlockTemplate(Identifier.of(MOD_ID, "aluminium_block"), Material.METAL, 2F, Block.METAL_SOUND_GROUP, ToolTierEnum.CRUDE);

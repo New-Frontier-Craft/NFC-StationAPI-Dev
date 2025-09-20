@@ -269,7 +269,10 @@ public class TextureListener {
                 getTextureIndex(machines + "automatic_crafting_table_side"), getTextureIndex(machines + "automatic_crafting_table_bottom"));
 
         // Ore storage blocks
+        BlockListener.charcoalBlock.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, oreStorage + "charcoal")).index);
         BlockListener.coalBlock.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, oreStorage + "coal")).index);
+        BlockListener.coalCokeBlock.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, oreStorage + "coal_coke")).index);
+        BlockListener.anthraciteBlock.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, oreStorage + "anthracite")).index);
         BlockListener.onyxBlock.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, oreStorage + "onyx")).index);
         BlockListener.cobaltBlock.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, oreStorage + "cobalt")).index);
         BlockListener.aluminiumBlock.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, oreStorage + "aluminium")).index);

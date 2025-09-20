@@ -144,7 +144,10 @@ tile.nfc.brick_oven.name=Brick Oven
 tile.nfc.brick_oven_active.name=Lit Brick Oven (DEPRECATED)
 tile.nfc.carpentry_workstation.name=Carpentry Workstation
 
+tile.nfc.charcoal_block.name=Charcoal Block
 tile.nfc.coal_block.name=Coal Block
+tile.nfc.coal_coke_block.name=Coal Coke Block
+tile.nfc.anthracite_block.name=Anthracite Block
 tile.nfc.onyx_block.name=Onyx Block
 tile.nfc.aluminium_block.name=Aluminum Block
 tile.nfc.copper_block.name=Copper Block
