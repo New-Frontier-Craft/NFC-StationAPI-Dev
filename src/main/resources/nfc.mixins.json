@@ -70,6 +70,7 @@
     "graphics.OreBlockMixin",
     "graphics.OreStorageBlockMixin",
     "graphics.ItemMixin",
+    "graphics.CharcoalTextureMixin",
     "MusicTweaksMixin"
   ],
   "injectors": {

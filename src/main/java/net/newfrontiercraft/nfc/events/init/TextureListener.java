@@ -749,9 +749,11 @@ public class TextureListener {
         bricks = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, vanillaBlocks + "bricks")).index;
         Block.BRICKS.textureId = bricks;
         oakSaplingTexture = getTextureIndex(vanillaBlocks + "oak_sapling");
+        charcoal = Atlases.getGuiItems().addTexture(Identifier.of(MOD_ID, fuels + "charcoal")).index;
     }
 
     public static int
+            charcoal,
             grassBlockSide,
             grassBlockSideSnowy,
             grassBlockSideOverlay,
