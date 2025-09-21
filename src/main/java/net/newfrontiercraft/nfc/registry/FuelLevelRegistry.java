@@ -1,0 +1,35 @@
+package net.newfrontiercraft.nfc.registry;
+
+import net.minecraft.item.Item;
+import net.newfrontiercraft.nfc.utils.FuelLevelEnum;
+import net.newfrontiercraft.nfc.utils.ItemMeta;
+import net.newfrontiercraft.nfc.wrappers.IdMeta;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class FuelLevelRegistry {
+    private static final FuelLevelRegistry INSTANCE = new FuelLevelRegistry();
+    private final Map<ItemMeta, FuelLevelEnum> fuelLevelMap;
+
+    private FuelLevelRegistry() {
+        fuelLevelMap = new HashMap<>();
+    }
+
+    public static FuelLevelRegistry fuelLevel() {
+        return INSTANCE;
+    }
+
+    public FuelLevelEnum getFuelLevel(ItemMeta item) {
+        FuelLevelEnum fuelLevelEnum = fuelLevelMap.get(item);
+        if (fuelLevelEnum == null) {
+            return FuelLevelEnum.COLD;
+        }
+        return fuelLevelEnum;
+    }
+
+    public void addFuelLevel(ItemMeta item, FuelLevelEnum fuelLevelEnum) {
+        fuelLevelMap.put(item, fuelLevelEnum);
+    }
+
+}

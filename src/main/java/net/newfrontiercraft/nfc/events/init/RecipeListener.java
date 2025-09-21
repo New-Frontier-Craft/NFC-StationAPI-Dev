@@ -12,8 +12,12 @@ import net.modificationstation.stationapi.api.util.Identifier;
 import net.newfrontiercraft.nfc.compat.vbe.VBERecipes;
 import net.newfrontiercraft.nfc.registry.BlockPatternEntry;
 import net.newfrontiercraft.nfc.registry.CarpentryRecipes;
+import net.newfrontiercraft.nfc.registry.FuelLevelRegistry;
 import net.newfrontiercraft.nfc.registry.MultiBlockRecipeRegistry;
+import net.newfrontiercraft.nfc.utils.FuelLevelEnum;
+import net.newfrontiercraft.nfc.utils.ItemMeta;
 import net.newfrontiercraft.nfc.utils.RecipeRemover;
+import net.newfrontiercraft.nfc.utils.ToolTierEnum;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -334,6 +338,15 @@ public class RecipeListener {
                 }
             };
             MultiBlockRecipeRegistry.INSTANCE.addMultiblockRecipe("multiblock.nfc.automatic_crafting_table", automaticCraftingTableDescription, automaticCraftingTableMultiBlockLayers, automaticCraftingTableMultiBlockPatterns);
+        }
+        if (type == RecipeRegisterEvent.Vanilla.SMELTING.type()) {
+            // Fuel levels
+            FuelLevelRegistry.fuelLevel().addFuelLevel(new ItemMeta(Item.COAL, 1), FuelLevelEnum.WARM);
+            FuelLevelRegistry.fuelLevel().addFuelLevel(new ItemMeta(ItemListener.netherAsh, 0), FuelLevelEnum.HOT);
+            FuelLevelRegistry.fuelLevel().addFuelLevel(new ItemMeta(Item.COAL, 0), FuelLevelEnum.HOT);
+            FuelLevelRegistry.fuelLevel().addFuelLevel(new ItemMeta(ItemListener.coalCoke, 0), FuelLevelEnum.SEARING);
+            FuelLevelRegistry.fuelLevel().addFuelLevel(new ItemMeta(ItemListener.oilBucket, 0), FuelLevelEnum.SEARING);
+            FuelLevelRegistry.fuelLevel().addFuelLevel(new ItemMeta(ItemListener.anthracite, 0), FuelLevelEnum.BLAZING);
         }
 
         // Stone carpentry
