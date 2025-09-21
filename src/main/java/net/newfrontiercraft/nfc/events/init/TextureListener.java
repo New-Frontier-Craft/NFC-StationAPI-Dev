@@ -592,19 +592,21 @@ public class TextureListener {
         ItemListener.cupronickelIngot.setTexture(Identifier.of(MOD_ID, ingotItems + "cupronickel"));
 
         // Ore drops
-        ItemListener.anthracite.setTexture(Identifier.of(MOD_ID, fuels + "anthracite"));
         ItemListener.netherAsh.setTexture(Identifier.of(MOD_ID, oreDrops + "nether_ash"));
         ItemListener.onyx.setTexture(Identifier.of(MOD_ID, oreDrops + "onyx"));
         ItemListener.sapphire.setTexture(Identifier.of(MOD_ID, oreDrops + "sapphire"));
         ItemListener.ruby.setTexture(Identifier.of(MOD_ID, oreDrops + "ruby"));
         ItemListener.emerald.setTexture(Identifier.of(MOD_ID, oreDrops + "emerald"));
+        ItemListener.rawAnthracite.setTexture(Identifier.of(MOD_ID, oreDrops + "raw_anthracite"));
 
         // Food
         ItemListener.cookedEgg.setTexture(Identifier.of(MOD_ID, foodItems + "cooked_egg"));
 
-        // Oil bucket
+        // Fuel items
         ItemListener.oilBucket.setTexture(Identifier.of(MOD_ID, items + "oil_bucket"));
-      
+        ItemListener.coalCoke.setTexture(Identifier.of(MOD_ID, fuels + "coal_coke"));
+        ItemListener.anthracite.setTexture(Identifier.of(MOD_ID, fuels + "anthracite"));
+
         // Doors
         ItemListener.copperDoor.setTexture(Identifier.of(MOD_ID, items + "copper_door"));
 

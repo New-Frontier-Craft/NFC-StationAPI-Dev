@@ -10,7 +10,6 @@ import net.modificationstation.stationapi.api.item.tool.ToolMaterialFactory;
 import net.modificationstation.stationapi.api.mod.entrypoint.Entrypoint;
 import net.modificationstation.stationapi.api.recipe.FuelRegistry;
 import net.modificationstation.stationapi.api.registry.BlockRegistry;
-import net.modificationstation.stationapi.api.registry.ItemRegistry;
 import net.modificationstation.stationapi.api.tag.TagKey;
 import net.modificationstation.stationapi.api.template.item.*;
 import net.modificationstation.stationapi.api.util.Identifier;
@@ -57,7 +56,9 @@ public class ItemListener {
             emerald,
             blueGlowstoneDust,
             aluminiumGear,
-            redstoneCircuit;
+            redstoneCircuit,
+            coalCoke,
+            rawAnthracite;
 
     public static TemplatePickaxeItem
             aluminiumPickaxe,
@@ -638,12 +639,12 @@ public class ItemListener {
         cupronickelIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "cupronickel_ingot"));
 
         // Ore drops
-        anthracite = new LazyItemTemplate(Identifier.of(MOD_ID, "anthracite"));
         netherAsh = new LazyItemTemplate(Identifier.of(MOD_ID, "nether_ash"));
         onyx = new LazyItemTemplate(Identifier.of(MOD_ID, "onyx"), ToolTierEnum.ADVANCED);
         sapphire = new LazyItemTemplate(Identifier.of(MOD_ID, "sapphire"), ToolTierEnum.ADVANCED);
         ruby = new LazyItemTemplate(Identifier.of(MOD_ID, "ruby"), ToolTierEnum.ADVANCED);
         emerald = new LazyItemTemplate(Identifier.of(MOD_ID, "emerald"), ToolTierEnum.ADVANCED);
+        rawAnthracite = new LazyItemTemplate(Identifier.of(MOD_ID, "raw_anthracite"));
 
         // Other drops
         blueGlowstoneDust = new LazyItemTemplate(Identifier.of(MOD_ID, "blue_glowstone_dust"));
@@ -651,8 +652,10 @@ public class ItemListener {
         // Food
         cookedEgg = new LazyFoodTemplate(Identifier.of(MOD_ID, "cooked_egg"), 4, false);
 
-        // Oil bucket
+        // Fuel items
         oilBucket = (OilBucketItem) new OilBucketItem(Identifier.of(MOD_ID, "oil_bucket"), BlockListener.oilStill.id).setTranslationKey(Identifier.of(MOD_ID, "oil_bucket"));
+        coalCoke = new LazyItemTemplate(Identifier.of(MOD_ID, "coal_coke"));
+        anthracite = new LazyItemTemplate(Identifier.of(MOD_ID, "anthracite"));
 
         // Doors
         copperDoor = (DoorItem) new DoorItem(Identifier.of(MOD_ID, "copper_door"), BlockListener.copperDoor.id).setTranslationKey(Identifier.of(MOD_ID, "copper_door"));
@@ -665,7 +668,7 @@ public class ItemListener {
         redstoneCircuit = new LazyItemTemplate(Identifier.of(MOD_ID, "redstone_circuit"));
 
         // Ore drop specification
-        BlockListener.anthraciteOre.specifyCustomDrop(ItemListener.anthracite);
+        BlockListener.anthraciteOre.specifyCustomDrop(ItemListener.rawAnthracite);
         BlockListener.netherAshOre.specifyCustomDrop(ItemListener.netherAsh);
         BlockListener.netherOnyxOre.specifyCustomDrop(ItemListener.onyx);
         BlockListener.sapphireOre.specifyCustomDrop(ItemListener.sapphire);
@@ -676,5 +679,6 @@ public class ItemListener {
         FuelRegistry.addFuelItem(oilBucket, 12800);
         FuelRegistry.addFuelItem(netherAsh, 1600);
         FuelRegistry.addFuelItem(anthracite, 11200);
+        FuelRegistry.addFuelItem(coalCoke, 6400);
     }
 }

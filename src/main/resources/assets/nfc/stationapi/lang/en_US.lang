@@ -531,15 +531,19 @@ item.nfc.steel_ingot.name=Steel Ingot
 item.nfc.osmium_ingot.name=Osmium Ingot
 item.nfc.cupronickel_ingot.name=Cupronickel Ingot
 
-item.nfc.anthracite.name=Anthracite
 item.nfc.nether_ash.name=Nether Ash
 item.nfc.onyx.name=Onyx
 item.nfc.sapphire.name=Sapphire
 item.nfc.ruby.name=Ruby
 item.nfc.emerald.name=Emerald
+item.nfc.raw_anthracite.name=Raw Anthracite
 
 item.nfc.cooked_egg.name=Cooked Egg
+
 item.nfc.oil_bucket.name=Oil Bucket
+item.nfc.coal_coke.name=Coal Coke
+item.nfc.anthracite.name=Anthracite
+
 item.nfc.copper_door.name=Copper Door
 item.nfc.telescope.name=Telescope
 
