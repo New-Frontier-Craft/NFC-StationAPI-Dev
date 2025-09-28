@@ -26,7 +26,7 @@ public class BrickOvenManager {
                 new ItemStack(ItemListener.copperIngot, 1),
                 new	ItemStack(ItemListener.zincIngot, 1),
                 new ItemStack(ItemListener.zincIngot, 1),
-                new ItemStack(ItemListener.zincIngot, 1)}, 1600);
+                new ItemStack(ItemListener.zincIngot, 1)}, 1600, FuelLevelEnum.WARM);
 
         addShapelessOvenRecipe(new ItemStack(ItemListener.bronzeIngot, 6), new Object[] {
                 new ItemStack(ItemListener.copperIngot, 1),
@@ -34,7 +34,7 @@ public class BrickOvenManager {
                 new ItemStack(ItemListener.copperIngot, 1),
                 new	ItemStack(ItemListener.copperIngot, 1),
                 new ItemStack(ItemListener.copperIngot, 1),
-                new ItemStack(ItemListener.tinIngot, 1)}, 1600);
+                new ItemStack(ItemListener.tinIngot, 1)}, 1600, FuelLevelEnum.WARM);
 
         addShapelessOvenRecipe(new ItemStack(ItemListener.cupronickelIngot, 6), new Object[] {
                 new ItemStack(ItemListener.copperIngot, 1),
@@ -42,7 +42,7 @@ public class BrickOvenManager {
                 new ItemStack(ItemListener.copperIngot, 1),
                 new	ItemStack(ItemListener.nickelIngot, 1),
                 new ItemStack(ItemListener.nickelIngot, 1),
-                new ItemStack(ItemListener.nickelIngot, 1)}, 1600);
+                new ItemStack(ItemListener.nickelIngot, 1)}, 1600, FuelLevelEnum.HOT);
 
         addShapelessOvenRecipe(new ItemStack(ItemListener.steelIngot, 8), new Object[] {
                 new ItemStack(ItemListener.anthracite, 1),
@@ -52,7 +52,7 @@ public class BrickOvenManager {
                 new ItemStack(Item.IRON_INGOT, 1),
                 new ItemStack(Item.IRON_INGOT, 1),
                 new ItemStack(Item.IRON_INGOT, 1),
-                new ItemStack(Item.IRON_INGOT, 1)}, 6400);
+                new ItemStack(Item.IRON_INGOT, 1)}, 6400, FuelLevelEnum.SEARING);
 
         addShapelessOvenRecipe(new ItemStack(ItemListener.steelIngot, 8), new Object[] {
                 new ItemStack(ItemListener.anthracite, 1),
@@ -62,7 +62,7 @@ public class BrickOvenManager {
                 new ItemStack(Item.IRON_INGOT, 1),
                 new ItemStack(Item.IRON_INGOT, 1),
                 new ItemStack(Item.IRON_INGOT, 1),
-                new ItemStack(Item.IRON_INGOT, 1)}, 6400);
+                new ItemStack(Item.IRON_INGOT, 1)}, 6400, FuelLevelEnum.SEARING);
 
         addShapelessOvenRecipe(new ItemStack(ItemListener.steelIngot, 8), new Object[] {
                 new ItemStack(ItemListener.anthracite, 1),
@@ -72,7 +72,7 @@ public class BrickOvenManager {
                 new ItemStack(Item.IRON_INGOT, 1),
                 new ItemStack(Item.IRON_INGOT, 1),
                 new ItemStack(Item.IRON_INGOT, 1),
-                new ItemStack(Item.IRON_INGOT, 1)}, 6400);
+                new ItemStack(Item.IRON_INGOT, 1)}, 6400, FuelLevelEnum.SEARING);
 
         addShapelessOvenRecipe(new ItemStack(ItemListener.steelIngot, 8), new Object[] {
                 new ItemStack(ItemListener.anthracite, 1),
@@ -82,7 +82,7 @@ public class BrickOvenManager {
                 new ItemStack(Item.IRON_INGOT, 1),
                 new ItemStack(Item.IRON_INGOT, 1),
                 new ItemStack(Item.IRON_INGOT, 1),
-                new ItemStack(Item.IRON_INGOT, 1)}, 6400);
+                new ItemStack(Item.IRON_INGOT, 1)}, 6400, FuelLevelEnum.SEARING);
 
         // Experimental titanium steel recipes
         addShapelessOvenRecipe(new ItemStack(ItemListener.steelIngot, 8), new Object[] {
@@ -93,7 +93,7 @@ public class BrickOvenManager {
                 new ItemStack(Item.IRON_INGOT, 1),
                 new ItemStack(Item.IRON_INGOT, 1),
                 new ItemStack(Item.IRON_INGOT, 1),
-                new ItemStack(Item.IRON_INGOT, 1)}, 6400);
+                new ItemStack(Item.IRON_INGOT, 1)}, 6400, FuelLevelEnum.SEARING);
 
         addShapelessOvenRecipe(new ItemStack(ItemListener.steelIngot, 8), new Object[] {
                 new ItemStack(ItemListener.anthracite, 1),
@@ -103,7 +103,7 @@ public class BrickOvenManager {
                 new ItemStack(Item.IRON_INGOT, 1),
                 new ItemStack(Item.IRON_INGOT, 1),
                 new ItemStack(Item.IRON_INGOT, 1),
-                new ItemStack(Item.IRON_INGOT, 1)}, 6400);
+                new ItemStack(Item.IRON_INGOT, 1)}, 6400, FuelLevelEnum.SEARING);
 
         addShapelessOvenRecipe(new ItemStack(ItemListener.steelIngot, 8), new Object[] {
                 new ItemStack(ItemListener.anthracite, 1),
@@ -113,7 +113,7 @@ public class BrickOvenManager {
                 new ItemStack(Item.IRON_INGOT, 1),
                 new ItemStack(Item.IRON_INGOT, 1),
                 new ItemStack(Item.IRON_INGOT, 1),
-                new ItemStack(Item.IRON_INGOT, 1)}, 6400);
+                new ItemStack(Item.IRON_INGOT, 1)}, 6400, FuelLevelEnum.SEARING);
 
         addShapelessOvenRecipe(new ItemStack(ItemListener.steelIngot, 8), new Object[] {
                 new ItemStack(ItemListener.anthracite, 1),
@@ -123,7 +123,7 @@ public class BrickOvenManager {
                 new ItemStack(Item.IRON_INGOT, 1),
                 new ItemStack(Item.IRON_INGOT, 1),
                 new ItemStack(Item.IRON_INGOT, 1),
-                new ItemStack(Item.IRON_INGOT, 1)}, 6400);
+                new ItemStack(Item.IRON_INGOT, 1)}, 6400, FuelLevelEnum.SEARING);
 
         // Experimental tungsten steel recipes
         addShapelessOvenRecipe(new ItemStack(ItemListener.steelIngot, 8), new Object[] {
@@ -134,7 +134,7 @@ public class BrickOvenManager {
                 new ItemStack(Item.IRON_INGOT, 1),
                 new ItemStack(Item.IRON_INGOT, 1),
                 new ItemStack(Item.IRON_INGOT, 1),
-                new ItemStack(Item.IRON_INGOT, 1)}, 6400);
+                new ItemStack(Item.IRON_INGOT, 1)}, 6400, FuelLevelEnum.SEARING);
 
         addShapelessOvenRecipe(new ItemStack(ItemListener.steelIngot, 8), new Object[] {
                 new ItemStack(ItemListener.anthracite, 1),
@@ -144,7 +144,7 @@ public class BrickOvenManager {
                 new ItemStack(Item.IRON_INGOT, 1),
                 new ItemStack(Item.IRON_INGOT, 1),
                 new ItemStack(Item.IRON_INGOT, 1),
-                new ItemStack(Item.IRON_INGOT, 1)}, 6400);
+                new ItemStack(Item.IRON_INGOT, 1)}, 6400, FuelLevelEnum.SEARING);
 
         addShapelessOvenRecipe(new ItemStack(ItemListener.steelIngot, 8), new Object[] {
                 new ItemStack(ItemListener.anthracite, 1),
@@ -154,7 +154,7 @@ public class BrickOvenManager {
                 new ItemStack(Item.IRON_INGOT, 1),
                 new ItemStack(Item.IRON_INGOT, 1),
                 new ItemStack(Item.IRON_INGOT, 1),
-                new ItemStack(Item.IRON_INGOT, 1)}, 6400);
+                new ItemStack(Item.IRON_INGOT, 1)}, 6400, FuelLevelEnum.SEARING);
 
         addShapelessOvenRecipe(new ItemStack(ItemListener.steelIngot, 8), new Object[] {
                 new ItemStack(ItemListener.anthracite, 1),
@@ -164,7 +164,7 @@ public class BrickOvenManager {
                 new ItemStack(Item.IRON_INGOT, 1),
                 new ItemStack(Item.IRON_INGOT, 1),
                 new ItemStack(Item.IRON_INGOT, 1),
-                new ItemStack(Item.IRON_INGOT, 1)}, 6400);
+                new ItemStack(Item.IRON_INGOT, 1)}, 6400, FuelLevelEnum.SEARING);
 
         // Experimental titanium-tungsten steel recipes
         addShapelessOvenRecipe(new ItemStack(ItemListener.steelIngot, 8), new Object[] {
@@ -175,7 +175,7 @@ public class BrickOvenManager {
                 new ItemStack(Item.IRON_INGOT, 1),
                 new ItemStack(Item.IRON_INGOT, 1),
                 new ItemStack(Item.IRON_INGOT, 1),
-                new ItemStack(Item.IRON_INGOT, 1)}, 6400);
+                new ItemStack(Item.IRON_INGOT, 1)}, 6400, FuelLevelEnum.SEARING);
 
         addShapelessOvenRecipe(new ItemStack(ItemListener.steelIngot, 8), new Object[] {
                 new ItemStack(ItemListener.anthracite, 1),
@@ -185,7 +185,7 @@ public class BrickOvenManager {
                 new ItemStack(Item.IRON_INGOT, 1),
                 new ItemStack(Item.IRON_INGOT, 1),
                 new ItemStack(Item.IRON_INGOT, 1),
-                new ItemStack(Item.IRON_INGOT, 1)}, 6400);
+                new ItemStack(Item.IRON_INGOT, 1)}, 6400, FuelLevelEnum.SEARING);
 
         addShapelessOvenRecipe(new ItemStack(ItemListener.steelIngot, 8), new Object[] {
                 new ItemStack(ItemListener.anthracite, 1),
@@ -195,7 +195,7 @@ public class BrickOvenManager {
                 new ItemStack(Item.IRON_INGOT, 1),
                 new ItemStack(Item.IRON_INGOT, 1),
                 new ItemStack(Item.IRON_INGOT, 1),
-                new ItemStack(Item.IRON_INGOT, 1)}, 6400);
+                new ItemStack(Item.IRON_INGOT, 1)}, 6400, FuelLevelEnum.SEARING);
 
         addShapelessOvenRecipe(new ItemStack(ItemListener.steelIngot, 8), new Object[] {
                 new ItemStack(ItemListener.anthracite, 1),
@@ -205,7 +205,7 @@ public class BrickOvenManager {
                 new ItemStack(ItemListener.tungstenIngot, 1),
                 new ItemStack(Item.IRON_INGOT, 1),
                 new ItemStack(Item.IRON_INGOT, 1),
-                new ItemStack(Item.IRON_INGOT, 1)}, 6400);
+                new ItemStack(Item.IRON_INGOT, 1)}, 6400, FuelLevelEnum.SEARING);
 
         // Platinum enhanced smelting
         addShapelessOvenRecipe(new ItemStack(ItemListener.osmiumIngot, 5), new Object[] {
@@ -213,21 +213,21 @@ public class BrickOvenManager {
                 new ItemStack(BlockListener.osmiumOre, 1),
                 new ItemStack(BlockListener.osmiumOre, 1),
                 new ItemStack(BlockListener.osmiumOre, 1),
-                new ItemStack(ItemListener.platinumIngot, 1)}, 6400);
+                new ItemStack(ItemListener.platinumIngot, 1)}, 6400, FuelLevelEnum.BLAZING);
 
         addShapelessOvenRecipe(new ItemStack(ItemListener.titaniumIngot, 5), new Object[] {
                 new ItemStack(BlockListener.titaniumOre, 1),
                 new ItemStack(BlockListener.titaniumOre, 1),
                 new ItemStack(BlockListener.titaniumOre, 1),
                 new ItemStack(BlockListener.titaniumOre, 1),
-                new ItemStack(ItemListener.platinumIngot, 1)}, 4800);
+                new ItemStack(ItemListener.platinumIngot, 1)}, 4800, FuelLevelEnum.BLAZING);
 
         addShapelessOvenRecipe(new ItemStack(ItemListener.tungstenIngot, 5), new Object[] {
                 new ItemStack(BlockListener.tungstenOre, 1),
                 new ItemStack(BlockListener.tungstenOre, 1),
                 new ItemStack(BlockListener.tungstenOre, 1),
                 new ItemStack(BlockListener.tungstenOre, 1),
-                new ItemStack(ItemListener.platinumIngot, 1)}, 4800);
+                new ItemStack(ItemListener.platinumIngot, 1)}, 4800, FuelLevelEnum.BLAZING);
 
         // Experimental boron recipes
         addShapelessOvenRecipe(new ItemStack(ItemListener.magnetiteIngot, 5), new Object[] {
@@ -235,19 +235,19 @@ public class BrickOvenManager {
                 new ItemStack(BlockListener.magnetiteOre, 1),
                 new ItemStack(BlockListener.magnetiteOre, 1),
                 new ItemStack(BlockListener.magnetiteOre, 1),
-                new ItemStack(ItemListener.boronIngot, 1)}, 4800);
+                new ItemStack(ItemListener.boronIngot, 1)}, 4800, FuelLevelEnum.SEARING);
 
         addShapelessOvenRecipe(new ItemStack(ItemListener.cobaltIngot, 5), new Object[] {
                 new ItemStack(BlockListener.cobaltOre, 1),
                 new ItemStack(BlockListener.cobaltOre, 1),
                 new ItemStack(BlockListener.cobaltOre, 1),
                 new ItemStack(BlockListener.cobaltOre, 1),
-                new ItemStack(ItemListener.boronIngot, 1)}, 4800);
+                new ItemStack(ItemListener.boronIngot, 1)}, 4800, FuelLevelEnum.SEARING);
 
         //Smelting
-        addShapelessOvenRecipe(new ItemStack(ItemListener.tungstenIngot, 1), new Object[] {new ItemStack(BlockListener.tungstenOre, 1)}, 200);
-        addShapelessOvenRecipe(new ItemStack(ItemListener.titaniumIngot, 1), new Object[] {new ItemStack(BlockListener.titaniumOre, 1)}, 200);
-        addShapelessOvenRecipe(new ItemStack(ItemListener.osmiumIngot, 1), new Object[] {new ItemStack(BlockListener.osmiumOre, 1)}, 200);
+        addShapelessOvenRecipe(new ItemStack(ItemListener.tungstenIngot, 1), new Object[] {new ItemStack(BlockListener.tungstenOre, 1)}, 200, FuelLevelEnum.BLAZING);
+        addShapelessOvenRecipe(new ItemStack(ItemListener.titaniumIngot, 1), new Object[] {new ItemStack(BlockListener.titaniumOre, 1)}, 200, FuelLevelEnum.BLAZING);
+        addShapelessOvenRecipe(new ItemStack(ItemListener.osmiumIngot, 1), new Object[] {new ItemStack(BlockListener.osmiumOre, 1)}, 200, FuelLevelEnum.BLAZING);
 
 //		Object[][] oreRecipes;
 //
@@ -335,10 +335,10 @@ public class BrickOvenManager {
 
 
         //Chain Armor Melting
-        addShapelessOvenRecipe(new ItemStack(ItemListener.steelIngot, 1), new Object[] {new ItemStack(Item.CHAIN_HELMET, 1, -1)}, 200);
-        addShapelessOvenRecipe(new ItemStack(ItemListener.steelIngot, 1), new Object[] {new ItemStack(Item.CHAIN_CHESTPLATE, 1, -1)}, 200);
-        addShapelessOvenRecipe(new ItemStack(ItemListener.steelIngot, 1), new Object[] {new ItemStack(Item.CHAIN_LEGGINGS, 1, -1)}, 200);
-        addShapelessOvenRecipe(new ItemStack(ItemListener.steelIngot, 1), new Object[] {new ItemStack(Item.CHAIN_BOOTS, 1, -1)}, 200);
+        addShapelessOvenRecipe(new ItemStack(ItemListener.steelIngot, 1), new Object[] {new ItemStack(Item.CHAIN_HELMET, 1, -1)}, 200, FuelLevelEnum.HOT);
+        addShapelessOvenRecipe(new ItemStack(ItemListener.steelIngot, 1), new Object[] {new ItemStack(Item.CHAIN_CHESTPLATE, 1, -1)}, 200, FuelLevelEnum.HOT);
+        addShapelessOvenRecipe(new ItemStack(ItemListener.steelIngot, 1), new Object[] {new ItemStack(Item.CHAIN_LEGGINGS, 1, -1)}, 200, FuelLevelEnum.HOT);
+        addShapelessOvenRecipe(new ItemStack(ItemListener.steelIngot, 1), new Object[] {new ItemStack(Item.CHAIN_BOOTS, 1, -1)}, 200, FuelLevelEnum.HOT);
 
         //Bricks
         addShapelessOvenRecipe(new ItemStack(BlockListener.osmiumBricks, 8), new Object[] {
@@ -350,7 +350,7 @@ public class BrickOvenManager {
                 new ItemStack(BlockListener.firedBricks, 1),
                 new ItemStack(BlockListener.firedBricks, 1),
                 new ItemStack(BlockListener.firedBricks, 1),
-                new ItemStack(BlockListener.firedBricks, 1)}, 6400);
+                new ItemStack(BlockListener.firedBricks, 1)}, 6400, FuelLevelEnum.BLAZING);
 
         //Stained Glass
         int o = 15;
