@@ -113,7 +113,7 @@ public class BrickOvenBlockEntity extends BlockEntity implements Inventory, Heat
 
         furnaceBurnTime = nbttagcompound.getShort("BurnTime");
         furnaceCookTime = nbttagcompound.getShort("CookTime");
-        currentItemBurnTime = getItemBurnTime(furnaceItemStacks[9]);
+        currentItemBurnTime = getItemBurnTime(furnaceItemStacks[FUEL_SLOT]);
         isMultiBlock = nbttagcompound.getBoolean("IsMultiBlock");
         checkTimer = nbttagcompound.getInt("CheckTimer");
         heatLevel = nbttagcompound.getInt("HeatLevel");
@@ -189,17 +189,28 @@ public class BrickOvenBlockEntity extends BlockEntity implements Inventory, Heat
         }
         if (!world.isRemote) {
             if (furnaceBurnTime == 0 && canSmelt()) {
-                currentItemBurnTime = furnaceBurnTime = getItemBurnTime(furnaceItemStacks[9]);
+                currentItemBurnTime = furnaceBurnTime = getItemBurnTime(furnaceItemStacks[FUEL_SLOT]);
                 if (furnaceBurnTime > 0) {
-                    if (furnaceItemStacks[9] != null) {
-                        furnaceItemStacks[9].count--;
-                        if (furnaceItemStacks[9].getItem() instanceof BucketItem) {
-                            furnaceItemStacks[9] = new ItemStack(Item.BUCKET);
+                    if (furnaceItemStacks[FUEL_SLOT] != null) {
+                        furnaceItemStacks[FUEL_SLOT].count--;
+                        if (furnaceItemStacks[FUEL_SLOT].getItem() instanceof BucketItem) {
+                            furnaceItemStacks[FUEL_SLOT] = new ItemStack(Item.BUCKET);
                         } else
-                        if (furnaceItemStacks[9].count == 0) {
-                            furnaceItemStacks[9] = null;
+                        if (furnaceItemStacks[FUEL_SLOT].count == 0) {
+                            furnaceItemStacks[FUEL_SLOT] = null;
                         }
                     }
+                }
+            }
+            if (externallyHeated && !isMultiBlock) {
+                if (heatLevel > 0) {
+                    heatLevel--;
+                }
+                if (maximumHeatLevel > 0) {
+                    maximumHeatLevel--;
+                }
+                if (heatLevel == maximumHeatLevel && maximumHeatLevel == 0) {
+                    externallyHeated = false;
                 }
             }
             if (isBurning() && heatLevel < maximumHeatLevel) {
@@ -276,6 +287,8 @@ public class BrickOvenBlockEntity extends BlockEntity implements Inventory, Heat
             return false;
         }
         // Extract heat
+        heatLevel = Math.max(heatLevel - 40, 0);
+        maximumHeatLevel = heatLevel;
         HeatCoilBlockEntity heatSource = (HeatCoilBlockEntity) world.getBlockEntity(xCentered, y - 1, zCentered);
         int heatSourceValue = heatSource.getHeatLevel();
         if (heatSourceValue > 0) {
@@ -409,27 +422,27 @@ public class BrickOvenBlockEntity extends BlockEntity implements Inventory, Heat
             for (int zOffset = -1; zOffset <= 1; zOffset++) {
                 // Standard output from output slot
                 BlockEntity target = world.getBlockEntity(xCentered + xOffset, y - 2, zCentered + zOffset);
-                if (furnaceItemStacks[10] != null
+                if (furnaceItemStacks[OUTPUT_SLOT] != null
                         && target instanceof BasicItemChuteBlockEntity basicItemChuteBlockEntity
                         && !(target instanceof FilteringItemChuteBlockEntity)) {
                     if (basicItemChuteBlockEntity.storedItem == null) {
-                        basicItemChuteBlockEntity.storedItem = furnaceItemStacks[10];
-                        furnaceItemStacks[10] = null;
+                        basicItemChuteBlockEntity.storedItem = furnaceItemStacks[OUTPUT_SLOT];
+                        furnaceItemStacks[OUTPUT_SLOT] = null;
                         return true;
-                    } else if (basicItemChuteBlockEntity.storedItem.isItemEqual(furnaceItemStacks[10])) {
-                        int totalCount = furnaceItemStacks[10].count + basicItemChuteBlockEntity.storedItem.count;
+                    } else if (basicItemChuteBlockEntity.storedItem.isItemEqual(furnaceItemStacks[OUTPUT_SLOT])) {
+                        int totalCount = furnaceItemStacks[OUTPUT_SLOT].count + basicItemChuteBlockEntity.storedItem.count;
                         if (totalCount <= basicItemChuteBlockEntity.storedItem.getMaxCount()) {
                             basicItemChuteBlockEntity.storedItem.count = totalCount;
-                            furnaceItemStacks[10] = null;
+                            furnaceItemStacks[OUTPUT_SLOT] = null;
                         } else {
                             int leftovers = totalCount - basicItemChuteBlockEntity.storedItem.getMaxCount();
                             basicItemChuteBlockEntity.storedItem.count = basicItemChuteBlockEntity.storedItem.getMaxCount();
-                            furnaceItemStacks[10].count = leftovers;
+                            furnaceItemStacks[OUTPUT_SLOT].count = leftovers;
                         }
                     }
                 }
                 // Input byproduct clearing through filtered item chutes
-                for (int slot = 0; slot < 9; slot++) {
+                for (int slot = 0; slot < FUEL_SLOT; slot++) {
                     ItemStack slotItem = furnaceItemStacks[slot];
                     if (slotItem == null) {
                         continue;
@@ -458,17 +471,17 @@ public class BrickOvenBlockEntity extends BlockEntity implements Inventory, Heat
         if (itemstack == null) {
             return false;
         }
-        if (furnaceItemStacks[10] == null) {
+        if (furnaceItemStacks[OUTPUT_SLOT] == null) {
             return true;
         }
-        if (!furnaceItemStacks[10].copy().isItemEqual(itemstack)) {
+        if (!furnaceItemStacks[OUTPUT_SLOT].copy().isItemEqual(itemstack)) {
             return false;
         }
-        if (furnaceItemStacks[10].copy().count < getMaxCountPerStack()
-                && furnaceItemStacks[10].copy().count + itemstack.copy().count < furnaceItemStacks[10].copy().getMaxCount()) {
+        if (furnaceItemStacks[OUTPUT_SLOT].copy().count < getMaxCountPerStack()
+                && furnaceItemStacks[OUTPUT_SLOT].copy().count + itemstack.copy().count < furnaceItemStacks[OUTPUT_SLOT].copy().getMaxCount()) {
             return true;
         }
-        return furnaceItemStacks[10].copy().count + itemstack.copy().count <= itemstack.copy().getMaxCount();
+        return furnaceItemStacks[OUTPUT_SLOT].copy().count + itemstack.copy().count <= itemstack.copy().getMaxCount();
     }
 
     public void smeltItem() {
@@ -476,14 +489,14 @@ public class BrickOvenBlockEntity extends BlockEntity implements Inventory, Heat
             return;
         }
         ItemStack itemstack = BrickOvenManager.getInstance().findMatchingRecipe(furnaceItemStacks, this);
-        if (furnaceItemStacks[10] == null) {
-            furnaceItemStacks[10] = itemstack.copy();
-        } else if (furnaceItemStacks[10].itemId == itemstack.copy().itemId) {
-            furnaceItemStacks[10].count += itemstack.copy().count;
+        if (furnaceItemStacks[OUTPUT_SLOT] == null) {
+            furnaceItemStacks[OUTPUT_SLOT] = itemstack.copy();
+        } else if (furnaceItemStacks[OUTPUT_SLOT].itemId == itemstack.copy().itemId) {
+            furnaceItemStacks[OUTPUT_SLOT].count += itemstack.copy().count;
         }
 
         //Removed container item code
-        for(int i = 0; i < 9; i++)
+        for(int i = 0; i < FUEL_SLOT; i++)
         {
             if(furnaceItemStacks[i] != null){
                 furnaceItemStacks[i].count--;
@@ -594,7 +607,7 @@ public class BrickOvenBlockEntity extends BlockEntity implements Inventory, Heat
         if (scheduledForRemoval) {
             return 0;
         }
-        if (isMultiBlock || getItemBurnTime(furnaceItemStacks[9]) > 0 || furnaceBurnTime >= MAXIMUM_ADDED_BURN_TIME) {
+        if (isMultiBlock || getItemBurnTime(furnaceItemStacks[FUEL_SLOT]) > 0 || furnaceBurnTime >= MAXIMUM_ADDED_BURN_TIME) {
             return 0;
         }
         externallyHeated = true;
