@@ -15,8 +15,14 @@ import net.newfrontiercraft.nfc.block.BrickOvenBlock;
 import net.newfrontiercraft.nfc.events.init.BlockListener;
 import net.newfrontiercraft.nfc.events.init.ItemListener;
 import net.newfrontiercraft.nfc.registry.BrickOvenManager;
+import net.newfrontiercraft.nfc.registry.FuelLevelRegistry;
+import net.newfrontiercraft.nfc.utils.FuelLevelEnum;
+import net.newfrontiercraft.nfc.utils.ItemMeta;
 
 public class BrickOvenBlockEntity extends BlockEntity implements Inventory, HeatConsumer {
+
+    private static final int FUEL_SLOT = 9;
+    private static final int OUTPUT_SLOT = 10;
 
     private ItemStack[] furnaceItemStacks;
     public int furnaceBurnTime;
@@ -25,7 +31,11 @@ public class BrickOvenBlockEntity extends BlockEntity implements Inventory, Heat
     public int requiredTime = 200;
     public boolean isMultiBlock;
     private int checkTimer;
-    private static final int MAXIMUM_ADDED_BURN_TIME = 1000;
+    private int heatLevel;
+    private int maximumHeatLevel;
+    private int requiredHeatLevel;
+    private boolean externallyHeated;
+    private static final int MAXIMUM_ADDED_BURN_TIME = FuelLevelEnum.SUPERHEATED.getHeat();
     private boolean scheduledForRemoval = false;
 
     public BrickOvenBlockEntity() {
@@ -53,11 +63,17 @@ public class BrickOvenBlockEntity extends BlockEntity implements Inventory, Heat
             if (furnaceItemStacks[i].count <= j) {
                 ItemStack itemstack = furnaceItemStacks[i];
                 furnaceItemStacks[i] = null;
+                if (i == FUEL_SLOT && furnaceBurnTime == 0) {
+                    maximumHeatLevel = 0;
+                }
                 return itemstack;
             }
             ItemStack itemstack1 = furnaceItemStacks[i].split(j);
             if (furnaceItemStacks[i].count == 0) {
                 furnaceItemStacks[i] = null;
+                if (i == FUEL_SLOT) {
+                    maximumHeatLevel = 0;
+                }
             }
             return itemstack1;
         } else {
@@ -70,6 +86,9 @@ public class BrickOvenBlockEntity extends BlockEntity implements Inventory, Heat
         furnaceItemStacks[i] = itemstack;
         if (itemstack != null && itemstack.count > getMaxCountPerStack()) {
             itemstack.count = getMaxCountPerStack();
+        }
+        if (itemstack != null && i == FUEL_SLOT && furnaceBurnTime == 0) {
+            getItemBurnTime(itemstack); // Use side effect of method to update heat level
         }
     }
 
@@ -97,6 +116,10 @@ public class BrickOvenBlockEntity extends BlockEntity implements Inventory, Heat
         currentItemBurnTime = getItemBurnTime(furnaceItemStacks[9]);
         isMultiBlock = nbttagcompound.getBoolean("IsMultiBlock");
         checkTimer = nbttagcompound.getInt("CheckTimer");
+        heatLevel = nbttagcompound.getInt("HeatLevel");
+        maximumHeatLevel = nbttagcompound.getInt("MaximumHeatLevel");
+        requiredHeatLevel = nbttagcompound.getInt("RequiredHeatLevel");
+        externallyHeated = nbttagcompound.getBoolean("ExternallyHeated");
     }
 
     @Override
@@ -117,6 +140,10 @@ public class BrickOvenBlockEntity extends BlockEntity implements Inventory, Heat
         nbttagcompound.put("Items", nbttaglist);
         nbttagcompound.putBoolean("IsMultiBlock", isMultiBlock);
         nbttagcompound.putInt("CheckTimer", checkTimer);
+        nbttagcompound.putInt("HeatLevel", heatLevel);
+        nbttagcompound.putInt("MaximumHeatLevel", maximumHeatLevel);
+        nbttagcompound.putInt("RequiredHeatLevel", requiredHeatLevel);
+        nbttagcompound.putBoolean("ExternallyHeated", externallyHeated);
     }
 
     @Override
@@ -175,7 +202,12 @@ public class BrickOvenBlockEntity extends BlockEntity implements Inventory, Heat
                     }
                 }
             }
-            if (isBurning() && canSmelt()) {
+            if (isBurning() && heatLevel < maximumHeatLevel) {
+                heatLevel++;
+            } else if (!isBurning() && heatLevel > 0 || heatLevel > maximumHeatLevel) {
+                heatLevel--;
+            }
+            if (isBurning() && canSmelt() && heatLevel >= requiredHeatLevel) {
                 if (isMultiBlock) {
                     furnaceCookTime += 8;
                 } else {
@@ -246,10 +278,19 @@ public class BrickOvenBlockEntity extends BlockEntity implements Inventory, Heat
         // Extract heat
         HeatCoilBlockEntity heatSource = (HeatCoilBlockEntity) world.getBlockEntity(xCentered, y - 1, zCentered);
         int heatSourceValue = heatSource.getHeatLevel();
-        if (heatSourceValue > furnaceBurnTime && furnaceBurnTime < MAXIMUM_ADDED_BURN_TIME && furnaceBurnTime >= 0) {
-            int transferredHeat = (heatSourceValue - furnaceBurnTime)/2;
-            furnaceBurnTime += transferredHeat;
-            heatSource.changeHeatLevel(-transferredHeat);
+        if (heatSourceValue > 0) {
+            furnaceBurnTime = MAXIMUM_ADDED_BURN_TIME;
+            externallyHeated = true;
+        }
+        if (heatSourceValue > heatLevel) {
+            int heatGap = heatSourceValue - heatLevel;
+            int extractedHeat = Math.min(160, heatGap);
+            heatLevel += extractedHeat;
+            maximumHeatLevel = heatLevel;
+            heatSource.changeHeatLevel(-extractedHeat);
+        } else if (heatSourceValue < heatLevel) {
+            heatLevel = heatSourceValue;
+            maximumHeatLevel = heatSourceValue;
         }
         // Meta values to coordinates
         // 2 -> z+
@@ -455,8 +496,13 @@ public class BrickOvenBlockEntity extends BlockEntity implements Inventory, Heat
 
     private int getItemBurnTime(ItemStack itemstack) {
         if (itemstack == null) {
+            if (!externallyHeated) {
+                maximumHeatLevel = 0;
+            }
             return 0;
         }
+        externallyHeated = false;
+        maximumHeatLevel = FuelLevelRegistry.fuelLevel().getFuelLevel(new ItemMeta(itemstack.getItem(), itemstack.getDamage())).getHeat();
         int i = itemstack.itemId;
         int j = itemstack.getDamage();
         if(i == Item.STICK.id) {
@@ -506,6 +552,26 @@ public class BrickOvenBlockEntity extends BlockEntity implements Inventory, Heat
 
     }
 
+    public int getHeatLevel() {
+        return heatLevel;
+    }
+
+    public int getMaximumHeatLevel() {
+        return maximumHeatLevel;
+    }
+
+    public int getRequiredHeatLevel() {
+        return requiredHeatLevel;
+    }
+
+    public void resetHeatRequirement() {
+        this.requiredHeatLevel = 0;
+    }
+
+    public boolean isExternallyHeated() {
+        return externallyHeated;
+    }
+
     public boolean canPlayerUse(PlayerEntity entityplayer) {
         if (scheduledForRemoval) {
             return false;
@@ -517,8 +583,9 @@ public class BrickOvenBlockEntity extends BlockEntity implements Inventory, Heat
                 (double) y + 0.5D, (double) z + 0.5D) <= 64D;
     }
 
-    public void setTime(int i){
+    public void setTimeAndHeat(int i, int requiredHeatLevel){
         requiredTime = i;
+        this.requiredHeatLevel = requiredHeatLevel;
     }
 
     // Methods of heat interface
@@ -530,10 +597,16 @@ public class BrickOvenBlockEntity extends BlockEntity implements Inventory, Heat
         if (isMultiBlock || getItemBurnTime(furnaceItemStacks[9]) > 0 || furnaceBurnTime >= MAXIMUM_ADDED_BURN_TIME) {
             return 0;
         }
+        externallyHeated = true;
         int totalBurnTime = furnaceBurnTime + heat;
+        if (totalBurnTime > FuelLevelEnum.SUPERHEATED.getHeat()) {
+            totalBurnTime = FuelLevelEnum.SUPERHEATED.getHeat();
+        }
         BrickOvenBlock.updateFurnaceBlockState(true, world, x, y, z);
         if (totalBurnTime <= MAXIMUM_ADDED_BURN_TIME) {
             furnaceBurnTime = totalBurnTime;
+            maximumHeatLevel = totalBurnTime;
+            heatLevel = totalBurnTime;
             return heat;
         }
         furnaceBurnTime = MAXIMUM_ADDED_BURN_TIME;
@@ -542,6 +615,7 @@ public class BrickOvenBlockEntity extends BlockEntity implements Inventory, Heat
 
     @Override
     public int getHeat() {
-        return furnaceBurnTime;
+        return heatLevel;
     }
+
 }

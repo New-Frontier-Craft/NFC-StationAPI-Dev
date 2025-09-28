@@ -12,14 +12,16 @@ public class BrickOvenShapedRecipe implements BrickOvenRecipe {
     private ItemStack output;
     private int time;
     public final int outputId;
+    private final int heatRequirement;
 
-    public BrickOvenShapedRecipe(int width, int height, ItemStack[] input, ItemStack output, int time) {
+    public BrickOvenShapedRecipe(int width, int height, ItemStack[] input, ItemStack output, int time, int heatRequirement) {
         this.outputId = output.itemId;
         this.width = width;
         this.height = height;
         this.input = input;
         this.output = output;
         this.time = time;
+        this.heatRequirement = heatRequirement;
     }
 
     @Override
@@ -31,6 +33,11 @@ public class BrickOvenShapedRecipe implements BrickOvenRecipe {
     @Override
     public int getTime(){
         return time;
+    }
+
+    @Override
+    public int getHeatRequirement() {
+        return heatRequirement;
     }
 
     @Override

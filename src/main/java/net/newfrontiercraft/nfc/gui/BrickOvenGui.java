@@ -19,6 +19,10 @@ public class BrickOvenGui extends HandledScreen {
             this.textRenderer.draw("Multi Block Mode", 68, (backgroundHeight - 96) + 2, 0x006600);
         }
         this.textRenderer.draw("Brick Oven", 60, 6, 0x404040);
+        this.textRenderer.draw("Heat Requirement: " + furnaceInventory.getRequiredHeatLevel(), 60, 24, 0x000000);
+        this.textRenderer.draw("Heat Level: " + furnaceInventory.getHeatLevel(), 60, 42, 0x000000);
+        this.textRenderer.draw("Maximum Heat: " + furnaceInventory.getMaximumHeatLevel(), 60, 60, 0x000000);
+        this.textRenderer.draw("Externally Heated: " + furnaceInventory.isExternallyHeated(), 60, 78, 0x000000);
         this.textRenderer.draw("Inventory", 8, (backgroundHeight - 96) + 2, 0x404040);
     }
 

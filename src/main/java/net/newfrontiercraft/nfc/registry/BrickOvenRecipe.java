@@ -14,6 +14,8 @@ public interface BrickOvenRecipe {
 
     int getTime();
 
+    int getHeatRequirement();
+
     ItemStack getOutput();
     List getInput();
 

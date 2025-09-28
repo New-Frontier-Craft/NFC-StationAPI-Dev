@@ -6,12 +6,15 @@ import net.minecraft.item.ItemStack;
 import net.newfrontiercraft.nfc.events.init.BlockListener;
 import net.newfrontiercraft.nfc.events.init.ItemListener;
 import net.newfrontiercraft.nfc.block.entity.BrickOvenBlockEntity;
+import net.newfrontiercraft.nfc.utils.FuelLevelEnum;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 public class BrickOvenManager {
+
+    private static final int HEAT_MARGIN = 50;
 
     public BrickOvenManager() {
         recipes = new ArrayList();
@@ -385,7 +388,15 @@ public class BrickOvenManager {
          */
     }
 
-    void addShapedOvenRecipe(ItemStack itemStack, Object[] aobj, int time)
+    void addShapedOvenRecipe(ItemStack itemStack, Object[] aobj, int time) {
+        addShapedOvenRecipe(itemStack, aobj, time, FuelLevelEnum.COLD);
+    }
+
+    void addShapedOvenRecipe(ItemStack itemStack, Object[] aobj, int time, FuelLevelEnum fuelLevelEnum) {
+        addShapedOvenRecipe(itemStack, aobj, time, fuelLevelEnum.getHeat() - HEAT_MARGIN);
+    }
+
+    void addShapedOvenRecipe(ItemStack itemStack, Object[] aobj, int time, int heatRequirement)
     {
         StringBuilder s = new StringBuilder();
         int i = 0;
@@ -443,10 +454,18 @@ public class BrickOvenManager {
                 itemStacks[i1] = null;
             }
         }
-        recipes.add(new BrickOvenShapedRecipe(j, k, itemStacks, itemStack, time));
+        recipes.add(new BrickOvenShapedRecipe(j, k, itemStacks, itemStack, time, heatRequirement));
     }
 
     void addShapelessOvenRecipe(ItemStack itemStack, Object[] aobj, int time) {
+        addShapelessOvenRecipe(itemStack, aobj, time, FuelLevelEnum.COLD);
+    }
+
+    void addShapelessOvenRecipe(ItemStack itemStack, Object[] aobj, int time, FuelLevelEnum fuelLevelEnum) {
+        addShapelessOvenRecipe(itemStack, aobj, time, fuelLevelEnum.getHeat() - HEAT_MARGIN);
+    }
+
+    void addShapelessOvenRecipe(ItemStack itemStack, Object[] aobj, int time, int heatRequirement) {
         ArrayList arraylist = new ArrayList();
         Object aobj1[] = aobj;
         int i = aobj1.length;
@@ -466,19 +485,19 @@ public class BrickOvenManager {
                 throw new RuntimeException("Invalid shapeless recipe!");
             }
         }
-        recipes.add(new BrickOvenShapelessRecipe(itemStack, arraylist, time));
+        recipes.add(new BrickOvenShapelessRecipe(itemStack, arraylist, time, heatRequirement));
     }
 
-    public ItemStack findMatchingRecipe(ItemStack[] ItemStacks, BrickOvenBlockEntity joe) {
+    public ItemStack findMatchingRecipe(ItemStack[] ItemStacks, BrickOvenBlockEntity brickOvenBlockEntity) {
         //removed a lot of extra stuff
         for (int i = 0; i < recipes.size(); i++) {
-            BrickOvenRecipe var12 = (BrickOvenRecipe) recipes.get(i);
-            if (var12.matches(ItemStacks)) {
-                joe.setTime(var12.getTime());
-                return var12.craft(ItemStacks);
+            BrickOvenRecipe brickOvenRecipe = (BrickOvenRecipe) recipes.get(i);
+            if (brickOvenRecipe.matches(ItemStacks)) {
+                brickOvenBlockEntity.setTimeAndHeat(brickOvenRecipe.getTime(), brickOvenRecipe.getHeatRequirement());
+                return brickOvenRecipe.craft(ItemStacks);
             }
         }
-
+        brickOvenBlockEntity.resetHeatRequirement();
         return null;
     }
 
