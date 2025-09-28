@@ -287,8 +287,10 @@ public class BrickOvenBlockEntity extends BlockEntity implements Inventory, Heat
             return false;
         }
         // Extract heat
-        heatLevel = Math.max(heatLevel - 40, 0);
-        maximumHeatLevel = heatLevel;
+        if (isMultiBlock) {
+            heatLevel = Math.max(heatLevel - 40, 0);
+            maximumHeatLevel = heatLevel;
+        }
         HeatCoilBlockEntity heatSource = (HeatCoilBlockEntity) world.getBlockEntity(xCentered, y - 1, zCentered);
         int heatSourceValue = heatSource.getHeatLevel();
         if (heatSourceValue > 0) {
@@ -579,10 +581,6 @@ public class BrickOvenBlockEntity extends BlockEntity implements Inventory, Heat
 
     public void resetHeatRequirement() {
         this.requiredHeatLevel = 0;
-    }
-
-    public boolean isExternallyHeated() {
-        return externallyHeated;
     }
 
     public boolean canPlayerUse(PlayerEntity entityplayer) {

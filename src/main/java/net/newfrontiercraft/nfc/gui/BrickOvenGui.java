@@ -19,10 +19,6 @@ public class BrickOvenGui extends HandledScreen {
             this.textRenderer.draw("Multi Block Mode", 68, (backgroundHeight - 96) + 2, 0x006600);
         }
         this.textRenderer.draw("Brick Oven", 60, 6, 0x404040);
-        this.textRenderer.draw("Heat Requirement: " + furnaceInventory.getRequiredHeatLevel(), 60, 24, 0x000000);
-        this.textRenderer.draw("Heat Level: " + furnaceInventory.getHeatLevel(), 60, 42, 0x000000);
-        this.textRenderer.draw("Maximum Heat: " + furnaceInventory.getMaximumHeatLevel(), 60, 60, 0x000000);
-        this.textRenderer.draw("Externally Heated: " + furnaceInventory.isExternallyHeated(), 60, 78, 0x000000);
         this.textRenderer.draw("Inventory", 8, (backgroundHeight - 96) + 2, 0x404040);
     }
 
@@ -40,7 +36,22 @@ public class BrickOvenGui extends HandledScreen {
         }
         int i1 = furnaceInventory.getCookProgressScaled(24);
         this.drawTexture(j + 79, k + 70, 176, 14, i1 + 1, 16);
+        int heat = getThermometerHeightFromHeatValue(furnaceInventory.getHeatLevel());
+        int heatHeightLevel = 96 - heat;
+        int maximumHeat = getThermometerHeightFromHeatValue(furnaceInventory.getMaximumHeatLevel());
+        int maximumHeatHeightLevel = 96 - maximumHeat - 3;
+        int requiredHeat = getThermometerHeightFromHeatValue(furnaceInventory.getRequiredHeatLevel());
+        int requiredHeatHeightLevel = 96 - requiredHeat - 3;
+        this.drawTexture(j + 12, k + 11 + heatHeightLevel, 176, 46 + heatHeightLevel, 8, heat);
+        this.drawTexture(j + 4, k + 11 + maximumHeatHeightLevel, 176, 38, 8, 7);
+        this.drawTexture(j + 20, k + 11 + maximumHeatHeightLevel, 184, 38, 8, 7);
+        this.drawTexture(j + 4, k + 11 + requiredHeatHeightLevel, 176, 31, 8, 7);
+        this.drawTexture(j + 20, k + 11 + requiredHeatHeightLevel, 184, 31, 8, 7);
     }
 
     private BrickOvenBlockEntity furnaceInventory;
+
+    private int getThermometerHeightFromHeatValue(int heatValue) {
+        return 16 * heatValue / 200;
+    }
 }
