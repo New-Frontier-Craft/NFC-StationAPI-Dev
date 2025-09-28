@@ -1,9 +1,7 @@
 package net.newfrontiercraft.nfc.registry;
 
-import net.minecraft.item.Item;
 import net.newfrontiercraft.nfc.utils.FuelLevelEnum;
 import net.newfrontiercraft.nfc.utils.ItemMeta;
-import net.newfrontiercraft.nfc.wrappers.IdMeta;
 
 import java.util.HashMap;
 import java.util.Map;
