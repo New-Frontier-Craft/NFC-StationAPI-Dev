@@ -15,9 +15,16 @@ import net.modificationstation.stationapi.api.util.math.Direction;
 import net.newfrontiercraft.nfc.block.CombustionHeaterBlock;
 import net.newfrontiercraft.nfc.events.init.BlockListener;
 import net.newfrontiercraft.nfc.events.init.ItemListener;
+import net.newfrontiercraft.nfc.registry.FuelLevelRegistry;
+import net.newfrontiercraft.nfc.utils.ItemMeta;
 import org.jetbrains.annotations.Nullable;
 
 public class CombustionHeaterBlockEntity extends BlockEntity implements Inventory, ItemHandler {
+
+    private ItemStack[] furnaceItemStacks;
+    public int furnaceBurnTime;
+    public int currentItemBurnTime;
+    private int maximumHeatLevel;
 
     public CombustionHeaterBlockEntity() {
         furnaceItemStacks = new ItemStack[1];
@@ -117,13 +124,13 @@ public class CombustionHeaterBlockEntity extends BlockEntity implements Inventor
     }
 
     public void tick() {
-        boolean flag = furnaceBurnTime > 0;
-        boolean flag1 = false;
+        boolean isActive = furnaceBurnTime > 0;
+        boolean changeInActivity = false;
         if (furnaceBurnTime > 0) {
             BlockEntity tileEntity = world.getBlockEntity(x, y - 1, z);
             if (tileEntity != null) {
                 if (tileEntity instanceof HeatCoilBlockEntity heatCoilBlockEntity) {
-                    if (heatCoilBlockEntity.getHeatLevel() < 1000) {
+                    if (heatCoilBlockEntity.getHeatLevel() < maximumHeatLevel) {
                         heatCoilBlockEntity.changeHeatLevel(2);
                     }
                 }
@@ -134,7 +141,7 @@ public class CombustionHeaterBlockEntity extends BlockEntity implements Inventor
             if (furnaceBurnTime == 0) {
                 currentItemBurnTime = furnaceBurnTime = getItemBurnTime(furnaceItemStacks[0]);
                 if (furnaceBurnTime > 0) {
-                    flag1 = true;
+                    changeInActivity = true;
                     if (furnaceItemStacks[0] != null) {
                         if (furnaceItemStacks[0].getItem().hasCraftingReturnItem()) {
                             furnaceItemStacks[0] = new ItemStack(furnaceItemStacks[0].getItem().getCraftingReturnItem());
@@ -150,23 +157,25 @@ public class CombustionHeaterBlockEntity extends BlockEntity implements Inventor
                     }
                 }
             }
-            if (flag != (furnaceBurnTime > 0)) {
-                flag1 = true;
+            if (isActive != (furnaceBurnTime > 0)) {
+                changeInActivity = true;
                 CombustionHeaterBlock.updateFurnaceBlockState(furnaceBurnTime > 0,
                         world, x, y, z);
             }
         }
-        if (flag1) {
+        if (changeInActivity) {
             this.markDirty();
         }
     }
 
     private int getItemBurnTime(ItemStack itemstack) {
         if (itemstack == null) {
+            maximumHeatLevel = 0;
             return 0;
         }
         int i = itemstack.itemId;
         int j = itemstack.getDamage();
+        maximumHeatLevel = FuelLevelRegistry.fuelLevel().getFuelLevel(new ItemMeta(itemstack.getItem(), j)).getHeat() + 100;
         if(i == Item.STICK.id) {
             return 50;
         }
@@ -197,7 +206,7 @@ public class CombustionHeaterBlockEntity extends BlockEntity implements Inventor
             return 100;
         }
         */
-        if(i == BlockListener.coalBlock.id) {
+        if(i == BlockListener.coalBlock.asItem().id) {
             return 6400;
         }
         if(i == Item.LAVA_BUCKET.id) {
@@ -221,10 +230,6 @@ public class CombustionHeaterBlockEntity extends BlockEntity implements Inventor
         }
         return entityplayer.getSquaredDistance((double) x + 0.5D, (double) y + 0.5D, (double) z + 0.5D) <= 64D;
     }
-
-    private ItemStack[] furnaceItemStacks;
-    public int furnaceBurnTime;
-    public int currentItemBurnTime;
 
     @Override
     public boolean canExtractItem(@Nullable Direction direction) {
