@@ -24,6 +24,7 @@ tile.nfc.nether_stone_tiling.name=Nether Stone Tiling
 tile.nfc.nether_stone_tiling_large.name=Large Nether Stone Tiling
 
 tile.nfc.fired_bricks.name=Fired Bricks
+tile.nfc.coke_oven_bricks.name=Coke Oven Bricks
 tile.nfc.osmium_bricks.name=Osmium Bricks
 
 tile.nfc.scaffold_block.name=Scaffolding

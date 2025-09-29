@@ -93,6 +93,7 @@ public class TextureListener {
         BlockListener.netherStoneTilingLarge.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, netherBlocks + "stone_tiling_large")).index);
 
         BlockListener.firedBricks.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, decorativeBlocks + "fired_bricks")).index);
+        BlockListener.cokeOvenBricks.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, machines + "coke_oven_bricks")).index);
         BlockListener.osmiumBricks.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, decorativeBlocks + "osmium_bricks")).index);
         logSide = getTextureIndex(wood + "log_side");
         BlockListener.decorativeWood.specifyTextures(

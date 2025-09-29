@@ -45,6 +45,7 @@ public class BlockListener {
             netherStoneTilingLarge,
 
             firedBricks,
+            cokeOvenBricks,
             osmiumBricks,
             snowBricks,
             blueGlowstone,
@@ -242,6 +243,7 @@ public class BlockListener {
         netherStoneTilingLarge = new LazyBlockTemplate(Identifier.of(MOD_ID, "nether_stone_tiling_large"), Material.STONE, 1.5F, Block.STONE_SOUND_GROUP);
 
         firedBricks = new LazyBlockTemplate(Identifier.of(MOD_ID, "fired_bricks"), Material.STONE, 1.5F, Block.STONE_SOUND_GROUP);
+        cokeOvenBricks = new LazyBlockTemplate(Identifier.of(MOD_ID, "coke_oven_bricks"), Material.STONE, 2.0F, Block.STONE_SOUND_GROUP);
         osmiumBricks = new LazyBlockTemplate(Identifier.of(MOD_ID, "osmium_bricks"), Material.STONE, 1.5F, Block.STONE_SOUND_GROUP);
         decorativeWood = new DecorativeWoodBlock(Identifier.of(MOD_ID, "decorative_wood"), Material.WOOD, 1.5F, Block.WOOD_SOUND_GROUP);
         stainedPlanks = new LazyMultivariantBlockTemplate(Identifier.of(MOD_ID, "stained_planks"), Material.WOOD, 1.5F, Block.WOOD_SOUND_GROUP);

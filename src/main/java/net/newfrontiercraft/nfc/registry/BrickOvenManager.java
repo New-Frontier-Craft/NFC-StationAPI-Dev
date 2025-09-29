@@ -352,6 +352,12 @@ public class BrickOvenManager {
                 new ItemStack(BlockListener.firedBricks, 1),
                 new ItemStack(BlockListener.firedBricks, 1)}, 6400, FuelLevelEnum.BLAZING);
 
+        addShapelessOvenRecipe(new ItemStack(BlockListener.cokeOvenBricks, 4), new Object[] {
+                new ItemStack(Block.SAND, 1),
+                new ItemStack(Block.SAND, 1),
+                new ItemStack(BlockListener.firedBricks, 1),
+                new ItemStack(BlockListener.firedBricks, 1)}, 1600, FuelLevelEnum.HOT);
+
         //Stained Glass
         int o = 15;
         for (int i = 0; i < 16; i++) {
