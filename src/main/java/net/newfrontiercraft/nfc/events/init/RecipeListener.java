@@ -9,6 +9,7 @@ import net.modificationstation.stationapi.api.event.recipe.RecipeRegisterEvent;
 import net.modificationstation.stationapi.api.recipe.CraftingRegistry;
 import net.modificationstation.stationapi.api.registry.BlockRegistry;
 import net.modificationstation.stationapi.api.util.Identifier;
+import net.newfrontiercraft.nfc.compat.bnb.BNBRecipes;
 import net.newfrontiercraft.nfc.compat.vbe.VBERecipes;
 import net.newfrontiercraft.nfc.registry.BlockPatternEntry;
 import net.newfrontiercraft.nfc.registry.CarpentryRecipes;
@@ -17,7 +18,6 @@ import net.newfrontiercraft.nfc.registry.MultiBlockRecipeRegistry;
 import net.newfrontiercraft.nfc.utils.FuelLevelEnum;
 import net.newfrontiercraft.nfc.utils.ItemMeta;
 import net.newfrontiercraft.nfc.utils.RecipeRemover;
-import net.newfrontiercraft.nfc.utils.ToolTierEnum;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +25,7 @@ import java.util.List;
 public class RecipeListener {
 
     public static boolean isVbePresent = FabricLoader.getInstance().isModLoaded("vbe");
+    public static boolean isBnbPresent = FabricLoader.getInstance().isModLoaded("bnb");
 
     @EventListener
     public void registerRecipes(RecipeRegisterEvent event) {
@@ -347,6 +348,10 @@ public class RecipeListener {
             FuelLevelRegistry.fuelLevel().addFuelLevel(new ItemMeta(ItemListener.coalCoke, 0), FuelLevelEnum.SEARING);
             FuelLevelRegistry.fuelLevel().addFuelLevel(new ItemMeta(ItemListener.oilBucket, 0), FuelLevelEnum.SEARING);
             FuelLevelRegistry.fuelLevel().addFuelLevel(new ItemMeta(ItemListener.anthracite, 0), FuelLevelEnum.BLAZING);
+
+            if (isBnbPresent) {
+                BNBRecipes.addBnbSmeltingRecipes(event);
+            }
         }
 
         // Stone carpentry

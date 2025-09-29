@@ -388,15 +388,15 @@ public class BrickOvenManager {
          */
     }
 
-    void addShapedOvenRecipe(ItemStack itemStack, Object[] aobj, int time) {
+    public void addShapedOvenRecipe(ItemStack itemStack, Object[] aobj, int time) {
         addShapedOvenRecipe(itemStack, aobj, time, FuelLevelEnum.COLD);
     }
 
-    void addShapedOvenRecipe(ItemStack itemStack, Object[] aobj, int time, FuelLevelEnum fuelLevelEnum) {
+    public void addShapedOvenRecipe(ItemStack itemStack, Object[] aobj, int time, FuelLevelEnum fuelLevelEnum) {
         addShapedOvenRecipe(itemStack, aobj, time, fuelLevelEnum.getHeat() - HEAT_MARGIN);
     }
 
-    void addShapedOvenRecipe(ItemStack itemStack, Object[] aobj, int time, int heatRequirement)
+    public void addShapedOvenRecipe(ItemStack itemStack, Object[] aobj, int time, int heatRequirement)
     {
         StringBuilder s = new StringBuilder();
         int i = 0;
@@ -457,15 +457,15 @@ public class BrickOvenManager {
         recipes.add(new BrickOvenShapedRecipe(j, k, itemStacks, itemStack, time, heatRequirement));
     }
 
-    void addShapelessOvenRecipe(ItemStack itemStack, Object[] aobj, int time) {
+    public void addShapelessOvenRecipe(ItemStack itemStack, Object[] aobj, int time) {
         addShapelessOvenRecipe(itemStack, aobj, time, FuelLevelEnum.COLD);
     }
 
-    void addShapelessOvenRecipe(ItemStack itemStack, Object[] aobj, int time, FuelLevelEnum fuelLevelEnum) {
+    public void addShapelessOvenRecipe(ItemStack itemStack, Object[] aobj, int time, FuelLevelEnum fuelLevelEnum) {
         addShapelessOvenRecipe(itemStack, aobj, time, fuelLevelEnum.getHeat() - HEAT_MARGIN);
     }
 
-    void addShapelessOvenRecipe(ItemStack itemStack, Object[] aobj, int time, int heatRequirement) {
+    public void addShapelessOvenRecipe(ItemStack itemStack, Object[] aobj, int time, int heatRequirement) {
         ArrayList arraylist = new ArrayList();
         Object aobj1[] = aobj;
         int i = aobj1.length;
