@@ -287,13 +287,13 @@ public class BrickOvenBlockEntity extends BlockEntity implements Inventory, Heat
             return false;
         }
         // Extract heat
-        if (isMultiBlock) {
-            heatLevel = Math.max(heatLevel - 40, 0);
-            maximumHeatLevel = heatLevel;
-        }
         HeatCoilBlockEntity heatSource = (HeatCoilBlockEntity) world.getBlockEntity(xCentered, y - 1, zCentered);
         int heatSourceValue = heatSource.getHeatLevel();
         if (heatSourceValue > 0) {
+            if (isMultiBlock) {
+                heatLevel = Math.max(heatLevel - 40, 0);
+                maximumHeatLevel = heatLevel;
+            }
             furnaceBurnTime = MAXIMUM_ADDED_BURN_TIME;
             externallyHeated = true;
         }
@@ -469,6 +469,16 @@ public class BrickOvenBlockEntity extends BlockEntity implements Inventory, Heat
     }
 
     private boolean canSmelt() {
+        boolean isGridEmpty = true;
+        for (int i = 0; i < FUEL_SLOT; i++) {
+            if (furnaceItemStacks[i] != null) {
+                isGridEmpty = false;
+                break;
+            }
+        }
+        if (isGridEmpty) {
+            return false;
+        }
         ItemStack itemstack = BrickOvenManager.getInstance().findMatchingRecipe(furnaceItemStacks, this);
         if (itemstack == null) {
             return false;
@@ -536,7 +546,9 @@ public class BrickOvenBlockEntity extends BlockEntity implements Inventory, Heat
         if(i == BlockListener.fieryMushroom.id) {
             return 200;
         }
-
+        if (i == ItemListener.coalCoke.id) {
+            return 3200;
+        }
         if((i == Item.COAL.id  || i == ItemListener.netherAsh.id) && j == 0) {
             return 1600;
         } else if(i == Item.COAL.id) {
