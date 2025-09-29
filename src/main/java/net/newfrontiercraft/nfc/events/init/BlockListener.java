@@ -203,6 +203,8 @@ public class BlockListener {
             combustionHeater,
             combustionHeaterActive;
 
+    public static CokeOvenBlock cokeOven;
+
     public static BasicItemChuteBlock basicItemChute;
     public static ItemChuteExtenderBlock itemChuteExtender;
     public static FilteringItemChuteBlock filteringItemChute, preciseItemChute;
@@ -424,6 +426,8 @@ public class BlockListener {
 
         combustionHeater = new CombustionHeaterBlock(Identifier.of(MOD_ID, "combustion_heater"), Material.STONE, 1.0F, Block.STONE_SOUND_GROUP, false);
         combustionHeaterActive = new CombustionHeaterBlock(Identifier.of(MOD_ID, "combustion_heater_active"), Material.STONE, 1.0F, Block.STONE_SOUND_GROUP, true);
+
+        cokeOven = new CokeOvenBlock(Identifier.of(MOD_ID, "coke_oven"), Material.STONE, 0, 2.0F);
 
         basicItemChute = new BasicItemChuteBlock(Identifier.of(MOD_ID, "basic_item_chute"), Material.STONE, 1.0F, Block.METAL_SOUND_GROUP);
         itemChuteExtender = new ItemChuteExtenderBlock(Identifier.of(MOD_ID, "item_chute_extender"), Material.STONE, 1.0F, Block.METAL_SOUND_GROUP);

@@ -15,10 +15,10 @@ import net.modificationstation.stationapi.api.state.StateManager;
 import net.modificationstation.stationapi.api.state.property.BooleanProperty;
 import net.modificationstation.stationapi.api.template.block.TemplateBlockWithEntity;
 import net.modificationstation.stationapi.api.util.Identifier;
-import net.newfrontiercraft.nfc.block.entity.BrickOvenBlockEntity;
+import net.newfrontiercraft.nfc.block.entity.CokeOvenBlockEntity;
 import net.newfrontiercraft.nfc.events.init.BlockEntityListener;
 import net.newfrontiercraft.nfc.events.init.BlockListener;
-import net.newfrontiercraft.nfc.inventory.BrickOvenScreenHandler;
+import net.newfrontiercraft.nfc.inventory.CokeOvenScreenHandler;
 
 import java.util.Random;
 
@@ -48,11 +48,10 @@ public class CokeOvenBlock extends TemplateBlockWithEntity {
 
     @Override
     public boolean onUse(World world, int x, int y, int z, PlayerEntity player) {
-        // TODO: Change GUI logic
         BlockEntity tileEntity = world.getBlockEntity(x, y, z);
-        if (tileEntity instanceof BrickOvenBlockEntity brickOvenBlockEntity)
-            GuiHelper.openGUI(player, Identifier.of(BlockEntityListener.MOD_ID, "gui_brick_oven"),
-                    brickOvenBlockEntity, new BrickOvenScreenHandler(player.inventory, brickOvenBlockEntity));
+        if (tileEntity instanceof CokeOvenBlockEntity cokeOvenBlockEntity)
+            GuiHelper.openGUI(player, Identifier.of(BlockEntityListener.MOD_ID, "gui_coke_oven"),
+                    cokeOvenBlockEntity, new CokeOvenScreenHandler(player.inventory, cokeOvenBlockEntity));
         return true;
     }
 
@@ -171,10 +170,9 @@ public class CokeOvenBlock extends TemplateBlockWithEntity {
 
     @Override
     public void onBreak(World world, int x, int y, int z) {
-        // TODO: Change entity
-        BrickOvenBlockEntity brickOven = (BrickOvenBlockEntity)world.getBlockEntity(x, y, z);
-        for(int var6 = 0; var6 < brickOven.size(); ++var6) {
-            ItemStack var7 = brickOven.getStack(var6);
+        CokeOvenBlockEntity cokeOvenBlockEntity = (CokeOvenBlockEntity)world.getBlockEntity(x, y, z);
+        for(int var6 = 0; var6 < cokeOvenBlockEntity.size(); ++var6) {
+            ItemStack var7 = cokeOvenBlockEntity.getStack(var6);
             if (var7 != null) {
                 float var8 = this.furnaceRand.nextFloat() * 0.8F + 0.1F;
                 float var9 = this.furnaceRand.nextFloat() * 0.8F + 0.1F;
@@ -205,6 +203,6 @@ public class CokeOvenBlock extends TemplateBlockWithEntity {
 
     @Override
     protected BlockEntity createBlockEntity() {
-        return new BrickOvenBlockEntity();
+        return new CokeOvenBlockEntity();
     }
 }

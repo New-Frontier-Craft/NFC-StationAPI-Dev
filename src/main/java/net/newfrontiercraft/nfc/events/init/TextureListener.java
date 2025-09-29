@@ -239,6 +239,9 @@ public class TextureListener {
         BlockListener.brickOvenActive.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, machines + "brick_oven_front")).index,
                 Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, machines + "brick_oven_front_active")).index,
                 Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, machines + "brick_oven_side")).index);
+        BlockListener.cokeOven.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, machines + "coke_oven")).index,
+                Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, machines + "coke_oven_active")).index,
+                Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, machines + "coke_oven_bricks")).index);
         BlockListener.carpentryWorkstation.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, machines + "carpentry_workstation_front")).index,
                 Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, machines + "carpentry_workstation_side")).index,
                 Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, machines + "carpentry_workstation_bottom")).index,
