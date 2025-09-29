@@ -11,10 +11,8 @@ import net.modificationstation.stationapi.api.registry.BlockRegistry;
 import net.modificationstation.stationapi.api.util.Identifier;
 import net.newfrontiercraft.nfc.compat.bnb.BNBRecipes;
 import net.newfrontiercraft.nfc.compat.vbe.VBERecipes;
-import net.newfrontiercraft.nfc.registry.BlockPatternEntry;
-import net.newfrontiercraft.nfc.registry.CarpentryRecipes;
-import net.newfrontiercraft.nfc.registry.FuelLevelRegistry;
-import net.newfrontiercraft.nfc.registry.MultiBlockRecipeRegistry;
+import net.newfrontiercraft.nfc.registry.*;
+import net.newfrontiercraft.nfc.utils.CokeOvenResult;
 import net.newfrontiercraft.nfc.utils.FuelLevelEnum;
 import net.newfrontiercraft.nfc.utils.ItemMeta;
 import net.newfrontiercraft.nfc.utils.RecipeRemover;
@@ -348,6 +346,9 @@ public class RecipeListener {
             FuelLevelRegistry.fuelLevel().addFuelLevel(new ItemMeta(ItemListener.coalCoke, 0), FuelLevelEnum.SEARING);
             FuelLevelRegistry.fuelLevel().addFuelLevel(new ItemMeta(ItemListener.oilBucket, 0), FuelLevelEnum.SEARING);
             FuelLevelRegistry.fuelLevel().addFuelLevel(new ItemMeta(ItemListener.anthracite, 0), FuelLevelEnum.BLAZING);
+
+            CokeOvenRecipeRegistry.getInstance().addRecipe(new ItemMeta(Item.COAL, 0), new CokeOvenResult(new ItemStack(ItemListener.coalCoke), FuelLevelEnum.WARM, FuelLevelEnum.HOT));
+            CokeOvenRecipeRegistry.getInstance().addRecipe(new ItemMeta(ItemListener.rawAnthracite, 0), new CokeOvenResult(new ItemStack(ItemListener.anthracite), FuelLevelEnum.SEARING, FuelLevelEnum.BLAZING));
 
             if (isBnbPresent) {
                 BNBRecipes.addBnbSmeltingRecipes(event);

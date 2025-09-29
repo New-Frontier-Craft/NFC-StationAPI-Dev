@@ -8,11 +8,15 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtList;
 import net.newfrontiercraft.nfc.block.BrickOvenBlock;
 import net.newfrontiercraft.nfc.events.init.BlockListener;
+import net.newfrontiercraft.nfc.registry.CokeOvenRecipeRegistry;
+import net.newfrontiercraft.nfc.utils.CokeOvenResult;
 import net.newfrontiercraft.nfc.utils.FuelLevelEnum;
+import net.newfrontiercraft.nfc.utils.ItemMeta;
 
 public class CokeOvenBlockEntity extends BlockEntity implements Inventory {
 
     private static final int OUTPUT_SLOT = 1;
+    private static final int TEMPERATURE_MARGIN = 50;
 
     private ItemStack[] furnaceItemStacks;
     public int furnaceCookTime;
@@ -222,7 +226,6 @@ public class CokeOvenBlockEntity extends BlockEntity implements Inventory {
             heatLevel = heatSourceValue;
         }
         // Automatic input
-        // TODO: Replace with more simple code without rotation and for only handling a single input slot
         boolean inputFull = false;
         for (int zOffset = 1; zOffset >= -1; zOffset--) {
             for (int xOffset = 1; xOffset >= -1; xOffset--) {
@@ -305,36 +308,41 @@ public class CokeOvenBlockEntity extends BlockEntity implements Inventory {
         if (furnaceItemStacks[0] == null) {
             return false;
         }
-//        ItemStack itemstack = BrickOvenManager.getInstance().findMatchingRecipe(furnaceItemStacks, this);
-        // TODO: Introduce recipe registry
-        ItemStack itemstack = null;
-        if (itemstack == null) {
+        CokeOvenResult result = CokeOvenRecipeRegistry.getInstance().getResult(new ItemMeta(furnaceItemStacks[0].getItem(), furnaceItemStacks[0].getDamage()));
+        if (result == null) {
             return false;
         }
+        ItemStack itemStack = result.result();
+        minimumRequiredHeatLevel = result.minimum().getHeat() - TEMPERATURE_MARGIN;
+        maximumRequiredHeatLevel = result.maximum().getHeat() + TEMPERATURE_MARGIN;
         if (furnaceItemStacks[OUTPUT_SLOT] == null) {
             return true;
         }
-        if (!furnaceItemStacks[OUTPUT_SLOT].copy().isItemEqual(itemstack)) {
+        if (!furnaceItemStacks[OUTPUT_SLOT].copy().isItemEqual(itemStack)) {
             return false;
         }
         if (furnaceItemStacks[OUTPUT_SLOT].copy().count < getMaxCountPerStack()
-                && furnaceItemStacks[OUTPUT_SLOT].copy().count + itemstack.copy().count < furnaceItemStacks[OUTPUT_SLOT].copy().getMaxCount()) {
+                && furnaceItemStacks[OUTPUT_SLOT].copy().count + itemStack.copy().count < furnaceItemStacks[OUTPUT_SLOT].copy().getMaxCount()) {
             return true;
         }
-        return furnaceItemStacks[OUTPUT_SLOT].copy().count + itemstack.copy().count <= itemstack.copy().getMaxCount();
+        return furnaceItemStacks[OUTPUT_SLOT].copy().count + itemStack.copy().count <= itemStack.copy().getMaxCount();
     }
 
     public void smeltItem() {
         if (!canSmelt()) {
             return;
         }
-//        ItemStack itemstack = BrickOvenManager.getInstance().findMatchingRecipe(furnaceItemStacks, this);
-        // TODO: Introduce recipe registry
-        ItemStack itemstack = null;
+        CokeOvenResult result = CokeOvenRecipeRegistry.getInstance().getResult(new ItemMeta(furnaceItemStacks[0].getItem(), furnaceItemStacks[0].getDamage()));
+        if (result == null) {
+            return;
+        }
+        ItemStack itemStack = result.result();
+        minimumRequiredHeatLevel = result.minimum().getHeat() - TEMPERATURE_MARGIN;
+        maximumRequiredHeatLevel = result.maximum().getHeat() + TEMPERATURE_MARGIN;
         if (furnaceItemStacks[OUTPUT_SLOT] == null) {
-            furnaceItemStacks[OUTPUT_SLOT] = itemstack.copy();
-        } else if (furnaceItemStacks[OUTPUT_SLOT].itemId == itemstack.copy().itemId) {
-            furnaceItemStacks[OUTPUT_SLOT].count += itemstack.copy().count;
+            furnaceItemStacks[OUTPUT_SLOT] = itemStack.copy();
+        } else if (furnaceItemStacks[OUTPUT_SLOT].itemId == itemStack.copy().itemId) {
+            furnaceItemStacks[OUTPUT_SLOT].count += itemStack.copy().count;
         }
 
         //Removed container item code
