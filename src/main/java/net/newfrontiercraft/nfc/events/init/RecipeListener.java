@@ -43,6 +43,7 @@ public class RecipeListener {
 
             // Machines
             CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.brickOven, 1), "XXX", "X X", "XXX", 'X', new ItemStack(BlockListener.firedBricks));
+            CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.cokeOven, 1), "XXX", "X X", "XXX", 'X', new ItemStack(BlockListener.cokeOvenBricks));
             CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.carpentryWorkstation, 1), "XXX", "XYX", "ZZZ", 'X', Block.PLANKS, 'Y', ItemListener.bronzeIngot, 'Z', Block.COBBLESTONE);
             CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.machineFrame, 8, 0), "XYX", "YZY", "XYX", 'X', ItemListener.aluminiumIngot, 'Y', Block.PLANKS, 'Z', ItemListener.aluminiumGear);
             CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.machineGearBox, 1, 0), " Y ", "YZY", " Y ", 'Y', ItemListener.aluminiumGear, 'Z', BlockListener.machineFrame);

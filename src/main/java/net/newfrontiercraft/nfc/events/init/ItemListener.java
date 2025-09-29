@@ -679,6 +679,6 @@ public class ItemListener {
         FuelRegistry.addFuelItem(oilBucket, 12800);
         FuelRegistry.addFuelItem(netherAsh, 1600);
         FuelRegistry.addFuelItem(anthracite, 11200);
-        FuelRegistry.addFuelItem(coalCoke, 6400);
+        FuelRegistry.addFuelItem(coalCoke, 3200);
     }
 }

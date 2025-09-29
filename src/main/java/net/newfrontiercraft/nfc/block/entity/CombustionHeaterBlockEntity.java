@@ -206,6 +206,9 @@ public class CombustionHeaterBlockEntity extends BlockEntity implements Inventor
             return 100;
         }
         */
+        if (i == ItemListener.coalCoke.id) {
+            return 3200;
+        }
         if(i == BlockListener.coalBlock.asItem().id) {
             return 6400;
         }

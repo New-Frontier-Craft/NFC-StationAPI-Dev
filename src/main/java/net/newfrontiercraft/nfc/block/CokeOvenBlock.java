@@ -192,7 +192,7 @@ public class CokeOvenBlock extends TemplateBlockWithEntity {
                 }
             }
         }
-        this.dropStack(world, x, y, z, new ItemStack(BlockListener.brickOven, 1, 3));
+        this.dropStack(world, x, y, z, new ItemStack(BlockListener.cokeOven, 1, 3));
         super.onBreak(world, x, y, z);
     }
 
