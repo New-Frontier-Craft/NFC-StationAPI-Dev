@@ -568,3 +568,10 @@ tool_tier.basic=Basic
 tool_tier.iron=Improved
 tool_tier.advanced=Advanced
 tool_tier.diamond=Excellent
+
+fuel_level.cold=Cold
+fuel_level.warm=Warm
+fuel_level.hot=Hot
+fuel_level.searing=Searing
+fuel_level.blazing=Blazing
+fuel_level.superheated=Superheated

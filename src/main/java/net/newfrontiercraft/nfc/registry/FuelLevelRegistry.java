@@ -19,11 +19,15 @@ public class FuelLevelRegistry {
     }
 
     public FuelLevelEnum getFuelLevel(ItemMeta item) {
-        FuelLevelEnum fuelLevelEnum = fuelLevelMap.get(item);
+        FuelLevelEnum fuelLevelEnum = getRawFuelLevel(item);
         if (fuelLevelEnum == null) {
             return FuelLevelEnum.COLD;
         }
         return fuelLevelEnum;
+    }
+
+    public FuelLevelEnum getRawFuelLevel(ItemMeta item) {
+        return fuelLevelMap.get(item);
     }
 
     public void addFuelLevel(ItemMeta item, FuelLevelEnum fuelLevelEnum) {
