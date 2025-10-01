@@ -13,7 +13,7 @@ public class HellCreeperRenderer extends CreeperEntityRenderer {
         setDecorationModel(new CreeperEntityModel());
     }
 
-    protected boolean setCreeperEyeBrightness(HellCreeperEntity entitycreeper, int i, float f)
+    protected boolean bindTexture(HellCreeperEntity entitycreeper, int i, float f)
     {
         if(i != 0) {
             return false;
@@ -26,11 +26,6 @@ public class HellCreeperRenderer extends CreeperEntityRenderer {
             GL11.glColor4f(1.0F, 1.0F, 1.0F, f1);
             return true;
         }
-    }
-
-    protected boolean shouldRenderPass(LivingEntity entityliving, int i, float f)
-    {
-        return setCreeperEyeBrightness((HellCreeperEntity) entityliving, i, f);
     }
 
 }

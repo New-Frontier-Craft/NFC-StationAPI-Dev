@@ -12,6 +12,8 @@ import net.modificationstation.stationapi.api.util.Identifier;
 import net.modificationstation.stationapi.api.util.Namespace;
 import net.newfrontiercraft.nfc.entity.HellCreeperEntity;
 import net.newfrontiercraft.nfc.entity.HellCreeperRenderer;
+import net.newfrontiercraft.nfc.entity.HellSpiderEntity;
+import net.newfrontiercraft.nfc.entity.HellSpiderRenderer;
 
 public class TextureListener {
 
@@ -767,6 +769,7 @@ public class TextureListener {
     @EventListener
     public static void registerEntityRenderers(EntityRendererRegisterEvent event) {
         event.renderers.put(HellCreeperEntity.class, new HellCreeperRenderer());
+        event.renderers.put(HellSpiderEntity.class, new HellSpiderRenderer());
     }
 
     public static int

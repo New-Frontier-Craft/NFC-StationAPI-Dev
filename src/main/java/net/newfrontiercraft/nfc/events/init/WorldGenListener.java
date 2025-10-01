@@ -15,6 +15,7 @@ import net.modificationstation.stationapi.api.worldgen.feature.LeveledScatterFea
 import net.modificationstation.stationapi.api.worldgen.surface.SurfaceBuilder;
 import net.modificationstation.stationapi.api.worldgen.surface.SurfaceRule;
 import net.newfrontiercraft.nfc.entity.HellCreeperEntity;
+import net.newfrontiercraft.nfc.entity.HellSpiderEntity;
 import net.newfrontiercraft.nfc.world.gen.feature.*;
 
 public class WorldGenListener {
@@ -50,6 +51,7 @@ public class WorldGenListener {
 
         for (int i = 0; i < netherBiomes.length; i++) {
             netherBiomes[i].addHostileEntity(HellCreeperEntity.class, 16);
+            netherBiomes[i].addHostileEntity(HellSpiderEntity.class, 12);
         }
     }
 
