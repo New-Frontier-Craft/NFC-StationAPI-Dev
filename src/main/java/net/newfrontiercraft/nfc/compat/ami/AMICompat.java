@@ -6,9 +6,12 @@ import net.modificationstation.stationapi.api.util.Identifier;
 import net.newfrontiercraft.nfc.compat.ami.brickoven.*;
 import net.newfrontiercraft.nfc.compat.ami.carpentry.CarpentryRecipeCategory;
 import net.newfrontiercraft.nfc.compat.ami.carpentry.CarpentryRecipeHandler;
+import net.newfrontiercraft.nfc.compat.ami.cokeoven.CokeOvenRecipeCategory;
+import net.newfrontiercraft.nfc.compat.ami.cokeoven.CokeOvenRecipeHandler;
 import net.newfrontiercraft.nfc.events.init.BlockListener;
 import net.newfrontiercraft.nfc.registry.BrickOvenManager;
 import net.newfrontiercraft.nfc.registry.CarpentryRecipes;
+import net.newfrontiercraft.nfc.registry.CokeOvenRecipeRegistry;
 import net.newfrontiercraft.nfc.registry.MultiBlockRecipeRegistry;
 
 public class AMICompat implements ModPluginProvider {
@@ -50,6 +53,10 @@ public class AMICompat implements ModPluginProvider {
         registry.addRecipeCategories(new CarpentryRecipeCategory());
         registry.addRecipeHandlers(new CarpentryRecipeHandler());
         registry.addRecipes(CarpentryRecipes.carpentry().getRecipes());
+
+        registry.addRecipeCategories(new CokeOvenRecipeCategory());
+        registry.addRecipeHandlers(new CokeOvenRecipeHandler());
+        registry.addRecipes(CokeOvenRecipeRegistry.getInstance().getRecipes());
     }
 
     @Override
