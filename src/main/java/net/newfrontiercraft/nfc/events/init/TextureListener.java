@@ -4,11 +4,14 @@ import net.fabricmc.loader.api.FabricLoader;
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
+import net.modificationstation.stationapi.api.client.event.render.entity.EntityRendererRegisterEvent;
 import net.modificationstation.stationapi.api.client.event.texture.TextureRegisterEvent;
 import net.modificationstation.stationapi.api.client.texture.atlas.Atlases;
 import net.modificationstation.stationapi.api.mod.entrypoint.Entrypoint;
 import net.modificationstation.stationapi.api.util.Identifier;
 import net.modificationstation.stationapi.api.util.Namespace;
+import net.newfrontiercraft.nfc.entity.HellCreeperEntity;
+import net.newfrontiercraft.nfc.entity.HellCreeperRenderer;
 
 public class TextureListener {
 
@@ -759,6 +762,11 @@ public class TextureListener {
         Block.BRICKS.textureId = bricks;
         oakSaplingTexture = getTextureIndex(vanillaBlocks + "oak_sapling");
         charcoal = Atlases.getGuiItems().addTexture(Identifier.of(MOD_ID, fuels + "charcoal")).index;
+    }
+
+    @EventListener
+    public static void registerEntityRenderers(EntityRendererRegisterEvent event) {
+        event.renderers.put(HellCreeperEntity.class, new HellCreeperRenderer());
     }
 
     public static int

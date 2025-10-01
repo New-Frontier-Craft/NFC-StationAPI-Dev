@@ -1,0 +1,5 @@
+accessWidener v2 named
+
+accessible method net/minecraft/entity/mob/CreeperEntity getFuseSpeed ()I
+accessible field net/minecraft/entity/mob/CreeperEntity lastFuseTime I
+accessible method net/minecraft/entity/mob/CreeperEntity setFuseSpeed (I)V
