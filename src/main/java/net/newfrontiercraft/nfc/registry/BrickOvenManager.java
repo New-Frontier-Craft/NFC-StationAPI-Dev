@@ -399,10 +399,10 @@ public class BrickOvenManager {
     }
 
     public void addShapedOvenRecipe(ItemStack itemStack, Object[] aobj, int time, FuelLevelEnum fuelLevelEnum) {
-        addShapedOvenRecipe(itemStack, aobj, time, fuelLevelEnum.getHeat() - HEAT_MARGIN);
+        addShapedOvenRecipe(itemStack, aobj, time, fuelLevelEnum.getHeat() - HEAT_MARGIN, fuelLevelEnum.getName());
     }
 
-    public void addShapedOvenRecipe(ItemStack itemStack, Object[] aobj, int time, int heatRequirement)
+    public void addShapedOvenRecipe(ItemStack itemStack, Object[] aobj, int time, int heatRequirement, String heatLevelName)
     {
         StringBuilder s = new StringBuilder();
         int i = 0;
@@ -460,7 +460,7 @@ public class BrickOvenManager {
                 itemStacks[i1] = null;
             }
         }
-        recipes.add(new BrickOvenShapedRecipe(j, k, itemStacks, itemStack, time, heatRequirement));
+        recipes.add(new BrickOvenShapedRecipe(j, k, itemStacks, itemStack, time, heatRequirement, heatLevelName));
     }
 
     public void addShapelessOvenRecipe(ItemStack itemStack, Object[] aobj, int time) {
@@ -468,10 +468,10 @@ public class BrickOvenManager {
     }
 
     public void addShapelessOvenRecipe(ItemStack itemStack, Object[] aobj, int time, FuelLevelEnum fuelLevelEnum) {
-        addShapelessOvenRecipe(itemStack, aobj, time, fuelLevelEnum.getHeat() - HEAT_MARGIN);
+        addShapelessOvenRecipe(itemStack, aobj, time, fuelLevelEnum.getHeat() - HEAT_MARGIN, fuelLevelEnum.getName());
     }
 
-    public void addShapelessOvenRecipe(ItemStack itemStack, Object[] aobj, int time, int heatRequirement) {
+    public void addShapelessOvenRecipe(ItemStack itemStack, Object[] aobj, int time, int heatRequirement, String heatLevelName) {
         ArrayList arraylist = new ArrayList();
         Object aobj1[] = aobj;
         int i = aobj1.length;
@@ -491,7 +491,7 @@ public class BrickOvenManager {
                 throw new RuntimeException("Invalid shapeless recipe!");
             }
         }
-        recipes.add(new BrickOvenShapelessRecipe(itemStack, arraylist, time, heatRequirement));
+        recipes.add(new BrickOvenShapelessRecipe(itemStack, arraylist, time, heatRequirement, heatLevelName));
     }
 
     public ItemStack findMatchingRecipe(ItemStack[] ItemStacks, BrickOvenBlockEntity brickOvenBlockEntity) {
