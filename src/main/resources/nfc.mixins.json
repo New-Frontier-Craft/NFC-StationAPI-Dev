@@ -11,6 +11,7 @@
     "CaveWorldCarverMixin",
     "CropBlockMixin",
     "DroppedMetaAccessor",
+    "DungeonLootMixin",
     "EntityMixin",
     "FenceBlockMixin",
     "FireballExplosionNerf",
@@ -48,11 +49,18 @@
   "server": [
   ],
   "client": [
+    "MusicTweaksMixin",
+    "graphics.ArmorItemMixin",
     "graphics.BlockRenderManagerAccessor",
+    "graphics.CharcoalTextureMixin",
     "graphics.GameRendererMixin",
     "graphics.HeldItemRendererMixin",
+    "graphics.HoeItemMixin",
     "graphics.InGameHudMixin",
+    "graphics.ItemMixin",
     "graphics.LiquidBlockGraphicsMixin",
+    "graphics.OreBlockMixin",
+    "graphics.OreStorageBlockMixin",
     "graphics.ParticleClearingMixin",
     "graphics.ParticleManagerMixin",
     "graphics.PoweredRailTextureMixin",
@@ -60,18 +68,11 @@
     "graphics.RedstoneTorchBlockMixin",
     "graphics.SaplingBlockMixin",
     "graphics.SlabTextureMixin",
+    "graphics.SwordItemMixin",
+    "graphics.ToolItemMixin",
     "graphics.TorchBlockMixin",
     "graphics.WorldRendererAccessor",
-    "graphics.WorldRendererMixin",
-    "graphics.ToolItemMixin",
-    "graphics.SwordItemMixin",
-    "graphics.HoeItemMixin",
-    "graphics.ArmorItemMixin",
-    "graphics.OreBlockMixin",
-    "graphics.OreStorageBlockMixin",
-    "graphics.ItemMixin",
-    "graphics.CharcoalTextureMixin",
-    "MusicTweaksMixin"
+    "graphics.WorldRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1
