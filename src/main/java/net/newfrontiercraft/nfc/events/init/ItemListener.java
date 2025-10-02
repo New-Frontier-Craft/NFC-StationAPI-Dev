@@ -1,6 +1,7 @@
 package net.newfrontiercraft.nfc.events.init;
 
 import net.mine_diver.unsafeevents.listener.EventListener;
+import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ToolMaterial;
 import net.modificationstation.stationapi.api.event.registry.ItemRegistryEvent;
@@ -680,5 +681,10 @@ public class ItemListener {
         FuelRegistry.addFuelItem(netherAsh, 1600);
         FuelRegistry.addFuelItem(anthracite, 11200);
         FuelRegistry.addFuelItem(coalCoke, 3200);
+
+        // Add log drops
+        BlockListener.rotatedOakLog.changeDroppedItem(Block.LOG.asItem());
+        BlockListener.rotatedSpruceLog.changeDroppedItem(Block.LOG.asItem());
+        BlockListener.rotatedBirchLog.changeDroppedItem(Block.LOG.asItem());
     }
 }

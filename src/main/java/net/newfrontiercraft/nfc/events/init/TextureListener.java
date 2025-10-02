@@ -342,6 +342,10 @@ public class TextureListener {
                 getTextureIndex(decorativeBlocks + "petrified_leaves_fancy")
         );
 
+        BlockListener.rotatedOakLog.specifyTextures(getTextureIndex(wood + "oak_log_top"), getTextureIndex(wood + "oak_log_side"), getTextureIndex(wood + "oak_log_side_rotated"));
+        BlockListener.rotatedSpruceLog.specifyTextures(getTextureIndex(wood + "oak_log_top"), getTextureIndex(wood + "spruce_log_side"), getTextureIndex(wood + "spruce_log_side_rotated"));
+        BlockListener.rotatedBirchLog.specifyTextures(getTextureIndex(wood + "oak_log_top"), getTextureIndex(wood + "birch_log_side"), getTextureIndex(wood + "birch_log_side_rotated"));
+
         // Farming
         BlockListener.unfiredPlanter.specifyTextures(getTextureIndex(unfiredPlanter + "top"), getTextureIndex(unfiredPlanter + "side"), getTextureIndex(unfiredPlanter + "side"));
 

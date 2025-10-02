@@ -195,6 +195,10 @@ tile.nfc.petrified_planks.name=Petrified Wooden Planks
 tile.nfc.petrified_leaves.name=Dead Leaves
 tile.nfc.unrestricted_nether_portal.name=Unrestricted Nether Portal
 
+tile.nfc.rotated_oak_log.name=Rotated Oak Log
+tile.nfc.rotated_spruce_log.name=Rotated Spruce Log
+tile.nfc.rotated_birch_log.name=Rotated Birch Log
+
 tile.nfc.barrier0.name=Barrier Block
 tile.nfc.barrier1.name=Support Block
 tile.nfc.light_source0.name=Light Source

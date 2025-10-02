@@ -4,6 +4,7 @@ import net.fabricmc.loader.api.FabricLoader;
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.item.Item;
 import net.modificationstation.stationapi.api.block.BlockState;
 import net.modificationstation.stationapi.api.block.States;
 import net.modificationstation.stationapi.api.event.registry.BlockRegistryEvent;
@@ -91,7 +92,11 @@ public class BlockListener {
             stirlingGenerator;
 
     public static LazyPillarBlockTemplate
-            petrifiedLog;
+            petrifiedLog,
+
+            rotatedOakLog,
+            rotatedSpruceLog,
+            rotatedBirchLog;
 
     public static LazyOreTemplate
             netherAshOre,
@@ -352,6 +357,10 @@ public class BlockListener {
         petrifiedPlanks = new LazyBlockTemplate(Identifier.of(MOD_ID, "petrified_planks"), Material.STONE, 1.5F, Block.STONE_SOUND_GROUP);
         petrifiedLeaves = (PetrifiedLeavesBlock) new PetrifiedLeavesBlock(Identifier.of(MOD_ID, "petrified_leaves")).setOpacity(1).setHardness(0.2F).setSoundGroup(Block.DIRT_SOUND_GROUP).setTranslationKey(Identifier.of(MOD_ID, "petrified_leaves"));
         unrestrictedNetherPortal = new UnrestrictedNetherPortalBlock(Identifier.of(MOD_ID, "unrestricted_nether_portal"));
+
+        rotatedOakLog = new LazyPillarBlockTemplate(Identifier.of(MOD_ID, "rotated_oak_log"), Material.WOOD, 1.5F, Block.WOOD_SOUND_GROUP);
+        rotatedSpruceLog = new LazyPillarBlockTemplate(Identifier.of(MOD_ID, "rotated_spruce_log"), Material.WOOD, 1.5F, Block.WOOD_SOUND_GROUP).changeDroppedMeta(1);
+        rotatedBirchLog = new LazyPillarBlockTemplate(Identifier.of(MOD_ID, "rotated_birch_log"), Material.WOOD, 1.5F, Block.WOOD_SOUND_GROUP).changeDroppedMeta(2);
 
         barrier = new CreativeBlock(Identifier.of(MOD_ID, "barrier"), Material.STONE, Block.STONE_SOUND_GROUP, new boolean[] {true, false});
         lightSource = new LightSourceBlock(Identifier.of(MOD_ID, "light_source"), Material.STONE, Block.STONE_SOUND_GROUP, new boolean[] {false});

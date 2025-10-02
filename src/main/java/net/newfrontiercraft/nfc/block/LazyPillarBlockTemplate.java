@@ -15,6 +15,7 @@ import java.util.Random;
 public class LazyPillarBlockTemplate extends LazyBlockTemplate {
     protected int rotatedSideTexture;
     protected Item droppedItem;
+    protected int meta;
 
     public LazyPillarBlockTemplate(Identifier identifier, Material material, float hardness, BlockSoundGroup blockSounds) {
         super(identifier, material, hardness, blockSounds);
@@ -22,6 +23,11 @@ public class LazyPillarBlockTemplate extends LazyBlockTemplate {
 
     public LazyPillarBlockTemplate changeDroppedItem(Item droppedItem) {
         this.droppedItem = droppedItem;
+        return this;
+    }
+
+    public LazyPillarBlockTemplate changeDroppedMeta(int meta) {
+        this.meta = meta;
         return this;
     }
 
@@ -112,5 +118,10 @@ public class LazyPillarBlockTemplate extends LazyBlockTemplate {
             return super.getDroppedItemId(blockMeta, random);
         }
         return droppedItem.id;
+    }
+
+    @Override
+    protected int getDroppedItemMeta(int blockMeta) {
+        return meta;
     }
 }
