@@ -50,7 +50,6 @@ public class BlockListener {
             snowBricks,
             blueGlowstone,
             scorchedSandstone,
-            petrifiedLog,
             petrifiedPlanks,
 
             charcoalBlock,
@@ -90,6 +89,9 @@ public class BlockListener {
 
             creativeGenerator,
             stirlingGenerator;
+
+    public static LazyPillarBlockTemplate
+            petrifiedLog;
 
     public static LazyOreTemplate
             netherAshOre,
@@ -346,7 +348,7 @@ public class BlockListener {
         glowingMushroom = new GlowingMushroomBlock(Identifier.of(MOD_ID, "glowing_mushroom"), 0, Block.DIRT_SOUND_GROUP, false);
         fieryMushroom = new FieryMushroomBlock(Identifier.of(MOD_ID, "fiery_mushroom"), 0, Block.DIRT_SOUND_GROUP, false);
 
-        petrifiedLog = new LazyBlockTemplate(Identifier.of(MOD_ID, "petrified_log"), Material.STONE, 1.5F, Block.STONE_SOUND_GROUP);
+        petrifiedLog = new LazyPillarBlockTemplate(Identifier.of(MOD_ID, "petrified_log"), Material.STONE, 1.5F, Block.STONE_SOUND_GROUP);
         petrifiedPlanks = new LazyBlockTemplate(Identifier.of(MOD_ID, "petrified_planks"), Material.STONE, 1.5F, Block.STONE_SOUND_GROUP);
         petrifiedLeaves = (PetrifiedLeavesBlock) new PetrifiedLeavesBlock(Identifier.of(MOD_ID, "petrified_leaves")).setOpacity(1).setHardness(0.2F).setSoundGroup(Block.DIRT_SOUND_GROUP).setTranslationKey(Identifier.of(MOD_ID, "petrified_leaves"));
         unrestrictedNetherPortal = new UnrestrictedNetherPortalBlock(Identifier.of(MOD_ID, "unrestricted_nether_portal"));

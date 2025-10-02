@@ -335,7 +335,7 @@ public class TextureListener {
 
         // Petrified blocks
         int petrifiedTopTexture = getTextureIndex(wood + "petrified_log_top");
-        BlockListener.petrifiedLog.specifyTextures(petrifiedTopTexture, getTextureIndex(wood + "petrified_log_side"), petrifiedTopTexture);
+        BlockListener.petrifiedLog.specifyTextures(petrifiedTopTexture, getTextureIndex(wood + "petrified_log_side"), getTextureIndex(wood + "petrified_log_side_rotated"));
         BlockListener.petrifiedPlanks.specifyTextures(getTextureIndex(planks + "petrified_wooden_planks"));
         BlockListener.petrifiedLeaves.specifyTextures(
                 getTextureIndex(decorativeBlocks + "petrified_leaves_fast"),
