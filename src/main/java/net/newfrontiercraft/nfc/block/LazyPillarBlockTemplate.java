@@ -3,17 +3,26 @@ package net.newfrontiercraft.nfc.block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.modificationstation.stationapi.api.util.Identifier;
 
+import java.util.Random;
+
 public class LazyPillarBlockTemplate extends LazyBlockTemplate {
     protected int rotatedSideTexture;
+    protected Item droppedItem;
 
     public LazyPillarBlockTemplate(Identifier identifier, Material material, float hardness, BlockSoundGroup blockSounds) {
         super(identifier, material, hardness, blockSounds);
+    }
+
+    public LazyPillarBlockTemplate changeDroppedItem(Item droppedItem) {
+        this.droppedItem = droppedItem;
+        return this;
     }
 
     @Override
@@ -95,5 +104,13 @@ public class LazyPillarBlockTemplate extends LazyBlockTemplate {
             return 1;
         }
         return 2;
+    }
+
+    @Override
+    public int getDroppedItemId(int blockMeta, Random random) {
+        if (droppedItem == null) {
+            return super.getDroppedItemId(blockMeta, random);
+        }
+        return droppedItem.id;
     }
 }
