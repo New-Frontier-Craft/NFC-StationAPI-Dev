@@ -25,6 +25,7 @@
     "LiquidBlockInvoker",
     "LiquidBlockMixin",
     "LivingEntityMixin",
+    "LogRotationMixin",
     "MapColorInvoker",
     "MaterialInvoker",
     "OreSuppressionMixin",

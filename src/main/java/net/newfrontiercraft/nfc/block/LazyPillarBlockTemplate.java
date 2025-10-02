@@ -79,14 +79,8 @@ public class LazyPillarBlockTemplate extends LazyBlockTemplate {
     }
 
     public void onPlaced(World world, int i, int j, int k, LivingEntity entityliving) {
-        int logVariant = 0;
-        if (entityliving instanceof PlayerEntity)
-        {
-            ItemStack heldItem = ((PlayerEntity) entityliving).getHand();
-            if (heldItem != null) logVariant = heldItem.getDamage();
-        }
         int rotation = getBlockRotation(world, i, j, k, (PlayerEntity)entityliving);
-        world.setBlockMeta(i, j, k, rotation + logVariant);
+        world.setBlockMeta(i, j, k, rotation);
     }
 
     private static int getBlockRotation(World world, int i, int j, int k, PlayerEntity entityplayer) {
