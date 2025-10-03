@@ -46,6 +46,12 @@ public class ChunkListener {
             int j19 = event.z + random.nextInt(16) + 8;
             (new PlantPatchFeature(BlockListener.bioluminescentMushroom.id)).generate(world, random, j14, j16, j19);
         }
+        if (biome == Biome.DESERT && random.nextInt(8) == 0) {
+            int x = event.x + 8;
+            int y = 64;
+            int z = event.z + 8;
+            new SiliconLayerFeature().generate(world, random, x, y, z);
+        }
         if (biome == Biome.SEASONAL_FOREST) {
             if (random.nextInt(48) == 0) {
                 int j14 = event.x + random.nextInt(16) + 8;
