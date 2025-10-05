@@ -561,8 +561,9 @@ item.nfc.redstone_circuit.name=Redstone Circuit
 
 gui.nfc.bookshelf=Bookshelf
 
-multiblock.nfc.brickoven=Brick Oven
+multiblock.nfc.brick_oven=Brick Oven
 multiblock.nfc.automatic_crafting_table=Automatic Crafting Table
+multiblock.nfc.coke_oven=Coke Oven
 
 tool_tier.tier=Tier
 tool_tier.attack_damage=Attack Damage

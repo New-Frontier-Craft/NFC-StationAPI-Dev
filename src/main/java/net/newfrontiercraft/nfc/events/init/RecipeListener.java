@@ -49,6 +49,7 @@ public class RecipeListener {
             CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.machineGearBox, 1, 0), " Y ", "YZY", " Y ", 'Y', ItemListener.aluminiumGear, 'Z', BlockListener.machineFrame);
             CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.stirlingGenerator, 8, 0), "X#X", "YZY", "+#+", 'X', Block.PISTON, 'Y', ItemListener.cupronickelIngot, 'Z', BlockListener.machineFrame, '#', ItemListener.aluminiumIngot, '+', ItemListener.aluminiumGear);
             CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.automaticCraftingTable, 1), "X#X", "YZY", "+#+", 'X', Block.PISTON, 'Y', ItemListener.redstoneCircuit, 'Z', BlockListener.machineFrame, '#', Block.CRAFTING_TABLE, '+', ItemListener.aluminiumGear);
+            CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.frame, 16, 0), "XYX", "XYX", "XYX", 'X', ItemListener.aluminiumIngot, 'Y', Block.PLANKS);
 
             // Tools
             String[][] toolPatterns = new String[][]
@@ -294,8 +295,8 @@ public class RecipeListener {
 
             // Brick Oven Multi-Block
             List<String[]> brickOvenMultiBlockLayers = List.of(
-                    new String[]{"xyx", "xcx", "xxx"},
-                    new String[]{"xxx", "x x", "xxx"},
+                    new String[]{"xxx", "xcx", "xxx"},
+                    new String[]{"xyx", "x x", "xxx"},
                     new String[]{"xxx", "xxx", "xxx"}
             );
             List<BlockPatternEntry> brickOvenMultiBlockPatterns = List.of(
@@ -314,7 +315,7 @@ public class RecipeListener {
                     this.add("by adding chutes above and below.");
                 }
             };
-            MultiBlockRecipeRegistry.INSTANCE.addMultiblockRecipe("multiblock.nfc.brickoven", brickOvenDescription, brickOvenMultiBlockLayers, brickOvenMultiBlockPatterns);
+            MultiBlockRecipeRegistry.INSTANCE.addMultiblockRecipe("multiblock.nfc.brick_oven", brickOvenDescription, brickOvenMultiBlockLayers, brickOvenMultiBlockPatterns);
 
             // Automatic Crafting Table Multi-Block
             List<String[]> automaticCraftingTableMultiBlockLayers = List.of(
@@ -338,6 +339,31 @@ public class RecipeListener {
                 }
             };
             MultiBlockRecipeRegistry.INSTANCE.addMultiblockRecipe("multiblock.nfc.automatic_crafting_table", automaticCraftingTableDescription, automaticCraftingTableMultiBlockLayers, automaticCraftingTableMultiBlockPatterns);
+
+            // Coke Oven Multi-Block
+            List<String[]> cokeOvenMultiBlockLayers = List.of(
+                    new String[]{"xxx", "xcx", "xxx"},
+                    new String[]{"xyx", "x x", "xxx"},
+                    new String[]{"xxx", "x x", "xxx"},
+                    new String[]{"xxx", "xxx", "xxx"}
+            );
+            List<BlockPatternEntry> cokeOvenMultiBlockPatterns = List.of(
+                    new BlockPatternEntry('x', BlockListener.cokeOvenBricks.getDefaultState(), 0, new ItemStack(BlockListener.cokeOvenBricks.asItem())),
+                    new BlockPatternEntry('y', BlockListener.cokeOven.getDefaultState(), 2, new ItemStack(BlockListener.cokeOven.asItem())),
+                    new BlockPatternEntry('c', BlockListener.heatCoil.getDefaultState(), 0, new ItemStack(BlockListener.heatCoil.asItem()))
+            );
+            List<Object> cokeOvenDescription = new ArrayList<>() {
+                {
+                    this.add("Coke Oven");
+                    this.add("Uses heat to convert fuel items.");
+                    this.add("Has a unique minimum and maximum");
+                    this.add("heat limit for each recipe.");
+                    this.add("Requires heating from the heat coil below.");
+                    this.add("Can be filled and emptied");
+                    this.add("by adding chutes above and below.");
+                }
+            };
+            MultiBlockRecipeRegistry.INSTANCE.addMultiblockRecipe("multiblock.nfc.coke_oven", cokeOvenDescription, cokeOvenMultiBlockLayers, cokeOvenMultiBlockPatterns);
         }
         if (type == RecipeRegisterEvent.Vanilla.SMELTING.type()) {
             // Fuel levels
