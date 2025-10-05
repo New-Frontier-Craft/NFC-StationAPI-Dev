@@ -99,6 +99,7 @@ public class RecipeListener {
             // Storage block crafting
             CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.charcoalBlock), "XX", "XX", 'X', new ItemStack(Item.COAL, 1, 1));
             CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.coalBlock), "XX", "XX", 'X', new ItemStack(Item.COAL));
+            CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.netherAshBlock), "XX", "XX", 'X', new ItemStack(ItemListener.netherAsh));
             CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.coalCokeBlock), "XX", "XX", 'X', new ItemStack(ItemListener.coalCoke));
             CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.anthraciteBlock), "XX", "XX", 'X', new ItemStack(ItemListener.anthracite));
             CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.onyxBlock), "XX", "XX", 'X', new ItemStack(ItemListener.onyx));
@@ -242,6 +243,7 @@ public class RecipeListener {
             // Storage block un-crafting
             CraftingRegistry.addShapelessRecipe(new ItemStack(Item.COAL, 4, 1), new ItemStack(BlockListener.charcoalBlock));
             CraftingRegistry.addShapelessRecipe(new ItemStack(Item.COAL, 4), new ItemStack(BlockListener.coalBlock));
+            CraftingRegistry.addShapelessRecipe(new ItemStack(ItemListener.netherAsh, 4), new ItemStack(BlockListener.netherAshBlock));
             CraftingRegistry.addShapelessRecipe(new ItemStack(ItemListener.coalCoke, 4), new ItemStack(BlockListener.coalCokeBlock));
             CraftingRegistry.addShapelessRecipe(new ItemStack(ItemListener.anthracite, 4), new ItemStack(BlockListener.anthraciteBlock));
             CraftingRegistry.addShapelessRecipe(new ItemStack(ItemListener.onyx, 4), new ItemStack(BlockListener.onyxBlock));

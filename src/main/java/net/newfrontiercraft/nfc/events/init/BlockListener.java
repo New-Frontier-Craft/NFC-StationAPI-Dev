@@ -55,6 +55,7 @@ public class BlockListener {
 
             charcoalBlock,
             coalBlock,
+            netherAshBlock,
             coalCokeBlock,
             anthraciteBlock,
             onyxBlock,
@@ -304,6 +305,7 @@ public class BlockListener {
 
         charcoalBlock = new LazyBlockTemplate(Identifier.of(MOD_ID, "charcoal_block"), Material.STONE, 3F, Block.STONE_SOUND_GROUP);
         coalBlock = new LazyBlockTemplate(Identifier.of(MOD_ID, "coal_block"), Material.STONE, 3F, Block.STONE_SOUND_GROUP);
+        netherAshBlock = new LazyBlockTemplate(Identifier.of(MOD_ID, "nether_ash_block"), Material.STONE, 3F, Block.STONE_SOUND_GROUP);
         coalCokeBlock = new LazyBlockTemplate(Identifier.of(MOD_ID, "coal_coke_block"), Material.STONE, 3F, Block.STONE_SOUND_GROUP);
         anthraciteBlock = new LazyBlockTemplate(Identifier.of(MOD_ID, "anthracite_block"), Material.STONE, 3F, Block.STONE_SOUND_GROUP);
         onyxBlock = new LazyBlockTemplate(Identifier.of(MOD_ID, "onyx_block"), Material.METAL, 4F, Block.METAL_SOUND_GROUP, ToolTierEnum.ADVANCED);
