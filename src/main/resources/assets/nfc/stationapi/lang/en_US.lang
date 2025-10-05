@@ -295,6 +295,7 @@ tile.nfc.creative_generator.name=Creative Generator
 tile.nfc.stirling_generator.name=Stirling Generator
 tile.nfc.machine_gear_box.name=Machine Gear Box
 tile.nfc.automatic_crafting_table.name=Automatic Crafting Table
+tile.nfc.frame.name=Frame
 
 
 item.nfc.aluminium_pickaxe.name=Aluminum Pickaxe

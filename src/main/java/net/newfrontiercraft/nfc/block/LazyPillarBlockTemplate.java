@@ -4,7 +4,6 @@ import net.minecraft.block.material.Material;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
@@ -21,9 +20,8 @@ public class LazyPillarBlockTemplate extends LazyBlockTemplate {
         super(identifier, material, hardness, blockSounds);
     }
 
-    public LazyPillarBlockTemplate changeDroppedItem(Item droppedItem) {
+    public void changeDroppedItem(Item droppedItem) {
         this.droppedItem = droppedItem;
-        return this;
     }
 
     public LazyPillarBlockTemplate changeDroppedMeta(int meta) {

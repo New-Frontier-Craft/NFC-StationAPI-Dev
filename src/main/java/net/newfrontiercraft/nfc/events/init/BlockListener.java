@@ -4,7 +4,6 @@ import net.fabricmc.loader.api.FabricLoader;
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.item.Item;
 import net.modificationstation.stationapi.api.block.BlockState;
 import net.modificationstation.stationapi.api.block.States;
 import net.modificationstation.stationapi.api.event.registry.BlockRegistryEvent;
@@ -14,6 +13,7 @@ import net.modificationstation.stationapi.api.util.Identifier;
 import net.modificationstation.stationapi.api.util.Namespace;
 import net.newfrontiercraft.nfc.block.*;
 import net.newfrontiercraft.nfc.utils.ToolTierEnum;
+import net.newfrontiercraft.nfc.world.gen.FrameBlock;
 
 public class BlockListener {
 
@@ -96,7 +96,9 @@ public class BlockListener {
 
             rotatedOakLog,
             rotatedSpruceLog,
-            rotatedBirchLog;
+            rotatedBirchLog,
+
+            frame;
 
     public static LazyOreTemplate
             netherAshOre,
@@ -449,6 +451,7 @@ public class BlockListener {
         creativeGenerator = new CreativeGeneratorBlock(Identifier.of(MOD_ID, "creative_generator"), Material.METAL, 2.0F, Block.METAL_SOUND_GROUP);
         stirlingGenerator = new StirlingGeneratorBlock(Identifier.of(MOD_ID, "stirling_generator"), Material.METAL, 2.0F, Block.METAL_SOUND_GROUP);
         machineGearBox = new MachineGearBoxBlock(Identifier.of(MOD_ID, "machine_gear_box"), Material.METAL, 2.0F, Block.METAL_SOUND_GROUP);
+        frame = new FrameBlock(Identifier.of(MOD_ID, "frame"), Material.METAL, 2.0F, Block.METAL_SOUND_GROUP);
 
         automaticCraftingTable = new AutomaticCraftingTableBlock(Identifier.of(MOD_ID, "automatic_crafting_table"), Material.METAL, 2.0F, Block.METAL_SOUND_GROUP);
 

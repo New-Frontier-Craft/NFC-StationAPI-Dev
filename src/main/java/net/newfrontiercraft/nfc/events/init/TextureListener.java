@@ -276,6 +276,7 @@ public class TextureListener {
         BlockListener.automaticCraftingTable.specifyTextures(getTextureIndex(machines + "automatic_crafting_table_top"),
                 getTextureIndex(machines + "automatic_crafting_table_front"), getTextureIndex(machines + "automatic_crafting_table_front_active"),
                 getTextureIndex(machines + "automatic_crafting_table_side"), getTextureIndex(machines + "automatic_crafting_table_bottom"));
+        BlockListener.frame.specifyTextures(getTextureIndex(machines + "front_frame"), getTextureIndex(machines + "vertical_frame"), getTextureIndex(machines + "horizontal_frame"));
 
         // Ore storage blocks
         BlockListener.charcoalBlock.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, oreStorage + "charcoal")).index);
