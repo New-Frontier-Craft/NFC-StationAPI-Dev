@@ -88,6 +88,8 @@ public class BlockListener {
             unfiredPlanter,
 
             machineFrame,
+            plantBus,
+            fertilizerBus,
 
             creativeGenerator,
             stirlingGenerator;
@@ -454,6 +456,8 @@ public class BlockListener {
         stirlingGenerator = new StirlingGeneratorBlock(Identifier.of(MOD_ID, "stirling_generator"), Material.METAL, 2.0F, Block.METAL_SOUND_GROUP);
         machineGearBox = new MachineGearBoxBlock(Identifier.of(MOD_ID, "machine_gear_box"), Material.METAL, 2.0F, Block.METAL_SOUND_GROUP);
         frame = new FrameBlock(Identifier.of(MOD_ID, "frame"), Material.METAL, 2.0F, Block.METAL_SOUND_GROUP);
+        plantBus = new LazyBlockTemplate(Identifier.of(MOD_ID, "plant_bus"), Material.METAL, 2.0F, Block.METAL_SOUND_GROUP);
+        fertilizerBus = new LazyBlockTemplate(Identifier.of(MOD_ID, "fertilizer_bus"), Material.METAL, 2.0F, Block.METAL_SOUND_GROUP);
 
         automaticCraftingTable = new AutomaticCraftingTableBlock(Identifier.of(MOD_ID, "automatic_crafting_table"), Material.METAL, 2.0F, Block.METAL_SOUND_GROUP);
 

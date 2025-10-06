@@ -50,6 +50,8 @@ public class RecipeListener {
             CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.stirlingGenerator, 8, 0), "X#X", "YZY", "+#+", 'X', Block.PISTON, 'Y', ItemListener.cupronickelIngot, 'Z', BlockListener.machineFrame, '#', ItemListener.aluminiumIngot, '+', ItemListener.aluminiumGear);
             CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.automaticCraftingTable, 1), "X#X", "YZY", "+#+", 'X', Block.PISTON, 'Y', ItemListener.redstoneCircuit, 'Z', BlockListener.machineFrame, '#', Block.CRAFTING_TABLE, '+', ItemListener.aluminiumGear);
             CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.frame, 16, 0), "XYX", "XYX", "XYX", 'X', ItemListener.aluminiumIngot, 'Y', Block.PLANKS);
+            CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.plantBus, 1, 0), " W ", "ZXZ", " Y ", 'W', Block.SAPLING, 'X', BlockListener.itemChuteExtender, 'Y', BlockListener.machineFrame, 'Z', ItemListener.aluminiumGear);
+            CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.fertilizerBus, 1, 0), " W ", "ZXZ", " Y ", 'W', new ItemStack(Item.DYE, 1, 15), 'X', BlockListener.itemChuteExtender, 'Y', BlockListener.machineFrame, 'Z', ItemListener.aluminiumGear);
 
             // Tools
             String[][] toolPatterns = new String[][]
