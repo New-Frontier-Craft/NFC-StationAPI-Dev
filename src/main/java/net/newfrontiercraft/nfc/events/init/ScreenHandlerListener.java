@@ -13,7 +13,6 @@ import net.modificationstation.stationapi.api.util.Namespace;
 import net.modificationstation.stationapi.api.registry.Registry;
 import net.newfrontiercraft.nfc.block.entity.*;
 import net.newfrontiercraft.nfc.gui.*;
-import net.newfrontiercraft.nfc.inventory.CokeOvenScreenHandler;
 
 public class ScreenHandlerListener {
 
@@ -32,6 +31,7 @@ public class ScreenHandlerListener {
         Registry.register(registry, Identifier.of(MOD_ID, "gui_filtering_item_chute"), new GuiHandler((GuiHandler.ScreenFactoryNoMessage) this::openFilteringItemChute, FilteringItemChuteBlockEntity::new));
         Registry.register(registry, Identifier.of(MOD_ID, "gui_automatic_crafting_table"), new GuiHandler((GuiHandler.ScreenFactoryNoMessage) this::openAutomaticCraftingTable, AutomaticCraftingTableBlockEntity::new));
         Registry.register(registry, Identifier.of(MOD_ID, "gui_coke_oven"), new GuiHandler((GuiHandler.ScreenFactoryNoMessage) this::openCokeOven, CokeOvenBlockEntity::new));
+        Registry.register(registry, Identifier.of(MOD_ID, "tree_farm_screen"), new GuiHandler((GuiHandler.ScreenFactoryNoMessage) this::openTreeFarm, TreeFarmBlockEntity::new));
     }
 
     public Screen openBrickOven(PlayerEntity playerBase, Inventory inventoryBase) {
@@ -64,5 +64,9 @@ public class ScreenHandlerListener {
 
     public Screen openCokeOven(PlayerEntity playerBase, Inventory inventoryBase) {
         return new CokeOvenScreen(playerBase.inventory, (CokeOvenBlockEntity) inventoryBase);
+    }
+
+    public Screen openTreeFarm(PlayerEntity playerBase, Inventory inventoryBase) {
+        return new TreeFarmScreen(playerBase.inventory, (TreeFarmBlockEntity) inventoryBase);
     }
 }

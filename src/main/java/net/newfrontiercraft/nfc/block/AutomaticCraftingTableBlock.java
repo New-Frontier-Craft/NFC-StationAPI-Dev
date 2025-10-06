@@ -91,7 +91,7 @@ public class AutomaticCraftingTableBlock extends TemplateBlockWithEntity {
         if (side == 1) {
             return topTexture;
         }
-        if(meta == 0 && side == 3) {
+        if (meta == 0 && side == 3) {
             return frontTexture;
         }
         if (side == meta % 6 && meta > 1) {

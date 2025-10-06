@@ -155,6 +155,7 @@ public class BlockListener {
             stainedGlass;
 
     public static AutomaticCraftingTableBlock automaticCraftingTable;
+    public static TreeFarmBlock treeFarm;
 
     public static LazyGlassBlockTemplate tintedGlass;
 
@@ -460,6 +461,7 @@ public class BlockListener {
         fertilizerBus = new LazyBlockTemplate(Identifier.of(MOD_ID, "fertilizer_bus"), Material.METAL, 2.0F, Block.METAL_SOUND_GROUP);
 
         automaticCraftingTable = new AutomaticCraftingTableBlock(Identifier.of(MOD_ID, "automatic_crafting_table"), Material.METAL, 2.0F, Block.METAL_SOUND_GROUP);
+        treeFarm = new TreeFarmBlock(Identifier.of(MOD_ID, "tree_farm"), Material.METAL, 2.0F, Block.METAL_SOUND_GROUP);
 
         // Changes to vanilla blast resistance
         Block.COAL_ORE.setResistance(500F);

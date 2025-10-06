@@ -128,9 +128,11 @@
     "nfc:creative_generator",
     "nfc:stirling_generator",
     "nfc:machine_gear_box",
-    "nfc:automatic_crafting_table",
     "nfc:frame",
     "nfc:plant_bus",
-    "nfc:fertilizer_bus"
+    "nfc:fertilizer_bus",
+
+    "nfc:automatic_crafting_table",
+    "nfc:tree_farm"
   ]
 }

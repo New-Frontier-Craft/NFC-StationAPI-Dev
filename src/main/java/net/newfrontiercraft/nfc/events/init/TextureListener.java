@@ -276,6 +276,9 @@ public class TextureListener {
         BlockListener.automaticCraftingTable.specifyTextures(getTextureIndex(machines + "automatic_crafting_table_top"),
                 getTextureIndex(machines + "automatic_crafting_table_front"), getTextureIndex(machines + "automatic_crafting_table_front_active"),
                 getTextureIndex(machines + "automatic_crafting_table_side"), getTextureIndex(machines + "automatic_crafting_table_bottom"));
+        BlockListener.treeFarm.specifyTextures(getTextureIndex(machines + "machine_frame"),
+                getTextureIndex(machines + "tree_farm_front"), getTextureIndex(machines + "tree_farm_front_active"),
+                getTextureIndex(machines + "machine_frame"), getTextureIndex(machines + "machine_frame"));
         BlockListener.frame.specifyTextures(getTextureIndex(machines + "front_frame"), getTextureIndex(machines + "vertical_frame"), getTextureIndex(machines + "horizontal_frame"));
         BlockListener.plantBus.specifyTextures(getTextureIndex(machines + "plant_bus"));
         BlockListener.fertilizerBus.specifyTextures(getTextureIndex(machines + "fertilizer_bus"));
