@@ -19,16 +19,16 @@ public class TreeFarmScreenHandler extends ScreenHandler {
         treeFarm = treeFarmBlockEntity;
         // Sapling slots
         for (int yIndex = 0; yIndex < 3; yIndex++) {
-            addSlot(new Slot(treeFarmBlockEntity, yIndex, 20, 17 + yIndex * 18));
+            addSlot(new Slot(treeFarmBlockEntity, yIndex, 8, 16 + yIndex * 18));
         }
         // Fertilizer slots
         for (int yIndex = 0; yIndex < 3; yIndex++) {
-            addSlot(new Slot(treeFarmBlockEntity, yIndex + 3, 66, 17 + yIndex * 18));
+            addSlot(new Slot(treeFarmBlockEntity, yIndex + 3, 44, 16 + yIndex * 18));
         }
         // Output slots
         for (int yIndex = 0; yIndex < 3; yIndex++) {
             for (int xIndex = 0; xIndex < 3; xIndex++) {
-                addSlot(new Slot(treeFarmBlockEntity,  6 + xIndex + yIndex*3, 20 + xIndex*18, 17 + yIndex * 18));
+                addSlot(new Slot(treeFarmBlockEntity,  6 + xIndex + yIndex*3, 116 + xIndex*18, 16 + yIndex * 18));
             }
         }
         // Player inventory
