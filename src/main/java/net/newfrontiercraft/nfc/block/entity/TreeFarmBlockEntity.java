@@ -168,16 +168,16 @@ public class TreeFarmBlockEntity extends BlockEntity implements Inventory {
         } else if (foundRightCorner) {
             switch (meta) {
                 case 2:
-                    measureFrame(x + rightFrameX, y - 1, z + rightFrameZ, 1, -1);
-                    break;
-                case 3:
-                    measureFrame(x + rightFrameX, y - 1, z + rightFrameZ, -1, 1);
-                    break;
-                case 4:
                     measureFrame(x + rightFrameX, y - 1, z + rightFrameZ, 1, 1);
                     break;
-                case 5:
+                case 3:
                     measureFrame(x + rightFrameX, y - 1, z + rightFrameZ, -1, -1);
+                    break;
+                case 4:
+                    measureFrame(x + rightFrameX, y - 1, z + rightFrameZ, 1, -1);
+                    break;
+                case 5:
+                    measureFrame(x + rightFrameX, y - 1, z + rightFrameZ, -1, 1);
                     break;
             }
         }
@@ -255,12 +255,20 @@ public class TreeFarmBlockEntity extends BlockEntity implements Inventory {
     // x direction and z direction determine where to search for frames
     // Frame meta to coordinate axis: 0 -> y, 1 -> z, 2 -> x
     private void measureFrame(int localX, int localY, int localZ, int xDirection, int zDirection) {
+        int xAnchor = 0;
+        int zAnchor = 0;
         // Measure x length
         int xLength = measureXLine(localX, localY, localZ, xDirection);
         if (xLength == 0) {
             return;
         }
         System.out.println("xLength: " + xLength);
+        // Measure z length
+        int zLength = measureZLine(localX, localY, localZ, zDirection);
+        if (zLength == 0) {
+            return;
+        }
+        System.out.println("zLength: " + zLength);
     }
 
     private int measureXLine(int localX, int localY, int localZ, int xDirection) {
@@ -282,6 +290,35 @@ public class TreeFarmBlockEntity extends BlockEntity implements Inventory {
                 if (blockId == BlockListener.machineFrame.id) {
                     return -(xOffset - 1);
                 } else if (blockId != BlockListener.frame.id || world.getBlockMeta(localX + xOffset, localY, localZ) != 2) {
+                    xSize = 0;
+                    ySize = 0;
+                    zSize = 0;
+                    return 0;
+                }
+            }
+        }
+        return 0;
+    }
+
+    private int measureZLine(int localX, int localY, int localZ, int zDirection) {
+        if (zDirection == 1) {
+            for (int zOffset = 1; zOffset < 32; zOffset++) {
+                int blockId = world.getBlockId(localX, localY, localZ + zOffset);
+                if (blockId == BlockListener.machineFrame.id) {
+                    return zOffset + 1;
+                } else if (blockId != BlockListener.frame.id || world.getBlockMeta(localX, localY, localZ + zOffset) != 1) {
+                    xSize = 0;
+                    ySize = 0;
+                    zSize = 0;
+                    return 0;
+                }
+            }
+        } else {
+            for (int zOffset = -1; zOffset > -32; zOffset--) {
+                int blockId = world.getBlockId(localX, localY, localZ + zOffset);
+                if (blockId == BlockListener.machineFrame.id) {
+                    return -(zOffset - 1);
+                } else if (blockId != BlockListener.frame.id || world.getBlockMeta(localX, localY, localZ + zOffset) != 1) {
                     xSize = 0;
                     ySize = 0;
                     zSize = 0;
