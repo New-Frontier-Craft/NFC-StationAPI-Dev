@@ -257,6 +257,7 @@ public class TreeFarmBlockEntity extends BlockEntity implements Inventory {
     private void measureFrame(int localX, int localY, int localZ, int xDirection, int zDirection) {
         int xAnchor = 0;
         int zAnchor = 0;
+        /// Measure first 3 lines from the starting point
         // Measure x length
         int xLength = measureXLine(localX, localY, localZ, xDirection);
         if (xLength == 0) {
@@ -269,6 +270,54 @@ public class TreeFarmBlockEntity extends BlockEntity implements Inventory {
             return;
         }
         System.out.println("zLength: " + zLength);
+        /// Verify parallel lines on ground
+        int movedX = localX + (xLength - 1) * xDirection;
+        int movedZ = localZ + (zLength - 1) * zDirection;
+        // Verify second x length
+        if (xLength != measureXLine(localX, localY, movedZ, xDirection)) {
+            return;
+        }
+        System.out.println("Ground x lines match");
+        // Verify second z length
+        if (zLength != measureZLine(movedX, localY, localZ, zDirection)) {
+            return;
+        }
+        System.out.println("Ground z lines match");
+        /// Measure and verify all vertical lines
+        // Measure y length
+        int yLength = measureYLine(localX, localY, localZ);
+        if (yLength == 0) {
+            return;
+        }
+        System.out.println("yLength: " + yLength);
+        // Verify other 3 vertical lines
+        if (yLength != measureYLine(movedX, localY, localZ)) {
+            return;
+        }
+        if (yLength != measureYLine(localX, localY, movedZ)) {
+            return;
+        }
+        if (yLength != measureYLine(movedX, localY, movedZ)) {
+            return;
+        }
+        System.out.println("All vertical lines match");
+        /// Verify upper layer
+        int movedY = localY + yLength - 1;
+        // Verify upper x lines
+        if (xLength != measureXLine(localX, movedY, localZ, xDirection)) {
+            return;
+        }
+        if (xLength != measureXLine(localX, movedY, movedZ, xDirection)) {
+            return;
+        }
+        // Verify upper z lines
+        if (zLength != measureZLine(localX, movedY, localZ, zDirection)) {
+            return;
+        }
+        if (zLength != measureZLine(movedX, movedY, localZ, zDirection)) {
+            return;
+        }
+        System.out.println("Everything matches!");
     }
 
     private int measureXLine(int localX, int localY, int localZ, int xDirection) {
@@ -324,6 +373,21 @@ public class TreeFarmBlockEntity extends BlockEntity implements Inventory {
                     zSize = 0;
                     return 0;
                 }
+            }
+        }
+        return 0;
+    }
+
+    private int measureYLine(int localX, int localY, int localZ) {
+        for (int yOffset = 1; yOffset < 32; yOffset++) {
+            int blockId = world.getBlockId(localX, localY + yOffset, localZ);
+            if (blockId == BlockListener.machineFrame.id) {
+                return yOffset + 1;
+            } else if (blockId != BlockListener.frame.id || world.getBlockMeta(localX, localY + yOffset, localZ) != 0) {
+                xSize = 0;
+                ySize = 0;
+                zSize = 0;
+                return 0;
             }
         }
         return 0;
