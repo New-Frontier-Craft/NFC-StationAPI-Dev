@@ -67,7 +67,7 @@ public class TreeFarmBlockEntity extends BlockEntity implements Inventory {
     }
 
     private boolean checkMultiBlockStructure() {
-        // Calculate central coordinates
+        /// Calculate central coordinates
         int meta = world.getBlockMeta(x, y, z) % 6;
         int xCentered = x;
         int zCentered = z;
@@ -85,7 +85,7 @@ public class TreeFarmBlockEntity extends BlockEntity implements Inventory {
                 xCentered--;
                 break;
         }
-        // Check structural integrity
+        /// Check structural integrity
         if (world.getBlockId(xCentered, y - 1, zCentered) != BlockListener.machineGearBox.id) {
             torque = 0;
             return false;
@@ -113,9 +113,47 @@ public class TreeFarmBlockEntity extends BlockEntity implements Inventory {
         // 3 -> z-
         // 4 -> x+
         // 5 -> x-
-        // Frame calculation
+        /// Frame calculation
+        // Determine corner
+        int leftFrameX = 0;
+        int leftFrameZ = 0;
+        int rightFrameX = 0;
+        int rightFrameZ = 0;
+        switch (meta) {
+            case 2:
+                leftFrameX = 1;
+                rightFrameX = -1;
+                leftFrameZ = 3;
+                rightFrameZ = 3;
+                break;
+            case 3:
+                leftFrameX = -1;
+                rightFrameX = 1;
+                leftFrameZ = -3;
+                rightFrameZ = -3;
+                break;
+            case 4:
+                leftFrameX = 3;
+                rightFrameX = 3;
+                leftFrameZ = -1;
+                rightFrameZ = 1;
+                break;
+            case 5:
+                leftFrameX = -3;
+                rightFrameX = -3;
+                leftFrameZ = 1;
+                rightFrameZ = -1;
+                break;
+        }
+        boolean foundLeftCorner = world.getBlockId(x + leftFrameX, y - 1, z + leftFrameZ) == BlockListener.machineFrame.id;
+        boolean foundRightCorner = world.getBlockId(x + rightFrameX, y - 1, z + rightFrameZ) == BlockListener.machineFrame.id;
+        if (foundLeftCorner) {
+
+        } else if (foundRightCorner) {
+
+        }
         // TODO: Calculate frame
-        // Automatic input
+        /// Automatic input
         for (int zOffset = 1; zOffset >= -1; zOffset--) {
             for (int xOffset = 1; xOffset >= -1; xOffset--) {
                 int ceilingBlockId = world.getBlockId(xCentered + xOffset, y + 1, zCentered + zOffset);
@@ -156,7 +194,7 @@ public class TreeFarmBlockEntity extends BlockEntity implements Inventory {
                 }
             }
         }
-        // Automatic output
+        /// Automatic output
         for (int xOffset = -1; xOffset <= 1; xOffset++) {
             for (int zOffset = -1; zOffset <= 1; zOffset++) {
                 // Standard output from output slot
