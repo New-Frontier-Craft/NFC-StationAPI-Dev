@@ -118,6 +118,24 @@ public class TreeFarmBlock extends TemplateBlockWithEntity {
         super.onBreak(world, x, y, z);
     }
 
+    public static void updateTreeFarmBlockState(boolean active, World world, int x, int y, int z) {
+        int meta = world.getBlockMeta(x, y, z);
+        boolean update = false;
+        BlockEntity blockEntity = world.getBlockEntity(x, y, z);
+        if (active && meta < 6) {
+            world.setBlockEntity(x, y, z, blockEntity);
+            world.setBlockMeta(x, y, z, meta + 6);
+            update = true;
+        } else if (!active && meta > 6) {
+            world.setBlockEntity(x, y, z, blockEntity);
+            world.setBlockMeta(x, y, z, meta - 6);
+            update = true;
+        }
+        if (update) {
+            world.blockUpdateEvent(x, y, z);
+        }
+    }
+
     @Override
     protected BlockEntity createBlockEntity() {
         return new TreeFarmBlockEntity();

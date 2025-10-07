@@ -6,6 +6,9 @@ import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtList;
+import net.newfrontiercraft.nfc.block.AutomaticCraftingTableBlock;
+import net.newfrontiercraft.nfc.block.TreeFarmBlock;
+import net.newfrontiercraft.nfc.events.init.BlockListener;
 
 public class TreeFarmBlockEntity extends BlockEntity implements Inventory {
 
@@ -29,6 +32,155 @@ public class TreeFarmBlockEntity extends BlockEntity implements Inventory {
         craftingProgress = 0;
         torque = 0;
         isMultiBlock = false;
+    }
+
+    @Override
+    public void tick() {
+        boolean previouslyActive = craftingProgress > 0;
+        if (checkTimer < 40) {
+            checkTimer++;
+        } else {
+            isMultiBlock = checkMultiBlockStructure();
+            checkTimer = 0;
+        }
+        if (!world.isRemote && isMultiBlock) {
+            if (torque > 0) {
+                craftingProgress += torque;
+                if (craftingProgress >= RECIPE_TIME) {
+                    craftingProgress = 0;
+                    performTreeFarmLogic();
+                }
+            } else {
+                craftingProgress = 0;
+            }
+        }
+        boolean currentlyActive = craftingProgress > 0;
+        if (previouslyActive != currentlyActive) {
+            TreeFarmBlock.updateTreeFarmBlockState(currentlyActive, world, x, y, z);
+        }
+    }
+
+    private void performTreeFarmLogic() {
+
+    }
+
+    private boolean checkMultiBlockStructure() {
+        // Calculate central coordinates
+        int meta = world.getBlockMeta(x, y, z) % 6;
+        int xCentered = x;
+        int zCentered = z;
+        switch (meta) {
+            case 2:
+                zCentered++;
+                break;
+            case 3:
+                zCentered--;
+                break;
+            case 4:
+                xCentered++;
+                break;
+            case 5:
+                xCentered--;
+                break;
+        }
+        // Check structural integrity
+        if (world.getBlockId(xCentered, y - 1, zCentered) != BlockListener.machineGearBox.id) {
+            torque = 0;
+            return false;
+        }
+        BlockEntity blockEntity = world.getBlockEntity(xCentered, y - 1, zCentered);
+        if (blockEntity instanceof MachineGearBoxBlockEntity machineGearBoxBlockEntity) {
+            torque = machineGearBoxBlockEntity.getTorque();
+        }
+        int frameCount = 0;
+        for (int xOffset = -1; xOffset <= 1; xOffset++) {
+            for (int zOffset = -1; zOffset <= 1; zOffset++) {
+                for (int yOffset = -1; yOffset <= 1; yOffset++) {
+                    int blockId = world.getBlockId(xCentered + xOffset, y + yOffset, zCentered + zOffset);
+                    if (blockId == BlockListener.machineFrame.id || blockId == BlockListener.plantBus.id || blockId == BlockListener.fertilizerBus.id) {
+                        frameCount++;
+                    }
+                }
+            }
+        }
+        if (frameCount < 25) {
+            return false;
+        }
+        // Meta values to coordinates
+        // 2 -> z+
+        // 3 -> z-
+        // 4 -> x+
+        // 5 -> x-
+        // Frame calculation
+        // TODO: Calculate frame
+        // Automatic input
+        for (int zOffset = 1; zOffset >= -1; zOffset--) {
+            for (int xOffset = 1; xOffset >= -1; xOffset--) {
+                int ceilingBlockId = world.getBlockId(xCentered + xOffset, y + 1, zCentered + zOffset);
+                boolean plantMode = ceilingBlockId == BlockListener.plantBus.id;
+                boolean fertilizerMode = ceilingBlockId == BlockListener.fertilizerBus.id;
+                if (!plantMode && !fertilizerMode) {
+                    continue;
+                }
+                int lowerIndex;
+                int upperIndex;
+                if (plantMode) {
+                    lowerIndex = SAPLING_START;
+                    upperIndex = SAPLING_END;
+                } else {
+                    lowerIndex = FERTILIZER_START;
+                    upperIndex = FERTILIZER_END;
+                }
+                if (world.getBlockEntity(xCentered + xOffset, y + 2, zCentered + zOffset) instanceof BasicItemChuteBlockEntity basicItemChuteBlockEntity) {
+                    for (int slot = lowerIndex; slot <= upperIndex; slot++) {
+                        if (basicItemChuteBlockEntity.storedItem == null) {
+                            break;
+                        }
+                        if (treeFarmItemStacks[slot] == null) {
+                            treeFarmItemStacks[slot] = basicItemChuteBlockEntity.storedItem;
+                            basicItemChuteBlockEntity.storedItem = null;
+                        } else if (treeFarmItemStacks[slot].isItemEqual(basicItemChuteBlockEntity.storedItem)) {
+                            int totalCount = treeFarmItemStacks[slot].count + basicItemChuteBlockEntity.storedItem.count;
+                            if (totalCount <= basicItemChuteBlockEntity.storedItem.getMaxCount()) {
+                                treeFarmItemStacks[slot].count = totalCount;
+                                basicItemChuteBlockEntity.storedItem = null;
+                            } else {
+                                int leftovers = totalCount - basicItemChuteBlockEntity.storedItem.getMaxCount();
+                                treeFarmItemStacks[slot].count = basicItemChuteBlockEntity.storedItem.getMaxCount();
+                                basicItemChuteBlockEntity.storedItem.count = leftovers;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        // Automatic output
+        for (int xOffset = -1; xOffset <= 1; xOffset++) {
+            for (int zOffset = -1; zOffset <= 1; zOffset++) {
+                // Standard output from output slot
+                BlockEntity target = world.getBlockEntity(xCentered + xOffset, y - 2, zCentered + zOffset);
+                for (int slot = OUTPUT_START; slot <= OUTPUT_END; slot++) {
+                    if (treeFarmItemStacks[slot] != null
+                            && target instanceof BasicItemChuteBlockEntity basicItemChuteBlockEntity) {
+                        if (basicItemChuteBlockEntity.storedItem == null) {
+                            basicItemChuteBlockEntity.storedItem = treeFarmItemStacks[slot];
+                            treeFarmItemStacks[slot] = null;
+                        } else if (basicItemChuteBlockEntity.storedItem.isItemEqual(treeFarmItemStacks[slot])) {
+                            int totalCount = treeFarmItemStacks[slot].count + basicItemChuteBlockEntity.storedItem.count;
+                            if (totalCount <= basicItemChuteBlockEntity.storedItem.getMaxCount()) {
+                                basicItemChuteBlockEntity.storedItem.count = totalCount;
+                                treeFarmItemStacks[slot] = null;
+                            } else {
+                                int leftovers = totalCount - basicItemChuteBlockEntity.storedItem.getMaxCount();
+                                basicItemChuteBlockEntity.storedItem.count = basicItemChuteBlockEntity.storedItem.getMaxCount();
+                                treeFarmItemStacks[slot].count = leftovers;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return true;
     }
 
     @Override
