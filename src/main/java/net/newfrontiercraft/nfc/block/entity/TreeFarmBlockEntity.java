@@ -27,6 +27,9 @@ public class TreeFarmBlockEntity extends BlockEntity implements Inventory {
     private int xSize;
     private int ySize;
     private int zSize;
+    private int xStart;
+    private int yStart;
+    private int zStart;
 
     public TreeFarmBlockEntity() {
         // First slots 0 to 8 are inputs, 9 is output
@@ -148,9 +151,35 @@ public class TreeFarmBlockEntity extends BlockEntity implements Inventory {
         boolean foundLeftCorner = world.getBlockId(x + leftFrameX, y - 1, z + leftFrameZ) == BlockListener.machineFrame.id;
         boolean foundRightCorner = world.getBlockId(x + rightFrameX, y - 1, z + rightFrameZ) == BlockListener.machineFrame.id;
         if (foundLeftCorner) {
-
+            switch (meta) {
+                case 2:
+                    measureFrame(x + leftFrameX, y - 1, z + leftFrameZ, -1, 1);
+                    break;
+                case 3:
+                    measureFrame(x + leftFrameX, y - 1, z + leftFrameZ, 1, -1);
+                    break;
+                case 4:
+                    measureFrame(x + leftFrameX, y - 1, z + leftFrameZ, 1, 1);
+                    break;
+                case 5:
+                    measureFrame(x + leftFrameX, y - 1, z + leftFrameZ, -1, -1);
+                    break;
+            }
         } else if (foundRightCorner) {
-
+            switch (meta) {
+                case 2:
+                    measureFrame(x + rightFrameX, y - 1, z + rightFrameZ, 1, -1);
+                    break;
+                case 3:
+                    measureFrame(x + rightFrameX, y - 1, z + rightFrameZ, -1, 1);
+                    break;
+                case 4:
+                    measureFrame(x + rightFrameX, y - 1, z + rightFrameZ, 1, 1);
+                    break;
+                case 5:
+                    measureFrame(x + rightFrameX, y - 1, z + rightFrameZ, -1, -1);
+                    break;
+            }
         }
         // TODO: Calculate frame
         /// Automatic input
@@ -221,6 +250,46 @@ public class TreeFarmBlockEntity extends BlockEntity implements Inventory {
             }
         }
         return true;
+    }
+
+    // x direction and z direction determine where to search for frames
+    // Frame meta to coordinate axis: 0 -> y, 1 -> z, 2 -> x
+    private void measureFrame(int localX, int localY, int localZ, int xDirection, int zDirection) {
+        // Measure x length
+        int xLength = measureXLine(localX, localY, localZ, xDirection);
+        if (xLength == 0) {
+            return;
+        }
+        System.out.println("xLength: " + xLength);
+    }
+
+    private int measureXLine(int localX, int localY, int localZ, int xDirection) {
+        if (xDirection == 1) {
+            for (int xOffset = 1; xOffset < 32; xOffset++) {
+                int blockId = world.getBlockId(localX + xOffset, localY, localZ);
+                if (blockId == BlockListener.machineFrame.id) {
+                    return xOffset + 1;
+                } else if (blockId != BlockListener.frame.id || world.getBlockMeta(localX + xOffset, localY, localZ) != 2) {
+                    xSize = 0;
+                    ySize = 0;
+                    zSize = 0;
+                    return 0;
+                }
+            }
+        } else {
+            for (int xOffset = -1; xOffset > -32; xOffset--) {
+                int blockId = world.getBlockId(localX + xOffset, localY, localZ);
+                if (blockId == BlockListener.machineFrame.id) {
+                    return -(xOffset - 1);
+                } else if (blockId != BlockListener.frame.id || world.getBlockMeta(localX + xOffset, localY, localZ) != 2) {
+                    xSize = 0;
+                    ySize = 0;
+                    zSize = 0;
+                    return 0;
+                }
+            }
+        }
+        return 0;
     }
 
     @Override
@@ -298,6 +367,9 @@ public class TreeFarmBlockEntity extends BlockEntity implements Inventory {
         xSize = nbtCompound.getInt("XSize");
         ySize = nbtCompound.getInt("YSize");
         zSize = nbtCompound.getInt("ZSize");
+        xStart = nbtCompound.getInt("XStart");
+        yStart = nbtCompound.getInt("YStart");
+        zStart = nbtCompound.getInt("ZStart");
     }
 
     @Override
@@ -321,6 +393,9 @@ public class TreeFarmBlockEntity extends BlockEntity implements Inventory {
         nbtCompound.putInt("XSize", xSize);
         nbtCompound.putInt("YSize", ySize);
         nbtCompound.putInt("ZSize", zSize);
+        nbtCompound.putInt("XStart", xStart);
+        nbtCompound.putInt("YStart", yStart);
+        nbtCompound.putInt("ZStart", zStart);
     }
 
     public boolean hasFrame() {
