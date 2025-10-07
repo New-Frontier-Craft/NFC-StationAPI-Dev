@@ -12,10 +12,7 @@ import net.modificationstation.stationapi.api.util.Identifier;
 import net.newfrontiercraft.nfc.compat.bnb.BNBRecipes;
 import net.newfrontiercraft.nfc.compat.vbe.VBERecipes;
 import net.newfrontiercraft.nfc.registry.*;
-import net.newfrontiercraft.nfc.utils.CokeOvenResult;
-import net.newfrontiercraft.nfc.utils.FuelLevelEnum;
-import net.newfrontiercraft.nfc.utils.ItemMeta;
-import net.newfrontiercraft.nfc.utils.RecipeRemover;
+import net.newfrontiercraft.nfc.utils.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -368,6 +365,25 @@ public class RecipeListener {
                 }
             };
             MultiBlockRecipeRegistry.INSTANCE.addMultiblockRecipe("multiblock.nfc.coke_oven", cokeOvenDescription, cokeOvenMultiBlockLayers, cokeOvenMultiBlockPatterns);
+
+            TreeFarmPlantingRegistry.getInstance().addRecipe(new ItemMeta(Block.SAPLING.asItem(), 0), new PlantingRequirement(new BlockAndMetaRange[]{
+                    new BlockAndMetaRange(Block.GRASS_BLOCK, new int[] {0}),
+                    new BlockAndMetaRange(Block.DIRT, new int[] {0}),
+                    new BlockAndMetaRange(Block.FARMLAND, new int[] {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}),
+                    new BlockAndMetaRange(BlockListener.planter, new int[] {1, 2})},
+                    Block.SAPLING, 0)
+            );
+            if (isVbePresent) {
+                VBERecipes.addTreeFarmingRecipes();
+            } else {
+                TreeFarmHarvestingRegistry.getInstance().addRecipe(new ItemMeta(Block.LOG.asItem(), 0), new ChanceDrop[]{
+                        new ChanceDrop(new ItemMeta(Block.LOG.asItem(), 0), 1.0F)
+                });
+                TreeFarmHarvestingRegistry.getInstance().addRecipe(new ItemMeta(Block.LEAVES.asItem(), 0), new ChanceDrop[]{
+                        new ChanceDrop(new ItemMeta(Block.SAPLING.asItem(), 0), 0.25F),
+                        new ChanceDrop(new ItemMeta(Item.APPLE, 0), 0.001F),
+                });
+            }
         }
         if (type == RecipeRegisterEvent.Vanilla.SMELTING.type()) {
             // Fuel levels
@@ -541,7 +557,7 @@ public class RecipeListener {
 
         // Wood carpentry
         if (isVbePresent) {
-            VBERecipes.addVbeRecipes(event);
+            VBERecipes.addCarpentryRecipes(event);
         } else {
             CarpentryRecipes.carpentry().addCarpentry(BlockRegistry.INSTANCE.getId(Block.LOG), 0, 2, new ItemStack[] {
                     new ItemStack(BlockListener.decorativeWood, 1, 0),

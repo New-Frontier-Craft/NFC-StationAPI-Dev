@@ -1,5 +1,6 @@
 package net.newfrontiercraft.nfc.block.entity;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventory;
@@ -8,6 +9,11 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtList;
 import net.newfrontiercraft.nfc.block.TreeFarmBlock;
 import net.newfrontiercraft.nfc.events.init.BlockListener;
+import net.newfrontiercraft.nfc.registry.TreeFarmHarvestingRegistry;
+import net.newfrontiercraft.nfc.utils.ChanceDrop;
+import net.newfrontiercraft.nfc.utils.ItemMeta;
+
+import java.util.Random;
 
 public class TreeFarmBlockEntity extends BlockEntity implements Inventory {
 
@@ -20,6 +26,7 @@ public class TreeFarmBlockEntity extends BlockEntity implements Inventory {
     private static final int OUTPUT_END = 14;
 
     private ItemStack[] treeFarmItemStacks;
+    private final Random random = new Random();
     public int craftingProgress;
     private int torque;
     private int checkTimer;
@@ -66,7 +73,53 @@ public class TreeFarmBlockEntity extends BlockEntity implements Inventory {
     }
 
     private void performTreeFarmLogic() {
+        /// Harvesting logic
+        for (int xOffset = 0; xOffset < xSize; xOffset++) {
+            for (int yOffset = 0; yOffset < ySize; yOffset++) {
+                for (int zOffset = 0; zOffset < zSize; zOffset++) {
+                    int combinedX = xStart + xOffset;
+                    int combinedY = yStart + yOffset;
+                    int combinedZ = zStart + zOffset;
+                    int blockId = world.getBlockId(combinedX, combinedY, combinedZ);
+                    if (blockId == 0) {
+                        continue;
+                    }
+                    Block block = Block.BLOCKS[blockId];
+                    if (block == null) {
+                        continue;
+                    }
+                    ChanceDrop[] chanceDrops = TreeFarmHarvestingRegistry.getInstance().getResult(new ItemMeta(block.asItem(), world.getBlockMeta(combinedX, combinedY, combinedZ)));
+                    if (chanceDrops == null) {
+                        continue;
+                    }
+                    for (ChanceDrop chanceDrop : chanceDrops) {
+                        if (random.nextFloat() > chanceDrop.chance()) {
+                            continue;
+                        }
+                        insertItem(chanceDrop.drop());
+                    }
+                    world.setBlock(combinedX, combinedY, combinedZ, 0);
+                }
+            }
+        }
+        /// Replanting logic
+        for (int xOffset = 0; xOffset < xSize; xOffset++) {
+            for (int zOffset = 0; zOffset < zSize; zOffset++) {
+                // TODO: Replanting logic
+            }
+        }
+    }
 
+    private void insertItem(ItemMeta itemMeta) {
+        for (int i = OUTPUT_START; i <= OUTPUT_END; i++) {
+            if (treeFarmItemStacks[i] == null) {
+                treeFarmItemStacks[i] = new ItemStack(itemMeta.item(), 1, itemMeta.meta());
+                break;
+            } else if (treeFarmItemStacks[i].itemId == itemMeta.item().id && treeFarmItemStacks[i].getDamage() == itemMeta.meta() && treeFarmItemStacks[i].count < treeFarmItemStacks[i].getMaxCount()) {
+                treeFarmItemStacks[i].count++;
+                break;
+            }
+        }
     }
 
     private boolean checkMultiBlockStructure() {
