@@ -6,7 +6,6 @@ import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtList;
-import net.newfrontiercraft.nfc.block.AutomaticCraftingTableBlock;
 import net.newfrontiercraft.nfc.block.TreeFarmBlock;
 import net.newfrontiercraft.nfc.events.init.BlockListener;
 

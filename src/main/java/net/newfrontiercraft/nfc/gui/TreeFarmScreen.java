@@ -10,9 +10,9 @@ public class TreeFarmScreen extends HandledScreen {
 
     private final TreeFarmBlockEntity automaticCraftingTableBlockEntity;
 
-    public TreeFarmScreen(PlayerInventory playerInventory, TreeFarmBlockEntity automaticCraftingTableBlockEntity) {
-        super(new TreeFarmScreenHandler(playerInventory, automaticCraftingTableBlockEntity));
-        this.automaticCraftingTableBlockEntity = automaticCraftingTableBlockEntity;
+    public TreeFarmScreen(PlayerInventory playerInventory, TreeFarmBlockEntity treeFarmBlockEntity) {
+        super(new TreeFarmScreenHandler(playerInventory, treeFarmBlockEntity));
+        this.automaticCraftingTableBlockEntity = treeFarmBlockEntity;
         backgroundHeight = 166;
     }
 
