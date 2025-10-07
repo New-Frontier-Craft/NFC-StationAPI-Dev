@@ -24,6 +24,9 @@ public class TreeFarmBlockEntity extends BlockEntity implements Inventory {
     private int torque;
     private int checkTimer;
     public boolean isMultiBlock;
+    private int xSize;
+    private int ySize;
+    private int zSize;
 
     public TreeFarmBlockEntity() {
         // First slots 0 to 8 are inputs, 9 is output
@@ -254,6 +257,9 @@ public class TreeFarmBlockEntity extends BlockEntity implements Inventory {
         isMultiBlock = nbtCompound.getBoolean("IsMultiBlock");
         checkTimer = nbtCompound.getInt("CheckTimer");
         torque = nbtCompound.getInt("Torque");
+        xSize = nbtCompound.getInt("XSize");
+        ySize = nbtCompound.getInt("YSize");
+        zSize = nbtCompound.getInt("ZSize");
     }
 
     @Override
@@ -274,6 +280,13 @@ public class TreeFarmBlockEntity extends BlockEntity implements Inventory {
         nbtCompound.putBoolean("IsMultiBlock", isMultiBlock);
         nbtCompound.putInt("CheckTimer", checkTimer);
         nbtCompound.putInt("Torque", torque);
+        nbtCompound.putInt("XSize", xSize);
+        nbtCompound.putInt("YSize", ySize);
+        nbtCompound.putInt("ZSize", zSize);
+    }
+
+    public boolean hasFrame() {
+        return xSize > 0 && ySize > 0 && zSize > 0;
     }
 
     public int getScaledCraftingProgress(int scale) {

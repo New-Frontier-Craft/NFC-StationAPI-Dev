@@ -8,19 +8,22 @@ import org.lwjgl.opengl.GL11;
 
 public class TreeFarmScreen extends HandledScreen {
 
-    private final TreeFarmBlockEntity automaticCraftingTableBlockEntity;
+    private final TreeFarmBlockEntity treeFarmBlockEntity;
 
     public TreeFarmScreen(PlayerInventory playerInventory, TreeFarmBlockEntity treeFarmBlockEntity) {
         super(new TreeFarmScreenHandler(playerInventory, treeFarmBlockEntity));
-        this.automaticCraftingTableBlockEntity = treeFarmBlockEntity;
+        this.treeFarmBlockEntity = treeFarmBlockEntity;
         backgroundHeight = 166;
     }
 
     protected void drawForeground() {
-        if (automaticCraftingTableBlockEntity.isMultiBlock) {
+        if (treeFarmBlockEntity.isMultiBlock) {
             this.textRenderer.draw("Multi Block Mode", 68, (backgroundHeight - 96) + 2, 0x006600);
         }
-        this.textRenderer.draw("Tree Farm", 40, 6, 0x404040);
+        if (!treeFarmBlockEntity.hasFrame()) {
+            this.textRenderer.draw("Missing Frame!", 68, 6, 0x660000);
+        }
+        this.textRenderer.draw("Tree Farm", 10, 6, 0x404040);
         this.textRenderer.draw("Inventory", 8, (backgroundHeight - 96) + 2, 0x404040);
     }
 
@@ -31,7 +34,7 @@ public class TreeFarmScreen extends HandledScreen {
         int j = (width - backgroundWidth) / 2;
         int k = (height - backgroundHeight) / 2;
         this.drawTexture(j, k, 0, 0, backgroundWidth, backgroundHeight);
-        int i1 = automaticCraftingTableBlockEntity.getScaledCraftingProgress(24);
+        int i1 = treeFarmBlockEntity.getScaledCraftingProgress(24);
         this.drawTexture(j + 79, k + 34, 176, 14, i1 + 1, 16);
     }
 }
