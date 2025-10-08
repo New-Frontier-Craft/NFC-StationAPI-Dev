@@ -179,17 +179,17 @@ public class CombustionHeaterBlockEntity extends BlockEntity implements Inventor
         if(i == Item.STICK.id) {
             return 50;
         }
-        if(i == Block.SAPLING.id) {
+        if(i == Block.SAPLING.asItem().id) {
             return 50;
         }
         if(i < 256 && Block.BLOCKS[i].material == Material.WOOD) {
             return 100;
         }
 
-        if(i == BlockListener.scaffoldBlock.id) {
+        if(i == BlockListener.scaffoldBlock.asItem().id) {
             return 100;
         }
-        if(i == BlockListener.fieryMushroom.id) {
+        if(i == BlockListener.fieryMushroom.asItem().id) {
             return 200;
         }
 

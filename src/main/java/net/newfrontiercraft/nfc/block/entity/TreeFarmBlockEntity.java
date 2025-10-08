@@ -8,7 +8,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtList;
-import net.modificationstation.stationapi.api.block.StationBlock;
 import net.newfrontiercraft.nfc.block.TreeFarmBlock;
 import net.newfrontiercraft.nfc.events.init.BlockListener;
 import net.newfrontiercraft.nfc.registry.TreeFarmHarvestingRegistry;
