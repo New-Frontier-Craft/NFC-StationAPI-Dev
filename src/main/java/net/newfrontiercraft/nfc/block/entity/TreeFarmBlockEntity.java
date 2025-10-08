@@ -4,9 +4,11 @@ import net.minecraft.block.Block;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventory;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtList;
+import net.modificationstation.stationapi.api.block.StationBlock;
 import net.newfrontiercraft.nfc.block.TreeFarmBlock;
 import net.newfrontiercraft.nfc.events.init.BlockListener;
 import net.newfrontiercraft.nfc.registry.TreeFarmHarvestingRegistry;
@@ -109,6 +111,48 @@ public class TreeFarmBlockEntity extends BlockEntity implements Inventory {
         plantPlant();
         /// Fertilize
         // TODO: Add fertilizing logic
+        fertilizePlant();
+    }
+
+    private void fertilizePlant() {
+        // Check if there is fertilizer
+        boolean foundFertilizer = false;
+        int fertilizerIndex = FERTILIZER_START;
+        for (; fertilizerIndex <= FERTILIZER_END; fertilizerIndex++) {
+            if (treeFarmItemStacks[fertilizerIndex] != null) {
+                foundFertilizer = true;
+                break;
+            }
+        }
+        if (!foundFertilizer) {
+            return;
+        }
+        if (treeFarmItemStacks[fertilizerIndex].getItem() != Item.DYE && treeFarmItemStacks[fertilizerIndex].getDamage() != 15) {
+            return;
+        }
+        // Find block to fertilize
+        for (int xOffset = 0; xOffset < xSize; xOffset++) {
+            for (int zOffset = 0; zOffset < zSize; zOffset++) {
+                int combinedX = xStart + xOffset;
+                int combinedZ = zStart + zOffset;
+                int blockId = world.getBlockId(combinedX, yStart, combinedZ);
+                if (blockId == 0) {
+                    continue;
+                }
+                Block block = Block.BLOCKS[blockId];
+                if (block == null) {
+                    continue;
+                }
+                if (!block.onBonemealUse(world, combinedX, yStart, combinedZ, block.getDefaultState())) {
+                    continue;
+                }
+                treeFarmItemStacks[fertilizerIndex].count--;
+                if (treeFarmItemStacks[fertilizerIndex].count == 0) {
+                    treeFarmItemStacks[fertilizerIndex] = null;
+                    return;
+                }
+            }
+        }
     }
 
     private void plantPlant() {
@@ -163,6 +207,7 @@ public class TreeFarmBlockEntity extends BlockEntity implements Inventory {
                     treeFarmItemStacks[plantIndex].count--;
                     if (treeFarmItemStacks[plantIndex].count == 0) {
                         treeFarmItemStacks[plantIndex] = null;
+                        return;
                     }
                     break;
                 }
