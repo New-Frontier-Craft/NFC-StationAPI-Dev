@@ -366,7 +366,9 @@ public class RecipeListener {
             };
             MultiBlockRecipeRegistry.INSTANCE.addMultiblockRecipe("multiblock.nfc.coke_oven", cokeOvenDescription, cokeOvenMultiBlockLayers, cokeOvenMultiBlockPatterns);
 
+            // Tree farm planting
             TreeFarmPlantingRegistry.getInstance().addRecipe(new ItemMeta(Block.SAPLING.asItem(), 0), new PlantingRequirement(new BlockAndMetaRange[]{
+                    new BlockAndMetaRange(Block.SOUL_SAND, new int[] {0}),
                     new BlockAndMetaRange(Block.GRASS_BLOCK, new int[] {0}),
                     new BlockAndMetaRange(Block.DIRT, new int[] {0}),
                     new BlockAndMetaRange(Block.FARMLAND, new int[] {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}),
@@ -387,6 +389,15 @@ public class RecipeListener {
                     new BlockAndMetaRange(BlockListener.planter, new int[] {1, 2})},
                     Block.SAPLING, 2)
             );
+            TreeFarmPlantingRegistry.getInstance().addRecipe(new ItemMeta(BlockListener.alphaSaplingBlock.asItem(), 0), new PlantingRequirement(new BlockAndMetaRange[]{
+                    new BlockAndMetaRange(Block.GRASS_BLOCK, new int[] {0}),
+                    new BlockAndMetaRange(Block.DIRT, new int[] {0}),
+                    new BlockAndMetaRange(Block.FARMLAND, new int[] {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}),
+                    new BlockAndMetaRange(BlockListener.planter, new int[] {1, 2})},
+                    BlockListener.alphaSaplingBlock, 0)
+            );
+
+            // Tree farm harvesting
             if (isVbePresent) {
                 VBERecipes.addTreeFarmingRecipes();
             } else {
@@ -399,17 +410,31 @@ public class RecipeListener {
                 TreeFarmHarvestingRegistry.getInstance().addRecipe(new ItemMeta(Block.LOG.asItem(), 2), new ChanceDrop[]{
                         new ChanceDrop(new ItemMeta(Block.LOG.asItem(), 2), 1.0F)
                 });
-                TreeFarmHarvestingRegistry.getInstance().addRecipe(new ItemMeta(Block.LEAVES.asItem(), 0), new ChanceDrop[]{
+                for (int i = 0; i <= 8; i+=8) {
+                    TreeFarmHarvestingRegistry.getInstance().addRecipe(new ItemMeta(Block.LEAVES.asItem(), i), new ChanceDrop[]{
+                            new ChanceDrop(new ItemMeta(Block.SAPLING.asItem(), 0), 0.25F),
+                            new ChanceDrop(new ItemMeta(Item.APPLE, 0), 0.001F),
+                    });
+                    TreeFarmHarvestingRegistry.getInstance().addRecipe(new ItemMeta(Block.LEAVES.asItem(), i + 1), new ChanceDrop[]{
+                            new ChanceDrop(new ItemMeta(Block.SAPLING.asItem(), 1), 0.25F)
+                    });
+                    TreeFarmHarvestingRegistry.getInstance().addRecipe(new ItemMeta(Block.LEAVES.asItem(), i + 2), new ChanceDrop[]{
+                            new ChanceDrop(new ItemMeta(Block.SAPLING.asItem(), 2), 0.25F)
+                    });
+                }
+            }
+            for (int i = 0; i <= 8; i+=8) {
+                TreeFarmHarvestingRegistry.getInstance().addRecipe(new ItemMeta(BlockListener.alphaLeaves.asItem(), i), new ChanceDrop[]{
                         new ChanceDrop(new ItemMeta(Block.SAPLING.asItem(), 0), 0.25F),
-                        new ChanceDrop(new ItemMeta(Item.APPLE, 0), 0.001F),
+                        new ChanceDrop(new ItemMeta(BlockListener.alphaSaplingBlock.asItem(), 0), 0.25F)
                 });
-                TreeFarmHarvestingRegistry.getInstance().addRecipe(new ItemMeta(Block.LEAVES.asItem(), 1), new ChanceDrop[]{
-                        new ChanceDrop(new ItemMeta(Block.SAPLING.asItem(), 1), 0.25F)
-                });
-                TreeFarmHarvestingRegistry.getInstance().addRecipe(new ItemMeta(Block.LEAVES.asItem(), 2), new ChanceDrop[]{
-                        new ChanceDrop(new ItemMeta(Block.SAPLING.asItem(), 2), 0.25F)
+                TreeFarmHarvestingRegistry.getInstance().addRecipe(new ItemMeta(BlockListener.petrifiedLeaves.asItem(), i + 2), new ChanceDrop[]{
+                        new ChanceDrop(new ItemMeta(Block.DEAD_BUSH.asItem(), 2), 0.1F)
                 });
             }
+            TreeFarmHarvestingRegistry.getInstance().addRecipe(new ItemMeta(BlockListener.petrifiedLog.asItem(), 0), new ChanceDrop[]{
+                    new ChanceDrop(new ItemMeta(BlockListener.petrifiedLog.asItem(), 0), 1.0F)
+            });
         }
         if (type == RecipeRegisterEvent.Vanilla.SMELTING.type()) {
             // Fuel levels
