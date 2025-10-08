@@ -10,8 +10,11 @@ import net.minecraft.nbt.NbtList;
 import net.newfrontiercraft.nfc.block.TreeFarmBlock;
 import net.newfrontiercraft.nfc.events.init.BlockListener;
 import net.newfrontiercraft.nfc.registry.TreeFarmHarvestingRegistry;
+import net.newfrontiercraft.nfc.registry.TreeFarmPlantingRegistry;
+import net.newfrontiercraft.nfc.utils.BlockAndMetaRange;
 import net.newfrontiercraft.nfc.utils.ChanceDrop;
 import net.newfrontiercraft.nfc.utils.ItemMeta;
+import net.newfrontiercraft.nfc.utils.PlantingRequirement;
 
 import java.util.Random;
 
@@ -102,10 +105,67 @@ public class TreeFarmBlockEntity extends BlockEntity implements Inventory {
                 }
             }
         }
+        /// Replanting
+        plantPlant();
+        /// Fertilize
+        // TODO: Add fertilizing logic
+    }
+
+    private void plantPlant() {
         /// Replanting logic
+        // Check if there is anything to plant
+        boolean foundPlant = false;
+        int plantIndex = SAPLING_START;
+        for (; plantIndex <= SAPLING_END; plantIndex++) {
+            if (treeFarmItemStacks[plantIndex] != null) {
+                foundPlant = true;
+                break;
+            }
+        }
+        if (!foundPlant) {
+            return;
+        }
+        // Verify that it can be planted
+        ItemStack plantItem = treeFarmItemStacks[plantIndex];
+        if (plantItem == null) {
+            return;
+        }
+        PlantingRequirement plantingRequirement = TreeFarmPlantingRegistry.getInstance().getResult(new ItemMeta(plantItem.getItem(), plantItem.getDamage()));
+        if (plantingRequirement == null) {
+            return;
+        }
+        // Attempt to plant
         for (int xOffset = 0; xOffset < xSize; xOffset++) {
             for (int zOffset = 0; zOffset < zSize; zOffset++) {
-                // TODO: Replanting logic
+                int combinedX = xStart + xOffset;
+                int combinedZ = zStart + zOffset;
+                if (world.getBlockId(combinedX, yStart, combinedZ) != 0) {
+                    continue;
+                }
+                int belowBlock = world.getBlockId(combinedX, yStart - 1, combinedZ);
+                int blowMeta = world.getBlockMeta(combinedX, yStart - 1, combinedZ);
+                boolean foundMatch = false;
+                for (int i = 0; i < plantingRequirement.validOptions().length; i++) {
+                    BlockAndMetaRange validOption = plantingRequirement.validOptions()[i];
+                    if (belowBlock != validOption.block().id) {
+                        continue;
+                    }
+                    for (int j = 0; j < validOption.metaValues().length; j++) {
+                        if (blowMeta == validOption.metaValues()[j]) {
+                            foundMatch = true;
+                            break;
+                        }
+                    }
+                    if (!foundMatch) {
+                        continue;
+                    }
+                    world.setBlock(combinedX, yStart, combinedZ, plantingRequirement.placedBlock().id, plantingRequirement.placedBlockMeta());
+                    treeFarmItemStacks[plantIndex].count--;
+                    if (treeFarmItemStacks[plantIndex].count == 0) {
+                        treeFarmItemStacks[plantIndex] = null;
+                    }
+                    break;
+                }
             }
         }
     }
