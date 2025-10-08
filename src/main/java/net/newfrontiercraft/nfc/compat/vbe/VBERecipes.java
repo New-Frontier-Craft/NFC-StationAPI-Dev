@@ -46,9 +46,21 @@ public class VBERecipes {
         TreeFarmHarvestingRegistry.getInstance().addRecipe(new ItemMeta(VBEBlocks.OAK_LOG.asItem(), 0), new ChanceDrop[]{
                 new ChanceDrop(new ItemMeta(VBEBlocks.OAK_LOG.asItem(), 0), 1.0F)
         });
+        TreeFarmHarvestingRegistry.getInstance().addRecipe(new ItemMeta(VBEBlocks.SPRUCE_LOG.asItem(), 1), new ChanceDrop[]{
+                new ChanceDrop(new ItemMeta(VBEBlocks.SPRUCE_LOG.asItem(), 0), 1.0F)
+        });
+        TreeFarmHarvestingRegistry.getInstance().addRecipe(new ItemMeta(VBEBlocks.BIRCH_LOG.asItem(), 2), new ChanceDrop[]{
+                new ChanceDrop(new ItemMeta(VBEBlocks.BIRCH_LOG.asItem(), 0), 1.0F)
+        });
         TreeFarmHarvestingRegistry.getInstance().addRecipe(new ItemMeta(VBEBlocks.OAK_LEAVES.asItem(), 0), new ChanceDrop[]{
                 new ChanceDrop(new ItemMeta(Block.SAPLING.asItem(), 0), 0.25F),
                 new ChanceDrop(new ItemMeta(Item.APPLE, 0), 0.001F),
+        });
+        TreeFarmHarvestingRegistry.getInstance().addRecipe(new ItemMeta(VBEBlocks.SPRUCE_LEAVES.asItem(), 1), new ChanceDrop[]{
+                new ChanceDrop(new ItemMeta(Block.SAPLING.asItem(), 1), 0.25F)
+        });
+        TreeFarmHarvestingRegistry.getInstance().addRecipe(new ItemMeta(VBEBlocks.BIRCH_LEAVES.asItem(), 2), new ChanceDrop[]{
+                new ChanceDrop(new ItemMeta(Block.SAPLING.asItem(), 2), 0.25F)
         });
     }
 

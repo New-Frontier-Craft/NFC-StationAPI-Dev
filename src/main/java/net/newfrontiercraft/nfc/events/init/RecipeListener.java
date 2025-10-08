@@ -373,15 +373,41 @@ public class RecipeListener {
                     new BlockAndMetaRange(BlockListener.planter, new int[] {1, 2})},
                     Block.SAPLING, 0)
             );
+            TreeFarmPlantingRegistry.getInstance().addRecipe(new ItemMeta(Block.SAPLING.asItem(), 1), new PlantingRequirement(new BlockAndMetaRange[]{
+                    new BlockAndMetaRange(Block.GRASS_BLOCK, new int[] {0}),
+                    new BlockAndMetaRange(Block.DIRT, new int[] {0}),
+                    new BlockAndMetaRange(Block.FARMLAND, new int[] {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}),
+                    new BlockAndMetaRange(BlockListener.planter, new int[] {1, 2})},
+                    Block.SAPLING, 1)
+            );
+            TreeFarmPlantingRegistry.getInstance().addRecipe(new ItemMeta(Block.SAPLING.asItem(), 2), new PlantingRequirement(new BlockAndMetaRange[]{
+                    new BlockAndMetaRange(Block.GRASS_BLOCK, new int[] {0}),
+                    new BlockAndMetaRange(Block.DIRT, new int[] {0}),
+                    new BlockAndMetaRange(Block.FARMLAND, new int[] {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}),
+                    new BlockAndMetaRange(BlockListener.planter, new int[] {1, 2})},
+                    Block.SAPLING, 2)
+            );
             if (isVbePresent) {
                 VBERecipes.addTreeFarmingRecipes();
             } else {
                 TreeFarmHarvestingRegistry.getInstance().addRecipe(new ItemMeta(Block.LOG.asItem(), 0), new ChanceDrop[]{
                         new ChanceDrop(new ItemMeta(Block.LOG.asItem(), 0), 1.0F)
                 });
+                TreeFarmHarvestingRegistry.getInstance().addRecipe(new ItemMeta(Block.LOG.asItem(), 1), new ChanceDrop[]{
+                        new ChanceDrop(new ItemMeta(Block.LOG.asItem(), 1), 1.0F)
+                });
+                TreeFarmHarvestingRegistry.getInstance().addRecipe(new ItemMeta(Block.LOG.asItem(), 2), new ChanceDrop[]{
+                        new ChanceDrop(new ItemMeta(Block.LOG.asItem(), 2), 1.0F)
+                });
                 TreeFarmHarvestingRegistry.getInstance().addRecipe(new ItemMeta(Block.LEAVES.asItem(), 0), new ChanceDrop[]{
                         new ChanceDrop(new ItemMeta(Block.SAPLING.asItem(), 0), 0.25F),
                         new ChanceDrop(new ItemMeta(Item.APPLE, 0), 0.001F),
+                });
+                TreeFarmHarvestingRegistry.getInstance().addRecipe(new ItemMeta(Block.LEAVES.asItem(), 1), new ChanceDrop[]{
+                        new ChanceDrop(new ItemMeta(Block.SAPLING.asItem(), 1), 0.25F)
+                });
+                TreeFarmHarvestingRegistry.getInstance().addRecipe(new ItemMeta(Block.LEAVES.asItem(), 2), new ChanceDrop[]{
+                        new ChanceDrop(new ItemMeta(Block.SAPLING.asItem(), 2), 0.25F)
                 });
             }
         }
