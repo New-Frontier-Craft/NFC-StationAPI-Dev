@@ -49,6 +49,7 @@ public class RecipeListener {
             CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.frame, 16, 0), "XYX", "XYX", "XYX", 'X', ItemListener.aluminiumIngot, 'Y', Block.PLANKS);
             CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.plantBus, 1, 0), " W ", "ZXZ", " Y ", 'W', Block.SAPLING, 'X', BlockListener.itemChuteExtender, 'Y', BlockListener.machineFrame, 'Z', ItemListener.aluminiumGear);
             CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.fertilizerBus, 1, 0), " W ", "ZXZ", " Y ", 'W', new ItemStack(Item.DYE, 1, 15), 'X', BlockListener.itemChuteExtender, 'Y', BlockListener.machineFrame, 'Z', ItemListener.aluminiumGear);
+            CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.treeFarm, 1), "X#X", "YZY", "Z#Z", 'X', ItemListener.aluminiumAxe, 'Y', ItemListener.redstoneCircuit, 'Z', BlockListener.machineFrame, '#', ItemListener.aluminiumGear);
 
             // Tools
             String[][] toolPatterns = new String[][]
