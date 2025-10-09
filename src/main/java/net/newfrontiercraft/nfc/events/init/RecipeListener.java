@@ -367,6 +367,48 @@ public class RecipeListener {
             };
             MultiBlockRecipeRegistry.INSTANCE.addMultiblockRecipe("multiblock.nfc.coke_oven", cokeOvenDescription, cokeOvenMultiBlockLayers, cokeOvenMultiBlockPatterns);
 
+            // Tree farm multiblock
+            List<String[]> treeFarmMultiblockLayers = List.of(
+                    new String[]{"  xxx", "  xgx", "  xxx", "x---x", ".   .", ".   .", ".   .", "x---x"},
+                    new String[]{"  xyx", "  xxx", "  xxx", "i   i", "     ", "     ", "     ", "i   i"},
+                    new String[]{"  xxx", "  pxf", "  xxx", "i   i", "     ", "     ", "     ", "i   i"},
+                    new String[]{"     ", "     ", "     ", "i   i", "     ", "     ", "     ", "i   i"},
+                    new String[]{"     ", "     ", "     ", "x---x", ".   .", ".   .", ".   .", "x---x"}
+            );
+            List<BlockPatternEntry> treeFarmMultiblockPatterns = List.of(
+                    new BlockPatternEntry('x', BlockListener.machineFrame.getDefaultState(), 0, new ItemStack(BlockListener.machineFrame.asItem())),
+                    new BlockPatternEntry('y', BlockListener.treeFarm.getDefaultState(), 2, new ItemStack(BlockListener.treeFarm.asItem())),
+                    new BlockPatternEntry('g', BlockListener.machineGearBox.getDefaultState(), 0, new ItemStack(BlockListener.machineGearBox.asItem())),
+                    new BlockPatternEntry('p', BlockListener.plantBus.getDefaultState(), 0, new ItemStack(BlockListener.plantBus.asItem())),
+                    new BlockPatternEntry('f', BlockListener.fertilizerBus.getDefaultState(), 0, new ItemStack(BlockListener.fertilizerBus.asItem())),
+                    new BlockPatternEntry('i', BlockListener.frame.getDefaultState(), 0, new ItemStack(BlockListener.frame.asItem())),
+                    new BlockPatternEntry('-', BlockListener.frame.getDefaultState(), 2, new ItemStack(BlockListener.frame.asItem())),
+                    new BlockPatternEntry('.', BlockListener.frame.getDefaultState(), 1, new ItemStack(BlockListener.frame.asItem()))
+
+            );
+            List<Object> treeFarmDescription = new ArrayList<>() {
+                {
+                    this.add("Tree Farm");
+                    this.add("Plants, fertilizes, and harvests trees.");
+                    this.add("Can also farm big mushrooms.");
+                    this.add("Requires a machine gear box for power.");
+                    this.add("Uses buses to distinguish between");
+                    this.add("inputs for plants and fertilizer.");
+                    this.add("Place chutes on top of buses to");
+                    this.add("supply the machine with items.");
+                    this.add("Buses can be placed anywhere on");
+                    this.add("the top and there can be as many");
+                    this.add("as the top can physically fit.");
+                    this.add("Place chute on the bottom for extraction.");
+                    this.add("Frame must be started in the back either");
+                    this.add("on the left or right bottom corner.");
+                    this.add("Frame size can be up to 32 in");
+                    this.add("each direction. Soil is placed on");
+                    this.add("the layer below the bottom frame.");
+                }
+            };
+            MultiBlockRecipeRegistry.INSTANCE.addMultiblockRecipe("multiblock.nfc.tree_farm", treeFarmDescription, treeFarmMultiblockLayers, treeFarmMultiblockPatterns);
+
             /// Tree farm planting
             // Trees
             TreeFarmPlantingRegistry.getInstance().addRecipe(new ItemMeta(Block.SAPLING.asItem(), 0), new PlantingRequirement(new BlockAndMetaRange[]{
