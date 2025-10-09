@@ -366,7 +366,8 @@ public class RecipeListener {
             };
             MultiBlockRecipeRegistry.INSTANCE.addMultiblockRecipe("multiblock.nfc.coke_oven", cokeOvenDescription, cokeOvenMultiBlockLayers, cokeOvenMultiBlockPatterns);
 
-            // Tree farm planting
+            /// Tree farm planting
+            // Trees
             TreeFarmPlantingRegistry.getInstance().addRecipe(new ItemMeta(Block.SAPLING.asItem(), 0), new PlantingRequirement(new BlockAndMetaRange[]{
                     new BlockAndMetaRange(Block.SOUL_SAND, new int[] {0}),
                     new BlockAndMetaRange(Block.GRASS_BLOCK, new int[] {0}),
@@ -396,8 +397,29 @@ public class RecipeListener {
                     new BlockAndMetaRange(BlockListener.planter, new int[] {1, 2})},
                     BlockListener.alphaSaplingBlock, 0)
             );
+            // Mushrooms
+            TreeFarmPlantingRegistry.getInstance().addRecipe(new ItemMeta(BlockListener.fieryMushroom.asItem(), 0), new PlantingRequirement(new BlockAndMetaRange[]{
+                    new BlockAndMetaRange(BlockListener.scorchedSand, new int[] {0})},
+                    BlockListener.fieryMushroom, 0)
+            );
+            TreeFarmPlantingRegistry.getInstance().addRecipe(new ItemMeta(BlockListener.glowingMushroom.asItem(), 0), new PlantingRequirement(new BlockAndMetaRange[]{
+                    new BlockAndMetaRange(Block.NETHERRACK, new int[] {0})},
+                    BlockListener.glowingMushroom, 0)
+            );
+            TreeFarmPlantingRegistry.getInstance().addRecipe(new ItemMeta(BlockListener.bioluminescentMushroom.asItem(), 0), new PlantingRequirement(new BlockAndMetaRange[]{
+                    new BlockAndMetaRange(Block.GRASS_BLOCK, new int[] {0}),
+                    new BlockAndMetaRange(Block.DIRT, new int[] {0}),
+                    new BlockAndMetaRange(Block.FARMLAND, new int[] {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}),
+                    new BlockAndMetaRange(BlockListener.planter, new int[] {1, 2})},
+                    BlockListener.bioluminescentMushroom, 0)
+            );
+            TreeFarmPlantingRegistry.getInstance().addRecipe(new ItemMeta(BlockListener.bioluminescentMushroom.asItem(), 1), new PlantingRequirement(new BlockAndMetaRange[]{
+                    new BlockAndMetaRange(Block.NETHERRACK, new int[] {0})},
+                    BlockListener.bioluminescentMushroom, 1)
+            );
 
-            // Tree farm harvesting
+            /// Tree farm harvesting
+            // Trees
             if (isVbePresent) {
                 VBERecipes.addTreeFarmingRecipes();
             } else {
@@ -434,6 +456,34 @@ public class RecipeListener {
             }
             TreeFarmHarvestingRegistry.getInstance().addRecipe(new ItemMeta(BlockListener.petrifiedLog.asItem(), 0), new ChanceDrop[]{
                     new ChanceDrop(new ItemMeta(BlockListener.petrifiedLog.asItem(), 0), 1.0F)
+            });
+            // Mushrooms
+            TreeFarmHarvestingRegistry.getInstance().addRecipe(new ItemMeta(BlockListener.fieryMushroomCap.asItem(), 0), new ChanceDrop[]{
+                    new ChanceDrop(new ItemMeta(BlockListener.fieryMushroom.asItem(), 0), 1.0F)
+            });
+            TreeFarmHarvestingRegistry.getInstance().addRecipe(new ItemMeta(BlockListener.fieryMushroomStem.asItem(), 0), new ChanceDrop[]{
+                    new ChanceDrop(new ItemMeta(BlockListener.fieryMushroom.asItem(), 0), 1.0F)
+            });
+            TreeFarmHarvestingRegistry.getInstance().addRecipe(new ItemMeta(BlockListener.glowingMushroomCap.asItem(), 0), new ChanceDrop[]{
+                    new ChanceDrop(new ItemMeta(BlockListener.glowingMushroom.asItem(), 0), 1.0F)
+            });
+            TreeFarmHarvestingRegistry.getInstance().addRecipe(new ItemMeta(BlockListener.glowingMushroomStem.asItem(), 0), new ChanceDrop[]{
+                    new ChanceDrop(new ItemMeta(BlockListener.glowingMushroom.asItem(), 0), 1.0F)
+            });
+            TreeFarmHarvestingRegistry.getInstance().addRecipe(new ItemMeta(BlockListener.blueMushroomCap.asItem(), 0), new ChanceDrop[]{
+                    new ChanceDrop(new ItemMeta(BlockListener.bioluminescentMushroom.asItem(), 0), 1.0F)
+            });
+            TreeFarmHarvestingRegistry.getInstance().addRecipe(new ItemMeta(BlockListener.blueMushroomStem.asItem(), 0), new ChanceDrop[]{
+                    new ChanceDrop(new ItemMeta(BlockListener.bioluminescentMushroom.asItem(), 0), 1.0F)
+            });
+            TreeFarmHarvestingRegistry.getInstance().addRecipe(new ItemMeta(BlockListener.blueShroomlight.asItem(), 0), new ChanceDrop[]{
+                    new ChanceDrop(new ItemMeta(BlockListener.blueShroomlight.asItem(), 0), 1.0F)
+            });
+            TreeFarmHarvestingRegistry.getInstance().addRecipe(new ItemMeta(BlockListener.purpleMushroomCap.asItem(), 0), new ChanceDrop[]{
+                    new ChanceDrop(new ItemMeta(BlockListener.bioluminescentMushroom.asItem(), 1), 1.0F)
+            });
+            TreeFarmHarvestingRegistry.getInstance().addRecipe(new ItemMeta(BlockListener.purpleMushroomStem.asItem(), 0), new ChanceDrop[]{
+                    new ChanceDrop(new ItemMeta(BlockListener.bioluminescentMushroom.asItem(), 1), 1.0F)
             });
         }
         if (type == RecipeRegisterEvent.Vanilla.SMELTING.type()) {

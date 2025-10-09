@@ -10,7 +10,7 @@ import java.util.Random;
 public class BlueMushroomFeature extends Feature {
     @Override
     public boolean generate(World world, Random random, int x, int y, int z) {
-        if (world.getBlockId(x, y - 1, z) != Block.GRASS_BLOCK.id) {
+        if (world.getBlockId(x, y - 1, z) != Block.GRASS_BLOCK.id && world.getBlockId(x, y - 1, z) != Block.DIRT.id) {
             return false;
         }
         if (world.getBlockId(x, y, z) != 0) {

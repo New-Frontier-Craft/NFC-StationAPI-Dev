@@ -79,6 +79,11 @@ public class FieryMushroomBlock extends LazyMushroomTemplate {
             return false;
         }
         int belowId = world.getBlockId(x, y - 1, z);
-        return belowId == BlockListener.scorchedSand.id;
+        return belowId == BlockListener.scorchedSand.id || belowId == Block.OBSIDIAN.id;
+    }
+
+    @Override
+    protected boolean canPlantOnTop(int id) {
+        return id == BlockListener.scorchedSand.id || id == Block.OBSIDIAN.id;
     }
 }
