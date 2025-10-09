@@ -19,6 +19,49 @@ public class BrickOvenManager {
     public BrickOvenManager() {
         recipes = new ArrayList();
 
+        // Bonemeal
+        addShapelessOvenRecipe(new ItemStack(Item.DYE, 1, 15), new Object[] {
+                new ItemStack(BlockListener.bioluminescentMushroom, 1),
+                new ItemStack(BlockListener.glowingMushroom, 1)}, 400, FuelLevelEnum.COLD);
+        addShapelessOvenRecipe(new ItemStack(Item.DYE, 4, 15), new Object[] {
+                new ItemStack(BlockListener.blueShroomlight, 1),
+                new ItemStack(BlockListener.glowingMushroom, 1)}, 400, FuelLevelEnum.COLD);
+
+        // Blue glowstone dust
+        addShapelessOvenRecipe(new ItemStack(ItemListener.blueGlowstoneDust, 2), new Object[] {
+                new ItemStack(BlockListener.bioluminescentMushroom, 1),
+                new ItemStack(BlockListener.bioluminescentMushroom, 1),
+                new ItemStack(BlockListener.bioluminescentMushroom, 1),
+                new ItemStack(BlockListener.bioluminescentMushroom, 1),
+                new ItemStack(ItemListener.blueGlowstoneDust, 1),
+                new ItemStack(Item.GLOWSTONE_DUST, 1)}, 400, FuelLevelEnum.COLD);
+
+        // Glowstone dust
+        addShapelessOvenRecipe(new ItemStack(Item.GLOWSTONE_DUST, 5), new Object[] {
+                new ItemStack(Block.GLOWSTONE, 1, 1),
+                new ItemStack(Item.GUNPOWDER, 1, 1),
+                new ItemStack(BlockListener.glowingMushroom, 1, 1),
+                new ItemStack(BlockListener.glowingMushroom, 1, 1),
+                new ItemStack(BlockListener.glowingMushroom, 1, 1),
+                new ItemStack(BlockListener.glowingMushroom, 1)}, 1600, FuelLevelEnum.SEARING);
+
+        // Coal enrichment
+        addShapelessOvenRecipe(new ItemStack(ItemListener.netherAsh, 2), new Object[] {
+                new ItemStack(Item.COAL, 1, 1),
+                new ItemStack(Item.COAL, 1, 1),
+                new ItemStack(ItemListener.netherAsh, 1),
+                new ItemStack(BlockListener.petrifiedLog, 1)}, 400, FuelLevelEnum.WARM);
+        addShapelessOvenRecipe(new ItemStack(Item.COAL, 1), new Object[] {
+                new ItemStack(ItemListener.netherAsh, 1),
+                new ItemStack(ItemListener.netherAsh, 1),
+                new ItemStack(Item.COAL, 1),
+                new ItemStack(BlockListener.bioluminescentMushroom, 1, 1)}, 800, FuelLevelEnum.HOT);
+        addShapelessOvenRecipe(new ItemStack(ItemListener.rawAnthracite, 2), new Object[] {
+                new ItemStack(ItemListener.coalCoke, 1, 1),
+                new ItemStack(ItemListener.coalCoke, 1, 1),
+                new ItemStack(ItemListener.rawAnthracite, 1, 1),
+                new ItemStack(ItemListener.blueGlowstoneDust, 1)}, 1600, FuelLevelEnum.SEARING);
+
         //Metal Alloys
         addShapelessOvenRecipe(new ItemStack(ItemListener.brassIngot, 6), new Object[] {
                 new ItemStack(ItemListener.copperIngot, 1),
