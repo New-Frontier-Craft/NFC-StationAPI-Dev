@@ -20,7 +20,6 @@
   "accessWidener": "nfc.accesswidener",
   "entrypoints": {
     "stationapi:event_bus": [
-      "net.newfrontiercraft.nfc.events.init.ConfigListener",
       "net.newfrontiercraft.nfc.events.init.EntityListener",
       "net.newfrontiercraft.nfc.events.init.BlockListener",
       "net.newfrontiercraft.nfc.events.init.ItemListener",

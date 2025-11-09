@@ -41,6 +41,7 @@ public class TreeFarmBlockEntity extends BlockEntity implements Inventory {
     private int xStart;
     private int yStart;
     private int zStart;
+    private boolean hasFrame;
 
     public TreeFarmBlockEntity() {
         // First slots 0 to 8 are inputs, 9 is output
@@ -109,7 +110,6 @@ public class TreeFarmBlockEntity extends BlockEntity implements Inventory {
         /// Replanting
         plantPlant();
         /// Fertilize
-        // TODO: Add fertilizing logic
         fertilizePlant();
     }
 
@@ -227,6 +227,7 @@ public class TreeFarmBlockEntity extends BlockEntity implements Inventory {
     }
 
     private boolean checkMultiBlockStructure() {
+        hasFrame = xSize > 0 && ySize > 0 && zSize > 0;
         /// Calculate central coordinates
         int meta = world.getBlockMeta(x, y, z) % 6;
         int xCentered = x;
@@ -337,7 +338,10 @@ public class TreeFarmBlockEntity extends BlockEntity implements Inventory {
                     measureFrame(x + rightFrameX, y - 1, z + rightFrameZ, -1, 1);
                     break;
             }
+        } else {
+            resetFrame();
         }
+        hasFrame = xSize > 0 && ySize > 0 && zSize > 0;
         /// Automatic input
         for (int zOffset = 1; zOffset >= -1; zOffset--) {
             for (int xOffset = 1; xOffset >= -1; xOffset--) {
@@ -415,11 +419,13 @@ public class TreeFarmBlockEntity extends BlockEntity implements Inventory {
         // Measure x length
         int xLength = measureXLine(localX, localY, localZ, xDirection);
         if (xLength == 0) {
+            resetFrame();
             return;
         }
         // Measure z length
         int zLength = measureZLine(localX, localY, localZ, zDirection);
         if (zLength == 0) {
+            resetFrame();
             return;
         }
         /// Verify parallel lines on ground
@@ -427,42 +433,52 @@ public class TreeFarmBlockEntity extends BlockEntity implements Inventory {
         int movedZ = localZ + (zLength - 1) * zDirection;
         // Verify second x length
         if (xLength != measureXLine(localX, localY, movedZ, xDirection)) {
+            resetFrame();
             return;
         }
         // Verify second z length
         if (zLength != measureZLine(movedX, localY, localZ, zDirection)) {
+            resetFrame();
             return;
         }
         /// Measure and verify all vertical lines
         // Measure y length
         int yLength = measureYLine(localX, localY, localZ);
         if (yLength == 0) {
+            resetFrame();
             return;
         }
         // Verify other 3 vertical lines
         if (yLength != measureYLine(movedX, localY, localZ)) {
+            resetFrame();
             return;
         }
         if (yLength != measureYLine(localX, localY, movedZ)) {
+            resetFrame();
             return;
         }
         if (yLength != measureYLine(movedX, localY, movedZ)) {
+            resetFrame();
             return;
         }
         /// Verify upper layer
         int movedY = localY + yLength - 1;
         // Verify upper x lines
         if (xLength != measureXLine(localX, movedY, localZ, xDirection)) {
+            resetFrame();
             return;
         }
         if (xLength != measureXLine(localX, movedY, movedZ, xDirection)) {
+            resetFrame();
             return;
         }
         // Verify upper z lines
         if (zLength != measureZLine(localX, movedY, localZ, zDirection)) {
+            resetFrame();
             return;
         }
         if (zLength != measureZLine(movedX, movedY, localZ, zDirection)) {
+            resetFrame();
             return;
         }
         /// Update machine values to new measurements
@@ -482,10 +498,10 @@ public class TreeFarmBlockEntity extends BlockEntity implements Inventory {
             xStart = localX;
             zStart = movedZ;
         } else if (xDirection == -1 && zDirection == -1) {
-        xStart = movedX;
-        zStart = movedZ;
+            xStart = movedX;
+            zStart = movedZ;
+        }
     }
-}
 
     private int measureXLine(int localX, int localY, int localZ, int xDirection) {
         if (xDirection == 1) {
@@ -667,7 +683,18 @@ public class TreeFarmBlockEntity extends BlockEntity implements Inventory {
     }
 
     public boolean hasFrame() {
-        return xSize > 0 && ySize > 0 && zSize > 0;
+        return hasFrame;
+    }
+
+    public void setHasFrame(boolean hasFrame) {
+        this.hasFrame = hasFrame;
+    }
+
+    private void resetFrame() {
+        xSize = 0;
+        ySize = 0;
+        zSize = 0;
+        hasFrame = false;
     }
 
     public int getScaledCraftingProgress(int scale) {

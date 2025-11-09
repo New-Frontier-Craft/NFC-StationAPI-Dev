@@ -13,10 +13,13 @@ public class TreeFarmScreenHandler extends ScreenHandler {
 
     private final TreeFarmBlockEntity treeFarm;
     private int cookTime;
+    private boolean isMultiblock;
+    private boolean hasFrame;
 
     public TreeFarmScreenHandler(PlayerInventory playerInventory, TreeFarmBlockEntity treeFarmBlockEntity) {
         cookTime = 0;
         treeFarm = treeFarmBlockEntity;
+        hasFrame = false;
         // Sapling slots
         for (int yIndex = 0; yIndex < 3; yIndex++) {
             addSlot(new Slot(treeFarmBlockEntity, yIndex, 8, 16 + yIndex * 18));
@@ -51,16 +54,30 @@ public class TreeFarmScreenHandler extends ScreenHandler {
             if (cookTime != treeFarm.craftingProgress) {
                 screenHandlerListener.onPropertyUpdate(this, 0, treeFarm.craftingProgress);
             }
+            if (isMultiblock != treeFarm.isMultiBlock) {
+                screenHandlerListener.onPropertyUpdate(this, 1, treeFarm.isMultiBlock ? 1 : 0);
+            }
+            if (hasFrame != treeFarm.hasFrame()) {
+                screenHandlerListener.onPropertyUpdate(this, 2, treeFarm.hasFrame() ? 1 : 0);
+            }
         }
 
         cookTime = treeFarm.craftingProgress;
+        isMultiblock = treeFarm.isMultiBlock;
+        hasFrame = treeFarm.hasFrame();
     }
 
     @Override
     @Environment(EnvType.CLIENT)
-    public void setProperty(int i, int j) {
-        if (i == 0) {
-            treeFarm.craftingProgress = j;
+    public void setProperty(int id, int value) {
+        if (id == 0) {
+            treeFarm.craftingProgress = value;
+        }
+        if (id == 1) {
+            treeFarm.isMultiBlock = value == 1;
+        }
+        if (id == 2) {
+            treeFarm.setHasFrame(value == 1);
         }
     }
 

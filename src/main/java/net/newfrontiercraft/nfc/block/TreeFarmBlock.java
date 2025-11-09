@@ -114,7 +114,6 @@ public class TreeFarmBlock extends TemplateBlockWithEntity {
                 }
             }
         }
-        this.dropStack(world, x, y, z, new ItemStack(BlockListener.treeFarm, 1, 0));
         super.onBreak(world, x, y, z);
     }
 
