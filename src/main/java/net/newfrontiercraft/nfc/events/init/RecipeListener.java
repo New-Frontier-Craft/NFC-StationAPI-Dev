@@ -37,6 +37,7 @@ public class RecipeListener {
             RecipeRemover.removeRecipe(Block.COBBLESTONE_STAIRS);
             RecipeRemover.removeRecipe(Block.PISTON);
             RecipeRemover.removeRecipe(Block.DISPENSER);
+            RecipeRemover.removeSmeltingRecipe(Block.IRON_ORE.asItem().id);
 
             // Machines
             CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.brickOven, 1), "XXX", "X X", "XXX", 'X', new ItemStack(BlockListener.firedBricks));
