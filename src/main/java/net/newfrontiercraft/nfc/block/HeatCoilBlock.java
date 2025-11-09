@@ -80,7 +80,7 @@ public class HeatCoilBlock extends TemplateBlockWithEntity {
             float var7 = playerEntity.width / 2.0F;
             float var8 = playerEntity.height;
             Box playerBox = Box.create(playerEntity.x - (double)var7, playerEntity.y - (double)playerEntity.standingEyeHeight + (double)playerEntity.cameraOffset, playerEntity.z - (double)var7, playerEntity.x + (double)var7, playerEntity.y - (double)playerEntity.standingEyeHeight + (double)playerEntity.cameraOffset + (double)var8, playerEntity.z + (double)var7);
-            Box coilBox = blockState.getBlock().getBoundingBox(world, x, y, z);
+            Box coilBox = blockState.getBlock().getCollisionShape(world, x, y, z);
 
             Direction collisionSide = BoxUtil.getCollisionSideFromBoxes(coilBox, playerBox);
 
