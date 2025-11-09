@@ -4,6 +4,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.nbt.NbtCompound;
 import net.newfrontiercraft.nfc.api.TorqueGenerator;
+import net.newfrontiercraft.nfc.events.init.BlockListener;
 
 public class MachineGearBoxBlockEntity extends BlockEntity {
 
@@ -23,8 +24,9 @@ public class MachineGearBoxBlockEntity extends BlockEntity {
     private void updateTorque() {
         int belowBlockId = world.getBlockId(x, y - 1, z);
         if (belowBlockId == 0) {
-            world.setBlockMeta(x, y, z, 0);
             torque = 0;
+            world.setBlockMeta(x, y, z, 0);
+            world.notifyNeighbors(x, y, z, BlockListener.machineGearBox.id);
             return;
         }
         Block block = Block.BLOCKS[belowBlockId];
@@ -32,6 +34,7 @@ public class MachineGearBoxBlockEntity extends BlockEntity {
             torque = torqueGenerator.getTorque(world, x, y - 1, z);
             if (torque > 0) {
                 world.setBlockMeta(x, y, z, 1);
+                world.notifyNeighbors(x, y, z, BlockListener.machineGearBox.id);
             }
         }
     }

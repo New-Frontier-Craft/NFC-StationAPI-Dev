@@ -1,9 +1,12 @@
 package net.newfrontiercraft.nfc.block;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.material.Material;
 import net.minecraft.sound.BlockSoundGroup;
+import net.minecraft.world.World;
 import net.modificationstation.stationapi.api.util.Identifier;
+import net.newfrontiercraft.nfc.api.TorqueGenerator;
 import net.newfrontiercraft.nfc.block.entity.MachineGearBoxBlockEntity;
 
 public class MachineGearBoxBlock extends LazyBlockWithEntityTemplate {
