@@ -14,10 +14,11 @@ import net.newfrontiercraft.nfc.block.entity.AutomaticCraftingTableBlockEntity;
 public class AutomaticCraftingTableScreenHandler extends ScreenHandler {
 
     private final AutomaticCraftingTableBlockEntity automaticCraftingTable;
-    private int cookTime;
+    private int craftingProgress;
+    private boolean isMultiBlock;
 
     public AutomaticCraftingTableScreenHandler(PlayerInventory playerInventory, AutomaticCraftingTableBlockEntity automaticCraftingTableBlockEntity) {
-        cookTime = 0;
+        craftingProgress = 0;
         automaticCraftingTable = automaticCraftingTableBlockEntity;
         for (int i = 0; i < 3; i++) {
             for (int k = 0; k < 3; k++) {
@@ -41,19 +42,25 @@ public class AutomaticCraftingTableScreenHandler extends ScreenHandler {
         super.sendContentUpdates();
         for (Object listener : this.listeners) {
             ScreenHandlerListener screenHandlerListener = (ScreenHandlerListener) listener;
-            if (cookTime != automaticCraftingTable.craftingProgress) {
+            if (craftingProgress != automaticCraftingTable.craftingProgress) {
                 screenHandlerListener.onPropertyUpdate(this, 0, automaticCraftingTable.craftingProgress);
+            }
+            if (isMultiBlock != automaticCraftingTable.isMultiBlock) {
+                screenHandlerListener.onPropertyUpdate(this, 1, automaticCraftingTable.isMultiBlock ? 1 : 0);
             }
         }
 
-        cookTime = automaticCraftingTable.craftingProgress;
+        craftingProgress = automaticCraftingTable.craftingProgress;
     }
 
     @Override
     @Environment(EnvType.CLIENT)
-    public void setProperty(int i, int j) {
-        if (i == 0) {
-            automaticCraftingTable.craftingProgress = j;
+    public void setProperty(int id, int value) {
+        if (id == 0) {
+            automaticCraftingTable.craftingProgress = value;
+        }
+        if (id == 1) {
+            automaticCraftingTable.isMultiBlock = value == 1;
         }
     }
 
