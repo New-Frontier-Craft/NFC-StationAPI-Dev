@@ -296,16 +296,16 @@ public class BrickOvenBlockEntity extends BlockEntity implements Inventory, Heat
             }
             furnaceBurnTime = MAXIMUM_ADDED_BURN_TIME;
             externallyHeated = true;
-        }
-        if (heatSourceValue > heatLevel) {
-            int heatGap = heatSourceValue - heatLevel;
-            int extractedHeat = Math.min(160, heatGap);
-            heatLevel += extractedHeat;
-            maximumHeatLevel = heatLevel;
-            heatSource.changeHeatLevel(-extractedHeat);
-        } else if (heatSourceValue < heatLevel) {
-            heatLevel = heatSourceValue;
-            maximumHeatLevel = heatSourceValue;
+            if (heatSourceValue > heatLevel) {
+                int heatGap = heatSourceValue - heatLevel;
+                int extractedHeat = Math.min(160, heatGap);
+                heatLevel += extractedHeat;
+                maximumHeatLevel = heatLevel;
+                heatSource.changeHeatLevel(-extractedHeat);
+            } else if (heatSourceValue < heatLevel) {
+                heatLevel = heatSourceValue;
+                maximumHeatLevel = heatSourceValue;
+            }
         }
         // Meta values to coordinates
         // 2 -> z+
