@@ -12,16 +12,24 @@ import net.minecraft.screen.slot.Slot;
 import net.newfrontiercraft.nfc.block.entity.BrickOvenBlockEntity;
 
 public class BrickOvenScreenHandler extends ScreenHandler {
-    private BrickOvenBlockEntity furnace;
+    private final BrickOvenBlockEntity furnace;
     private int cookTime;
     private int burnTime;
     private int itemBurnTime;
     private int requiredTime;
+    private boolean isMultiblock;
+    private int heatLevel;
+    private int maximumHeatLevel;
+    private int requiredHeatLevel;
 
     public BrickOvenScreenHandler(PlayerInventory inventoryplayer, BrickOvenBlockEntity tileentityfurnace) {
         cookTime = 0;
         burnTime = 0;
         itemBurnTime = 0;
+        isMultiblock = false;
+        heatLevel = 0;
+        maximumHeatLevel = 0;
+        requiredHeatLevel = 0;
         furnace = tileentityfurnace;
         for (int i = 0; i < 3; i++) {
             for (int k = 0; k < 3; k++) {
@@ -59,28 +67,56 @@ public class BrickOvenScreenHandler extends ScreenHandler {
             if (requiredTime != furnace.requiredTime) {
                 screenHandlerListener.onPropertyUpdate(this, 3, furnace.requiredTime);
             }
+            if (isMultiblock != furnace.isMultiBlock) {
+                screenHandlerListener.onPropertyUpdate(this, 4, furnace.isMultiBlock ? 1 : 0);
+            }
+            if (heatLevel != furnace.getHeatLevel()) {
+                screenHandlerListener.onPropertyUpdate(this, 5, furnace.getHeatLevel());
+            }
+            if (maximumHeatLevel != furnace.getMaximumHeatLevel()) {
+                screenHandlerListener.onPropertyUpdate(this, 6, furnace.getMaximumHeatLevel());
+            }
+            if (requiredHeatLevel != furnace.getRequiredHeatLevel()) {
+                screenHandlerListener.onPropertyUpdate(this, 7, furnace.getRequiredHeatLevel());
+            }
         }
 
         cookTime = furnace.furnaceCookTime;
         burnTime = furnace.furnaceBurnTime;
         itemBurnTime = furnace.currentItemBurnTime;
         requiredTime = furnace.requiredTime;
+        isMultiblock = furnace.isMultiBlock;
+        heatLevel = furnace.getHeatLevel();
+        maximumHeatLevel = furnace.getMaximumHeatLevel();
+        requiredHeatLevel = furnace.getRequiredHeatLevel();
     }
 
     @Override
     @Environment(EnvType.CLIENT)
-    public void setProperty(int i, int j) {
-        if (i == 0) {
-            furnace.furnaceCookTime = j;
+    public void setProperty(int id, int value) {
+        if (id == 0) {
+            furnace.furnaceCookTime = value;
         }
-        if (i == 1) {
-            furnace.furnaceBurnTime = j;
+        if (id == 1) {
+            furnace.furnaceBurnTime = value;
         }
-        if (i == 2) {
-            furnace.currentItemBurnTime = j;
+        if (id == 2) {
+            furnace.currentItemBurnTime = value;
         }
-        if (i == 3) {
-            furnace.requiredTime = j;
+        if (id == 3) {
+            furnace.requiredTime = value;
+        }
+        if (id == 4) {
+            furnace.isMultiBlock = value == 1;
+        }
+        if (id == 5) {
+            furnace.setHeatLevel(value);
+        }
+        if (id == 6) {
+            furnace.setMaximumHeatLevel(value);
+        }
+        if (id == 7) {
+            furnace.setRequiredHeatLevel(value);
         }
     }
 

@@ -35,7 +35,7 @@ public class ScreenHandlerListener {
     }
 
     public Screen openBrickOven(PlayerEntity playerBase, Inventory inventoryBase) {
-        return new BrickOvenGui(playerBase.inventory, (BrickOvenBlockEntity) inventoryBase);
+        return new BrickOvenScreen(playerBase.inventory, (BrickOvenBlockEntity) inventoryBase);
     }
 
     public Screen openCarpentry(PlayerEntity playerBase, Inventory inventoryBase) {

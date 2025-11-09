@@ -641,4 +641,15 @@ public class BrickOvenBlockEntity extends BlockEntity implements Inventory, Heat
         return heatLevel;
     }
 
+    public void setHeatLevel(int heatLevel) {
+        this.heatLevel = heatLevel;
+    }
+
+    public void setMaximumHeatLevel(int maximumHeatLevel) {
+        this.maximumHeatLevel = maximumHeatLevel;
+    }
+
+    public void setRequiredHeatLevel(int requiredHeatLevel) {
+        this.requiredHeatLevel = requiredHeatLevel;
+    }
 }

@@ -6,11 +6,13 @@ import net.newfrontiercraft.nfc.inventory.BrickOvenScreenHandler;
 import net.newfrontiercraft.nfc.block.entity.BrickOvenBlockEntity;
 import org.lwjgl.opengl.GL11;
 
-public class BrickOvenGui extends HandledScreen {
+public class BrickOvenScreen extends HandledScreen {
 
-    public BrickOvenGui(PlayerInventory inventoryplayer, BrickOvenBlockEntity tileentityfurnace) {
-        super(new BrickOvenScreenHandler(inventoryplayer, tileentityfurnace));
-        furnaceInventory = tileentityfurnace;
+    private final BrickOvenBlockEntity furnaceInventory;
+
+    public BrickOvenScreen(PlayerInventory playerInventory, BrickOvenBlockEntity brickOvenBlockEntity) {
+        super(new BrickOvenScreenHandler(playerInventory, brickOvenBlockEntity));
+        furnaceInventory = brickOvenBlockEntity;
         backgroundHeight = 202;
     }
 
@@ -48,8 +50,6 @@ public class BrickOvenGui extends HandledScreen {
         this.drawTexture(j + 4, k + 11 + requiredHeatHeightLevel, 176, 31, 8, 7);
         this.drawTexture(j + 20, k + 11 + requiredHeatHeightLevel, 184, 31, 8, 7);
     }
-
-    private BrickOvenBlockEntity furnaceInventory;
 
     private int getThermometerHeightFromHeatValue(int heatValue) {
         return 16 * heatValue / 200;
