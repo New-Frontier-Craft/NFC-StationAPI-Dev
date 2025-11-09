@@ -12,26 +12,28 @@ import net.newfrontiercraft.nfc.block.entity.CokeOvenBlockEntity;
 
 public class CokeOvenScreenHandler extends ScreenHandler {
 
-
-    private CokeOvenBlockEntity furnace;
+    private final CokeOvenBlockEntity furnace;
     private int cookTime;
     private int requiredTime;
+    private int heatLevel;
+    private int minimumRequiredHeatLevel;
+    private int maximumRequiredHeatLevel;
 
-    public CokeOvenScreenHandler(PlayerInventory inventoryplayer, CokeOvenBlockEntity tileentityfurnace) {
+    public CokeOvenScreenHandler(PlayerInventory playerInventory, CokeOvenBlockEntity cokeOvenBlockEntity) {
         cookTime = 0;
-        furnace = tileentityfurnace;
+        furnace = cokeOvenBlockEntity;
 
-        addSlot(new Slot(tileentityfurnace,  0, 56 , 71));
-        addSlot(new FurnaceOutputSlot(inventoryplayer.player, tileentityfurnace, 1, 116, 71));
+        addSlot(new Slot(cokeOvenBlockEntity,  0, 56 , 71));
+        addSlot(new FurnaceOutputSlot(playerInventory.player, cokeOvenBlockEntity, 1, 116, 71));
 
         for (int i = 0; i < 3; i++) {
             for (int k = 0; k < 9; k++) {
-                addSlot(new Slot(inventoryplayer, k + i * 9 + 9, 8 + k * 18, 120 + i * 18));
+                addSlot(new Slot(playerInventory, k + i * 9 + 9, 8 + k * 18, 120 + i * 18));
             }
         }
 
         for (int j = 0; j < 9; j++) {
-            addSlot(new Slot(inventoryplayer, j, 8 + j * 18, 178));
+            addSlot(new Slot(playerInventory, j, 8 + j * 18, 178));
         }
 
     }
@@ -46,20 +48,41 @@ public class CokeOvenScreenHandler extends ScreenHandler {
             if (requiredTime != furnace.requiredTime) {
                 screenHandlerListener.onPropertyUpdate(this, 1, furnace.requiredTime);
             }
+            if (heatLevel != furnace.getHeatLevel()) {
+                screenHandlerListener.onPropertyUpdate(this, 2, furnace.getHeatLevel());
+            }
+            if (minimumRequiredHeatLevel != furnace.getMinimumRequiredHeatLevel()) {
+                screenHandlerListener.onPropertyUpdate(this, 3, furnace.getMinimumRequiredHeatLevel());
+            }
+            if (maximumRequiredHeatLevel != furnace.getMaximumRequiredHeatLevel()) {
+                screenHandlerListener.onPropertyUpdate(this, 4, furnace.getMaximumRequiredHeatLevel());
+            }
         }
 
         cookTime = furnace.furnaceCookTime;
         requiredTime = furnace.requiredTime;
+        heatLevel = furnace.getHeatLevel();
+        minimumRequiredHeatLevel = furnace.getMinimumRequiredHeatLevel();
+        maximumRequiredHeatLevel = furnace.getMaximumRequiredHeatLevel();
     }
 
     @Override
     @Environment(EnvType.CLIENT)
-    public void setProperty(int i, int j) {
-        if (i == 0) {
-            furnace.furnaceCookTime = j;
+    public void setProperty(int id, int value) {
+        if (id == 0) {
+            furnace.furnaceCookTime = value;
         }
-        if (i == 1) {
-            furnace.requiredTime = j;
+        if (id == 1) {
+            furnace.requiredTime = value;
+        }
+        if (id == 2) {
+            furnace.setHeatLevel(value);
+        }
+        if (id == 3) {
+            furnace.setMinimumRequiredHeatLevel(value);
+        }
+        if (id == 4) {
+            furnace.setMaximumRequiredHeatLevel(value);
         }
     }
 

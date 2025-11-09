@@ -369,6 +369,18 @@ public class CokeOvenBlockEntity extends BlockEntity implements Inventory {
         return maximumRequiredHeatLevel;
     }
 
+    public void setHeatLevel(int heatLevel) {
+        this.heatLevel = heatLevel;
+    }
+
+    public void setMinimumRequiredHeatLevel(int minimumRequiredHeatLevel) {
+        this.minimumRequiredHeatLevel = minimumRequiredHeatLevel;
+    }
+
+    public void setMaximumRequiredHeatLevel(int maximumRequiredHeatLevel) {
+        this.maximumRequiredHeatLevel = maximumRequiredHeatLevel;
+    }
+
     public boolean canPlayerUse(PlayerEntity entityplayer) {
         if (scheduledForRemoval) {
             return false;
