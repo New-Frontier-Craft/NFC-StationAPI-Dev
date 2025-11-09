@@ -12,6 +12,11 @@ import net.minecraft.screen.slot.Slot;
 import net.newfrontiercraft.nfc.block.entity.BrickOvenBlockEntity;
 
 public class BrickOvenScreenHandler extends ScreenHandler {
+    private BrickOvenBlockEntity furnace;
+    private int cookTime;
+    private int burnTime;
+    private int itemBurnTime;
+    private int requiredTime;
 
     public BrickOvenScreenHandler(PlayerInventory inventoryplayer, BrickOvenBlockEntity tileentityfurnace) {
         cookTime = 0;
@@ -113,10 +118,4 @@ public class BrickOvenScreenHandler extends ScreenHandler {
         }
         return itemstack;
     }
-
-    private BrickOvenBlockEntity furnace;
-    private int cookTime;
-    private int burnTime;
-    private int itemBurnTime;
-    private int requiredTime;
 }

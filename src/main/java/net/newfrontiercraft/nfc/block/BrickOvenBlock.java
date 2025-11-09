@@ -48,8 +48,8 @@ public class BrickOvenBlock extends TemplateBlockWithEntity {
 
     @Override
     public boolean onUse(World world, int x, int y, int z, PlayerEntity player) {
-        BlockEntity tileEntity = world.getBlockEntity(x, y, z);
-        if (tileEntity instanceof BrickOvenBlockEntity brickOvenBlockEntity)
+        BlockEntity blockEntity = world.getBlockEntity(x, y, z);
+        if (blockEntity instanceof BrickOvenBlockEntity brickOvenBlockEntity)
             GuiHelper.openGUI(player, Identifier.of(BlockEntityListener.MOD_ID, "gui_brick_oven"),
                     brickOvenBlockEntity, new BrickOvenScreenHandler(player.inventory, brickOvenBlockEntity));
         return true;
@@ -150,20 +150,19 @@ public class BrickOvenBlock extends TemplateBlockWithEntity {
     }
 
     @Override
-    public void onPlaced(World world, int i, int j, int k, LivingEntity entityliving) {
-        int l = MathHelper
-                .floor((double) ((entityliving.yaw * 4F) / 360F) + 0.5D) & 3;
-        if (l == 0) {
-            world.setBlockMeta(i, j, k, 2);
+    public void onPlaced(World world, int x, int y, int z, LivingEntity livingEntity) {
+        int rotation = MathHelper.floor((double) ((livingEntity.yaw * 4F) / 360F) + 0.5D) & 3;
+        if (rotation == 0) {
+            world.setBlockMeta(x, y, z, 2);
         }
-        if (l == 1) {
-            world.setBlockMeta(i, j, k, 5);
+        if (rotation == 1) {
+            world.setBlockMeta(x, y, z, 5);
         }
-        if (l == 2) {
-            world.setBlockMeta(i, j, k, 3);
+        if (rotation == 2) {
+            world.setBlockMeta(x, y, z, 3);
         }
-        if (l == 3) {
-            world.setBlockMeta(i, j, k, 4);
+        if (rotation == 3) {
+            world.setBlockMeta(x, y, z, 4);
         }
     }
 

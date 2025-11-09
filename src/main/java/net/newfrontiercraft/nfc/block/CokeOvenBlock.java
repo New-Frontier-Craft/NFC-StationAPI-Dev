@@ -129,42 +129,20 @@ public class CokeOvenBlock extends TemplateBlockWithEntity {
         }
     }
 
-    public static void updateFurnaceBlockState(boolean active, World world, int x, int y, int z) {
-        int meta = world.getBlockMeta(x, y, z);
-        boolean update = false;
-        BlockState currentState = world.getBlockState(x, y, z);
-        BlockEntity blockEntity = world.getBlockEntity(x, y, z);
-        if (active && meta < 6) {
-            world.setBlockStateWithNotify(x, y, z, currentState.with(ACTIVE, true));
-            world.setBlockEntity(x, y, z, blockEntity);
-            world.setBlockMeta(x, y, z, meta + 6);
-            update = true;
-        } else if (!active && meta > 6) {
-            world.setBlockStateWithNotify(x, y, z, currentState.with(ACTIVE, false));
-            world.setBlockEntity(x, y, z, blockEntity);
-            world.setBlockMeta(x, y, z, meta - 6);
-            update = true;
-        }
-        if (update) {
-            world.blockUpdateEvent(x, y, z);
-        }
-    }
-
     @Override
-    public void onPlaced(World world, int i, int j, int k, LivingEntity entityliving) {
-        int l = MathHelper
-                .floor((double) ((entityliving.yaw * 4F) / 360F) + 0.5D) & 3;
-        if (l == 0) {
-            world.setBlockMeta(i, j, k, 2);
+    public void onPlaced(World world, int x, int y, int z, LivingEntity livingEntity) {
+        int rotation = MathHelper.floor((double) ((livingEntity.yaw * 4F) / 360F) + 0.5D) & 3;
+        if (rotation == 0) {
+            world.setBlockMeta(x, y, z, 2);
         }
-        if (l == 1) {
-            world.setBlockMeta(i, j, k, 5);
+        if (rotation == 1) {
+            world.setBlockMeta(x, y, z, 5);
         }
-        if (l == 2) {
-            world.setBlockMeta(i, j, k, 3);
+        if (rotation == 2) {
+            world.setBlockMeta(x, y, z, 3);
         }
-        if (l == 3) {
-            world.setBlockMeta(i, j, k, 4);
+        if (rotation == 3) {
+            world.setBlockMeta(x, y, z, 4);
         }
     }
 
