@@ -3,6 +3,7 @@ package net.newfrontiercraft.nfc.events.init;
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
+import net.minecraft.item.SwordItem;
 import net.minecraft.item.ToolMaterial;
 import net.modificationstation.stationapi.api.event.registry.ItemRegistryEvent;
 import net.modificationstation.stationapi.api.item.tool.TagToolLevel;
@@ -686,5 +687,36 @@ public class ItemListener {
         BlockListener.rotatedOakLog.changeDroppedItem(Block.LOG.asItem());
         BlockListener.rotatedSpruceLog.changeDroppedItem(Block.LOG.asItem());
         BlockListener.rotatedBirchLog.changeDroppedItem(Block.LOG.asItem());
+
+        // Change sword damage
+        ((SwordItem)Item.WOODEN_SWORD).damage = 3;
+        ((SwordItem)Item.STONE_SWORD).damage = 3;
+        aluminiumSword.damage = 4;
+        bismuthSword.damage = 4;
+        copperSword.damage = 4;
+        leadSword.damage = 4;
+        tinSword.damage = 4;
+        zincSword.damage = 4;
+        ((SwordItem)Item.GOLDEN_SWORD).damage = 4;
+        boronSword.damage = 6;
+        brassSword.damage = 6;
+        bronzeSword.damage = 6;
+        nickelSword.damage = 6;
+        platinumSword.damage = 6;
+        silverSword.damage = 6;
+        chromeSword.damage = 8;
+        cobaltSword.damage = 8;
+        ((SwordItem)Item.IRON_SWORD).damage = 8;
+        siliconSword.damage = 8;
+        magnetSword.damage = 10;
+        steelSword.damage = 10;
+        titaniumSword.damage = 10;
+        tungstenSword.damage = 10;
+        sapphireSword.damage = 20;
+        rubySword.damage = 20;
+        emeraldSword.damage = 20;
+        onyxSword.damage = 20;
+        ((SwordItem)Item.DIAMOND_SWORD).damage = 30;
+        osmiumSword.damage = 30;
     }
 }
