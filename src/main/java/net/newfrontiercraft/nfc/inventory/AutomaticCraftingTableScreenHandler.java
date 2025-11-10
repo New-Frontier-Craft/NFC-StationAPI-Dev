@@ -51,6 +51,7 @@ public class AutomaticCraftingTableScreenHandler extends ScreenHandler {
         }
 
         craftingProgress = automaticCraftingTable.craftingProgress;
+        isMultiBlock = automaticCraftingTable.isMultiBlock;
     }
 
     @Override
