@@ -4,6 +4,7 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.item.ItemStack;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.ScreenHandlerListener;
 import net.minecraft.screen.slot.Slot;
@@ -62,5 +63,31 @@ public class CombustionHeaterScreenHandler extends ScreenHandler {
         if(i == 1) {
             combustionHeater.currentItemBurnTime = j;
         }
+    }
+
+    @Override
+    public ItemStack quickMove(int slot) {
+        ItemStack itemStack = null;
+        Slot selectedSlot = (Slot) slots.get(slot);
+        if (selectedSlot != null && selectedSlot.hasStack()) {
+            ItemStack slotStack = selectedSlot.getStack();
+            itemStack = slotStack.copy();
+            if (slot == 0) {
+                insertItem(slotStack, 1, 37, true);
+            } else {
+                insertItem(slotStack, 0, 1, false);
+            }
+            if (slotStack.count == 0) {
+                selectedSlot.setStack(null);
+            } else {
+                selectedSlot.markDirty();
+            }
+            if (slotStack.count != itemStack.count) {
+                selectedSlot.onTakeItem(slotStack);
+            } else {
+                return null;
+            }
+        }
+        return itemStack;
     }
 }
