@@ -4,6 +4,7 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.item.ItemStack;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.ScreenHandlerListener;
 import net.minecraft.screen.slot.FurnaceOutputSlot;
@@ -91,33 +92,29 @@ public class CokeOvenScreenHandler extends ScreenHandler {
         return furnace.canPlayerUse(entityplayer);
     }
 
-//    @Override
-//    public ItemStack quickMove(int i) {
-//        ItemStack itemstack = null;
-//        Slot slot = (Slot) slots.get(i);
-//        if (slot != null && slot.hasStack()) {
-//            ItemStack itemstack1 = slot.getStack();
-//            itemstack = itemstack1.copy();
-//            if (i == 10) {
-//                insertItem(itemstack1, 11, 47, true);
-//            } else if (i >= 11 && i < 38) {
-//                insertItem(itemstack1, 38, 39, false);
-//            } else if (i >= 38 && i < 47) {
-//                insertItem(itemstack1, 11, 38, false);
-//            } else {
-//                insertItem(itemstack1, 11, 47, false);
-//            }
-//            if (itemstack1.count == 0) {
-//                slot.setStack(null);
-//            } else {
-//                slot.markDirty();
-//            }
-//            if (itemstack1.count != itemstack.count) {
-//                slot.onTakeItem(itemstack1);
-//            } else {
-//                return null;
-//            }
-//        }
-//        return itemstack;
-//    }
+    @Override
+    public ItemStack quickMove(int slot) {
+        ItemStack itemStack = null;
+        Slot selectedSlot = (Slot) slots.get(slot);
+        if (selectedSlot != null && selectedSlot.hasStack()) {
+            ItemStack slotStack = selectedSlot.getStack();
+            itemStack = slotStack.copy();
+            if (slot < 2) {
+                insertItem(slotStack, 2, 38, true);
+            } else if (slot < 38) {
+                insertItem(slotStack, 0, 1, false);
+            }
+            if (slotStack.count == 0) {
+                selectedSlot.setStack(null);
+            } else {
+                selectedSlot.markDirty();
+            }
+            if (slotStack.count != itemStack.count) {
+                selectedSlot.onTakeItem(slotStack);
+            } else {
+                return null;
+            }
+        }
+        return itemStack;
+    }
 }
