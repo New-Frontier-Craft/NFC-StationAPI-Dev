@@ -4,6 +4,7 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.item.ItemStack;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.ScreenHandlerListener;
 import net.minecraft.screen.slot.Slot;
@@ -31,7 +32,7 @@ public class TreeFarmScreenHandler extends ScreenHandler {
         // Output slots
         for (int yIndex = 0; yIndex < 3; yIndex++) {
             for (int xIndex = 0; xIndex < 3; xIndex++) {
-                addSlot(new Slot(treeFarmBlockEntity,  6 + xIndex + yIndex*3, 116 + xIndex*18, 16 + yIndex * 18));
+                addSlot(new Slot(treeFarmBlockEntity, 6 + xIndex + yIndex * 3, 116 + xIndex * 18, 16 + yIndex * 18));
             }
         }
         // Player inventory
@@ -86,34 +87,27 @@ public class TreeFarmScreenHandler extends ScreenHandler {
         return treeFarm.canPlayerUse(entityplayer);
     }
 
-//    TODO: Deal with quick moving when I am more energetic
-//    @Override
-//    public ItemStack quickMove(int i) {
-//        ItemStack itemstack = null;
-//        Slot slot = (Slot) slots.get(i);
-//        if (slot != null && slot.hasStack()) {
-//            ItemStack itemstack1 = slot.getStack();
-//            itemstack = itemstack1.copy();
-//            if (i == 9) {
-//                insertItem(itemstack1, 10, 46, true);
-//            } else if (i >= 10 && i < 37) {
-//                insertItem(itemstack1, 37, 38, false);
-//            } else if (i >= 37 && i < 46) {
-//                insertItem(itemstack1, 10, 37, false);
-//            } else {
-//                insertItem(itemstack1, 10, 46, false);
-//            }
-//            if (itemstack1.count == 0) {
-//                slot.setStack(null);
-//            } else {
-//                slot.markDirty();
-//            }
-//            if (itemstack1.count != itemstack.count) {
-//                slot.onTakeItem(itemstack1);
-//            } else {
-//                return null;
-//            }
-//        }
-//        return itemstack;
-//    }
+    @Override
+    public ItemStack quickMove(int slot) {
+        ItemStack itemStack = null;
+        Slot selectedSlot = (Slot) slots.get(slot);
+        if (selectedSlot != null && selectedSlot.hasStack()) {
+            ItemStack slotStack = selectedSlot.getStack();
+            itemStack = slotStack.copy();
+            if (slot >= 6 && slot < 16) {
+                insertItem(slotStack, 16, 51, true);
+            }
+            if (slotStack.count == 0) {
+                selectedSlot.setStack(null);
+            } else {
+                selectedSlot.markDirty();
+            }
+            if (slotStack.count != itemStack.count) {
+                selectedSlot.onTakeItem(slotStack);
+            } else {
+                return null;
+            }
+        }
+        return itemStack;
+    }
 }
