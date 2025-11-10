@@ -282,6 +282,7 @@ public class TextureListener {
         BlockListener.frame.specifyTextures(getTextureIndex(machines + "front_frame"), getTextureIndex(machines + "vertical_frame"), getTextureIndex(machines + "horizontal_frame"));
         BlockListener.plantBus.specifyTextures(getTextureIndex(machines + "plant_bus"));
         BlockListener.fertilizerBus.specifyTextures(getTextureIndex(machines + "fertilizer_bus"));
+        BlockListener.proximityMutator.specifyTextures(getTextureIndex(machines + "proximity_mutator_top"), getTextureIndex(machines + "proximity_mutator_side"), getTextureIndex(machines + "proximity_mutator_bottom"));
 
         // Ore storage blocks
         BlockListener.charcoalBlock.specifyTextures(Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, oreStorage + "charcoal")).index);

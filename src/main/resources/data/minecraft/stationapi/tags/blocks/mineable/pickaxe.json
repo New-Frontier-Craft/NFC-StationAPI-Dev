@@ -133,6 +133,7 @@
     "nfc:fertilizer_bus",
 
     "nfc:automatic_crafting_table",
-    "nfc:tree_farm"
+    "nfc:tree_farm",
+    "nfc:proximity_mutator"
   ]
 }

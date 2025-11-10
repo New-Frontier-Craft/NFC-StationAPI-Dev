@@ -227,6 +227,8 @@ public class BlockListener {
 
     public static MachineGearBoxBlock machineGearBox;
 
+    public static ProximityMutatorBlock proximityMutator;
+
     @Entrypoint.Namespace
     public static Namespace MOD_ID;
 
@@ -462,6 +464,7 @@ public class BlockListener {
 
         automaticCraftingTable = new AutomaticCraftingTableBlock(Identifier.of(MOD_ID, "automatic_crafting_table"), Material.METAL, 2.0F, Block.METAL_SOUND_GROUP);
         treeFarm = new TreeFarmBlock(Identifier.of(MOD_ID, "tree_farm"), Material.METAL, 2.0F, Block.METAL_SOUND_GROUP);
+        proximityMutator = new ProximityMutatorBlock(Identifier.of(MOD_ID, "proximity_mutator"), Material.METAL, 1.5F, Block.METAL_SOUND_GROUP);
 
         // Changes to vanilla blast resistance
         Block.COAL_ORE.setResistance(500F);

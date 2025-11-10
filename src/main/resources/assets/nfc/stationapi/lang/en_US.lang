@@ -301,6 +301,7 @@ tile.nfc.fertilizer_bus.name=Fertilizer Bus
 
 tile.nfc.automatic_crafting_table.name=Automatic Crafting Table
 tile.nfc.tree_farm.name=Tree Farm
+tile.nfc.proximity_mutator.name=Proximity Mutator
 
 
 item.nfc.aluminium_pickaxe.name=Aluminum Pickaxe
