@@ -59,7 +59,6 @@ public class CoalMushroomBlock extends LazyMushroomTemplate implements CustomToo
         return false;
     }
 
-
     @Override
     public @NotNull String[] getTooltip(ItemStack stack, String originalTooltip) {
         return new String[] {

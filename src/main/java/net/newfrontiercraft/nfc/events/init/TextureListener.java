@@ -340,6 +340,7 @@ public class TextureListener {
         BlockListener.glowingMushroom.asItem().setTextureId(getTextureIndex(mushrooms + "glowing"));
         BlockListener.fieryMushroom.specifyTextures(getTextureIndex(mushrooms + "fiery"));
         BlockListener.fieryMushroom.asItem().setTextureId(getTextureIndex(mushrooms + "fiery"));
+        BlockListener.sporeAsh.specifyTextures(getTextureIndex(farming + "spore_ash"));
         BlockListener.coalMushroom.specifyTextures(getTextureIndex(mushrooms + "coal"));
         BlockListener.coalMushroom.asItem().setTextureId(getTextureIndex(mushrooms + "coal"));
         BlockListener.coalMushroomBottom.asItem().setTextureId(getTextureIndex(mushrooms + "coal"));

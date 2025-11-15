@@ -178,8 +178,8 @@ public class BlockListener {
     public static BioluminescentMushroomBlock bioluminescentMushroom;
     public static GlowingMushroomBlock glowingMushroom;
     public static FieryMushroomBlock fieryMushroom;
+    public static SporeAshBlock sporeAsh;
     public static CoalMushroomBlock coalMushroom;
-
     public static BigCoalMushroomBlock coalMushroomBottom;
     public static BigCoalMushroomBlock coalMushroomTop;
 
@@ -365,8 +365,8 @@ public class BlockListener {
         bioluminescentMushroom = new BioluminescentMushroomBlock(Identifier.of(MOD_ID, "bioluminescent_mushroom"), 0, Block.WOOD_SOUND_GROUP, true);
         glowingMushroom = new GlowingMushroomBlock(Identifier.of(MOD_ID, "glowing_mushroom"), 0, Block.DIRT_SOUND_GROUP, false);
         fieryMushroom = new FieryMushroomBlock(Identifier.of(MOD_ID, "fiery_mushroom"), 0, Block.DIRT_SOUND_GROUP, false);
+        sporeAsh = new SporeAshBlock(Identifier.of(MOD_ID, "spore_ash"), Material.STONE, 1.5F, Block.STONE_SOUND_GROUP);
         coalMushroom = new CoalMushroomBlock(Identifier.of(MOD_ID, "coal_mushroom"), 0.5F, Block.STONE_SOUND_GROUP, true);
-
         coalMushroomBottom = new BigCoalMushroomBlock(Identifier.of(MOD_ID, "coal_mushroom_bottom"), Material.STONE, 1.0F, Block.STONE_SOUND_GROUP);
         coalMushroomTop = new BigCoalMushroomBlock(Identifier.of(MOD_ID, "coal_mushroom_top"), Material.STONE, 1.0F, Block.STONE_SOUND_GROUP);
 
