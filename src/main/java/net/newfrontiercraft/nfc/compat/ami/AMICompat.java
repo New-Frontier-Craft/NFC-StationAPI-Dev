@@ -1,6 +1,7 @@
 package net.newfrontiercraft.nfc.compat.ami;
 
 import net.glasslauncher.mods.alwaysmoreitems.api.*;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.modificationstation.stationapi.api.util.Identifier;
 import net.newfrontiercraft.nfc.compat.ami.brickoven.*;
@@ -38,6 +39,8 @@ public class AMICompat implements ModPluginProvider {
 
     @Override
     public void register(ModRegistry registry) {
+        registry.addDescription(new ItemStack(BlockListener.coalMushroom), "description.nfc.coal_mushroom");
+
         registry.addRecipeCategories(new BrickOvenShapelessRecipeCategory());
         registry.addRecipeCategories(new BrickOvenShapedRecipeCategory());
         registry.addRecipeCategories(new MultiBlockRecipeCategory());

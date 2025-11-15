@@ -421,6 +421,33 @@ public class RecipeListener {
             };
             MultiBlockRecipeRegistry.INSTANCE.addMultiblockRecipe("multiblock.nfc.tree_farm", treeFarmDescription, treeFarmMultiblockLayers, treeFarmMultiblockPatterns);
 
+            // Proximity Mutator multiblock
+            List<String[]> proximityMutatorLayers = List.of(
+                    new String[]{"ltl", "ttt", "ltl"},
+                    new String[]{"b b", " p ", "b b"},
+                    new String[]{"lbl", "b b", "lbl"}
+            );
+            List<BlockPatternEntry> proximityMutatorPatterns = List.of(
+                    new BlockPatternEntry('t', BlockListener.titaniumBlock.getDefaultState(), 0, new ItemStack(BlockListener.titaniumBlock.asItem())),
+                    new BlockPatternEntry('l', BlockListener.leadBlock.getDefaultState(), 0, new ItemStack(BlockListener.leadBlock.asItem())),
+                    new BlockPatternEntry('b', BlockListener.bismuthBlock.getDefaultState(), 0, new ItemStack(BlockListener.bismuthBlock.asItem())),
+                    new BlockPatternEntry('p', BlockListener.proximityMutator.getDefaultState(), 0, new ItemStack(BlockListener.proximityMutator.asItem()))
+            );
+            List<Object> proximityMutatorDescription = new ArrayList<>() {
+                {
+                    this.add("Proximity Mutator");
+                    this.add("Mutates nearby plants and mushrooms.");
+                    this.add("Consumes uranium blocks placed on");
+                    this.add("top of the controller block.");
+                    this.add("15 mutation cycles happen with");
+                    this.add("random intervals after a uranium block");
+                    this.add("gets consumed. Each mutation cycle");
+                    this.add("affects a volume of four blocks");
+                    this.add("into every direction from the center.");
+                }
+            };
+            MultiBlockRecipeRegistry.INSTANCE.addMultiblockRecipe("multiblock.nfc.proximity_mutator", proximityMutatorDescription, proximityMutatorLayers, proximityMutatorPatterns);
+
             /// Tree farm planting
             // Trees
             TreeFarmPlantingRegistry.getInstance().addRecipe(new ItemMeta(Block.SAPLING.asItem(), 0), new PlantingRequirement(new BlockAndMetaRange[]{

@@ -569,12 +569,16 @@ item.nfc.blue_glowstone_dust.name=Blue Glowstone Dust
 item.nfc.aluminium_gear.name=Aluminum Gear
 item.nfc.redstone_circuit.name=Redstone Circuit
 
+
 gui.nfc.bookshelf=Bookshelf
+
 
 multiblock.nfc.brick_oven=Brick Oven
 multiblock.nfc.automatic_crafting_table=Automatic Crafting Table
 multiblock.nfc.coke_oven=Coke Oven
 multiblock.nfc.tree_farm=Tree Farm
+multiblock.nfc.proximity_mutator=Proximity Mutator
+
 
 tool_tier.tier=Tier
 tool_tier.attack_damage=Attack Damage
@@ -586,9 +590,13 @@ tool_tier.iron=Improved
 tool_tier.advanced=Advanced
 tool_tier.diamond=Excellent
 
+
 fuel_level.cold=Cold
 fuel_level.warm=Warm
 fuel_level.hot=Hot
 fuel_level.searing=Searing
 fuel_level.blazing=Blazing
 fuel_level.superheated=Superheated
+
+
+description.nfc.coal_mushroom=Can be created using the mutation effect of a Proximity Mutator. Made from either a brown or red mushroom on top of a block of coal and a source of oil next to the coal block.
