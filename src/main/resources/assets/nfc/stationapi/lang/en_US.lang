@@ -190,6 +190,7 @@ tile.nfc.bioluminescent_mushroom.blue.name=Blue Mushroom
 tile.nfc.bioluminescent_mushroom.purple.name=Purple Mushroom
 tile.nfc.glowing_mushroom.name=Glowing Mushroom
 tile.nfc.fiery_mushroom.name=Fiery Mushroom
+tile.nfc.coal_mushroom.name=Coal Mushroom
 
 tile.nfc.petrified_log.name=Petrified Wood
 tile.nfc.petrified_planks.name=Petrified Wooden Planks

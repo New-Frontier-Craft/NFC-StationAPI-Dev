@@ -134,6 +134,8 @@
 
     "nfc:automatic_crafting_table",
     "nfc:tree_farm",
-    "nfc:proximity_mutator"
+    "nfc:proximity_mutator",
+
+    "nfc:coal_mushroom"
   ]
 }
