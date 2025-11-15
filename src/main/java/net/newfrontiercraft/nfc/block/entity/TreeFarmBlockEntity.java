@@ -108,7 +108,10 @@ public class TreeFarmBlockEntity extends BlockEntity implements Inventory {
             }
         }
         /// Replanting
-        plantPlant();
+        for (int plantIndex = SAPLING_START; plantIndex <= SAPLING_END; plantIndex++) {
+            plantPlant(plantIndex);
+        }
+
         /// Fertilize
         fertilizePlant();
     }
@@ -154,17 +157,10 @@ public class TreeFarmBlockEntity extends BlockEntity implements Inventory {
         }
     }
 
-    private void plantPlant() {
+    private void plantPlant(int plantIndex) {
         /// Replanting logic
         // Check if there is anything to plant
-        boolean foundPlant = false;
-        int plantIndex = SAPLING_START;
-        for (; plantIndex <= SAPLING_END; plantIndex++) {
-            if (treeFarmItemStacks[plantIndex] != null) {
-                foundPlant = true;
-                break;
-            }
-        }
+        boolean foundPlant = treeFarmItemStacks[plantIndex] != null;
         if (!foundPlant) {
             return;
         }
