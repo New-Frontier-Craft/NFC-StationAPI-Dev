@@ -51,11 +51,6 @@ public class BrickOvenManager {
                 new ItemStack(Item.COAL, 1, 1),
                 new ItemStack(ItemListener.netherAsh, 1),
                 new ItemStack(BlockListener.petrifiedLog, 1)}, 400, FuelLevelEnum.WARM);
-        addShapelessOvenRecipe(new ItemStack(Item.COAL, 2), new Object[] {
-                new ItemStack(ItemListener.netherAsh, 1),
-                new ItemStack(ItemListener.netherAsh, 1),
-                new ItemStack(Item.COAL, 1),
-                new ItemStack(BlockListener.bioluminescentMushroom, 1, 1)}, 800, FuelLevelEnum.HOT);
         addShapelessOvenRecipe(new ItemStack(ItemListener.rawAnthracite, 2), new Object[] {
                 new ItemStack(ItemListener.coalCoke, 1, 1),
                 new ItemStack(ItemListener.coalCoke, 1, 1),

@@ -66,4 +66,9 @@ public class CoalMushroomBlock extends LazyMushroomTemplate implements CustomToo
                 "Grows on coal blocks and consumes nearby purple mushrooms"
         };
     }
+
+    @Override
+    protected int getDroppedItemMeta(int blockMeta) {
+        return 0;
+    }
 }

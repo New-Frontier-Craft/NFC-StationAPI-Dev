@@ -7,6 +7,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.modificationstation.stationapi.api.event.recipe.RecipeRegisterEvent;
 import net.modificationstation.stationapi.api.recipe.CraftingRegistry;
+import net.modificationstation.stationapi.api.recipe.SmeltingRegistry;
 import net.modificationstation.stationapi.api.registry.BlockRegistry;
 import net.modificationstation.stationapi.api.util.Identifier;
 import net.newfrontiercraft.nfc.compat.bnb.BNBRecipes;
@@ -285,7 +286,7 @@ public class RecipeListener {
             // Mud crafting
             CraftingRegistry.addShapelessRecipe(new ItemStack(BlockListener.mud, 2), Item.WHEAT, Block.DIRT, Block.DIRT);
 
-            //Stained planks
+            // Stained planks
             int o = 15;
             for (int i = 0; i < 16; i++) {
                 CraftingRegistry.addShapelessRecipe(new ItemStack(BlockListener.stainedPlanks, 4, i), new ItemStack(Item.DYE, 1, o),
@@ -296,6 +297,9 @@ public class RecipeListener {
 
             // Planter
             CraftingRegistry.addShapelessRecipe(new ItemStack(BlockListener.planter, 1, 1), new ItemStack(BlockListener.planter, 1, 0), new ItemStack(Block.DIRT));
+
+            // Spore ash
+            CraftingRegistry.addShapelessRecipe(new ItemStack(BlockListener.sporeAsh), new ItemStack(BlockListener.coalMushroom), new ItemStack(ItemListener.netherAsh), new ItemStack(ItemListener.netherAsh));
 
             // Brick Oven Multi-Block
             List<String[]> brickOvenMultiBlockLayers = List.of(
@@ -462,6 +466,10 @@ public class RecipeListener {
                     new BlockAndMetaRange(Block.NETHERRACK, new int[] {0})},
                     BlockListener.bioluminescentMushroom, 1)
             );
+            TreeFarmPlantingRegistry.getInstance().addRecipe(new ItemMeta(BlockListener.sporeAsh.asItem(), 0), new PlantingRequirement(new BlockAndMetaRange[]{
+                    new BlockAndMetaRange(BlockListener.coalBlock, new int[] {0})},
+                    BlockListener.sporeAsh, 0)
+            );
 
             /// Tree farm harvesting
             // Trees
@@ -530,6 +538,12 @@ public class RecipeListener {
             TreeFarmHarvestingRegistry.getInstance().addRecipe(new ItemMeta(BlockListener.purpleMushroomStem.asItem(), 0), new ChanceDrop[]{
                     new ChanceDrop(new ItemMeta(BlockListener.bioluminescentMushroom.asItem(), 1), 1.0F)
             });
+            TreeFarmHarvestingRegistry.getInstance().addRecipe(new ItemMeta(BlockListener.coalMushroomBottom.asItem(), 0), new ChanceDrop[]{
+                    new ChanceDrop(new ItemMeta(BlockListener.coalMushroom.asItem(), 0), 1.0F)
+            });
+            TreeFarmHarvestingRegistry.getInstance().addRecipe(new ItemMeta(BlockListener.coalMushroomTop.asItem(), 0), new ChanceDrop[]{
+                    new ChanceDrop(new ItemMeta(BlockListener.coalMushroom.asItem(), 0), 1.0F)
+            });
         }
         if (type == RecipeRegisterEvent.Vanilla.SMELTING.type()) {
             // Fuel levels
@@ -546,6 +560,8 @@ public class RecipeListener {
             if (isBnbPresent) {
                 BNBRecipes.addBnbSmeltingRecipes(event);
             }
+
+            SmeltingRegistry.addSmeltingRecipe(BlockListener.coalMushroom.asItem().id, new ItemStack(Item.COAL));
         }
 
         // Stone carpentry
