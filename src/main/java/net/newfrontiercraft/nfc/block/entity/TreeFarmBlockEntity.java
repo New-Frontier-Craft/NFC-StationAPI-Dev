@@ -378,6 +378,9 @@ public class TreeFarmBlockEntity extends BlockEntity implements Inventory {
                                 treeFarmItemStacks[slot].count = basicItemChuteBlockEntity.storedItem.getMaxCount();
                                 basicItemChuteBlockEntity.storedItem.count = leftovers;
                             }
+                            if (plantMode) {
+                                break;
+                            }
                         }
                     }
                 }
