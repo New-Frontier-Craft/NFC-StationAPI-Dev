@@ -13,6 +13,7 @@ import net.modificationstation.stationapi.api.util.Identifier;
 import net.newfrontiercraft.nfc.compat.bnb.BNBRecipes;
 import net.newfrontiercraft.nfc.compat.vbe.VBERecipes;
 import net.newfrontiercraft.nfc.registry.*;
+import net.newfrontiercraft.nfc.registry.mutation.CoalMushroomMutation;
 import net.newfrontiercraft.nfc.utils.*;
 
 import java.util.ArrayList;
@@ -301,6 +302,11 @@ public class RecipeListener {
             // Spore ash
             CraftingRegistry.addShapelessRecipe(new ItemStack(BlockListener.sporeAsh), new ItemStack(BlockListener.coalMushroom), new ItemStack(ItemListener.netherAsh), new ItemStack(ItemListener.netherAsh));
 
+            /// Mutations
+            BlockMutationRegistry.instance().addMutation(Block.BROWN_MUSHROOM, new CoalMushroomMutation());
+            BlockMutationRegistry.instance().addMutation(Block.RED_MUSHROOM, new CoalMushroomMutation());
+
+            /// Multi blocks
             // Brick Oven Multi-Block
             List<String[]> brickOvenMultiBlockLayers = List.of(
                     new String[]{"xxx", "xcx", "xxx"},

@@ -1,10 +1,13 @@
 package net.newfrontiercraft.nfc.block;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.world.World;
 import net.modificationstation.stationapi.api.util.Identifier;
 import net.newfrontiercraft.nfc.events.init.BlockListener;
+import net.newfrontiercraft.nfc.registry.BlockMutationRegistry;
+import net.newfrontiercraft.nfc.registry.mutation.BlockMutation;
 
 import java.util.Random;
 
@@ -87,5 +90,14 @@ public class ProximityMutatorBlock extends LazyBlockTemplate {
         float randomY = random.nextFloat();
         float randomZ = random.nextFloat();
         world.addParticle("reddust", x + randomX, y + randomY, z + randomZ, 0, 1, 0);
+        Block block = Block.BLOCKS[world.getBlockId(x, y, z)];
+        if (block == null) {
+            return;
+        }
+        BlockMutation mutation = BlockMutationRegistry.instance().getMutation(block);
+        if (mutation == null) {
+            return;
+        }
+        mutation.mutateBlock(world, x, y, z, random);
     }
 }
