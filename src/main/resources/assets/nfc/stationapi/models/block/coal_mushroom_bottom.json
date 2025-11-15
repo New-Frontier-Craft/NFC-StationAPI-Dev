@@ -1,9 +1,8 @@
 {
-	"format_version": "1.9.0",
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "stationapi:block/world_generation/mushrooms/big/coal",
-		"particle": "stationapi:block/world_generation/mushrooms/big/coal"
+		"0": "nfc:block/world_generation/mushrooms/big/coal",
+		"particle": "nfc:block/world_generation/mushrooms/big/coal"
 	},
 	"elements": [
 		{

@@ -180,6 +180,9 @@ public class BlockListener {
     public static FieryMushroomBlock fieryMushroom;
     public static CoalMushroomBlock coalMushroom;
 
+    public static BigCoalMushroomBlock coalMushroomBottom;
+    public static BigCoalMushroomBlock coalMushroomTop;
+
     public static UnrestrictedNetherPortalBlock unrestrictedNetherPortal;
 
     public static CreativeBlock
@@ -363,6 +366,9 @@ public class BlockListener {
         glowingMushroom = new GlowingMushroomBlock(Identifier.of(MOD_ID, "glowing_mushroom"), 0, Block.DIRT_SOUND_GROUP, false);
         fieryMushroom = new FieryMushroomBlock(Identifier.of(MOD_ID, "fiery_mushroom"), 0, Block.DIRT_SOUND_GROUP, false);
         coalMushroom = new CoalMushroomBlock(Identifier.of(MOD_ID, "coal_mushroom"), 0.5F, Block.STONE_SOUND_GROUP, true);
+
+        coalMushroomBottom = new BigCoalMushroomBlock(Identifier.of(MOD_ID, "coal_mushroom_bottom"), Material.STONE, 1.0F, Block.STONE_SOUND_GROUP);
+        coalMushroomTop = new BigCoalMushroomBlock(Identifier.of(MOD_ID, "coal_mushroom_top"), Material.STONE, 1.0F, Block.STONE_SOUND_GROUP);
 
         petrifiedLog = new LazyPillarBlockTemplate(Identifier.of(MOD_ID, "petrified_log"), Material.STONE, 1.5F, Block.STONE_SOUND_GROUP);
         petrifiedPlanks = new LazyBlockTemplate(Identifier.of(MOD_ID, "petrified_planks"), Material.STONE, 1.5F, Block.STONE_SOUND_GROUP);

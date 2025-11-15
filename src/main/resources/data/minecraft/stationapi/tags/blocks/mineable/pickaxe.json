@@ -136,6 +136,8 @@
     "nfc:tree_farm",
     "nfc:proximity_mutator",
 
-    "nfc:coal_mushroom"
+    "nfc:coal_mushroom",
+    "nfc:coal_mushroom_bottom",
+    "nfc:coal_mushroom_top"
   ]
 }

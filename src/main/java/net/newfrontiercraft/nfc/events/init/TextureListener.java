@@ -342,6 +342,8 @@ public class TextureListener {
         BlockListener.fieryMushroom.asItem().setTextureId(getTextureIndex(mushrooms + "fiery"));
         BlockListener.coalMushroom.specifyTextures(getTextureIndex(mushrooms + "coal"));
         BlockListener.coalMushroom.asItem().setTextureId(getTextureIndex(mushrooms + "coal"));
+        BlockListener.coalMushroomBottom.asItem().setTextureId(getTextureIndex(mushrooms + "coal"));
+        BlockListener.coalMushroomTop.asItem().setTextureId(getTextureIndex(mushrooms + "coal"));
 
         // Petrified blocks
         int petrifiedTopTexture = getTextureIndex(wood + "petrified_log_top");
