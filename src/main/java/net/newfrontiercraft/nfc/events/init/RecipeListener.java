@@ -302,6 +302,12 @@ public class RecipeListener {
             // Spore ash
             CraftingRegistry.addShapelessRecipe(new ItemStack(BlockListener.sporeAsh), new ItemStack(BlockListener.coalMushroom), new ItemStack(ItemListener.netherAsh), new ItemStack(ItemListener.netherAsh));
 
+            /// Item drop changes
+            // Add log drops
+            BlockListener.rotatedOakLog.changeDroppedItem(Block.LOG.asItem());
+            BlockListener.rotatedSpruceLog.changeDroppedItem(Block.LOG.asItem());
+            BlockListener.rotatedBirchLog.changeDroppedItem(Block.LOG.asItem());
+
             /// Mutations
             BlockMutationRegistry.instance().addMutation(Block.BROWN_MUSHROOM, new CoalMushroomMutation());
             BlockMutationRegistry.instance().addMutation(Block.RED_MUSHROOM, new CoalMushroomMutation());

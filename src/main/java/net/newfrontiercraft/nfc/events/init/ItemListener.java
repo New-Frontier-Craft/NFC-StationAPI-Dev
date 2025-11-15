@@ -683,11 +683,6 @@ public class ItemListener {
         FuelRegistry.addFuelItem(anthracite, 11200);
         FuelRegistry.addFuelItem(coalCoke, 3200);
 
-        // Add log drops
-        BlockListener.rotatedOakLog.changeDroppedItem(Block.LOG.asItem());
-        BlockListener.rotatedSpruceLog.changeDroppedItem(Block.LOG.asItem());
-        BlockListener.rotatedBirchLog.changeDroppedItem(Block.LOG.asItem());
-
         // Change sword damage
         ((SwordItem)Item.WOODEN_SWORD).damage = 3;
         ((SwordItem)Item.STONE_SWORD).damage = 3;

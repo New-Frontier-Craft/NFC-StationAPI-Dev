@@ -21,6 +21,9 @@
     "nfc:purple_mushroom_stem",
     "nfc:blue_mushroom_cap",
     "nfc:blue_mushroom_stem",
-    "nfc:blue_shroomlight"
+    "nfc:blue_shroomlight",
+    "nfc:rotated_oak_log",
+    "nfc:rotated_spruce_log",
+    "nfc:rotated_birch_log"
   ]
 }
