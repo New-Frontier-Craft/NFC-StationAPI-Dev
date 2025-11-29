@@ -60,7 +60,8 @@ public class ItemListener {
             aluminiumGear,
             redstoneCircuit,
             coalCoke,
-            rawAnthracite;
+            rawAnthracite,
+            coalMushroomSpores;
 
     public static TemplatePickaxeItem
             aluminiumPickaxe,
@@ -647,6 +648,9 @@ public class ItemListener {
         ruby = new LazyItemTemplate(Identifier.of(MOD_ID, "ruby"), ToolTierEnum.ADVANCED);
         emerald = new LazyItemTemplate(Identifier.of(MOD_ID, "emerald"), ToolTierEnum.ADVANCED);
         rawAnthracite = new LazyItemTemplate(Identifier.of(MOD_ID, "raw_anthracite"));
+
+        // Farming related drops
+        coalMushroomSpores = new LazyItemTemplate(Identifier.of(MOD_ID, "coal_mushroom_spores"));
 
         // Other drops
         blueGlowstoneDust = new LazyItemTemplate(Identifier.of(MOD_ID, "blue_glowstone_dust"));

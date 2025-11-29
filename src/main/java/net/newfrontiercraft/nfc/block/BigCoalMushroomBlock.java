@@ -3,7 +3,7 @@ package net.newfrontiercraft.nfc.block;
 import net.minecraft.block.material.Material;
 import net.minecraft.sound.BlockSoundGroup;
 import net.modificationstation.stationapi.api.util.Identifier;
-import net.newfrontiercraft.nfc.events.init.BlockListener;
+import net.newfrontiercraft.nfc.events.init.ItemListener;
 
 import java.util.Random;
 
@@ -14,7 +14,7 @@ public class BigCoalMushroomBlock extends LazyBlockTemplate {
 
     @Override
     public int getDroppedItemId(int blockMeta, Random random) {
-        return BlockListener.coalMushroom.asItem().id;
+        return ItemListener.coalMushroomSpores.id;
     }
 
     @Override

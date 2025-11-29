@@ -300,7 +300,7 @@ public class RecipeListener {
             CraftingRegistry.addShapelessRecipe(new ItemStack(BlockListener.planter, 1, 1), new ItemStack(BlockListener.planter, 1, 0), new ItemStack(Block.DIRT));
 
             // Spore ash
-            CraftingRegistry.addShapelessRecipe(new ItemStack(BlockListener.sporeAsh), new ItemStack(BlockListener.coalMushroom), new ItemStack(ItemListener.netherAsh), new ItemStack(ItemListener.netherAsh));
+            CraftingRegistry.addShapelessRecipe(new ItemStack(BlockListener.sporeAsh), new ItemStack(ItemListener.coalMushroomSpores), new ItemStack(ItemListener.netherAsh), new ItemStack(ItemListener.netherAsh));
 
             /// Item drop changes
             // Add log drops
@@ -578,10 +578,10 @@ public class RecipeListener {
                     new ChanceDrop(new ItemMeta(BlockListener.bioluminescentMushroom.asItem(), 1), 1.0F)
             });
             TreeFarmHarvestingRegistry.getInstance().addRecipe(new ItemMeta(BlockListener.coalMushroomBottom.asItem(), 0), new ChanceDrop[]{
-                    new ChanceDrop(new ItemMeta(BlockListener.coalMushroom.asItem(), 0), 1.0F)
+                    new ChanceDrop(new ItemMeta(ItemListener.coalMushroomSpores, 0), 1.0F)
             });
             TreeFarmHarvestingRegistry.getInstance().addRecipe(new ItemMeta(BlockListener.coalMushroomTop.asItem(), 0), new ChanceDrop[]{
-                    new ChanceDrop(new ItemMeta(BlockListener.coalMushroom.asItem(), 0), 1.0F)
+                    new ChanceDrop(new ItemMeta(ItemListener.coalMushroomSpores, 0), 1.0F)
             });
         }
         if (type == RecipeRegisterEvent.Vanilla.SMELTING.type()) {

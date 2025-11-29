@@ -6,6 +6,7 @@ import net.modificationstation.stationapi.api.block.HasCustomBlockItemFactory;
 import net.modificationstation.stationapi.api.util.Identifier;
 import net.newfrontiercraft.nfc.block.item.CoalMushroomBlockItem;
 import net.newfrontiercraft.nfc.events.init.BlockListener;
+import net.newfrontiercraft.nfc.events.init.ItemListener;
 
 import java.util.Random;
 
@@ -57,6 +58,11 @@ public class CoalMushroomBlock extends LazyMushroomTemplate {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public int getDroppedItemId(int blockMeta, Random random) {
+        return ItemListener.coalMushroomSpores.id;
     }
 
     @Override

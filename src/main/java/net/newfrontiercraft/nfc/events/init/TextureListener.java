@@ -66,6 +66,7 @@ public class TextureListener {
         String otherDrops = items + "other_drops/";
         String parts = items + "parts/";
         String fuels = items + "fuel/";
+        String farmingItems = items + "farming/";
 
         // Convenience blocks
         int scaffoldTopTexture = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, convenienceBlocks + "scaffold_block_top")).index;
@@ -638,6 +639,9 @@ public class TextureListener {
 
         // Telescope
         ItemListener.telescopeItem.setTexture(Identifier.of(MOD_ID, items + "tools/telescope"));
+
+        // Farming related drops
+        ItemListener.coalMushroomSpores.setTexture(Identifier.of(MOD_ID, farmingItems + "coal_mushroom_spores"));
 
         // Other drops
         ItemListener.blueGlowstoneDust.setTexture(Identifier.of(MOD_ID, otherDrops + "blue_glowstone_dust"));

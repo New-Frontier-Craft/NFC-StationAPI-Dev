@@ -555,6 +555,8 @@ item.nfc.ruby.name=Ruby
 item.nfc.emerald.name=Emerald
 item.nfc.raw_anthracite.name=Raw Anthracite
 
+item.nfc.coal_mushroom_spores.name=Coal Mushroom Spores
+
 item.nfc.cooked_egg.name=Cooked Egg
 
 item.nfc.oil_bucket.name=Oil Bucket
