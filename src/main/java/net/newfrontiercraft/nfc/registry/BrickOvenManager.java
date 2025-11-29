@@ -286,7 +286,7 @@ public class BrickOvenManager {
         addShapelessOvenRecipe(new ItemStack(ItemListener.tungstenIngot, 1), new Object[] {new ItemStack(BlockListener.tungstenOre, 1)}, 200, FuelLevelEnum.BLAZING);
         addShapelessOvenRecipe(new ItemStack(ItemListener.titaniumIngot, 1), new Object[] {new ItemStack(BlockListener.titaniumOre, 1)}, 200, FuelLevelEnum.BLAZING);
         addShapelessOvenRecipe(new ItemStack(ItemListener.osmiumIngot, 1), new Object[] {new ItemStack(BlockListener.osmiumOre, 1)}, 200, FuelLevelEnum.BLAZING);
-        addShapelessOvenRecipe(new ItemStack(Item.IRON_INGOT, 1), new Object[] {new ItemStack(Block.IRON_ORE, 1)}, 200, FuelLevelEnum.SEARING);
+        addShapelessOvenRecipe(new ItemStack(Item.IRON_INGOT, 1), new Object[] {new ItemStack(Block.IRON_ORE, 1)}, 200, FuelLevelEnum.HOT);
 
 //		Object[][] oreRecipes;
 //
