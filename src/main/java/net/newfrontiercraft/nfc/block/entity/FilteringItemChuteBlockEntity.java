@@ -1,8 +1,6 @@
 package net.newfrontiercraft.nfc.block.entity;
 
 import net.danygames2014.nyalib.capability.block.itemhandler.ItemHandlerBlockCapability;
-import net.danygames2014.nyalib.item.ItemHandler;
-import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.vehicle.MinecartEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
