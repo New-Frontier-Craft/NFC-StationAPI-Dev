@@ -1,8 +1,9 @@
 package net.newfrontiercraft.nfc.block.entity;
 
+import net.danygames2014.nyalib.capability.CapabilityHelper;
+import net.danygames2014.nyalib.capability.block.itemhandler.ItemHandlerBlockCapability;
 import net.danygames2014.nyalib.item.ItemHandler;
 import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.block.entity.FurnaceBlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.vehicle.MinecartEntity;
 import net.minecraft.inventory.Inventory;
@@ -57,14 +58,14 @@ public class BasicItemChuteBlockEntity extends BlockEntity implements Inventory,
         }
         tickTimer = 0;
         int meta = world.getBlockMeta(x, y, z);
-        BlockEntity inputTarget = world.getBlockEntity(x, y - 1, z);
+        ItemHandlerBlockCapability inputTarget = CapabilityHelper.getCapability(world, x, y - 1, z, ItemHandlerBlockCapability.class);
         if (inputTarget != null && storedItem != null) {
             pushOutOfChute(inputTarget);
         }
         if (chuteExtender) {
             return;
         }
-        BlockEntity outputTarget = world.getBlockEntity(x, y + 1, z);
+        ItemHandlerBlockCapability outputTarget = CapabilityHelper.getCapability(world, x, y + 1, z, ItemHandlerBlockCapability.class);
         if (outputTarget != null && meta != 1) {
             pullIntoChute(outputTarget);
         }
@@ -132,21 +133,15 @@ public class BasicItemChuteBlockEntity extends BlockEntity implements Inventory,
         }
     }
 
-    protected void pushOutOfChute(BlockEntity inputTarget) {
-        if (!(inputTarget instanceof ItemHandler)) {
+    protected void pushOutOfChute(ItemHandlerBlockCapability inputTarget) {
+        if (!inputTarget.canInsertItem(Direction.UP)) {
             return;
         }
-        if (!((ItemHandler)inputTarget).canInsertItem(Direction.UP)) {
-            return;
-        }
-        storedItem = ((ItemHandler)inputTarget).insertItem(storedItem, Direction.UP);
+        storedItem = inputTarget.insertItem(storedItem, Direction.UP);
     }
 
-    protected void pullIntoChute(BlockEntity outputTarget) {
-        if (!(outputTarget instanceof ItemHandler)) {
-            return;
-        }
-        if (!((ItemHandler)outputTarget).canExtractItem(Direction.DOWN)) {
+    protected void pullIntoChute(ItemHandlerBlockCapability outputTarget) {
+        if (!outputTarget.canExtractItem(Direction.DOWN)) {
             return;
         }
         if (storedItem != null && storedItem.count >= storedItem.getMaxCount()) {
@@ -154,17 +149,13 @@ public class BasicItemChuteBlockEntity extends BlockEntity implements Inventory,
         }
         int slotCount = ((ItemHandler)outputTarget).getItemSlots(Direction.DOWN);
         int startingSlot = 0; // This cursed mess is to blame on an API dispute
-        if (outputTarget instanceof FurnaceBlockEntity) {
-            slotCount = 3;
-            startingSlot = 2;
-        }
         for (int i = startingSlot; i < slotCount; i++) {
-            ItemStack outputItem = ((ItemHandler)outputTarget).getItem(i, Direction.DOWN);
+            ItemStack outputItem = outputTarget.getItem(i, Direction.DOWN);
             if (outputItem == null) {
                 continue;
             }
             if (storedItem == null) {
-                storedItem = ((ItemHandler)outputTarget).extractItem(i, outputItem.count, Direction.DOWN);
+                storedItem = outputTarget.extractItem(i, outputItem.count, Direction.DOWN);
                 continue;
             }
             if (!storedItem.isItemEqual(outputItem)) {
@@ -172,11 +163,11 @@ public class BasicItemChuteBlockEntity extends BlockEntity implements Inventory,
             }
             if (storedItem.count + outputItem.count <= storedItem.getMaxCount()) {
                 storedItem.count += outputItem.count;
-                ((ItemHandler)outputTarget).extractItem(i, outputItem.count, Direction.DOWN);
+                outputTarget.extractItem(i, outputItem.count, Direction.DOWN);
             } else {
                 int removedCount = outputItem.count - (storedItem.count + outputItem.count - storedItem.getMaxCount());
                 storedItem.count = storedItem.getMaxCount();
-                ((ItemHandler)outputTarget).extractItem(i, removedCount, Direction.DOWN);
+                outputTarget.extractItem(i, removedCount, Direction.DOWN);
                 break;
             }
         }
@@ -258,55 +249,6 @@ public class BasicItemChuteBlockEntity extends BlockEntity implements Inventory,
         }
         nbttagcompound.put("Item", nbttaglist);
     }
-
-//    @Override
-//    public boolean isInput(int side) {
-//        return side == 1;
-//    }
-//
-//    @Override
-//    public int numberOfInputSlots(int side) {
-//        if (side == 1) return 1;
-//        return 0;
-//    }
-//
-//    @Override
-//    public int insertItem(ItemStack itemStack, int slot, int side) {
-//        if (side == 1) {
-//            if (slot == 0) {
-//                if (storedItem == null) {
-//                    storedItem = itemStack;
-//                    return 0;
-//                } else if (storedItem.isItemEqual(itemStack)) {
-//                    int totalItemCount = storedItem.count + itemStack.count;
-//                    if (totalItemCount <= storedItem.getMaxCount()) {
-//                        storedItem.count = totalItemCount;
-//                        return 0;
-//                    } else {
-//                        storedItem.count = storedItem.getMaxCount();
-//                        return totalItemCount - storedItem.getMaxCount();
-//                    }
-//                }
-//            }
-//        }
-//        return itemStack.count;
-//    }
-//
-//    @Override
-//    public int getTotalCountOfItem(ItemStack itemStack, int side) {
-//        if (storedItem == null) {
-//            return 0;
-//        } else if (!storedItem.isItemEqual(itemStack)) {
-//            return 0;
-//        } else {
-//            return storedItem.count;
-//        }
-//    }
-//
-//    @Override
-//    public ItemStack itemAtSlot(int side, int slot) {
-//        return storedItem;
-//    }
 
     public int handleGroundItem(ItemStack itemStack) {
         if (storedItem == null) {
