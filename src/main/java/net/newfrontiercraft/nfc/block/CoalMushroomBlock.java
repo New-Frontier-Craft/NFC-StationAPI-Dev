@@ -1,16 +1,16 @@
 package net.newfrontiercraft.nfc.block;
 
-import net.minecraft.item.ItemStack;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.world.World;
-import net.modificationstation.stationapi.api.client.item.CustomTooltipProvider;
+import net.modificationstation.stationapi.api.block.HasCustomBlockItemFactory;
 import net.modificationstation.stationapi.api.util.Identifier;
+import net.newfrontiercraft.nfc.block.item.CoalMushroomBlockItem;
 import net.newfrontiercraft.nfc.events.init.BlockListener;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.Random;
 
-public class CoalMushroomBlock extends LazyMushroomTemplate implements CustomTooltipProvider {
+@HasCustomBlockItemFactory(CoalMushroomBlockItem.class)
+public class CoalMushroomBlock extends LazyMushroomTemplate {
     public CoalMushroomBlock(Identifier identifier, float hardness, BlockSoundGroup blockSounds, boolean lightImmune) {
         super(identifier, hardness, blockSounds, lightImmune);
         setTickRandomly(true);
@@ -57,14 +57,6 @@ public class CoalMushroomBlock extends LazyMushroomTemplate implements CustomToo
             return true;
         }
         return false;
-    }
-
-    @Override
-    public @NotNull String[] getTooltip(ItemStack stack, String originalTooltip) {
-        return new String[] {
-                originalTooltip,
-                "Grows on coal blocks and consumes nearby purple mushrooms"
-        };
     }
 
     @Override
