@@ -350,6 +350,20 @@ public class ChunkListener {
             (new OreCloud(BlockListener.nickelOre.id, 6, 4, 24)).generate(event.world, event.random, k4, l7, i11);
         }
 
+        if (event.random.nextInt(3) == 1) {
+            int k4 = event.x + event.random.nextInt(16);
+            int l7 = event.random.nextInt(16) + 32;
+            int i11 = event.z + event.random.nextInt(16);
+            (new OreCloud(BlockListener.nickelOre.id, 6, 4, 32)).generate(event.world, event.random, k4, l7, i11);
+        }
+
+        if (event.random.nextInt(8) == 1) {
+            int k4 = event.x + event.random.nextInt(16);
+            int l7 = event.random.nextInt(8) + 24;
+            int i11 = event.z + event.random.nextInt(16);
+            (new OreCloud(BlockListener.nickelOre.id, 6, 4, 32)).generate(event.world, event.random, k4, l7, i11);
+        }
+
         if (event.random.nextInt(7) == 1) {
             int k4 = event.x + event.random.nextInt(16);
             int l7 = event.random.nextInt(24);
