@@ -219,6 +219,7 @@ public class BlockListener {
     public static CombustionHeaterBlock
             combustionHeater,
             combustionHeaterActive;
+    public static HeatSiphonBlock heatSiphon;
 
     public static CokeOvenBlock cokeOven;
 
@@ -454,6 +455,7 @@ public class BlockListener {
 
         combustionHeater = new CombustionHeaterBlock(Identifier.of(MOD_ID, "combustion_heater"), Material.STONE, 1.0F, Block.STONE_SOUND_GROUP, false);
         combustionHeaterActive = new CombustionHeaterBlock(Identifier.of(MOD_ID, "combustion_heater_active"), Material.STONE, 1.0F, Block.STONE_SOUND_GROUP, true);
+        heatSiphon = new HeatSiphonBlock(Identifier.of(MOD_ID, "heat_siphon"), Material.STONE, 2.5F, Block.STONE_SOUND_GROUP);
 
         cokeOven = new CokeOvenBlock(Identifier.of(MOD_ID, "coke_oven"), Material.STONE, 0, 2.0F);
 

@@ -289,6 +289,7 @@ tile.nfc.heat_coil.name=Heat Coil
 
 tile.nfc.combustion_heater.name=Combustion Heater
 tile.nfc.combustion_heater_active.name=Lit Combustion Heater
+tile.nfc.heat_siphon.name=Heat Siphon
 
 tile.nfc.basic_item_chute.name=Basic Item Chute
 tile.nfc.item_chute_extender.name=Item Chute Extender

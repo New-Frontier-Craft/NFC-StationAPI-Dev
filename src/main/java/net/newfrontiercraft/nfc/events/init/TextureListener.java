@@ -266,6 +266,12 @@ public class TextureListener {
                 getTextureIndex(machines + "combustion_heater_side"),
                 getTextureIndex(machines + "combustion_heater_bottom"),
                 getTextureIndex(machines + "combustion_heater_front_active"));
+        BlockListener.heatSiphon.specifyTextures(
+                getTextureIndex(machines + "heat_siphon_top"),
+                getTextureIndex(machines + "heat_siphon_top_hot"),
+                getTextureIndex(machines + "heat_siphon_side"),
+                getTextureIndex(machines + "heat_siphon_side_hot"),
+                getTextureIndex(machines + "heat_siphon_bottom"));
         BlockListener.basicItemChute.specifyTextures(getTextureIndex(machines + "basic_item_chute_top"), getTextureIndex(machines + "basic_item_chute_side"), getTextureIndex(machines + "basic_item_chute_bottom"));
         BlockListener.itemChuteExtender.specifyTextures(getTextureIndex(machines + "item_chute_extender_top"), getTextureIndex(machines + "item_chute_extender_side"), getTextureIndex(machines + "item_chute_extender_bottom"));
         BlockListener.filteringItemChute.specifyTextures(getTextureIndex(machines + "filtering_item_chute_top"), getTextureIndex(machines + "filtering_item_chute_side"), getTextureIndex(machines + "filtering_item_chute_bottom"));
