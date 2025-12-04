@@ -9,11 +9,10 @@ import net.newfrontiercraft.nfc.compat.ami.carpentry.CarpentryRecipeCategory;
 import net.newfrontiercraft.nfc.compat.ami.carpentry.CarpentryRecipeHandler;
 import net.newfrontiercraft.nfc.compat.ami.cokeoven.CokeOvenRecipeCategory;
 import net.newfrontiercraft.nfc.compat.ami.cokeoven.CokeOvenRecipeHandler;
+import net.newfrontiercraft.nfc.compat.ami.treefarm.TreeFarmPlantingRequirementCategory;
+import net.newfrontiercraft.nfc.compat.ami.treefarm.TreeFarmPlantingRequirementHandler;
 import net.newfrontiercraft.nfc.events.init.BlockListener;
-import net.newfrontiercraft.nfc.registry.BrickOvenManager;
-import net.newfrontiercraft.nfc.registry.CarpentryRecipes;
-import net.newfrontiercraft.nfc.registry.CokeOvenRecipeRegistry;
-import net.newfrontiercraft.nfc.registry.MultiBlockRecipeRegistry;
+import net.newfrontiercraft.nfc.registry.*;
 
 public class AMICompat implements ModPluginProvider {
 
@@ -60,6 +59,10 @@ public class AMICompat implements ModPluginProvider {
         registry.addRecipeCategories(new CokeOvenRecipeCategory());
         registry.addRecipeHandlers(new CokeOvenRecipeHandler());
         registry.addRecipes(CokeOvenRecipeRegistry.getInstance().getRecipes());
+
+        registry.addRecipeCategories(new TreeFarmPlantingRequirementCategory());
+        registry.addRecipeHandlers(new TreeFarmPlantingRequirementHandler());
+        registry.addRecipes(TreeFarmPlantingRegistry.getInstance().getRecipes());
     }
 
     @Override
