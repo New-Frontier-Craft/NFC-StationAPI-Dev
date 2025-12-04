@@ -9,6 +9,8 @@ import net.newfrontiercraft.nfc.compat.ami.carpentry.CarpentryRecipeCategory;
 import net.newfrontiercraft.nfc.compat.ami.carpentry.CarpentryRecipeHandler;
 import net.newfrontiercraft.nfc.compat.ami.cokeoven.CokeOvenRecipeCategory;
 import net.newfrontiercraft.nfc.compat.ami.cokeoven.CokeOvenRecipeHandler;
+import net.newfrontiercraft.nfc.compat.ami.treefarm.TreeFarmHarvestingCategory;
+import net.newfrontiercraft.nfc.compat.ami.treefarm.TreeFarmHarvestingHandler;
 import net.newfrontiercraft.nfc.compat.ami.treefarm.TreeFarmPlantingRequirementCategory;
 import net.newfrontiercraft.nfc.compat.ami.treefarm.TreeFarmPlantingRequirementHandler;
 import net.newfrontiercraft.nfc.events.init.BlockListener;
@@ -63,6 +65,10 @@ public class AMICompat implements ModPluginProvider {
         registry.addRecipeCategories(new TreeFarmPlantingRequirementCategory());
         registry.addRecipeHandlers(new TreeFarmPlantingRequirementHandler());
         registry.addRecipes(TreeFarmPlantingRegistry.getInstance().getRecipes());
+
+        registry.addRecipeCategories(new TreeFarmHarvestingCategory());
+        registry.addRecipeHandlers(new TreeFarmHarvestingHandler());
+        registry.addRecipes(TreeFarmHarvestingRegistry.getInstance().getRecipes());
     }
 
     @Override
