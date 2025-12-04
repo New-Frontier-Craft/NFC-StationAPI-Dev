@@ -601,7 +601,7 @@ public class RecipeListener {
                 BNBRecipes.addBnbSmeltingRecipes(event);
             }
 
-            SmeltingRegistry.addSmeltingRecipe(BlockListener.coalMushroom.asItem().id, new ItemStack(Item.COAL));
+            SmeltingRegistry.addSmeltingRecipe(ItemListener.coalMushroomSpores.id, new ItemStack(Item.COAL));
         }
 
         // Stone carpentry
