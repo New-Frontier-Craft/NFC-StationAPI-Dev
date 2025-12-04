@@ -540,7 +540,6 @@ public class RecipeListener {
             }
             for (int i = 0; i <= 8; i+=8) {
                 TreeFarmHarvestingRegistry.getInstance().addRecipe(new ItemMeta(BlockListener.alphaLeaves.asItem(), i), new ChanceDrop[]{
-                        new ChanceDrop(new ItemMeta(Block.SAPLING.asItem(), 0), 0.25F),
                         new ChanceDrop(new ItemMeta(BlockListener.alphaSaplingBlock.asItem(), 0), 0.25F)
                 });
                 TreeFarmHarvestingRegistry.getInstance().addRecipe(new ItemMeta(BlockListener.petrifiedLeaves.asItem(), i + 2), new ChanceDrop[]{
