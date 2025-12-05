@@ -364,7 +364,7 @@ public class BlockListener {
         scorchedSandstone = new LazyBlockTemplate(Identifier.of(MOD_ID, "scorched_sandstone"), Material.STONE, 0.8F, Block.STONE_SOUND_GROUP);
 
         bioluminescentMushroom = new BioluminescentMushroomBlock(Identifier.of(MOD_ID, "bioluminescent_mushroom"), 0, Block.WOOD_SOUND_GROUP, true);
-        glowingMushroom = new GlowingMushroomBlock(Identifier.of(MOD_ID, "glowing_mushroom"), 0, Block.DIRT_SOUND_GROUP, false);
+        glowingMushroom = new GlowingMushroomBlock(Identifier.of(MOD_ID, "glowing_mushroom"), 0, Block.DIRT_SOUND_GROUP, true);
         fieryMushroom = new FieryMushroomBlock(Identifier.of(MOD_ID, "fiery_mushroom"), 0, Block.DIRT_SOUND_GROUP, false);
         sporeAsh = new SporeAshBlock(Identifier.of(MOD_ID, "spore_ash"), Material.STONE, 1.5F, Block.STONE_SOUND_GROUP);
         coalMushroom = new CoalMushroomBlock(Identifier.of(MOD_ID, "coal_mushroom"), 0.5F, Block.STONE_SOUND_GROUP, true);
