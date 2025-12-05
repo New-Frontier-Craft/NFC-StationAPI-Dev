@@ -140,6 +140,9 @@
     "nfc:spore_ash",
     "nfc:coal_mushroom",
     "nfc:coal_mushroom_bottom",
-    "nfc:coal_mushroom_top"
+    "nfc:coal_mushroom_top",
+
+    "glass",
+    "nfc:window"
   ]
 }
