@@ -3,11 +3,14 @@ package net.newfrontiercraft.nfc.block;
 import net.minecraft.block.material.Material;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.world.World;
+import net.modificationstation.stationapi.api.block.HasCustomBlockItemFactory;
 import net.modificationstation.stationapi.api.util.Identifier;
+import net.newfrontiercraft.nfc.block.item.SporeAshBlockItem;
 import net.newfrontiercraft.nfc.events.init.BlockListener;
 
 import java.util.Random;
 
+@HasCustomBlockItemFactory(SporeAshBlockItem.class)
 public class SporeAshBlock extends LazyBlockTemplate {
     public SporeAshBlock(Identifier identifier, Material material, float hardness, BlockSoundGroup blockSounds) {
         super(identifier, material, hardness, blockSounds);

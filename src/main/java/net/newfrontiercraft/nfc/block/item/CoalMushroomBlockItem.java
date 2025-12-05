@@ -14,8 +14,10 @@ public class CoalMushroomBlockItem extends BlockItem implements CustomTooltipPro
     public @NotNull String[] getTooltip(ItemStack stack, String originalTooltip) {
         return new String[] {
                 originalTooltip,
-                "Grows on coal blocks and ",
-                "consumes nearby purple mushrooms"
+                "Grows on coal blocks and",
+                "consumes nearby purple mushrooms",
+                "to grow one block taller. Does not",
+                "spread horizontally."
         };
     }
 }

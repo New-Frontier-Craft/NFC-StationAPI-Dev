@@ -650,7 +650,7 @@ public class ItemListener {
         rawAnthracite = new LazyItemTemplate(Identifier.of(MOD_ID, "raw_anthracite"));
 
         // Farming related drops
-        coalMushroomSpores = new LazyItemTemplate(Identifier.of(MOD_ID, "coal_mushroom_spores"));
+        coalMushroomSpores = new CoalMushroomSporesItem(Identifier.of(MOD_ID, "coal_mushroom_spores"));
 
         // Other drops
         blueGlowstoneDust = new LazyItemTemplate(Identifier.of(MOD_ID, "blue_glowstone_dust"));
