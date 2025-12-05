@@ -17,7 +17,6 @@ import net.modificationstation.stationapi.api.state.property.BooleanProperty;
 import net.modificationstation.stationapi.api.template.block.TemplateBlockWithEntity;
 import net.modificationstation.stationapi.api.util.Identifier;
 import net.newfrontiercraft.nfc.block.item.BrickOvenBlockItem;
-import net.newfrontiercraft.nfc.block.item.OptionalMultiblockControllerBlockItem;
 import net.newfrontiercraft.nfc.inventory.BrickOvenScreenHandler;
 import net.newfrontiercraft.nfc.events.init.BlockListener;
 import net.newfrontiercraft.nfc.events.init.BlockEntityListener;
