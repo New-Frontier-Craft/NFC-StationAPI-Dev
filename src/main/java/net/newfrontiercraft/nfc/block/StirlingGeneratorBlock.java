@@ -4,12 +4,15 @@ import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.material.Material;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.world.World;
+import net.modificationstation.stationapi.api.block.HasCustomBlockItemFactory;
 import net.modificationstation.stationapi.api.util.Identifier;
 import net.newfrontiercraft.nfc.api.TorqueGenerator;
 import net.newfrontiercraft.nfc.block.entity.HeatCoilBlockEntity;
+import net.newfrontiercraft.nfc.block.item.StirlingGeneratorBlockItem;
 
 import java.util.Random;
 
+@HasCustomBlockItemFactory(StirlingGeneratorBlockItem.class)
 public class StirlingGeneratorBlock extends LazyBlockTemplate implements TorqueGenerator {
     public StirlingGeneratorBlock(Identifier identifier, Material material, float hardness, BlockSoundGroup blockSounds) {
         super(identifier, material, hardness, blockSounds);
