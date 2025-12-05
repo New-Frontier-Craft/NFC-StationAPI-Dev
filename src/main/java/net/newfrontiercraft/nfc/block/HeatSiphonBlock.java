@@ -5,9 +5,12 @@ import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.material.Material;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.world.World;
+import net.modificationstation.stationapi.api.block.HasCustomBlockItemFactory;
 import net.modificationstation.stationapi.api.util.Identifier;
 import net.newfrontiercraft.nfc.block.entity.HeatCoilBlockEntity;
+import net.newfrontiercraft.nfc.block.item.HeatSiphonBlockItem;
 
+@HasCustomBlockItemFactory(HeatSiphonBlockItem.class)
 public class HeatSiphonBlock extends LazyBlockTemplate {
     protected int hotTopTexture;
     protected int hotSideTexture;
