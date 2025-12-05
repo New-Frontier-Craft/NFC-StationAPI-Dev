@@ -8,26 +8,18 @@ import net.minecraft.world.World;
 import net.modificationstation.stationapi.api.util.Identifier;
 import net.newfrontiercraft.nfc.block.entity.HeatCoilBlockEntity;
 
-import java.util.Random;
-
 public class HeatSiphonBlock extends LazyBlockTemplate {
     protected int hotTopTexture;
     protected int hotSideTexture;
 
     public HeatSiphonBlock(Identifier identifier, Material material, float hardness, BlockSoundGroup blockSounds) {
         super(identifier, material, hardness, blockSounds);
-        setTickRandomly(true);
     }
 
     public void specifyTextures(int topTexture, int hotTopTexture, int sideTexture, int hotSideTexture, int bottomTexture) {
         super.specifyTextures(topTexture, sideTexture, bottomTexture);
         this.hotTopTexture = hotTopTexture;
         this.hotSideTexture = hotSideTexture;
-    }
-
-    @Override
-    public int getTickRate() {
-        return 1;
     }
 
     @Override
@@ -41,8 +33,7 @@ public class HeatSiphonBlock extends LazyBlockTemplate {
         return super.getTexture(side, meta);
     }
 
-    @Override
-    public void onTick(World world, int x, int y, int z, Random random) {
+    public void provideHeat(World world, int x, int y, int z) {
         int blockMeta = world.getBlockMeta(x, y, z);
         int belowId = world.getBlockId(x, y - 1, z);
         if ((belowId != Block.LAVA.id && belowId != Block.FLOWING_LAVA.id) || world.getBlockMeta(x, y - 1, z) != 0) {
@@ -59,6 +50,5 @@ public class HeatSiphonBlock extends LazyBlockTemplate {
                 heatCoil.changeHeatLevel(10);
             }
         }
-        world.scheduleBlockUpdate(x, y, z, this.id, getTickRate());
     }
 }
