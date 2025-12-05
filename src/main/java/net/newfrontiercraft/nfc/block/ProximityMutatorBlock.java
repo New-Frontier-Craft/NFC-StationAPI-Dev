@@ -4,13 +4,16 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.world.World;
+import net.modificationstation.stationapi.api.block.HasCustomBlockItemFactory;
 import net.modificationstation.stationapi.api.util.Identifier;
+import net.newfrontiercraft.nfc.block.item.MultiblockControllerBlockItem;
 import net.newfrontiercraft.nfc.events.init.BlockListener;
 import net.newfrontiercraft.nfc.registry.BlockMutationRegistry;
 import net.newfrontiercraft.nfc.registry.mutation.BlockMutation;
 
 import java.util.Random;
 
+@HasCustomBlockItemFactory(MultiblockControllerBlockItem.class)
 public class ProximityMutatorBlock extends LazyBlockTemplate {
     public ProximityMutatorBlock(Identifier identifier, Material material, float hardness, BlockSoundGroup blockSounds) {
         super(identifier, material, hardness, blockSounds);

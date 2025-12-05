@@ -10,18 +10,21 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.modificationstation.stationapi.api.block.BlockState;
+import net.modificationstation.stationapi.api.block.HasCustomBlockItemFactory;
 import net.modificationstation.stationapi.api.gui.screen.container.GuiHelper;
 import net.modificationstation.stationapi.api.state.StateManager;
 import net.modificationstation.stationapi.api.state.property.BooleanProperty;
 import net.modificationstation.stationapi.api.template.block.TemplateBlockWithEntity;
 import net.modificationstation.stationapi.api.util.Identifier;
 import net.newfrontiercraft.nfc.block.entity.CokeOvenBlockEntity;
+import net.newfrontiercraft.nfc.block.item.MultiblockControllerBlockItem;
 import net.newfrontiercraft.nfc.events.init.BlockEntityListener;
 import net.newfrontiercraft.nfc.events.init.BlockListener;
 import net.newfrontiercraft.nfc.inventory.CokeOvenScreenHandler;
 
 import java.util.Random;
 
+@HasCustomBlockItemFactory(MultiblockControllerBlockItem.class)
 public class CokeOvenBlock extends TemplateBlockWithEntity {
 
     public static final BooleanProperty ACTIVE = BooleanProperty.of("active");
