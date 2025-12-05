@@ -9,15 +9,18 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
+import net.modificationstation.stationapi.api.block.HasCustomBlockItemFactory;
 import net.modificationstation.stationapi.api.gui.screen.container.GuiHelper;
 import net.modificationstation.stationapi.api.util.Identifier;
 import net.newfrontiercraft.nfc.block.entity.CombustionHeaterBlockEntity;
+import net.newfrontiercraft.nfc.block.item.CombustionHeaterBlockItem;
 import net.newfrontiercraft.nfc.events.init.BlockEntityListener;
 import net.newfrontiercraft.nfc.events.init.BlockListener;
 import net.newfrontiercraft.nfc.inventory.CombustionHeaterScreenHandler;
 
 import java.util.Random;
 
+@HasCustomBlockItemFactory(CombustionHeaterBlockItem.class)
 public class CombustionHeaterBlock extends LazyBlockWithEntityTemplate {
     private final Random random;
     private final boolean isActive;
