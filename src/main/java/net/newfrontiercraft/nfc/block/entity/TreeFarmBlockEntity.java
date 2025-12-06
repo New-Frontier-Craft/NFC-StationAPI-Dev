@@ -400,7 +400,8 @@ public class TreeFarmBlockEntity extends BlockEntity implements Inventory {
                 BlockEntity target = world.getBlockEntity(xCentered + xOffset, y - 2, zCentered + zOffset);
                 for (int slot = OUTPUT_START; slot <= OUTPUT_END; slot++) {
                     if (treeFarmItemStacks[slot] != null
-                            && target instanceof BasicItemChuteBlockEntity basicItemChuteBlockEntity) {
+                            && target instanceof BasicItemChuteBlockEntity basicItemChuteBlockEntity
+                            && !(target instanceof FilteringItemChuteBlockEntity)) {
                         if (basicItemChuteBlockEntity.storedItem == null) {
                             basicItemChuteBlockEntity.storedItem = treeFarmItemStacks[slot];
                             treeFarmItemStacks[slot] = null;
@@ -414,6 +415,24 @@ public class TreeFarmBlockEntity extends BlockEntity implements Inventory {
                                 basicItemChuteBlockEntity.storedItem.count = basicItemChuteBlockEntity.storedItem.getMaxCount();
                                 treeFarmItemStacks[slot].count = leftovers;
                             }
+                        } // Filtered output from output slot
+                    } else {
+                        ItemStack slotItem = treeFarmItemStacks[slot];
+                        if (slotItem == null) {
+                            continue;
+                        }
+                        if (target instanceof FilteringItemChuteBlockEntity filteringItemChuteBlockEntity) {
+                            if (filteringItemChuteBlockEntity.filter == null) {
+                                break;
+                            }
+                            if (filteringItemChuteBlockEntity.storedItem != null) {
+                                break;
+                            }
+                            if (!slotItem.isItemEqual(filteringItemChuteBlockEntity.filter)) {
+                                continue;
+                            }
+                            filteringItemChuteBlockEntity.storedItem = slotItem;
+                            treeFarmItemStacks[slot] = null;
                         }
                     }
                 }
