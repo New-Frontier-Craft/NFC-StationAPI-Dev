@@ -65,7 +65,9 @@ public class TreeFarmBlockEntity extends BlockEntity implements Inventory {
                 craftingProgress += torque;
                 if (craftingProgress >= RECIPE_TIME) {
                     craftingProgress = 0;
-                    performTreeFarmLogic();
+                    if (hasOutputSpace()) {
+                        performTreeFarmLogic();
+                    }
                 }
             } else {
                 craftingProgress = 0;
@@ -75,6 +77,15 @@ public class TreeFarmBlockEntity extends BlockEntity implements Inventory {
         if (previouslyActive != currentlyActive) {
             TreeFarmBlock.updateTreeFarmBlockState(currentlyActive, world, x, y, z);
         }
+    }
+
+    private boolean hasOutputSpace() {
+        for (int output = OUTPUT_START; output <= OUTPUT_END; output++) {
+            if (treeFarmItemStacks[output] == null) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private void performTreeFarmLogic() {
