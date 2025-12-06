@@ -4,13 +4,15 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.world.World;
+import net.modificationstation.stationapi.api.block.HasCustomBlockItemFactory;
 import net.modificationstation.stationapi.api.block.HasMetaNamedBlockItem;
 import net.modificationstation.stationapi.api.util.Identifier;
+import net.newfrontiercraft.nfc.block.item.PlanterBlockBlockItem;
 import net.newfrontiercraft.nfc.events.init.TextureListener;
 
 import java.util.Random;
 
-@HasMetaNamedBlockItem
+@HasCustomBlockItemFactory(PlanterBlockBlockItem.class)
 public class PlanterBlock extends LazyBlockTemplate {
     public PlanterBlock(Identifier identifier, Material material, float hardness, BlockSoundGroup blockSounds) {
         super(identifier, material, hardness, blockSounds);
