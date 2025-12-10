@@ -21,8 +21,6 @@ public class PaintingEntityMixin {
 
     @Inject(method = "<init>(Lnet/minecraft/world/World;IIII)V", at = @At(value = "INVOKE", target = "Ljava/util/List;size()I", ordinal = 0))
     void addPaintings(World world, int x, int y, int z, int facing, CallbackInfo ci, @Local ArrayList list){
-        BlockState blockState = world.getBlockState(x, y, z);
-        System.out.println(blockState.getBlock());
         list.addAll(PaintingRegistry.INSTANCE.paintingVariants);
     }
 
