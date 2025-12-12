@@ -20,6 +20,13 @@ loom {
     accessWidenerPath = file("src/main/resources/nfc.accesswidener")
 }
 
+loom.runs {
+	register("secondClient") {
+		client()
+		programArgs(["--username", "Player2", "--uuid", "cb7afd42-6488-4bb9-9dd3-151aa66d7049"])
+	}
+}
+
 repositories {
 	// Add repositories to retrieve artifacts from in here.
 	// You should only use this when depending on other mods because

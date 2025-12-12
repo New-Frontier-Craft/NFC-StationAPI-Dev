@@ -14,6 +14,7 @@ import net.newfrontiercraft.nfc.entity.HellCreeperEntity;
 import net.newfrontiercraft.nfc.entity.HellCreeperRenderer;
 import net.newfrontiercraft.nfc.entity.HellSpiderEntity;
 import net.newfrontiercraft.nfc.entity.HellSpiderRenderer;
+import net.newfrontiercraft.nfc.registry.PaintingRegistry;
 
 public class TextureListener {
 
@@ -776,6 +777,15 @@ public class TextureListener {
         BlockListener.blueMushroomCap.specifyTextures(getTextureIndex(bigMushrooms + "blue_cap"));
         BlockListener.blueMushroomStem.specifyTextures(getTextureIndex(bigMushrooms + "blue_stem"));
         BlockListener.blueShroomlight.specifyTextures(getTextureIndex(bigMushrooms + "blue_shroomlight"));
+
+        // Paintings
+        PaintingRegistry.INSTANCE.paintingBackSprite = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, "block/paintings/painting_back"));
+        PaintingRegistry.INSTANCE.addTexture("Leo", Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, "block/paintings/leo")));
+        PaintingRegistry.INSTANCE.addTexture("Fancy", Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, "block/paintings/fancy")));
+        PaintingRegistry.INSTANCE.addTexture("TheSpawn", Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, "block/paintings/the_spawn")));
+        PaintingRegistry.INSTANCE.addTexture("Nein", Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, "block/paintings/nein")));
+        PaintingRegistry.INSTANCE.addTexture("Sonk", Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, "block/paintings/sonk")));
+        PaintingRegistry.INSTANCE.addTexture("Dex", Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, "block/paintings/dex")));
 
         // Vanilla texture changes
         grassBlockSide = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, vanillaBlocks + "grass_block_side")).index;
