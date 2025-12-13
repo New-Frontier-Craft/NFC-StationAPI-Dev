@@ -6,11 +6,9 @@ import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.math.Box;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.modificationstation.stationapi.api.block.BlockState;
@@ -21,16 +19,15 @@ import net.modificationstation.stationapi.api.state.property.IntProperty;
 import net.modificationstation.stationapi.api.tag.TagKey;
 import net.modificationstation.stationapi.api.template.block.TemplateBlockWithEntity;
 import net.modificationstation.stationapi.api.util.Identifier;
-import net.modificationstation.stationapi.api.util.Namespace;
 import net.modificationstation.stationapi.api.util.math.Direction;
 import net.modificationstation.stationapi.api.world.BlockStateView;
 import net.newfrontiercraft.nfc.block.entity.HeatCoilBlockEntity;
-import net.newfrontiercraft.nfc.block.item.HeatSiphonBlockItem;
+import net.newfrontiercraft.nfc.block.item.HeatCoilBlockItem;
 import net.newfrontiercraft.nfc.events.init.ItemListener;
 import net.newfrontiercraft.nfc.utils.BoxUtil;
 import net.newfrontiercraft.nfc.utils.CoilDamageCooldown;
 
-@HasCustomBlockItemFactory(HeatSiphonBlockItem.class)
+@HasCustomBlockItemFactory(HeatCoilBlockItem.class)
 public class HeatCoilBlock extends TemplateBlockWithEntity {
 
     public static final IntProperty HEAT = IntProperty.of("heat", 0, 3);
