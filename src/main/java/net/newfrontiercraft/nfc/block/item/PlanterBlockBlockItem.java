@@ -1,18 +1,13 @@
 package net.newfrontiercraft.nfc.block.item;
 
-import net.minecraft.item.BlockItem;
 import net.minecraft.item.ItemStack;
 import net.modificationstation.stationapi.api.client.item.CustomTooltipProvider;
+import net.modificationstation.stationapi.api.template.item.MetaNamedBlockItem;
 import org.jetbrains.annotations.NotNull;
 
-public class PlanterBlockBlockItem extends BlockItem implements CustomTooltipProvider {
+public class PlanterBlockBlockItem extends MetaNamedBlockItem implements CustomTooltipProvider {
     public PlanterBlockBlockItem(int i) {
         super(i);
-    }
-
-    @Override
-    public String getTranslationKey(ItemStack item) {
-        return getTranslationKey() + item.getDamage();
     }
 
     @Override
