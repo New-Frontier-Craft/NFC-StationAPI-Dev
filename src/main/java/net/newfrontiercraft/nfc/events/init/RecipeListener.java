@@ -192,6 +192,7 @@ public class RecipeListener {
 
             // Torches
             CraftingRegistry.addShapedRecipe(new ItemStack(Block.TORCH, 4), "X", "#", 'X', ItemListener.netherAsh, '#', Item.STICK);
+            CraftingRegistry.addShapedRecipe(new ItemStack(Block.TORCH, 8), "X", "#", 'X', ItemListener.coalCoke, '#', Item.STICK);
             CraftingRegistry.addShapedRecipe(new ItemStack(Block.TORCH, 16), "X", "O", 'X', ItemListener.anthracite, 'O', Item.STICK);
 
             // Windows
