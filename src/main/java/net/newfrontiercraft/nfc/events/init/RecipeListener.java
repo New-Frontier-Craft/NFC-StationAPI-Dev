@@ -460,6 +460,7 @@ public class RecipeListener {
             // Trees
             TreeFarmPlantingRegistry.getInstance().addRecipe(new ItemMeta(Block.SAPLING.asItem(), 0), new PlantingRequirement(new BlockAndMetaRange[]{
                     new BlockAndMetaRange(Block.SOUL_SAND, new int[] {0}),
+                    new BlockAndMetaRange(BlockListener.alphaGrass, new int[] {0}),
                     new BlockAndMetaRange(Block.GRASS_BLOCK, new int[] {0}),
                     new BlockAndMetaRange(Block.DIRT, new int[] {0}),
                     new BlockAndMetaRange(Block.FARMLAND, new int[] {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}),
@@ -467,6 +468,8 @@ public class RecipeListener {
                     Block.SAPLING, 0)
             );
             TreeFarmPlantingRegistry.getInstance().addRecipe(new ItemMeta(Block.SAPLING.asItem(), 1), new PlantingRequirement(new BlockAndMetaRange[]{
+                    new BlockAndMetaRange(Block.SOUL_SAND, new int[] {0}),
+                    new BlockAndMetaRange(BlockListener.alphaGrass, new int[] {0}),
                     new BlockAndMetaRange(Block.GRASS_BLOCK, new int[] {0}),
                     new BlockAndMetaRange(Block.DIRT, new int[] {0}),
                     new BlockAndMetaRange(Block.FARMLAND, new int[] {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}),
@@ -474,6 +477,8 @@ public class RecipeListener {
                     Block.SAPLING, 1)
             );
             TreeFarmPlantingRegistry.getInstance().addRecipe(new ItemMeta(Block.SAPLING.asItem(), 2), new PlantingRequirement(new BlockAndMetaRange[]{
+                    new BlockAndMetaRange(Block.SOUL_SAND, new int[] {0}),
+                    new BlockAndMetaRange(BlockListener.alphaGrass, new int[] {0}),
                     new BlockAndMetaRange(Block.GRASS_BLOCK, new int[] {0}),
                     new BlockAndMetaRange(Block.DIRT, new int[] {0}),
                     new BlockAndMetaRange(Block.FARMLAND, new int[] {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}),
@@ -481,6 +486,8 @@ public class RecipeListener {
                     Block.SAPLING, 2)
             );
             TreeFarmPlantingRegistry.getInstance().addRecipe(new ItemMeta(BlockListener.alphaSaplingBlock.asItem(), 0), new PlantingRequirement(new BlockAndMetaRange[]{
+                    new BlockAndMetaRange(Block.SOUL_SAND, new int[] {0}),
+                    new BlockAndMetaRange(BlockListener.alphaGrass, new int[] {0}),
                     new BlockAndMetaRange(Block.GRASS_BLOCK, new int[] {0}),
                     new BlockAndMetaRange(Block.DIRT, new int[] {0}),
                     new BlockAndMetaRange(Block.FARMLAND, new int[] {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}),
