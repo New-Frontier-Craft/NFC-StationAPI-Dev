@@ -591,6 +591,9 @@ public class RecipeListener {
             TreeFarmHarvestingRegistry.getInstance().addRecipe(new ItemMeta(BlockListener.coalMushroomTop.asItem(), 0), new ChanceDrop[]{
                     new ChanceDrop(new ItemMeta(ItemListener.coalMushroomSpores, 0), 1.0F)
             });
+            if (isBnbPresent) {
+                BNBRecipes.addBnbTreeFarmRecipes();
+            }
         }
         if (type == RecipeRegisterEvent.Vanilla.SMELTING.type()) {
             // Fuel levels
@@ -605,7 +608,7 @@ public class RecipeListener {
             CokeOvenRecipeRegistry.getInstance().addRecipe(new ItemMeta(ItemListener.rawAnthracite, 0), new CokeOvenResult(new ItemStack(ItemListener.anthracite), FuelLevelEnum.SEARING, FuelLevelEnum.BLAZING));
 
             if (isBnbPresent) {
-                BNBRecipes.addBnbSmeltingRecipes(event);
+                BNBRecipes.addBnbSmeltingRecipes();
             }
 
             SmeltingRegistry.addSmeltingRecipe(ItemListener.coalMushroomSpores.id, new ItemStack(Item.COAL));
