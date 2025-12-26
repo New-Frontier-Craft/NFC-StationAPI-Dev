@@ -4,10 +4,13 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.mob.SpiderEntity;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
+import net.modificationstation.stationapi.api.server.entity.MobSpawnDataProvider;
+import net.modificationstation.stationapi.api.util.Identifier;
+import net.newfrontiercraft.nfc.events.init.EntityListener;
 
 import java.util.Random;
 
-public class HellSpiderEntity extends SpiderEntity {
+public class HellSpiderEntity extends SpiderEntity implements MobSpawnDataProvider {
 
     public HellSpiderEntity(World world) {
         super(world);
@@ -90,5 +93,10 @@ public class HellSpiderEntity extends SpiderEntity {
             attackCooldown = 20;
             entity.damage(this, attackDamage);
         }
+    }
+
+    @Override
+    public Identifier getHandlerIdentifier() {
+        return EntityListener.NAMESPACE.id("HellSpider");
     }
 }

@@ -4,8 +4,11 @@ import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.mob.CreeperEntity;
 import net.minecraft.world.World;
+import net.modificationstation.stationapi.api.server.entity.MobSpawnDataProvider;
+import net.modificationstation.stationapi.api.util.Identifier;
+import net.newfrontiercraft.nfc.events.init.EntityListener;
 
-public class HellCreeperEntity extends CreeperEntity {
+public class HellCreeperEntity extends CreeperEntity implements MobSpawnDataProvider {
 
     public HellCreeperEntity(World world) {
         super(world);
@@ -100,5 +103,10 @@ public class HellCreeperEntity extends CreeperEntity {
             }
 
         }
+    }
+
+    @Override
+    public Identifier getHandlerIdentifier() {
+        return EntityListener.NAMESPACE.id("HellCreeper");
     }
 }
