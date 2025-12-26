@@ -210,7 +210,7 @@ public class ChunkListener {
             int k4 = event.x + event.random.nextInt(16);
             int l7 = event.random.nextInt(6) + 3;
             int i11 = event.z + event.random.nextInt(16);
-            (new OreFeature(BlockListener.tungstenOre.id, 1)).generate( event.world, event.random, k4, l7, i11);
+            (new ScatteredOrePieces(BlockListener.tungstenOre.id, 0, 1)).generate( event.world, event.random, k4, l7, i11);
         }
 
         for (int k2 = 0; k2 < 2; k2++) {
