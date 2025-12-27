@@ -243,6 +243,7 @@ public class RecipeListener {
 
             // Intermediate items
             CraftingRegistry.addShapedRecipe(new ItemStack(ItemListener.aluminiumGear, 8, 0), " X ", "XYX", " X ", 'X', ItemListener.aluminiumIngot, 'Y', Item.IRON_INGOT);
+            CraftingRegistry.addShapedRecipe(new ItemStack(ItemListener.aluminiumGear, 12, 0), " X ", "XYX", " X ", 'X', ItemListener.aluminiumIngot, 'Y', ItemListener.steelIngot);
             CraftingRegistry.addShapedRecipe(new ItemStack(ItemListener.redstoneCircuit, 8, 0), "XYX", "ZZZ", 'X', Block.LIT_REDSTONE_TORCH, 'Y', Item.REDSTONE, 'Z', ItemListener.siliconIngot);
         }
         if (type == RecipeRegisterEvent.Vanilla.CRAFTING_SHAPELESS.type()) {
