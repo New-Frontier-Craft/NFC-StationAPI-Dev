@@ -28,6 +28,7 @@
     "LogRotationMixin",
     "MapColorInvoker",
     "MaterialInvoker",
+    "MinecartSteeringMixin",
     "OreSuppressionMixin",
     "OverworldHeightMixin",
     "OverworldWorldCarversMixin",
