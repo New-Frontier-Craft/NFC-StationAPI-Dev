@@ -3,19 +3,24 @@ package net.newfrontiercraft.nfc.block;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.ItemEntity;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.sound.BlockSoundGroup;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
+import net.modificationstation.stationapi.api.block.HasCustomBlockItemFactory;
 import net.modificationstation.stationapi.api.gui.screen.container.GuiHelper;
 import net.modificationstation.stationapi.api.util.Identifier;
 import net.newfrontiercraft.nfc.block.entity.CombustionHeaterBlockEntity;
+import net.newfrontiercraft.nfc.block.item.CombustionHeaterBlockItem;
 import net.newfrontiercraft.nfc.events.init.BlockEntityListener;
 import net.newfrontiercraft.nfc.events.init.BlockListener;
 import net.newfrontiercraft.nfc.inventory.CombustionHeaterScreenHandler;
 
 import java.util.Random;
 
+@HasCustomBlockItemFactory(CombustionHeaterBlockItem.class)
 public class CombustionHeaterBlock extends LazyBlockWithEntityTemplate {
     private final Random random;
     private final boolean isActive;
@@ -31,22 +36,22 @@ public class CombustionHeaterBlock extends LazyBlockWithEntityTemplate {
         if (!isActive) {
             return;
         }
-        int l = world.getBlockMeta(i, j, k);
+        int rotation = world.getBlockMeta(i, j, k);
         float f = (float) i + 0.5F;
         float f1 = (float) j + 0.5F + (random.nextFloat() * 6F) / 16F;
         float f2 = (float) k + 0.5F;
         float f3 = 0.52F;
         float f4 = random.nextFloat() * 0.6F - 0.3F;
-        if (l == 3) {
+        if (rotation == 4) {
             world.addParticle("smoke", f - f3, f1, f2 + f4, 0.0D, 0.0D, 0.0D);
             world.addParticle("flame", f - f3, f1, f2 + f4, 0.0D, 0.0D, 0.0D);
-        } else if (l == 1) {
+        } else if (rotation == 5) {
             world.addParticle("smoke", f + f3, f1, f2 + f4, 0.0D, 0.0D, 0.0D);
             world.addParticle("flame", f + f3, f1, f2 + f4, 0.0D, 0.0D, 0.0D);
-        } else if (l == 0) {
+        } else if (rotation == 2) {
             world.addParticle("smoke", f + f4, f1, f2 - f3, 0.0D, 0.0D, 0.0D);
             world.addParticle("flame", f + f4, f1, f2 - f3, 0.0D, 0.0D, 0.0D);
-        } else if (l == 2) {
+        } else if (rotation == 3) {
             world.addParticle("smoke", f + f4, f1, f2 + f3, 0.0D, 0.0D, 0.0D);
             world.addParticle("flame", f + f4, f1, f2 + f3, 0.0D, 0.0D, 0.0D);
         }
@@ -118,6 +123,23 @@ public class CombustionHeaterBlock extends LazyBlockWithEntityTemplate {
     public void afterBreak(World world, PlayerEntity playerEntity, int x, int y, int z, int meta) {
         if (world.isRemote) return;
         this.dropStack(world, x, y, z, new ItemStack(BlockListener.combustionHeater, 1, 2));
+    }
+
+    @Override
+    public void onPlaced(World world, int x, int y, int z, LivingEntity livingEntity) {
+        int rotation = MathHelper.floor((double) ((livingEntity.yaw * 4F) / 360F) + 0.5D) & 3;
+        if (rotation == 0) {
+            world.setBlockMeta(x, y, z, 2);
+        }
+        if (rotation == 1) {
+            world.setBlockMeta(x, y, z, 5);
+        }
+        if (rotation == 2) {
+            world.setBlockMeta(x, y, z, 3);
+        }
+        if (rotation == 3) {
+            world.setBlockMeta(x, y, z, 4);
+        }
     }
 
     @Override

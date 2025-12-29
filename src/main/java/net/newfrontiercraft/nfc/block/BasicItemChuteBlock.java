@@ -10,14 +10,17 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.math.Box;
 import net.minecraft.world.World;
+import net.modificationstation.stationapi.api.block.HasCustomBlockItemFactory;
 import net.modificationstation.stationapi.api.gui.screen.container.GuiHelper;
 import net.modificationstation.stationapi.api.util.Identifier;
 import net.newfrontiercraft.nfc.block.entity.BasicItemChuteBlockEntity;
+import net.newfrontiercraft.nfc.block.item.BasicItemChuteBlockItem;
 import net.newfrontiercraft.nfc.events.init.BlockEntityListener;
 import net.newfrontiercraft.nfc.inventory.BasicItemChuteScreenHandler;
 
 import java.util.Random;
 
+@HasCustomBlockItemFactory(BasicItemChuteBlockItem.class)
 public class BasicItemChuteBlock extends LazyBlockWithEntityTemplate {
 
     private final Random random;

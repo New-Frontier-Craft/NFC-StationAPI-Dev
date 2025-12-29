@@ -1,29 +1,28 @@
 package net.newfrontiercraft.nfc.block;
 
 import net.minecraft.block.Block;
-import net.minecraft.client.resource.language.TranslationStorage;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.world.World;
-import net.modificationstation.stationapi.api.client.item.CustomTooltipProvider;
-import net.modificationstation.stationapi.api.registry.ItemRegistry;
-import net.modificationstation.stationapi.api.template.block.TemplateOreBlock;
+import net.minecraft.block.material.Material;
+import net.minecraft.item.Item;
+import net.modificationstation.stationapi.api.block.HasCustomBlockItemFactory;
+import net.modificationstation.stationapi.api.template.block.TemplateBlock;
 import net.modificationstation.stationapi.api.util.Identifier;
+import net.newfrontiercraft.nfc.block.item.LazyOreTemplateBlockItem;
 import net.newfrontiercraft.nfc.utils.ToolTierEnum;
-import org.jetbrains.annotations.NotNull;
 
-public class LazyOreTemplate extends TemplateOreBlock implements CustomTooltipProvider {
+import java.util.Random;
+
+@HasCustomBlockItemFactory(LazyOreTemplateBlockItem.class)
+public class LazyOreTemplate extends TemplateBlock {
     private ToolTierEnum toolTierEnum;
     int textureInternal;
-    Identifier dropID;
+    Item droppedItem;
 
     public LazyOreTemplate(Identifier identifier, float hardness) {
-        super(identifier, 0);
+        super(identifier, Material.STONE);
         setTranslationKey(identifier.namespace, identifier.path);
         setResistance(500F);
         setHardness(hardness);
         setSoundGroup(Block.STONE_SOUND_GROUP);
-        this.dropID = identifier;
     }
 
     public LazyOreTemplate(Identifier identifier, float hardness, ToolTierEnum toolTierEnum) {
@@ -31,14 +30,8 @@ public class LazyOreTemplate extends TemplateOreBlock implements CustomTooltipPr
         this.toolTierEnum = toolTierEnum;
     }
 
-    @Override
-    public void afterBreak(World world, PlayerEntity player, int x, int y, int z, int meta) {
-        if (world.isRemote) return;
-        dropStack(world, x, y, z, new ItemStack(ItemRegistry.INSTANCE.get(dropID), 1, 0));
-    }
-
-    public void specifyCustomDrop(Identifier dropID) {
-        this.dropID = dropID;
+    public void specifyCustomDrop(Item droppedItem) {
+        this.droppedItem = droppedItem;
     }
 
     public void specifyTextures(int texture) {
@@ -51,11 +44,14 @@ public class LazyOreTemplate extends TemplateOreBlock implements CustomTooltipPr
     }
 
     @Override
-    public @NotNull String[] getTooltip(ItemStack stack, String originalTooltip) {
-        if (toolTierEnum == null) {
-            return new String[] {originalTooltip};
+    public int getDroppedItemId(int blockMeta, Random random) {
+        if (droppedItem != null) {
+            return droppedItem.id;
         }
-        return new String[]{toolTierEnum.getColourCode() + originalTooltip,
-                "§7" + TranslationStorage.getInstance().get("tool_tier.tier") + ": " + toolTierEnum.getColourCode() + TranslationStorage.getInstance().get(toolTierEnum.getName())};
+        return this.asItem().id;
+    }
+
+    public ToolTierEnum getToolTierEnum() {
+        return toolTierEnum;
     }
 }

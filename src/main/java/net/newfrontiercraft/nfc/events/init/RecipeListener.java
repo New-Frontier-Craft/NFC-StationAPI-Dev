@@ -7,13 +7,14 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.modificationstation.stationapi.api.event.recipe.RecipeRegisterEvent;
 import net.modificationstation.stationapi.api.recipe.CraftingRegistry;
+import net.modificationstation.stationapi.api.recipe.SmeltingRegistry;
 import net.modificationstation.stationapi.api.registry.BlockRegistry;
 import net.modificationstation.stationapi.api.util.Identifier;
+import net.newfrontiercraft.nfc.compat.bnb.BNBRecipes;
 import net.newfrontiercraft.nfc.compat.vbe.VBERecipes;
-import net.newfrontiercraft.nfc.registry.BlockPatternEntry;
-import net.newfrontiercraft.nfc.registry.CarpentryRecipes;
-import net.newfrontiercraft.nfc.registry.MultiBlockRecipeRegistry;
-import net.newfrontiercraft.nfc.utils.RecipeRemover;
+import net.newfrontiercraft.nfc.registry.*;
+import net.newfrontiercraft.nfc.registry.mutation.CoalMushroomMutation;
+import net.newfrontiercraft.nfc.utils.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +22,7 @@ import java.util.List;
 public class RecipeListener {
 
     public static boolean isVbePresent = FabricLoader.getInstance().isModLoaded("vbe");
+    public static boolean isBnbPresent = FabricLoader.getInstance().isModLoaded("bnb");
 
     @EventListener
     public void registerRecipes(RecipeRegisterEvent event) {
@@ -37,10 +39,21 @@ public class RecipeListener {
             RecipeRemover.removeRecipe(Block.COBBLESTONE_STAIRS);
             RecipeRemover.removeRecipe(Block.PISTON);
             RecipeRemover.removeRecipe(Block.DISPENSER);
+            RecipeRemover.removeSmeltingRecipe(Block.IRON_ORE.asItem().id);
 
             // Machines
             CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.brickOven, 1), "XXX", "X X", "XXX", 'X', new ItemStack(BlockListener.firedBricks));
+            CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.cokeOven, 1), "XXX", "X X", "XXX", 'X', new ItemStack(BlockListener.cokeOvenBricks));
             CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.carpentryWorkstation, 1), "XXX", "XYX", "ZZZ", 'X', Block.PLANKS, 'Y', ItemListener.bronzeIngot, 'Z', Block.COBBLESTONE);
+            CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.machineFrame, 8, 0), "XYX", "YZY", "XYX", 'X', ItemListener.aluminiumIngot, 'Y', Block.PLANKS, 'Z', ItemListener.aluminiumGear);
+            CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.machineGearBox, 1, 0), " Y ", "YZY", " Y ", 'Y', ItemListener.aluminiumGear, 'Z', BlockListener.machineFrame);
+            CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.stirlingGenerator, 8, 0), "X#X", "YZY", "+#+", 'X', Block.PISTON, 'Y', ItemListener.cupronickelIngot, 'Z', BlockListener.machineFrame, '#', ItemListener.aluminiumIngot, '+', ItemListener.aluminiumGear);
+            CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.automaticCraftingTable, 1), "X#X", "YZY", "+#+", 'X', Block.PISTON, 'Y', ItemListener.redstoneCircuit, 'Z', BlockListener.machineFrame, '#', Block.CRAFTING_TABLE, '+', ItemListener.aluminiumGear);
+            CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.frame, 16, 0), "XYX", "XYX", "XYX", 'X', ItemListener.aluminiumIngot, 'Y', Block.PLANKS);
+            CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.plantBus, 1, 0), " W ", "ZXZ", " Y ", 'W', Block.SAPLING, 'X', BlockListener.itemChuteExtender, 'Y', BlockListener.machineFrame, 'Z', ItemListener.aluminiumGear);
+            CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.fertilizerBus, 1, 0), " W ", "ZXZ", " Y ", 'W', new ItemStack(Item.DYE, 1, 15), 'X', BlockListener.itemChuteExtender, 'Y', BlockListener.machineFrame, 'Z', ItemListener.aluminiumGear);
+            CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.treeFarm, 1), "X#X", "YZY", "Z#Z", 'X', ItemListener.aluminiumAxe, 'Y', ItemListener.redstoneCircuit, 'Z', BlockListener.machineFrame, '#', ItemListener.aluminiumGear);
+            CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.proximityMutator, 1), "#Z#", "XYX", "###", '#', ItemListener.leadIngot, 'X', ItemListener.silverIngot, 'Y', BlockListener.machineFrame, 'Z', BlockListener.basicItemChute);
 
             // Tools
             String[][] toolPatterns = new String[][]
@@ -88,7 +101,11 @@ public class RecipeListener {
             }
 
             // Storage block crafting
+            CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.charcoalBlock), "XX", "XX", 'X', new ItemStack(Item.COAL, 1, 1));
             CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.coalBlock), "XX", "XX", 'X', new ItemStack(Item.COAL));
+            CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.netherAshBlock), "XX", "XX", 'X', new ItemStack(ItemListener.netherAsh));
+            CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.coalCokeBlock), "XX", "XX", 'X', new ItemStack(ItemListener.coalCoke));
+            CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.anthraciteBlock), "XX", "XX", 'X', new ItemStack(ItemListener.anthracite));
             CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.onyxBlock), "XX", "XX", 'X', new ItemStack(ItemListener.onyx));
             CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.cobaltBlock), "XX", "XX", 'X', new ItemStack(ItemListener.cobaltIngot));
             CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.aluminiumBlock), "XX", "XX", 'X', new ItemStack(ItemListener.aluminiumIngot));
@@ -175,6 +192,7 @@ public class RecipeListener {
 
             // Torches
             CraftingRegistry.addShapedRecipe(new ItemStack(Block.TORCH, 4), "X", "#", 'X', ItemListener.netherAsh, '#', Item.STICK);
+            CraftingRegistry.addShapedRecipe(new ItemStack(Block.TORCH, 8), "X", "#", 'X', ItemListener.coalCoke, '#', Item.STICK);
             CraftingRegistry.addShapedRecipe(new ItemStack(Block.TORCH, 16), "X", "O", 'X', ItemListener.anthracite, 'O', Item.STICK);
 
             // Windows
@@ -210,8 +228,9 @@ public class RecipeListener {
             CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.unfiredPlanter, 2), "X X", "X X", "XXX", 'X', Item.CLAY);
 
             // Heat machines
-            CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.heatCoil, 1), " X ", "XYX", " X ", 'X', ItemListener.cupronickelIngot, 'Y', ItemListener.copperIngot);
+            CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.heatCoil, 2), " X ", "XYX", " X ", 'X', ItemListener.cupronickelIngot, 'Y', ItemListener.copperIngot);
             CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.combustionHeater, 1, 2), "XXX", "X X", "ZYZ", 'X', ItemListener.bronzeIngot, 'Y', ItemListener.cupronickelIngot, 'Z', new ItemStack(BlockListener.firedMud, 1, -1));
+            CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.heatSiphon, 1, 2), "ZXZ", "ZXZ", "ZYZ", 'X', ItemListener.cupronickelIngot, 'Y', ItemListener.tungstenIngot, 'Z', BlockListener.firedBricks);
 
             // Chutes
             CraftingRegistry.addShapedRecipe(new ItemStack(BlockListener.basicItemChute, 1, 0), "X X", "YZY", "Y Y", 'X', ItemListener.bronzeIngot, 'Y', ItemListener.brassIngot, 'Z', Block.CHEST);
@@ -221,10 +240,19 @@ public class RecipeListener {
 
             // Telescope
             CraftingRegistry.addShapedRecipe(new ItemStack(ItemListener.telescopeItem, 1),"XO ", "OH ", "  O", 'X', Block.GLASS, 'H', Item.LEATHER, 'O', ItemListener.brassIngot);
+
+            // Intermediate items
+            CraftingRegistry.addShapedRecipe(new ItemStack(ItemListener.aluminiumGear, 8, 0), " X ", "XYX", " X ", 'X', ItemListener.aluminiumIngot, 'Y', Item.IRON_INGOT);
+            CraftingRegistry.addShapedRecipe(new ItemStack(ItemListener.aluminiumGear, 12, 0), " X ", "XYX", " X ", 'X', ItemListener.aluminiumIngot, 'Y', ItemListener.steelIngot);
+            CraftingRegistry.addShapedRecipe(new ItemStack(ItemListener.redstoneCircuit, 8, 0), "XYX", "ZZZ", 'X', Block.LIT_REDSTONE_TORCH, 'Y', Item.REDSTONE, 'Z', ItemListener.siliconIngot);
         }
         if (type == RecipeRegisterEvent.Vanilla.CRAFTING_SHAPELESS.type()) {
             // Storage block un-crafting
+            CraftingRegistry.addShapelessRecipe(new ItemStack(Item.COAL, 4, 1), new ItemStack(BlockListener.charcoalBlock));
             CraftingRegistry.addShapelessRecipe(new ItemStack(Item.COAL, 4), new ItemStack(BlockListener.coalBlock));
+            CraftingRegistry.addShapelessRecipe(new ItemStack(ItemListener.netherAsh, 4), new ItemStack(BlockListener.netherAshBlock));
+            CraftingRegistry.addShapelessRecipe(new ItemStack(ItemListener.coalCoke, 4), new ItemStack(BlockListener.coalCokeBlock));
+            CraftingRegistry.addShapelessRecipe(new ItemStack(ItemListener.anthracite, 4), new ItemStack(BlockListener.anthraciteBlock));
             CraftingRegistry.addShapelessRecipe(new ItemStack(ItemListener.onyx, 4), new ItemStack(BlockListener.onyxBlock));
             CraftingRegistry.addShapelessRecipe(new ItemStack(ItemListener.cobaltIngot, 4), new ItemStack(BlockListener.cobaltBlock));
             CraftingRegistry.addShapelessRecipe(new ItemStack(ItemListener.aluminiumIngot, 4), new ItemStack(BlockListener.aluminiumBlock));
@@ -262,7 +290,7 @@ public class RecipeListener {
             // Mud crafting
             CraftingRegistry.addShapelessRecipe(new ItemStack(BlockListener.mud, 2), Item.WHEAT, Block.DIRT, Block.DIRT);
 
-            //Stained planks
+            // Stained planks
             int o = 15;
             for (int i = 0; i < 16; i++) {
                 CraftingRegistry.addShapelessRecipe(new ItemStack(BlockListener.stainedPlanks, 4, i), new ItemStack(Item.DYE, 1, o),
@@ -274,10 +302,24 @@ public class RecipeListener {
             // Planter
             CraftingRegistry.addShapelessRecipe(new ItemStack(BlockListener.planter, 1, 1), new ItemStack(BlockListener.planter, 1, 0), new ItemStack(Block.DIRT));
 
-            // Brick Oven MultiBlock
+            // Spore ash
+            CraftingRegistry.addShapelessRecipe(new ItemStack(BlockListener.sporeAsh), new ItemStack(ItemListener.coalMushroomSpores), new ItemStack(ItemListener.netherAsh), new ItemStack(ItemListener.netherAsh));
+
+            /// Item drop changes
+            // Add log drops
+            BlockListener.rotatedOakLog.changeDroppedItem(Block.LOG.asItem());
+            BlockListener.rotatedSpruceLog.changeDroppedItem(Block.LOG.asItem());
+            BlockListener.rotatedBirchLog.changeDroppedItem(Block.LOG.asItem());
+
+            /// Mutations
+            BlockMutationRegistry.instance().addMutation(Block.BROWN_MUSHROOM, new CoalMushroomMutation());
+            BlockMutationRegistry.instance().addMutation(Block.RED_MUSHROOM, new CoalMushroomMutation());
+
+            /// Multi blocks
+            // Brick Oven Multi-Block
             List<String[]> brickOvenMultiBlockLayers = List.of(
-                    new String[]{"xyx", "xcx", "xxx"},
-                    new String[]{"xxx", "x x", "xxx"},
+                    new String[]{"xxx", "xcx", "xxx"},
+                    new String[]{"xyx", "x x", "xxx"},
                     new String[]{"xxx", "xxx", "xxx"}
             );
             List<BlockPatternEntry> brickOvenMultiBlockPatterns = List.of(
@@ -296,7 +338,281 @@ public class RecipeListener {
                     this.add("by adding chutes above and below.");
                 }
             };
-            MultiBlockRecipeRegistry.INSTANCE.addMultiblockRecipe("multiblock.nfc.brickoven", brickOvenDescription, brickOvenMultiBlockLayers, brickOvenMultiBlockPatterns);
+            MultiBlockRecipeRegistry.INSTANCE.addMultiblockRecipe("multiblock.nfc.brick_oven", brickOvenDescription, brickOvenMultiBlockLayers, brickOvenMultiBlockPatterns);
+
+            // Automatic Crafting Table Multi-Block
+            List<String[]> automaticCraftingTableMultiBlockLayers = List.of(
+                    new String[] {"xyx", "xcx", "xxx"},
+                    new String[] {}
+            );
+            List<BlockPatternEntry> automaticCraftingTableMultiBlockPatterns = List.of(
+                    new BlockPatternEntry('x', BlockListener.machineFrame.getDefaultState(), 0, new ItemStack(BlockListener.machineFrame.asItem())),
+                    new BlockPatternEntry('y', BlockListener.automaticCraftingTable.getDefaultState(), 2, new ItemStack(BlockListener.automaticCraftingTable.asItem())),
+                    new BlockPatternEntry('c', BlockListener.machineGearBox.getDefaultState(), 0, new ItemStack(BlockListener.machineGearBox.asItem()))
+            );
+            List<Object> automaticCraftingTableDescription = new ArrayList<>() {
+                {
+                    this.add("Automatic Crafting Table");
+                    this.add("Crafts items automatically.");
+                    this.add("Speed determined by torque in");
+                    this.add("the gear box. Use generators below");
+                    this.add("the gear box to provide torque.");
+                    this.add("Can be filled and emptied");
+                    this.add("by adding chutes above and below.");
+                }
+            };
+            MultiBlockRecipeRegistry.INSTANCE.addMultiblockRecipe("multiblock.nfc.automatic_crafting_table", automaticCraftingTableDescription, automaticCraftingTableMultiBlockLayers, automaticCraftingTableMultiBlockPatterns);
+
+            // Coke Oven Multi-Block
+            List<String[]> cokeOvenMultiBlockLayers = List.of(
+                    new String[]{"xxx", "xcx", "xxx"},
+                    new String[]{"xyx", "x x", "xxx"},
+                    new String[]{"xxx", "x x", "xxx"},
+                    new String[]{"xxx", "xxx", "xxx"}
+            );
+            List<BlockPatternEntry> cokeOvenMultiBlockPatterns = List.of(
+                    new BlockPatternEntry('x', BlockListener.cokeOvenBricks.getDefaultState(), 0, new ItemStack(BlockListener.cokeOvenBricks.asItem())),
+                    new BlockPatternEntry('y', BlockListener.cokeOven.getDefaultState(), 2, new ItemStack(BlockListener.cokeOven.asItem())),
+                    new BlockPatternEntry('c', BlockListener.heatCoil.getDefaultState(), 0, new ItemStack(BlockListener.heatCoil.asItem()))
+            );
+            List<Object> cokeOvenDescription = new ArrayList<>() {
+                {
+                    this.add("Coke Oven");
+                    this.add("Uses heat to convert fuel items.");
+                    this.add("Has a unique minimum and maximum");
+                    this.add("heat limit for each recipe.");
+                    this.add("Requires heating from the heat coil below.");
+                    this.add("Can be filled and emptied");
+                    this.add("by adding chutes above and below.");
+                }
+            };
+            MultiBlockRecipeRegistry.INSTANCE.addMultiblockRecipe("multiblock.nfc.coke_oven", cokeOvenDescription, cokeOvenMultiBlockLayers, cokeOvenMultiBlockPatterns);
+
+            // Tree farm multiblock
+            List<String[]> treeFarmMultiblockLayers = List.of(
+                    new String[]{"  xxx", "  xgx", "  xxx", "x---x", ".   .", ".   .", ".   .", "x---x"},
+                    new String[]{"  xyx", "  xxx", "  xxx", "i   i", "     ", "     ", "     ", "i   i"},
+                    new String[]{"  xxx", "  pxf", "  xxx", "i   i", "     ", "     ", "     ", "i   i"},
+                    new String[]{"     ", "     ", "     ", "i   i", "     ", "     ", "     ", "i   i"},
+                    new String[]{"     ", "     ", "     ", "x---x", ".   .", ".   .", ".   .", "x---x"}
+            );
+            List<BlockPatternEntry> treeFarmMultiblockPatterns = List.of(
+                    new BlockPatternEntry('x', BlockListener.machineFrame.getDefaultState(), 0, new ItemStack(BlockListener.machineFrame.asItem())),
+                    new BlockPatternEntry('y', BlockListener.treeFarm.getDefaultState(), 2, new ItemStack(BlockListener.treeFarm.asItem())),
+                    new BlockPatternEntry('g', BlockListener.machineGearBox.getDefaultState(), 0, new ItemStack(BlockListener.machineGearBox.asItem())),
+                    new BlockPatternEntry('p', BlockListener.plantBus.getDefaultState(), 0, new ItemStack(BlockListener.plantBus.asItem())),
+                    new BlockPatternEntry('f', BlockListener.fertilizerBus.getDefaultState(), 0, new ItemStack(BlockListener.fertilizerBus.asItem())),
+                    new BlockPatternEntry('i', BlockListener.frame.getDefaultState(), 0, new ItemStack(BlockListener.frame.asItem())),
+                    new BlockPatternEntry('-', BlockListener.frame.getDefaultState(), 2, new ItemStack(BlockListener.frame.asItem())),
+                    new BlockPatternEntry('.', BlockListener.frame.getDefaultState(), 1, new ItemStack(BlockListener.frame.asItem()))
+
+            );
+            List<Object> treeFarmDescription = new ArrayList<>() {
+                {
+                    this.add("Tree Farm");
+                    this.add("Plants, fertilizes, and harvests trees.");
+                    this.add("Can also farm big mushrooms.");
+                    this.add("Requires a machine gear box for power.");
+                    this.add("Uses buses to distinguish between");
+                    this.add("inputs for plants and fertilizer.");
+                    this.add("Place chutes on top of buses to");
+                    this.add("supply the machine with items.");
+                    this.add("Buses can be placed anywhere on");
+                    this.add("the top and there can be as many");
+                    this.add("as the top can physically fit.");
+                    this.add("Place chute on the bottom for extraction.");
+                    this.add("Frame must be started in the back either");
+                    this.add("on the left or right bottom corner.");
+                    this.add("Frame size can be up to 32 in");
+                    this.add("each direction. Soil is placed on");
+                    this.add("the layer below the bottom frame.");
+                }
+            };
+            MultiBlockRecipeRegistry.INSTANCE.addMultiblockRecipe("multiblock.nfc.tree_farm", treeFarmDescription, treeFarmMultiblockLayers, treeFarmMultiblockPatterns);
+
+            // Proximity Mutator multiblock
+            List<String[]> proximityMutatorLayers = List.of(
+                    new String[]{"ltl", "ttt", "ltl"},
+                    new String[]{"b b", " p ", "b b"},
+                    new String[]{"lbl", "b b", "lbl"}
+            );
+            List<BlockPatternEntry> proximityMutatorPatterns = List.of(
+                    new BlockPatternEntry('t', BlockListener.titaniumBlock.getDefaultState(), 0, new ItemStack(BlockListener.titaniumBlock.asItem())),
+                    new BlockPatternEntry('l', BlockListener.leadBlock.getDefaultState(), 0, new ItemStack(BlockListener.leadBlock.asItem())),
+                    new BlockPatternEntry('b', BlockListener.bismuthBlock.getDefaultState(), 0, new ItemStack(BlockListener.bismuthBlock.asItem())),
+                    new BlockPatternEntry('p', BlockListener.proximityMutator.getDefaultState(), 0, new ItemStack(BlockListener.proximityMutator.asItem()))
+            );
+            List<Object> proximityMutatorDescription = new ArrayList<>() {
+                {
+                    this.add("Proximity Mutator");
+                    this.add("Mutates nearby plants and mushrooms.");
+                    this.add("Consumes uranium blocks placed on");
+                    this.add("top of the controller block.");
+                    this.add("15 mutation cycles happen with");
+                    this.add("random intervals after a uranium block");
+                    this.add("gets consumed. Each mutation cycle");
+                    this.add("affects a volume of four blocks");
+                    this.add("into every direction from the center.");
+                }
+            };
+            MultiBlockRecipeRegistry.INSTANCE.addMultiblockRecipe("multiblock.nfc.proximity_mutator", proximityMutatorDescription, proximityMutatorLayers, proximityMutatorPatterns);
+
+            /// Tree farm planting
+            // Trees
+            TreeFarmPlantingRegistry.getInstance().addRecipe(new ItemMeta(Block.SAPLING.asItem(), 0), new PlantingRequirement(new BlockAndMetaRange[]{
+                    new BlockAndMetaRange(Block.SOUL_SAND, new int[] {0}),
+                    new BlockAndMetaRange(BlockListener.alphaGrass, new int[] {0}),
+                    new BlockAndMetaRange(Block.GRASS_BLOCK, new int[] {0}),
+                    new BlockAndMetaRange(Block.DIRT, new int[] {0}),
+                    new BlockAndMetaRange(Block.FARMLAND, new int[] {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}),
+                    new BlockAndMetaRange(BlockListener.planter, new int[] {1, 2})},
+                    Block.SAPLING, 0)
+            );
+            TreeFarmPlantingRegistry.getInstance().addRecipe(new ItemMeta(Block.SAPLING.asItem(), 1), new PlantingRequirement(new BlockAndMetaRange[]{
+                    new BlockAndMetaRange(Block.SOUL_SAND, new int[] {0}),
+                    new BlockAndMetaRange(BlockListener.alphaGrass, new int[] {0}),
+                    new BlockAndMetaRange(Block.GRASS_BLOCK, new int[] {0}),
+                    new BlockAndMetaRange(Block.DIRT, new int[] {0}),
+                    new BlockAndMetaRange(Block.FARMLAND, new int[] {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}),
+                    new BlockAndMetaRange(BlockListener.planter, new int[] {1, 2})},
+                    Block.SAPLING, 1)
+            );
+            TreeFarmPlantingRegistry.getInstance().addRecipe(new ItemMeta(Block.SAPLING.asItem(), 2), new PlantingRequirement(new BlockAndMetaRange[]{
+                    new BlockAndMetaRange(Block.SOUL_SAND, new int[] {0}),
+                    new BlockAndMetaRange(BlockListener.alphaGrass, new int[] {0}),
+                    new BlockAndMetaRange(Block.GRASS_BLOCK, new int[] {0}),
+                    new BlockAndMetaRange(Block.DIRT, new int[] {0}),
+                    new BlockAndMetaRange(Block.FARMLAND, new int[] {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}),
+                    new BlockAndMetaRange(BlockListener.planter, new int[] {1, 2})},
+                    Block.SAPLING, 2)
+            );
+            TreeFarmPlantingRegistry.getInstance().addRecipe(new ItemMeta(BlockListener.alphaSaplingBlock.asItem(), 0), new PlantingRequirement(new BlockAndMetaRange[]{
+                    new BlockAndMetaRange(Block.SOUL_SAND, new int[] {0}),
+                    new BlockAndMetaRange(BlockListener.alphaGrass, new int[] {0}),
+                    new BlockAndMetaRange(Block.GRASS_BLOCK, new int[] {0}),
+                    new BlockAndMetaRange(Block.DIRT, new int[] {0}),
+                    new BlockAndMetaRange(Block.FARMLAND, new int[] {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}),
+                    new BlockAndMetaRange(BlockListener.planter, new int[] {1, 2})},
+                    BlockListener.alphaSaplingBlock, 0)
+            );
+            // Mushrooms
+            TreeFarmPlantingRegistry.getInstance().addRecipe(new ItemMeta(BlockListener.fieryMushroom.asItem(), 0), new PlantingRequirement(new BlockAndMetaRange[]{
+                    new BlockAndMetaRange(BlockListener.scorchedSand, new int[] {0})},
+                    BlockListener.fieryMushroom, 0)
+            );
+            TreeFarmPlantingRegistry.getInstance().addRecipe(new ItemMeta(BlockListener.glowingMushroom.asItem(), 0), new PlantingRequirement(new BlockAndMetaRange[]{
+                    new BlockAndMetaRange(Block.NETHERRACK, new int[] {0})},
+                    BlockListener.glowingMushroom, 0)
+            );
+            TreeFarmPlantingRegistry.getInstance().addRecipe(new ItemMeta(BlockListener.bioluminescentMushroom.asItem(), 0), new PlantingRequirement(new BlockAndMetaRange[]{
+                    new BlockAndMetaRange(Block.GRASS_BLOCK, new int[] {0}),
+                    new BlockAndMetaRange(Block.DIRT, new int[] {0}),
+                    new BlockAndMetaRange(Block.FARMLAND, new int[] {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}),
+                    new BlockAndMetaRange(BlockListener.planter, new int[] {1, 2})},
+                    BlockListener.bioluminescentMushroom, 0)
+            );
+            TreeFarmPlantingRegistry.getInstance().addRecipe(new ItemMeta(BlockListener.bioluminescentMushroom.asItem(), 1), new PlantingRequirement(new BlockAndMetaRange[]{
+                    new BlockAndMetaRange(Block.NETHERRACK, new int[] {0})},
+                    BlockListener.bioluminescentMushroom, 1)
+            );
+            TreeFarmPlantingRegistry.getInstance().addRecipe(new ItemMeta(BlockListener.sporeAsh.asItem(), 0), new PlantingRequirement(new BlockAndMetaRange[]{
+                    new BlockAndMetaRange(BlockListener.coalBlock, new int[] {0})},
+                    BlockListener.sporeAsh, 0)
+            );
+
+            /// Tree farm harvesting
+            // Trees
+            if (isVbePresent) {
+                VBERecipes.addTreeFarmingRecipes();
+            } else {
+                TreeFarmHarvestingRegistry.getInstance().addRecipe(new ItemMeta(Block.LOG.asItem(), 0), new ChanceDrop[]{
+                        new ChanceDrop(new ItemMeta(Block.LOG.asItem(), 0), 1.0F)
+                });
+                TreeFarmHarvestingRegistry.getInstance().addRecipe(new ItemMeta(Block.LOG.asItem(), 1), new ChanceDrop[]{
+                        new ChanceDrop(new ItemMeta(Block.LOG.asItem(), 1), 1.0F)
+                });
+                TreeFarmHarvestingRegistry.getInstance().addRecipe(new ItemMeta(Block.LOG.asItem(), 2), new ChanceDrop[]{
+                        new ChanceDrop(new ItemMeta(Block.LOG.asItem(), 2), 1.0F)
+                });
+                for (int i = 0; i <= 8; i+=8) {
+                    TreeFarmHarvestingRegistry.getInstance().addRecipe(new ItemMeta(Block.LEAVES.asItem(), i), new ChanceDrop[]{
+                            new ChanceDrop(new ItemMeta(Block.SAPLING.asItem(), 0), 0.25F),
+                            new ChanceDrop(new ItemMeta(Item.APPLE, 0), 0.001F),
+                    });
+                    TreeFarmHarvestingRegistry.getInstance().addRecipe(new ItemMeta(Block.LEAVES.asItem(), i + 1), new ChanceDrop[]{
+                            new ChanceDrop(new ItemMeta(Block.SAPLING.asItem(), 1), 0.25F)
+                    });
+                    TreeFarmHarvestingRegistry.getInstance().addRecipe(new ItemMeta(Block.LEAVES.asItem(), i + 2), new ChanceDrop[]{
+                            new ChanceDrop(new ItemMeta(Block.SAPLING.asItem(), 2), 0.25F)
+                    });
+                }
+            }
+            for (int i = 0; i <= 8; i+=8) {
+                TreeFarmHarvestingRegistry.getInstance().addRecipe(new ItemMeta(BlockListener.alphaLeaves.asItem(), i), new ChanceDrop[]{
+                        new ChanceDrop(new ItemMeta(BlockListener.alphaSaplingBlock.asItem(), 0), 0.25F)
+                });
+                TreeFarmHarvestingRegistry.getInstance().addRecipe(new ItemMeta(BlockListener.petrifiedLeaves.asItem(), i + 2), new ChanceDrop[]{
+                        new ChanceDrop(new ItemMeta(Block.DEAD_BUSH.asItem(), 2), 0.1F)
+                });
+            }
+            TreeFarmHarvestingRegistry.getInstance().addRecipe(new ItemMeta(BlockListener.petrifiedLog.asItem(), 0), new ChanceDrop[]{
+                    new ChanceDrop(new ItemMeta(BlockListener.petrifiedLog.asItem(), 0), 1.0F)
+            });
+            // Mushrooms
+            TreeFarmHarvestingRegistry.getInstance().addRecipe(new ItemMeta(BlockListener.fieryMushroomCap.asItem(), 0), new ChanceDrop[]{
+                    new ChanceDrop(new ItemMeta(BlockListener.fieryMushroom.asItem(), 0), 1.0F)
+            });
+            TreeFarmHarvestingRegistry.getInstance().addRecipe(new ItemMeta(BlockListener.fieryMushroomStem.asItem(), 0), new ChanceDrop[]{
+                    new ChanceDrop(new ItemMeta(BlockListener.fieryMushroom.asItem(), 0), 1.0F)
+            });
+            TreeFarmHarvestingRegistry.getInstance().addRecipe(new ItemMeta(BlockListener.glowingMushroomCap.asItem(), 0), new ChanceDrop[]{
+                    new ChanceDrop(new ItemMeta(BlockListener.glowingMushroom.asItem(), 0), 1.0F)
+            });
+            TreeFarmHarvestingRegistry.getInstance().addRecipe(new ItemMeta(BlockListener.glowingMushroomStem.asItem(), 0), new ChanceDrop[]{
+                    new ChanceDrop(new ItemMeta(BlockListener.glowingMushroom.asItem(), 0), 1.0F)
+            });
+            TreeFarmHarvestingRegistry.getInstance().addRecipe(new ItemMeta(BlockListener.blueMushroomCap.asItem(), 0), new ChanceDrop[]{
+                    new ChanceDrop(new ItemMeta(BlockListener.bioluminescentMushroom.asItem(), 0), 1.0F)
+            });
+            TreeFarmHarvestingRegistry.getInstance().addRecipe(new ItemMeta(BlockListener.blueMushroomStem.asItem(), 0), new ChanceDrop[]{
+                    new ChanceDrop(new ItemMeta(BlockListener.bioluminescentMushroom.asItem(), 0), 1.0F)
+            });
+            TreeFarmHarvestingRegistry.getInstance().addRecipe(new ItemMeta(BlockListener.blueShroomlight.asItem(), 0), new ChanceDrop[]{
+                    new ChanceDrop(new ItemMeta(BlockListener.blueShroomlight.asItem(), 0), 1.0F)
+            });
+            TreeFarmHarvestingRegistry.getInstance().addRecipe(new ItemMeta(BlockListener.purpleMushroomCap.asItem(), 0), new ChanceDrop[]{
+                    new ChanceDrop(new ItemMeta(BlockListener.bioluminescentMushroom.asItem(), 1), 1.0F)
+            });
+            TreeFarmHarvestingRegistry.getInstance().addRecipe(new ItemMeta(BlockListener.purpleMushroomStem.asItem(), 0), new ChanceDrop[]{
+                    new ChanceDrop(new ItemMeta(BlockListener.bioluminescentMushroom.asItem(), 1), 1.0F)
+            });
+            TreeFarmHarvestingRegistry.getInstance().addRecipe(new ItemMeta(BlockListener.coalMushroomBottom.asItem(), 0), new ChanceDrop[]{
+                    new ChanceDrop(new ItemMeta(ItemListener.coalMushroomSpores, 0), 1.0F)
+            });
+            TreeFarmHarvestingRegistry.getInstance().addRecipe(new ItemMeta(BlockListener.coalMushroomTop.asItem(), 0), new ChanceDrop[]{
+                    new ChanceDrop(new ItemMeta(ItemListener.coalMushroomSpores, 0), 1.0F)
+            });
+            if (isBnbPresent) {
+                BNBRecipes.addBnbTreeFarmRecipes();
+            }
+        }
+        if (type == RecipeRegisterEvent.Vanilla.SMELTING.type()) {
+            // Fuel levels
+            FuelLevelRegistry.fuelLevel().addFuelLevel(new ItemMeta(Item.COAL, 1), FuelLevelEnum.WARM);
+            FuelLevelRegistry.fuelLevel().addFuelLevel(new ItemMeta(ItemListener.netherAsh, 0), FuelLevelEnum.HOT);
+            FuelLevelRegistry.fuelLevel().addFuelLevel(new ItemMeta(Item.COAL, 0), FuelLevelEnum.HOT);
+            FuelLevelRegistry.fuelLevel().addFuelLevel(new ItemMeta(ItemListener.coalCoke, 0), FuelLevelEnum.SEARING);
+            FuelLevelRegistry.fuelLevel().addFuelLevel(new ItemMeta(ItemListener.oilBucket, 0), FuelLevelEnum.SEARING);
+            FuelLevelRegistry.fuelLevel().addFuelLevel(new ItemMeta(ItemListener.anthracite, 0), FuelLevelEnum.BLAZING);
+
+            CokeOvenRecipeRegistry.getInstance().addRecipe(new ItemMeta(Item.COAL, 0), new CokeOvenResult(new ItemStack(ItemListener.coalCoke), FuelLevelEnum.WARM, FuelLevelEnum.HOT));
+            CokeOvenRecipeRegistry.getInstance().addRecipe(new ItemMeta(ItemListener.rawAnthracite, 0), new CokeOvenResult(new ItemStack(ItemListener.anthracite), FuelLevelEnum.SEARING, FuelLevelEnum.BLAZING));
+
+            if (isBnbPresent) {
+                BNBRecipes.addBnbSmeltingRecipes();
+            }
+
+            SmeltingRegistry.addSmeltingRecipe(ItemListener.coalMushroomSpores.id, new ItemStack(Item.COAL));
         }
 
         // Stone carpentry
@@ -454,7 +770,7 @@ public class RecipeListener {
 
         // Wood carpentry
         if (isVbePresent) {
-            VBERecipes.addVbeRecipes(event);
+            VBERecipes.addCarpentryRecipes(event);
         } else {
             CarpentryRecipes.carpentry().addCarpentry(BlockRegistry.INSTANCE.getId(Block.LOG), 0, 2, new ItemStack[] {
                     new ItemStack(BlockListener.decorativeWood, 1, 0),

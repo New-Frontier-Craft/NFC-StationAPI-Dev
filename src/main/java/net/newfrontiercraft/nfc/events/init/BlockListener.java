@@ -13,6 +13,7 @@ import net.modificationstation.stationapi.api.util.Identifier;
 import net.modificationstation.stationapi.api.util.Namespace;
 import net.newfrontiercraft.nfc.block.*;
 import net.newfrontiercraft.nfc.utils.ToolTierEnum;
+import net.newfrontiercraft.nfc.world.gen.FrameBlock;
 
 public class BlockListener {
 
@@ -45,14 +46,18 @@ public class BlockListener {
             netherStoneTilingLarge,
 
             firedBricks,
+            cokeOvenBricks,
             osmiumBricks,
             snowBricks,
             blueGlowstone,
             scorchedSandstone,
-            petrifiedLog,
             petrifiedPlanks,
 
+            charcoalBlock,
             coalBlock,
+            netherAshBlock,
+            coalCokeBlock,
+            anthraciteBlock,
             onyxBlock,
             cobaltBlock,
             aluminiumBlock,
@@ -80,7 +85,23 @@ public class BlockListener {
             steelBlock,
             cupronickelBlock,
 
-            unfiredPlanter;
+            unfiredPlanter,
+
+            machineFrame,
+            plantBus,
+            fertilizerBus,
+
+            creativeGenerator,
+            stirlingGenerator;
+
+    public static LazyPillarBlockTemplate
+            petrifiedLog,
+
+            rotatedOakLog,
+            rotatedSpruceLog,
+            rotatedBirchLog,
+
+            frame;
 
     public static LazyOreTemplate
             netherAshOre,
@@ -133,6 +154,9 @@ public class BlockListener {
             window,
             stainedGlass;
 
+    public static AutomaticCraftingTableBlock automaticCraftingTable;
+    public static TreeFarmBlock treeFarm;
+
     public static LazyGlassBlockTemplate tintedGlass;
 
     public static CarpentryWorkstationBlock carpentryWorkstation;
@@ -154,6 +178,10 @@ public class BlockListener {
     public static BioluminescentMushroomBlock bioluminescentMushroom;
     public static GlowingMushroomBlock glowingMushroom;
     public static FieryMushroomBlock fieryMushroom;
+    public static SporeAshBlock sporeAsh;
+    public static CoalMushroomBlock coalMushroom;
+    public static BigCoalMushroomBlock coalMushroomBottom;
+    public static BigCoalMushroomBlock coalMushroomTop;
 
     public static UnrestrictedNetherPortalBlock unrestrictedNetherPortal;
 
@@ -191,6 +219,9 @@ public class BlockListener {
     public static CombustionHeaterBlock
             combustionHeater,
             combustionHeaterActive;
+    public static HeatSiphonBlock heatSiphon;
+
+    public static CokeOvenBlock cokeOven;
 
     public static BasicItemChuteBlock basicItemChute;
     public static ItemChuteExtenderBlock itemChuteExtender;
@@ -198,6 +229,10 @@ public class BlockListener {
 
     public static ShroomlightBlock
             blueShroomlight;
+
+    public static MachineGearBoxBlock machineGearBox;
+
+    public static ProximityMutatorBlock proximityMutator;
 
     @Entrypoint.Namespace
     public static Namespace MOD_ID;
@@ -230,6 +265,7 @@ public class BlockListener {
         netherStoneTilingLarge = new LazyBlockTemplate(Identifier.of(MOD_ID, "nether_stone_tiling_large"), Material.STONE, 1.5F, Block.STONE_SOUND_GROUP);
 
         firedBricks = new LazyBlockTemplate(Identifier.of(MOD_ID, "fired_bricks"), Material.STONE, 1.5F, Block.STONE_SOUND_GROUP);
+        cokeOvenBricks = new LazyBlockTemplate(Identifier.of(MOD_ID, "coke_oven_bricks"), Material.STONE, 2.0F, Block.STONE_SOUND_GROUP);
         osmiumBricks = new LazyBlockTemplate(Identifier.of(MOD_ID, "osmium_bricks"), Material.STONE, 1.5F, Block.STONE_SOUND_GROUP);
         decorativeWood = new DecorativeWoodBlock(Identifier.of(MOD_ID, "decorative_wood"), Material.WOOD, 1.5F, Block.WOOD_SOUND_GROUP);
         stainedPlanks = new LazyMultivariantBlockTemplate(Identifier.of(MOD_ID, "stained_planks"), Material.WOOD, 1.5F, Block.WOOD_SOUND_GROUP);
@@ -277,7 +313,11 @@ public class BlockListener {
         platinumOre = new LazyOreTemplate(Identifier.of(MOD_ID, "platinum_ore"), 3.5F, ToolTierEnum.BASIC);
         mysteryOre = new LazyOreTemplate(Identifier.of(MOD_ID, "mystery_ore"), 2F);
 
+        charcoalBlock = new LazyBlockTemplate(Identifier.of(MOD_ID, "charcoal_block"), Material.STONE, 3F, Block.STONE_SOUND_GROUP);
         coalBlock = new LazyBlockTemplate(Identifier.of(MOD_ID, "coal_block"), Material.STONE, 3F, Block.STONE_SOUND_GROUP);
+        netherAshBlock = new LazyBlockTemplate(Identifier.of(MOD_ID, "nether_ash_block"), Material.STONE, 3F, Block.STONE_SOUND_GROUP);
+        coalCokeBlock = new LazyBlockTemplate(Identifier.of(MOD_ID, "coal_coke_block"), Material.STONE, 3F, Block.STONE_SOUND_GROUP);
+        anthraciteBlock = new LazyBlockTemplate(Identifier.of(MOD_ID, "anthracite_block"), Material.STONE, 3F, Block.STONE_SOUND_GROUP);
         onyxBlock = new LazyBlockTemplate(Identifier.of(MOD_ID, "onyx_block"), Material.METAL, 4F, Block.METAL_SOUND_GROUP, ToolTierEnum.ADVANCED);
         cobaltBlock = new LazyBlockTemplate(Identifier.of(MOD_ID, "cobalt_block"), Material.METAL, 3F, Block.METAL_SOUND_GROUP, ToolTierEnum.IRON);
         aluminiumBlock = new LazyBlockTemplate(Identifier.of(MOD_ID, "aluminium_block"), Material.METAL, 2F, Block.METAL_SOUND_GROUP, ToolTierEnum.CRUDE);
@@ -324,13 +364,21 @@ public class BlockListener {
         scorchedSandstone = new LazyBlockTemplate(Identifier.of(MOD_ID, "scorched_sandstone"), Material.STONE, 0.8F, Block.STONE_SOUND_GROUP);
 
         bioluminescentMushroom = new BioluminescentMushroomBlock(Identifier.of(MOD_ID, "bioluminescent_mushroom"), 0, Block.WOOD_SOUND_GROUP, true);
-        glowingMushroom = new GlowingMushroomBlock(Identifier.of(MOD_ID, "glowing_mushroom"), 0, Block.DIRT_SOUND_GROUP, false);
+        glowingMushroom = new GlowingMushroomBlock(Identifier.of(MOD_ID, "glowing_mushroom"), 0, Block.DIRT_SOUND_GROUP, true);
         fieryMushroom = new FieryMushroomBlock(Identifier.of(MOD_ID, "fiery_mushroom"), 0, Block.DIRT_SOUND_GROUP, false);
+        sporeAsh = new SporeAshBlock(Identifier.of(MOD_ID, "spore_ash"), Material.STONE, 1.5F, Block.STONE_SOUND_GROUP);
+        coalMushroom = new CoalMushroomBlock(Identifier.of(MOD_ID, "coal_mushroom"), 0.5F, Block.STONE_SOUND_GROUP, true);
+        coalMushroomBottom = new BigCoalMushroomBlock(Identifier.of(MOD_ID, "coal_mushroom_bottom"), Material.STONE, 1.0F, Block.STONE_SOUND_GROUP);
+        coalMushroomTop = new BigCoalMushroomBlock(Identifier.of(MOD_ID, "coal_mushroom_top"), Material.STONE, 1.0F, Block.STONE_SOUND_GROUP);
 
-        petrifiedLog = new LazyBlockTemplate(Identifier.of(MOD_ID, "petrified_log"), Material.STONE, 1.5F, Block.STONE_SOUND_GROUP);
+        petrifiedLog = new LazyPillarBlockTemplate(Identifier.of(MOD_ID, "petrified_log"), Material.STONE, 1.5F, Block.STONE_SOUND_GROUP);
         petrifiedPlanks = new LazyBlockTemplate(Identifier.of(MOD_ID, "petrified_planks"), Material.STONE, 1.5F, Block.STONE_SOUND_GROUP);
         petrifiedLeaves = (PetrifiedLeavesBlock) new PetrifiedLeavesBlock(Identifier.of(MOD_ID, "petrified_leaves")).setOpacity(1).setHardness(0.2F).setSoundGroup(Block.DIRT_SOUND_GROUP).setTranslationKey(Identifier.of(MOD_ID, "petrified_leaves"));
         unrestrictedNetherPortal = new UnrestrictedNetherPortalBlock(Identifier.of(MOD_ID, "unrestricted_nether_portal"));
+
+        rotatedOakLog = new LazyPillarBlockTemplate(Identifier.of(MOD_ID, "rotated_oak_log"), Material.WOOD, 1.5F, Block.WOOD_SOUND_GROUP);
+        rotatedSpruceLog = new LazyPillarBlockTemplate(Identifier.of(MOD_ID, "rotated_spruce_log"), Material.WOOD, 1.5F, Block.WOOD_SOUND_GROUP).changeDroppedMeta(1);
+        rotatedBirchLog = new LazyPillarBlockTemplate(Identifier.of(MOD_ID, "rotated_birch_log"), Material.WOOD, 1.5F, Block.WOOD_SOUND_GROUP).changeDroppedMeta(2);
 
         barrier = new CreativeBlock(Identifier.of(MOD_ID, "barrier"), Material.STONE, Block.STONE_SOUND_GROUP, new boolean[] {true, false});
         lightSource = new LightSourceBlock(Identifier.of(MOD_ID, "light_source"), Material.STONE, Block.STONE_SOUND_GROUP, new boolean[] {false});
@@ -407,11 +455,26 @@ public class BlockListener {
 
         combustionHeater = new CombustionHeaterBlock(Identifier.of(MOD_ID, "combustion_heater"), Material.STONE, 1.0F, Block.STONE_SOUND_GROUP, false);
         combustionHeaterActive = new CombustionHeaterBlock(Identifier.of(MOD_ID, "combustion_heater_active"), Material.STONE, 1.0F, Block.STONE_SOUND_GROUP, true);
+        heatSiphon = new HeatSiphonBlock(Identifier.of(MOD_ID, "heat_siphon"), Material.STONE, 2.5F, Block.STONE_SOUND_GROUP);
+
+        cokeOven = new CokeOvenBlock(Identifier.of(MOD_ID, "coke_oven"), Material.STONE, 0, 2.0F);
 
         basicItemChute = new BasicItemChuteBlock(Identifier.of(MOD_ID, "basic_item_chute"), Material.STONE, 1.0F, Block.METAL_SOUND_GROUP);
         itemChuteExtender = new ItemChuteExtenderBlock(Identifier.of(MOD_ID, "item_chute_extender"), Material.STONE, 1.0F, Block.METAL_SOUND_GROUP);
         filteringItemChute = new FilteringItemChuteBlock(Identifier.of(MOD_ID, "filtering_item_chute"), Material.STONE, 1.0F, Block.METAL_SOUND_GROUP, false);
         preciseItemChute = new FilteringItemChuteBlock(Identifier.of(MOD_ID, "precise_item_chute"), Material.STONE, 1.0F, Block.METAL_SOUND_GROUP, true);
+
+        machineFrame = new LazyBlockTemplate(Identifier.of(MOD_ID, "machine_frame"), Material.METAL, 2.0F, Block.METAL_SOUND_GROUP);
+        creativeGenerator = new CreativeGeneratorBlock(Identifier.of(MOD_ID, "creative_generator"), Material.METAL, 2.0F, Block.METAL_SOUND_GROUP);
+        stirlingGenerator = new StirlingGeneratorBlock(Identifier.of(MOD_ID, "stirling_generator"), Material.METAL, 2.0F, Block.METAL_SOUND_GROUP);
+        machineGearBox = new MachineGearBoxBlock(Identifier.of(MOD_ID, "machine_gear_box"), Material.METAL, 2.0F, Block.METAL_SOUND_GROUP);
+        frame = new FrameBlock(Identifier.of(MOD_ID, "frame"), Material.METAL, 2.0F, Block.METAL_SOUND_GROUP);
+        plantBus = new PlantBusBlock(Identifier.of(MOD_ID, "plant_bus"), Material.METAL, 2.0F, Block.METAL_SOUND_GROUP);
+        fertilizerBus = new FertilizerBusBlock(Identifier.of(MOD_ID, "fertilizer_bus"), Material.METAL, 2.0F, Block.METAL_SOUND_GROUP);
+
+        automaticCraftingTable = new AutomaticCraftingTableBlock(Identifier.of(MOD_ID, "automatic_crafting_table"), Material.METAL, 2.0F, Block.METAL_SOUND_GROUP);
+        treeFarm = new TreeFarmBlock(Identifier.of(MOD_ID, "tree_farm"), Material.METAL, 2.0F, Block.METAL_SOUND_GROUP);
+        proximityMutator = new ProximityMutatorBlock(Identifier.of(MOD_ID, "proximity_mutator"), Material.METAL, 1.5F, Block.METAL_SOUND_GROUP);
 
         // Changes to vanilla blast resistance
         Block.COAL_ORE.setResistance(500F);

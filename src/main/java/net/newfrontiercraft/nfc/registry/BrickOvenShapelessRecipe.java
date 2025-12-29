@@ -10,10 +10,15 @@ public class BrickOvenShapelessRecipe implements BrickOvenRecipe {
     private final ItemStack output;
     private final List input;
     private final int time;
-    public BrickOvenShapelessRecipe(ItemStack output, List input, int time) {
+    private final int heatRequirement;
+    private final String heatLevelName;
+
+    public BrickOvenShapelessRecipe(ItemStack output, List input, int time, int heatRequirement, String heatLevelName) {
         this.output = output;
         this.input = input;
         this.time = time;
+        this.heatRequirement = heatRequirement;
+        this.heatLevelName = heatLevelName;
     }
 
     @Override
@@ -24,6 +29,16 @@ public class BrickOvenShapelessRecipe implements BrickOvenRecipe {
     @Override
     public int getTime(){
         return time;
+    }
+
+    @Override
+    public int getHeatRequirement() {
+        return heatRequirement;
+    }
+
+    @Override
+    public String getHeatLevelName() {
+        return heatLevelName;
     }
 
     @Override

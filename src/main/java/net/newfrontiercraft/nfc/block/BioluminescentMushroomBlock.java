@@ -100,11 +100,14 @@ public class BioluminescentMushroomBlock extends LazyMushroomTemplate {
             return false;
         }
         int belowId = world.getBlockId(x, y - 1, z);
-        return belowId == Block.NETHERRACK.id || belowId == Block.GRASS_BLOCK.id || belowId == Block.DIRT.id || belowId == Block.FARMLAND.id || belowId == Block.SOUL_SAND.id || belowId == BlockListener.planter.id;
+        return canPlantOnTop(belowId);
     }
 
     @Override
     protected boolean canPlantOnTop(int id) {
-        return id != 0;
+        if (id == 0) {
+            return false;
+        }
+        return Block.BLOCKS[id].isOpaque() && Block.BLOCKS[id].isFullCube();
     }
 }

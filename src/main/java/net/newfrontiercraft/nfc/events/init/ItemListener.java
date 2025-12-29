@@ -1,7 +1,9 @@
 package net.newfrontiercraft.nfc.events.init;
 
 import net.mine_diver.unsafeevents.listener.EventListener;
+import net.minecraft.block.Block;
 import net.minecraft.item.Item;
+import net.minecraft.item.SwordItem;
 import net.minecraft.item.ToolMaterial;
 import net.modificationstation.stationapi.api.event.registry.ItemRegistryEvent;
 import net.modificationstation.stationapi.api.item.tool.TagToolLevel;
@@ -18,6 +20,9 @@ import net.newfrontiercraft.nfc.item.*;
 import net.newfrontiercraft.nfc.utils.ToolTierEnum;
 
 public class ItemListener {
+
+    @Entrypoint.Namespace
+    public static Namespace MOD_ID;
 
     public static LazyFoodTemplate
             cookedEgg;
@@ -51,7 +56,12 @@ public class ItemListener {
             sapphire,
             ruby,
             emerald,
-            blueGlowstoneDust;
+            blueGlowstoneDust,
+            aluminiumGear,
+            redstoneCircuit,
+            coalCoke,
+            rawAnthracite,
+            coalMushroomSpores;
 
     public static TemplatePickaxeItem
             aluminiumPickaxe,
@@ -282,9 +292,6 @@ public class ItemListener {
     public static OilBucketItem oilBucket;
     public static DoorItem copperDoor;
     public static TelescopeItem telescopeItem;
-
-    @Entrypoint.Namespace
-    public static Namespace MOD_ID;
 
     @EventListener
     public void registerItems(ItemRegistryEvent event) {
@@ -635,12 +642,15 @@ public class ItemListener {
         cupronickelIngot = new LazyItemTemplate(Identifier.of(MOD_ID, "cupronickel_ingot"));
 
         // Ore drops
-        anthracite = new LazyItemTemplate(Identifier.of(MOD_ID, "anthracite"));
         netherAsh = new LazyItemTemplate(Identifier.of(MOD_ID, "nether_ash"));
         onyx = new LazyItemTemplate(Identifier.of(MOD_ID, "onyx"), ToolTierEnum.ADVANCED);
         sapphire = new LazyItemTemplate(Identifier.of(MOD_ID, "sapphire"), ToolTierEnum.ADVANCED);
         ruby = new LazyItemTemplate(Identifier.of(MOD_ID, "ruby"), ToolTierEnum.ADVANCED);
         emerald = new LazyItemTemplate(Identifier.of(MOD_ID, "emerald"), ToolTierEnum.ADVANCED);
+        rawAnthracite = new LazyItemTemplate(Identifier.of(MOD_ID, "raw_anthracite"));
+
+        // Farming related drops
+        coalMushroomSpores = new CoalMushroomSporesItem(Identifier.of(MOD_ID, "coal_mushroom_spores"));
 
         // Other drops
         blueGlowstoneDust = new LazyItemTemplate(Identifier.of(MOD_ID, "blue_glowstone_dust"));
@@ -648,8 +658,10 @@ public class ItemListener {
         // Food
         cookedEgg = new LazyFoodTemplate(Identifier.of(MOD_ID, "cooked_egg"), 4, false);
 
-        // Oil bucket
+        // Fuel items
         oilBucket = (OilBucketItem) new OilBucketItem(Identifier.of(MOD_ID, "oil_bucket"), BlockListener.oilStill.id).setTranslationKey(Identifier.of(MOD_ID, "oil_bucket"));
+        coalCoke = new LazyItemTemplate(Identifier.of(MOD_ID, "coal_coke"));
+        anthracite = new LazyItemTemplate(Identifier.of(MOD_ID, "anthracite"));
 
         // Doors
         copperDoor = (DoorItem) new DoorItem(Identifier.of(MOD_ID, "copper_door"), BlockListener.copperDoor.id).setTranslationKey(Identifier.of(MOD_ID, "copper_door"));
@@ -657,17 +669,53 @@ public class ItemListener {
         // Telescope
         telescopeItem = new TelescopeItem(Identifier.of(MOD_ID, "telescope"));
 
+        // Intermediate items
+        aluminiumGear = new LazyItemTemplate(Identifier.of(MOD_ID, "aluminium_gear"));
+        redstoneCircuit = new LazyItemTemplate(Identifier.of(MOD_ID, "redstone_circuit"));
+
         // Ore drop specification
-        BlockListener.anthraciteOre.specifyCustomDrop(MOD_ID.id("anthracite"));
-        BlockListener.netherAshOre.specifyCustomDrop(MOD_ID.id("nether_ash"));
-        BlockListener.netherOnyxOre.specifyCustomDrop(MOD_ID.id("onyx"));
-        BlockListener.sapphireOre.specifyCustomDrop(MOD_ID.id("sapphire"));
-        BlockListener.rubyOre.specifyCustomDrop(MOD_ID.id("ruby"));
-        BlockListener.emeraldOre.specifyCustomDrop(MOD_ID.id("emerald"));
+        BlockListener.anthraciteOre.specifyCustomDrop(ItemListener.rawAnthracite);
+        BlockListener.netherAshOre.specifyCustomDrop(ItemListener.netherAsh);
+        BlockListener.netherOnyxOre.specifyCustomDrop(ItemListener.onyx);
+        BlockListener.sapphireOre.specifyCustomDrop(ItemListener.sapphire);
+        BlockListener.rubyOre.specifyCustomDrop(ItemListener.ruby);
+        BlockListener.emeraldOre.specifyCustomDrop(ItemListener.emerald);
 
         // Set fuel burn time
         FuelRegistry.addFuelItem(oilBucket, 12800);
         FuelRegistry.addFuelItem(netherAsh, 1600);
         FuelRegistry.addFuelItem(anthracite, 11200);
+        FuelRegistry.addFuelItem(coalCoke, 3200);
+
+        // Change sword damage
+        ((SwordItem)Item.WOODEN_SWORD).damage = 3;
+        ((SwordItem)Item.STONE_SWORD).damage = 3;
+        aluminiumSword.damage = 4;
+        bismuthSword.damage = 4;
+        copperSword.damage = 4;
+        leadSword.damage = 4;
+        tinSword.damage = 4;
+        zincSword.damage = 4;
+        ((SwordItem)Item.GOLDEN_SWORD).damage = 4;
+        boronSword.damage = 6;
+        brassSword.damage = 6;
+        bronzeSword.damage = 6;
+        nickelSword.damage = 6;
+        platinumSword.damage = 6;
+        silverSword.damage = 6;
+        chromeSword.damage = 8;
+        cobaltSword.damage = 8;
+        ((SwordItem)Item.IRON_SWORD).damage = 8;
+        siliconSword.damage = 8;
+        magnetSword.damage = 10;
+        steelSword.damage = 10;
+        titaniumSword.damage = 10;
+        tungstenSword.damage = 10;
+        sapphireSword.damage = 20;
+        rubySword.damage = 20;
+        emeraldSword.damage = 20;
+        onyxSword.damage = 20;
+        ((SwordItem)Item.DIAMOND_SWORD).damage = 30;
+        osmiumSword.damage = 30;
     }
 }

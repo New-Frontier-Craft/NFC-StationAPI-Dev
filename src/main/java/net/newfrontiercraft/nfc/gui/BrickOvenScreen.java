@@ -6,11 +6,13 @@ import net.newfrontiercraft.nfc.inventory.BrickOvenScreenHandler;
 import net.newfrontiercraft.nfc.block.entity.BrickOvenBlockEntity;
 import org.lwjgl.opengl.GL11;
 
-public class BrickOvenGui extends HandledScreen {
+public class BrickOvenScreen extends HandledScreen {
 
-    public BrickOvenGui(PlayerInventory inventoryplayer, BrickOvenBlockEntity tileentityfurnace) {
-        super(new BrickOvenScreenHandler(inventoryplayer, tileentityfurnace));
-        furnaceInventory = tileentityfurnace;
+    private final BrickOvenBlockEntity furnaceInventory;
+
+    public BrickOvenScreen(PlayerInventory playerInventory, BrickOvenBlockEntity brickOvenBlockEntity) {
+        super(new BrickOvenScreenHandler(playerInventory, brickOvenBlockEntity));
+        furnaceInventory = brickOvenBlockEntity;
         backgroundHeight = 202;
     }
 
@@ -36,7 +38,20 @@ public class BrickOvenGui extends HandledScreen {
         }
         int i1 = furnaceInventory.getCookProgressScaled(24);
         this.drawTexture(j + 79, k + 70, 176, 14, i1 + 1, 16);
+        int heat = getThermometerHeightFromHeatValue(furnaceInventory.getHeatLevel());
+        int heatHeightLevel = 96 - heat;
+        int maximumHeat = getThermometerHeightFromHeatValue(furnaceInventory.getMaximumHeatLevel());
+        int maximumHeatHeightLevel = 96 - maximumHeat - 3;
+        int requiredHeat = getThermometerHeightFromHeatValue(furnaceInventory.getRequiredHeatLevel());
+        int requiredHeatHeightLevel = 96 - requiredHeat - 3;
+        this.drawTexture(j + 12, k + 11 + heatHeightLevel, 176, 46 + heatHeightLevel, 8, heat);
+        this.drawTexture(j + 4, k + 11 + maximumHeatHeightLevel, 176, 38, 8, 7);
+        this.drawTexture(j + 20, k + 11 + maximumHeatHeightLevel, 184, 38, 8, 7);
+        this.drawTexture(j + 4, k + 11 + requiredHeatHeightLevel, 176, 31, 8, 7);
+        this.drawTexture(j + 20, k + 11 + requiredHeatHeightLevel, 184, 31, 8, 7);
     }
 
-    private BrickOvenBlockEntity furnaceInventory;
+    private int getThermometerHeightFromHeatValue(int heatValue) {
+        return 16 * heatValue / 200;
+    }
 }

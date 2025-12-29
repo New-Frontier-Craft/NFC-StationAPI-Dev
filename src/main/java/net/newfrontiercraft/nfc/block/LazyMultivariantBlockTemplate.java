@@ -2,10 +2,11 @@ package net.newfrontiercraft.nfc.block;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.sound.BlockSoundGroup;
-import net.modificationstation.stationapi.api.block.HasMetaNamedBlockItem;
+import net.modificationstation.stationapi.api.block.HasCustomBlockItemFactory;
+import net.modificationstation.stationapi.api.template.item.MetaNamedBlockItem;
 import net.modificationstation.stationapi.api.util.Identifier;
 
-@HasMetaNamedBlockItem
+@HasCustomBlockItemFactory(MetaNamedBlockItem.class)
 public class LazyMultivariantBlockTemplate extends LazyBlockTemplate {
     protected int[] metaSpecificTextures;
 

@@ -12,11 +12,24 @@ import net.minecraft.screen.slot.Slot;
 import net.newfrontiercraft.nfc.block.entity.BrickOvenBlockEntity;
 
 public class BrickOvenScreenHandler extends ScreenHandler {
+    private final BrickOvenBlockEntity furnace;
+    private int cookTime;
+    private int burnTime;
+    private int itemBurnTime;
+    private int requiredTime;
+    private boolean isMultiblock;
+    private int heatLevel;
+    private int maximumHeatLevel;
+    private int requiredHeatLevel;
 
     public BrickOvenScreenHandler(PlayerInventory inventoryplayer, BrickOvenBlockEntity tileentityfurnace) {
         cookTime = 0;
         burnTime = 0;
         itemBurnTime = 0;
+        isMultiblock = false;
+        heatLevel = 0;
+        maximumHeatLevel = 0;
+        requiredHeatLevel = 0;
         furnace = tileentityfurnace;
         for (int i = 0; i < 3; i++) {
             for (int k = 0; k < 3; k++) {
@@ -54,28 +67,56 @@ public class BrickOvenScreenHandler extends ScreenHandler {
             if (requiredTime != furnace.requiredTime) {
                 screenHandlerListener.onPropertyUpdate(this, 3, furnace.requiredTime);
             }
+            if (isMultiblock != furnace.isMultiBlock) {
+                screenHandlerListener.onPropertyUpdate(this, 4, furnace.isMultiBlock ? 1 : 0);
+            }
+            if (heatLevel != furnace.getHeatLevel()) {
+                screenHandlerListener.onPropertyUpdate(this, 5, furnace.getHeatLevel());
+            }
+            if (maximumHeatLevel != furnace.getMaximumHeatLevel()) {
+                screenHandlerListener.onPropertyUpdate(this, 6, furnace.getMaximumHeatLevel());
+            }
+            if (requiredHeatLevel != furnace.getRequiredHeatLevel()) {
+                screenHandlerListener.onPropertyUpdate(this, 7, furnace.getRequiredHeatLevel());
+            }
         }
 
         cookTime = furnace.furnaceCookTime;
         burnTime = furnace.furnaceBurnTime;
         itemBurnTime = furnace.currentItemBurnTime;
         requiredTime = furnace.requiredTime;
+        isMultiblock = furnace.isMultiBlock;
+        heatLevel = furnace.getHeatLevel();
+        maximumHeatLevel = furnace.getMaximumHeatLevel();
+        requiredHeatLevel = furnace.getRequiredHeatLevel();
     }
 
     @Override
     @Environment(EnvType.CLIENT)
-    public void setProperty(int i, int j) {
-        if (i == 0) {
-            furnace.furnaceCookTime = j;
+    public void setProperty(int id, int value) {
+        if (id == 0) {
+            furnace.furnaceCookTime = value;
         }
-        if (i == 1) {
-            furnace.furnaceBurnTime = j;
+        if (id == 1) {
+            furnace.furnaceBurnTime = value;
         }
-        if (i == 2) {
-            furnace.currentItemBurnTime = j;
+        if (id == 2) {
+            furnace.currentItemBurnTime = value;
         }
-        if (i == 3) {
-            furnace.requiredTime = j;
+        if (id == 3) {
+            furnace.requiredTime = value;
+        }
+        if (id == 4) {
+            furnace.isMultiBlock = value == 1;
+        }
+        if (id == 5) {
+            furnace.setHeatLevel(value);
+        }
+        if (id == 6) {
+            furnace.setMaximumHeatLevel(value);
+        }
+        if (id == 7) {
+            furnace.setRequiredHeatLevel(value);
         }
     }
 
@@ -85,38 +126,32 @@ public class BrickOvenScreenHandler extends ScreenHandler {
     }
 
     @Override
-    public ItemStack quickMove(int i) {
-        ItemStack itemstack = null;
-        Slot slot = (Slot) slots.get(i);
-        if (slot != null && slot.hasStack()) {
-            ItemStack itemstack1 = slot.getStack();
-            itemstack = itemstack1.copy();
-            if (i == 10) {
-                insertItem(itemstack1, 11, 47, true);
-            } else if (i >= 11 && i < 38) {
-                insertItem(itemstack1, 38, 39, false);
-            } else if (i >= 38 && i < 47) {
-                insertItem(itemstack1, 11, 38, false);
+    public ItemStack quickMove(int slot) {
+        ItemStack itemStack = null;
+        Slot selectedSlot = (Slot) slots.get(slot);
+        if (selectedSlot != null && selectedSlot.hasStack()) {
+            ItemStack slotStack = selectedSlot.getStack();
+            itemStack = slotStack.copy();
+            if (slot == 10) {
+                insertItem(slotStack, 11, 47, true);
+            } else if (slot >= 11 && slot < 38) {
+                insertItem(slotStack, 38, 39, false);
+            } else if (slot >= 38 && slot < 47) {
+                insertItem(slotStack, 11, 38, false);
             } else {
-                insertItem(itemstack1, 11, 47, false);
+                insertItem(slotStack, 11, 47, false);
             }
-            if (itemstack1.count == 0) {
-                slot.setStack(null);
+            if (slotStack.count == 0) {
+                selectedSlot.setStack(null);
             } else {
-                slot.markDirty();
+                selectedSlot.markDirty();
             }
-            if (itemstack1.count != itemstack.count) {
-                slot.onTakeItem(itemstack1);
+            if (slotStack.count != itemStack.count) {
+                selectedSlot.onTakeItem(slotStack);
             } else {
                 return null;
             }
         }
-        return itemstack;
+        return itemStack;
     }
-
-    private BrickOvenBlockEntity furnace;
-    private int cookTime;
-    private int burnTime;
-    private int itemBurnTime;
-    private int requiredTime;
 }

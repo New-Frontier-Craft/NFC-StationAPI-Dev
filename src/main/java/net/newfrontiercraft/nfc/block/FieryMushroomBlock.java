@@ -24,6 +24,14 @@ public class FieryMushroomBlock extends LazyMushroomTemplate {
     }
 
     @Override
+    public void onTick(World world, int x, int y, int z, Random random) {
+        if (world.getBlockId(x, y - 1, z) != BlockListener.scorchedSand.id && random.nextInt(4) != 0) {
+            return;
+        }
+        super.onTick(world, x, y, z, random);
+    }
+
+    @Override
     @Environment(EnvType.CLIENT)
     public void randomDisplayTick(World world, int i, int j, int k, Random random) {
         float m = random.nextFloat() / 1.6F;
@@ -61,7 +69,15 @@ public class FieryMushroomBlock extends LazyMushroomTemplate {
     }
 
     @Override
+    public boolean canPlaceAt(World world, int x, int y, int z) {
+        return super.canPlaceAt(world, x, y, z) && canGrow(world, x, y, z);
+    }
+
+    @Override
     public boolean onBonemealUse(World world, int x, int y, int z, BlockState state) {
+        if (world.getBlockId(x, y - 1, z) != BlockListener.scorchedSand.id) {
+            return false;
+        }
         world.setBlockWithoutNotifyingNeighbors(x, y, z, 0);
         FieryMushroomFeature feature = new FieryMushroomFeature();
         if (!feature.generate(world, new Random(), x, y, z)) {
@@ -69,16 +85,5 @@ public class FieryMushroomBlock extends LazyMushroomTemplate {
             return false;
         }
         return true;
-    }
-
-    @Override
-    public boolean canPlaceAt(World world, int x, int y, int z) {
-        int var5 = world.getBlockId(x, y, z);
-        boolean canPlaceHere = var5 == 0 || BLOCKS[var5].material.isReplaceable();
-        if (!canPlaceHere) {
-            return false;
-        }
-        int belowId = world.getBlockId(x, y - 1, z);
-        return belowId == BlockListener.scorchedSand.id;
     }
 }

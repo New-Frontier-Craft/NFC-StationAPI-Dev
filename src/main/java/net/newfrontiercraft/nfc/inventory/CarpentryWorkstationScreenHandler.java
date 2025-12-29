@@ -15,6 +15,10 @@ import net.newfrontiercraft.nfc.registry.CarpentryRecipes;
 
 public class CarpentryWorkstationScreenHandler extends ScreenHandler {
 
+    private static final int INPUT = 48;
+    private static final int OUTPUT_LOWER_BOUND = 36;
+    private static final int OUTPUT_UPPER_BOUND = 47;
+
     public CarpentryWorkstationScreenHandler(PlayerInventory inventoryplayer, World world, int i, int j, int k) {
         craftMatrix = new CraftingInventory(this, 1, 1);
         craftResult = new CraftingResultInventoryMatrix(12);
@@ -86,24 +90,25 @@ public class CarpentryWorkstationScreenHandler extends ScreenHandler {
     }
 
     @Override
-    public ItemStack quickMove(int i) {
+    public ItemStack quickMove(int selectedSlotIndex) {
         // Slot indexes of output: 36 to 47
         // Slot index of input: 48
         ItemStack copyOfStack = null;
-        Slot slot = (Slot)slots.get(i);
-        boolean isOutput = i >= 36 && i <= 47;
+        Slot slot = (Slot)slots.get(selectedSlotIndex);
+        boolean isOutput = selectedSlotIndex >= OUTPUT_LOWER_BOUND && selectedSlotIndex <= OUTPUT_UPPER_BOUND;
         if(slot != null && slot.hasStack()) {
             ItemStack stackInSlot = slot.getStack();
             copyOfStack = stackInSlot.copy();
-            if(i >= 36) {
+            if(selectedSlotIndex >= OUTPUT_LOWER_BOUND) {
                 if (isOutput) {
-                    stackInSlot.count = getSlot(48).getStack().count;
-                    insertItem(stackInSlot, 0, 36, true);
+                    int selectedSlotCount = stackInSlot.count;
+                    stackInSlot.count = getSlot(INPUT).getStack().count * selectedSlotCount;
+                    insertItem(stackInSlot, 0, OUTPUT_LOWER_BOUND, true);
                 } else {
-                    insertItem(stackInSlot, 0, 36, true);
+                    insertItem(stackInSlot, 0, OUTPUT_LOWER_BOUND, true);
                 }
             } else {
-                insertItem(stackInSlot, 48, 49, false);
+                insertItem(stackInSlot, INPUT, INPUT + 1, false);
             }
             if(stackInSlot.count == 0) {
                 slot.setStack(null);
@@ -112,7 +117,7 @@ public class CarpentryWorkstationScreenHandler extends ScreenHandler {
             }
             if(stackInSlot.count != copyOfStack.count) {
                 if (isOutput) {
-                    int inputCount = getSlot(48).getStack().count;
+                    int inputCount = getSlot(INPUT).getStack().count;
                     for (int j = 0; j < inputCount; j++) {
                         slot.onTakeItem(stackInSlot);
                     }

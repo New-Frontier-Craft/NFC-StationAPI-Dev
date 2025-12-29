@@ -17,6 +17,14 @@ loom {
 	}
 	customMinecraftManifest.set("https://babric.github.io/manifest-polyfill/${minecraft_version}.json")
 	intermediaryUrl.set("https://maven.glass-launcher.net/babric/babric/intermediary/%1\$s/intermediary-%1\$s-v2.jar")
+    accessWidenerPath = file("src/main/resources/nfc.accesswidener")
+}
+
+loom.runs {
+	register("secondClient") {
+		client()
+		programArgs(["--username", "Player2", "--uuid", "cb7afd42-6488-4bb9-9dd3-151aa66d7049"])
+	}
 }
 
 repositories {
@@ -97,9 +105,6 @@ dependencies {
 	modImplementation("maven.modrinth:bh-creative:${project.bhcreative_version}-fabric,b1.7.3") {
 		transitive false
 	}
-	modImplementation("maven.modrinth:unitweaks:${project.unitweaks_version}-fabric,b1.7.3") {
-		transitive false
-	}
 
 	// Compatibility testing
 	modImplementation("com.github.paulevsGitch:BetterNetherBeta:${project.bnb_version}") {
@@ -109,6 +114,12 @@ dependencies {
 		transitive false
 	}
 	modImplementation("com.github.paulevsGitch:VanillaBlockEnhancements:${project.vbe_version}") {
+		transitive false
+	}
+	modImplementation("net.danygames2014:WhatsThis:${project.whatsthis_version}") {
+		transitive false
+	}
+	modImplementation("maven.modrinth:unitweaks:${project.unitweaks_version}-fabric,b1.7.3") {
 		transitive false
 	}
 

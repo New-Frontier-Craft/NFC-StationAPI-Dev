@@ -33,14 +33,26 @@ public class GlowingMushroomFeature extends Feature {
         int mushroomCapLength = 2 + random.nextInt(stemHeight / 2);
         for (int i = 0; i < stemHeight; i++) {
             if (i >= stemHeight - mushroomCapLength) {
-                world.setBlock(x + 1, y + i, z, BlockListener.glowingMushroomCap.id);
-                world.setBlock(x - 1, y + i, z, BlockListener.glowingMushroomCap.id);
-                world.setBlock(x, y + i, z + 1, BlockListener.glowingMushroomCap.id);
-                world.setBlock(x, y + i, z - 1, BlockListener.glowingMushroomCap.id);
+                if (world.getBlockId(x + 1, y + i, z) == 0) {
+                    world.setBlock(x + 1, y + i, z, BlockListener.glowingMushroomCap.id);
+                }
+                if (world.getBlockId(x - 1, y + i, z) == 0) {
+                    world.setBlock(x - 1, y + i, z, BlockListener.glowingMushroomCap.id);
+                }
+                if (world.getBlockId(x, y + i, z + 1) == 0) {
+                    world.setBlock(x, y + i, z + 1, BlockListener.glowingMushroomCap.id);
+                }
+                if (world.getBlockId(x, y + i, z - 1) == 0) {
+                    world.setBlock(x, y + i, z - 1, BlockListener.glowingMushroomCap.id);
+                }
             }
-            world.setBlock(x, y + i, z, BlockListener.glowingMushroomStem.id);
+            if (world.getBlockId(x, y + i, z) == 0) {
+                world.setBlock(x, y + i, z, BlockListener.glowingMushroomStem.id);
+            }
         }
-        world.setBlock(x, y + stemHeight, z, BlockListener.glowingMushroomCap.id);
+        if (world.getBlockId(x, y + stemHeight, z) == 0) {
+            world.setBlock(x, y + stemHeight, z, BlockListener.glowingMushroomCap.id);
+        }
         return true;
     }
 }

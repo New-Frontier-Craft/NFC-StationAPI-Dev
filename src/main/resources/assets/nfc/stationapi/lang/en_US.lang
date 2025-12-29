@@ -24,6 +24,7 @@ tile.nfc.nether_stone_tiling.name=Nether Stone Tiling
 tile.nfc.nether_stone_tiling_large.name=Large Nether Stone Tiling
 
 tile.nfc.fired_bricks.name=Fired Bricks
+tile.nfc.coke_oven_bricks.name=Coke Oven Bricks
 tile.nfc.osmium_bricks.name=Osmium Bricks
 
 tile.nfc.scaffold_block.name=Scaffolding
@@ -143,8 +144,13 @@ tile.nfc.mystery_ore.name=Mystery Ore
 tile.nfc.brick_oven.name=Brick Oven
 tile.nfc.brick_oven_active.name=Lit Brick Oven (DEPRECATED)
 tile.nfc.carpentry_workstation.name=Carpentry Workstation
+tile.nfc.coke_oven.name=Coke Oven
 
+tile.nfc.charcoal_block.name=Charcoal Block
 tile.nfc.coal_block.name=Coal Block
+tile.nfc.nether_ash_block.name=Nether Ash Block
+tile.nfc.coal_coke_block.name=Coal Coke Block
+tile.nfc.anthracite_block.name=Anthracite Block
 tile.nfc.onyx_block.name=Onyx Block
 tile.nfc.aluminium_block.name=Aluminum Block
 tile.nfc.copper_block.name=Copper Block
@@ -184,11 +190,19 @@ tile.nfc.bioluminescent_mushroom.blue.name=Blue Mushroom
 tile.nfc.bioluminescent_mushroom.purple.name=Purple Mushroom
 tile.nfc.glowing_mushroom.name=Glowing Mushroom
 tile.nfc.fiery_mushroom.name=Fiery Mushroom
+tile.nfc.spore_ash.name=Spore Ash
+tile.nfc.coal_mushroom.name=Coal Mushroom
+tile.nfc.coal_mushroom_bottom.name=Big Coal Mushroom Bottom
+tile.nfc.coal_mushroom_top.name=Big Coal Mushroom Top
 
 tile.nfc.petrified_log.name=Petrified Wood
 tile.nfc.petrified_planks.name=Petrified Wooden Planks
 tile.nfc.petrified_leaves.name=Dead Leaves
 tile.nfc.unrestricted_nether_portal.name=Unrestricted Nether Portal
+
+tile.nfc.rotated_oak_log.name=Rotated Oak Log
+tile.nfc.rotated_spruce_log.name=Rotated Spruce Log
+tile.nfc.rotated_birch_log.name=Rotated Birch Log
 
 tile.nfc.barrier0.name=Barrier Block
 tile.nfc.barrier1.name=Support Block
@@ -275,11 +289,24 @@ tile.nfc.heat_coil.name=Heat Coil
 
 tile.nfc.combustion_heater.name=Combustion Heater
 tile.nfc.combustion_heater_active.name=Lit Combustion Heater
+tile.nfc.heat_siphon.name=Heat Siphon
 
 tile.nfc.basic_item_chute.name=Basic Item Chute
 tile.nfc.item_chute_extender.name=Item Chute Extender
 tile.nfc.filtering_item_chute.name=Filtering Item Chute
 tile.nfc.precise_item_chute.name=Precise Item Chute
+
+tile.nfc.machine_frame.name=Machine Frame
+tile.nfc.creative_generator.name=Creative Generator
+tile.nfc.stirling_generator.name=Stirling Generator
+tile.nfc.machine_gear_box.name=Machine Gear Box
+tile.nfc.frame.name=Frame
+tile.nfc.plant_bus.name=Plant Bus
+tile.nfc.fertilizer_bus.name=Fertilizer Bus
+
+tile.nfc.automatic_crafting_table.name=Automatic Crafting Table
+tile.nfc.tree_farm.name=Tree Farm
+tile.nfc.proximity_mutator.name=Proximity Mutator
 
 
 item.nfc.aluminium_pickaxe.name=Aluminum Pickaxe
@@ -522,23 +549,39 @@ item.nfc.steel_ingot.name=Steel Ingot
 item.nfc.osmium_ingot.name=Osmium Ingot
 item.nfc.cupronickel_ingot.name=Cupronickel Ingot
 
-item.nfc.anthracite.name=Anthracite
 item.nfc.nether_ash.name=Nether Ash
 item.nfc.onyx.name=Onyx
 item.nfc.sapphire.name=Sapphire
 item.nfc.ruby.name=Ruby
 item.nfc.emerald.name=Emerald
+item.nfc.raw_anthracite.name=Raw Anthracite
+
+item.nfc.coal_mushroom_spores.name=Coal Mushroom Spores
 
 item.nfc.cooked_egg.name=Cooked Egg
+
 item.nfc.oil_bucket.name=Oil Bucket
+item.nfc.coal_coke.name=Coal Coke
+item.nfc.anthracite.name=Anthracite
+
 item.nfc.copper_door.name=Copper Door
 item.nfc.telescope.name=Telescope
 
 item.nfc.blue_glowstone_dust.name=Blue Glowstone Dust
 
+item.nfc.aluminium_gear.name=Aluminum Gear
+item.nfc.redstone_circuit.name=Redstone Circuit
+
+
 gui.nfc.bookshelf=Bookshelf
 
-multiblock.nfc.brickoven=Brick Oven
+
+multiblock.nfc.brick_oven=Brick Oven
+multiblock.nfc.automatic_crafting_table=Automatic Crafting Table
+multiblock.nfc.coke_oven=Coke Oven
+multiblock.nfc.tree_farm=Tree Farm
+multiblock.nfc.proximity_mutator=Proximity Mutator
+
 
 tool_tier.tier=Tier
 tool_tier.attack_damage=Attack Damage
@@ -549,3 +592,14 @@ tool_tier.basic=Basic
 tool_tier.iron=Improved
 tool_tier.advanced=Advanced
 tool_tier.diamond=Excellent
+
+
+fuel_level.cold=Cold
+fuel_level.warm=Warm
+fuel_level.hot=Hot
+fuel_level.searing=Searing
+fuel_level.blazing=Blazing
+fuel_level.superheated=Superheated
+
+
+description.nfc.coal_mushroom=Can be created using the mutation effect of a Proximity Mutator. Made from either a brown or red mushroom on top of a block of coal and a source of oil next to the coal block.

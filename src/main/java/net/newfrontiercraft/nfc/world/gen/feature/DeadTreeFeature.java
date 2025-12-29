@@ -95,7 +95,7 @@ public class DeadTreeFeature extends Feature {
                         }
                     }
                 }
-
+                world.setBlock(x, y, z, BlockListener.petrifiedLog.id);
                 return true;
             } else {
                 return false;

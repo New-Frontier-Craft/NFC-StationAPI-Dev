@@ -5,13 +5,9 @@ import net.minecraft.block.PlantBlock;
 import net.minecraft.block.SaplingBlock;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
-import net.minecraft.world.gen.feature.*;
+import net.minecraft.world.gen.feature.Feature;
 import net.newfrontiercraft.nfc.events.init.BlockListener;
-import net.newfrontiercraft.nfc.world.gen.feature.PlanterBirchTreeFeature;
-import net.newfrontiercraft.nfc.world.gen.feature.PlanterOakTreeFeature;
-import net.newfrontiercraft.nfc.world.gen.feature.PlanterSpruceTreeFeature;
-import net.newfrontiercraft.nfc.world.gen.feature.ShrubFeature;
-import net.newfrontiercraft.nfc.world.gen.feature.DeadTreeFeature;
+import net.newfrontiercraft.nfc.world.gen.feature.*;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -80,6 +76,7 @@ public abstract class SaplingBlockMixin extends PlantBlock {
 
     @Override
     protected boolean canPlantOnTop(int id) {
-        return id == Block.GRASS_BLOCK.id || id == Block.DIRT.id || id == Block.FARMLAND.id || id == Block.SOUL_SAND.id || id == BlockListener.planter.id;
+        return id == Block.GRASS_BLOCK.id || id == Block.DIRT.id || id == Block.FARMLAND.id
+                || id == Block.SOUL_SAND.id || id == BlockListener.planter.id || id == BlockListener.alphaGrass.id;
     }
 }

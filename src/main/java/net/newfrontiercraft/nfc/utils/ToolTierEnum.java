@@ -9,8 +9,8 @@ public enum ToolTierEnum {
     ADVANCED("§6", "tool_tier.advanced"),
     DIAMOND("§e", "tool_tier.diamond");
 
-    private String colourCode;
-    private String name;
+    private final String colourCode;
+    private final String name;
 
     ToolTierEnum(final String colourCode, final String name) {
         this.colourCode = colourCode;

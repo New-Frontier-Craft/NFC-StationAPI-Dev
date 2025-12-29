@@ -31,6 +31,7 @@
     "nfc:tinted_glass",
     "nfc:fired_mud",
     "nfc:fired_bricks",
+    "nfc:coke_oven_bricks",
     "nfc:blue_glowstone",
     "nfc:scorched_sandstone",
     "nfc:petrified_log",
@@ -64,7 +65,11 @@
     "nfc:platinum_ore",
     "nfc:mystery_ore",
 
+    "nfc:charcoal_block",
     "nfc:coal_block",
+    "nfc:nether_ash_block",
+    "nfc:coal_coke_block",
+    "nfc:anthracite_block",
     "nfc:onyx_block",
     "nfc:cobalt_block",
     "nfc:aluminium_block",
@@ -97,6 +102,8 @@
     "nfc:brick_oven",
     "nfc:brick_oven_active",
 
+    "nfc:coke_oven",
+
     "nfc:vanilla_slabs",
     "nfc:non_dyed_slabs",
 
@@ -111,10 +118,31 @@
 
     "nfc:combustion_heater",
     "nfc:combustion_heater_active",
+    "nfc:heat_siphon",
 
     "nfc:basic_item_chute",
     "nfc:item_chute_extender",
     "nfc:filtering_item_chute",
-    "nfc:precise_item_chute"
+    "nfc:precise_item_chute",
+
+    "nfc:machine_frame",
+    "nfc:creative_generator",
+    "nfc:stirling_generator",
+    "nfc:machine_gear_box",
+    "nfc:frame",
+    "nfc:plant_bus",
+    "nfc:fertilizer_bus",
+
+    "nfc:automatic_crafting_table",
+    "nfc:tree_farm",
+    "nfc:proximity_mutator",
+
+    "nfc:spore_ash",
+    "nfc:coal_mushroom",
+    "nfc:coal_mushroom_bottom",
+    "nfc:coal_mushroom_top",
+
+    "glass",
+    "nfc:window"
   ]
 }

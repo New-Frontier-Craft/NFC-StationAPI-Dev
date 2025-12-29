@@ -3,11 +3,28 @@ package net.newfrontiercraft.nfc.block.entity;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.nbt.NbtCompound;
 import net.newfrontiercraft.nfc.api.HeatConsumer;
+import net.newfrontiercraft.nfc.block.HeatCoilBlock;
+import net.newfrontiercraft.nfc.events.init.BlockListener;
 
 public class HeatCoilBlockEntity extends BlockEntity {
     
     private int heatLevel;
     private int tickTimer;
+
+    private int currentHeatState = 0;
+
+    private int getHeatStateFromHeatLevel(){
+        if(heatLevel < 250){
+            return 0;
+        } else if (heatLevel < 500) {
+            return 1;   
+        } else if (heatLevel < 750) {
+            return 2;
+        } else if (heatLevel < 1000) {
+            return 3;
+        }
+        return 3;
+    }
 
     @Override
     public void tick() {
@@ -16,6 +33,11 @@ public class HeatCoilBlockEntity extends BlockEntity {
             return;
         }
         tickTimer = 0;
+        // Server side bug workaround start
+        if (world.getBlockId(x, y - 1, z) == BlockListener.heatSiphon.id) {
+            BlockListener.heatSiphon.provideHeat(world, x, y - 1, z);
+        }
+        // Server side bug workaround end
         if (heatLevel < 0) {
             System.out.println("!!!!!!!!!!!!!!!! HEAT LEVEL BELOW 0 DETECTED !!!!!!!!!!!!!!!!");
         }
@@ -36,6 +58,14 @@ public class HeatCoilBlockEntity extends BlockEntity {
         sendHeatToConsumerBlock(x, y, z - 1);
         if (heatLevel > 0) {
             heatLevel--;
+        }
+
+        int heatState = getHeatStateFromHeatLevel();
+        if(currentHeatState != heatState){
+            if(world.getBlockState(x, y, z).contains(HeatCoilBlock.HEAT)){
+                currentHeatState = heatState;
+                world.setBlockStateWithNotify(x, y, z, world.getBlockState(x, y, z).with(HeatCoilBlock.HEAT, heatState));
+            }
         }
     }
 

@@ -6,10 +6,9 @@ import net.minecraft.item.ItemStack;
 
 public class CraftingResultInventoryMatrix implements Inventory {
 
-    public CraftingResultInventoryMatrix(int pSize)
-    {
-        size = pSize;
-        stackResult = new ItemStack[pSize];
+    public CraftingResultInventoryMatrix(int size) {
+        this.size = size;
+        stackResult = new ItemStack[size];
     }
 
     @Override
@@ -24,13 +23,11 @@ public class CraftingResultInventoryMatrix implements Inventory {
 
     @Override
     public ItemStack removeStack(int i, int j) {
-        if(stackResult[i] != null)
-        {
+        if(stackResult[i] != null) {
             ItemStack itemstack = stackResult[i];
             stackResult[i] = null;
             return itemstack;
-        } else
-        {
+        } else {
             return null;
         }
     }
