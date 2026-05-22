@@ -1,5 +1,7 @@
 # New Frontier Craft Station API Port
 
+# NOTE: Repository has moved to Codeberg https://codeberg.org/NFC/NFC-StationAPI-Dev
+
 ## About the port
 This is an Alpha of what will eventually become a complete port of New Frontier Craft to Station API. This is intended to become the main version of NFC in the long run.
 
